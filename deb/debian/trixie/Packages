@@ -778,6 +778,34 @@ Description: omx-dsp's kernel and instance declarations, read at run time
  .
  Its documentation is on openmixer.org.
 
+Package: omx-dsp-contract
+Architecture: all
+Version: 0.32.0
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 328
+Depends: omx-contract-data (>= 3.9.0~), omx-contract-data (<< 4~)
+Breaks: libomxdsp-dev (<< 0.32.0)
+Replaces: libomxdsp-dev (<< 0.32.0)
+Filename: ./all/omx-dsp-contract_0.32.0_all.deb
+Size: 55896
+MD5sum: c455c5c828e768a0309ca1c5c478aee5
+SHA1: 18b520838c487533d5de9b3b30762244b5c892b2
+SHA256: 96916f9f60c89ac7e48b08e19bd72d4acfd92406bba03517daa8078067fb1e4d
+SHA512: 1cbc48d4a253403e2611055c274c97a54e3a4065b946045cba6ff4d98d3f2ea31fe39295b679a9773323e28a9359e16d693cc1bdc87bb5b429b7b2721154f7f3
+Homepage: https://github.com/FreeMixer/omx-dsp
+Description: omx-dsp's kernel and instance declarations, read at run time
+ omx-dsp's package of omx-contract's contract directory: the declarations of
+ its kernels and instance faces (their controls, units and readouts) under
+ /usr/share/omx-contract/contract.d/3/omx-dsp. A program that reads them while
+ it runs (a panel, the omx-contract command) needs this package, not the
+ development one.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-panel
 Architecture: all
 Version: 0.10.1
@@ -3026,6 +3054,41 @@ Description: audio toolbox of the OpenMixer console, a real-time-safe C library
  .
  Its documentation is on openmixer.org.
 
+Package: libomxdsp-dev
+Architecture: amd64
+Version: 0.32.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2963
+Depends: libomx-contract-dev (>= 3.9.0~), libomx-contract-dev (<< 4~), omx-dsp-contract (= 0.32.0)
+Filename: ./amd64/libomxdsp-dev_0.32.0_amd64.deb
+Size: 476768
+MD5sum: fa0c20358f8fbce7b202154c0ea93a0d
+SHA1: 9466a2feb654fd85d508e2fb0c0497023a68bf59
+SHA256: ffc3a0a27d5f744e1bdbe30d2f5890fa334aed6eedf3ab71e02a976d304e316d
+SHA512: 5d2642902132f900d261faef89cb33ea7662a4dcd1f6c7089006adc9cd4d8a64e60dd85895c44b3c2e53de52543b96793ce48ad4733b798095cc877c237401da
+Homepage: https://github.com/FreeMixer/omx-dsp
+Description: audio toolbox of the OpenMixer console, a real-time-safe C library
+ libomxdsp is the sound of the OpenMixer console, as a library: the filters,
+ envelopes, delays, limiters, gates, compressors and other building blocks of
+ a mixer channel, written in plain C that never allocates, locks or calls the
+ system while audio is running. The console and the omx plugins are built from
+ this same code, so an effect sounds the same on the desk and in your DAW,
+ sample for sample. Link it into your own plugin, effect or audio tool and
+ start from parts that are already tested against exact results at every
+ sample rate.
+ .
+ This package holds the headers and the static library in three flavours,
+ each with its pkg-config file: libomxdsp.a (omxdsp), libomxdsp-contracts.a
+ (omxdsp-contracts, contracts compiled in) and libomxdsp-tsan.a (omxdsp-tsan,
+ contracts and ThreadSanitizer). Programs link the library statically; no
+ shared library exists.
+ .
+ Its documentation is on openmixer.org.
+
 Package: libplugin-hostd-protocol-dev
 Architecture: amd64
 Version: 0.2.0
@@ -5105,6 +5168,36 @@ Description: OpenMixer delay, drive, EQ, strip, gate and effects (CLAP, LV2)
  .
  Its documentation is on openmixer.org.
 
+Package: omx-rt-gate
+Architecture: amd64
+Version: 0.32.0
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 214
+Depends: libomxdsp-dev (= 0.32.0), gcc, libc6 (>= 2.38)
+Filename: ./amd64/omx-rt-gate_0.32.0_amd64.deb
+Size: 52956
+MD5sum: 51db3c3c01b92450f0a91b3d46d06db0
+SHA1: b5d13d84f4d2e5381a52419ca1dbc9973370dbd0
+SHA256: f33749d08a6bbcdeb8c901e1eaf46e561385d84a57bcf0371168e3eaacdd2591
+SHA512: dc721f96e4f8d2ceb7ec9318fb4072a385694c449d085b91a1614aed05bf78355560d1faa74fcab1a6f4835b4db43c52f1f8607d51e2514d2770ebf0098004f9
+Homepage: https://github.com/FreeMixer/omx-dsp
+Description: static real-time gate for plugin and engine C built on libomxdsp
+ omx-rt-gate proves that the real-time code of a plugin or an audio engine
+ never allocates, locks, sleeps, does I/O or logs. It compiles each real-time
+ source with the project's own flags, reads the compiler's call graph, finds
+ the functions a host calls from its audio thread in the plugin's LV2, CLAP or
+ PipeWire tables, and follows every call from there, through libomxdsp's own
+ code too. Each finding names the call, its place and the path from the entry
+ point. The tables it judges against ship with it: one forbidden list, one
+ class table and the thread roles of each ABI, with libomxdsp's thread tags
+ and call graphs.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-db-dev
 Architecture: amd64
 Version: 0.2.0
@@ -7084,6 +7177,41 @@ MD5sum: 54a6be0bc06182fb3386c35270dd2d01
 SHA1: 11959ac7db3a2bd6e762d754616de5d8edb8ee12
 SHA256: 12fce0784a4e30715a96037957d6f6886123d9889c4ee9070b09ccc61c51251b
 SHA512: c62ea0bd4979152c696e9ef5648ac5fdcfbc5d7b47a35b81ad058d6e0711187b278311d07dd3623161977a986c1cb6d716fbc97f411230dde7a4138a72b37504
+Homepage: https://github.com/FreeMixer/omx-dsp
+Description: audio toolbox of the OpenMixer console, a real-time-safe C library
+ libomxdsp is the sound of the OpenMixer console, as a library: the filters,
+ envelopes, delays, limiters, gates, compressors and other building blocks of
+ a mixer channel, written in plain C that never allocates, locks or calls the
+ system while audio is running. The console and the omx plugins are built from
+ this same code, so an effect sounds the same on the desk and in your DAW,
+ sample for sample. Link it into your own plugin, effect or audio tool and
+ start from parts that are already tested against exact results at every
+ sample rate.
+ .
+ This package holds the headers and the static library in three flavours,
+ each with its pkg-config file: libomxdsp.a (omxdsp), libomxdsp-contracts.a
+ (omxdsp-contracts, contracts compiled in) and libomxdsp-tsan.a (omxdsp-tsan,
+ contracts and ThreadSanitizer). Programs link the library statically; no
+ shared library exists.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libomxdsp-dev
+Architecture: arm64
+Version: 0.32.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2930
+Depends: libomx-contract-dev (>= 3.9.0~), libomx-contract-dev (<< 4~), omx-dsp-contract (= 0.32.0)
+Filename: ./arm64/libomxdsp-dev_0.32.0_arm64.deb
+Size: 473284
+MD5sum: aa61c9660a9997e84104bed36db02609
+SHA1: 1a86dbefd994b265fd35bbb3802aa4dd32bd6842
+SHA256: c9cfa2ba62b9414f32d3a12dd800a43e6617e3400911b7037d4997aa94c37a92
+SHA512: aee50cbd5d1e17f1e1cf24956fc940377a1ae763f7671eadbe81c0f85b4a6825642abf75d7d93bbc1d508e720a785be3d7c5e0830c3e7d4c3801cf478ddd6900
 Homepage: https://github.com/FreeMixer/omx-dsp
 Description: audio toolbox of the OpenMixer console, a real-time-safe C library
  libomxdsp is the sound of the OpenMixer console, as a library: the filters,
@@ -9179,6 +9307,36 @@ Description: OpenMixer delay, drive, EQ, strip, gate and effects (CLAP, LV2)
  This package installs both formats; omx-plugins-clap and omx-plugins-lv2
  install one each. It also carries the factory presets of every plugin, as
  files in /usr/share/omx/presets.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-rt-gate
+Architecture: arm64
+Version: 0.32.0
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 210
+Depends: libomxdsp-dev (= 0.32.0), gcc, libc6 (>= 2.38)
+Filename: ./arm64/omx-rt-gate_0.32.0_arm64.deb
+Size: 50780
+MD5sum: dc2c8da6552eea8a405bf023084810ed
+SHA1: e02cec0c3b7199b5323bd2e176e992cbb4891413
+SHA256: 4462ecb6707e4fe8d6c47418325918d2bafb13e22de3a9a7cb1f738d850efcea
+SHA512: 099dbf17f1995ee6a2fd7a13095bc32701879dd20993d0585aa2ab4f3c7d5b95d01407cdbbc0526f205c91acf94ab6448eb61ac14584581a75c6543f83498290
+Homepage: https://github.com/FreeMixer/omx-dsp
+Description: static real-time gate for plugin and engine C built on libomxdsp
+ omx-rt-gate proves that the real-time code of a plugin or an audio engine
+ never allocates, locks, sleeps, does I/O or logs. It compiles each real-time
+ source with the project's own flags, reads the compiler's call graph, finds
+ the functions a host calls from its audio thread in the plugin's LV2, CLAP or
+ PipeWire tables, and follows every call from there, through libomxdsp's own
+ code too. Each finding names the call, its place and the path from the entry
+ point. The tables it judges against ship with it: one forbidden list, one
+ class table and the thread roles of each ABI, with libomxdsp's thread tags
+ and call graphs.
  .
  Its documentation is on openmixer.org.
 
