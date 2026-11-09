@@ -1,0 +1,37 @@
+plugin-db-qualification (2026110901) unstable; urgency=medium
+
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * fedora44 Job: deliver records to Open-Mixer/plugin-db-qualification with
+    its own deploy key while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * release: the arm64 records package for trixie only; the channel has no
+    bookworm suite
+  * README: one records package per architecture, arm64 released first
+  * workflows: release the architectures packaging/release-arches names
+  * build-package: sets go into records/, the one package follows them
+  * packaging: one package, plugin-qualification-records, per architecture
+  * ci: cancel a pull request's stale runs (#23)
+  * measure.sh: the real-time check reads every thread of jackd, whose audio
+    threads run at SCHED_FIFO and main thread does not
+  * fedora44 Job: real-time priority in omx-qualify-rt; a base whose JACK
+    server is not SCHED_FIFO is refused
+  * records: the x86-64 fedora44 sets, one per cell, provisional tier
+    (2026110901)
+  * sets: a failed proof cleans up too, a set's rpm glob never takes a longer
+    set name, a republish is refused beside other Debian sets
+  * README: one record set per cell
+  * workflows: build and prove every set
+  * build-package: one set per cell of a run
+  * packaging: one RPM subpackage per x86-64 set, one Debian install file per
+    rpi5 set
+  * check-records: a set named for a cell holds only that cell
+  * fedora44: install mod-host and mod-host-protocol so the channel check has
+    a package to read
+  * fedora44: the Job delivers its records to a branch, measures both bases,
+    included plugins first
+  * fedora44: the mod-host-protocol guard tests where the package came from,
+    not a tag in its version
+  * Take the shared commit-msg hook
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 09 Nov 2026 23:04:25 +0000
