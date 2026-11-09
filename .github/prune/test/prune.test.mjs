@@ -11,7 +11,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
   rpmvercmp, rpmEvrCmp, debVersionCmp, semverCmp, parseKeep, parsePrimary, parsePackages,
-  selectRepo, unusedPins, pinsLost, selectNpm, report,
+  selectRepo, parseDrop, unusedPins, pinsLost, selectNpm, report,
 } from '../prune.mjs';
 import { pinsTxt, packageJson, pnpmLock, toKeep } from '../pins.mjs';
 
@@ -627,4 +627,36 @@ test('cli: a plan that would delete a pinned version fails the run and names it'
   assert.match(r.stderr, /the plan deletes every build of a pinned version:\n/);
   assert.match(r.stderr, /\n {2}rpm fedora\/44 omx-contract-devel\.noarch 2\.5\.0: openmixer pins/);
   assert.match(r.stderr, /\n {2}deb debian\/bookworm libomx-contract-dev\.all 2\.5\.0: openmixer pins/);
+});
+
+// ------------------------------------------------------------------ drop mode
+
+test('drop: every build of a named source version goes, with subpackages, architectures and the source, and nothing else', () => {
+  const rpm = parsePrimary(primary([
+    rpmPkg('hostd x86_64 0.16.0-1.fc44'),
+    rpmPkg('hostd aarch64 0.16.0-1.fc44'),
+    rpmPkg('hostd-devel noarch 0.16.0-1.fc44', { source: 'hostd-0.16.0-1.fc44.src.rpm' }),
+    rpmPkg('hostd src 0.16.0-1.fc44'),
+    rpmPkg('hostd x86_64 0.17.0-1.fc44'),
+    rpmPkg('hostd src 0.17.0-1.fc44'),
+    rpmPkg('hostd x86_64 0.1.0-1.fc44'),
+    rpmPkg('hostd-extra x86_64 0.16.0-1.fc44'),
+  ]), 'fedora/44', 'x86_64');
+  const r = selectRepo(rpm, [], { newest: 1, drop: parseDrop('hostd@0.16.0,other@1.0') });
+  assert.deepEqual(r.delete.map((d) => `${d.name} ${d.arch} ${d.version}`).sort(), [
+    'hostd aarch64 0.16.0-1.fc44', 'hostd src 0.16.0-1.fc44', 'hostd x86_64 0.16.0-1.fc44', 'hostd-devel noarch 0.16.0-1.fc44',
+  ]);
+  assert.equal(r.keep.length, 4, 'older, newer and other-named packages stay, whatever their age');
+  const deb = parsePackages([
+    debPkg('hostd', '0.16.0-1', 'amd64', { source: 'hostd' }), debPkg('hostd-dev', '0.16.0-1', 'all', { source: 'hostd' }),
+    debPkg('hostd', '0.17.0-1', 'amd64', { source: 'hostd' }), debPkg('hostd', '0.1.0-1', 'amd64', { source: 'hostd' }),
+  ].join('\n\n') + '\n', 'debian/bookworm');
+  const d = selectRepo(deb, [], { drop: parseDrop('hostd@0.16.0') });
+  assert.deepEqual(d.delete.map((x) => x.file).sort(), ['all/hostd-dev_0.16.0-1_all.deb', 'amd64/hostd_0.16.0-1_amd64.deb']);
+  assert.equal(d.keep.length, 2);
+});
+
+test('drop: an entry must be name@version', () => {
+  assert.throws(() => parseDrop('hostd'), /name@version/);
+  assert.deepEqual(parseDrop(''), []);
 });

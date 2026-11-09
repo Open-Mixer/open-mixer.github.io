@@ -9,6 +9,9 @@ name: Prune the package repository
 # delete a pinned version fails, and so does one that leaves a kept package uninstallable (a dependency, a rich
 # range like (a >= 1 with a < 2) included, whose only satisfier it deletes).
 #
+# drop (a list of name@version) switches to drop mode: those versions of those source packages go, every build of
+# them, and everything else stays whatever its age. A pinned version, or one a kept package needs, fails the plan.
+#
 # apply=false (the default) is a dry run: it prints, per package and format, what would be kept and what
 # deleted, writes that plan to the job summary and as an artifact, and changes nothing.
 # apply=true deletes the plan's files from rpm/ and deb/, regenerates and re-signs the dnf metadata and the
@@ -31,6 +34,10 @@ on:
         description: 'Delete for real. false only prints what would be deleted.'
         type: boolean
         default: false
+      drop:
+        description: 'Drop mode: name@version,... removes every build of those source versions (subpackages, architectures, source) and nothing else; newest does not apply. Empty runs the normal prune.'
+        type: string
+        default: ''
       newest:
         description: 'How many of the newest builds of every package to keep per distro and architecture.'
         type: string
@@ -80,9 +87,10 @@ jobs:
         id: plan
         env:
           NEWEST: ${{ inputs.newest }}
+          DROP: ${{ inputs.drop }}
         run: |
           set -o pipefail
-          node .github/prune/select.mjs --keep keep.yml --pins pins.json --keeplist keep-list.txt --newest "$NEWEST" --tree . --json plan.json --delete-list | tee plan.txt
+          node .github/prune/select.mjs --keep keep.yml --pins pins.json --keeplist keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree . --json plan.json --delete-list | tee plan.txt
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           git rev-parse HEAD > plan.sha
           { echo '### What openmixer pins'; echo '```'; cat pins.txt; echo '```';
@@ -109,6 +117,7 @@ jobs:
       image: fedora:44
     env:
       NEWEST: ${{ inputs.newest }}
+      DROP: ${{ inputs.drop }}
     steps:
       - name: Install the packaging tools
         run: dnf install -y --setopt=install_weak_deps=False createrepo_c rpm-sign gnupg2 pinentry findutils diffutils git curl python3-rpm zstd
@@ -182,7 +191,7 @@ jobs:
           done
 
       - name: The pruned tree has nothing left to delete
-        run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --tree build/channel --only rpm --expect-clean
+        run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only rpm --expect-clean
 
       # nothing is pushed here: the deb job pushes rpm and deb in ONE signed commit, so Pages deploys once (three
       # deploys timed out at the 10-minute limit on 2026-11-07). What this job changed is the deletions and the
@@ -215,6 +224,7 @@ jobs:
     env:
       HAS_COSIGN: ${{ secrets.RPM_GPG_KEY != '' }}
       NEWEST: ${{ inputs.newest }}
+      DROP: ${{ inputs.drop }}
     steps:
       - name: Install the packaging tools
         run: apt-get update -qq && apt-get install -y --no-install-recommends apt-utils gnupg git curl ca-certificates findutils dpkg-dev
@@ -279,7 +289,7 @@ jobs:
       - name: The tree is the one the plan was made from
         run: |
           set -euo pipefail
-          node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --tree build/channel --only deb --json now.json > /dev/null
+          node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only deb --json now.json > /dev/null
           node -e '
             const a = require("./plan/plan.json"), b = require("./now.json");
             const pick = (p) => JSON.stringify({ keep: p.keep.filter((r) => r.format === "deb").map((r) => r.path).sort(),
@@ -321,7 +331,7 @@ jobs:
           done
 
       - name: The pruned tree has nothing left to delete
-        run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --tree build/channel --only deb --expect-clean
+        run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only deb --expect-clean
 
       - uses: FreeMixer/.github/.github/actions/channel-push@v1
         with:
@@ -339,6 +349,8 @@ jobs:
     timeout-minutes: 60
     container:
       image: fedora:44
+    env:
+      DROP: ${{ inputs.drop }}
     steps:
       - run: dnf install -y --setopt=install_weak_deps=False git curl findutils diffutils
       - uses: actions/setup-node@v4
@@ -371,6 +383,8 @@ jobs:
           dnf -y install https://www.openmixer.org/rpm/openmixer-release.noarch.rpm >/dev/null
           dnf -y makecache
           node .github/prune/expect.mjs --plan plan/plan.json --format rpm --repo fedora/44 --arch x86_64 > expect.txt
+          # drop mode removed named versions only: the other builds were not touched, so the check is the newest
+          if [ -n "$DROP" ]; then grep '^newest' expect.txt > expect.newest && mv expect.newest expect.txt; fi
           fail=0
           while read -r what a b; do
             if [ "$what" = install ]; then
@@ -395,6 +409,8 @@ jobs:
     defaults:
       run:
         shell: bash
+    env:
+      DROP: ${{ inputs.drop }}
     steps:
       - run: apt-get update -qq && apt-get install -y --no-install-recommends git curl ca-certificates
       - uses: actions/setup-node@v4
@@ -429,6 +445,8 @@ jobs:
           apt-get install -y -qq /tmp/openmixer-release.deb >/dev/null
           apt-get update -qq
           node .github/prune/expect.mjs --plan plan/plan.json --format deb --repo debian/bookworm --arch amd64 > expect.txt
+          # drop mode removed named versions only: the other builds were not touched, so the check is the newest
+          if [ -n "$DROP" ]; then grep '^newest' expect.txt > expect.newest && mv expect.newest expect.txt; fi
           fail=0
           while read -r what a b; do
             if [ "$what" = install ]; then

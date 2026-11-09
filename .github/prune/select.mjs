@@ -12,6 +12,8 @@
 //
 // --pins adds the entries pins.mjs derived from openmixer's branches to keep.yml's. A plan that would still
 // delete every build of a pinned version that exists exits 1, after printing and writing it.
+// --drop name@version,...  drop mode: delete every build of those source versions (all subpackages, architectures, the
+//                           source) and nothing else; --newest and the orphan sweep do not apply.
 // --only rpm|deb reads that half alone.
 // --skip-closure plans without the dependency closure, to see the plan invariant fail (a test uses it).
 // --check plan.json judges a plan already written: every kept package of it must still install from the kept
@@ -25,7 +27,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
 import { parseKeepList, keepEntries, missing } from './keeplist.mjs';
-import { parseKeep, parsePrimary, parsePackages, selectRepo, unusedPins, pinsLost, uninstallable, report } from './prune.mjs';
+import { parseKeep, parsePrimary, parsePackages, selectRepo, parseDrop, unusedPins, pinsLost, uninstallable, report } from './prune.mjs';
 
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
@@ -62,6 +64,7 @@ async function main() {
   keep.push(...keepEntries(keepLines));
   const newest = Number(opt('--newest', '1'));
   if (!Number.isInteger(newest) || newest < 1) throw new Error('--newest takes a whole number of at least 1');
+  const drops = parseDrop(opt('--drop', ''));
   const tree = opt('--tree');
   const url = opt('--url');
   if (!tree === !url) throw new Error('give exactly one of --tree and --url');
@@ -117,7 +120,7 @@ async function main() {
   for (const [format, repos] of [['rpm', rpmRepos], ['deb', debRepos]]) {
     for (const [repo, pkgs] of repos) {
       all.push(...pkgs);
-      const r = selectRepo(pkgs, keep, { newest, closure: !flag('--skip-closure') });
+      const r = selectRepo(pkgs, keep, { newest, closure: !flag('--skip-closure'), drop: drops });
       for (const row of [...r.keep, ...r.delete]) { row.path = `${format}/${repo}/${row.file}`; listed.add(row.path); }
       r.uninstallable = uninstallable(pkgs, new Set(r.keep.map((x) => x.file)));
       results.push(r);
@@ -128,7 +131,7 @@ async function main() {
   // trees (rpm/openmixer-release.noarch.rpm, deb/openmixer-release.deb) are installed by their fixed URL, not
   // through an index, and are never orphans.
   const orphans = [];
-  if (tree) {
+  if (tree && !drops.length) {
     const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => {
       const p = path.join(d, e.name);
       if (e.isDirectory()) return e.name === 'repodata' ? [] : walk(p);

@@ -469,10 +469,36 @@ export function uninstallable(pkgs, keptFiles) {
 // opts.newest: how many of the newest builds of every package are kept per architecture (default 1: the
 // newest version, as before). opts.closure false skips the dependency closure (select.mjs --skip-closure, to
 // watch the plan invariant fail). The owner's ruling of 2026-11-08 is 3, besides every pinned version.
+// drop mode: delete every build of the named source package versions (all subpackages, architectures and the
+// source) and keep everything else, whatever the age. A drop is name@version, the version without the release.
+export function parseDrop(text) {
+  return String(text || '').split(/[,\s]+/).filter(Boolean).map((d) => {
+    const i = d.lastIndexOf('@');
+    if (i < 1 || i === d.length - 1) throw new Error(`drop entry '${d}' is not name@version`);
+    return { name: d.slice(0, i), version: d.slice(i + 1) };
+  });
+}
+
+export const dropMatches = (F, p, drops) => {
+  const src = p.arch === 'src' ? p.name : sourceName(p);
+  return drops.some((d) => d.name === src && F.upstream(p.evr) === d.version);
+};
+
+function selectDrop(pkgs, F, drops) {
+  const out = { keep: [], delete: [], notes: [] };
+  for (const p of pkgs) {
+    const row = { format: p.format, repo: p.repo, dir: p.dir, file: p.file, name: p.name, arch: p.arch, version: F.show(p.evr), source: p.source, size: p.size || 0 };
+    if (dropMatches(F, p, drops)) out.delete.push(row);
+    else out.keep.push({ ...row, reason: 'not dropped' });
+  }
+  return out;
+}
+
 export function selectRepo(pkgs, keep, opts = {}) {
   const newestN = opts.newest || 1;
   if (!pkgs.length) return { keep: [], delete: [], notes: [] };
   const F = fmt[pkgs[0].format];
+  if (opts.drop && opts.drop.length) return selectDrop(pkgs, F, opts.drop);
   const kept = new Map(); // file -> reason
   const notes = [];
   const mark = (p, why) => { if (!kept.has(p.file)) kept.set(p.file, why); };
