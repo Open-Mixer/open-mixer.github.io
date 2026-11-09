@@ -1,0 +1,18 @@
+omx-contract (3.12.0) unstable; urgency=medium
+
+  * Release 3.12.0
+  * package-files: the catalogs are read from the tree's root, not from data/
+  * package-files: omx-contract-data holds its catalogs
+  * catalogs: omx-contract's Catalan addresses the reader as the desk does
+  * validate --catalogs <dir>: an owner checks its catalogs against its
+    installed package
+  * text.ca deprecated, not refused: 3.12.0 a true minor; panel.* codes
+  * text: the source sentence alone, translations in owners' catalogs (schema
+    3.12.0)
+  * words: a sentence per language beside the word, as a code has (schema
+    3.12.0)
+  * README: run CI on the recreated repository
+  * docs: cite plugin-hostd and omx-contract by their new issue numbers
+  * README: refresh apt after adding the repository, download into /tmp
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 09 Nov 2026 09:28:40 +0000
