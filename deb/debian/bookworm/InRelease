@@ -1,29 +1,29 @@
 -----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA512
+Hash: SHA256
 
 Architectures: all amd64 arm64
 Changelogs: https://www.openmixer.org/deb/changelogs/@CHANGEPATH@_changelog
 Codename: bookworm
-Date: Mon, 09 Nov 2026 10:04:41 +0000
+Date: Mon, 09 Nov 2026 10:28:39 +0000
 Label: OpenMixer
 Origin: OpenMixer
 Suite: bookworm
 MD5Sum:
- e240b15919e27486b8ced5d8051ecdf2           502009 Packages
- d7192973d4b848fe9468072f75c9dcd3           104490 Packages.gz
+ 153e03cb1d9823a562a1ba251699bac0           478703 Packages
+ 8ad9fba38afcb248fdb3744991866771           100446 Packages.gz
 SHA1:
- a113381da398457cfececb41190f45028814e1f7           502009 Packages
- fa3c9a79e08528b0daf7d661b4758cc92c473f44           104490 Packages.gz
+ 6a9e88d6a042e7497a5a981d9c11eea36e695e39           478703 Packages
+ 33244cd84fc5cff67516f3326661237d4a5deb8d           100446 Packages.gz
 SHA256:
- 3d5c9980868389df1f41f379b1739325a9d26cb9cbd022d69c2462d8d1e746c2           502009 Packages
- 878734c8af20d76ea74a1da21158a12b9c627806d4ebe6451e731a744a15a5fa           104490 Packages.gz
+ 54c0abfda95aae3cc5f61bb673e656be9f42b002ea93cb0b10bdf0563cade442           478703 Packages
+ de6583bcce3ff2055ef68af90d5558a597395ea67021b65d07055b9223f1dd56           100446 Packages.gz
 SHA512:
- b3a54f86bfea914ee08ad9e779d141fbf039f75ead377741c9089e939a0c86121a8644b53ddc713fdbf026acc1c340cd5e1acf1455e38089270bdf65001afda2           502009 Packages
- 4ff74c029b8521347f7505d0fabc69b10b7334175353a6d50590390ca531a36f344fc89bbca22e116c11d185f5cda132f3ef1ddb08e813e15fe42a723c18e197           104490 Packages.gz
+ 651dfd82c57ec4018be50dc31c613f1208258896bd144316a8c6e75ded02eee6c03230c9b851e8c346513dedefc9a030c125c6058eb1cb84d6cc5731a9a085fd           478703 Packages
+ 92531c8db1445ddd79e3031676d705e185c33df955dc7ad03814f45ac0ed5f05d4667a09749ec0b4ef6d71595f59280c64c3a85ae7b73cba4d3530544e15e5bf           100446 Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQRq8cYv9wvRDVyp3eWKJ2VTI7rdpgUCavGauQAKCRCKJ2VTI7rd
-psW3AQCe658Kv+/S331DICG6C3+jcrMG7VSQI83/Z1Vna8S/5wD/c2EXgTO1m4v5
-8TEI2+a6Os0LQ9gqfcpU5ULJbxSfLgU=
-=nmmG
+iHUEARYIAB0WIQRq8cYv9wvRDVyp3eWKJ2VTI7rdpgUCavGgVwAKCRCKJ2VTI7rd
+pgRnAQCEkH4gT1VoquyDDg+fKe7Hvi10WZblFAP6K/cdDGdTPQD/alPogAEb1PfJ
+Q1Nr2zSgD5pLHZTBhAXBQC70SzVe7ww=
+=u1lh
 -----END PGP SIGNATURE-----
