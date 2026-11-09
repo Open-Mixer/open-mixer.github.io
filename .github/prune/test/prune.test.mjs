@@ -475,10 +475,10 @@ test('pins: pins.txt lines with a version, bare or as a tag; lines without one p
   assert.deepEqual(pinsTxt([
     '# comment',
     'omx-dsp 0.6.1',
-    'omx-dsp-source https://github.com/FreeMixer/omx-dsp.git dacc2f9c',
-    'omx-clap-host 0.4.2 https://github.com/FreeMixer/omx-clap-core.git 09f9d6c1',
+    'omx-dsp-source https://github.com/Open-Mixer/omx-dsp.git dacc2f9c',
+    'omx-clap-host 0.4.2 https://github.com/Open-Mixer/omx-clap-core.git 09f9d6c1',
     'mod-host https://github.com/linuxnow/mod-host.git - 5739eaeb',
-    'omx-contract https://github.com/FreeMixer/omx-contract.git v2.5.0 1beee741',
+    'omx-contract https://github.com/Open-Mixer/omx-contract.git v2.5.0 1beee741',
     'mod-host-protocol 0.1.0 0.10.6.f14a230-11 https://example.org/builds/mod-host-0.10.6.f14a230-11.fc44.src.rpm b863fb13',
   ].join('\n')), [
     { name: 'omx-dsp', version: '0.6.1' },
@@ -548,7 +548,7 @@ function openmixerRepo(root) {
   fs.mkdirSync(path.join(root, 'packages/core'), { recursive: true });
   git('init', '-q', '-b', 'main');
   const commit = (v, ref) => {
-    fs.writeFileSync(path.join(root, '.github/pins.txt'), `omx-contract https://github.com/FreeMixer/omx-contract.git v${v} 1beee741\n`);
+    fs.writeFileSync(path.join(root, '.github/pins.txt'), `omx-contract https://github.com/Open-Mixer/omx-contract.git v${v} 1beee741\n`);
     fs.writeFileSync(path.join(root, 'packages/core/package.json'), JSON.stringify({ dependencies: { '@openmixer/omx-contract': v } }));
     fs.writeFileSync(path.join(root, 'pnpm-lock.yaml'), `packages:\n  '@openmixer/omx-contract@${v}':\n`);
     git('add', '-A');

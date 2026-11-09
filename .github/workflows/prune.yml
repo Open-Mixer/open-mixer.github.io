@@ -2,7 +2,7 @@ name: Prune the package repository
 
 # Keeps the newest 3 builds of every RPM and DEB package per distro and architecture (input newest, owner's
 # ruling of 2026-11-08) plus the pinned versions, and removes everything else. Run by hand, from main. The pinned
-# versions are keep.yml's, the generated channel/keep-list.txt of FreeMixer/.github (the pins of the worker
+# versions are keep.yml's, the generated channel/keep-list.txt of Open-Mixer/.github (the pins of the worker
 # image, the Zynthian omx-track install sets, plugin-qualify and .github/pins.txt, one line each naming its pin;
 # a line the channel does not serve fails the plan) and the ones openmixer's main and integration/* branches pin (.github/pins.txt, the @openmixer
 # specifiers of packages/*/package.json and pnpm-lock.yaml), read by .github/prune/pins.mjs; a plan that would
@@ -15,7 +15,7 @@ name: Prune the package repository
 # apply=false (the default) is a dry run: it prints, per package and format, what would be kept and what
 # deleted, writes that plan to the job summary and as an artifact, and changes nothing.
 # apply=true deletes the plan's files from rpm/ and deb/, regenerates and re-signs the dnf metadata and the
-# apt index with the release workflows' own scripts (FreeMixer/.github publish-rpms and publish-debs), pushes ONE
+# apt index with the release workflows' own scripts (Open-Mixer/.github publish-rpms and publish-debs), pushes ONE
 # signed commit (the rpm job hands its result to the deb job, which pushes both: one Pages deployment),
 # and then checks that every kept version installs (dnf in fedora:44, apt in debian:bookworm) and that the
 # newest of each is what resolves.
@@ -25,11 +25,11 @@ name: Prune the package repository
 # npm is not pruned: old @openmixer versions stay published (ruled 2026-11-02, #2).
 # Git tags and GitHub releases are not touched.
 #
-# Secrets, as the release workflows use them (FreeMixer/.github build-rpm.yml and build-deb.yml):
+# Secrets, as the release workflows use them (Open-Mixer/.github build-rpm.yml and build-deb.yml):
 #   OPENMIXER_PACKAGES_SIGNING_KEY   signs the dnf metadata and the apt index
 #   RPM_GPG_KEY, RPM_GPG_PASSPHRASE  the original key, co-signs the apt index when this repository may read it
 #   PAGES_TOKEN, SITE_GPG_KEY        push to this repository, signed
-#   OPENMIXER_READ_TOKEN             reads FreeMixer/openmixer while it is private; not needed once it is public
+#   OPENMIXER_READ_TOKEN             reads Open-Mixer/openmixer while it is private; not needed once it is public
 
 on:
   workflow_dispatch:
@@ -73,7 +73,7 @@ jobs:
           TOKEN: ${{ secrets.OPENMIXER_READ_TOKEN }}
         run: |
           set -euo pipefail
-          url=https://github.com/FreeMixer/openmixer.git
+          url=https://github.com/Open-Mixer/openmixer.git
           git init -q openmixer
           if [ -n "$TOKEN" ]; then
             git -C openmixer config http.https://github.com/.extraheader "AUTHORIZATION: basic $(printf 'x-access-token:%s' "$TOKEN" | base64 -w0)"
@@ -85,8 +85,8 @@ jobs:
       - name: The generated keep-list
         run: |
           set -euo pipefail
-          # the pins of our own work, one line each naming the pin (FreeMixer/.github channel/gen-keep-list.mjs)
-          curl -fsSL --retry 5 -o keep-list.txt https://raw.githubusercontent.com/FreeMixer/.github/main/channel/keep-list.txt
+          # the pins of our own work, one line each naming the pin (Open-Mixer/.github channel/gen-keep-list.mjs)
+          curl -fsSL --retry 5 -o keep-list.txt https://raw.githubusercontent.com/Open-Mixer/.github/main/channel/keep-list.txt
       - name: What would be kept and deleted
         id: plan
         env:
@@ -133,7 +133,7 @@ jobs:
       # the scripts the release workflows publish with, at the same ref they use
       - uses: actions/checkout@v4
         with:
-          repository: FreeMixer/.github
+          repository: Open-Mixer/.github
           ref: v1
           path: .fmx
 
@@ -150,11 +150,11 @@ jobs:
           name: prune-plan
           path: plan
 
-      - uses: FreeMixer/.github/.github/actions/import-gpg-key@v1
+      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@main
         with:
           gpg-key: ${{ secrets.OPENMIXER_PACKAGES_SIGNING_KEY }}
 
-      - uses: FreeMixer/.github/.github/actions/channel-pull@v1
+      - uses: Open-Mixer/.github/.github/actions/channel-pull@main
         with:
           publish-token: ${{ secrets.PAGES_TOKEN }}
           channel: ${{ github.repository }}
@@ -245,7 +245,7 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          repository: FreeMixer/.github
+          repository: Open-Mixer/.github
           ref: v1
           path: .fmx
 
@@ -262,19 +262,19 @@ jobs:
           name: prune-plan
           path: plan
 
-      - uses: FreeMixer/.github/.github/actions/import-gpg-key@v1
+      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@main
         with:
           gpg-key: ${{ secrets.OPENMIXER_PACKAGES_SIGNING_KEY }}
 
       # the original key co-signs the apt index while installs may hold only it, as in build-deb.yml
-      - uses: FreeMixer/.github/.github/actions/import-gpg-key@v1
+      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@main
         if: env.HAS_COSIGN == 'true'
         with:
           gpg-key: ${{ secrets.RPM_GPG_KEY }}
           gpg-passphrase: ${{ secrets.RPM_GPG_PASSPHRASE }}
           id-variable: OPENMIXER_GPG_COSIGN_KEY_ID
 
-      - uses: FreeMixer/.github/.github/actions/channel-pull@v1
+      - uses: Open-Mixer/.github/.github/actions/channel-pull@main
         with:
           publish-token: ${{ secrets.PAGES_TOKEN }}
           channel: ${{ github.repository }}
@@ -366,7 +366,7 @@ jobs:
           PUBLISH_TOKEN: ${{ secrets.PAGES_TOKEN }}
         run: .self/.github/prune/unmoved.sh build/channel "$PLANNED"
 
-      - uses: FreeMixer/.github/.github/actions/channel-push@v1
+      - uses: Open-Mixer/.github/.github/actions/channel-push@main
         with:
           publish-token: ${{ secrets.PAGES_TOKEN }}
           site-gpg-key: ${{ secrets.SITE_GPG_KEY }}

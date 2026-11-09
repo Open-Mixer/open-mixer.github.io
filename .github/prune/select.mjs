@@ -5,7 +5,7 @@
 // Print what the prune keeps and deletes in the package repository, and write the plan as JSON.
 //
 //   select.mjs --keep keep.yml [--pins pins.json] --tree <channel checkout> [--json plan.json] [--expect-clean]
-//   --keeplist channel/keep-list.txt   the generated pins of FreeMixer/.github; --newest N keeps the N newest builds of
+//   --keeplist channel/keep-list.txt   the generated pins of Open-Mixer/.github; --newest N keeps the N newest builds of
 //                                      every package per architecture (default 1); a keep-list line the channel does not serve exits 1
 //   select.mjs --keep keep.yml --tree <channel checkout> --check plan.json
 //   select.mjs --keep keep.yml [--pins pins.json] --url https://www.openmixer.org [--rpm fedora/44/x86_64,...] [--deb bookworm,...]
