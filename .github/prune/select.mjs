@@ -14,6 +14,7 @@
 // delete every build of a pinned version that exists exits 1, after printing and writing it.
 // --drop name@version,...  drop mode: delete every build of those source versions (all subpackages, architectures, the
 //                           source) and nothing else; --newest and the orphan sweep do not apply.
+// A drop overrides a pin on the versions it names (they are printed under 'dropped although pinned').
 // --only rpm|deb reads that half alone.
 // --skip-closure plans without the dependency closure, to see the plan invariant fail (a test uses it).
 // --check plan.json judges a plan already written: every kept package of it must still install from the kept
@@ -168,7 +169,10 @@ async function main() {
     console.error(`the keep-list names versions the channel does not serve:\n${plan.missingPins.map((n) => '  ' + n).join('\n')}`);
     process.exit(1);
   }
-  if (plan.lost.length) {
+  if (plan.lost.length && drops.length) {
+    // the drop names its versions on purpose: a pin on one is overridden and reported, not a failure
+    console.log(`\ndropped although pinned (named by the drop):\n${plan.lost.map((n) => '  ' + n).join('\n')}`);
+  } else if (plan.lost.length) {
     console.error(`the plan deletes every build of a pinned version:\n${plan.lost.map((n) => '  ' + n).join('\n')}`);
     process.exit(1);
   }
