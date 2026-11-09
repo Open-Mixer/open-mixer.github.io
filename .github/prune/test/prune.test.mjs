@@ -446,6 +446,21 @@ test('expect: a deb installs with the kept packages of its source at its version
   assert.ok(!out.some((l) => l.includes('arm64')));
 });
 
+test('cli: a drop overrides a pin on the version it names, says so, and a plain run still fails on that pin', () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
+  const keepFile = path.join(tmp, 'keep.yml');
+  fs.writeFileSync(keepFile, KEEP);
+  const tree = path.join(tmp, 'tree');
+  writeTree(tree, RPM, PACKAGES, []);
+  const pins = path.join(tmp, 'pins.json');
+  fs.writeFileSync(pins, JSON.stringify(toKeep([{ ref: 'origin/main', file: 'pnpm-lock.yaml', name: 'libproto0', version: '0.1.0' }])));
+  const run = (...more) => spawnSync(process.execPath, [select, '--keep', keepFile, '--pins', pins, '--tree', tree, ...more], { encoding: 'utf8' });
+  const drop = run('--drop', 'libproto0@0.1.0');
+  assert.equal(drop.status, 0, drop.stderr);
+  assert.match(drop.stdout, /dropped although pinned/);
+  assert.match(drop.stdout, /delete \d+/);
+});
+
 test('cli: a broken keep.yml stops the run', () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
   fs.writeFileSync(path.join(tmp, 'keep.yml'), 'keep:\n  - version: 1\n');
