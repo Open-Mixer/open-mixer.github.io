@@ -1,0 +1,9 @@
+plugin-qualify (0.20.0) unstable; urgency=medium
+
+  * Release 0.20.0
+  * omx-dsp floor 0.31.0, ceiling below 0.32; the deb job runs only after the
+    RPM passed
+  * 0.19.4: a probe run's child stderr is kept beside its record
+  * probe: a run's child stderr is kept beside its record
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 09 Nov 2026 09:53:48 +0000

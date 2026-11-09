@@ -1,0 +1,33 @@
+name: Prune selection tests
+
+on:
+  pull_request:
+    paths: ['keep.yml', '.github/prune/**', '.github/workflows/prune*.yml']
+  push:
+    branches: [main]
+    paths: ['keep.yml', '.github/prune/**', '.github/workflows/prune*.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  # A new push to a pull request cancels the run it supersedes. Every other run (main, a tag) has a group of its own
+  # and is never cancelled; the run id keeps two pushes to main from replacing each other while one is queued.
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            keep.yml
+            .github
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test .github/prune/test/*.test.mjs

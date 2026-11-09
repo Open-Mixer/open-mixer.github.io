@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repomd xmlns="http://linux.duke.edu/metadata/repo" xmlns:rpm="http://linux.duke.edu/metadata/rpm">
+  <revision>1794246921</revision>
+  <data type="primary">
+    <checksum type="sha256">6853782624e1fbe4ed7970d6a91492e64b1c789093d1f361661e45ab6b35085b</checksum>
+    <open-checksum type="sha256">980a02793c95ff0c8c85244f906cee21f2e2e8a6e5c2ed15bd3accc6837373e2</open-checksum>
+    <location href="repodata/6853782624e1fbe4ed7970d6a91492e64b1c789093d1f361661e45ab6b35085b-primary.xml.zst"/>
+    <timestamp>1794246921</timestamp>
+    <size>16526</size>
+    <open-size>106670</open-size>
+  </data>
+  <data type="filelists">
+    <checksum type="sha256">f7944996e99428b34ed6f132dcd4459bd2af26b7c0ad16b40ad8f441b62d825d</checksum>
+    <open-checksum type="sha256">8f5f3fd33ba2d981915df1c333c5d97cbc74c727c450ad9561b9762595bbdb23</open-checksum>
+    <location href="repodata/f7944996e99428b34ed6f132dcd4459bd2af26b7c0ad16b40ad8f441b62d825d-filelists.xml.zst"/>
+    <timestamp>1794246921</timestamp>
+    <size>17132</size>
+    <open-size>204017</open-size>
+  </data>
+  <data type="other">
+    <checksum type="sha256">cc6bd26f8c72d5d3dd9bf45805af4545285bf83c98da6fea583867255709b9b5</checksum>
+    <open-checksum type="sha256">40e2f6ed99c278cea42a034438f2fe5873ff3d829d122e90651d32f4cfabcba7</open-checksum>
+    <location href="repodata/cc6bd26f8c72d5d3dd9bf45805af4545285bf83c98da6fea583867255709b9b5-other.xml.zst"/>
+    <timestamp>1794246921</timestamp>
+    <size>7536</size>
+    <open-size>39285</open-size>
+  </data>
+  <data type="updateinfo">
+    <checksum type="sha256">0795d9be6fad44e035e7aa963c7caa4bfd6a83e3733d8270de5368b61effdeda</checksum>
+    <open-checksum type="sha256">cc10db45373f0dc1c810169d32eff55cb0d8f7d7e248590414c4743c224c7e5f</open-checksum>
+    <location href="repodata/0795d9be6fad44e035e7aa963c7caa4bfd6a83e3733d8270de5368b61effdeda-updateinfo.xml.zst"/>
+    <timestamp>1794246921</timestamp>
+    <size>6789</size>
+    <open-size>36345</open-size>
+  </data>
+</repomd>

@@ -1,0 +1,44 @@
+plugin-hostd (0.20.0) unstable; urgency=medium
+
+  * Version 0.20.0 in the binary and the man pages
+  * Release 0.20.0
+  * fuzz: the mutant records name verbs.c's and protocol.h's lines after the
+    curve and monitor verbs
+  * curve verbs: a line the format does not take is refused with -902
+  * ci: the jack test reads omx-plugins' declarations from
+    omx-plugins-contract
+  * fuzz: the seed corpus holds show_external_ui and hide_external_ui
+  * docs and fuzz follow the curve and monitor verbs
+  * tests: the sabotage arms follow the 0.31 ranges and the ledger's list
+  * tests: the no-pins check reads omx-clap-host-tests' ceiling as 0.32
+  * omx-contract's floor is 3.11.0 and omx-clap-core-contract's 0.31.0, the
+    releases this is built and tested with
+  * tests: plugin-db's floor check reads 0.3.0 and 0.4
+  * curve verbs: a word that is no number is refused with -902; the
+    declared-verbs check drives curve_bind, curve_points and
+    monitor_output_off
+  * plugin-hostd-protocol is taken at 0.5, plugin-db at 0.3
+  * monitor_output_off: the guide and the man page say a monitor ends with
+    its connection, and -543
+  * monitor_output_off: the daemon ends one monitor, and a monitor ends with
+    the connection that set it
+  * tests: hide_external_ui on the declared-verbs check; omx-clap-core 0.30.5
+  * daemon: show_external_ui and hide_external_ui reach the worker that holds
+    the instance
+  * bench: where the CPU picks its own clock the gate judges thermal throttle
+    counts, not the frequency
+  * bench: the schema declares freq_cores in the repeat state
+  * bench: the state gate reads the cores the host and JACK ran on, not every
+    core
+  * e2e: the curve terms name each CLAP parameter by its id, as omx-clap-host
+    does
+  * e2e: omx-eq's two allpass types are allpass1 and allpass2, which draw 0 dB
+  * omx-clap-core is taken below 0.32; the check stage needs omx-clap-host
+    0.31 and omx-dsp 0.32
+  * e2e: omx-comp, omx-eq8 and omx-eq32 curves are omx_curve_points over
+    their values, and survive a kill
+  * plugin-hostd-protocol is taken at 0.5: >= 0.5.0, < 0.6
+  * curve_bind and curve_points reach the worker that holds the instance; the
+    ledger keeps the binding
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 09 Nov 2026 08:07:06 +0000
