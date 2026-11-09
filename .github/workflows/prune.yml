@@ -359,12 +359,9 @@ jobs:
           path: plan
       - name: Wait for Pages to serve the pruned metadata
         run: |
+          # ends on the repomd revision the prune published; a slow publish is waited for, to the deadline
           for d in x86_64 noarch; do
-            for _ in $(seq 60); do
-              curl -fsSL "https://www.openmixer.org/rpm/fedora/44/$d/repodata/repomd.xml" | cmp -s - "rpm/fedora/44/$d/repodata/repomd.xml" && continue 2
-              sleep 10
-            done
-            echo "::error::Pages still serves the old $d metadata"; exit 1
+            node .github/prune/await.mjs "https://www.openmixer.org/rpm/fedora/44/$d/repodata/repomd.xml" "rpm/fedora/44/$d/repodata/repomd.xml" 3000 10 || exit 1
           done
       - name: Every kept version installs, and the newest resolves
         run: |
