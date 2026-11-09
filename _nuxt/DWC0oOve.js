@@ -1,9 +1,11 @@
-var e=`plugin-hostd`,t=`f526f03`,n=[{slug:``,src:`README.md`,title:`README.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/f526f03/README.md`,toc:[{id:`install`,title:`Install`},{id:`start`,title:`Start`},{id:`documentation`,title:`Documentation`},{id:`licence`,title:`Licence`}],html:`<h1 id="plugin-hostd">plugin-hostd</h1>
+var e=`plugin-hostd`,t=`a73969e2d024bab73a955c3f260154bdd241255f`,n=[{slug:``,src:`README.md`,title:`README.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/README.md`,toc:[{id:`install`,title:`Install`},{id:`start`,title:`Start`},{id:`documentation`,title:`Documentation`},{id:`licence`,title:`Licence`}],html:`<h1 id="plugin-hostd">plugin-hostd</h1>
 <p>plugin-hostd runs your LV2 and CLAP audio plugins, each in a worker process of its own, and
 puts back any worker that dies. A plugin that crashes takes down its own worker and nothing
 else. It speaks mod-host's socket protocol, same ports, same replies, so a mod-host controller
 works unchanged; audio never passes through the daemon, every worker is a JACK client. It is for
 anyone who runs plugins live on Linux, on a mixing console, a stage rig or a Raspberry Pi.</p>
+<p><strong>New here? Read <a href="/projects/plugin-hostd/groupings">How plugins are grouped</a> first.</strong> It draws what a worker, a chain, a plan and a
+pool are, and how the benchmark compares them.</p>
 <h2 id="install">Install</h2>
 <p>Fedora:</p>
 <pre><code>sudo dnf install https://www.openmixer.org/rpm/openmixer-release.noarch.rpm
@@ -25,13 +27,309 @@ has the options.</p>
 <h2 id="documentation">Documentation</h2>
 <ul>
 <li><a href="https://www.openmixer.org/projects/plugin-hostd">https://www.openmixer.org/projects/plugin-hostd</a>, and the documentation at <a href="https://www.openmixer.org/docs">https://www.openmixer.org/docs</a>.</li>
-<li>In the source tree: the whole guide, with the protocol, placement, grouping, pins and formats,
-in <a href="https://github.com/FreeMixer/plugin-hostd/blob/f526f03/docs/guide.md">docs/guide.md</a>; using it from your own host in <a href="/projects/plugin-hostd/own-host">docs/own-host.md</a>.</li>
+<li>In the source tree: how plugins are grouped into workers, drawn, in <a href="/projects/plugin-hostd/groupings">docs/groupings.md</a>; the whole
+guide, with the protocol, placement, grouping, pins and formats, in <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/guide.md">docs/guide.md</a>; using it from your own host in <a href="/projects/plugin-hostd/own-host">docs/own-host.md</a>.</li>
 </ul>
-<p>Building from source: see <a href="https://github.com/FreeMixer/plugin-hostd/blob/f526f03/BUILDING.md">BUILDING.md</a>.</p>
+<p>Building from source: see <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/BUILDING.md">BUILDING.md</a>.</p>
 <h2 id="licence">Licence</h2>
-<p>GPL-3.0-or-later. See <a href="https://github.com/FreeMixer/plugin-hostd/blob/f526f03/COPYING">COPYING</a>.</p>
-`},{slug:`formats`,src:`docs/formats.md`,title:`docs/formats.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/f526f03/docs/formats.md`,toc:[{id:`the-tables`,title:`The tables`},{id:`the-transforms`,title:`The transforms`},{id:`the-coverage-test`,title:`The coverage test`},{id:`the-field-dump`,title:`The field dump`},{id:`the-descriptor-describe-writes`,title:"The descriptor `describe` writes"}],html:`<h1 id="the-format-tables-how-a-scan-becomes-a-descriptor">The format tables: how a scan becomes a descriptor</h1>
+<p>GPL-3.0-or-later. See <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/COPYING">COPYING</a>.</p>
+`},{slug:`groupings`,src:`docs/groupings.md`,title:`docs/groupings.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/groupings.md`,toc:[{id:`the-words`,title:`The words`},{id:`the-four-hosts`,title:`The four hosts`},{id:`the-six-arrangements`,title:`The six arrangements`},{id:`the-comparison`,title:`The comparison`},{id:`what-each-row-measures`,title:`What each row measures`}],html:`<h1 id="how-plugins-are-grouped">How plugins are grouped</h1>
+<p>The same plugins can be packed into processes in different ways. Each way trades CPU and memory against safety: how
+much else stops when one plugin crashes. This page names the pieces, draws the six arrangements the benchmark measures,
+and says what each benchmark row measures. The exact rules are in the <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/guide.md">guide</a>; the benchmark itself is
+<a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/bench/README.md">bench/README.md</a>.</p>
+<h2 id="the-words">The words</h2>
+<p><img src="https://raw.githubusercontent.com/FreeMixer/plugin-hostd/a73969e2d024bab73a955c3f260154bdd241255f/docs/img/grouping-nesting.svg" alt="A dashed grey JACK graph holds a teal worker, which holds an amber chain, which holds three plugins in series"></p>
+<p>The pieces always nest in the same order, and every drawing on this page uses the same colours: the JACK graph dashed
+grey, a process blue, a worker teal, a chain amber, a pool violet, a worker of an isolated plugin red, a plugin a white
+chip.</p>
+<ul>
+<li><strong>JACK graph.</strong> The audio server that moves sound between programs, one block of samples at a time, at one sample
+rate (48000, 96000) and one block size, the quantum (64, 128, 256 frames). Every program on it is a JACK client with
+ports of its own, and every block JACK wakes the clients in the order of the links. A block that is not done in time
+is an xrun, an audible click.</li>
+<li><strong>Plugin.</strong> One effect or instrument: a compressor, a delay, a synth. It is a library in the CLAP or LV2 format, not
+a program, so it runs only inside a host.</li>
+<li><strong>Process.</strong> A running program with memory of its own. A plugin that crashes kills its process, and every other
+plugin in that process with it. More processes give more isolation, and cost more memory and more switching between
+them every block.</li>
+<li><strong>Worker.</strong> A process plugin-hostd starts to run plugins: omx-clap-host for CLAP, and for LV2 through its adapter, or
+mod-host for LV2 when <code>lv2_worker</code> names it (<a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/guide.md#who-runs-an-lv2-plugin">Who runs an LV2 plugin</a>). The daemon
+only takes commands and starts and restarts workers; audio never passes through it. The placement of each <code>add</code>, a
+<code>chain</code> or a <code>plan</code> says which plugins a worker holds.</li>
+<li><strong>Chain.</strong> Plugins in series inside one worker, declared by <code>chain</code> or by a segment of a <code>plan</code>. A worker that runs a
+chain in one JACK client (omx-clap-host) passes the sound from one plugin to the next in memory; one that does not
+(mod-host) keeps a client per plugin. One crash stops the whole chain.</li>
+<li><strong>Pool.</strong> A shared worker named by the placement <code>pool:&lt;name&gt;</code>. It takes plugins that may share a worker wherever they
+sit in the signal path, so each does not need a worker of its own. A full pool, <code>pool_max</code> instances (8 by default),
+opens a sibling, <code>&lt;name&gt;#2</code>.</li>
+</ul>
+<p>Two more words matter. A <strong>host</strong> is the program that loads the plugins; the benchmark compares four (below). A
+<strong>pin</strong> is what plugin-hostd holds for each plugin: the SHA-256 of its files, its parameter layout and, once the
+qualification has checked the plugin for crashes and real-time safety, a verdict (<a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/guide.md#pins">Pins</a>). While pins
+are checked, only a plugin whose pin says <code>verdict=in-process</code> may share a worker. <code>verdict=isolated</code> keeps it alone,
+and so does a pin with no verdict yet. <code>verdict=refused</code> is not loaded at all.</p>
+<h2 id="the-four-hosts">The four hosts</h2>
+<table>
+<thead>
+<tr>
+<th>In the bench</th>
+<th>Host</th>
+<th>What it is</th>
+<th>Formats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>omx-clap-host</td>
+<td>OpenMixer's host: one process holding every plugin, driven over the mod-host protocol.</td>
+<td>CLAP, and LV2 through its adapter</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>plugin-hostd</td>
+<td>The daemon: plugins in workers it supervises, alone or grouped in chains, plans and pools. Its workers are omx-clap-host.</td>
+<td>CLAP and LV2</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>mod-host</td>
+<td>The MOD project's host: one process holding every plugin.</td>
+<td>LV2</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>jalv</td>
+<td>A minimal host: one process per plugin, always.</td>
+<td>LV2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-six-arrangements">The six arrangements</h2>
+<p>The first four drawings run the same three plugins, omx-comp, omx-delay and omx-drive, between the test signal (a sine,
+or chords for an instrument) and the output. The plan and the pool are drawn on the eight plugins of the <code>grp8</code>
+scenario, since a plan needs isolated plugins to cut it.</p>
+<h3 id="individual">Individual</h3>
+<p>H2 with placement <code>own</code>; H4 (jalv), always.</p>
+<p>Every plugin gets a process of its own, and the sound goes out through JACK and back in between each plugin. Under
+plugin-hostd the processes are workers and the daemon stands beside them; jalv runs one process per plugin with nothing
+above them.</p>
+<p><img src="https://raw.githubusercontent.com/FreeMixer/plugin-hostd/a73969e2d024bab73a955c3f260154bdd241255f/docs/img/grouping-individual.svg" alt="Three teal workers, each holding one plugin, linked in series through JACK; the plugin-hostd daemon sits outside the graph and only sends commands"></p>
+<ul>
+<li>Processes: one per plugin (3), plus the daemon under plugin-hostd. JACK clients: 3.</li>
+<li>A crash: stops one plugin. plugin-hostd starts its worker again and puts back the links it made; a jalv that dies
+stays dead.</li>
+<li>The trade-off: the safest and the most expensive. Three programs in memory, and JACK switches between three
+processes every block.</li>
+</ul>
+<h3 id="shared-process">Shared process</h3>
+<p>H1 (omx-clap-host) and H3 (mod-host).</p>
+<p>One host program holds every plugin. Each plugin is still a JACK client of its own inside that process, and the host
+links them in series through JACK.</p>
+<p><img src="https://raw.githubusercontent.com/FreeMixer/plugin-hostd/a73969e2d024bab73a955c3f260154bdd241255f/docs/img/grouping-shared.svg" alt="One blue host process holding three plugins, each a JACK client, linked in series through JACK"></p>
+<ul>
+<li>Processes: 1. JACK clients: 3.</li>
+<li>A crash: stops all three, and nothing starts the host again. The <code>kill1</code> scenario ends <code>failed</code> with the note
+<code>host process lost</code> for H1, H3 and H4.</li>
+<li>The trade-off: the cheapest in memory and in switching. One faulty plugin takes the whole host down.</li>
+</ul>
+<h3 id="chain">Chain</h3>
+<p>H2, <code>chain 1 &lt;instances&gt;</code>.</p>
+<p>plugin-hostd first adds each plugin in a worker of its own, then <code>chain</code> moves them all into one worker: each member's
+state is saved, it is removed from its worker and replayed in the chain's. The daemon stays outside the sound path and
+only gives orders.</p>
+<p><img src="https://raw.githubusercontent.com/FreeMixer/plugin-hostd/a73969e2d024bab73a955c3f260154bdd241255f/docs/img/grouping-chain.svg" alt="The plugin-hostd daemon above one teal worker holding an amber chain of three plugins in series"></p>
+<ul>
+<li>Processes: one worker, plus the daemon. JACK clients: 1 for a CLAP chain under omx-clap-host.</li>
+<li>A crash: stops the chain. The daemon starts the worker again, the member that crashed it is quarantined to a worker of
+its own, and the chain goes on without it until <code>quarantine_clear</code>.</li>
+<li>The trade-off: as cheap as a shared process, run by a supervisor that restarts it.</li>
+</ul>
+<h3 id="chain-added-in-place">Chain, added in place</h3>
+<p>H2, each plugin added with <code>add &lt;uri&gt; &lt;instance&gt; chain:1</code>.</p>
+<p>The same result as a chain, built another way: each plugin is added straight into the chain's worker and never gets a
+worker of its own first. This row measures what it costs to build the chain, not only to run it. A plugin the chain
+refuses (a width its head does not take) is added <code>own</code> instead, as Zynthian adds it, and the row's note says how many.</p>
+<p><img src="https://raw.githubusercontent.com/FreeMixer/plugin-hostd/a73969e2d024bab73a955c3f260154bdd241255f/docs/img/grouping-chain-add.svg" alt="Three add commands ending in chain:1 lead to one teal worker holding an amber chain of three plugins"></p>
+<ul>
+<li>Processes: one worker, plus the daemon, plus one per plugin added <code>own</code>. Workers started and dropped on the way: 0.</li>
+<li>A crash: as for a chain.</li>
+<li>The trade-off: a chain's running cost, with no worker started and stopped while the strip is built.</li>
+</ul>
+<h3 id="plan">Plan</h3>
+<p>H2, <code>grouping on</code>, pins checked, a verdict per plugin, then <code>plan 1 &lt;instances&gt;</code>.</p>
+<p>plugin-hostd's planner reads each plugin's pin and cost, and its running history on this machine, and decides which
+runs of consecutive plugins share a worker. A run of two or more becomes a chain of place <code>chain:1.&lt;k&gt;</code>, <code>k</code> counting
+the segments from 0. A plugin that shares with no neighbour, an isolated one among them, is placed <code>own</code>. <code>plan_get</code>
+says why each plugin was left alone (<a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/data/grouping.json">data/grouping.json</a> lists the reasons). With the setting
+<code>grouping</code> off, the default, the plan is only answered and nothing moves.</p>
+<p><code>grp8</code> runs comp, drive, delay, drive, comp, comp, drive, delay, with every drive pinned isolated and the rest
+in-process. By the rules above that is seven segments: the two comps that sit next to each other share a worker, each
+drive is alone, and three plugins are alone because both their neighbours are isolated drives.</p>
+<p><img src="https://raw.githubusercontent.com/FreeMixer/plugin-hostd/a73969e2d024bab73a955c3f260154bdd241255f/docs/img/grouping-plan.svg" alt="The eight plugins of grp8 in seven workers: three red isolated drives, one teal worker holding a chain of two comps, and three teal workers each holding one plugin with no neighbour to share with"></p>
+<ul>
+<li>Processes: one worker per segment (7 for <code>grp8</code>), plus the daemon.</li>
+<li>A crash: stops the segment it happens in. An isolated plugin takes down only itself.</li>
+<li>The trade-off: the isolation the pins ask for, and sharing everywhere else. A plan that comes back as one segment
+is a <code>failed</code> row, since nothing was left for the pins to cut and it would repeat the chain row.</li>
+</ul>
+<h3 id="pool">Pool</h3>
+<p>H2, the same plan, then <code>pool:g1</code>.</p>
+<p>Start from the plan. Every plugin the plan left in a worker of its own but whose pin lets it share is removed and added
+again with the placement <code>pool:g1</code>, so they all move into one shared worker. The isolated plugins stay alone. The row
+fails unless the daemon forms the pool from exactly the plugins moved into it.</p>
+<p><img src="https://raw.githubusercontent.com/FreeMixer/plugin-hostd/a73969e2d024bab73a955c3f260154bdd241255f/docs/img/grouping-pool.svg" alt="The same eight plugins in five workers: one violet pool worker holding 0 comp, 2 delay and 7 delay, one teal worker holding the chain of 4 comp and 5 comp, and three red isolated drives"></p>
+<ul>
+<li>Processes: 5 workers for <code>grp8</code> instead of 7 for the plan and 8 one per plugin, plus the daemon.</li>
+<li>A crash: in the pool, stops every plugin it holds; in an isolated worker, only that plugin.</li>
+<li>The trade-off: the fewest processes that still respect every pin. The signal still flows through JACK in the
+strip's order; the pool only changes which worker holds each plugin. One strip is one chain, so the pool holds that
+strip's leftovers.</li>
+</ul>
+<p><code>grp16</code> repeats the same five-plugin cycle over 16 plugins: 13 segments in the plan (three chains of two comps, six
+isolated drives, four plugins alone) and 10 workers once those four share the pool.</p>
+<h2 id="the-comparison">The comparison</h2>
+<p>The benchmark compares five rows. Four hosts make five because omx-clap-host is measured on both of its formats, and
+plugin-hostd both one plugin per worker and grouped. In the documents <code>bench/run.sh</code> writes, each of these is one row per
+scenario, mode, sample rate, block size and load.</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Host</th>
+<th>Arrangement</th>
+<th>Scenarios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. jalv</td>
+<td>H4</td>
+<td>individual</td>
+<td><code>cvc3</code> to <code>cvc48</code> and <code>cvl3</code> to <code>cvl48</code>, both with the LV2 builds</td>
+</tr>
+<tr>
+<td>2. mod-host</td>
+<td>H3</td>
+<td>shared process</td>
+<td><code>cvc3</code> to <code>cvc48</code> and <code>cvl3</code> to <code>cvl48</code>, both with the LV2 builds</td>
+</tr>
+<tr>
+<td>3. omx-clap-host, CLAP</td>
+<td>H1</td>
+<td>shared process</td>
+<td><code>cvc3</code> to <code>cvc48</code></td>
+</tr>
+<tr>
+<td>4. omx-clap-host, LV2 adapter</td>
+<td>H1</td>
+<td>shared process</td>
+<td><code>cvl3</code> to <code>cvl48</code></td>
+</tr>
+<tr>
+<td>5. plugin-hostd, single and grouped</td>
+<td>H2</td>
+<td>individual, chain, chain added in place; plan and pool</td>
+<td><code>cvc</code> (CLAP) and <code>cvl</code> (LV2 through the adapter); <code>grp8</code>, <code>grp16</code> (CLAP)</td>
+</tr>
+</tbody>
+</table>
+<p>jalv and mod-host run LV2 only, so under the CLAP scenarios they take the LV2 builds of the same plugins and the row's
+note says so. Every <code>cvcN</code> has its <code>cvlN</code>: under H1 and H2 the pair is the same host, the same plugins and the same
+DSP code in two wrappers, the clean read of the format.</p>
+<p>The two families, from the <code>modes</code> table of <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/bench/scenarios.json">bench/scenarios.json</a>:</p>
+<ul>
+<li><strong>Chains vs processes.</strong> <code>cvc3</code> to <code>cvc48</code> (CLAP) and <code>cvl3</code> to <code>cvl48</code> (LV2): 3, 8, 16, 24, 32 and 48 plugins
+cycling omx-comp, omx-delay and omx-drive. Rows: plugin-hostd individual, chain and chain added in place;
+omx-clap-host and mod-host shared; jalv individual. It asks how much grouping saves, and how the hosts compare on the
+same plugins.</li>
+<li><strong>Grouping vs processes.</strong> <code>grp8</code> and <code>grp16</code>: 8 and 16 CLAP plugins cycling omx-comp, omx-drive, omx-delay,
+omx-drive, omx-comp, every drive pinned isolated, under plugin-hostd only. Rows: individual, chain, plan and pool. It
+asks whether the planner keeps the isolation the pins ask for while costing close to a full chain.</li>
+</ul>
+<p>The individual and chain rows run with <code>require_pins 0</code>; the plan and pool rows with pins on, the daemon's own pin
+store holding the verdicts and no package pins. Other scenarios (<code>cvp</code>, mixed CLAP and LV2; <code>tp10</code>, third-party LV2
+effects) are listed in <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/bench/README.md#scenarios">bench/README.md</a>.</p>
+<h2 id="what-each-row-measures">What each row measures</h2>
+<p>The first four figures are the ones to compare first; the rest explain them. The field names are those of the
+<code>omx-bench/1</code> document (<a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/bench/README.md#reading-the-numbers">Reading the numbers</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Figure</th>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dsp %</td>
+<td><code>dsp_load_avg</code>, <code>dsp_load_max</code></td>
+<td>JACK's DSP load as the server computes it, read once a second over the window: how much of each block's time goes to processing. Higher means less room before clicks.</td>
+</tr>
+<tr>
+<td>rss MB</td>
+<td><code>rss_mb_total</code></td>
+<td>resident memory of all the row's processes together, at the end of the window</td>
+</tr>
+<tr>
+<td>add ms</td>
+<td><code>add_ms</code></td>
+<td>from the first <code>add</code> to the last reply; for a chain and a chain added in place, until the chain runs; for jalv, until the last client is in the graph. How long building the strip takes.</td>
+</tr>
+<tr>
+<td>xruns</td>
+<td><code>xruns</code></td>
+<td>blocks that came too late in the window: JACK's xrun callbacks, counted by a client of the run's own server, and the server's own log; the larger of the two</td>
+</tr>
+<tr>
+<td>latency</td>
+<td><code>latency_frames</code></td>
+<td>the capture latency JACK reports at <code>system:playback_1</code>, the longest of its range: the delay from the source to the output as the clients on the path declare it, in frames. Divide by the sample rate for time: 256 frames at 48000 Hz is 5.3 ms. It is declared, not a measured round trip; a host that declares none adds none.</td>
+</tr>
+<tr>
+<td>processes, JACK clients</td>
+<td><code>processes</code>, <code>jack_clients</code></td>
+<td>how many programs the row runs (the host and every descendant, plugin-hostd's workers included), and how many clients it put on the JACK graph. This is where the arrangements differ most visibly.</td>
+</tr>
+<tr>
+<td>rss, pss MB</td>
+<td><code>rss_mb</code>, <code>rss_mb_total</code>, <code>pss_mb_total</code></td>
+<td>rss counts a shared library once in every process that maps it, so many processes look larger than they are; pss shares those pages out between the processes, the honest figure for real memory</td>
+</tr>
+<tr>
+<td>cpu %</td>
+<td><code>cpu_pct</code></td>
+<td>user and system time of the row's processes over the window, in percent of one core, beside JACK's own DSP load</td>
+</tr>
+<tr>
+<td>context switches</td>
+<td><code>ctx_switches</code>, <code>ctx_involuntary</code>, <code>ctx_jackd</code>, <code>ctx_jackd_involuntary</code></td>
+<td>how often the row's threads were switched out, and how many of those switches were involuntary; then the same for the JACK server, since a graph of more clients costs it switches too</td>
+</tr>
+<tr>
+<td>recover ms</td>
+<td><code>recover_ms</code></td>
+<td>in the <code>kill1</code> scenario: from <code>kill -9</code> of the process that holds the plugin until its client is back and wired as before. Only plugin-hostd recovers; the other hosts lose their process.</td>
+</tr>
+<tr>
+<td>output level</td>
+<td><code>output</code></td>
+<td>one second of the strip's output recorded with <code>jack_rec</code>, its level in dB. A silent row is not a pass, and under H1 and H2 a row whose level differs by more than 1 dB from the same plugins run one per worker is marked unstable.</td>
+</tr>
+</tbody>
+</table>
+<p>Every row runs at each sample rate and block size of the run (48000 and 96000 Hz, 128 and 256 frames by default), and
+the scenarios above run twice: on a quiet machine, and beside a stress load, one busy loop pinned to each core the host
+may use and a process that keeps touching 256 MiB. Each row runs three times by default, with the hosts interleaved
+(A B C A B C), and the document keeps the median and the spread. A row whose DSP load repeats span more than 10 % of
+their median (and more than 0.3 points) is run once more on its own, and if it still does, it is marked unstable and no
+ratio is made from it. The same holds for the other checks of <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/bench/README.md#the-soundness-gate">the soundness gate</a>:
+twins, stress, scaling, machine state and output.</p>
+<p>The private JACK server of a run uses the dummy driver unless <code>--alsa hw:X</code> names an audio interface, and it never
+touches a JACK server already running on the machine.</p>
+`},{slug:`formats`,src:`docs/formats.md`,title:`docs/formats.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/formats.md`,toc:[{id:`the-tables`,title:`The tables`},{id:`the-transforms`,title:`The transforms`},{id:`the-coverage-test`,title:`The coverage test`},{id:`the-field-dump`,title:`The field dump`},{id:`the-descriptor-describe-writes`,title:"The descriptor `describe` writes"}],html:`<h1 id="the-format-tables-how-a-scan-becomes-a-descriptor">The format tables: how a scan becomes a descriptor</h1>
 <p>plugin-hostd turns what a CLAP or LV2 plugin states about itself into a <code>scanned</code> descriptor (omx-contract
 <code>docs/descriptors.md</code>). Three layers do it, and each is one thing:</p>
 <table>
@@ -282,7 +580,7 @@ becomes <code>_</code>; <code>instrument</code> is written when the features hol
 is always written, <code>reports</code> false when no row sets it.</li>
 <li>a word of a table that <code>describe</code> does not write is refused with the table: a new word is code here first.</li>
 </ul>
-`},{slug:`own-host`,src:`docs/own-host.md`,title:`the highest SCHED_FIFO priority, which the probe asks for, and a lock as large as the probe's memory limit`,source:`https://github.com/FreeMixer/plugin-hostd/blob/f526f03/docs/own-host.md`,toc:[{id:`lv2-plugins`,title:`LV2 plugins`},{id:`measuring-plugins-at-real-time-priority`,title:`Measuring plugins at real-time priority`},{id:`what-a-zynthian-integration-still-needs-from-us`,title:`What a Zynthian integration still needs from us`}],html:`<h1 id="use-plugin-hostd-in-your-own-host">Use plugin-hostd in your own host</h1>
+`},{slug:`own-host`,src:`docs/own-host.md`,title:`the highest SCHED_FIFO priority, which the probe asks for, and a lock as large as the probe's memory limit`,source:`https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/own-host.md`,toc:[{id:`lv2-plugins`,title:`LV2 plugins`},{id:`measuring-plugins-at-real-time-priority`,title:`Measuring plugins at real-time priority`},{id:`what-a-zynthian-integration-still-needs-from-us`,title:`What a Zynthian integration still needs from us`}],html:`<h1 id="use-plugin-hostd-in-your-own-host">Use plugin-hostd in your own host</h1>
 <p>This page takes a Debian machine (Raspberry Pi OS, Zynthian, any Debian 12 or 13, arm64 or amd64) from nothing to a
 plugin running under plugin-hostd, driven over its socket, in nine commands, and then runs an LV2 plugin the same way in eight more. CI runs every command below, as written, in
 a clean Debian container on Debian 12 and 13, on both architectures; a step that stops working fails that job.</p>
@@ -350,8 +648,8 @@ Ratio to 1: the output peak must be 1.995 times the input's.</p>
 <p>Pins need nothing from you. A plugin has to be pinned (its files' hashes and its parameter layout) before the daemon
 lets it run; in the default <code>first-use</code> mode the first <code>add</code> records the pin in <code>$XDG_STATE_HOME/plugin-hostd/pins</code>, and
 a later <code>add</code> of a changed file is refused with a <code>pin_changed</code> event. A host that pins by itself sets <code>pin_mode strict</code>.
-See Pins in the <a href="https://github.com/FreeMixer/plugin-hostd/blob/f526f03/docs/guide.md#pins">guide</a>.</p>
-<p>What to read next: <code>man plugin-hostd</code>; the verbs and error codes in the <a href="https://github.com/FreeMixer/plugin-hostd/blob/f526f03/docs/guide.md">guide</a>; <code>remote_pages</code> and <code>remote_page_get</code> for
+See Pins in the <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/guide.md#pins">guide</a>.</p>
+<p>What to read next: <code>man plugin-hostd</code>; the verbs and error codes in the <a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/guide.md">guide</a>; <code>remote_pages</code> and <code>remote_page_get</code> for
 the plugin's own pages of controls; the machine-readable protocol at
 <code>/usr/share/plugin-hostd-protocol/plugin-hostd.json</code>; a C consumer can include <code>plugin-hostd/protocol.h</code>
 (<code>pkg-config --cflags plugin-hostd-protocol</code>, package <code>libplugin-hostd-protocol-dev</code>).</p>
@@ -393,7 +691,7 @@ the released worker, 0.8.0; the daemon passes the answer through. A host reads r
 its audio configuration, its realtime limits).</li>
 </ul>
 <p>Each of these is an issue of its own.</p>
-`},{slug:`panel`,src:`docs/panel.md`,title:`docs/panel.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/f526f03/docs/panel.md`,toc:[{id:`the-verb`,title:`The verb`},{id:`where-the-panel-comes-from`,title:`Where the panel comes from`},{id:`the-file`,title:`The file`},{id:`the-format-tables-stay-strict`,title:`The format tables stay strict`},{id:`why-a-verb-of-its-own`,title:`Why a verb of its own`},{id:`drawing-a-panel-the-three-verbs-together`,title:`Drawing a panel: the three verbs together`}],html:`<h1 id="the-panel-a-plugin-publishes-served-to-a-host">The panel a plugin publishes, served to a host</h1>
+`},{slug:`panel`,src:`docs/panel.md`,title:`docs/panel.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/panel.md`,toc:[{id:`the-verb`,title:`The verb`},{id:`where-the-panel-comes-from`,title:`Where the panel comes from`},{id:`the-file`,title:`The file`},{id:`the-format-tables-stay-strict`,title:`The format tables stay strict`},{id:`why-a-verb-of-its-own`,title:`Why a verb of its own`},{id:`drawing-a-panel-the-three-verbs-together`,title:`Drawing a panel: the three verbs together`}],html:`<h1 id="the-panel-a-plugin-publishes-served-to-a-host">The panel a plugin publishes, served to a host</h1>
 <p>A plugin of omx-plugins states how its panel is laid out through the CLAP extension
 <code>org.openmixer.panel-description/1</code> (omx-clap-core's <code>src/omx_clap_ext.h</code>, omx-plugins' <code>include/omx_panel_description.h</code>):
 its family, a fingerprint, and five tables, the sections, the controls (each with its parameter, section, widget and
@@ -534,7 +832,7 @@ pages through those, the panel's sections and widgets dressing each slot.</li>
 <p>What the panel cannot give yet: an enum's labels and the remote pages in the scan itself;
 until then a choice's labels come from the worker (<code>param_info</code> and the plugin's value texts) and the pages from
 <code>remote_page_get</code>, both on a running instance.</p>
-`},{slug:`placement`,src:`docs/placement.md`,title:`docs/placement.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/f526f03/docs/placement.md`,toc:[{id:`the-policy`,title:`The policy`},{id:`the-configuration`,title:`The configuration`},{id:`why-not-one-core-per-worker`,title:`Why not one core per worker`},{id:`which-core-is-reserved`,title:`Which core is reserved`},{id:`what-reports-the-core`,title:`What reports the core`},{id:`the-clap-thread-pool`,title:`The CLAP thread pool`},{id:`measured`,title:`Measured`}],html:`<h1 id="core-placement-the-workers-on-the-audio-cores-the-daemon-off-them">Core placement: the workers on the audio cores, the daemon off them</h1>
+`},{slug:`placement`,src:`docs/placement.md`,title:`docs/placement.md`,source:`https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/placement.md`,toc:[{id:`the-policy`,title:`The policy`},{id:`the-configuration`,title:`The configuration`},{id:`why-not-one-core-per-worker`,title:`Why not one core per worker`},{id:`which-core-is-reserved`,title:`Which core is reserved`},{id:`what-reports-the-core`,title:`What reports the core`},{id:`the-clap-thread-pool`,title:`The CLAP thread pool`},{id:`measured`,title:`Measured`}],html:`<h1 id="core-placement-the-workers-on-the-audio-cores-the-daemon-off-them">Core placement: the workers on the audio cores, the daemon off them</h1>
 <p>plugin-hostd runs each chain (and each plugin that may not share) in a worker process of its own. On a small machine,
 a Raspberry Pi 5 with four cores, the kernel and the JACK server decide where those processes run unless someone pins
 them. A plugin's own threads do not help: Surge XT 1.4.0 and the other plugins measured on the Pi 5 ignore CLAP's
@@ -665,9 +963,9 @@ workers of their own, 60 s each, under the first <code>spread</code> (one core e
 on 0, and core 0 fell from 7-9 % busy to under 2 %; the sum over the cores was 2-3 points lower. Neither mode had an
 xrun at that load: the instruments use a fraction of one core. Core 0 is the reserved core there still, since the Pi's
 cores are all alike. The desk measurement of series chains is above, under Why not one core per worker.</p>
-`},{slug:`presets`,src:`docs/presets.md`,title:`Presets in the host`,source:`https://github.com/FreeMixer/plugin-hostd/blob/f526f03/docs/presets.md`,toc:[{id:`who-owns-what`,title:`Who owns what`},{id:`verbs`,title:`Verbs`},{id:`the-file-org-openmixer-preset`,title:`The file: org.openmixer.preset`},{id:`loading-a-file`,title:`Loading a file`}],html:`<h1 id="presets-in-the-host">Presets in the host</h1>
+`},{slug:`presets`,src:`docs/presets.md`,title:`Presets in the host`,source:`https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/docs/presets.md`,toc:[{id:`who-owns-what`,title:`Who owns what`},{id:`verbs`,title:`Verbs`},{id:`the-file-org-openmixer-preset`,title:`The file: org.openmixer.preset`},{id:`loading-a-file`,title:`Loading a file`}],html:`<h1 id="presets-in-the-host">Presets in the host</h1>
 <p>Presets in the host, as this tree builds it. The schema is
-<a href="https://github.com/FreeMixer/plugin-hostd/blob/f526f03/protocol/preset.schema.json">protocol/preset.schema.json</a>; <code>tests/preset_format.py</code> holds it to the examples below.</p>
+<a href="https://github.com/FreeMixer/plugin-hostd/blob/a73969e2d024bab73a955c3f260154bdd241255f/protocol/preset.schema.json">protocol/preset.schema.json</a>; <code>tests/preset_format.py</code> holds it to the examples below.</p>
 <h2 id="who-owns-what">Who owns what</h2>
 <ul>
 <li>The <strong>worker</strong> (omx-clap-host for CLAP, its LV2 adapter for LV2) holds the instance, so it owns the primitives: list
