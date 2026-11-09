@@ -150,11 +150,11 @@ jobs:
           name: prune-plan
           path: plan
 
-      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@main
+      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@openmixer-v1
         with:
           gpg-key: ${{ secrets.OPENMIXER_PACKAGES_SIGNING_KEY }}
 
-      - uses: Open-Mixer/.github/.github/actions/channel-pull@main
+      - uses: Open-Mixer/.github/.github/actions/channel-pull@openmixer-v1
         with:
           publish-token: ${{ secrets.PAGES_TOKEN }}
           channel: ${{ github.repository }}
@@ -262,19 +262,19 @@ jobs:
           name: prune-plan
           path: plan
 
-      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@main
+      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@openmixer-v1
         with:
           gpg-key: ${{ secrets.OPENMIXER_PACKAGES_SIGNING_KEY }}
 
       # the original key co-signs the apt index while installs may hold only it, as in build-deb.yml
-      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@main
+      - uses: Open-Mixer/.github/.github/actions/import-gpg-key@openmixer-v1
         if: env.HAS_COSIGN == 'true'
         with:
           gpg-key: ${{ secrets.RPM_GPG_KEY }}
           gpg-passphrase: ${{ secrets.RPM_GPG_PASSPHRASE }}
           id-variable: OPENMIXER_GPG_COSIGN_KEY_ID
 
-      - uses: Open-Mixer/.github/.github/actions/channel-pull@main
+      - uses: Open-Mixer/.github/.github/actions/channel-pull@openmixer-v1
         with:
           publish-token: ${{ secrets.PAGES_TOKEN }}
           channel: ${{ github.repository }}
@@ -366,7 +366,7 @@ jobs:
           PUBLISH_TOKEN: ${{ secrets.PAGES_TOKEN }}
         run: .self/.github/prune/unmoved.sh build/channel "$PLANNED"
 
-      - uses: Open-Mixer/.github/.github/actions/channel-push@main
+      - uses: Open-Mixer/.github/.github/actions/channel-push@openmixer-v1
         with:
           publish-token: ${{ secrets.PAGES_TOKEN }}
           site-gpg-key: ${{ secrets.SITE_GPG_KEY }}
