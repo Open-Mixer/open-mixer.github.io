@@ -18,7 +18,11 @@ name: Prune the package repository
 # apt index with the release workflows' own scripts (FreeMixer/.github publish-rpms and publish-debs), pushes ONE
 # signed commit (the rpm job hands its result to the deb job, which pushes both: one Pages deployment),
 # and then checks that every kept version installs (dnf in fedora:44, apt in debian:bookworm) and that the
-# newest of each is what resolves. npm is not pruned: old @openmixer versions stay published (ruled 2026-11-02, #2).
+# newest of each is what resolves.
+# The apply works on the commit the plan was made from or not at all: a publish that lands on main between the
+# plan and the push stops it with nothing pushed (.github/prune/unmoved.sh, checked after each pull, before the
+# metadata is regenerated and before the push), and the prune is run again.
+# npm is not pruned: old @openmixer versions stay published (ruled 2026-11-02, #2).
 # Git tags and GitHub releases are not touched.
 #
 # Secrets, as the release workflows use them (FreeMixer/.github build-rpm.yml and build-deb.yml):
@@ -155,12 +159,12 @@ jobs:
           publish-token: ${{ secrets.PAGES_TOKEN }}
           channel: ${{ github.repository }}
 
+      # the plan holds for the planned tree only: a publish that landed since stops the prune (.github/prune/unmoved.sh)
       - name: The tree is the one the plan was made from
         env:
           PLANNED: ${{ needs.plan.outputs.sha }}
-        run: |
-          got=$(git -C build/channel rev-parse HEAD)
-          [ "$got" = "$PLANNED" ] || { echo "::error::main moved from $PLANNED to $got since the plan: run the prune again"; exit 1; }
+          PUBLISH_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        run: .self/.github/prune/unmoved.sh build/channel "$PLANNED"
 
       - name: Check the signing key is one the channel serves
         run: .fmx/.github/actions/import-gpg-key/channel-keys.sh check build/channel/rpm/RPM-GPG-KEY-openmixer "$OPENMIXER_GPG_KEY_ID"
@@ -176,6 +180,12 @@ jobs:
           # what is left in the per-release trees is exactly what the plan keeps (the release package beside them stays)
           diff <(node -e 'for (const r of require("./plan/plan.json").keep) if (r.path.startsWith("rpm/")) console.log(r.path)' | sort) \
                <(cd build/channel && find rpm/fedora -name '*.rpm' | sort)
+
+      - name: Main has not moved since the plan, before the metadata is regenerated
+        env:
+          PLANNED: ${{ needs.plan.outputs.sha }}
+          PUBLISH_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        run: .self/.github/prune/unmoved.sh build/channel "$PLANNED"
 
       - name: Regenerate and sign the metadata
         run: |
@@ -269,6 +279,15 @@ jobs:
           publish-token: ${{ secrets.PAGES_TOKEN }}
           channel: ${{ github.repository }}
 
+      # 2026-11-09: this pull came an hour after the plan and held a release's rpms; the rpm half laid the
+      # metadata of the planned tree over them and the push dropped them from dnf. The rpm half describes the
+      # planned tree and nothing else, so this pull must be that tree (.github/prune/unmoved.sh).
+      - name: The pull is the tree the plan was made from
+        env:
+          PLANNED: ${{ needs.plan.outputs.sha }}
+          PUBLISH_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        run: .self/.github/prune/unmoved.sh build/channel "$PLANNED"
+
       # the rpm half, pruned and re-signed by the rpm job: applied to this pull, committed with the deb half
       - uses: actions/download-artifact@v4
         with:
@@ -314,6 +333,12 @@ jobs:
           diff <(node -e 'for (const r of require("./plan/plan.json").keep) if (r.path.startsWith("deb/")) console.log(r.path)' | sort) \
                <(cd build/channel && find deb/debian -name '*.deb' | sort)
 
+      - name: Main has not moved since the plan, before the index is regenerated
+        env:
+          PLANNED: ${{ needs.plan.outputs.sha }}
+          PUBLISH_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        run: .self/.github/prune/unmoved.sh build/channel "$PLANNED"
+
       - name: Regenerate and sign the index
         env:
           CHANGELOGS_URL: https://www.openmixer.org/deb/changelogs
@@ -332,6 +357,14 @@ jobs:
 
       - name: The pruned tree has nothing left to delete
         run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only deb --expect-clean
+
+      # the last check before the push; after it, a moved main refuses the push as not a fast-forward (its parent
+      # is the planned commit), and channel-push has no rebuild here and never forces: a lost race fails the job
+      - name: Main has not moved since the plan, before the push
+        env:
+          PLANNED: ${{ needs.plan.outputs.sha }}
+          PUBLISH_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        run: .self/.github/prune/unmoved.sh build/channel "$PLANNED"
 
       - uses: FreeMixer/.github/.github/actions/channel-push@v1
         with:
