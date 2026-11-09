@@ -1,1 +1,0 @@
-function e(e,t){if(!t.startsWith(`/`))return t;let n=e.replace(/\/+$/,``);return t.startsWith(`${n}/`)?t:`${n}${t}`}export{e as t};
