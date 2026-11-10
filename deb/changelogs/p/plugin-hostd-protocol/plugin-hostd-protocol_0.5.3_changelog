@@ -1,0 +1,14 @@
+plugin-hostd-protocol (0.5.3) unstable; urgency=medium
+
+  * release: plugin-hostd-protocol 0.5.3
+  * scenarios: preset_save is exercised
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: bookworm's AddressSanitizer runs under 28 bits of mmap randomisation
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * githooks: the commit-msg stub is Open-Mixer/.github's
+  * release: a dispatch can release an existing tag
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: packaging runs on v* tags and workflow_dispatch only
+  * Add a threat model
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 02:02:30 +0000
