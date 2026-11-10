@@ -1,0 +1,47 @@
+omx-panel (0.13.0) unstable; urgency=medium
+
+  * release: build the DEBs beside the RPMs
+  * packaging: the renderer ships as a shared library, per architecture
+  * Release 0.13.0
+  * meaning-infer: a CLAP parameter's band is read from its name
+  * describe: the inference completes an EQ band the words name with its Q,
+    type and switch
+  * describe: a CLAP feature a scan spells by its macro is the feature it
+    stands for
+  * renderer: a shared library for a surface that loads it at run time;
+    describe --layout gives the layout it draws
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: packaging runs on v* tags and workflow_dispatch only
+  * ci: cancel a pull request's stale runs
+  * omx-complement-sync: --check names where MODGUI_DIR stands on the list,
+    and the default list puts it first (#153)
+  * renderer: one recorded meter stream measured on the renderer, in Chromium
+    and in Tk
+  * MOD GUI: the meter frame is styled without a curve; the pedal rim takes
+    no layout
+  * renderer: the meter's marker is omx-dsp's omx_meter_view_step
+  * The renderer and the MOD GUI draw the description's meters
+  * describe: every meter row names its section; a camelCase in and out level
+    is the curve's operating point
+  * docs: a meter carries measurement, held and clip; a foreign meter guesses
+    none
+  * describe reads the descriptor's meters word
+  * codes: omx-panel's refusals are panel.<group>.<reason> codes
+  * Foreign meters stop guessing their measurement from the unit
+  * codes: the source sentence beside the code, Catalan in catalogs/ca.json
+  * look-roles: name the spec by its title, not its private file name
+  * omx-panel: a refusal prints its code and the owner's en sentence,
+    placeholders filled
+  * look: derive look.json and the renderer's role list from the roles;
+    tokens.css goes
+  * codes: the 30 codes omx-panel emits carry en and ca text in
+    schema/codes.json
+  * look-roles: declare the panel's colour roles once, and the tests that
+    read them
+  * test: every code omx-panel emits carries en and ca text in one codes file
+  * package-lock: omx-contract 3.11.0, the new floor
+  * skin-package: en and ca text for every refusal code (omx-contract#206)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 19:05:41 +0000

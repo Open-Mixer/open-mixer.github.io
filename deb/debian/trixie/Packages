@@ -464,6 +464,35 @@ Description: panels for LV2 and CLAP plugins, generated from what each plugin de
  .
  Its documentation is on openmixer.org.
 
+Package: omx-panel
+Architecture: all
+Version: 0.13.0
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2578
+Depends: nodejs (>= 18), omx-contract-data (>= 3.12.0~), omx-contract-data (<< 4~), plugin-hostd-contract (>= 0.20.2~), plugin-hostd-contract (<< 0.21~)
+Recommends: plugin-hostd (>= 0.20.2~), plugin-hostd (<< 0.21~), omx-plugins-contract (>= 0.19.2~), omx-plugins-contract (<< 0.20~)
+Suggests: python3-lilv
+Filename: ./all/omx-panel_0.13.0_all.deb
+Size: 481452
+MD5sum: 8b751196434b5e082704d408e4eef63c
+SHA1: dbfff3a2e693293131a7b07e5c76152a7b3ff076
+SHA256: ba4e21769476e8d6dd263e1bb69cb3c43bc1932006b40b083ad58e9d65fc0532
+SHA512: 44efe9d3dfe7f1f698247095b6de8c83c2f397c7772ebcf2c0d29287f010baf29e7471afc9cac94320e80819328a7dd8d022118cc6e36a672d802e30cd2b3f7d
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: panels for LV2 and CLAP plugins, generated from what each plugin declares
+ omx-panel makes panels for LV2 and CLAP plugins from what each plugin
+ declares. It lays a panel out from a plugin's descriptor (sections, controls,
+ roles, the pages of eight a controller shows), writes a MOD GUI for MOD and
+ Zynthian in the omx look, imports a plugin's own MOD GUI into a skin package,
+ and carries the skin package schema, its validator and the directory skin
+ packages are installed into. The omx-panel command runs each; the tools are
+ under /usr/share/omx-panel for a build that calls them.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-plugins-contract
 Architecture: all
 Version: 0.19.1
@@ -1407,6 +1436,50 @@ Description: LV2 adapter of omx-clap-host, as a static library to link
  liblilv-0-0, which plugin-hostd also runs as the worker of an LV2 plugin.
  .
  Its documentation is on openmixer.org.
+
+Package: libomx-panel-render-dev
+Architecture: amd64
+Version: 0.13.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 33
+Depends: libomx-panel-render0 (= 0.13.0), libcjson-dev
+Filename: ./amd64/libomx-panel-render-dev_0.13.0_amd64.deb
+Size: 8896
+MD5sum: 68f5f8e103c6ad203e06c11b66fac3ec
+SHA1: feb72fa04512ae3b555540c622f60a7cfc364082
+SHA256: 74d5c2e02cc22dd95610691fac2b8760016ef1f2267500eeaf178508821bbf4b
+SHA512: c03b66ec003702b6aefa1a9bf3d5d9a3ea8c1f736130e9efc3297fd81c0ef19f02362e66a6aad30d1afe4bac428cce6097d9740dddc0f6390616c30e8f327b70
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, development files
+ The header omx_panel_render.h, the libomx-panel-render.so link and the
+ omx-panel-render pkg-config file, to build against the omx-panel renderer.
+
+Package: libomx-panel-render0
+Architecture: amd64
+Version: 0.13.0
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 91
+Depends: libc6 (>= 2.35), libcjson1 (>= 1.7.5), omx-panel (= 0.13.0)
+Filename: ./amd64/libomx-panel-render0_0.13.0_amd64.deb
+Size: 37648
+MD5sum: 1a89637cbf9c604915c4aad4e1f711a4
+SHA1: bf2e7d71c0e6d1a403fd04d8720c647cf087ea33
+SHA256: d7baee2a29b46543fa5237f722d099b71c00fcf50d8382010db273387d743536
+SHA512: c2bd97181bc3e6c3b9b113f426fe1a9f95cf86fa3d4ac06c0ca8d52c24a5e7cf38c01f6948d1e7af4c717aeb7d21939c89c9ac22bf1692ae83d8eb6ae5eafcca
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, a library that draws a panel into a pixel buffer
+ libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
+ pixel buffer and answers input with the one gesture vocabulary. A surface
+ loads it at run time (Zynthian's panel view); its look, geometry and fonts
+ are omx-panel's.
 
 Package: libomxdsp-dev
 Architecture: amd64
@@ -3405,6 +3478,50 @@ Description: LV2 adapter of omx-clap-host, as a static library to link
  liblilv-0-0, which plugin-hostd also runs as the worker of an LV2 plugin.
  .
  Its documentation is on openmixer.org.
+
+Package: libomx-panel-render-dev
+Architecture: arm64
+Version: 0.13.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 33
+Depends: libomx-panel-render0 (= 0.13.0), libcjson-dev
+Filename: ./arm64/libomx-panel-render-dev_0.13.0_arm64.deb
+Size: 8900
+MD5sum: 650183cdfae697026a9ff1f2f498b38b
+SHA1: bd364908c1a4718afd41cc6d23e5b466e08e3efd
+SHA256: 373be9ac7d4057d539896dfb7e0e6b866ff025f6b0afeb0854c50475d31eb61b
+SHA512: 84382fce9fb5fd1c297050b5eea27069d4d7d0d949c03ae26de75b39cdfad88c39800749fde3624cc8bfdbcc58b577ef8c3fdce7ca268ed13a6be1792e9f8564
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, development files
+ The header omx_panel_render.h, the libomx-panel-render.so link and the
+ omx-panel-render pkg-config file, to build against the omx-panel renderer.
+
+Package: libomx-panel-render0
+Architecture: arm64
+Version: 0.13.0
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 144
+Depends: libc6 (>= 2.35), libcjson1 (>= 1.7.5), omx-panel (= 0.13.0)
+Filename: ./arm64/libomx-panel-render0_0.13.0_arm64.deb
+Size: 34336
+MD5sum: 0eef69811f7adf528828c8964795d460
+SHA1: c88b108870960fba75b1e6f323b2b12cada504d5
+SHA256: 122081dfab06bdede2be1abf833ff509cdb5ef73f9b977c694acb60d639bd060
+SHA512: 8324345fcf30d4c356b07e9a922f5290a0816bb6b48536e99ad5d7f7e52a945625d3d7129198242146ac54d32096b758158afcd9d24938cdf53af52f3a6b7f78
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, a library that draws a panel into a pixel buffer
+ libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
+ pixel buffer and answers input with the one gesture vocabulary. A surface
+ loads it at run time (Zynthian's panel view); its look, geometry and fonts
+ are omx-panel's.
 
 Package: libomxdsp-dev
 Architecture: arm64
