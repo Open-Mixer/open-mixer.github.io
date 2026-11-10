@@ -1,0 +1,24 @@
+omx-clap-host (0.31.1) unstable; urgency=medium
+
+  * ci: plugin-hostd and the protocol are fetched at their latest release tags
+  * Release 0.31.1
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: packaging runs on v* tags and workflow_dispatch only
+  * ci: the contract RPM's file list holds the Catalan catalog
+  * tests/active_race_tsan is a build product, not a source
+  * fuzz: the seed corpus follows the catalogs
+  * host: a non-numeric instance answers the code its verb declares (#527)
+  * host: five verbs refuse an instance word that is no number instead of
+    reading it as 0 (#527)
+  * tests: remote_pages, audio_ports, hide_external_ui, note_drops and
+    note_out_drops refuse an instance word that is no number (#527)
+  * instance: active keeps its int type for the ABI; its accesses are atomic
+    builtins
+  * catalogs: omx-clap-core's Catalan in catalogs/ca.json, the source
+    sentence in data
+  * instance: active and latency_published are atomic; a two-thread test of
+    active under ThreadSanitizer
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 11:54:03 +0000
