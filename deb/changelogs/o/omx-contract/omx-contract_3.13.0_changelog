@@ -1,0 +1,27 @@
+omx-contract (3.13.0) unstable; urgency=medium
+
+  * release 3.13.0
+  * packaging: the package metadata names the Open-Mixer repository
+  * scan: SCAN_FIELD_SCOPES names its writers, omx-clap-core's scan and
+    plugin-hostd's field dump
+  * plugin-face: OMX_PLUGIN_FACE_IDS leaves omx-contract for omx-plugins, its
+    one reader
+  * roleMeanings: docs, changelog, its code in the Catalan catalog, and the
+    verbs fixture on the 3.13.0 floor
+  * roleMeanings: a package declares the panel roles it draws and the meaning
+    each plays (schema 3.13.0)
+  * release: build the DEBs beside the RPMs (#3)
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * versions test: the npm publish guard names omx-contract under whichever
+    organization holds it
+  * live-owner-data: name a missing GITHUB_REPOSITORY_OWNER before any
+    download
+  * live-owner-data: the organization is the workflow's
+    GITHUB_REPOSITORY_OWNER, with no fallback
+  * live-owner-data: read omx-dsp's release from the organization the
+    workflow runs in
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: packaging runs on v* tags and workflow_dispatch only
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 23:35:16 +0000
