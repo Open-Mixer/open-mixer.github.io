@@ -1,0 +1,9 @@
+plugin-hostd-protocol (0.5.2) unstable; urgency=medium
+
+  * Release 0.5.2
+  * ci: the declared-protocol job reads plugin-db 0.3's words
+  * renders and protocol page follow omx-contract 3.12.0
+  * catalogs: the protocol's Catalan in catalogs/ca.json, the source sentence
+    in data
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 09 Nov 2026 14:18:37 +0000
