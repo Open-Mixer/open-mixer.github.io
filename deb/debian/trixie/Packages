@@ -2608,6 +2608,45 @@ Description: run LV2 and CLAP plugins so that one crash cannot stop the show
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-qualification-records
+Architecture: amd64
+Version: 2026110902
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 179106
+Provides: omx-qualification-rpi5-zynthian-vangelis (= 2026110902), omx-qualification-x86-64-fedora44 (= 2026110902), plugin-db-qualification-rpi5-zynthian-vangelis (= 2026110902), plugin-db-qualification-x86-64-fedora44 (= 2026110902), plugin-db-qualification-x86-64-fedora44-192000-256 (= 2026110902), plugin-db-qualification-x86-64-fedora44-192000-512 (= 2026110902), plugin-db-qualification-x86-64-fedora44-48000-128 (= 2026110902), plugin-db-qualification-x86-64-fedora44-48000-256 (= 2026110902), plugin-db-qualification-x86-64-fedora44-48000-512 (= 2026110902), plugin-db-qualification-x86-64-fedora44-48000-64 (= 2026110902), plugin-db-qualification-x86-64-fedora44-96000-128 (= 2026110902), plugin-db-qualification-x86-64-fedora44-96000-256 (= 2026110902), plugin-db-qualification-x86-64-fedora44-96000-512 (= 2026110902), plugin-db-qualification-x86-64-fedora44-96000-64 (= 2026110902)
+Depends: plugin-qualify (>= 0.20.1~), plugin-qualify (<< 0.21~)
+Breaks: omx-qualification-rpi5-zynthian-vangelis (<< 2026110902), omx-qualification-x86-64-fedora44 (<< 2026110902), plugin-db-qualification-rpi5-zynthian-vangelis (<< 2026110902), plugin-db-qualification-x86-64-fedora44 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-192000-256 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-192000-512 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-48000-128 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-48000-256 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-48000-512 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-48000-64 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-96000-128 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-96000-256 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-96000-512 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-96000-64 (<< 2026110902)
+Replaces: omx-qualification-rpi5-zynthian-vangelis (<< 2026110902), omx-qualification-x86-64-fedora44 (<< 2026110902), plugin-db-qualification-rpi5-zynthian-vangelis (<< 2026110902), plugin-db-qualification-x86-64-fedora44 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-192000-256 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-192000-512 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-48000-128 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-48000-256 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-48000-512 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-48000-64 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-96000-128 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-96000-256 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-96000-512 (<< 2026110902), plugin-db-qualification-x86-64-fedora44-96000-64 (<< 2026110902)
+Filename: ./amd64/plugin-qualification-records_2026110902_amd64.deb
+Size: 5770160
+MD5sum: 9620d05a3d87ac2dabdea03a8c37f812
+SHA1: 06d8a21c5a5edaddb91feac0d33d0b480f20d0a3
+SHA256: b59b55c9ead80719c7a79d8a6216694327881ef3417a3c37511a62cb80d4e9cf
+SHA512: ad4d07d45d5559d198b1168f2fc3961d9401e523f283d3b881457a3cb88ad52e830bca8ba59bf28892b2139e174fc8700e7e59cdb30ac22149d962b57e711ba5
+Homepage: https://github.com/FreeMixer/plugin-db-qualification
+Description: plugin-db qualification layer: records of OpenMixer plugin sets
+ The qualification layer of the plugin database: the plugin-qualify records
+ of the plugin sets measured on a reference machine of a host class.
+ plugin-qualify-sync takes a plugin from them instead of measuring it, and
+ only when every file of the installed plugin hashes as the measured one
+ did; any other plugin is measured on the machine as before. The sync
+ chooses the set of the machine's class and cell.
+ .
+ Each architecture carries the sets of its machine classes:
+ .
+  arm64: the rpi5 class, the zynthian-vangelis set measured on a Raspberry
+  Pi 5 with ZynthianOS. Hardware records: measured on the machine's own
+  audio interface; the verdicts hold, the figures describe that interface
+  and are not compared with the reference tier.
+ .
+  amd64: the x86-64 class, the fedora44 sets, one per sample rate and
+  quantum. Provisional records: measured on JACK's dummy driver without
+  real-time priority; the crash, hang and unmeasured verdicts hold, the
+  cost, latency and xrun figures are not reference figures.
+
 Package: plugin-qualify
 Architecture: amd64
 Version: 0.19.1
@@ -4490,6 +4529,45 @@ MD5sum: 2f73d04fa597265b045a43cf80d5ff5c
 SHA1: cc5dd98ac34c629fa435c6d5dcff0577f7c958a3
 SHA256: cf18d4fbb16e0ce9e181c5c9fd8cfd519d3e25062f4f5b478901e7a653fada3d
 SHA512: e1a7474401415a45c56bc73b0a2da5df5a3328461a3bfdab8599f4da0f35cc76c7a8f6c17471376c1e6f4cf26e829a647e70a034850fa4145a8e8d1ec92436fa
+Homepage: https://github.com/FreeMixer/plugin-db-qualification
+Description: plugin-db qualification layer: records of OpenMixer plugin sets
+ The qualification layer of the plugin database: the plugin-qualify records
+ of the plugin sets measured on a reference machine of a host class.
+ plugin-qualify-sync takes a plugin from them instead of measuring it, and
+ only when every file of the installed plugin hashes as the measured one
+ did; any other plugin is measured on the machine as before. The sync
+ chooses the set of the machine's class and cell.
+ .
+ Each architecture carries the sets of its machine classes:
+ .
+  arm64: the rpi5 class, the zynthian-vangelis set measured on a Raspberry
+  Pi 5 with ZynthianOS. Hardware records: measured on the machine's own
+  audio interface; the verdicts hold, the figures describe that interface
+  and are not compared with the reference tier.
+ .
+  amd64: the x86-64 class, the fedora44 sets, one per sample rate and
+  quantum. Provisional records: measured on JACK's dummy driver without
+  real-time priority; the crash, hang and unmeasured verdicts hold, the
+  cost, latency and xrun figures are not reference figures.
+
+Package: plugin-qualification-records
+Architecture: arm64
+Version: 2026110902
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 34253
+Provides: omx-qualification-rpi5-zynthian-vangelis (= 2026110902), plugin-db-qualification-rpi5-zynthian-vangelis (= 2026110902)
+Depends: plugin-qualify (>= 0.20.0~), plugin-qualify (<< 0.21~)
+Breaks: omx-qualification-rpi5-zynthian-vangelis (<< 2026110902), plugin-db-qualification-rpi5-zynthian-vangelis (<< 2026110902)
+Replaces: omx-qualification-rpi5-zynthian-vangelis (<< 2026110902), plugin-db-qualification-rpi5-zynthian-vangelis (<< 2026110902)
+Filename: ./arm64/plugin-qualification-records_2026110902_arm64.deb
+Size: 971120
+MD5sum: 567719d67212dcc8dd6e65b99bf16269
+SHA1: 39bb541be4d39b7711c60ed65ee84070bae09f4e
+SHA256: 75c95b092309f4f497d56a1dcd7cc3dd3ee517ff2794873bff4b706f1ea9dd93
+SHA512: 1fdda403594e67cbb1cae373e3823dd4a080d986b4cd34fa8b87a8a0bd07662d5337b02e6e998f5d48e0dfebdb649ef81c0fddde163b418807864852947c0e08
 Homepage: https://github.com/FreeMixer/plugin-db-qualification
 Description: plugin-db qualification layer: records of OpenMixer plugin sets
  The qualification layer of the plugin database: the plugin-qualify records
