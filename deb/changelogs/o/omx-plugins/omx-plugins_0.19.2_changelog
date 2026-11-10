@@ -1,0 +1,15 @@
+omx-plugins (0.19.2) unstable; urgency=medium
+
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: the SPDX check from Open-Mixer/.github at main
+  * tools, githooks: fetch omx-panel and the tagged sources from Open-Mixer
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * face: the remote-control pages are omx-panel's fixed cut, a hidden
+    control's slot blank
+  * packaging: the CLAP headers with a floor and a ceiling
+  * packaging: 0.19.2 on the wave's releases, faces generated again on
+    omx-panel 0.12
+  * release: omx-plugins 0.19.2, faces regenerated on omx-panel 0.11.1
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 06:51:13 +0000
