@@ -1,0 +1,35 @@
+plugin-qualify (0.20.2) unstable; urgency=medium
+
+  * tests: the steps and the daemon search the directories the fixtures are in
+  * isolated-step: a refused add carries plugin-hostd's own reason
+  * sync: the isolated and pool steps start plugin-hostd on the directories
+    the sync scanned
+  * release: build the DEBs beside the RPMs
+  * Release 0.20.2
+  * native: protocol.h from plugin-hostd-protocol where no -devel is installed
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * release: a tag released by source-ref builds the arm packages too
+  * lsan.supp: liblilv's world leak through a stripped library
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * native, githooks: fetch the deps and the hook checker from Open-Mixer
+  * release: a dispatch can release an existing tag
+  * adapter admission: give a sampler its content before the notes
+  * descriptors test: the fixture bundles are 21 since synth-attack and
+    synth-delay joined
+  * measure an instrument's latency to its first sample above silence, not
+    its attack
+  * A descriptor name writes a non-ASCII id one '_' per UTF-8 byte, as
+    plugin-hostd reads it
+  * 0.19.2: a CLAP file whose name holds a space is pinned, as one
+    percent-encoded word
+  * qualify-sync: a stray comma from the last change
+  * check-installed: the sync gets a dummy JACK server for the LV2 fixture,
+    or, where jackd is not installed, must name the missing server
+  * tests: the sweep that admits an LV2 plugin under omx-clap-host has a JACK
+    server, as a run with none now stops by name
+  * 0.19.2: LV2 names with a space, no fake isolated debt, adapter run for
+    failed probes, Pi cells at 96000, no JACK server stops the run
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: packaging runs on v* tags and workflow_dispatch only
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 22:31:22 +0000
