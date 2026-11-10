@@ -1,0 +1,24 @@
+plugin-qualify (0.20.1) unstable; urgency=medium
+
+  * Release 0.20.1
+  * tests: an LV2 cell holds latencyMs beside its latency
+  * judged-layer: cite plugin-db's records design note by its public issue
+  * fixtures: the Pi records are named for the plugin-qualify that wrote
+    them, not a date
+  * judged-layer: the command that prints a record's plugin-db layer, or why
+    it has none
+  * judged layer: a record converted to plugin-db's judged layer; the latency
+    line and the rules declared once
+  * isolated step: a conditional reason beside the memory gap owes it too
+  * records-package: one package per cell of a run
+  * footprint: the record states the notes held (voices) the figure was
+    measured at (#316)
+  * sync: a distributed set applies only at the cell it was measured at
+  * lv2-measure: a cost and latency run takes each plugin's pin (#316)
+  * isolated pass: a plugin with no pin is pinned once its step has run (#316)
+  * record: a cell not attempted is labelled not-attempted, not probe-error
+    (#316)
+  * host class: x86_64 from uname -m is x86-64 (#316)
+  * refreshPins says why a pin was not refreshed (#316)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 09 Nov 2026 17:48:29 +0000
