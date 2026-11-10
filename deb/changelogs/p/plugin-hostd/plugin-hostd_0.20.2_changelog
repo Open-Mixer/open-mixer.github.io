@@ -1,0 +1,15 @@
+plugin-hostd (0.20.2) unstable; urgency=medium
+
+  * tests: the sabotage arm quotes its expected red instead of printing it as
+    a verdict
+  * pkg-config: the protocol floor is 0.5.2, as the spec and the Debian
+    control say
+  * tests: the floor checks follow the 0.20.2 floors
+  * tests: the pin checks read the floors the spec declares
+  * release: build the DEBs beside the RPMs
+  * changelog: the full install check's records fix in 0.20.2
+  * full install: a recommended records package counts for this architecture
+    only
+  * Release 0.20.2
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 18:15:44 +0000
