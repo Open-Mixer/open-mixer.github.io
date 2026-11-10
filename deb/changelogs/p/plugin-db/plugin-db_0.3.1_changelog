@@ -1,0 +1,20 @@
+plugin-db (0.3.1) unstable; urgency=medium
+
+  * ci: bookworm's AddressSanitizer runs under 28 bits of mmap randomisation
+  * packaging: plugin-hostd-protocol's floor is its current release, 0.5.2
+  * Release 0.3.1
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: packaging runs on v* tags and workflow_dispatch only
+  * fuzz: read every check against the format, and correct the contract lines
+  * Add a threat model
+  * fuzz: the digest's state check sees the context freed
+  * catalogs: the Catalan of plugin-db's words in catalogs/ca.json, the
+    source sentence in data
+  * words: plugin-db's own sentence, en and ca, beside every word a menu says
+  * docs: what the menu column still lacks from the records
+  * docs: the record and the probe output as layers of an entry (#15)
+  * docs: LV2 files and the bundle rule, what plugin-db exports (#14)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 02:00:31 +0000
