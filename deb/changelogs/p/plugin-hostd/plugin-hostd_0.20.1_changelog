@@ -1,0 +1,45 @@
+plugin-hostd (0.20.1) unstable; urgency=medium
+
+  * tests: the sibling-checkout sabotage anchors on the checkout, not the
+    action refs
+  * ci: the organisation from the runner; plugin-db-devel per architecture
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * release, githooks: the plugin-hostd-full checks and the hook checker from
+    Open-Mixer
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * tests/full_ranges.py: the panel sabotage plants on the two-line Recommends
+  * ci: cancel a pull request's stale runs
+  * Release 0.20.1
+  * plugin-hostd-full: plugin-qualification-records recommended until it is
+    in the channel
+  * plugin-hostd-full: depend on plugin-qualification-records by name, on its
+    dated version
+  * plugin-hostd-full: a synopsis with no leading article (lintian
+    description-synopsis-starts-with-article)
+  * README: newcomers read docs/groupings.md first
+  * docs: how plugins are grouped, a first-read page
+  * docs: drawings of the plugin groupings
+  * README, guide: install plugin-hostd-full
+  * release: plugin-hostd-full installed from the channel, default and
+    headless
+  * plugin-hostd-full: the whole plugin host stack in one package
+  * tests: sabotage arms for the check of what the worker loaded
+  * tests: the first-use fixtures declare their directory, and a sabotage arm
+  * pins: what the worker loaded must be the file that was hashed
+  * test: a binary swapped between the hash and the load is refused
+  * pins: first use learns only inside the declared search path
+  * test: first use learns no pin outside the declared search path
+  * Add a threat model
+  * pins: a .clap directory bundle pins its one object, not the directory
+    (#160)
+  * fuzz: the reply records follow relay.c's lines
+  * voices-cores: a failed run names the exit status and the last lines of
+    the log (#8)
+  * supervisor: a value the plugin moved itself is checkpointed, so a respawn
+    keeps it
+  * tests: daemon waits end on the daemon's own reply or feedback line, with
+    a 60 s ceiling (#8)
+  * docs: cite plugin-hostd and omx-contract by their new issue numbers
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 10 Nov 2026 01:22:54 +0000
