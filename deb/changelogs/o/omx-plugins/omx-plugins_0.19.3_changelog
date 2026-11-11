@@ -1,0 +1,31 @@
+omx-plugins (0.19.3) unstable; urgency=medium
+
+  * release: omx-plugins 0.19.3
+  * ci: the contract package's file list names plugin-face.json and
+    role-meanings.json
+  * Build floor: omx-panel 0.13.2, the release whose modgui-test counts a
+    meter frame
+  * recipe-selftest: a swap named in shippedDiff is a new contract version
+  * host-contract: the faces held to the contract are the shipped ones
+  * omx-new-plugin: a new plugin's first contract fingerprint is written by
+    the wizard
+  * panel-check: a display's floor is read as the face serves it; the probe
+    arms name the checker's own lines
+  * modgui: the generated MOD GUI files are omx-panel 0.13.1's
+  * host-contract: libomx-clap-core trusts every built face's contract
+  * param-contract: the canonical serialisation names each row by its CLAP id
+  * contract-dir: the definition files this package owns must be in contract/
+    and installed
+  * plugin-face: OMX_PLUGIN_FACE_IDS is ours, contract/plugin-face.json, with
+    the header rendered here
+  * meter-binding: every meter a shipped plugin exports is drawn by a
+    display, or listed unbound with its reason
+  * omx-comp draws its transfer curve and its gain-reduction bar; panels from
+    omx-panel 0.13
+  * param-contract: a ratio travel's unit is ratio, as the LV2 face writes
+    it; each plugin's contract version from its own history
+  * contract: the meaning each role of our panels plays, installed into
+    omx-contract's contract directory
+  * release: build the DEBs beside the RPMs
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 11 Nov 2026 16:41:23 +0000
