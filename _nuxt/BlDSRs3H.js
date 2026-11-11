@@ -52,14 +52,14 @@ puts each band on a page of its own.</p>
 <p>The interface reads the pins for its menus, the records for latency, real-time safety and cost on each row, and the layout
 for the pages. Before an insert it asks the daemon's <code>estimate</code> verb what the chain will cost. Nothing is computed twice:
 the descriptor for parameters, the record for figures, the pin for permission, the layout for pages.</p>
-<p>On the device, for Kars, the plugin menu row with its tier, latency (measured and declared frames) and real-time safety:</p>
-<p><img src="/technical-notes/from-a-plugin-file-to-a-page/list-by-tier.png" alt="The plugin menu, sorted by tier"></p>
-<p>the engine's controller page:</p>
-<p><img src="/technical-notes/from-a-plugin-file-to-a-page/controller-page-1-controls.png" alt="The controller page of Kars"></p>
-<p>the MOD GUI from the same layout:</p>
+<p>On the device, the plugin menu: each row with its tier, latency (measured and declared frames), real-time safety and cost:</p>
+<p><img src="/technical-notes/from-a-plugin-file-to-a-page/plugin-menu-by-tier.png" alt="The plugin menu, sorted by tier"></p>
+<p>an instrument's controller page, with the sections of the omx eq8 and omx comp in its chain:</p>
+<p><img src="/technical-notes/from-a-plugin-file-to-a-page/controller-page-mda-piano.png" alt="The controller page of MDA Piano"></p>
+<p>the MOD GUI of Kars, from its layout:</p>
 <p><img src="/technical-notes/from-a-plugin-file-to-a-page/modgui-pedalboard.png" alt="The MOD GUI of Kars on a pedalboard"></p>
-<p>and the chain with the instrument:</p>
-<p><img src="/technical-notes/from-a-plugin-file-to-a-page/chain-view-kars-zamcomp.png" alt="A chain with Kars and a compressor"></p>
+<p>and the chains, with the instrument, the equaliser and the compressor:</p>
+<p><img src="/technical-notes/from-a-plugin-file-to-a-page/chain-view-mda-piano-eq8-comp.png" alt="A chain with MDA Piano, omx eq8 and omx comp"></p>
 <p>A fresh device does not repeat the long stage. A package ships the records and pins of a known plugin set, keyed by
 checksums, so a fresh device applies them and probes only what differs.</p>
 `},t={slug:`from-a-plugin-file-to-a-page`,order:70,title:`D'un fitxer de plugin a una pàgina a la pantalla`,summary:`Cinc etapes converteixen un fitxer CLAP o LV2 en una fila de menú amb les seves xifres, pàgines de controls i una MOD GUI en un Zynthian. Cada etapa té un sol responsable, escriu un sol artefacte en un lloc fix i les etapes següents llegeixen aquest artefacte i res més.`,measured:`plugin-hostd, plugin-qualify i omx-panel en una Raspberry Pi 5 amb Zynthian, octubre del 2026.`,topic:`zynthian`,toc:[{id:`1-explorar-i-descriure`,title:`1. Explorar i descriure`},{id:`2-qualificar`,title:`2. Qualificar`},{id:`3-empremtes`,title:`3. Empremtes`},{id:`4-disposicio`,title:`4. Disposició`},{id:`5-llegir-a-l-aparell`,title:`5. Llegir a l'aparell`}],html:`<p>Un instrument en un Zynthian és un fitxer al disc: un binari CLAP o LV2. El que veu qui toca és una fila en un menú amb les
@@ -120,15 +120,15 @@ l'equalitzador d'OpenMixer posa cada banda en una pàgina pròpia.</p>
 cost de cada fila i la disposició per a les pàgines. Abans d'inserir un plugin pregunta al verb <code>estimate</code> del dimoni què
 costarà la cadena. Res no es calcula dues vegades: el descriptor per als paràmetres, el registre per a les xifres,
 l'empremta per al permís, la disposició per a les pàgines.</p>
-<p>A l'aparell, per a Kars, la fila del menú de plugins amb el seu nivell, la latència (mostres mesurades i declarades) i la
-seguretat en temps real:</p>
-<p><img src="/technical-notes/from-a-plugin-file-to-a-page/list-by-tier.png" alt="El menú de plugins, ordenat per nivell"></p>
-<p>la pàgina de controls del motor:</p>
-<p><img src="/technical-notes/from-a-plugin-file-to-a-page/controller-page-1-controls.png" alt="La pàgina de controls de Kars"></p>
-<p>la MOD GUI a partir de la mateixa disposició:</p>
+<p>A l'aparell, el menú de plugins: cada fila amb el seu nivell, la latència (mostres mesurades i declarades), la seguretat
+en temps real i el cost:</p>
+<p><img src="/technical-notes/from-a-plugin-file-to-a-page/plugin-menu-by-tier.png" alt="El menú de plugins, ordenat per nivell"></p>
+<p>la pàgina de controls d'un instrument, amb les seccions de l'omx eq8 i l'omx comp de la seva cadena:</p>
+<p><img src="/technical-notes/from-a-plugin-file-to-a-page/controller-page-mda-piano.png" alt="La pàgina de controls de MDA Piano"></p>
+<p>la MOD GUI de Kars, a partir de la seva disposició:</p>
 <p><img src="/technical-notes/from-a-plugin-file-to-a-page/modgui-pedalboard.png" alt="La MOD GUI de Kars en un pedalboard"></p>
-<p>i la cadena amb l'instrument:</p>
-<p><img src="/technical-notes/from-a-plugin-file-to-a-page/chain-view-kars-zamcomp.png" alt="Una cadena amb Kars i un compressor"></p>
+<p>i les cadenes, amb l'instrument, l'equalitzador i el compressor:</p>
+<p><img src="/technical-notes/from-a-plugin-file-to-a-page/chain-view-mda-piano-eq8-comp.png" alt="Una cadena amb MDA Piano, omx eq8 i omx comp"></p>
 <p>Un aparell nou no repeteix l'etapa llarga. Un paquet porta els registres i les empremtes d'un conjunt de plugins conegut,
 indexats per resums, de manera que un aparell nou els aplica i només sondeja el que és diferent.</p>
 `},n={en:e,ca:t};export{t as ca,n as default,e as en};
