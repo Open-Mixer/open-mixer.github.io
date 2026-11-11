@@ -1,0 +1,23 @@
+omx-clap-host (0.31.2) unstable; urgency=medium
+
+  * tests: the LV2 adapter's restart bookkeeping against a cycle thread under
+    ThreadSanitizer
+  * Release 0.31.2
+  * contract: warmupBlocks documented, the instance table links on symbols
+    the tree defines
+  * scan: the published-omx-comp test expects omx-plugins 0.19.3's ratio unit
+    and the meter flags field
+  * scan: the meters and the parameter contract a plugin exports
+  * release: build the DEBs beside the RPMs (#6)
+  * scan: the published-omx-comp test holds the field dump too
+  * scan: a red test holds the meters and the parameter contract of the
+    published omx-comp by value
+  * scan: test-scan-asan, the scanner under AddressSanitizer
+  * scan: list_free on every exit of main, the LSan leak
+  * changelog: the scanner's leak line
+  * changelog: the state root and MAX_PLUGIN_INSTANCES lines
+  * host: enter the state root at start, 0700, dead instances pruned
+  * host: MAX_PLUGIN_INSTANCES read from the rendered contract header
+  * contract: declare the instance table's width in HOSTED_STAGE_LIMITS
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 11 Nov 2026 19:24:54 +0000
