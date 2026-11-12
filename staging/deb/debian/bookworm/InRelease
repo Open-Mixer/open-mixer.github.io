@@ -1,31 +1,31 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA512
 
-Architectures: amd64 arm64
+Architectures: all amd64 arm64
 Changelogs: https://www.openmixer.org/staging/deb/changelogs/@CHANGEPATH@_changelog
 Codename: bookworm
-Date: Thu, 12 Nov 2026 10:09:56 +0000
+Date: Thu, 12 Nov 2026 11:18:47 +0000
 Label: OpenMixer-Staging
 Origin: OpenMixer-Staging
 Suite: bookworm
 MD5Sum:
- d41d8cd98f00b204e9800998ecf8427e                0 Packages
- 4a4dd3598707603b3f76a2378a4504aa               20 Packages.gz
+ 97ea8895a1227dc99c989f2330c59a40             4641 Packages
+ 3d4c1afd9a95f7c87dec6c158f7e34be             1835 Packages.gz
 SHA1:
- da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
- a0fddd5458378c1bf3c10dd2f5c060d1347741ed               20 Packages.gz
+ 55b386a40b9ddb3d1f1585203157c796171f1738             4641 Packages
+ 12f63090efa2cde3e0b89016425c95b71983d949             1835 Packages.gz
 SHA256:
- e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
- f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec               20 Packages.gz
+ 4d10b55de7c9052fc35def459de7ee689cd3d6188faa634c6358c70a70e282c5             4641 Packages
+ fb8f4bf0428f9e553d9b84ab9ea0aed238d4fdbb5ab2b287380def3ed849a64b             1835 Packages.gz
 SHA512:
- cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
- 1b46b9b08d5b338be9d732a1724795b2eab63daffde377218727c90857b79fe6a47bceed495117fcde60f7339812ef75ef4c69f82dd79fb69b6cbf8006b521f2               20 Packages.gz
+ 4a6760083572454a64e9e993592b0c21d06079840f1bafb5fb1f16d087b1796d102142a9b537e57843f97284d12fab60111622af08e5127a19dba25c365ac1b7             4641 Packages
+ f9e518176b9b62eee6a8ab577f98f37277030da8fa3b841c8652b4d6425d2d6f97e0dd8da4f3b56fe6cc9f6d199169ff226bfa93719d29760b606c5c103ae836             1835 Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQRq8cYv9wvRDVyp3eWKJ2VTI7rdpgUCavWQdgAKCRCKJ2VTI7rd
-pjmmAQCOx2hJ837HgkFMzFufPqSMdMs6fX/R7Zrr7sp27m+9awEA0n8eoF6t7N2z
-kISQi1ZJUDL4TMnEVjV8YpaJ7PHOKgOIdQQBFgoAHRYhBLo/7q1TyELPeUummNWW
-Bqoh9NN7BQJq9ZB2AAoJENWWBqoh9NN7/SgBAJwcFzQ+Sc8yRiWQLzg3RxdefGT9
-6NU/66+9mHv0GIf2AP0RuEBSuCzJmtHIY2VxoahjoLeDzM+e0ANqIXl/dgxDBA==
-=uz/l
+iHUEARYKAB0WIQRq8cYv9wvRDVyp3eWKJ2VTI7rdpgUCavWgmAAKCRCKJ2VTI7rd
+psrtAP9dR3Xsh6Oa4+jGVjM6aj+Ne+MdH2mghDGw1MbO1fA+OwEA12A62dDTAke1
+Gilqr2uXGuzhfokXb6m4uuisKO1tGwGIdQQBFgoAHRYhBLo/7q1TyELPeUummNWW
+Bqoh9NN7BQJq9aCYAAoJENWWBqoh9NN7z2cA/2LpOq4s6z1pamGFgMMtem8ayLw8
+vZjcO/vUDOcsZzXIAQCGe+yZW3Gu71geQDZ5LKK3VMbtwZmgmnh2/tW2dtdQDg==
+=fbmb
 -----END PGP SIGNATURE-----
