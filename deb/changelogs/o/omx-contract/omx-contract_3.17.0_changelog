@@ -1,0 +1,43 @@
+omx-contract (3.17.0) unstable; urgency=medium
+
+  * release 3.17.0
+  * translate --source: an owner's source sentences from a file (#24)
+  * test: translate --source makes a surface's catalogs from a file of
+    sentences (#24)
+  * release 3.16.1
+  * translate: the installed CLI reads the language list where the data
+    package installs it (#21)
+  * test: the installed CLI finds the language list where the data package
+    installs it (#21)
+  * catalogs: es, fr, de, it, pt made and ca completed by translate (#21)
+  * translate: the keys the placeholder gate refuses are asked again in
+    halves (#21)
+  * translate: no credit spent unasked; an entry names the model group that
+    answered (#21)
+  * release 3.16.0: language packs, documented (#21)
+  * translate: the keys an answer leaves out are asked again; the release
+    builds the packs (#21)
+  * translate: an answer cut off is asked again in halves, and the request
+    leaves room for the answer (#21)
+  * packaging: one language pack per listed language, rpm and deb (#21)
+  * translate: a language's catalog made and kept by a model, behind the
+    placeholder gate (#21)
+  * catalog: an entry carries how it was made, and a stale one is skipped by
+    both readers (#21)
+  * test: language packs, red first (#21)
+  * packaging: TypeScript >= 4.8.4 and < 7, so Fedora 45 builds (#18)
+  * schema 3.15.0: the ca description moves the schema's own version, and
+    3.14.0 is frozen
+  * release 3.15.0
+  * catalog: the reader is TypeScript of its own, built with no implicit any
+    (#2)
+  * validate: a sentence carries en alone, and the catalog-migration warning
+    is gone (#2)
+  * docs: a sentence carries English alone; a ca is refused by its own rule
+    (#2)
+  * test: text.ca is refused, and the catalog reader is TypeScript of its own
+    (red) (#2)
+  * lib: the fourteen library modules are TypeScript, built into lib/ with
+    their declarations
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 15:15:22 +0000
