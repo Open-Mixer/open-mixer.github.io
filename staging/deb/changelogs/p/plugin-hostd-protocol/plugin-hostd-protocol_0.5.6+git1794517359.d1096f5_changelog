@@ -1,0 +1,35 @@
+plugin-hostd-protocol (0.5.6+git1794517359.d1096f5) unstable; urgency=medium
+
+  * protocol: PHD_EVENTS keeps its three arguments; the lines' arguments are
+    PHD_EVENT_ARGS
+  * tests: protocol.h's X-macro tables keep their consumers' arguments
+  * release: plugin-hostd-protocol 0.5.6 names the formats
+  * protocol: the table carries the formats a worker holds
+  * tests: the table carries the formats a worker holds
+  * release: plugin-hostd-protocol 0.5.6 names the table's constants
+  * protocol: the table written from the constants, pin and LV2 workers'
+    declaration
+  * protocol: the table carries the wire's constants, the pin's words and the
+    LV2 workers
+  * tests: the table carries the wire's constants, the pin's words and the
+    LV2 workers
+  * release: plugin-hostd-protocol 0.5.6
+  * protocol: the table, grammar and docs written from the feedback
+    arguments' declaration
+  * protocol: the arguments of plugin-hostd's feedback lines, by name and
+    type, and the forms of add and supervisor_reset (#17)
+  * tests: plugin-hostd's feedback lines decode against named, typed
+    arguments in the table (#17)
+  * catalogs: label-invalid in every language
+  * protocol: the tables, headers, grammar and docs written from node_label's
+    declaration
+  * protocol: node_label, a client's label on a hosted node's pretty-name
+    (plugin-hostd#35)
+  * catalogs: check-catalogs, the release gate over this tree's staged
+    contract (#15)
+  * packaging: one language pack per listed language, omx-contract >= 3.16.0
+    (#15)
+  * catalogs: es, fr, de, it and pt from the English source sentences (#15)
+  * catalogs: the Catalan entries are a person's, by: human (#15)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 21:02:39 +0000

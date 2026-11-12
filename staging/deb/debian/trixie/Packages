@@ -846,7 +846,7 @@ Description: plugin-hostd protocol, its verbs in omx-contract's contract directo
 
 Package: plugin-hostd-protocol-contract
 Architecture: all
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Multi-Arch: foreign
 Priority: optional
 Section: libs
@@ -855,12 +855,12 @@ Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 64
 Depends: omx-contract (>= 3.16.0~), omx-contract (<< 4~)
 Breaks: plugin-hostd-contract (<< 0.16.0~)
-Filename: ./all/plugin-hostd-protocol-contract_0.5.6+git1794515311.7fa0256_all.deb
-Size: 12340
-MD5sum: 27200b084055ea2045ca2f81ebde8f16
-SHA1: 7b1d5185d17b5e2e9b0df7e68fc52a56ea1d046d
-SHA256: dea3ae067c40457ab9adcb0bf3797bb67b233e5ec4608d17349d83f60e71b01e
-SHA512: c7501589287fc062b37a6ba0a87838050b6156be169bb2e7341baee59c36c1ea02886cf4ae639a2621742282631b60b82350a2c9451c8256ee9189aa971c998c
+Filename: ./all/plugin-hostd-protocol-contract_0.5.6+git1794517359.d1096f5_all.deb
+Size: 12428
+MD5sum: 13fc53e5c119241a003b18bb4ff2ee09
+SHA1: 2eedee2c0fd50b5bb0d2859cca0766b467f8e2ec
+SHA256: 0d72c56a5c04246aa49892589794584e96252a67c334e5c71c7aa6d5b8286fad
+SHA512: 094e2d625d602639532857bca98bbf8733feb6335c9c412ddd2d1435ea03e4f9e2307193c9250aeb86ad8e0101da7a3de37de88f7373a1219fa58e9b044c60b1
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: plugin-hostd protocol, its verbs in omx-contract's contract directory
  data/verbs.json of plugin-hostd-protocol, the verbs and reply codes
@@ -873,21 +873,21 @@ Description: plugin-hostd protocol, its verbs in omx-contract's contract directo
 
 Package: plugin-hostd-protocol-l10n-ca
 Architecture: all
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Priority: optional
 Section: localization
 Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 22
-Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794515311.7fa0256)
+Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794517359.d1096f5)
 Breaks: plugin-hostd-protocol-contract (<< 0.5.6~)
 Replaces: plugin-hostd-protocol-contract (<< 0.5.6~)
-Filename: ./all/plugin-hostd-protocol-l10n-ca_0.5.6+git1794515311.7fa0256_all.deb
-Size: 4984
-MD5sum: b54bb33eb9d19c1e3ea252e2d34f0d25
-SHA1: a2b07dd6bef6f48b55f0d2c4188b941718827626
-SHA256: 69c784c3badb21d8402f3fd871ff36e43eb4859ad2e341a7f2250bb4d5e77db7
-SHA512: 3ce4c3e12a88cf5e3c8952b6ed21bb2a0a9cca1d992e4837974a04abcc1ed9bb24a2ca8a8a0a4a891842c2e75668fd8c704c5f945f654571962fbbd50866ec71
+Filename: ./all/plugin-hostd-protocol-l10n-ca_0.5.6+git1794517359.d1096f5_all.deb
+Size: 5060
+MD5sum: 8152c3659709294aa295b60bcac076b8
+SHA1: dad0d009ba43d01c618ca899718947f153e6718b
+SHA256: 9d5eae966a2609edff31b8f475ea5a842d8e000bf9ba2d2431f6e64a8348169e
+SHA512: 7e7d40ed3474593024549ca1ba514210cc90ce16477fe0612896bb5d92cd38515aa0a4c81ab6845fce1445186a5cc73209d2f5cf5fe80ff141ee981f134b6bbc
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: ca catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language ca, read by
@@ -896,19 +896,19 @@ Description: ca catalog of plugin-hostd-protocol's codes
 
 Package: plugin-hostd-protocol-l10n-de
 Architecture: all
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Priority: optional
 Section: localization
 Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 26
-Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794515311.7fa0256)
-Filename: ./all/plugin-hostd-protocol-l10n-de_0.5.6+git1794515311.7fa0256_all.deb
-Size: 6848
-MD5sum: 0e5744f3ca1a627248f4471a2403a9a4
-SHA1: cfede8e4a3a22134a01e47125d7d5032bac10863
-SHA256: 9c2ca80df51f60ee9247467fb2ecb1eddfdcecdb5f5fb8b9f5ff856b88d461c1
-SHA512: 96fdd342f982ebbed280198cb960f85df441aa342e71a5fc3f4e316c0562f125c63e08f2484fea495d17ae9c9c4dab5e03c29c3563b04e9d81f6ea4ebd1ab9a9
+Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794517359.d1096f5)
+Filename: ./all/plugin-hostd-protocol-l10n-de_0.5.6+git1794517359.d1096f5_all.deb
+Size: 6920
+MD5sum: 98677daedd37adf9cf545a3c10129b62
+SHA1: f339d9b3191cf913fdfe964dcef02b3acd090016
+SHA256: a902c24d1834acbec9f75b6d721542192cb7ea7099f131b58abb2f1c3eb1f463
+SHA512: 508b9bf628000ff5ccf79f14218fe9210d1c6852c021c5d27404024af3a35729ef92598ece0faa6e53967bca9d87b667daca9ca7211dac192dd7413f122699bd
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: de catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language de, read by
@@ -917,19 +917,19 @@ Description: de catalog of plugin-hostd-protocol's codes
 
 Package: plugin-hostd-protocol-l10n-es
 Architecture: all
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Priority: optional
 Section: localization
 Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 25
-Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794515311.7fa0256)
-Filename: ./all/plugin-hostd-protocol-l10n-es_0.5.6+git1794515311.7fa0256_all.deb
-Size: 6616
-MD5sum: 9fe728efba54d8802e3e800b6d7bc281
-SHA1: fb12c05a5094fb2e93f18abf0d6786630f1025c4
-SHA256: 779c29a714a5c6fd5f3331d20c38ba2ba80ee5532a232111f140d50dc7e61628
-SHA512: 7211d4e938da302f48e0e8ed0161b78a3ea82ea4cc08f404a5392bc3603cf62dd7c2455cf029ee07e4beb5d443954a01f1c6ee71a86ac8c625e36ffedfc6a63b
+Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794517359.d1096f5)
+Filename: ./all/plugin-hostd-protocol-l10n-es_0.5.6+git1794517359.d1096f5_all.deb
+Size: 6692
+MD5sum: d7cbd9def67c6680678d00d067bc418d
+SHA1: 5377479b236503b3afa4f79d0db2a16ecf0a1946
+SHA256: 598927b49084379866d42cc109db49713152c31383e18feba7aaed415a29c06d
+SHA512: 9d0eff4653fc34d8d671a2669de05b4a7d012f4f8c20b554f85cc4a0f7cf2c88537fc4d4cfa56a7ac2a1f7af8fd52085f2d9aaa8e70267603b13f79ce2f5df52
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: es catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language es, read by
@@ -938,19 +938,19 @@ Description: es catalog of plugin-hostd-protocol's codes
 
 Package: plugin-hostd-protocol-l10n-fr
 Architecture: all
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Priority: optional
 Section: localization
 Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 26
-Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794515311.7fa0256)
-Filename: ./all/plugin-hostd-protocol-l10n-fr_0.5.6+git1794515311.7fa0256_all.deb
-Size: 6764
-MD5sum: 74196ad00af7c591fd0c20ac476eff8f
-SHA1: 514fe196749ece522035c5973f2efcfd4b8ff374
-SHA256: e4d112e8bd751ec7a13cbea2c77921cf930c0dc9369ab2437daab9bf1d97f661
-SHA512: 0acfda91207d5a03ea94c9206407ea944ecf577925a8fe12eab658203a85d56493bff49eecf8671b384a7f76d886cb9f8714b5e57d847dd84bb6df7c639bfade
+Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794517359.d1096f5)
+Filename: ./all/plugin-hostd-protocol-l10n-fr_0.5.6+git1794517359.d1096f5_all.deb
+Size: 6836
+MD5sum: bcc710ab42472f05a5e333bdc2adc6a4
+SHA1: 9ca287fd7faa1ac9091a50bf227bef0ebf6ce6f3
+SHA256: 1d45a6413394216375de80ac3512f4caedac9b0c7b561a3aabcb632ccd7a5417
+SHA512: 85e22cb078b1a2df2e1b44fc1f2b95eb6afbd7a0d4801d2055ee4e1948bba00f9a5244ba9b7778a05cf16a79fa4573591d307ba98ba1bfd7ce8fd5cac92dab52
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: fr catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language fr, read by
@@ -959,19 +959,19 @@ Description: fr catalog of plugin-hostd-protocol's codes
 
 Package: plugin-hostd-protocol-l10n-it
 Architecture: all
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Priority: optional
 Section: localization
 Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 26
-Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794515311.7fa0256)
-Filename: ./all/plugin-hostd-protocol-l10n-it_0.5.6+git1794515311.7fa0256_all.deb
-Size: 6648
-MD5sum: 6448353fd0935253b465872bbbbb3707
-SHA1: 69d696531382ea8424e45fead911438fb54ef12c
-SHA256: 2ba436f8446ea389b8a4a6edcbccebcbdf484ca8eee8abbe747c41565b041f46
-SHA512: 980057839de43ac43ab26502561c254361a60cfda31f7c9f4f5e6e9faa8c5384f22a4ae06b1a411cd3c4af756c2b18155deb1c9cf49b00a759aa70d41cddc0e1
+Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794517359.d1096f5)
+Filename: ./all/plugin-hostd-protocol-l10n-it_0.5.6+git1794517359.d1096f5_all.deb
+Size: 6716
+MD5sum: 7b8ee93da63b76585547e9c947fdb4aa
+SHA1: ed1b0928f233958cca5216fe3aad8eb5b2d3173f
+SHA256: 79939a1869f4d54059086eac2f4735965a1cfe50e103aff7a27761fca84fd680
+SHA512: dfae8cbe0b8d8f00a760000bdbabc07344108b0ebace7da34772c672ac31f6cc561d17af5dbbcd09d1a8c01655a079825fb121a047d90f4c9ed80e55c9786b1c
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: it catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language it, read by
@@ -980,19 +980,19 @@ Description: it catalog of plugin-hostd-protocol's codes
 
 Package: plugin-hostd-protocol-l10n-pt
 Architecture: all
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Priority: optional
 Section: localization
 Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 25
-Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794515311.7fa0256)
-Filename: ./all/plugin-hostd-protocol-l10n-pt_0.5.6+git1794515311.7fa0256_all.deb
-Size: 6588
-MD5sum: 8c1bf0a31e772fcbc7619e6891de2722
-SHA1: 9ac7cc55147c5079fba0ebf1cd6c9a342d73d89a
-SHA256: 093784898f15a6c7a8c6e9f30a5cabf4ac116c33409957f913ef7ee69b9c15b1
-SHA512: fdef32c2aff9a68dd707bf8a49a96118ebdb04641526be3e557c081788933b749f2c0fddeeb65090cb8866067056ce2cd96b179c4299f096e0cac6518e7eab18
+Depends: plugin-hostd-protocol-contract (= 0.5.6+git1794517359.d1096f5)
+Filename: ./all/plugin-hostd-protocol-l10n-pt_0.5.6+git1794517359.d1096f5_all.deb
+Size: 6668
+MD5sum: a51012a4ad7cabfa0b363311d2ebbc79
+SHA1: da1616d6c4725c147c1da1a50d0c5aba5da2c722
+SHA256: ad882ef58a803c15d6c0f41541a1fbc57b4f0f2dabf869da5eda94cb0c207b64
+SHA512: a7ca03cf02b2293302e37a7053098286fb2bc1071578e53c7a4ad811139376ef1bfa12eb7abd8da27e265f0831808d84dd701be6d265b5d719a38761e835277e
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: pt catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language pt, read by
@@ -1139,20 +1139,20 @@ Description: plugin-hostd protocol library, development files
 
 Package: libplugin-hostd-protocol-dev
 Architecture: amd64
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Multi-Arch: same
 Priority: optional
 Section: libdevel
 Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 415
-Depends: libplugin-hostd-protocol0 (= 0.5.6+git1794515311.7fa0256)
-Filename: ./amd64/libplugin-hostd-protocol-dev_0.5.6+git1794515311.7fa0256_amd64.deb
-Size: 76140
-MD5sum: 15894310ced0d7c61a8795103dec0360
-SHA1: a069d426128d4054bbce7f33122e91302f509dec
-SHA256: 6835dfef3317e5a5c683aee1d1afa1bf8dff80f58f7c098ea3fef68ce13ccb5e
-SHA512: 067ffea31c8a868cfe0630f456b173a7de886767d952dbd122008bdf9bb30616c55cbd9083cfd26a984e096471e27a510c5e23ed4c0ef3331f127159081e0618
+Installed-Size: 416
+Depends: libplugin-hostd-protocol0 (= 0.5.6+git1794517359.d1096f5)
+Filename: ./amd64/libplugin-hostd-protocol-dev_0.5.6+git1794517359.d1096f5_amd64.deb
+Size: 76384
+MD5sum: fabd4aac62390a0354d55fefd1fd62dc
+SHA1: 0d9a915ac88fb8f7e17ee2074022c5ec03805490
+SHA256: b82151853371b178980ed68147c39b4cfc2324a26915309d8cc34be9a628a569
+SHA512: 4a4218029399f6b1dc766191f07da87d795c9314ca4cd8575a5cabaf58ede7276d13507a9b801c4ca7f912bc8890f014a4bc29af742bbc9011de134c7caeaee4
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: plugin-hostd protocol library, development files
  Headers, the pkg-config file, the scenario corpus and its runner of
@@ -1216,7 +1216,7 @@ Description: plugin-hostd protocol library, a superset of mod-host's text protoc
 
 Package: libplugin-hostd-protocol0
 Architecture: amd64
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Multi-Arch: same
 Priority: optional
 Section: libs
@@ -1224,12 +1224,12 @@ Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 248
 Depends: libc6 (>= 2.38)
-Filename: ./amd64/libplugin-hostd-protocol0_0.5.6+git1794515311.7fa0256_amd64.deb
-Size: 56184
-MD5sum: 60ee5924d94428b773449c9c668b94be
-SHA1: 7541d581eb2d5245f3c40a1b779b673ce114a4aa
-SHA256: 0c912ae9b74a1f898957dfadfa2ad1eef1678f4a7f2337fb71c2d6b594fa4460
-SHA512: 64499126193d26f26093c69e10ca4ef177d9d566f6885c5ee3893df6996648045582ec99d0a0ce1d62a9f62460652776d81b081978cf3e9d4b3a384275e10875
+Filename: ./amd64/libplugin-hostd-protocol0_0.5.6+git1794517359.d1096f5_amd64.deb
+Size: 56392
+MD5sum: 45a55330597003b1277c8be138e3f7ad
+SHA1: 4ad3cfd1342297010c77ef4332a692dd8ff8f221
+SHA256: da61126c5c5784de2029fe94b18756b4d318fa06249468a8171153a9d6fc55ab
+SHA512: cb363f597e6ce2cafff86a0bd298042d2d04504195e6dba88da596b945bdcc917cdc847ce28cb762940180df88f8c3ea1b4624eacb9fcfe52fee0488740e62ae
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: plugin-hostd protocol library, a superset of mod-host's text protocol
  The socket server, line protocol and command dispatch that plugin-hostd and
@@ -1409,20 +1409,20 @@ Description: plugin-hostd protocol library, development files
 
 Package: libplugin-hostd-protocol-dev
 Architecture: arm64
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Multi-Arch: same
 Priority: optional
 Section: libdevel
 Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 415
-Depends: libplugin-hostd-protocol0 (= 0.5.6+git1794515311.7fa0256)
-Filename: ./arm64/libplugin-hostd-protocol-dev_0.5.6+git1794515311.7fa0256_arm64.deb
-Size: 76136
-MD5sum: cbb74c69dd93348171c6aa3c631ca6a8
-SHA1: 7838752960e54d0b2792c8fe17bab5964dbd476e
-SHA256: 906a7c76c59ca6e1f118268ade99ec5ff5c3d29047eacfda9106d76065115826
-SHA512: eeb842b332a5ab22c0464e2c548413604a70eec1db45711897e9e6abbda2b9d42139a96064c58cff32f0210a62bb6c73088455a1b6b89af390693c45c78923de
+Installed-Size: 416
+Depends: libplugin-hostd-protocol0 (= 0.5.6+git1794517359.d1096f5)
+Filename: ./arm64/libplugin-hostd-protocol-dev_0.5.6+git1794517359.d1096f5_arm64.deb
+Size: 76380
+MD5sum: dee46d276c56839afd8d4dfa1b273bfe
+SHA1: cb0426b2fce781bbc9a60129234ff8b42ade108a
+SHA256: c6e538a12ee9cec2fec7d332471fd1691e611fa0d814070a0f9a6936da0251a0
+SHA512: 7686f7079d7b83d07c6152c0cc7f9aa64ceedf6623f50967394d3e19a75f58be515db6cf3bbdfb85642f111c52e940f1aba2024aaa612cf734a7e718dfbf3f42
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: plugin-hostd protocol library, development files
  Headers, the pkg-config file, the scenario corpus and its runner of
@@ -1462,7 +1462,7 @@ Description: plugin-hostd protocol library, a superset of mod-host's text protoc
 
 Package: libplugin-hostd-protocol0
 Architecture: arm64
-Version: 0.5.6+git1794515311.7fa0256
+Version: 0.5.6+git1794517359.d1096f5
 Multi-Arch: same
 Priority: optional
 Section: libs
@@ -1470,12 +1470,12 @@ Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
 Installed-Size: 300
 Depends: libc6 (>= 2.38)
-Filename: ./arm64/libplugin-hostd-protocol0_0.5.6+git1794515311.7fa0256_arm64.deb
-Size: 54672
-MD5sum: 1030e0269fe33fc569732c65c72e051b
-SHA1: dd38fb459d2e0bf67917a58856a71f7e2dc89ca2
-SHA256: ffc5d907746d2ea98b2681c0e2f536bc0a9e6b8efb5c5737bb405b8359a93df0
-SHA512: 82d3d1bf60b048b4eff8bfc5ad68ff87a50f9557fa063eec9a0bf3083410a0d5df66cc0301e511d9f3571001c54b08e581d5d1e078a71e978679068b8cfdf243
+Filename: ./arm64/libplugin-hostd-protocol0_0.5.6+git1794517359.d1096f5_arm64.deb
+Size: 54792
+MD5sum: f51f16473c401b492cd66b252d49ff8c
+SHA1: 50a161a776ea125f4a8c5fef00ffbd95fe880160
+SHA256: 5155cd7c63def1cc1c2b76b2645c578724c5096baa844c180a537dec1bad8670
+SHA512: b8960068b4d1e1347abafd48310e2fa95cc888f046157629ba0a1cfe4a1d17cd4512932deafa5e8ae553968812116edc10798abebb51802692eeb4a664fcb4b4
 Homepage: https://github.com/FreeMixer/plugin-hostd-protocol
 Description: plugin-hostd protocol library, a superset of mod-host's text protocol
  The socket server, line protocol and command dispatch that plugin-hostd and
