@@ -1,0 +1,63 @@
+plugin-hostd (0.20.4) unstable; urgency=medium
+
+  * ci: the clients' test job installs the protocol's Catalan pack where one
+    carries the catalog
+  * tests: the generated pages and the owed verbs are this tree's protocol
+    floor's, whatever minor is installed
+  * tests: an LV2 instance refuses every instance verb the protocol adds,
+    without its worker hearing it
+  * packaging: plugin-db >= 0.4.0 and < 0.5
+  * release 0.20.4: the changelog names #37, #40 and #41
+  * ci: the Zynthian chain runs this run's plugin-hostd, built in the job,
+    beside omx-clap-host from staging
+  * tests: a job installs plugin-hostd from its own run's packages, never by
+    name from the channel
+  * release: 0.20.4
+  * ci: a pull request runs the plain tier and one package arm; sabotage,
+    bookworm and the dry run on push, tags and dispatch
+  * tests: a pull request runs the plain tier and one package arm (ci_guards
+    tier scan)
+  * clients: read the plan, plan_get and estimate replies (#39)
+  * clients/ts: a README, so the npm package page says what the client is and
+    reads
+  * publish: the npm step logs the token exchange, so a refused trusted
+    publisher names its reason
+  * clients/ts: the bin path as npm writes it, dist/cli.js (#29)
+  * packaging: omx-clap-host >= 0.32.0 < 0.33, the minor that names its nodes
+    (#33)
+  * packaging: omx-clap-host >= 0.31.3, which names its nodes, and
+    plugin-hostd-protocol >= 0.5.5 (#33)
+  * tests: the node test reads its keys and formats from the protocol's table
+    (#33)
+  * tests: a hosted node carries its plugin's name and instance in JACK
+    metadata (#33)
+  * protocol: plugin-hostd.pc requires plugin-hostd-protocol >= 0.5.4 (#29)
+  * tests: omx-clap-core-contract is declared three times,
+    python3-plugin-hostd-protocol's the third (#29)
+  * docs: the guide's codes are plugin-hostd-protocol 0.5.4's (#29)
+  * release: the TypeScript client is published to npm, the staged release
+    under the dist-tag staged (#29)
+  * clients: no line points into a private repository (#29)
+  * ci: the protocol clients agree, against the staging channel (#29)
+  * packaging: python3-plugin-hostd-protocol; plugin-hostd-protocol >= 0.5.4
+    (#29)
+  * clients: make install-python, the Python client with the paths of the
+    files it reads (#29)
+  * clients: the TypeScript client, @openmixer/plugin-hostd-client (#29)
+  * clients: the Python client splits at C's whitespace and reads one numeral
+    syntax (#29)
+  * clients: the Python client, plugin_hostd_protocol (#29)
+  * docs: the clients carry a request tag on a command (#29)
+  * tests: the protocol clients' fixtures, and both clients held to each
+    other, red (#29)
+  * docs: the protocol clients, Python and TypeScript, one codec over the
+    installed table (#29)
+  * release: a staged run publishes to the staging channel
+  * panel_wire: the installed delay's parameter contract and the compressor's
+    meters, in their descriptors' bag (#25)
+  * describe: the meter scope and the parameter contract of omx-clap-scan
+    0.31.2 go to the bag (#25)
+  * formats: the meter scope and the parameter contract fields of
+    omx-clap-scan 0.31.2 (#25)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 23:51:50 +0000
