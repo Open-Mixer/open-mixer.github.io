@@ -1,0 +1,26 @@
+omx-contract (3.14.0) unstable; urgency=medium
+
+  * release: the header says a staged run publishes to the staging channel
+  * release: a staged run passes staging-bootstrap, this is the first layer
+    of a wave
+  * descriptors: integrity, the version and the commit a descriptor was
+    generated from
+  * descriptor test: integrity names the version and the commit a descriptor
+    was generated from (red)
+  * package: applyOverride is exported at ./descriptor, with types
+  * install: the catalog reader is installed with the data
+  * release 3.14.0
+  * schema 3.14.0: the console codes move the schema's version, and 3.13.0 is
+    frozen
+  * schema: the codes kind accepts the console's codes as the console spells
+    them
+  * release: a manual run can stage fc44 x86_64 and trixie amd64 for the next
+    layer
+  * catalog: share/omx-contract/omx_contract_catalog.py, the Python reader a
+    Zynthian surface uses (omx-contract#2)
+  * measurement: MEASUREMENT_UNMEASURED_REASONS gains needs-content
+    (plugin-qualify#21, #23)
+  * words: every word in data/ carries its English source sentence, closing
+    omx-contract#2
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 09:39:00 +0000
