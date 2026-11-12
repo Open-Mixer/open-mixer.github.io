@@ -1,0 +1,43 @@
+plugin-qualify (0.20.3) unstable; urgency=medium
+
+  * descriptors test: the fixture bundles are 27 since the instrument
+    fixtures joined the eq10q ones
+  * commit-msg: the hook is the shared stub again, byte for byte
+  * tests: refusal-codes reads a placeholder name the type checker can prove
+    is a string (#27)
+  * scan: a toggle named bypass means bypass; a duplicate port symbol refuses
+    the plugin (#27)
+  * tests: EQ10Q-shaped fixtures for a bypass toggle and a duplicate port
+    symbol, red (#27)
+  * pool step test: the sweep over the two synth fixtures times one point of
+    the voice curve
+  * qualify: every process that loads a plugin starts with a HOME of the
+    run's own
+  * clap-qualify: the voice curve, timed with every parameter at its default
+  * lv2-measure: the voice curve is timed with every parameter at its default
+  * lv2-measure: an instrument's audio inputs carry silence in the cost pass
+  * lv2-measure: an instrument with an audio input is played, by its class
+    lv2:InstrumentPlugin
+  * docs: an LV2 instrument's probe count, its curve of notes, its settle and
+    its silence
+  * lv2-measure: an instrument that sounded and died away is timed; only one
+    that never sounded is silent
+  * qualify: an LV2 instrument is timed at the declared curve of notes, and
+    the record keeps it
+  * lv2-measure: an instrument is given time to build its sound, timed
+    sounding, and timed at each count of notes
+  * qualify: an LV2 instrument is played with the declared count of notes held
+  * qualify: the console is judged at 96000/256, and 96000/1024 stays a
+    measured cell (#19)
+  * Name Open-Mixer and OpenMixer, not FreeMixer, in the manual page, the
+    docs and the CLAP host
+  * tests: the sweep's sync runs take their directories from a plugin-hostd
+    --search-path stand-in
+  * Release 0.20.3
+  * packaging: the path unit's folders and the installed check from
+    plugin-hostd --search-path
+  * sync: the directories scanned are the ones plugin-hostd --search-path
+    prints
+  * packaging: the package metadata names the Open-Mixer repository
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 01:02:55 +0000
