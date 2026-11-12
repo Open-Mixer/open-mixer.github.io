@@ -1,0 +1,18 @@
+omx-contract (3.15.0+git1794483601.15b5e63) unstable; urgency=medium
+
+  * packaging: TypeScript >= 4.8.4 and < 7, so Fedora 45 builds (#18)
+  * schema 3.15.0: the ca description moves the schema's own version, and
+    3.14.0 is frozen
+  * release 3.15.0
+  * catalog: the reader is TypeScript of its own, built with no implicit any
+    (#2)
+  * validate: a sentence carries en alone, and the catalog-migration warning
+    is gone (#2)
+  * docs: a sentence carries English alone; a ca is refused by its own rule
+    (#2)
+  * test: text.ca is refused, and the catalog reader is TypeScript of its own
+    (red) (#2)
+  * lib: the fourteen library modules are TypeScript, built into lib/ with
+    their declarations
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 11:40:01 +0000
