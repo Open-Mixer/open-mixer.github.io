@@ -1,0 +1,70 @@
+omx-clap-host (0.32.0+git1794496447.3915151) unstable; urgency=medium
+
+  * packaging: a package build runs test-package, the plain tier; the
+    sanitizer tiers stay CI's (#32)
+  * tests: a package build's tests build no sanitizer (#32)
+  * Release 0.32.0
+  * effects: name each instance's client in JACK metadata, as the protocol
+    declares (plugin-hostd#33)
+  * tests: a hosted client carries the protocol's node metadata
+    (plugin-hostd#33)
+  * ts: the hosting module carries presetAppliedWaitUs (#24)
+  * ci: the meter reader's test and its sabotage run
+  * effects: the instance loops and checks compare unsigned with the unsigned
+    instance limits
+  * release: a staged run publishes to the staging channel
+  * host: a preset load answers once the plugin has applied it, or
+    PRESET_NOT_APPLIED (#24)
+  * packaging: plugin-hostd-protocol >= 0.5.4; CI builds against the staging
+    channel
+  * contract: presetAppliedWaitUs, the wait for a loaded preset to be applied
+    (#24)
+  * tests: a preset a plugin applies in process() is applied when preset_load
+    answers (#24)
+  * effects: a preset and pin_layout name the layout the instance had after
+    init (plugin-hostd#27)
+  * tests: a preset the instance saved loads back after the plugin renamed a
+    parameter (plugin-hostd#27)
+  * Makefile: the scan sanitizer test finds plugin-hostd-protocol's header
+    and library
+  * lv2_clap_test: a registry that does not answer the space leaves no
+    property (omx-clap-core#15)
+  * lv2 adapter: org.openmixer.properties/1 answered, read only
+    (omx-clap-core#15)
+  * remove the lane notes file: this repository has no reader for it (#16)
+  * lane: salvage none for the lv2 uri decode fix (#16)
+  * lv2 uri: a bundle directory with a space, and a preset's file URI,
+    decoded by phd_pin_path_decode (#16)
+  * changelog: a bundle directory with a space, the preset URI decoded by
+    phd_pin_path_decode (#16)
+  * release: a manual staged run hands this layer's packages to the next
+    without the channel
+  * lv2_clap_test: red, org.openmixer.properties/1 is not offered yet
+    (omx-clap-core#15)
+  * declare the org.openmixer.properties/1 extension (omx-clap-core#15)
+  * lv2/tests/fixtures: a bundle directory with a space, red for
+    scan-fields-check (#16)
+  * docs: a bypassed LV2 plugin is the input delayed by its published latency
+  * host: the blocks a plugin sleeps through reach the bypass dry delay as
+    silence
+  * identity test: the lv2 arm's bypass is the input delayed by the published
+    latency
+  * ci: the docs job installs its tools in a container
+  * changelog: the bypass dry-path delay, the instance ABI 21
+  * lv2 test: steady bypass is the input delayed by the published latency
+  * clap_stage: the two-leg body fades with the delayed dry, taken from the
+    lane
+  * LV2 adapter test: the fixture bundle lists 20 plugins
+  * clap_stage: the bypass delay's ring is fed by every processed block
+  * lv2: t_entry counts the fixture bundle's plugins off its manifest
+  * clap_stage: the bypass delay at the instance's tail, allocated outside
+    the RT header
+  * drop the lane's salvage notes and its push-failure log entry
+  * gitignore the post-commit hook's failure log; salvage notes for #1
+  * clap_stage: bypass dry path delayed by the published latency (#1)
+  * lv2: port-shape arms for CV, side chain and atom
+  * lv2: activate/run race test under the thread sanitizer
+  * lv2: activate is serialised against the first run
+  * lv2: read_ports classifies every port by its own type
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 15:14:07 +0000
