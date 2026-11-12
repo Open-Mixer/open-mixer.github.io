@@ -1,0 +1,40 @@
+plugin-hostd (0.20.3) unstable; urgency=medium
+
+  * release: a manual staged run hands this layer's packages to the next
+    without the channel
+  * image-build: take the Open-Mixer Zynthian forks, branch openmixer
+  * fuzz: key every mutant/input record from one place, src/fuzz_records.h
+  * doc: document the fuzz record indirection through src/fuzz_records.h
+  * release: 0.20.3
+  * describe: a CLAP control's meaning from its declared panel's role,
+    through the contract directory's role tables
+  * formats: a declared panel's role is the one panel field that is a word
+  * describe: CLAP meters become meters[], a parameter's contract its symbol,
+    unit, scale and step
+  * formats: the LV2 table reads urn:openmixer:unit#ratio as ratio
+  * transforms: output-symbol, a CLAP meter's name made the symbol a host
+    reads it by
+  * describe: the omx-comp test holds CLAP meters to the descriptor's meters[]
+  * main: --search-path, the LV2 and CLAP lists the daemon searches and their
+    sources
+  * docs: plugin-hostd --search-path prints the directories the daemon
+    searches
+  * pins: first use learns a binary linked out of a bundle in the search path
+  * docs: first use judges a plugin's path as listed and hashes the file it
+    resolves to
+  * describe: the omx-comp fixture is omx-clap-scan's own dump
+  * tests: fake-host writes a standard LV2 pset bundle on preset_save
+  * supervisor: preset_show <uri> is answered by the LV2 world, not mod-host
+    alone
+  * bench: teardown removes its /tmp/omx-bench-* work dir also when --logs
+    keeps the logs elsewhere
+  * formats: a CLAP worker's CLAP_PATH carries its own preset search
+  * docs/presets: LV2 user presets are pset bundles, our format is CLAP only
+  * lv2: a manifest's leading UTF-8 BOM no longer swallows its first @prefix
+    (#4)
+  * describe: a red test holds a CLAP omx-comp's meters and units to its LV2
+    twin
+  * ci: packaging runs on v* tags and workflow_dispatch only
+  * bench: an unreadable capture fails its row, not the pass
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 02:18:02 +0000
