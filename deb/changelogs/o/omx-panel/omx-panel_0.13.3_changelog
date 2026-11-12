@@ -1,0 +1,20 @@
+omx-panel (0.13.3) unstable; urgency=medium
+
+  * ci: plugin-hostd 0.20.3's staged contract until the channel serves it
+  * describe: a control meaning bypass is left to the header
+    (plugin-qualify#27)
+  * tests: a control meaning bypass is left to the header, red
+    (plugin-qualify#27)
+  * release: the notes reach back to the previous v<version> tag, never a
+    staged-v one
+  * release: a manual staged run hands this layer's packages to the next
+    without the channel
+  * modgui: a layout that cannot be read fails, it is not a plugin without
+    meters
+  * Release 0.13.2
+  * meters: a declared level meter is the curve's operating point without a
+    measurement
+  * vocabulary: a role's meaning is the roleMeanings the installed packages
+    declare
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 05:56:21 +0000

@@ -646,6 +646,35 @@ Description: panels for LV2 and CLAP plugins, generated from what each plugin de
  .
  Its documentation is on openmixer.org.
 
+Package: omx-panel
+Architecture: all
+Version: 0.13.3
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2582
+Depends: nodejs (>= 18), omx-contract-data (>= 3.13.0~), omx-contract-data (<< 4~), plugin-hostd-contract (>= 0.20.3~), plugin-hostd-contract (<< 0.21~)
+Recommends: plugin-hostd (>= 0.20.3~), plugin-hostd (<< 0.21~), omx-plugins-contract (>= 0.19.3~), omx-plugins-contract (<< 0.20~)
+Suggests: python3-lilv
+Filename: ./all/omx-panel_0.13.3_all.deb
+Size: 481804
+MD5sum: 9e4bacfeb9f12b3ebc5f0252b1745a40
+SHA1: a152c4209c4f2cdb4766073b3e8d2f7fff50376b
+SHA256: 14057d474e7275ea40a9375f2dd4a554829e0a6d7759bf5516e53c1349037abe
+SHA512: 34eb416ca98d98079b6b6c5f5e162284e344096b38638fafe072adc959e201b78c97fb74ef5cdb4cc1062798c015f7dd6052185f0806414f64a96e684d74fb8c
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: panels for LV2 and CLAP plugins, generated from what each plugin declares
+ omx-panel makes panels for LV2 and CLAP plugins from what each plugin
+ declares. It lays a panel out from a plugin's descriptor (sections, controls,
+ roles, the pages of eight a controller shows), writes a MOD GUI for MOD and
+ Zynthian in the omx look, imports a plugin's own MOD GUI into a skin package,
+ and carries the skin package schema, its validator and the directory skin
+ packages are installed into. The omx-panel command runs each; the tools are
+ under /usr/share/omx-panel for a build that calls them.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-plugins-contract
 Architecture: all
 Version: 0.19.1
@@ -1794,6 +1823,27 @@ Description: omx-panel renderer, development files
  The header omx_panel_render.h, the libomx-panel-render.so link and the
  omx-panel-render pkg-config file, to build against the omx-panel renderer.
 
+Package: libomx-panel-render-dev
+Architecture: amd64
+Version: 0.13.3
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 32
+Depends: libomx-panel-render0 (= 0.13.3), libcjson-dev
+Filename: ./amd64/libomx-panel-render-dev_0.13.3_amd64.deb
+Size: 8204
+MD5sum: 413f60f910b5be5b4d14a15e2a6ad059
+SHA1: e8c81aea3cc9fad24ccc55ef4eae160d35b933b3
+SHA256: a5416671534fa088932fff4bca47d99f376691042ade0853791ba5c8a00462bc
+SHA512: 1d06577240fa98ec35e02f3cce2156e67a7b8e70b70e7e1f9eef2bc8f9b69f365be4f0ae1c4a64231930e905544f9a9750e7ed9973b7cbf52562eb909b621450
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, development files
+ The header omx_panel_render.h, the libomx-panel-render.so link and the
+ omx-panel-render pkg-config file, to build against the omx-panel renderer.
+
 Package: libomx-panel-render0
 Architecture: amd64
 Version: 0.13.0
@@ -1856,6 +1906,29 @@ MD5sum: 3aa98271f8cde8e3adc90de0db544b97
 SHA1: 36a5cd820173c389dbcb6cbd065522510ef161b4
 SHA256: 940d8661d6e00b92144c1bb4eeb9c7ad35574071366e713c21e2bcc7c4b5faad
 SHA512: a0e0c404e0aff35d92940a65979b61993a7eb5499955bf9fabd4e14fe8bafeae3c5f4056072054c1e2bc836ebae92cfcdecfedfec5828d0d2ce7fca6a25fee01
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, a library that draws a panel into a pixel buffer
+ libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
+ pixel buffer and answers input with the one gesture vocabulary. A surface
+ loads it at run time (Zynthian's panel view); its look, geometry and fonts
+ are omx-panel's.
+
+Package: libomx-panel-render0
+Architecture: amd64
+Version: 0.13.3
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 90
+Depends: libc6 (>= 2.35), libcjson1 (>= 1.7.5), omx-panel (= 0.13.3)
+Filename: ./amd64/libomx-panel-render0_0.13.3_amd64.deb
+Size: 36904
+MD5sum: 8b13a3f963160f9c88a9f97e039390bd
+SHA1: af650b911aa6bb1547f411cca0477008061367e6
+SHA256: d32653205ca7a0766e5d158b69b3a844b2b78bf71bbd3b1e9bb0a6546a5af782
+SHA512: 06b98d0cb1aeb16e04eaadd209ca2e870d502ddef763df1f14cf1c31efa56279dc9106292bb21d12cbe427adb5fab48532549c05341694a9c1bd8f2003470372
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: omx-panel renderer, a library that draws a panel into a pixel buffer
  libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
@@ -4325,6 +4398,27 @@ Description: omx-panel renderer, development files
  The header omx_panel_render.h, the libomx-panel-render.so link and the
  omx-panel-render pkg-config file, to build against the omx-panel renderer.
 
+Package: libomx-panel-render-dev
+Architecture: arm64
+Version: 0.13.3
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 32
+Depends: libomx-panel-render0 (= 0.13.3), libcjson-dev
+Filename: ./arm64/libomx-panel-render-dev_0.13.3_arm64.deb
+Size: 8200
+MD5sum: 9165318a20fff73ceb892318983c5992
+SHA1: 914516bd80ff3efc62345a06396e280bef52ee66
+SHA256: bc446cb8a7fa40fbaa4fb0f8f1514395799c19a39c08c5721f6a1a9642112438
+SHA512: 0ab71481b30dde0daf44829fd0ede94f26a7522c1c441a11db02551c50e87a37d4174a3483abaad3b06de55fffdd4a9fe8747c89422520935beecc808b62fb9d
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, development files
+ The header omx_panel_render.h, the libomx-panel-render.so link and the
+ omx-panel-render pkg-config file, to build against the omx-panel renderer.
+
 Package: libomx-panel-render0
 Architecture: arm64
 Version: 0.13.0
@@ -4387,6 +4481,29 @@ MD5sum: 533c413cd9fe85758cd11e432c290b91
 SHA1: 39a554217acf92c6c53fa68c001adb8e52ea4e85
 SHA256: ff6bced09548575695a3983141c0cb7b35f3f8b2cbaea7ee38632fb3023013d2
 SHA512: f45f0a1b1a920fadc67116ef62e4cc4d42bb6b35f7069822c9b698fc3285d2178a2765333e23a68c6dc3361b6a3777b80f0d8fa1962baa23d7951b1b0228a9fc
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, a library that draws a panel into a pixel buffer
+ libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
+ pixel buffer and answers input with the one gesture vocabulary. A surface
+ loads it at run time (Zynthian's panel view); its look, geometry and fonts
+ are omx-panel's.
+
+Package: libomx-panel-render0
+Architecture: arm64
+Version: 0.13.3
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 143
+Depends: libc6 (>= 2.35), libcjson1 (>= 1.7.5), omx-panel (= 0.13.3)
+Filename: ./arm64/libomx-panel-render0_0.13.3_arm64.deb
+Size: 33628
+MD5sum: 5a7f003c36b8f2daea3bd3d55e365549
+SHA1: 90f87680d4f6ae46081e8c042f30853266b8881b
+SHA256: 9da98acfdc3780254d7b040199586e817354422c26eff65114d95671dd4b3232
+SHA512: 57986e693854ef1f42a44e4aa1d45faf4f4ac3ab7e2fd3a1ec3cfb60cc448cb03f94cc73829069d14917d81cd2b7fd135c1955cc9482fd7e0055a841ea3f1419
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: omx-panel renderer, a library that draws a panel into a pixel buffer
  libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
