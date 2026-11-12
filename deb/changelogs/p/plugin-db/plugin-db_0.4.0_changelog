@@ -1,0 +1,21 @@
+plugin-db (0.4.0) unstable; urgency=medium
+
+  * ci: the build job reads the real channel, where omx-contract 3.17.0 is
+    served
+  * Release 0.4.0
+  * packaging: omx-contract's floor is its current release, 3.17.0
+  * ci: the build and test jobs install omx-contract-data, whose reader
+    text() reads the catalogs through
+  * packaging: one language pack per listed language, omx-contract >= 3.16.0
+  * catalogs: es, fr, de, it and pt from the English source sentences
+  * catalogs: the Catalan entries are a person's, by: human; text() reads
+    them through omx-contract's reader
+  * 0.3.2: the version the Python reader's package first carries
+  * packaging: python3-plugin-db, noarch
+  * python: a reader of the records and the verdict, from the same vocabulary
+  * docs: the Python reader of the records and its verdict query
+  * release: a staged run publishes to the staging channel
+  * release: build the DEBs beside the RPMs (#2)
+  * ci: cancel a pull request's stale runs
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 20:33:25 +0000
