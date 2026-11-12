@@ -1,0 +1,17 @@
+plugin-hostd-protocol (0.5.5+gitcee6be8) unstable; urgency=medium
+
+  * release: plugin-hostd-protocol 0.5.5
+  * protocol: node_metadata, the JACK metadata on a hosted node's client
+    (plugin-hostd#33)
+  * schema: the table declares the JACK metadata of a hosted node
+    (plugin-hostd#33)
+  * version-check: a staged build's +git<sha> stamp is not compared
+  * release: plugin-hostd-protocol 0.5.4
+  * release: a dispatched run with staged on publishes to the staging channel
+  * protocol: PRESET_NOT_APPLIED, a preset the plugin took and had not
+    applied when the wait ran out
+  * include: plugin_db_vocabulary.h rendered again from plugin-db 0.3.1
+  * release: build the DEBs beside the RPMs
+  * ci: cancel a pull request's stale runs
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 11:18:17 +0000
