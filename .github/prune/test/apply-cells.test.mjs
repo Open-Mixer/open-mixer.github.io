@@ -34,6 +34,8 @@ function actions() {
 
 // ------------------------------------------------------------------ reading the workflow
 
+// one shell word of a run: block, quoted (a ${{ }} expression holds spaces) or bare
+const ARG = String.raw`("[^"]*"|'[^']*'|\S+)`;
 const unq = (s) => s.trim().replace(/^'(.*)'$/, '$1').replace(/^"(.*)"$/, '$1');
 
 function jobsOf(text) {
@@ -101,7 +103,7 @@ function appliedCells(text, wave) {
   const cells = [];
   const problems = [];
   for (const [name, job] of jobs) {
-    for (const m of job.matchAll(/expect\.mjs[^\n]*--format\s+(\S+)\s+--repo\s+(\S+)\s+--arch\s+(\S+)/g)) {
+    for (const m of job.matchAll(new RegExp(`expect\\.mjs[^\\n]*--format\\s+${ARG}\\s+--repo\\s+${ARG}\\s+--arch\\s+${ARG}`, 'g'))) {
       const [format, repo, arch] = [unq(m[1]), unq(m[2]), unq(m[3])];
       if (!/\$/.test(repo + arch)) { cells.push({ job: name, format, cell: `${repo} ${arch}` }); continue; }
       const src = job.match(/cell:\s*\$\{\{\s*fromJSON\(needs\.([\w-]+)\.outputs\.([\w-]+)\)\s*\}\}/);
@@ -266,7 +268,7 @@ test('no hardcoded cells: prune.yml writes no cell list of its own', () => {
 
 test('no hardcoded cells: a literal cell put back is red, and so is a stale allowance', () => {
   const src = text();
-  const sab = src.replace(/--format deb --repo \S+ --arch \S+/, '--format deb --repo debian/trixie --arch arm64');
+  const sab = src.replace(new RegExp(`--format deb --repo ${ARG} --arch ${ARG}`), '--format deb --repo debian/trixie --arch arm64');
   assert.notEqual(sab, src, 'no deb expect.mjs call to sabotage');
   assert.ok(literalCells(sab).some((e) => /'trixie'|'arm64'/.test(e)));
   assert.ok(literalCells(src.replace(/description: 'Drop mode:/, "description: 'Drop:")).some((e) => /stale entry|is a cell/.test(e)));

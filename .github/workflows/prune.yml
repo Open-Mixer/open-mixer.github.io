@@ -24,8 +24,11 @@ name: Prune the package repository
 # apply=true deletes the plan's files from rpm/ and deb/, regenerates and re-signs the dnf metadata and the
 # apt index with the release workflows' own scripts (Open-Mixer/.github publish-rpms and publish-debs), pushes ONE
 # signed commit (the rpm job hands its result to the deb job, which pushes both: one Pages deployment),
-# and then checks that every kept version installs (dnf in fedora:44, apt in debian:bookworm) and that the
-# newest of each is what resolves.
+# and then checks that every kept version installs and that the newest of each is what resolves, in every cell of
+# the shared matrix: the check-matrix action of Open-Mixer/.github renders the cells (quick.txt there, the one list:
+# the quick set while OMX_RELEASE_MATRIX is quick, the whole matrix declared in the plan job otherwise), dnf and apt
+# run in each cell's own image, an arm cell on an arm runner. The workflow writes no cell of its own
+# (.github/prune/test/apply-cells.test.mjs).
 # The apply works on the commit the plan was made from or not at all: a publish that lands on main between the
 # plan and the push stops it with nothing pushed (.github/prune/unmoved.sh, checked after each pull, before the
 # metadata is regenerated and before the push), and the prune is run again.
@@ -68,13 +71,36 @@ jobs:
     timeout-minutes: 15
     outputs:
       sha: ${{ steps.plan.outputs.sha }}
+      rpm: ${{ steps.cells.outputs.rpm }}
+      rpm-count: ${{ steps.cells.outputs.rpm-count }}
+      deb: ${{ steps.cells.outputs.deb }}
+      deb-count: ${{ steps.cells.outputs.deb-count }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # the matrix the apply checks render their cells from, read by the tests too (apply-cells.test.mjs)
+      - uses: actions/checkout@v4
+        with:
+          repository: Open-Mixer/.github
+          ref: openmixer-v1
+          path: .omx
+          sparse-checkout: .github/actions
       - name: The selection is tested
+        env:
+          OMX_ACTIONS: .omx/.github/actions
         run: node --test .github/prune/test/*.test.mjs
+      # the cells the apply checks run (Open-Mixer/.github#63): the whole matrix is declared here once, and
+      # OMX_RELEASE_MATRIX says whether the quick set alone or all of it is checked
+      - id: cells
+        uses: Open-Mixer/.github/.github/actions/check-matrix@openmixer-v1
+        with:
+          wave: ${{ vars.OMX_RELEASE_MATRIX }}
+          rpm-releases: '["44", "45"]'
+          rpm-arches: '["x86_64", "aarch64"]'
+          deb-releases: '["bookworm", "trixie"]'
+          deb-arches: '["amd64", "arm64"]'
       - name: What openmixer pins
         env:
           TOKEN: ${{ secrets.OPENMIXER_READ_TOKEN }}
@@ -382,15 +408,21 @@ jobs:
           what: deb
 
   verify-dnf:
-    name: Kept RPMs install (fedora:44)
+    name: Kept RPMs install (fc${{ matrix.cell.fedora }} ${{ matrix.cell.arch }})
     needs: [plan, deb]
-    if: inputs.apply && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    if: inputs.apply && github.ref == 'refs/heads/main' && needs.plan.outputs.rpm-count != '0'
+    runs-on: ${{ matrix.cell.arch == 'aarch64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
     timeout-minutes: 60
     container:
-      image: fedora:44
+      image: ${{ matrix.cell.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ${{ fromJSON(needs.plan.outputs.rpm) }}
     env:
       DROP: ${{ inputs.drop }}
+      FEDORA: ${{ matrix.cell.fedora }}
+      ARCH: ${{ matrix.cell.arch }}
     steps:
       - run: dnf install -y --setopt=install_weak_deps=False git curl findutils diffutils
       - uses: actions/setup-node@v4
@@ -402,8 +434,8 @@ jobs:
           sparse-checkout: |
             keep.yml
             .github/prune
-            rpm/fedora/44/x86_64/repodata/repomd.xml
-            rpm/fedora/44/noarch/repodata/repomd.xml
+            rpm/fedora/${{ matrix.cell.fedora }}/${{ matrix.cell.arch }}/repodata/repomd.xml
+            rpm/fedora/${{ matrix.cell.fedora }}/noarch/repodata/repomd.xml
           sparse-checkout-cone-mode: false
       - uses: actions/download-artifact@v4
         with:
@@ -412,8 +444,8 @@ jobs:
       - name: Wait for Pages to serve the pruned metadata
         run: |
           # ends on the repomd revision the prune published; a slow publish is waited for, to the deadline
-          for d in x86_64 noarch; do
-            node .github/prune/await.mjs "https://www.openmixer.org/rpm/fedora/44/$d/repodata/repomd.xml" "rpm/fedora/44/$d/repodata/repomd.xml" 3000 10 || exit 1
+          for d in "$ARCH" noarch; do
+            node .github/prune/await.mjs "https://www.openmixer.org/rpm/fedora/$FEDORA/$d/repodata/repomd.xml" "rpm/fedora/$FEDORA/$d/repodata/repomd.xml" 3000 10 || exit 1
           done
       - name: Every kept version installs, and the newest resolves
         run: |
@@ -422,7 +454,7 @@ jobs:
           # installed: removing it in the loop below would take the repository away from every later package.
           dnf -y install https://www.openmixer.org/rpm/openmixer-release.noarch.rpm >/dev/null
           dnf -y makecache
-          node .github/prune/expect.mjs --plan plan/plan.json --format rpm --repo fedora/44 --arch x86_64 > expect.txt
+          node .github/prune/expect.mjs --plan plan/plan.json --format rpm --repo "fedora/${{ matrix.cell.fedora }}" --arch "${{ matrix.cell.arch }}" > expect.txt
           # drop mode removed named versions only: the other builds were not touched, so the check is the newest
           if [ -n "$DROP" ]; then grep '^newest' expect.txt > expect.newest && mv expect.newest expect.txt; fi
           fail=0
@@ -439,18 +471,23 @@ jobs:
           exit $fail
 
   verify-apt:
-    name: Kept DEBs install (debian:bookworm)
+    name: Kept DEBs install (${{ matrix.cell.suite }} ${{ matrix.cell.arch }})
     needs: [plan, deb]
-    if: inputs.apply && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    if: inputs.apply && github.ref == 'refs/heads/main' && needs.plan.outputs.deb-count != '0'
+    runs-on: ${{ matrix.cell.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
     timeout-minutes: 60
     container:
-      image: debian:bookworm
+      image: ${{ matrix.cell.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ${{ fromJSON(needs.plan.outputs.deb) }}
     defaults:
       run:
         shell: bash
     env:
       DROP: ${{ inputs.drop }}
+      SUITE: ${{ matrix.cell.suite }}
     steps:
       - run: apt-get update -qq && apt-get install -y --no-install-recommends git curl ca-certificates
       - uses: actions/setup-node@v4
@@ -462,7 +499,7 @@ jobs:
           sparse-checkout: |
             keep.yml
             .github/prune
-            deb/debian/bookworm/InRelease
+            deb/debian/${{ matrix.cell.suite }}/InRelease
           sparse-checkout-cone-mode: false
       - uses: actions/download-artifact@v4
         with:
@@ -471,10 +508,10 @@ jobs:
       - name: Wait for Pages to serve the pruned index
         run: |
           for _ in $(seq 60); do
-            curl -fsSL https://www.openmixer.org/deb/debian/bookworm/InRelease | cmp -s - deb/debian/bookworm/InRelease && exit 0
+            curl -fsSL "https://www.openmixer.org/deb/debian/$SUITE/InRelease" | cmp -s - "deb/debian/$SUITE/InRelease" && exit 0
             sleep 10
           done
-          echo "::error::Pages still serves the old bookworm index"; exit 1
+          echo "::error::Pages still serves the old $SUITE index"; exit 1
       - name: Every kept version installs, and the newest resolves
         run: |
           set -uo pipefail
@@ -484,7 +521,7 @@ jobs:
           curl -fsSL -o /tmp/openmixer-release.deb https://www.openmixer.org/deb/openmixer-release.deb
           apt-get install -y -qq /tmp/openmixer-release.deb >/dev/null
           apt-get update -qq
-          node .github/prune/expect.mjs --plan plan/plan.json --format deb --repo debian/bookworm --arch amd64 > expect.txt
+          node .github/prune/expect.mjs --plan plan/plan.json --format deb --repo "debian/${{ matrix.cell.suite }}" --arch "${{ matrix.cell.arch }}" > expect.txt
           # drop mode removed named versions only: the other builds were not touched, so the check is the newest
           if [ -n "$DROP" ]; then grep '^newest' expect.txt > expect.newest && mv expect.newest expect.txt; fi
           fail=0
