@@ -156,6 +156,13 @@ plugin-hostd-tests	0.20.4	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-hostd-tests	0.20.5	quick	fc44/x86_64 fc45/x86_64
 plugin-qualification-records	2026111001	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-qualify	0.20.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-qualify	0.20.4	quick	fc44/x86_64 fc45/x86_64
+plugin-qualify-langpack-ca	0.20.4	quick	fc44/noarch fc45/noarch
+plugin-qualify-langpack-de	0.20.4	quick	fc44/noarch fc45/noarch
+plugin-qualify-langpack-es	0.20.4	quick	fc44/noarch fc45/noarch
+plugin-qualify-langpack-fr	0.20.4	quick	fc44/noarch fc45/noarch
+plugin-qualify-langpack-it	0.20.4	quick	fc44/noarch fc45/noarch
+plugin-qualify-langpack-pt	0.20.4	quick	fc44/noarch fc45/noarch
 python3-plugin-db	0.4.0	-	fc44/noarch fc45/noarch
 python3-plugin-db	0.4.1	-	fc44/noarch fc45/noarch
 python3-plugin-hostd-protocol	0.20.4	-	fc44/noarch fc45/noarch
