@@ -110,33 +110,38 @@ omx-rt-gate	0.32.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 openmixer-release	1	-	fc44/noarch
 plugin-db	0.4.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-db	0.4.1	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-db	0.4.2	quick	fc44/x86_64 fc45/x86_64
 plugin-db-contract	0.4.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-db-contract	0.4.1	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-db-contract	0.4.2	quick	fc44/x86_64 fc45/x86_64
 plugin-db-devel	0.3.1	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-db-devel	0.4.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-db-devel	0.4.1	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-db-devel	0.4.2	quick	fc44/x86_64 fc45/x86_64
 plugin-db-langpack-ca	0.4.0	-	fc44/noarch fc45/noarch
 plugin-db-langpack-ca	0.4.1	-	fc44/noarch fc45/noarch
+plugin-db-langpack-ca	0.4.2	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-de	0.4.0	-	fc44/noarch fc45/noarch
 plugin-db-langpack-de	0.4.1	-	fc44/noarch fc45/noarch
+plugin-db-langpack-de	0.4.2	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-es	0.4.0	-	fc44/noarch fc45/noarch
 plugin-db-langpack-es	0.4.1	-	fc44/noarch fc45/noarch
+plugin-db-langpack-es	0.4.2	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-fr	0.4.0	-	fc44/noarch fc45/noarch
 plugin-db-langpack-fr	0.4.1	-	fc44/noarch fc45/noarch
+plugin-db-langpack-fr	0.4.2	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-it	0.4.0	-	fc44/noarch fc45/noarch
 plugin-db-langpack-it	0.4.1	-	fc44/noarch fc45/noarch
+plugin-db-langpack-it	0.4.2	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-pt	0.4.0	-	fc44/noarch fc45/noarch
 plugin-db-langpack-pt	0.4.1	-	fc44/noarch fc45/noarch
-plugin-hostd	0.20.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-db-langpack-pt	0.4.2	quick	fc44/noarch fc45/noarch
 plugin-hostd	0.20.4	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-hostd	0.20.5	quick	fc44/x86_64 fc45/x86_64
-plugin-hostd-contract	0.20.3	-	fc44/noarch fc45/noarch
 plugin-hostd-contract	0.20.4	-	fc44/noarch fc45/noarch
 plugin-hostd-contract	0.20.5	quick	fc44/noarch fc45/noarch
-plugin-hostd-devel	0.20.3	-	fc44/noarch fc45/noarch
 plugin-hostd-devel	0.20.4	-	fc44/noarch fc45/noarch
 plugin-hostd-devel	0.20.5	quick	fc44/noarch fc45/noarch
-plugin-hostd-full	0.20.3	-	fc44/noarch fc45/noarch
 plugin-hostd-full	0.20.4	-	fc44/noarch fc45/noarch
 plugin-hostd-full	0.20.5	quick	fc44/noarch fc45/noarch
 plugin-hostd-protocol	0.5.5	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
@@ -151,7 +156,6 @@ plugin-hostd-protocol-langpack-es	0.5.7	-	fc44/noarch fc45/noarch
 plugin-hostd-protocol-langpack-fr	0.5.7	-	fc44/noarch fc45/noarch
 plugin-hostd-protocol-langpack-it	0.5.7	-	fc44/noarch fc45/noarch
 plugin-hostd-protocol-langpack-pt	0.5.7	-	fc44/noarch fc45/noarch
-plugin-hostd-tests	0.20.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-hostd-tests	0.20.4	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-hostd-tests	0.20.5	quick	fc44/x86_64 fc45/x86_64
 plugin-qualification-records	2026111001	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
@@ -165,6 +169,7 @@ plugin-qualify-langpack-it	0.20.4	quick	fc44/noarch fc45/noarch
 plugin-qualify-langpack-pt	0.20.4	quick	fc44/noarch fc45/noarch
 python3-plugin-db	0.4.0	-	fc44/noarch fc45/noarch
 python3-plugin-db	0.4.1	-	fc44/noarch fc45/noarch
+python3-plugin-db	0.4.2	quick	fc44/noarch fc45/noarch
 python3-plugin-hostd-protocol	0.20.4	-	fc44/noarch fc45/noarch
 python3-plugin-hostd-protocol	0.20.5	quick	fc44/noarch fc45/noarch
 reac-pw	1.0.43	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
