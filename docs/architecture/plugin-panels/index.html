@@ -1,0 +1,237 @@
+<!DOCTYPE html><html  lang="en" data-theme="dark" class="scroll-smooth motion-reduce:scroll-auto bg-bg"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>openmixer — Plugin controls and panels</title><style id="nuxt-ui-colors">@layer theme {
+  :root, :host {
+  --ui-color-primary-50: var(--color-omx-50, );
+  --ui-color-primary-100: var(--color-omx-100, );
+  --ui-color-primary-200: var(--color-omx-200, );
+  --ui-color-primary-300: var(--color-omx-300, );
+  --ui-color-primary-400: var(--color-omx-400, );
+  --ui-color-primary-500: var(--color-omx-500, );
+  --ui-color-primary-600: var(--color-omx-600, );
+  --ui-color-primary-700: var(--color-omx-700, );
+  --ui-color-primary-800: var(--color-omx-800, );
+  --ui-color-primary-900: var(--color-omx-900, );
+  --ui-color-primary-950: var(--color-omx-950, );
+  --ui-color-secondary-50: var(--color-blue-50, oklch(97% 0.014 254.604));
+  --ui-color-secondary-100: var(--color-blue-100, oklch(93.2% 0.032 255.585));
+  --ui-color-secondary-200: var(--color-blue-200, oklch(88.2% 0.059 254.128));
+  --ui-color-secondary-300: var(--color-blue-300, oklch(80.9% 0.105 251.813));
+  --ui-color-secondary-400: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+  --ui-color-secondary-500: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+  --ui-color-secondary-600: var(--color-blue-600, oklch(54.6% 0.245 262.881));
+  --ui-color-secondary-700: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+  --ui-color-secondary-800: var(--color-blue-800, oklch(42.4% 0.199 265.638));
+  --ui-color-secondary-900: var(--color-blue-900, oklch(37.9% 0.146 265.522));
+  --ui-color-secondary-950: var(--color-blue-950, oklch(28.2% 0.091 267.935));
+  --ui-color-success-50: var(--color-green-50, oklch(98.2% 0.018 155.826));
+  --ui-color-success-100: var(--color-green-100, oklch(96.2% 0.044 156.743));
+  --ui-color-success-200: var(--color-green-200, oklch(92.5% 0.084 155.995));
+  --ui-color-success-300: var(--color-green-300, oklch(87.1% 0.15 154.449));
+  --ui-color-success-400: var(--color-green-400, oklch(79.2% 0.209 151.711));
+  --ui-color-success-500: var(--color-green-500, oklch(72.3% 0.219 149.579));
+  --ui-color-success-600: var(--color-green-600, oklch(62.7% 0.194 149.214));
+  --ui-color-success-700: var(--color-green-700, oklch(52.7% 0.154 150.069));
+  --ui-color-success-800: var(--color-green-800, oklch(44.8% 0.119 151.328));
+  --ui-color-success-900: var(--color-green-900, oklch(39.3% 0.095 152.535));
+  --ui-color-success-950: var(--color-green-950, oklch(26.6% 0.065 152.934));
+  --ui-color-info-50: var(--color-blue-50, oklch(97% 0.014 254.604));
+  --ui-color-info-100: var(--color-blue-100, oklch(93.2% 0.032 255.585));
+  --ui-color-info-200: var(--color-blue-200, oklch(88.2% 0.059 254.128));
+  --ui-color-info-300: var(--color-blue-300, oklch(80.9% 0.105 251.813));
+  --ui-color-info-400: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+  --ui-color-info-500: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+  --ui-color-info-600: var(--color-blue-600, oklch(54.6% 0.245 262.881));
+  --ui-color-info-700: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+  --ui-color-info-800: var(--color-blue-800, oklch(42.4% 0.199 265.638));
+  --ui-color-info-900: var(--color-blue-900, oklch(37.9% 0.146 265.522));
+  --ui-color-info-950: var(--color-blue-950, oklch(28.2% 0.091 267.935));
+  --ui-color-warning-50: var(--color-yellow-50, oklch(98.7% 0.026 102.212));
+  --ui-color-warning-100: var(--color-yellow-100, oklch(97.3% 0.071 103.193));
+  --ui-color-warning-200: var(--color-yellow-200, oklch(94.5% 0.129 101.54));
+  --ui-color-warning-300: var(--color-yellow-300, oklch(90.5% 0.182 98.111));
+  --ui-color-warning-400: var(--color-yellow-400, oklch(85.2% 0.199 91.936));
+  --ui-color-warning-500: var(--color-yellow-500, oklch(79.5% 0.184 86.047));
+  --ui-color-warning-600: var(--color-yellow-600, oklch(68.1% 0.162 75.834));
+  --ui-color-warning-700: var(--color-yellow-700, oklch(55.4% 0.135 66.442));
+  --ui-color-warning-800: var(--color-yellow-800, oklch(47.6% 0.114 61.907));
+  --ui-color-warning-900: var(--color-yellow-900, oklch(42.1% 0.095 57.708));
+  --ui-color-warning-950: var(--color-yellow-950, oklch(28.6% 0.066 53.813));
+  --ui-color-error-50: var(--color-red-50, oklch(97.1% 0.013 17.38));
+  --ui-color-error-100: var(--color-red-100, oklch(93.6% 0.032 17.717));
+  --ui-color-error-200: var(--color-red-200, oklch(88.5% 0.062 18.334));
+  --ui-color-error-300: var(--color-red-300, oklch(80.8% 0.114 19.571));
+  --ui-color-error-400: var(--color-red-400, oklch(70.4% 0.191 22.216));
+  --ui-color-error-500: var(--color-red-500, oklch(63.7% 0.237 25.331));
+  --ui-color-error-600: var(--color-red-600, oklch(57.7% 0.245 27.325));
+  --ui-color-error-700: var(--color-red-700, oklch(50.5% 0.213 27.518));
+  --ui-color-error-800: var(--color-red-800, oklch(44.4% 0.177 26.899));
+  --ui-color-error-900: var(--color-red-900, oklch(39.6% 0.141 25.723));
+  --ui-color-error-950: var(--color-red-950, oklch(25.8% 0.092 26.042));
+  --ui-color-neutral-50: var(--color-slate-50, oklch(98.4% 0.003 247.858));
+  --ui-color-neutral-100: var(--color-slate-100, oklch(96.8% 0.007 247.896));
+  --ui-color-neutral-200: var(--color-slate-200, oklch(92.9% 0.013 255.508));
+  --ui-color-neutral-300: var(--color-slate-300, oklch(86.9% 0.022 252.894));
+  --ui-color-neutral-400: var(--color-slate-400, oklch(70.4% 0.04 256.788));
+  --ui-color-neutral-500: var(--color-slate-500, oklch(55.4% 0.046 257.417));
+  --ui-color-neutral-600: var(--color-slate-600, oklch(44.6% 0.043 257.281));
+  --ui-color-neutral-700: var(--color-slate-700, oklch(37.2% 0.044 257.287));
+  --ui-color-neutral-800: var(--color-slate-800, oklch(27.9% 0.041 260.031));
+  --ui-color-neutral-900: var(--color-slate-900, oklch(20.8% 0.042 265.755));
+  --ui-color-neutral-950: var(--color-slate-950, oklch(12.9% 0.042 264.695));
+  }
+  :root, :host, .light {
+  --ui-primary: var(--ui-color-primary-500);
+  --ui-secondary: var(--ui-color-secondary-500);
+  --ui-success: var(--ui-color-success-500);
+  --ui-info: var(--ui-color-info-500);
+  --ui-warning: var(--ui-color-warning-500);
+  --ui-error: var(--ui-color-error-500);
+  }
+  .dark {
+  --ui-primary: var(--ui-color-primary-400);
+  --ui-secondary: var(--ui-color-secondary-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
+  }
+}</style><link rel="stylesheet" href="/_docs_nuxt/entry.DvPpwjHo.css" crossorigin><link rel="preload" as="fetch" crossorigin="anonymous" href="/docs/architecture/plugin-panels/_payload.json?25c059637e33ac8bdf86fb676dd0b85684a04231"><link rel="modulepreload" as="script" crossorigin href="/_docs_nuxt/Dn_KwUeR.js"><link rel="modulepreload" as="script" crossorigin href="/_docs_nuxt/CnifA1H8.js"><link rel="modulepreload" as="script" crossorigin href="/_docs_nuxt/D6cinEsb.js"><link rel="modulepreload" as="script" crossorigin href="/_docs_nuxt/B_v0I2sG.js"><link rel="modulepreload" as="script" crossorigin href="/_docs_nuxt/D3M_aBsp.js"><script type="module" src="/_docs_nuxt/Dn_KwUeR.js" crossorigin></script><link rel="prefetch" as="script" crossorigin href="/_docs_nuxt/Ceb5zONa.js"><link rel="prefetch" as="script" crossorigin href="/_docs_nuxt/DlAUqK2U.js"><link rel="prefetch" as="script" crossorigin href="/_docs_nuxt/CpTg_asx.js"><meta name="description" content="openmixer is a from-scratch open professional software mixer: PipeWire + curated LV2 plugins with auto-generated controls, native REAC stageboxes, and MCU/X-Touch surfaces, driven by one canonical model."><meta name="theme-color" content="#0b0e11"><meta property="og:title" content="openmixer — an open professional software mixer"><meta property="og:description" content="One canonical model drives a software mix engine and hardware adapters. PipeWire + LV2, native REAC, MCU/X-Touch. GPL-3."><meta property="og:type" content="website"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><script>"use strict";(()=>{const o=window,e=document.documentElement,c=["dark","light"],s=getStorageValue("localStorage","nuxt-color-mode")||"dark";let r=s==="system"?f():s;const l=e.getAttribute("data-color-mode-forced");l&&(r=l),i(r),o["__NUXT_COLOR_MODE__"]={preference:s,value:r,getColorScheme:f,addColorScheme:i,removeColorScheme:d};function i(t){const a=""+t+"",n="";e.classList?e.classList.add(a):e.className+=" "+a,n&&e.setAttribute("data-"+n,t)}function d(t){const a=""+t+"",n="";e.classList?e.classList.remove(a):e.className=e.className.replace(new RegExp(a,"g"),""),n&&e.removeAttribute("data-"+n)}function u(t){return o.matchMedia("(prefers-color-scheme"+t+")")}function f(){if(o.matchMedia&&u("").media!=="not all"){for(const t of c)if(u(":"+t).matches)return t}return"dark"}})();function getStorageValue(o,e){switch(o){case"localStorage":try{return window.localStorage.getItem(e)}catch{return null}case"sessionStorage":try{return window.sessionStorage.getItem(e)}catch{return null}case"cookie":try{return getCookie(e)}catch{return null}default:return null}}function getCookie(o){const c=("; "+window.document.cookie).split("; "+o+"=");if(c.length===2){const s=c.pop();return s?s.split(";").shift():null}}</script></head><body  class="bg-bg text-ink font-body text-base leading-base antialiased [text-rendering:optimizeLegibility] bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[length:46px_46px] bg-top"><div id="__nuxt" class="isolate"><div><header class="print:hidden sticky top-0 z-50 border-b border-border bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] backdrop-blur-[10px]"><div class="mx-auto w-full max-w-wrap px-gutter flex h-[60px] items-center gap-6"><a href="/" class="flex-none focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring" aria-label="openmixer — home"><span class="inline-flex items-center gap-[0.55rem]" aria-label="openmixer"><svg class="block flex-none" width="30" height="30" viewBox="0 0 96 96" fill="none" aria-hidden="true"><line x1="22" y1="46" x2="74" y2="46" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="2 3"></line><g stroke-linecap="round"><line x1="28" y1="20" x2="28" y2="76" stroke="var(--surface-3)" stroke-width="6"></line><line x1="28" y1="58" x2="28" y2="76" stroke="var(--accent)" stroke-width="6" opacity="0.55"></line><rect x="22" y="54" width="12" height="8" rx="3" fill="#cfd9e0"></rect><line x1="48" y1="20" x2="48" y2="76" stroke="var(--surface-3)" stroke-width="6"></line><line x1="48" y1="30" x2="48" y2="76" stroke="var(--accent)" stroke-width="6"></line><rect x="42" y="26" width="12" height="8" rx="3" fill="var(--accent)"></rect><line x1="68" y1="20" x2="68" y2="76" stroke="var(--surface-3)" stroke-width="6"></line><line x1="68" y1="66" x2="68" y2="76" stroke="var(--accent)" stroke-width="6" opacity="0.4"></line><rect x="62" y="62" width="12" height="8" rx="3" fill="#cfd9e0"></rect></g></svg><span class="font-display text-[1.25rem] leading-none font-semibold tracking-[-0.02em]"><span class="text-ink">open</span><span class="text-accent">mixer</span></span></span></a><nav class="ml-auto flex gap-[1.2rem]" aria-label="Documentation sections"><!--[--><a href="/docs/install" class="border-b-2 py-1 text-sm text-ink-dim transition-[color,border-color] duration-150 ease-token hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring border-b-transparent">Install</a><a href="/docs/manual" class="border-b-2 py-1 text-sm text-ink-dim transition-[color,border-color] duration-150 ease-token hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring border-b-transparent">Operator manual</a><a href="/docs/hardware" class="border-b-2 py-1 text-sm text-ink-dim transition-[color,border-color] duration-150 ease-token hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring border-b-transparent">Hardware</a><a href="/docs/admin" class="border-b-2 py-1 text-sm text-ink-dim transition-[color,border-color] duration-150 ease-token hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring border-b-transparent">Administration</a><a href="/docs/troubleshooting" class="border-b-2 py-1 text-sm text-ink-dim transition-[color,border-color] duration-150 ease-token hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring border-b-transparent">Troubleshooting</a><a href="/docs/architecture" class="border-b-2 py-1 text-sm text-ink-dim transition-[color,border-color] duration-150 ease-token hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring border-b-accent text-ink">Architecture</a><!--]--></nav><a class="flex-none rounded-r1 bg-accent px-[0.9rem] py-2 font-mono text-cap font-medium tracking-[0.04em] text-accent-ink transition-[filter] duration-150 ease-token hover:brightness-[1.08] focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring" href="https://github.com/Open-Mixer" rel="noopener">GitHub →</a></div></header><div class="mx-auto w-full max-w-wrap px-gutter grid grid-cols-[220px_minmax(0,1fr)] items-start gap-[clamp(1.5rem,4vw,3.5rem)] pt-[clamp(2rem,5vw,3.5rem)] pb-[clamp(3rem,6vw,5rem)] max-[860px]:grid-cols-1 print:block print:p-0"><aside class="print:hidden sticky top-[84px] max-h-[calc(100vh-100px)] overflow-y-auto max-[860px]:static max-[860px]:max-h-none" aria-label="On this page"><p class="mb-[0.8rem] font-mono text-micro tracking-[0.16em] text-ink-faint uppercase">On this page</p><ul class="border-l border-border"><!--[--><li><a href="#standards-carry-the-parameters-not-the-panel" class="-ml-px block border-l-2 border-transparent py-[0.28rem] text-cap transition-[color,border-color] duration-150 ease-token hover:border-l-accent hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring pl-[0.9rem] text-ink-dim">Standards carry the parameters, not the panel</a></li><li><a href="#what-openmixer-adds" class="-ml-px block border-l-2 border-transparent py-[0.28rem] text-cap transition-[color,border-color] duration-150 ease-token hover:border-l-accent hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring pl-[0.9rem] text-ink-dim">What openmixer adds</a></li><li><a href="#modgui" class="-ml-px block border-l-2 border-transparent py-[0.28rem] text-cap transition-[color,border-color] duration-150 ease-token hover:border-l-accent hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring pl-[0.9rem] text-ink-dim">modgui</a></li><li><a href="#the-two-doors" class="-ml-px block border-l-2 border-transparent py-[0.28rem] text-cap transition-[color,border-color] duration-150 ease-token hover:border-l-accent hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring pl-[0.9rem] text-ink-dim">The two doors</a></li><li><a href="#what-is-wired-today" class="-ml-px block border-l-2 border-transparent py-[0.28rem] text-cap transition-[color,border-color] duration-150 ease-token hover:border-l-accent hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring pl-[0.9rem] text-ink-dim">What is wired today</a></li><li><a href="#what-a-third-party-plugin-gets" class="-ml-px block border-l-2 border-transparent py-[0.28rem] text-cap transition-[color,border-color] duration-150 ease-token hover:border-l-accent hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring pl-[0.9rem] text-ink-dim">What a third-party plugin gets</a></li><li><a href="#where-the-declarations-differ" class="-ml-px block border-l-2 border-transparent py-[0.28rem] text-cap transition-[color,border-color] duration-150 ease-token hover:border-l-accent hover:text-ink focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring pl-[0.9rem] text-ink-dim">Where the declarations differ</a></li><!--]--></ul></aside><div><!----><article class="max-w-[74ch] text-base text-ink-dim"><h1 class="font-display font-semibold leading-tight tracking-[-0.01em] mb-[1.2rem] text-2xl tracking-[-0.02em] text-ink" id="plugin-controls-and-panels">Plugin controls and panels</h1>
+<p class="my-[0.9rem] leading-base">How a plugin's controls reach the console's screen: what the plugin formats declare, what openmixer
+adds on top, and what a plugin you did not write gets today. The decisions are in the specs linked
+at the end; this page states how the pieces fit.</p>
+<h2 class="font-display font-semibold leading-tight tracking-[-0.01em] mt-[2.6rem] mb-[0.9rem] border-t border-border pt-[0.6rem] text-xl text-ink" id="standards-carry-the-parameters-not-the-panel">Standards carry the parameters, not the panel</h2>
+<p class="my-[0.9rem] leading-base">Both plugin formats describe a flat list of controls. Neither describes a panel layout that the
+console reads.</p>
+<ul class="my-[0.9rem] list-disc pl-[1.3rem]">
+<li class="my-[0.35rem] leading-base"><strong class="font-semibold text-ink">LV2</strong> declares ports in its TTL: range and default, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">units:unit</code> and <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">units:symbol</code>, scale
+points (labelled choices), and the port properties for toggled, integer, enumeration,
+logarithmic, trigger and not-on-GUI. The plugin-qualify scan (<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">scan.py</code>) reads all
+of these. Port groups (<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">pg:Group</code>) are not read, so the console cannot section an LV2 plugin by
+what it declares.</li>
+<li class="my-[0.35rem] leading-base"><strong class="font-semibold text-ink">CLAP</strong> declares parameters through <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">clap.params</code>: id, name, minimum, maximum, default and the
+stepped, enum and hidden flags. CLAP has no unit, no scale and no symbol. The qualification
+prober scans a parameter's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">module</code> path and the plugin's remote-control pages
+(<a href="https://github.com/FreeMixer/plugin-qualify/issues/11" class="text-accent underline decoration-[color-mix(in_srgb,var(--accent)_40%,transparent)] underline-offset-2 hover:decoration-accent focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring">FreeMixer/plugin-qualify#11</a>, closed).
+The console's reader (plugin-qualify's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">clap-loader.ts</code>) still uses the decimal
+parameter id as the symbol, draws every parameter linear and does not ask for enum labels, and
+nothing in the console turns the module paths or the remote pages into sections or pages.</li>
+</ul>
+<p class="my-[0.9rem] leading-base">Both scans produce one <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">PluginParam</code> shape (the catalog's), served on
+<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">/plugins/{uri}</code>. A row's travel and taper are derived once, in
+the catalog's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">control-travel.ts</code>, and the server builds the panel description from the same
+parameters.</p>
+<h2 class="font-display font-semibold leading-tight tracking-[-0.01em] mt-[2.6rem] mb-[0.9rem] border-t border-border pt-[0.6rem] text-xl text-ink" id="what-openmixer-adds">What openmixer adds</h2>
+<p class="my-[0.9rem] leading-base">Everything above &quot;a list of controls&quot; is declared by openmixer.</p>
+<p class="my-[0.9rem] leading-base"><strong class="font-semibold text-ink">The parameter contract</strong>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">org.openmixer.param-contract/1</code>, is a CLAP extension that gives a
+parameter the symbol, unit and scale CLAP lacks. The unit vocabulary is LV2's units one for one
+plus a vendor block (core's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">clap-param-units.ts</code>). No plugin serves the extension yet.</p>
+<p class="my-[0.9rem] leading-base"><strong class="font-semibold text-ink">The panel description</strong>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">org.openmixer.panel-description/1</code>, describes the panel itself:
+the plugin's family and the role of each parameter (so one compressor view binds any compressor),
+ordered sections, a widget per control, displays bound to meters or to a family's closed-form
+curve, per-placement defaults, and a SHA-256 fingerprint. Presets, pages and the manual are taken
+from the standard CLAP mechanisms, not redeclared. Clients receive it as the <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">ServedDescription</code>
+(core's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">served-description.ts</code>), which also holds the closed vocabularies: the
+families, the widgets (<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">auto</code>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">knob</code>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">fader</code>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">switch</code>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">selector</code>) and the display kinds
+(<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">gain_reduction_bar</code>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">transfer_curve</code>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">eq_response</code>, <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">meter</code>).</p>
+<p class="my-[0.9rem] leading-base"><strong class="font-semibold text-ink">Skin packages</strong> replace or refine a description's look and layout. A package is a directory
+<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">&lt;xdg&gt;/openmixer/skins/&lt;id&gt;/</code> holding <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">skin.json</code> and, optionally, an ES-module view written
+against the versioned Skin API. The schema, id encoding and view lint are
+in <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">@openmixer/omx-panel</code> (the console imports them; the MOD GUI importer is its <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">omx-panel import</code>); the server resolves a plugin's package at three levels and
+serves it under <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">/skins/&lt;id&gt;</code>. The client chooses a view
+in this order (the web UI's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel-view.ts</code>): a custom skin view, a house view,
+level 2 (a generic panel built from the description's sections and roles), then the flat pages of
+eight.
+House views for delay, dynamics, EQ, reverb and modulation are declared in
+the web UI's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">house-views.ts</code>.</p>
+<p class="my-[0.9rem] leading-base"><strong class="font-semibold text-ink">For plugins openmixer ships</strong>, the declaration in omx-plugins (<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">plugins/&lt;p&gt;/&lt;p&gt;.decl.json</code>)
+refers to omx-contract for every number and adds <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel</code> (family, roles, sections) and <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">console</code>
+(placement, card, chip, panel) blocks. Each format's output is generated from that one
+declaration: the LV2 TTL, the CLAP parameter tables, and the MOD GUI export below.</p>
+<h2 class="font-display font-semibold leading-tight tracking-[-0.01em] mt-[2.6rem] mb-[0.9rem] border-t border-border pt-[0.6rem] text-xl text-ink" id="modgui">modgui</h2>
+<p class="my-[0.9rem] leading-base">modgui is export only. For each of its LV2 bundles, omx-plugins generates a <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">modgui.ttl</code> and the
+HTML, CSS and image files MOD-style hosts expect, from the declaration's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel</code> block
+(<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">tools/modgui-gen.mjs</code>). Nothing in the console reads a modgui: a modgui that comes with a
+third-party LV2 bundle is ignored. Importing third-party modguis as skin packages is specified
+and not implemented.</p>
+<h2 class="font-display font-semibold leading-tight tracking-[-0.01em] mt-[2.6rem] mb-[0.9rem] border-t border-border pt-[0.6rem] text-xl text-ink" id="the-two-doors">The two doors</h2>
+<p class="my-[0.9rem] leading-base">A plugin's own interface has two ways in, and the choice is settled:</p>
+<ul class="my-[0.9rem] list-disc pl-[1.3rem]">
+<li class="my-[0.35rem] leading-base"><strong class="font-semibold text-ink">The web renderer</strong> draws the description as console panels. This is the console's only door:
+in the mixer every plugin, ours or a third party's, is drawn by the console from its
+description, never in a native plugin window (operator ruling, 2026-10-19).</li>
+<li class="my-[0.35rem] leading-base"><strong class="font-semibold text-ink">A native window</strong>, a pugl and NanoVG renderer for openmixer's own plugins, draws the same
+description in a separate window for a DAW or the standalone omx-clap-host, never under the
+console. It is a separate static library with no GPU required. A plugin's own window is tried Wayland floating first, then
+X11 embedded, then X11 floating (ruled 2026-10-24, omx-clap-core#329). CLAP's Wayland API is
+floating only, with no parent handle, so over Wayland the plugin's window is its own top-level
+window that the host shows and hides. omx-clap-core 0.19.0 is the release that carries this
+order. Hosting a third-party plugin's own <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">clap.gui</code> window or an
+LV2 desktop UI is a later step for the standalone omx-clap-host only; plugin-hostd has no show
+or hide message and gets none.</li>
+</ul>
+<h2 class="font-display font-semibold leading-tight tracking-[-0.01em] mt-[2.6rem] mb-[0.9rem] border-t border-border pt-[0.6rem] text-xl text-ink" id="what-is-wired-today">What is wired today</h2>
+<ul class="my-[0.9rem] list-disc pl-[1.3rem]">
+<li class="my-[0.35rem] leading-base">The roster is curated: <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">/api/plugins</code> offers only the plugins of the curated list (86 on the live
+console, 2026-10-26) while the host admits every installed LV2 plugin the desk holds (979 of
+979, measured 2026-10-20), and no third-party CLAP plugin is offered. Operator ruling
+2026-10-26: the roster comes from
+qualification records, an unsuitable plugin is listed dimmed in place with its reason, and the
+curated list survives only as a &quot;recommended&quot; mark and the picker's default sort. That is not
+built yet.</li>
+<li class="my-[0.35rem] leading-base">The console builds a <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">ServedDescription</code> for every plugin on <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">/plugins/{uri}</code>
+with omx-panel's <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">describe</code>, the one
+derivation every surface calls: over the plugin's descriptor document (the
+descriptor directory's, else the catalog row converted once in memory) it serves each control's
+contract facts, the sections from the port groups, the family from the plugin's declared class
+kept only when its controls back it, the roles (an EQ's bands inferred and marked), the displays
+and the pages, cut by the library's one cut. The plugin's skin package is resolved on the same read
+and handed to <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">describe</code>, which applies its override before the pages are cut.</li>
+<li class="my-[0.35rem] leading-base">The editor (the <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">PluginEditor</code> component) draws only that description, through the chooser;
+a trigger draws as a momentary
+button, a stepped integer with typed entry; an override entry the plugin cannot take is a
+<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel.describe.skin-dropped</code> refusal on <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">skin</code>, and a plugin <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">describe</code> refuses is served refused,
+by its <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel.describe.*</code> code, with no panel.</li>
+<li class="my-[0.35rem] leading-base">The browser never derives. Where no console row describes a slot (offline, a plugin outside the
+roster, before the row lands) the editor says so and draws no control.</li>
+<li class="my-[0.35rem] leading-base">EQ bands: a linear-factor gain (LSP, Calf) is a <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">coef</code> band gain the response converts to dB, a
+band's fixed shape rides on its <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">band_freq</code> role, and a gainless HP/LP band is the head filter.</li>
+<li class="my-[0.35rem] leading-base">The console's own native stages (EQ, gate, dynamics, delay, reverb, drive, modulation, de-esser,
+limiter) have bespoke Vue panels fed by the wire's travels (the <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">FxPanel</code> component).</li>
+</ul>
+<h2 class="font-display font-semibold leading-tight tracking-[-0.01em] mt-[2.6rem] mb-[0.9rem] border-t border-border pt-[0.6rem] text-xl text-ink" id="what-a-third-party-plugin-gets">What a third-party plugin gets</h2>
+<table class="my-[1.3rem] block w-full border-collapse overflow-x-auto text-sm">
+<thead>
+<tr>
+<th class="border border-border px-[0.7rem] py-2 text-left align-top bg-surface-2 font-display font-semibold text-ink">Plugin</th>
+<th class="border border-border px-[0.7rem] py-2 text-left align-top bg-surface-2 font-display font-semibold text-ink">Today</th>
+<th class="border border-border px-[0.7rem] py-2 text-left align-top bg-surface-2 font-display font-semibold text-ink">With a skin package or qualification record</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="border border-border px-[0.7rem] py-2 text-left align-top">LV2</td>
+<td class="border border-border px-[0.7rem] py-2 text-left align-top">Level 2 with one section: ranges, units, logarithmic knobs, toggles and labelled choices. An EQ whose bands the catalogue models gets the EQ house view.</td>
+<td class="border border-border px-[0.7rem] py-2 text-left align-top">Level 2 or a house view, using the roles and sections the package declares.</td>
+</tr>
+<tr>
+<td class="border border-border px-[0.7rem] py-2 text-left align-top">CLAP</td>
+<td class="border border-border px-[0.7rem] py-2 text-left align-top">Not offered unless it is in the curated list (none is). If drawn: level 2 with one section, range and default, stepped flags and numeric symbols; enums have no labels, units are missing, log parameters draw linear, module paths and remote pages are not used.</td>
+<td class="border border-border px-[0.7rem] py-2 text-left align-top">The same, once the package supplies symbols, units and roles.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="font-display font-semibold leading-tight tracking-[-0.01em] mt-[2.6rem] mb-[0.9rem] border-t border-border pt-[0.6rem] text-xl text-ink" id="where-the-declarations-differ">Where the declarations differ</h2>
+<ul class="my-[0.9rem] list-disc pl-[1.3rem]">
+<li class="my-[0.35rem] leading-base">The generated CLAP faces serve only params, latency, audio-ports, state and
+<code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">org.openmixer.declaration/1</code>: neither <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">param-contract/1</code> nor <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel-description/1</code>, no remote
+controls and no track info (<a href="https://github.com/FreeMixer/omx-plugins/issues/102" class="text-accent underline decoration-[color-mix(in_srgb,var(--accent)_40%,transparent)] underline-offset-2 hover:decoration-accent focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring">omx-plugins#102</a>).</li>
+<li class="my-[0.35rem] leading-base">The LV2 faces carry no port groups (<a href="https://github.com/FreeMixer/omx-plugins/issues/103" class="text-accent underline decoration-[color-mix(in_srgb,var(--accent)_40%,transparent)] underline-offset-2 hover:decoration-accent focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring">omx-plugins#103</a>).</li>
+<li class="my-[0.35rem] leading-base"><code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel.family</code> and <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel.roles</code> in the omx-plugins declarations do not follow the closed set the
+console accepts (<a href="https://github.com/FreeMixer/omx-plugins/issues/99" class="text-accent underline decoration-[color-mix(in_srgb,var(--accent)_40%,transparent)] underline-offset-2 hover:decoration-accent focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring">omx-plugins#99</a>), the panel is
+written twice, in <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">panel.sections</code> and <code class="rounded-r1 border border-border bg-surface-2 px-[0.35em] py-[0.1em] font-mono text-[0.9em] text-ink">console.panel.sections</code>
+(<a href="https://github.com/FreeMixer/omx-plugins/issues/100" class="text-accent underline decoration-[color-mix(in_srgb,var(--accent)_40%,transparent)] underline-offset-2 hover:decoration-accent focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring">omx-plugins#100</a>), and the widget names differ
+between the schema, the modgui generator and the console
+(<a href="https://github.com/FreeMixer/omx-plugins/issues/101" class="text-accent underline decoration-[color-mix(in_srgb,var(--accent)_40%,transparent)] underline-offset-2 hover:decoration-accent focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring">omx-plugins#101</a>).</li>
+<li class="my-[0.35rem] leading-base">omx-contract holds no meter readouts and no kernel sets a scale
+(<a href="https://github.com/FreeMixer/omx-contract/issues/22" class="text-accent underline decoration-[color-mix(in_srgb,var(--accent)_40%,transparent)] underline-offset-2 hover:decoration-accent focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-focus-ring">omx-contract#22</a>).</li>
+</ul>
+</article></div></div><footer class="print:hidden border-t border-border py-[2.2rem]"><div class="mx-auto w-full max-w-wrap px-gutter flex flex-wrap items-center gap-[1.2rem]"><span class="inline-flex items-center gap-[0.55rem]" aria-label="openmixer"><svg class="block flex-none" width="30" height="30" viewBox="0 0 96 96" fill="none" aria-hidden="true"><line x1="22" y1="46" x2="74" y2="46" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="2 3"></line><g stroke-linecap="round"><line x1="28" y1="20" x2="28" y2="76" stroke="var(--surface-3)" stroke-width="6"></line><line x1="28" y1="58" x2="28" y2="76" stroke="var(--accent)" stroke-width="6" opacity="0.55"></line><rect x="22" y="54" width="12" height="8" rx="3" fill="#cfd9e0"></rect><line x1="48" y1="20" x2="48" y2="76" stroke="var(--surface-3)" stroke-width="6"></line><line x1="48" y1="30" x2="48" y2="76" stroke="var(--accent)" stroke-width="6"></line><rect x="42" y="26" width="12" height="8" rx="3" fill="var(--accent)"></rect><line x1="68" y1="20" x2="68" y2="76" stroke="var(--surface-3)" stroke-width="6"></line><line x1="68" y1="66" x2="68" y2="76" stroke="var(--accent)" stroke-width="6" opacity="0.4"></line><rect x="62" y="62" width="12" height="8" rx="3" fill="#cfd9e0"></rect></g></svg><span class="font-display text-[1.25rem] leading-none font-semibold tracking-[-0.02em]"><span class="text-ink">open</span><span class="text-accent">mixer</span></span></span><p class="max-w-[52ch] text-cap text-ink-faint"> openmixer — an open professional software mixer. GPL-3.0-or-later · © Pau Aliagas &lt;linuxnow@gmail.com&gt; </p></div></footer></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{manualBuildVersion:"openmixer-server-0.1.0.2976.ga65e03b1-5.fc44.x86_64"},app:{baseURL:"/",buildId:"25c059637e33ac8bdf86fb676dd0b85684a04231",buildAssetsDir:"/_docs_nuxt/",cdnURL:""}}</script><script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/docs/architecture/plugin-panels/_payload.json?25c059637e33ac8bdf86fb676dd0b85684a04231">[{"state":1,"once":7,"_errors":8,"serverRendered":5,"path":10,"prerenderedAt":11},["Reactive",2],{"$scolor-mode":3},{"preference":4,"value":4,"unknown":5,"forced":6},"dark",true,false,["Set"],["ShallowReactive",9],{},"\u002Fdocs\u002Farchitecture\u002Fplugin-panels",1794609294676]</script></body></html>
