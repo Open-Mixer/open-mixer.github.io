@@ -1,0 +1,10 @@
+plugin-db (0.4.1) unstable; urgency=medium
+
+  * Release 0.4.1
+  * pin.h: PHD_SHA256_HEX_LEN is the declared length, from
+    plugin_db_constants.h
+  * data: PLUGIN_DB_PIN_SHA256_HEX_LEN, rendered into plugin_db_constants.h
+  * tests: a header of plugin-db alone gives a digest's hex length, with no
+    OpenSSL
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 03:34:34 +0000
