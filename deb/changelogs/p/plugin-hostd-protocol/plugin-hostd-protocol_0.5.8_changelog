@@ -1,0 +1,35 @@
+plugin-hostd-protocol (0.5.8) unstable; urgency=medium
+
+  * fuzz: the session harness reads a hello as the session's tokenizer does,
+    not by its text (#30)
+  * fuzz: the session seeds carry a hello spelt with quotes inside its word
+    (red, #30)
+  * release: plugin-hostd-protocol 0.5.8
+  * ci: the build matrix covers the quick cells while OMX_RELEASE_MATRIX is
+    quick (D25)
+  * include: the rendered headers as omx-contract 3.18.0 renders them
+  * hello_test: the undeclared-word arm uses a code that still has none
+  * The golden transcript names the reply words of the 0.32.3 codes
+  * omx_clap_core_vocabulary.h and what follows from it: the channel's 0.32.3
+  * ci: an ordinary run builds against the channel, not the staging channel
+  * Revert the 0.32.3 re-render: CI renders from the staging
+    omx-clap-core-contract
+  * The generated protocol follows the 0.32.3 vocabulary
+  * check-rendered: a header that is not the render prints the difference
+  * omx_clap_core_vocabulary.h: rendered from omx-clap-core-contract 0.32.3
+  * The rendered headers are main's again: no sweep in generated files
+  * floors: omx-contract >= 3.18.0 and < 4, the release that carries
+    transient (D23 amended)
+  * data: the schema floor is omx-contract 3.17.2, the release that carries
+    transient (D23)
+  * protocol: pin-refused is not transient; omx-contract >= 3.17.2 (D23)
+  * The rendered vocabulary header is omx-contract's render again
+  * protocol: the refusals a retry may pass are declared transient, a
+    property of the code (#23)
+  * test: the refusals a retry may pass are transient in the table and the
+    rendered header (red, #23)
+  * ci: plugin-db-contract from 0.4, the line the channel serves
+  * The shared commit-msg stub stays as it is
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 14:51:03 +0000
