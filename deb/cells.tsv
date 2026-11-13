@@ -120,12 +120,16 @@ plugin-db-l10n-pt	0.4.0	-	bookworm/all trixie/all
 plugin-db-l10n-pt	0.4.1	-	bookworm/all trixie/all
 plugin-hostd	0.20.4	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 plugin-hostd	0.20.5	quick	trixie/arm64
+plugin-hostd	0.20.6	quick	trixie/arm64
 plugin-hostd-contract	0.20.4	-	bookworm/all trixie/all
 plugin-hostd-contract	0.20.5	quick	trixie/all
+plugin-hostd-contract	0.20.6	quick	trixie/all
 plugin-hostd-dev	0.20.4	-	bookworm/all trixie/all
 plugin-hostd-dev	0.20.5	quick	trixie/all
+plugin-hostd-dev	0.20.6	quick	trixie/all
 plugin-hostd-full	0.20.4	-	bookworm/all trixie/all
 plugin-hostd-full	0.20.5	quick	trixie/all
+plugin-hostd-full	0.20.6	quick	trixie/all
 plugin-hostd-protocol-contract	0.5.5	-	bookworm/all trixie/all
 plugin-hostd-protocol-contract	0.5.7	-	bookworm/all trixie/all
 plugin-hostd-protocol-l10n-ca	0.5.7	-	bookworm/all trixie/all
@@ -136,6 +140,7 @@ plugin-hostd-protocol-l10n-it	0.5.7	-	bookworm/all trixie/all
 plugin-hostd-protocol-l10n-pt	0.5.7	-	bookworm/all trixie/all
 plugin-hostd-tests	0.20.4	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 plugin-hostd-tests	0.20.5	quick	trixie/arm64
+plugin-hostd-tests	0.20.6	quick	trixie/arm64
 plugin-qualification-records	2026110902	-	trixie/amd64 trixie/arm64
 plugin-qualification-records	2026111001	-	trixie/amd64 trixie/arm64
 plugin-qualify	0.20.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
@@ -150,6 +155,7 @@ python3-plugin-db	0.4.0	-	bookworm/all trixie/all
 python3-plugin-db	0.4.1	-	bookworm/all trixie/all
 python3-plugin-hostd-protocol	0.20.4	-	bookworm/all trixie/all
 python3-plugin-hostd-protocol	0.20.5	quick	trixie/all
+python3-plugin-hostd-protocol	0.20.6	quick	trixie/all
 reac-pw	1.0.43	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 reac-stageboxes	0.1.0	-	trixie/amd64 trixie/arm64
 surface-c24	0.2.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
