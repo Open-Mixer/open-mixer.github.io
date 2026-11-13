@@ -675,3 +675,135 @@ test('drop: an entry must be name@version', () => {
   assert.throws(() => parseDrop('hostd'), /name@version/);
   assert.deepEqual(parseDrop(''), []);
 });
+
+// ------------------------------------------------------------------ drop scoped to one cell (suite/arch)
+
+// the 2026-11-13 trixie case, in two suites: plugin-hostd pins its contract exactly, the contract is arch all
+const hostdDebs = () => [
+  debPkg('plugin-hostd', '0.20.4-1', 'amd64', { source: 'plugin-hostd', depends: 'plugin-hostd-contract (= 0.20.4-1)' }),
+  debPkg('plugin-hostd', '0.20.6-1', 'amd64', { source: 'plugin-hostd', depends: 'plugin-hostd-contract (= 0.20.6-1)' }),
+  debPkg('plugin-hostd', '0.20.6-1', 'arm64', { source: 'plugin-hostd', depends: 'plugin-hostd-contract (= 0.20.6-1)' }),
+  debPkg('plugin-hostd-contract', '0.20.4-1', 'all', { source: 'plugin-hostd-contract' }),
+  debPkg('plugin-hostd-contract', '0.20.6-1', 'all', { source: 'plugin-hostd-contract' }),
+].join('\n\n') + '\n';
+
+const hostdRpms = (rel) => ({
+  x86_64: primary([rpmPkg(`plugin-hostd x86_64 0.20.6-1.fc${rel}`), rpmPkg(`plugin-hostd x86_64 0.20.4-1.fc${rel}`)]),
+  aarch64: primary([rpmPkg(`plugin-hostd aarch64 0.20.6-1.fc${rel}`)]),
+  noarch: primary([rpmPkg(`plugin-hostd-devel noarch 0.20.6-1.fc${rel}`, { source: `plugin-hostd-0.20.6-1.fc${rel}.src.rpm` })]),
+  SRPMS: primary([rpmPkg(`plugin-hostd src 0.20.6-1.fc${rel}`)]),
+});
+
+const cellOf = (row) => `${row.repo}/${row.arch}`;
+
+test('drop scoped: name@version:<suite>/<arch> deletes only that cell\'s builds of that source version', () => {
+  const trixie = parsePackages(hostdDebs(), 'debian/trixie');
+  const bookworm = parsePackages(hostdDebs(), 'debian/bookworm');
+  const drop = parseDrop('plugin-hostd@0.20.6:trixie/arm64');
+  const t = selectRepo(trixie, [], { drop });
+  assert.deepEqual(t.delete.map((d) => `${cellOf(d)} ${d.name} ${d.version}`), ['debian/trixie/arm64 plugin-hostd 0.20.6-1']);
+  assert.equal(t.keep.length, 4, 'trixie amd64 0.20.6 and the contracts stay');
+  assert.deepEqual(selectRepo(bookworm, [], { drop }).delete, [], 'another suite is not touched');
+
+  const f44 = Object.entries(hostdRpms(44)).flatMap(([dir, xml]) => parsePrimary(xml, 'fedora/44', dir));
+  const f45 = Object.entries(hostdRpms(45)).flatMap(([dir, xml]) => parsePrimary(xml, 'fedora/45', dir));
+  const rdrop = parseDrop('plugin-hostd@0.20.6:fedora/44/x86_64');
+  assert.deepEqual(selectRepo(f44, [], { drop: rdrop }).delete.map((d) => `${cellOf(d)} ${d.name} ${d.version}`),
+    ['fedora/44/x86_64 plugin-hostd 0.20.6-1.fc44'], 'not aarch64, not noarch, not the source');
+  assert.deepEqual(selectRepo(f45, [], { drop: rdrop }).delete, [], 'another release is not touched');
+});
+
+test('drop scoped: an all/noarch scope removes the arch-independent files of that suite only', () => {
+  const drop = parseDrop('plugin-hostd-contract@0.20.6:trixie/all');
+  const t = selectRepo(parsePackages(hostdDebs(), 'debian/trixie'), [], { drop });
+  assert.deepEqual(t.delete.map((d) => d.file), ['all/plugin-hostd-contract_0.20.6-1_all.deb']);
+  assert.deepEqual(selectRepo(parsePackages(hostdDebs(), 'debian/bookworm'), [], { drop }).delete, []);
+  const f44 = Object.entries(hostdRpms(44)).flatMap(([dir, xml]) => parsePrimary(xml, 'fedora/44', dir));
+  const r = selectRepo(f44, [], { drop: parseDrop('plugin-hostd@0.20.6:fedora/44/noarch') });
+  assert.deepEqual(r.delete.map((d) => `${cellOf(d)} ${d.name}`), ['fedora/44/noarch plugin-hostd-devel']);
+});
+
+test('drop scoped: a malformed scope is refused with a line naming the entry', () => {
+  for (const bad of ['hostd@0.16.0:sid/amd64', 'hostd@0.16.0:trixie/i386', 'hostd@0.16.0:trixie', 'hostd@0.16.0:',
+    'hostd@0.16.0:fedora/44', 'hostd@0.16.0:fedora/44/amd64', 'hostd@0.16.0:fedora/x86_64', 'hostd@0.16.0:trixie/amd64/x',
+    'hostd@0.16.0:bookworm/x86_64', 'hostd@0.16.0:fedora/rawhide/x86_64']) {
+    assert.throws(() => parseDrop(bad), (e) => e.message.includes(`'${bad}'`) && /suite\/arch|fedora\/<rel>\/<arch>/.test(e.message), bad);
+  }
+  assert.deepEqual(parseDrop('a@1.0:trixie/all,b@2.0:fedora/45/aarch64,c@3.0'), [
+    { name: 'a', version: '1.0', scope: { format: 'deb', repo: 'debian/trixie', arch: 'all' } },
+    { name: 'b', version: '2.0', scope: { format: 'rpm', repo: 'fedora/45', arch: 'aarch64' } },
+    { name: 'c', version: '3.0' },
+  ]);
+});
+
+function writeCells(root, debSuites, rpmRels) {
+  for (const [suite, packages] of Object.entries(debSuites)) {
+    const s = path.join(root, 'deb/debian', suite);
+    fs.mkdirSync(s, { recursive: true });
+    fs.writeFileSync(path.join(s, 'Packages'), packages);
+    for (const p of parsePackages(packages, `debian/${suite}`)) {
+      fs.mkdirSync(path.join(s, p.arch), { recursive: true });
+      fs.writeFileSync(path.join(s, p.file), '');
+    }
+  }
+  for (const [rel, dirs] of Object.entries(rpmRels)) {
+    for (const [dir, xml] of Object.entries(dirs)) {
+      const d = path.join(root, 'rpm/fedora', rel, dir);
+      fs.mkdirSync(path.join(d, 'repodata'), { recursive: true });
+      fs.writeFileSync(path.join(d, 'repodata', 'primary.xml'), xml);
+      fs.writeFileSync(path.join(d, 'repodata', 'repomd.xml'), '<repomd><data type="primary"><location href="repodata/primary.xml"/></data></repomd>\n');
+      for (const p of parsePrimary(xml, `fedora/${rel}`, dir)) fs.writeFileSync(path.join(root, 'rpm/fedora', rel, p.file), '');
+    }
+  }
+}
+
+const cellRun = () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-cell-'));
+  fs.writeFileSync(path.join(tmp, 'keep.yml'), 'keep:\n');
+  const tree = path.join(tmp, 'tree');
+  writeCells(tree, { trixie: hostdDebs(), bookworm: hostdDebs() }, { 44: hostdRpms(44) });
+  return (...more) => spawnSync(process.execPath, [select, '--keep', path.join(tmp, 'keep.yml'), '--tree', tree, '--delete-list', ...more], { encoding: 'utf8' });
+};
+const deletedPaths = (out) => out.split('\n').filter((l) => l.startsWith('delete\t')).map((l) => l.split('\t')[2]).sort();
+
+test('cli drop scoped: a drop that leaves a kept package of that cell uninstallable fails the plan, naming it', () => {
+  const run = cellRun();
+  const r = run('--drop', 'plugin-hostd-contract@0.20.6:trixie/all');
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stderr, /the plan leaves a kept package uninstallable:/);
+  assert.match(r.stderr, /deb debian\/trixie plugin-hostd 0\.20\.6-1 \(amd64\) requires plugin-hostd-contract = 0\.20\.6-1/);
+  assert.match(r.stderr, /deb debian\/trixie plugin-hostd 0\.20\.6-1 \(arm64\)/);
+  assert.doesNotMatch(r.stderr, /bookworm|fedora/, 'only the dropped cell is judged short');
+  // the ruled rollback, scoped: what needs the contract goes with it, in trixie only
+  const ok = run('--drop', 'plugin-hostd@0.20.6:trixie/amd64,plugin-hostd@0.20.6:trixie/arm64,plugin-hostd-contract@0.20.6:trixie/all');
+  assert.equal(ok.status, 0, ok.stdout + ok.stderr);
+  assert.deepEqual(deletedPaths(ok.stdout), [
+    'deb/debian/trixie/all/plugin-hostd-contract_0.20.6-1_all.deb',
+    'deb/debian/trixie/amd64/plugin-hostd_0.20.6-1_amd64.deb',
+    'deb/debian/trixie/arm64/plugin-hostd_0.20.6-1_arm64.deb',
+  ]);
+});
+
+test('cli drop scoped: a malformed scope stops the run with a clear line', () => {
+  const r = cellRun()('--drop', 'plugin-hostd@0.20.6:sid/amd64');
+  assert.equal(r.status, 2, r.stdout + r.stderr);
+  assert.match(r.stderr, /drop entry 'plugin-hostd@0\.20\.6:sid\/amd64'/);
+  assert.doesNotMatch(r.stdout, /^delete\t/m);
+});
+
+test('cli drop: a bare name@version still drops every build in every suite, release and architecture', () => {
+  const r = cellRun()('--drop', 'plugin-hostd@0.20.6,plugin-hostd-contract@0.20.6');
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.deepEqual(deletedPaths(r.stdout), [
+    'deb/debian/bookworm/all/plugin-hostd-contract_0.20.6-1_all.deb',
+    'deb/debian/bookworm/amd64/plugin-hostd_0.20.6-1_amd64.deb',
+    'deb/debian/bookworm/arm64/plugin-hostd_0.20.6-1_arm64.deb',
+    'deb/debian/trixie/all/plugin-hostd-contract_0.20.6-1_all.deb',
+    'deb/debian/trixie/amd64/plugin-hostd_0.20.6-1_amd64.deb',
+    'deb/debian/trixie/arm64/plugin-hostd_0.20.6-1_arm64.deb',
+    'rpm/fedora/44/SRPMS/plugin-hostd-0.20.6-1.fc44.src.rpm',
+    'rpm/fedora/44/aarch64/plugin-hostd-0.20.6-1.fc44.aarch64.rpm',
+    'rpm/fedora/44/noarch/plugin-hostd-devel-0.20.6-1.fc44.noarch.rpm',
+    'rpm/fedora/44/x86_64/plugin-hostd-0.20.6-1.fc44.x86_64.rpm',
+  ]);
+});
