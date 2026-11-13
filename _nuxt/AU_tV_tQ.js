@@ -425,13 +425,13 @@ fails on a second definition of any of its names. <code>make install</code> inst
 contract directory as the package <code>omx-dsp</code>, with a <code>MANIFEST.json</code>, where the other packages read
 it.</p>
 <p>The facts no single package implements (the declared sample rates, the parameter scales) stay in
-FreeMixer/omx-contract, read through <code>&lt;omxcontract/omx_contract_limits.h&gt;</code>, which the definitions
+Open-Mixer/omx-contract, read through <code>&lt;omxcontract/omx_contract_limits.h&gt;</code>, which the definitions
 header includes. That dependency is declared once, in the packaging: <code>packaging/omx-dsp.spec</code>
 (<code>BuildRequires</code>, <code>Requires</code>) and <code>debian/control</code> (<code>Build-Depends</code>, <code>Depends</code>) carry the same floor
 and the same ceiling, the next major (<code>&gt;= 3.9.0</code> and <code>&lt; 4</code>), and <code>omxdsp.pc</code> requires the same range. Install
-it from the FreeMixer channel with the rest of the build dependencies:</p>
-<pre><code>dnf builddep packaging/omx-dsp.spec     # Fedora, with the FreeMixer repository added
-apt-get build-dep ./                    # Debian, with the FreeMixer source list added
+it from the Open-Mixer channel with the rest of the build dependencies:</p>
+<pre><code>dnf builddep packaging/omx-dsp.spec     # Fedora, with the Open-Mixer repository added
+apt-get build-dep ./                    # Debian, with the Open-Mixer source list added
 </code></pre>
 <p><code>tools/contract-include.sh</code> finds the installed <code>omx-contract</code> with <code>pkg-config</code>: at or above the
 floor the spec declares, it prints the package's include directory; otherwise the build stops, naming
@@ -447,7 +447,7 @@ kernels need is added to its definition in <code>data/</code> and the header ren
 in the code.</p>
 <h2 id="packages">Packages</h2>
 <p><code>packaging/omx-dsp.spec</code> (RPM, <code>omx-dsp-devel</code>) and <code>debian/</code> (<code>libomxdsp-dev</code>). A <code>v&lt;version&gt;</code>
-tag releases both through the FreeMixer release workflows; the version is
+tag releases both through the Open-Mixer release workflows; the version is
 <code>OMXDSP_VERSION_*</code> in <code>include/omxdsp/omxdsp.h</code>, the spec's <code>Version:</code> and the top of
 <code>debian/changelog</code>, and CI refuses them disagreeing.</p>
 `}],r={repo:e,commit:t,pages:n};export{t as commit,r as default,n as pages,e as repo};

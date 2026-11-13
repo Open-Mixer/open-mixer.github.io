@@ -1,5 +1,5 @@
 var e=`omx-contract`,t=`c241fd47a68d4de548a1cd415f967b211da6475e`,n=[{slug:``,src:`README.md`,title:`omx-contract`,source:`https://github.com/Open-Mixer/omx-contract/blob/c241fd47a68d4de548a1cd415f967b211da6475e/README.md`,toc:[{id:`install`,title:`Install`},{id:`use`,title:`Use`},{id:`building`,title:`Building`},{id:`license`,title:`License`}],html:`<h1 id="omx-contract">omx-contract</h1>
-<p>The FreeMixer declarations as data: what a value may be (a travel, a default, a kernel constant, a list),
+<p>The Open-Mixer declarations as data: what a value may be (a travel, a default, a kernel constant, a list),
 written once as JSON, checked by a JSON Schema and rendered into the languages that read it. The mixer
 engine, the DSP library and the plugins all take their ranges, defaults and constants from the same
 definitions, so a knob means the same thing on the console, in a plugin and in a test.</p>

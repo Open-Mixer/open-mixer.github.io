@@ -59,7 +59,7 @@ it again while inactive and activates it again.</li>
 </ul>
 <h2 id="where-the-rules-are">Where the rules are</h2>
 <p>The rules themselves (which ports are main and which auxiliary, the LV2 group types and their channel maps, the CLAP
-extensions read, the JACK port names, the limits and the refusal codes) are in <a href="https://github.com/FreeMixer/omx-clap-core/blob/main/doc/reference.md">the host library's reference</a>.</p>
+extensions read, the JACK port names, the limits and the refusal codes) are in <a href="https://github.com/Open-Mixer/omx-clap-core/blob/main/doc/reference.md">the host library's reference</a>.</p>
 <h2 id="how-it-is-proven">How it is proven</h2>
 <p>Test fixtures, LV2 and CLAP, one per shape: a main group with two stereo auxiliary groups, two mono groups without a main,
 ungrouped 4 to 4 and 4 to 2, mono in with a stereo main output, a main pair with three band outputs, 5.1, first-order and
@@ -130,7 +130,7 @@ vegada; el portador el torna a descriure mentre és inactiu i el torna a activar
 </ul>
 <h2 id="on-son-les-regles">On són les regles</h2>
 <p>Les regles mateixes (quins ports són principals i quins auxiliars, els tipus de grup LV2 i els seus mapes de canals, les
-extensions CLAP que es llegeixen, els noms dels ports JACK, els límits i els codis de refús) són a <a href="https://github.com/FreeMixer/omx-clap-core/blob/main/doc/reference.md">la referència de la
+extensions CLAP que es llegeixen, els noms dels ports JACK, els límits i els codis de refús) són a <a href="https://github.com/Open-Mixer/omx-clap-core/blob/main/doc/reference.md">la referència de la
 biblioteca de l'amfitrió</a>.</p>
 <h2 id="com-es-demostra">Com es demostra</h2>
 <p>Peces de prova, LV2 i CLAP, una per forma: un grup principal amb dos grups auxiliars estèreo, dos grups mono sense principal,
