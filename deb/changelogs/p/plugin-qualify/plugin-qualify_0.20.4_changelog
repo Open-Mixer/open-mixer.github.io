@@ -1,0 +1,52 @@
+plugin-qualify (0.20.4) unstable; urgency=medium
+
+  * release 0.20.4: the changelogs name #52
+  * test: pin-refresh's live arm has an LV2 directory of its own, and says
+    why a refresh was kept back
+  * test: pin-refresh's live arm is given an LV2 path naming its plugin in
+    its bundle alone
+  * packaging: 0.20.4 floors to omx-clap-core 0.32.3 and plugin-hostd 0.20.5
+  * tools: gen-text-codes.mjs is executable
+  * packaging: 0.20.4 floors to plugin-db 0.4.1 and plugin-hostd-protocol
+    0.5.7
+  * release: 0.20.4, built against omx-clap-core 0.32
+  * plugin-db: the store's comment names plugin-db's documentation, not a
+    path (#38)
+  * describe: the moved files say where they came from, in plain words (#31)
+  * ci: the native build installs cJSON, which describe's JSON reader needs
+    (#31)
+  * describe: the scan, taken in from plugin-hostd, in C
+  * build against plugin-db 0.4
+  * catalogs: the forty ca sentences carry what wrote them (#22)
+  * compare: the two reasons the tools still wrote inline are codes (#22)
+  * pin files: the reasons are codes (#22)
+  * catalogs: the compare and pin sentences in the six listed languages (#22)
+  * text codes: the reason codes and their sentences live in
+    schema/codes.json (#22)
+  * test: the spec and debian/control agree on the CLAP floor (#30)
+  * packaging: the rpm spec's CLAP floor follows debian's, 1.2.10 (#30)
+  * packaging: one language pack per listed language, at
+    /usr/share/plugin-qualify/catalogs
+  * catalogs: es, fr, de, it and pt from the English source sentence
+  * catalogs: the Catalan entry is a person's, by: human
+  * describe: oracle and fixtures, red (no describe.c yet)
+  * plugin-db: pin and put-judged calls into its store (#38)
+  * plugin-db: the omx-files/1 digest a pin folds its files into (#38)
+  * record-figures: a reader of one record's figures at a rate and quantum
+    (#37)
+  * release: a staged run publishes to the staging channel
+  * ci: a pull request fails when package.json names the wrong repository
+  * catalog: ca and es translations for the pin surface's codes (#22)
+  * text-codes: codes for the pin surface's hostd-pin-files reasons (#22)
+  * compare: read verdict and reason sentences through the catalog, not raw
+    source (#22)
+  * catalog: ca and es translations for compare's codes (#22)
+  * text-codes: codes for compare's verdict and reason sentences (#22)
+  * catalog: ca and es translations for the five compare host-presence codes
+    (#22)
+  * test: text-catalog-conformance turns red for a code without catalog
+    entries (#22)
+  * types: a local shim declares omx-contract's untyped ./catalog export (#22)
+  * check: a refused row's stderr must be readable back from its record
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 08:36:57 +0000
