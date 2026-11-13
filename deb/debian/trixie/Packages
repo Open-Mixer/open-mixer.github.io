@@ -1297,6 +1297,32 @@ Description: words of the plugin database in omx-contract's contract directory
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-db-contract
+Architecture: all
+Version: 0.4.2
+Multi-Arch: foreign
+Priority: optional
+Section: libs
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 42
+Depends: omx-contract (>= 3.17.0~), omx-contract (<< 4~)
+Filename: ./all/plugin-db-contract_0.4.2_all.deb
+Size: 8164
+MD5sum: ec0f6c0a2929083a26ac9a41d9ea83ef
+SHA1: 37c51b970c9f2d36922a820a3dfff76130cbcd39
+SHA256: e9089ed052d5f5ad13eccc5423741b60b1f7f9bd883214d4e552b242f0bf1db5
+SHA512: 6b66bb14d3560131f5f1910ae424d457d32b6ed10d09f388110cfefa6cd775e10cfcab020e69273bc49ef8df8a2218068ed39c3a758d026300d52ae2a1417d64
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: words of the plugin database in omx-contract's contract directory
+ data/pin.json of plugin-db, the words of a pin, and data/db.json, the address
+ formats, the bundle rule, the layers, the attributes, the record changes and
+ their actions, the states and the reasons, as the package plugin-db of
+ omx-contract's contract directory, under
+ /usr/share/omx-contract/contract.d/3/plugin-db.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-db-l10n-ca
 Architecture: all
 Version: 0.4.0
@@ -1337,6 +1363,29 @@ MD5sum: 58c603a5ab4ff7aae2cfd3ddaebc00e8
 SHA1: ed459b52efb37f2d056874e5bee26e5ad19b72b8
 SHA256: 7d5574c8f898b5b1e3a3e407f2904bbad399b99e2af9b8a44b886d371ce5d802
 SHA512: 365ede6059041fa7b03056323ab93063ebb3d9d2bfcb753e5bd24db45344f2e07c9b802ff054568d6672fe217dd5df088b456834cf85aae734719e89401a44f2
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: ca catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language ca, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: plugin-db-l10n-ca
+Architecture: all
+Version: 0.4.2
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 20
+Depends: plugin-db-contract (= 0.4.2)
+Breaks: plugin-db-contract (<< 0.3.3~)
+Replaces: plugin-db-contract (<< 0.3.3~)
+Filename: ./all/plugin-db-l10n-ca_0.4.2_all.deb
+Size: 3548
+MD5sum: da9cd94b0054b2ce12d6a3b9da7c5d5a
+SHA1: 91d9fbd38066b4f2a4bd15c6dd4d988de7000ea3
+SHA256: b9a11a7d9bf83bec0153ed616d2316b937ce52394b0de5525b221174938b557f
+SHA512: 9c014f6836569acd55ba25b35a24b1ccd7028a0879f806f948e5519264f30df8b7467e5e5d2fc98ecee3da656e760c25ee11ca31feae8d8a986908d9bd06b6f9
 Homepage: https://github.com/FreeMixer/plugin-db
 Description: ca catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language ca, read by every surface
@@ -1385,6 +1434,27 @@ Description: de catalog of plugin-db's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: plugin-db-l10n-de
+Architecture: all
+Version: 0.4.2
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 24
+Depends: plugin-db-contract (= 0.4.2)
+Filename: ./all/plugin-db-l10n-de_0.4.2_all.deb
+Size: 5540
+MD5sum: 806385a511fbd3c5bdd3748406c91980
+SHA1: 07c190a2d7e8faa2a86ce6708043a66afc4f9165
+SHA256: 56ac5ea9e0052ce8367a4e4efe19c81f3c25d4a1117d303b77b9c8696ac93999
+SHA512: 079e210e0081f6697aa45e9de012ef85e8bb5b26a6d18c114eacfec55235094c4ce29dd50b5d3a24c15a516831c1222124245f6007c65e17a790857c5120601b
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: de catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language de, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: plugin-db-l10n-es
 Architecture: all
 Version: 0.4.0
@@ -1421,6 +1491,27 @@ MD5sum: 769100135f96573b0fc67e10c856123e
 SHA1: f7c069b8b101358e1c9ddee387b2114be9d38709
 SHA256: 8b10591b3261a08383cb058a175d9344733028ef8bb604c9e387879d27d9ab3c
 SHA512: 52d4a273df4f65e526211273269f1e6ad40b763e71bc1b24ccba13a005ae4b246fdba3ab4efe95052741cd0be794c1a8632d4d57175635a0edcee7daa9648095
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: es catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language es, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: plugin-db-l10n-es
+Architecture: all
+Version: 0.4.2
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 24
+Depends: plugin-db-contract (= 0.4.2)
+Filename: ./all/plugin-db-l10n-es_0.4.2_all.deb
+Size: 5480
+MD5sum: eff137057dd643abd45ab18b0a9fba90
+SHA1: 03e5f4e9ac5b7d6ec383edb58d727de510c95092
+SHA256: 4f24c5fee27d116b911f28a61f7fea15b6970e9c2fa4ff77a594edc8f4ab3ac6
+SHA512: 07a4fe652610c1652116772a3a5b90ea5b18db2bdab34aca9e75b8110158e5139a6562259089e8923267edff6866d44ca19b6e4d57fd69a08cdd4c4d22e09e2b
 Homepage: https://github.com/FreeMixer/plugin-db
 Description: es catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language es, read by every surface
@@ -1469,6 +1560,27 @@ Description: fr catalog of plugin-db's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: plugin-db-l10n-fr
+Architecture: all
+Version: 0.4.2
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 24
+Depends: plugin-db-contract (= 0.4.2)
+Filename: ./all/plugin-db-l10n-fr_0.4.2_all.deb
+Size: 5556
+MD5sum: 51499a886818d70daf5ec575ade002c4
+SHA1: a6d4f0e8ddc164d4085e71fb032aff039dafbea3
+SHA256: 0df643f13085ee5342d2fe106c6da004f9f39b1deb01b6b044d13166586fd3f2
+SHA512: 4a1a6d72a1d4bbc9efded7ef24bffa723251cd771330047b782fa987b821e021a307dfbe67f56164a0a1ded1883d83d496fa0041fe45992925094a99d595a96d
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: fr catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language fr, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: plugin-db-l10n-it
 Architecture: all
 Version: 0.4.0
@@ -1511,6 +1623,27 @@ Description: it catalog of plugin-db's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: plugin-db-l10n-it
+Architecture: all
+Version: 0.4.2
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 24
+Depends: plugin-db-contract (= 0.4.2)
+Filename: ./all/plugin-db-l10n-it_0.4.2_all.deb
+Size: 5428
+MD5sum: 2b945d64b4201defb3cdcf1825d9bc1a
+SHA1: 9523610e2250afaa2739ec9db306f682b206e8d7
+SHA256: 9c8ed978b8798af3517ab8e8ab69bfc33f66e9a0e70125343e4209157037acb2
+SHA512: b30cc09f698499c2d05cb329ee7d50525103a3a7fd438a49a33a5b1937d2844d9d6635739e29ec0477f7ba534e947bd4fe0ab3a5e849a9d32023b783362f7cb9
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: it catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language it, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: plugin-db-l10n-pt
 Architecture: all
 Version: 0.4.0
@@ -1547,6 +1680,27 @@ MD5sum: 7a6dee699c2462b5a7cd82760d9f172a
 SHA1: 74dab91a626b5a629db7e4212111dff440c4d587
 SHA256: 5ff6004cac8dfdb8037f9ac63f378a84b70c12885224fdc1acdcad441796bb2f
 SHA512: 2577227268fe363a9fe77010009e8390e77d15087ccf81d284ef47743d7ed6fe86a45f08ae9840d9400262f932dc344412bbc12d87e1d985f5a6bd2541298399
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: pt catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language pt, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: plugin-db-l10n-pt
+Architecture: all
+Version: 0.4.2
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 24
+Depends: plugin-db-contract (= 0.4.2)
+Filename: ./all/plugin-db-l10n-pt_0.4.2_all.deb
+Size: 5468
+MD5sum: 89c48f1b97e5c52d526e96abdb4d5109
+SHA1: c98427d8df315a243d62d820cd9d0c96e82c46e1
+SHA256: 6f5a4fcfc3a8cea463cc7e74f691bcde1f71759acc442feaae58cb1d0dd739e1
+SHA512: 67565b3374e3a726246a1144f1f98900a54de0bff321c00c0c1f48880b86daf48eec2cac53d0e28f3c3bc676d81296724f8b5fd5687a9c07300cbc998bd3e489
 Homepage: https://github.com/FreeMixer/plugin-db
 Description: pt catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language pt, read by every surface
@@ -2147,6 +2301,31 @@ MD5sum: 8f6ac78b4e7f43212792bf89cf034a4b
 SHA1: c73604138123e55ccc867f991af1ca6109a8c8f5
 SHA256: 58394ffc4ebb4037f759756b4c37b950c5c58b8a541f10743956be094321bf12
 SHA512: 86fa56068c6fe8bf1c20c45bb357fd390e1668b47bbabc8fa21f1f73c778c3443db9d62d3f2cf6552d49728737895db9f6fd96766618321e17b52dfca22958b6
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: plugin database: reader for Python
+ The Python module plugin_db: query() gives the answer of plugin-db query
+ --json for a plugin of the store, read() is the Python twin of the reader for
+ layers in hand, and text() gives the sentence of a word from the catalog of a
+ language. Its words are generated from data/, and the fixtures of the C reader
+ and of the TypeScript twin hold it to the same answers.
+ .
+ Its documentation is on openmixer.org.
+
+Package: python3-plugin-db
+Architecture: all
+Version: 0.4.2
+Priority: optional
+Section: python
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 44
+Depends: plugin-db (>= 0.4.2), plugin-db-contract (= 0.4.2), omx-contract-data (>= 3.17.0~), omx-contract-data (<< 4~), python3:any
+Filename: ./all/python3-plugin-db_0.4.2_all.deb
+Size: 10244
+MD5sum: 2ab73740960df01939fdf648372fad47
+SHA1: 23b9538e125349021eb6c48e31b00f80517125fd
+SHA256: c21dcbdfba0e1633156cfb68cf4c354545a63a9b5edd91b2d6713a663d2c14dd
+SHA512: 8df530ee966dd6b61e222fef45bbc7593879e47ac52522ca646fb84004298204e9f4153665c4ab263d0928780d85c1af1ab5f257fa8ca828534b50113499fd6c
 Homepage: https://github.com/FreeMixer/plugin-db
 Description: plugin database: reader for Python
  The Python module plugin_db: query() gives the answer of plugin-db query
@@ -5316,6 +5495,31 @@ Description: plugin database: headers, static library and pkg-config file
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-db-dev
+Architecture: arm64
+Version: 0.4.2
+Priority: optional
+Section: libdevel
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 145
+Depends: libssl-dev
+Filename: ./arm64/plugin-db-dev_0.4.2_arm64.deb
+Size: 36264
+MD5sum: ee5719ae15957f8473f68a456c693708
+SHA1: f920a398f88c144e6ea209a237ee7343691a82c3
+SHA256: 1545cfac40f82f2d0f9cc1b0d87fd32a6110bea5d2b0f64decd867bef9a68147
+SHA512: 8994cfb2d2becc90a7380805958d82f882d58c8f3ba04d4326175c0299221297673c0db882a1808421db874c902a6140a5477156301f8d4883f898c1add9a45b
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: plugin database: headers, static library and pkg-config file
+ <plugin-db/pin.h>, header-only, on libc and libcrypto: the SHA-256 of a file,
+ the omx-layout/1 fingerprint of a parameter layout, the words a pin is written
+ with and the rules of what is a pin's. <plugin-db/db.h> and libplugin-db.a:
+ the address form, the file collection with the LV2 bundle rule, the store of
+ layers and the state function. With the pkg-config file plugin-db.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-db
 Architecture: arm64
 Version: 0.4.0
@@ -5353,6 +5557,29 @@ MD5sum: 80f9c2ec26f14ec89e1b32f7a358753b
 SHA1: 578bf9ba69c3ef11ee9e1450e9af47e17d2c0dde
 SHA256: f43d5f1eba9ba72a2aa02dc16e36eac36ac531350a9acdf9181d6e8eda1f6cae
 SHA512: 5e5ba909fe661128930a98581cbadcc268ace8ad08bbfa576cdd086678b11244d6ae5df4001075a2644d134cc69e26831ff7cc4b4f6b9b229a5cb2ba3457883a
+Homepage: https://github.com/FreeMixer/plugin-db
+Description: plugin database: pin, show and verify plugins
+ The command plugin-db pins an entry of the plugin database from the plugin's
+ files, shows one entry's attributes, state and reason, and verifies every
+ entry as rpm -V does, with the JSON Schema of the store's layer files. It
+ loads no plugin.
+ .
+ Its documentation is on openmixer.org.
+
+Package: plugin-db
+Architecture: arm64
+Version: 0.4.2
+Priority: optional
+Section: utils
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 88
+Depends: libc6 (>= 2.38), libssl3t64 (>= 3.0.0)
+Filename: ./arm64/plugin-db_0.4.2_arm64.deb
+Size: 28896
+MD5sum: 8223b7cacd8e80e2f4ff849c3886f4cc
+SHA1: 7f33e33048785db93ce042cd3eddef0a7346b6de
+SHA256: 5fdb7cae6316114f25db2b0baaa27ea8c3437ad6507151d5de9038229320c2b2
+SHA512: c9179361924c37e6ebbe6f5b8ff66d7cad5fb75f415dc94aa3172c88ef5f79219a3fb4e33e83e17254e967639f4d2d0a83150c38239a6eadc4c1d9ce11b648bb
 Homepage: https://github.com/FreeMixer/plugin-db
 Description: plugin database: pin, show and verify plugins
  The command plugin-db pins an entry of the plugin database from the plugin's

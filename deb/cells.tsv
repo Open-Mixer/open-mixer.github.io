@@ -101,23 +101,32 @@ omx-rt-gate	0.32.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 openmixer-release	1	-	bookworm/all trixie/all
 plugin-db	0.4.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 plugin-db	0.4.1	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+plugin-db	0.4.2	quick	trixie/arm64
 plugin-db-contract	0.4.0	-	bookworm/all trixie/all
 plugin-db-contract	0.4.1	-	bookworm/all trixie/all
+plugin-db-contract	0.4.2	quick	trixie/all
 plugin-db-dev	0.3.1	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 plugin-db-dev	0.4.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 plugin-db-dev	0.4.1	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+plugin-db-dev	0.4.2	quick	trixie/arm64
 plugin-db-l10n-ca	0.4.0	-	bookworm/all trixie/all
 plugin-db-l10n-ca	0.4.1	-	bookworm/all trixie/all
+plugin-db-l10n-ca	0.4.2	quick	trixie/all
 plugin-db-l10n-de	0.4.0	-	bookworm/all trixie/all
 plugin-db-l10n-de	0.4.1	-	bookworm/all trixie/all
+plugin-db-l10n-de	0.4.2	quick	trixie/all
 plugin-db-l10n-es	0.4.0	-	bookworm/all trixie/all
 plugin-db-l10n-es	0.4.1	-	bookworm/all trixie/all
+plugin-db-l10n-es	0.4.2	quick	trixie/all
 plugin-db-l10n-fr	0.4.0	-	bookworm/all trixie/all
 plugin-db-l10n-fr	0.4.1	-	bookworm/all trixie/all
+plugin-db-l10n-fr	0.4.2	quick	trixie/all
 plugin-db-l10n-it	0.4.0	-	bookworm/all trixie/all
 plugin-db-l10n-it	0.4.1	-	bookworm/all trixie/all
+plugin-db-l10n-it	0.4.2	quick	trixie/all
 plugin-db-l10n-pt	0.4.0	-	bookworm/all trixie/all
 plugin-db-l10n-pt	0.4.1	-	bookworm/all trixie/all
+plugin-db-l10n-pt	0.4.2	quick	trixie/all
 plugin-hostd	0.20.4	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 plugin-hostd	0.20.5	quick	trixie/arm64
 plugin-hostd	0.20.6	quick	trixie/arm64
@@ -153,6 +162,7 @@ plugin-qualify-l10n-it	0.20.4	quick	trixie/all
 plugin-qualify-l10n-pt	0.20.4	quick	trixie/all
 python3-plugin-db	0.4.0	-	bookworm/all trixie/all
 python3-plugin-db	0.4.1	-	bookworm/all trixie/all
+python3-plugin-db	0.4.2	quick	trixie/all
 python3-plugin-hostd-protocol	0.20.4	-	bookworm/all trixie/all
 python3-plugin-hostd-protocol	0.20.5	quick	trixie/all
 python3-plugin-hostd-protocol	0.20.6	quick	trixie/all

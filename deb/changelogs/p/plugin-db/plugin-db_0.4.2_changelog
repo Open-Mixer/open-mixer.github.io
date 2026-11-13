@@ -1,0 +1,11 @@
+plugin-db (0.4.2) unstable; urgency=medium
+
+  * Release 0.4.2
+  * python: the catalogs and the catalog reader are the venv's when it holds
+    them, else the system prefix's
+  * tests: the reader's installed files under a venv are the venv's when it
+    holds them, else the system's
+  * fuzz: the records and mutants name pin.h's lines after
+    plugin_db_constants.h
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 08:50:25 +0000
