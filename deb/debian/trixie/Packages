@@ -48,41 +48,6 @@ Description: one shared source of truth for every FreeMixer knob, range, default
 
 Package: libomx-contract-dev
 Architecture: all
-Version: 3.14.0
-Multi-Arch: foreign
-Priority: optional
-Section: libdevel
-Source: omx-contract
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 120
-Depends: omx-contract-data (= 3.14.0)
-Recommends: omx-contract (= 3.14.0)
-Breaks: libomx-clap-core-dev (<< 0.13.0~), libomxdsp-dev (<< 0.25.0~), omx-plugins-dev (<< 0.13.0~)
-Filename: ./all/libomx-contract-dev_3.14.0_all.deb
-Size: 23836
-MD5sum: be12376b859a15c4c81d350808c26fd0
-SHA1: 2a051b2024a868cf8e7b46f2d1b57da34b5d2061
-SHA256: 9fa9beaf6ea228de0d2b989b691236d1272e2ce884f177af00b93f3e802a4feb
-SHA512: 1b51174359325e69d271697fbabd221b258f416c4e1437abd9590b4030bdbc310822941a84501c768c8ea8519f06a9217ed7a58653db04bd31172a6588cfbb48
-Homepage: https://github.com/Open-Mixer/omx-contract
-Description: one shared source of truth for every OpenMixer knob, range, default
- A fader range, a default, a plugin parameter, a supported sample rate: in
- OpenMixer each of these is written down once, in omx-contract, and everything
- else reads it. That is why the console, the DSP library and the plugins agree
- on what a knob does and how far it turns. The declarations are plain JSON with
- a JSON Schema, so tools in any language can read them, and they are rendered
- as C headers for the code that is built from them.
- .
- This package holds the c render under /usr/include/omxcontract,
- omx-contract.pc and install-contract-dir.sh, which an owner's build
- installs its definitions with. The data it builds against is
- omx-contract-data, which it depends on. A consumer requires it at a floor,
- the lowest release whose declarations it builds against.
- .
- Its documentation is on openmixer.org.
-
-Package: libomx-contract-dev
-Architecture: all
 Version: 3.17.0
 Multi-Arch: foreign
 Priority: optional
@@ -490,39 +455,6 @@ Description: pt catalog of omx-clap-host's codes
 
 Package: omx-contract-data
 Architecture: all
-Version: 3.14.0
-Multi-Arch: foreign
-Priority: optional
-Section: misc
-Source: omx-contract
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 836
-Breaks: libomx-contract-dev (<< 3.14.0), omx-plugins-contract (<< 0.19.3~)
-Replaces: libomx-contract-dev (<< 3.14.0)
-Filename: ./all/omx-contract-data_3.14.0_all.deb
-Size: 77328
-MD5sum: 996f447198d90299eba3bca442fa8223
-SHA1: 75dccf307208151d6d490be93b36730a1732744b
-SHA256: f715320a6f697d7eb87dfd33fc201000d1fc6659dcaddf0099801c3a1ea22574
-SHA512: 3968955ba624713fcdca45d334b717e5e2aa3a729efdb3927344a544810a17e41520de98c2dfdd041e829186d516b008260ec3d2f1bf01a8cc53aec9675d22b8
-Homepage: https://github.com/Open-Mixer/omx-contract
-Description: OpenMixer declarations read at run time: contract directory, schema
- A fader range, a default, a plugin parameter, a supported sample rate: in
- OpenMixer each of these is written down once, in omx-contract, and everything
- else reads it. The declarations are plain JSON with a JSON Schema.
- .
- This package holds the files a program reads at run time: omx-contract's
- own package of the contract directory
- (/usr/share/omx-contract/contract.d/3/omx-contract/, where every owner
- installs its definitions beside it), the JSON Schema, the resolved json
- render, the vocabulary's schema fragment and the resource hints' Turtle,
- under /usr/share/omx-contract. A package that reads them at run time
- depends on this one, never on the development package.
- .
- Its documentation is on openmixer.org.
-
-Package: omx-contract-data
-Architecture: all
 Version: 3.17.0
 Multi-Arch: foreign
 Priority: optional
@@ -866,35 +798,6 @@ Description: Portuguese sentences of the OpenMixer declarations' codes and words
  (/usr/share/omx-contract/catalogs/pt.json): a surface shows these sentences
  on a host in that language, and the English source sentence for any key the
  catalog lacks.
-
-Package: omx-contract
-Architecture: all
-Version: 3.14.0
-Priority: optional
-Section: devel
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 2677
-Depends: nodejs, omx-contract-data (= 3.14.0)
-Recommends: pkgconf | pkg-config
-Filename: ./all/omx-contract_3.14.0_all.deb
-Size: 290816
-MD5sum: fe2065ea420e64344ad4addc91717e29
-SHA1: c874266cdcf1c83bbb605a70d92c71dc65916b4d
-SHA256: 58f36b6bf642f9121dcc894d930dd29cb368133de2138e5106e86604836d90e4
-SHA512: 1b46bba8745aaacc274b04b875016fdec049e830c73bf6cd298c5434c65e9881efd608f199fbf07d9e38b7de47becac0d2160e708a25fabd28ef99f48e32728c
-Homepage: https://github.com/Open-Mixer/omx-contract
-Description: command that checks and renders the OpenMixer declarations
- A fader range, a default, a plugin parameter, a supported sample rate: in
- OpenMixer each of these is written down once, in omx-contract, and everything
- else reads it. The declarations are plain JSON with a JSON Schema.
- .
- This package holds the omx-contract command, which validates, formats and
- renders the declarations, and reads the contract directory the packages
- install their definitions into as one checked set. It carries the npm
- packages it runs on (ajv and its dependencies), so it needs node and
- nothing else.
- .
- Its documentation is on openmixer.org.
 
 Package: omx-contract
 Architecture: all
@@ -1247,32 +1150,6 @@ Description: OpenMixer package repository configuration for apt
 
 Package: plugin-db-contract
 Architecture: all
-Version: 0.4.0
-Multi-Arch: foreign
-Priority: optional
-Section: libs
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 40
-Depends: omx-contract (>= 3.17.0~), omx-contract (<< 4~)
-Filename: ./all/plugin-db-contract_0.4.0_all.deb
-Size: 7932
-MD5sum: 74700f4a1a9895d4269eecf36f22b3d1
-SHA1: 32aa4925dc75f4fab98e1ed4bcdc33a06b617e2c
-SHA256: 5c87aa8a9f43abcc00c61221eedd8303a9a2528354a402998a3c0ed3b50905b9
-SHA512: e3960e9812995b23eeb0495bbc9e8a39995c778a7fb1c098a70a39a7b6c8513d165529c603fe40240a9387e114aeea7d01fc824f0d477f0c5a8896bc4d077325
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: words of the plugin database in omx-contract's contract directory
- data/pin.json of plugin-db, the words of a pin, and data/db.json, the address
- formats, the bundle rule, the layers, the attributes, the record changes and
- their actions, the states and the reasons, as the package plugin-db of
- omx-contract's contract directory, under
- /usr/share/omx-contract/contract.d/3/plugin-db.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-db-contract
-Architecture: all
 Version: 0.4.1
 Multi-Arch: foreign
 Priority: optional
@@ -1325,29 +1202,6 @@ Description: words of the plugin database in omx-contract's contract directory
 
 Package: plugin-db-l10n-ca
 Architecture: all
-Version: 0.4.0
-Priority: optional
-Section: localization
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 20
-Depends: plugin-db-contract (= 0.4.0)
-Breaks: plugin-db-contract (<< 0.3.3~)
-Replaces: plugin-db-contract (<< 0.3.3~)
-Filename: ./all/plugin-db-l10n-ca_0.4.0_all.deb
-Size: 3820
-MD5sum: 5ed9062144cb2ec4206f1958edb7b907
-SHA1: ff609b34f27bacad64a4c91dcf9f53cc0331981b
-SHA256: 9d3168cd7361daa63fe9b2f85339c7cb92ea742ada2536770fab9716c30caa02
-SHA512: 85ee5e1ced6f2d07b27145144f902fd08350b8f5e3306e0d87071470d5d0b35d0a8401df5641ee8b5c1f8a13f714b9dc07ced5e660a017c42c77e9245b188f7d
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: ca catalog of plugin-db's codes
- The sentences of plugin-db's codes in the language ca, read by every surface
- that shows them on a host in that locale; without it a surface shows the
- English source sentence.
-
-Package: plugin-db-l10n-ca
-Architecture: all
 Version: 0.4.1
 Priority: optional
 Section: localization
@@ -1389,27 +1243,6 @@ SHA512: 9c014f6836569acd55ba25b35a24b1ccd7028a0879f806f948e5519264f30df8b7467e5e
 Homepage: https://github.com/FreeMixer/plugin-db
 Description: ca catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language ca, read by every surface
- that shows them on a host in that locale; without it a surface shows the
- English source sentence.
-
-Package: plugin-db-l10n-de
-Architecture: all
-Version: 0.4.0
-Priority: optional
-Section: localization
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 24
-Depends: plugin-db-contract (= 0.4.0)
-Filename: ./all/plugin-db-l10n-de_0.4.0_all.deb
-Size: 5816
-MD5sum: ed48d4c3a0bcac4b3408ebccf0877f75
-SHA1: d03b881ac93069dba582615f7a19f38cac4d9054
-SHA256: da0665b1d282f4abab6c7fc02b6af852cb1252ac1259792281c250a6d83b8ea8
-SHA512: fb7c30b89181aa6e773f60dffaf1483cfe95f001b77ec000f8d7440ccd9207471641169af91bde9c7a0092156282e80c0e50ef49aaaed6dc40467445814ee798
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: de catalog of plugin-db's codes
- The sentences of plugin-db's codes in the language de, read by every surface
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
@@ -1457,27 +1290,6 @@ Description: de catalog of plugin-db's codes
 
 Package: plugin-db-l10n-es
 Architecture: all
-Version: 0.4.0
-Priority: optional
-Section: localization
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 24
-Depends: plugin-db-contract (= 0.4.0)
-Filename: ./all/plugin-db-l10n-es_0.4.0_all.deb
-Size: 5784
-MD5sum: f7d6504be52c32e35607ff74c9c7f1be
-SHA1: 006c6e89e4e54129fe57e71774315d8bd0d9d7aa
-SHA256: 7ab6d241f921729097bb0d15617a580b432bb3430136b5fc5a693ecdcd6bd644
-SHA512: 7784f7e58bc9c38d66595ae407470f36abe3fc2041cdfc38022d7cbf7fbfe5f2dfe6d2808a4a83c0eef26e22cf4b294c0f27547e6024ef14315398eac918a962
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: es catalog of plugin-db's codes
- The sentences of plugin-db's codes in the language es, read by every surface
- that shows them on a host in that locale; without it a surface shows the
- English source sentence.
-
-Package: plugin-db-l10n-es
-Architecture: all
 Version: 0.4.1
 Priority: optional
 Section: localization
@@ -1515,27 +1327,6 @@ SHA512: 07a4fe652610c1652116772a3a5b90ea5b18db2bdab34aca9e75b8110158e5139a656225
 Homepage: https://github.com/FreeMixer/plugin-db
 Description: es catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language es, read by every surface
- that shows them on a host in that locale; without it a surface shows the
- English source sentence.
-
-Package: plugin-db-l10n-fr
-Architecture: all
-Version: 0.4.0
-Priority: optional
-Section: localization
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 24
-Depends: plugin-db-contract (= 0.4.0)
-Filename: ./all/plugin-db-l10n-fr_0.4.0_all.deb
-Size: 5832
-MD5sum: 9cc07f322f0e40bbdb3ed6ab5a789877
-SHA1: 36a37a7fe4062e227a64fc3ba97c626061d6c39e
-SHA256: 27566f43767e7562917d33e5929edcbc774788b0d27db149d262aeba406bba04
-SHA512: 0efa41b27df8a6ad42992b455410143bd911f2780d8541c9cf3494233524958604e616bc04327d0d6b384958943c234c760511e07328d53024ba414234152215
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: fr catalog of plugin-db's codes
- The sentences of plugin-db's codes in the language fr, read by every surface
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
@@ -1583,27 +1374,6 @@ Description: fr catalog of plugin-db's codes
 
 Package: plugin-db-l10n-it
 Architecture: all
-Version: 0.4.0
-Priority: optional
-Section: localization
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 24
-Depends: plugin-db-contract (= 0.4.0)
-Filename: ./all/plugin-db-l10n-it_0.4.0_all.deb
-Size: 5740
-MD5sum: f7b0c2971eb1153d00dc3109e50b2c86
-SHA1: 707ace199e9ff165c512a82add250c1ef3daac21
-SHA256: a0b521e6b94772795c3d70e109d36c0c2a8c1abce0f582f576de73c8956319d8
-SHA512: 57c9649386f2d890abfdde401e5427b3d62345023bcc07a8897898c9b5084bb6bad3dc37fd938108a098a90c79c6d477ef59b0260c63085795eaf2fe3fefa36a
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: it catalog of plugin-db's codes
- The sentences of plugin-db's codes in the language it, read by every surface
- that shows them on a host in that locale; without it a surface shows the
- English source sentence.
-
-Package: plugin-db-l10n-it
-Architecture: all
 Version: 0.4.1
 Priority: optional
 Section: localization
@@ -1641,27 +1411,6 @@ SHA512: b30cc09f698499c2d05cb329ee7d50525103a3a7fd438a49a33a5b1937d2844d9d663573
 Homepage: https://github.com/FreeMixer/plugin-db
 Description: it catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language it, read by every surface
- that shows them on a host in that locale; without it a surface shows the
- English source sentence.
-
-Package: plugin-db-l10n-pt
-Architecture: all
-Version: 0.4.0
-Priority: optional
-Section: localization
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 24
-Depends: plugin-db-contract (= 0.4.0)
-Filename: ./all/plugin-db-l10n-pt_0.4.0_all.deb
-Size: 5776
-MD5sum: 8da4bc3d930101a8ef454009d2c38e96
-SHA1: 8f91101cdf2fd8c550416c6248f8b73d65deece2
-SHA256: b87860fd849e6dda620903a8fd54b3fed59fcded1d7d490ce338461bd39a2e5e
-SHA512: 8c3b6eaed921dc47925f654d6c69fa4c2fe56957d6f8effd7ec1ef159f042f833b376e30bea5e879efd8151730ad4aad6067a3d206f52937b2cac8d214fbcc58
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: pt catalog of plugin-db's codes
- The sentences of plugin-db's codes in the language pt, read by every surface
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
@@ -1793,31 +1542,6 @@ Description: plugin-hostd's format tables, read at run time
 
 Package: plugin-hostd-dev
 Architecture: all
-Version: 0.20.4
-Priority: optional
-Section: libdevel
-Source: plugin-hostd
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 58
-Depends: plugin-hostd-contract (= 0.20.4), libplugin-hostd-protocol-dev (>= 0.5.5~), libplugin-hostd-protocol-dev (<< 0.6~), plugin-db-dev (>= 0.4.0~), plugin-db-dev (<< 0.5~)
-Filename: ./all/plugin-hostd-dev_0.20.4_all.deb
-Size: 11528
-MD5sum: 613d87fae07b944da9f7ce6e183ea228
-SHA1: 77b574f224c759b644aa82043a7928b4aa45442d
-SHA256: c8f4c4f18329e6a2df2740b7a66e849a10f247aad4be18f8d1a9bcfb5852ce81
-SHA512: c9bc01e431304736658633bb3bde371c58f2900f10e933c36e2a048ad6bfb4ee4210fec3b842074afdb4aa701bcd23df84c706753561adb4697f9ecc83e8f3c2
-Homepage: https://github.com/FreeMixer/plugin-hostd
-Description: C headers to drive plugin-hostd from your own controller
- The words of the grouping planner and the running history,
- and the schemas of the probe output and of a preset file. The protocol a
- controller speaks (the verbs, error codes, feedback events and settings) is
- declared in libplugin-hostd-protocol-dev, which this package depends on:
- pkg-config plugin-hostd gives the flags for both.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-hostd-dev
-Architecture: all
 Version: 0.20.5
 Priority: optional
 Section: libdevel
@@ -1863,35 +1587,6 @@ Description: C headers to drive plugin-hostd from your own controller
  controller speaks (the verbs, error codes, feedback events and settings) is
  declared in libplugin-hostd-protocol-dev, which this package depends on:
  pkg-config plugin-hostd gives the flags for both.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-hostd-full
-Architecture: all
-Version: 0.20.4
-Priority: optional
-Section: metapackages
-Source: plugin-hostd
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 9
-Depends: plugin-hostd (= 0.20.4), omx-clap-host (>= 0.32.1~), omx-clap-host (<< 0.33~), omx-plugins (>= 0.19.3~), omx-plugins (<< 0.20~), plugin-qualify (>= 0.20.1~), plugin-qualify (<< 0.21~)
-Recommends: omx-panel (>= 0.13.0~), omx-panel (<< 0.14~), plugin-qualification-records (>= 2026110902~), plugin-qualification-records (<< 2027000000~)
-Filename: ./all/plugin-hostd-full_0.20.4_all.deb
-Size: 3256
-MD5sum: 93aa25b754921ecfa59c9aba4aed72d4
-SHA1: 1501d3e0348c7ed7904ad405ec19be65eb75aaa5
-SHA256: c372eee85bf47becc1f38c0c54b097d44522969ffc20d7bb8fb49940c223c863
-SHA512: 804026320f1a0ca5a14245e6a6a7bfe051dfe736c7a9be2e80f1471e8796b274a65c859100ebf83d2cc5e4873ddcc02af51bf91ed0429de38f9b01190c52d87c
-Homepage: https://github.com/FreeMixer/plugin-hostd
-Description: whole plugin host stack: daemon, workers, plugins, qualifier
- Installs plugin-hostd with everything it runs plugins with: omx-clap-host,
- the CLAP worker that also runs LV2 plugins through its adapter, the OpenMixer
- plugins, plugin-qualify, which measures each installed plugin before it is
- trusted live, and the qualification records of this machine's class, so the
- plugins measured on a machine like this one are taken from the records.
- .
- omx-panel, the plugin panels in a browser, is recommended. Install with
- --no-install-recommends for a machine with no screen.
  .
  Its documentation is on openmixer.org.
 
@@ -2263,31 +1958,6 @@ Description: pt catalog of plugin-qualify's codes
 
 Package: python3-plugin-db
 Architecture: all
-Version: 0.4.0
-Priority: optional
-Section: python
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 44
-Depends: plugin-db (>= 0.4.0), plugin-db-contract (= 0.4.0), omx-contract-data (>= 3.17.0~), omx-contract-data (<< 4~), python3:any
-Filename: ./all/python3-plugin-db_0.4.0_all.deb
-Size: 10384
-MD5sum: 45b5f17cdc695b1cdcb1403cfe839272
-SHA1: 4ad070403ab74526903fbe71dbfc75ab0ede52c2
-SHA256: a1a751120f528b1f6b6f2cec1390647aa0dbbf34be9fc2d91a19971ec3addf2a
-SHA512: 1af62cffd86eb206458bcb07ba4c8854fb39792f571d7a807ba04867533607e59011aba9e4e92cdbd21ee613e3c55f6259450d7e3dab783c7827a8e4f087a262
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: plugin database: reader for Python
- The Python module plugin_db: query() gives the answer of plugin-db query
- --json for a plugin of the store, read() is the Python twin of the reader for
- layers in hand, and text() gives the sentence of a word from the catalog of a
- language. Its words are generated from data/, and the fixtures of the C reader
- and of the TypeScript twin hold it to the same answers.
- .
- Its documentation is on openmixer.org.
-
-Package: python3-plugin-db
-Architecture: all
 Version: 0.4.1
 Priority: optional
 Section: python
@@ -2335,30 +2005,6 @@ Description: plugin database: reader for Python
  and of the TypeScript twin hold it to the same answers.
  .
  Its documentation is on openmixer.org.
-
-Package: python3-plugin-hostd-protocol
-Architecture: all
-Version: 0.20.4
-Priority: optional
-Section: sound
-Source: plugin-hostd
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 37
-Depends: python3, libplugin-hostd-protocol0 (>= 0.5.5~), libplugin-hostd-protocol0 (<< 0.6~), plugin-hostd-protocol-contract (>= 0.5.5~), plugin-hostd-protocol-contract (<< 0.6~), omx-clap-core-contract (>= 0.31.1~), omx-clap-core-contract (<< 0.33~), omx-contract (>= 3.12.0~), omx-contract (<< 4~)
-Filename: ./all/python3-plugin-hostd-protocol_0.20.4_all.deb
-Size: 10260
-MD5sum: cfbcfe3f65a5c4db466a5b6892d6722b
-SHA1: a1cfe230318f90005741256dacd7403d39688b67
-SHA256: b5b8d3c059959377496e98a69233fbb21998ed63c430e399500e681354650293
-SHA512: eb5edc697c73851d8f973e63df1f618f264a9d85e730904aeec6fa7ffafc0cfe9668ea8920f9932b755b8eefe60a7757020355946fc1ca062be6d9e2eb58312e
-Homepage: https://github.com/FreeMixer/plugin-hostd
-Description: Python client of plugin-hostd's protocol
- plugin_hostd_protocol: one codec over the files plugin-hostd-protocol
- installs, which encodes and decodes every command the protocol declares,
- parses the replies, feedback lines and protocol errors, and gives each reply
- code its sentence. A controller speaks the protocol through it and restates
- nothing; the npm package @openmixer/plugin-hostd-client is the same codec in
- TypeScript.
 
 Package: python3-plugin-hostd-protocol
 Architecture: all
@@ -3730,31 +3376,6 @@ Description: static real-time gate for plugin and engine C built on libomxdsp
  point. The tables it judges against ship with it: one forbidden list, one
  class table and the thread roles of each ABI, with libomxdsp's thread tags
  and call graphs.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-db-dev
-Architecture: amd64
-Version: 0.3.1
-Priority: optional
-Section: libdevel
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 138
-Depends: libssl-dev
-Filename: ./amd64/plugin-db-dev_0.3.1_amd64.deb
-Size: 36220
-MD5sum: 490d6ca56e2be2af86bec323ba585e8a
-SHA1: 2d6b43c3d191dcf978ab23df1883dcfda0227070
-SHA256: 1fc149bbde6f03daae54809426900158230582e75324ac80f29f8ba6ca7c6e40
-SHA512: de40d7cb7b1e25f46ef46a6ff95dd4ebcded463cb422e0b39e3cf890d9ce47b7fc1e4aafd419d60c4f03802518e61dbc8ad7dee5967581b4c2285fb2bc5a3cc4
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: plugin database: headers, static library and pkg-config file
- <plugin-db/pin.h>, header-only, on libc and libcrypto: the SHA-256 of a file,
- the omx-layout/1 fingerprint of a parameter layout, the words a pin is written
- with and the rules of what is a pin's. <plugin-db/db.h> and libplugin-db.a:
- the address form, the file collection with the LV2 bundle rule, the store of
- layers and the state function. With the pkg-config file plugin-db.
  .
  Its documentation is on openmixer.org.
 
@@ -5422,56 +5043,6 @@ Description: static real-time gate for plugin and engine C built on libomxdsp
 
 Package: plugin-db-dev
 Architecture: arm64
-Version: 0.3.1
-Priority: optional
-Section: libdevel
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 143
-Depends: libssl-dev
-Filename: ./arm64/plugin-db-dev_0.3.1_arm64.deb
-Size: 36328
-MD5sum: b0e2589755d01d2e24e6d9d796ad901d
-SHA1: 6f72f67604d6d31a588d144ab74c695b603d5106
-SHA256: da4acff83d961147763bc61863467190c20936b7735d8c1d11050bc239d22a76
-SHA512: 326045c0bd200b6ec52b406d2aaa90c890cc5411c8f1edc0838119893e2f2b19d9e2c5306368e63f1e7b80c60d5bc0fd99cde454c6f184744363bb043c2c105f
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: plugin database: headers, static library and pkg-config file
- <plugin-db/pin.h>, header-only, on libc and libcrypto: the SHA-256 of a file,
- the omx-layout/1 fingerprint of a parameter layout, the words a pin is written
- with and the rules of what is a pin's. <plugin-db/db.h> and libplugin-db.a:
- the address form, the file collection with the LV2 bundle rule, the store of
- layers and the state function. With the pkg-config file plugin-db.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-db-dev
-Architecture: arm64
-Version: 0.4.0
-Priority: optional
-Section: libdevel
-Source: plugin-db
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 143
-Depends: libssl-dev
-Filename: ./arm64/plugin-db-dev_0.4.0_arm64.deb
-Size: 36316
-MD5sum: f8f1b58b2c30ad25bf3f70ad1300e440
-SHA1: 4a9b78719e076e46eb213f74beace8d868f77df7
-SHA256: e5865ccee2b9abcb47de2a52086ef90f7f344890d3b3543a7e90a464ff10e926
-SHA512: 4b7aefe4aacd0cd28535a44c7f5be7068cb57f5de6984449e50b34946de4a329a58db9485ffbada8525f1c0d17f8fc83ffd9d03a8be3e7f1f97f84e7c2c98582
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: plugin database: headers, static library and pkg-config file
- <plugin-db/pin.h>, header-only, on libc and libcrypto: the SHA-256 of a file,
- the omx-layout/1 fingerprint of a parameter layout, the words a pin is written
- with and the rules of what is a pin's. <plugin-db/db.h> and libplugin-db.a:
- the address form, the file collection with the LV2 bundle rule, the store of
- layers and the state function. With the pkg-config file plugin-db.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-db-dev
-Architecture: arm64
 Version: 0.4.1
 Priority: optional
 Section: libdevel
@@ -5522,29 +5093,6 @@ Description: plugin database: headers, static library and pkg-config file
 
 Package: plugin-db
 Architecture: arm64
-Version: 0.4.0
-Priority: optional
-Section: utils
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 88
-Depends: libc6 (>= 2.38), libssl3t64 (>= 3.0.0)
-Filename: ./arm64/plugin-db_0.4.0_arm64.deb
-Size: 29192
-MD5sum: 330b403c87279b02aeb44a963a270ac8
-SHA1: 5a3fbd2ec6196a45e99d9460771adab086c53869
-SHA256: 802692402f45d7765549e216b51e8415fd64d0ad68873d47616e82d5c64cf491
-SHA512: 4daeff2fc139185b5bc3c88889771d90e137a31c03059c4440fc2410971856304643005e6d30cd2199dcf4fe8ea6801c57d5256b3c008c47cdb9387555a060f2
-Homepage: https://github.com/FreeMixer/plugin-db
-Description: plugin database: pin, show and verify plugins
- The command plugin-db pins an entry of the plugin database from the plugin's
- files, shows one entry's attributes, state and reason, and verifies every
- entry as rpm -V does, with the JSON Schema of the store's layer files. It
- loads no plugin.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-db
-Architecture: arm64
 Version: 0.4.1
 Priority: optional
 Section: utils
@@ -5586,32 +5134,6 @@ Description: plugin database: pin, show and verify plugins
  files, shows one entry's attributes, state and reason, and verifies every
  entry as rpm -V does, with the JSON Schema of the store's layer files. It
  loads no plugin.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-hostd-tests
-Architecture: arm64
-Version: 0.20.4
-Priority: optional
-Section: sound
-Source: plugin-hostd
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 88
-Depends: plugin-hostd (= 0.20.4), libc6 (>= 2.38), libplugin-hostd-protocol0 (>= 0.5.5), libssl3t64 (>= 3.0.0)
-Filename: ./arm64/plugin-hostd-tests_0.20.4_arm64.deb
-Size: 19276
-MD5sum: d5bb0c618ac540de47c7e4cb30228c37
-SHA1: 075fe3ca478804c85da590002a69ae012ae3b85e
-SHA256: 80f695bd44b108db6b4400793d4830367f7e74789c1563fa1416708489891318
-SHA512: 1323f9c75f5cf403386be5d7ffa86f08baeaa772441874a1cba733ecfa9ade75ba878e54dcab6da55d0666088341f6b5775fb884b81073b589ee36728344d1fc
-Homepage: https://github.com/FreeMixer/plugin-hostd
-Description: stand-in plugin worker to test a program that drives plugin-hostd
- A small worker that speaks the same protocol as mod-host and omx-clap-host
- and can be made to die on cue, so a program that talks to plugin-hostd can
- be tested against a real daemon without a plugin, a JACK server or any
- audio. Run it with -L to print the layout it reports. It is installed in
- /usr/libexec/plugin-hostd/tests, away from the directories programs run
- from.
  .
  Its documentation is on openmixer.org.
 
@@ -5664,36 +5186,6 @@ Description: stand-in plugin worker to test a program that drives plugin-hostd
  audio. Run it with -L to print the layout it reports. It is installed in
  /usr/libexec/plugin-hostd/tests, away from the directories programs run
  from.
- .
- Its documentation is on openmixer.org.
-
-Package: plugin-hostd
-Architecture: arm64
-Version: 0.20.4
-Priority: optional
-Section: sound
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 552
-Depends: libplugin-hostd-protocol0 (>= 0.5.5), libplugin-hostd-protocol0 (<< 0.6~), plugin-hostd-contract (= 0.20.4), libc6 (>= 2.38), libcjson1 (>= 1.7.5), libssl3t64 (>= 3.0.0)
-Recommends: omx-clap-host (>= 0.32.1~), omx-clap-host (<< 0.33~)
-Suggests: mod-host
-Filename: ./arm64/plugin-hostd_0.20.4_arm64.deb
-Size: 154052
-MD5sum: af1cd564302075d52a2e38b1c252a418
-SHA1: 7ad63779f0673c6f031a692bd64fa60d724baee1
-SHA256: e389609953616b649dd5f7e8ab696e517d4042c1fc33bf6cb2293197e651beca
-SHA512: 23ecb449cf36f7616ae394db25056c6fe5b4076820e9f55fc62b0aeb9caa0b53e5fbcbc29e3959b1b35042aa6a728cecfc8573441c307eb86cc24edded697a4f
-Homepage: https://github.com/FreeMixer/plugin-hostd
-Description: run LV2 and CLAP plugins so that one crash cannot stop the show
- plugin-hostd keeps your effects and instruments running when one of them
- misbehaves. It gives a controller one mod-host socket and starts each plugin,
- or each named group of plugins, in a worker process of its own: omx-clap-host
- for CLAP and, through its LV2 adapter, for LV2. If a plugin crashes, only its
- worker goes down and the daemon brings it back. Audio never passes through the
- daemon, so it adds no latency: every worker is a JACK client.
- .
- A format whose worker is not installed refuses its adds; the other formats
- are unaffected. mod-host runs LV2 plugins only when you ask for it.
  .
  Its documentation is on openmixer.org.
 
