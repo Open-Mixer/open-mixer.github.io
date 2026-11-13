@@ -1,0 +1,21 @@
+omx-clap-host (0.32.2) unstable; urgency=medium
+
+  * ci: the host-verbs step fetches the staged protocol build's own commit
+  * packaging: the CLAP floor is 1.2.10 everywhere, one number
+  * packaging: a floor is the version each distribution's build is built and
+    tested against
+  * Release 0.32.2
+  * packaging: the Catalan pack took the catalog over in 0.32.1
+  * ci: the host-verbs check reads the declarations of the protocol build it
+    installs
+  * packaging: a build takes plugin-db below 0.5
+  * packaging: the Catalan pack takes the catalog over from 0.32.2
+  * host: node_label, a client's label on a hosted node's pretty-name
+    (plugin-hostd#35)
+  * tests: a client's node_label joins a hosted node's pretty-name
+    (plugin-hostd#35)
+  * debian: libomx-clap-core-dev depends on clap-headers, with a floor and a
+    ceiling
+  * gitignore: tests/hosted_cost_bench_lv2, the LV2 build of the chain bench
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 04:19:53 +0000
