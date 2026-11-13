@@ -1,0 +1,9 @@
+plugin-db (0.4.3) unstable; urgency=medium
+
+  * include: the vocabulary header rendered by omx-contract 3.18.0
+  * release: 0.4.3, python3-plugin-db's dependency on plugin-db has its
+    ceiling
+  * tests: every dependency between this source's packages carries a ceiling
+  * release: a catch-up dispatch input
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 14:14:35 +0000
