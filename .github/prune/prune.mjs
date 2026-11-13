@@ -471,17 +471,46 @@ export function uninstallable(pkgs, keptFiles) {
 // watch the plan invariant fail). The owner's ruling of 2026-11-08 is 3, besides every pinned version.
 // drop mode: delete every build of the named source package versions (all subpackages, architectures and the
 // source) and keep everything else, whatever the age. A drop is name@version, the version without the release.
+// name@version:<cell> scopes it to one cell: only that repository's builds of that architecture go (the source
+// stays, the other suites, releases and architectures are not touched). A cell is <suite>/<arch> for deb
+// (trixie|bookworm, amd64|arm64|all) or fedora/<rel>/<arch> for rpm (x86_64|aarch64|noarch).
+export const DROP_SUITES = ['bookworm', 'trixie'];
+export const DROP_ARCHES = { deb: ['amd64', 'arm64', 'all'], rpm: ['x86_64', 'aarch64', 'noarch'] };
+
+function parseCell(entry, cell) {
+  const bad = (why) => new Error(`drop entry '${entry}': ${why}; a scope is <suite>/<arch> (suite ${DROP_SUITES.join('|')}, arch ${DROP_ARCHES.deb.join('|')}) or fedora/<rel>/<arch> (arch ${DROP_ARCHES.rpm.join('|')})`);
+  const parts = cell.split('/');
+  if (parts[0] === 'fedora') {
+    if (parts.length !== 3) throw bad(`'${cell}' is not fedora/<rel>/<arch>`);
+    const [, rel, arch] = parts;
+    if (!/^\d+$/.test(rel)) throw bad(`'${rel}' is not a fedora release number`);
+    if (!DROP_ARCHES.rpm.includes(arch)) throw bad(`'${arch}' is not an rpm architecture`);
+    return { format: 'rpm', repo: `fedora/${rel}`, arch };
+  }
+  if (parts.length !== 2) throw bad(`'${cell}' is not suite/arch`);
+  const [suite, arch] = parts;
+  if (!DROP_SUITES.includes(suite)) throw bad(`'${suite}' is not a deb suite`);
+  if (!DROP_ARCHES.deb.includes(arch)) throw bad(`'${arch}' is not a deb architecture`);
+  return { format: 'deb', repo: `debian/${suite}`, arch };
+}
+
 export function parseDrop(text) {
   return String(text || '').split(/[,\s]+/).filter(Boolean).map((d) => {
     const i = d.lastIndexOf('@');
     if (i < 1 || i === d.length - 1) throw new Error(`drop entry '${d}' is not name@version`);
-    return { name: d.slice(0, i), version: d.slice(i + 1) };
+    const name = d.slice(0, i), rest = d.slice(i + 1);
+    const c = rest.indexOf(':');
+    if (c < 0) return { name, version: rest };
+    if (c === 0) throw new Error(`drop entry '${d}' is not name@version`);
+    return { name, version: rest.slice(0, c), scope: parseCell(d, rest.slice(c + 1)) };
   });
 }
 
+const inCell = (p, s) => !s || (p.format === s.format && p.repo === s.repo && p.arch === s.arch);
+
 export const dropMatches = (F, p, drops) => {
   const src = p.arch === 'src' ? p.name : sourceName(p);
-  return drops.some((d) => d.name === src && F.upstream(p.evr) === d.version);
+  return drops.some((d) => d.name === src && F.upstream(p.evr) === d.version && inCell(p, d.scope));
 };
 
 function selectDrop(pkgs, F, drops) {
