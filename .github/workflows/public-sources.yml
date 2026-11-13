@@ -1,0 +1,16 @@
+name: public sources
+# the checks every OpenMixer repository runs on what it publishes: commit messages, private references, and no local
+# copy of either (Open-Mixer/.github's public-sources-check). A push runs on main only; a pull request runs its branch.
+on:
+  push:
+    branches: [main]
+  pull_request:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+permissions:
+  contents: read
+
+jobs:
+  public-sources:
+    uses: Open-Mixer/.github/.github/workflows/public-sources-check.yml@openmixer-v1
