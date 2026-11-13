@@ -1,0 +1,16 @@
+omx-clap-host (0.32.3) unstable; urgency=medium
+
+  * release 0.32.3: the changelogs name #58
+  * tests: jack_identity's recorder counts from the cycle the source started
+    in
+  * tests: the identity feeder records the window it plays wherever go lands
+    in a cycle
+  * packaging: 0.32.3 floors to plugin-hostd-protocol 0.5.7
+  * release: 0.32.3, built against plugin-db 0.4.1
+  * fuzz: the depth record names PRESET_JSON_DEPTH_MAX's line again (#54)
+  * fuzz: the seed corpus follows the test fixtures again (#54)
+  * tests: the CLAP floor and ceiling are held equal across the spec and
+    debian/control (#14)
+  * packaging: the rpm spec's clap-devel floor follows debian's, 1.2.10 (#14)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 06:19:51 +0000
