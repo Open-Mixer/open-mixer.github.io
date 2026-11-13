@@ -117,7 +117,7 @@ send &quot;param_get 0 1&quot;   # resp 0 8.0000
 </code></pre>
 <p>What each step did:</p>
 <ol>
-<li><code>curl</code> fetches the repository key of the FreeMixer channel. It signs every package, for x86_64 and arm64.</li>
+<li><code>curl</code> fetches the repository key of the OpenMixer channel. It signs every package, for x86_64 and arm64.</li>
 <li>The <code>echo</code> adds the channel for your Debian release (<code>bookworm</code> and <code>trixie</code> are published).</li>
 <li><code>apt-get install</code> takes the daemon, the CLAP worker <code>omx-clap-host</code>, a set of CLAP plugins to try, and JACK. On a
 machine that already runs JACK (Zynthian does) leave <code>jackd2</code> out.</li>

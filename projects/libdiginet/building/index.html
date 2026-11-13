@@ -214,9 +214,9 @@ and runs <code>make fuzz-corpus-check</code>, <code>make fuzz-sabotage</code>, <
 <h3 id="releasing">Releasing</h3>
 <p>Set the version in <code>VERSION</code>, <code>include/diginet/diginet.h</code>, <code>Version:</code> in the spec and the top
 entry of <code>debian/changelog</code>, then tag <code>vX.Y.Z</code>. The tag runs <code>.github/workflows/release.yml</code>,
-which calls the shared <code>build-rpm.yml</code> and <code>build-deb.yml</code> workflows of FreeMixer/.github: signed
+which calls the shared <code>build-rpm.yml</code> and <code>build-deb.yml</code> workflows of Open-Mixer/.github: signed
 RPMs for Fedora 44 (x86_64, aarch64) and DEBs for Debian bookworm and trixie (amd64, arm64) are
-published to the FreeMixer channel and attached to the GitHub release. A pull request runs the
+published to the OpenMixer channel and attached to the GitHub release. A pull request runs the
 same workflows as a dry run that builds, lints and publishes nothing, then installs the packages
 it built in clean containers and builds a consumer against the development package. Git history
 is the changelog; no changelog file is kept.</p>

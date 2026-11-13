@@ -745,7 +745,7 @@ answers as mod-host answers it (<code>make test-forms</code>, and <code>test-for
 <h2 id="credit">Credit</h2>
 <p>The library's code (<code>src/</code>, the headers at the top of <code>include/</code>) is mod-host's
 (<a href="https://github.com/mod-audio/mod-host">mod-audio/mod-host</a>), by Filipe Coelho, MOD Audio UG and the mod-host
-contributors, taken from FreeMixer's fork (<a href="https://github.com/FreeMixer/mod-host">FreeMixer/mod-host</a>, branch
+contributors, taken from Open-Mixer's fork (<a href="https://github.com/Open-Mixer/mod-host">Open-Mixer/mod-host</a>, branch
 <code>freemixer</code>, 013ac7d): upstream 12335c2 with the pull requests that made it a library (#81, #82, #98, #100, #101, #104
 to #109, #112, #113, #116 and the bind address of FreeMixer/mod-host#12). The files that come from it keep mod-host's
 copyright and licence lines. The declared protocol (<code>include/plugin-hostd/</code>, <code>data/</code>, <code>protocol/</code>, <code>grammar/</code>,
@@ -2510,7 +2510,7 @@ copyright and licence lines. The declared protocol (<code>include/plugin-hostd/<
 <tr>
 <td><code>protocol/plugin-hostd.schema.json</code></td>
 <td><code>/usr/share/plugin-hostd-protocol/plugin-hostd.schema.json</code></td>
-<td><code>https://github.com/FreeMixer/plugin-hostd-protocol/protocol/plugin-hostd.schema.json</code></td>
+<td><code>https://github.com/Open-Mixer/plugin-hostd-protocol/protocol/plugin-hostd.schema.json</code></td>
 <td>The protocol surface plugin-hostd owns</td>
 <td>-</td>
 <td>Generated from include/plugin-hostd/protocol.h, which is the declaration; this file says the shape of the JSON.</td>
@@ -2519,7 +2519,7 @@ copyright and licence lines. The declared protocol (<code>include/plugin-hostd/<
 </table>
 <p>Counts: 48 mod-host commands, 34 same, 8 differs, 6 refused; 32 verbs mod-host does not have.</p>
 <h2 id="appendix-mod-host-s-command-reference">Appendix: mod-host's command reference</h2>
-<p>The &quot;Commands (or Protocol)&quot; section of mod-host's README (FreeMixer/mod-host, branch freemixer, 013ac7d), kept as it
+<p>The &quot;Commands (or Protocol)&quot; section of mod-host's README (Open-Mixer/mod-host, branch freemixer, 013ac7d), kept as it
 is. Copyright 2013-2026 Filipe Coelho, MOD Audio UG and the mod-host contributors, GPL-3.0-or-later.</p>
 <p>Where it says &quot;mod-host&quot;, read &quot;the host&quot;: any host built on this library answers these commands. The library parses
 and dispatches them; what a command does to a plugin is the host's backend (<code>host_backend_t</code>, <code>include/host-backend.h</code>).</p>

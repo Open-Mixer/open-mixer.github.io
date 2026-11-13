@@ -21,13 +21,13 @@ var e=`libsurface`,t=`a1f337eaafad7faa65f2331027ef2f6aea44d556`,n=[{slug:``,src:
 <td>Mackie Control: the X-Touch</td>
 <td><code>libsurface-mackie</code></td>
 <td><code>libsurface-mackie</code>, <code>libsurface-mackie-devel</code> (deb: <code>libsurface-mackie0</code>, <code>libsurface-mackie-dev</code>)</td>
-<td><a href="https://github.com/FreeMixer/libmackie">libmackie</a> 0.1.0 or later</td>
+<td><a href="https://github.com/Open-Mixer/libmackie">libmackie</a> 0.1.0 or later</td>
 </tr>
 <tr>
 <td>DigiNet: the Control|24</td>
 <td><code>libsurface-diginet</code></td>
 <td><code>libsurface-diginet</code>, <code>libsurface-diginet-devel</code>, <code>surface-c24</code> (deb: <code>libsurface-diginet0</code>, <code>libsurface-diginet-dev</code>, <code>surface-c24</code>)</td>
-<td><a href="https://github.com/FreeMixer/libdiginet">libdiginet</a> 0.1.4 or later</td>
+<td><a href="https://github.com/Open-Mixer/libdiginet">libdiginet</a> 0.1.4 or later</td>
 </tr>
 </tbody>
 </table>
