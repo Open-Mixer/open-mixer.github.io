@@ -11,6 +11,13 @@ name: Prune the package repository
 #
 # drop (a list of name@version) switches to drop mode: those versions of those source packages go, every build of
 # them, and everything else stays whatever its age. A pinned version, or one a kept package needs, fails the plan.
+# An entry name@version:<cell> drops only that cell's builds of the version, nothing in any other suite, release
+# or architecture, and not the source:
+#   deb  name@version:<suite>/<arch>        suite trixie|bookworm, arch amd64|arm64|all
+#   rpm  name@version:fedora/<rel>/<arch>   arch x86_64|aarch64|noarch
+# e.g. plugin-hostd@0.20.6:trixie/arm64,plugin-hostd-contract@0.20.6:trixie/all. A malformed cell (an unknown
+# suite or architecture, a missing part) stops the plan. The invariant holds per cell: a kept package of that
+# suite or release and architecture whose only satisfier the drop deletes fails the plan, named.
 #
 # apply=false (the default) is a dry run: it prints, per package and format, what would be kept and what
 # deleted, writes that plan to the job summary and as an artifact, and changes nothing.
@@ -39,7 +46,7 @@ on:
         type: boolean
         default: false
       drop:
-        description: 'Drop mode: name@version,... removes every build of those source versions (subpackages, architectures, source) and nothing else; newest does not apply. Empty runs the normal prune.'
+        description: 'Drop mode: name@version,... removes every build of those source versions (subpackages, architectures, source) and nothing else; name@version:trixie/amd64 (deb suite/arch) or name@version:fedora/44/x86_64 (rpm) only that cell''s. newest does not apply. Empty runs the normal prune.'
         type: string
         default: ''
       newest:

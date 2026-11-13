@@ -12,8 +12,10 @@
 //
 // --pins adds the entries pins.mjs derived from openmixer's branches to keep.yml's. A plan that would still
 // delete every build of a pinned version that exists exits 1, after printing and writing it.
-// --drop name@version,...  drop mode: delete every build of those source versions (all subpackages, architectures, the
+// --drop name@version[:cell],...  drop mode: delete every build of those source versions (all subpackages, architectures, the
 //                           source) and nothing else; --newest and the orphan sweep do not apply.
+//                           A cell (trixie/arm64, bookworm/all, fedora/44/x86_64) limits an entry to that
+//                           suite or release and architecture: only those builds go, the source stays.
 // A drop overrides a pin on the versions it names (they are printed under 'dropped although pinned').
 // --only rpm|deb reads that half alone.
 // --skip-closure plans without the dependency closure, to see the plan invariant fail (a test uses it).
