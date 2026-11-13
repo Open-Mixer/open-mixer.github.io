@@ -114,24 +114,33 @@ openmixer-release	1	-	fc44/noarch
 plugin-db	0.4.0	-	fc44/aarch64 fc45/aarch64
 plugin-db	0.4.1	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-db	0.4.2	quick	fc44/x86_64 fc45/x86_64
+plugin-db	0.4.3	quick	fc44/x86_64 fc45/x86_64
 plugin-db-contract	0.4.0	-	fc44/aarch64 fc45/aarch64
 plugin-db-contract	0.4.1	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-db-contract	0.4.2	quick	fc44/x86_64 fc45/x86_64
+plugin-db-contract	0.4.3	quick	fc44/x86_64 fc45/x86_64
 plugin-db-devel	0.4.0	-	fc44/aarch64 fc45/aarch64
 plugin-db-devel	0.4.1	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-db-devel	0.4.2	quick	fc44/x86_64 fc45/x86_64
+plugin-db-devel	0.4.3	quick	fc44/x86_64 fc45/x86_64
 plugin-db-langpack-ca	0.4.1	-	fc44/noarch fc45/noarch
 plugin-db-langpack-ca	0.4.2	quick	fc44/noarch fc45/noarch
+plugin-db-langpack-ca	0.4.3	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-de	0.4.1	-	fc44/noarch fc45/noarch
 plugin-db-langpack-de	0.4.2	quick	fc44/noarch fc45/noarch
+plugin-db-langpack-de	0.4.3	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-es	0.4.1	-	fc44/noarch fc45/noarch
 plugin-db-langpack-es	0.4.2	quick	fc44/noarch fc45/noarch
+plugin-db-langpack-es	0.4.3	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-fr	0.4.1	-	fc44/noarch fc45/noarch
 plugin-db-langpack-fr	0.4.2	quick	fc44/noarch fc45/noarch
+plugin-db-langpack-fr	0.4.3	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-it	0.4.1	-	fc44/noarch fc45/noarch
 plugin-db-langpack-it	0.4.2	quick	fc44/noarch fc45/noarch
+plugin-db-langpack-it	0.4.3	quick	fc44/noarch fc45/noarch
 plugin-db-langpack-pt	0.4.1	-	fc44/noarch fc45/noarch
 plugin-db-langpack-pt	0.4.2	quick	fc44/noarch fc45/noarch
+plugin-db-langpack-pt	0.4.3	quick	fc44/noarch fc45/noarch
 plugin-hostd	0.20.4	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 plugin-hostd	0.20.5	quick	fc44/x86_64 fc45/x86_64
 plugin-hostd	0.20.6	quick	fc44/x86_64 fc45/x86_64
@@ -170,6 +179,7 @@ plugin-qualify-langpack-it	0.20.4	quick	fc44/noarch fc45/noarch
 plugin-qualify-langpack-pt	0.20.4	quick	fc44/noarch fc45/noarch
 python3-plugin-db	0.4.1	-	fc44/noarch fc45/noarch
 python3-plugin-db	0.4.2	quick	fc44/noarch fc45/noarch
+python3-plugin-db	0.4.3	quick	fc44/noarch fc45/noarch
 python3-plugin-hostd-protocol	0.20.4	-	fc44/noarch fc45/noarch
 python3-plugin-hostd-protocol	0.20.5	quick	fc44/noarch fc45/noarch
 python3-plugin-hostd-protocol	0.20.6	quick	fc44/noarch fc45/noarch
