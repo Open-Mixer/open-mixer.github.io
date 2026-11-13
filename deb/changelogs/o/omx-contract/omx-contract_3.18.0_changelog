@@ -1,0 +1,16 @@
+omx-contract (3.18.0) unstable; urgency=medium
+
+  * Schema 3.16.0's frozen copy is identified on openmixer.org; the changelog
+    names D21
+  * The schemas are identified on openmixer.org, and an issue names either
+    organisation
+  * The renders follow the renderer's new name
+  * release 3.18.0 (D23 amended): the semver gate stands
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+  * release 3.17.2, not 3.18.0: one minor per wave (D23)
+  * release 3.18.0
+  * schema 3.18.0: a reply code may declare itself transient
+  * test: a reply code declares itself transient, and the C and TS renders
+    carry it (red)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 13:19:39 +0000
