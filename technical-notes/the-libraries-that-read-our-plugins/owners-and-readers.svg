@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 470" width="1100" height="470" role="img" aria-label="Each owner and the readers it ships, by language: the installed data, C, TypeScript or JavaScript, and Python">
+<title>The owners and the readers they ship</title>
+<style>text{font-family:sans-serif;font-size:13px;fill:#1a1a1a}.h{font-weight:bold}.o{font-weight:bold}.k{font-family:monospace;font-size:10.8px;fill:#1a1a1a}.n{font-size:11.5px;fill:#777}rect.y{fill:#eef3fa;stroke:#35537a;stroke-width:1.2}rect.d{fill:#f3f7ee;stroke:#4a6b2f;stroke-width:1.2}rect.x{fill:#fff;stroke:#bbb;stroke-dasharray:4 3}rect.ow{fill:#f6f6f6;stroke:#777;stroke-width:1}</style>
+<text class="h" x="20" y="30">owner</text>
+<text class="h" x="200" y="30">installed data</text>
+<text class="h" x="425" y="30">C</text>
+<text class="h" x="650" y="30">TypeScript / JavaScript</text>
+<text class="h" x="875" y="30">Python</text>
+<g>
+<rect class="ow" x="20" y="44" width="168" height="36" rx="5"/><text class="o" x="30" y="67">omx-contract</text>
+<rect class="d" x="200" y="44" width="213" height="36" rx="5"/><text class="k" x="208" y="67">contract.d/3/&lt;owner&gt;/</text>
+<rect class="y" x="425" y="44" width="213" height="36" rx="5"/><text class="k" x="433" y="67">&lt;omxcontract/*.h&gt;</text>
+<rect class="y" x="650" y="44" width="213" height="36" rx="5"/><text class="k" x="658" y="67">@openmixer/omx-contract</text>
+<rect class="y" x="875" y="44" width="205" height="36" rx="5"/><text class="k" x="883" y="67">omx_contract_catalog, _scale</text>
+</g>
+<g>
+<rect class="ow" x="20" y="88" width="168" height="36" rx="5"/><text class="o" x="30" y="111">omx-dsp</text>
+<rect class="d" x="200" y="88" width="213" height="36" rx="5"/><text class="k" x="208" y="111">contract.d/3/omx-dsp/</text>
+<rect class="y" x="425" y="88" width="213" height="36" rx="5"/><text class="k" x="433" y="111">&lt;omxdsp/*.h&gt; kernels</text>
+<rect class="y" x="650" y="88" width="213" height="36" rx="5"/><text class="k" x="658" y="111">@openmixer/omx-dsp (npm)</text>
+<rect class="x" x="875" y="88" width="205" height="36" rx="5"/><text class="n" x="883" y="111">none</text>
+</g>
+<g>
+<rect class="ow" x="20" y="132" width="168" height="36" rx="5"/><text class="o" x="30" y="155">omx-clap-core</text>
+<rect class="d" x="200" y="132" width="213" height="36" rx="5"/><text class="k" x="208" y="155">contract.d, catalogs/</text>
+<rect class="y" x="425" y="132" width="213" height="36" rx="5"/><text class="k" x="433" y="155">&lt;omx-clap-host/clap_host.h&gt;</text>
+<rect class="y" x="650" y="132" width="213" height="36" rx="5"/><text class="k" x="658" y="155">code tables (tsdir)</text>
+<rect class="x" x="875" y="132" width="205" height="36" rx="5"/><text class="n" x="883" y="155">none</text>
+</g>
+<g>
+<rect class="ow" x="20" y="176" width="168" height="36" rx="5"/><text class="o" x="30" y="199">plugin-hostd-protocol</text>
+<rect class="d" x="200" y="176" width="213" height="36" rx="5"/><text class="k" x="208" y="199">plugin-hostd-protocol.json</text>
+<rect class="y" x="425" y="176" width="213" height="36" rx="5"/><text class="k" x="433" y="199">&lt;plugin-hostd/protocol.h&gt;</text>
+<rect class="x" x="650" y="176" width="213" height="36" rx="5"/><text class="n" x="658" y="199">read by plugin-hostd's client</text>
+<rect class="x" x="875" y="176" width="205" height="36" rx="5"/><text class="n" x="883" y="199">read by plugin-hostd's client</text>
+</g>
+<g>
+<rect class="ow" x="20" y="220" width="168" height="36" rx="5"/><text class="o" x="30" y="243">plugin-hostd</text>
+<rect class="x" x="200" y="220" width="213" height="36" rx="5"/><text class="n" x="208" y="243">the daemon answers</text>
+<rect class="y" x="425" y="220" width="213" height="36" rx="5"/><text class="k" x="433" y="243">plugin_hostd_vocabulary.h</text>
+<rect class="y" x="650" y="220" width="213" height="36" rx="5"/><text class="k" x="658" y="243">@openmixer/plugin-hostd-client</text>
+<rect class="y" x="875" y="220" width="205" height="36" rx="5"/><text class="k" x="883" y="243">plugin_hostd_protocol</text>
+</g>
+<g>
+<rect class="ow" x="20" y="264" width="168" height="36" rx="5"/><text class="o" x="30" y="287">plugin-db</text>
+<rect class="x" x="200" y="264" width="213" height="36" rx="5"/><text class="n" x="208" y="287">its CLI answers (plugin-db query)</text>
+<rect class="y" x="425" y="264" width="213" height="36" rx="5"/><text class="k" x="433" y="287">&lt;plugin-db/db.h&gt;, pin.h</text>
+<rect class="x" x="650" y="264" width="213" height="36" rx="5"/><text class="n" x="658" y="287">private, not published</text>
+<rect class="y" x="875" y="264" width="205" height="36" rx="5"/><text class="k" x="883" y="287">plugin_db</text>
+</g>
+<g>
+<rect class="ow" x="20" y="308" width="168" height="36" rx="5"/><text class="o" x="30" y="331">plugin-qualify</text>
+<rect class="d" x="200" y="308" width="213" height="36" rx="5"/><text class="k" x="208" y="331">qualified.pins, records</text>
+<rect class="x" x="425" y="308" width="213" height="36" rx="5"/><text class="n" x="433" y="331">none</text>
+<rect class="y" x="650" y="308" width="213" height="36" rx="5"/><text class="k" x="658" y="331">@openmixer/plugin-qualify</text>
+<rect class="x" x="875" y="308" width="205" height="36" rx="5"/><text class="n" x="883" y="331">none</text>
+</g>
+<g>
+<rect class="ow" x="20" y="352" width="168" height="36" rx="5"/><text class="o" x="30" y="375">omx-panel</text>
+<rect class="d" x="200" y="352" width="213" height="36" rx="5"/><text class="k" x="208" y="375">gestures.json, look-roles</text>
+<rect class="y" x="425" y="352" width="213" height="36" rx="5"/><text class="k" x="433" y="375">&lt;omx_panel_render.h&gt;</text>
+<rect class="y" x="650" y="352" width="213" height="36" rx="5"/><text class="k" x="658" y="375">@openmixer/omx-panel</text>
+<rect class="x" x="875" y="352" width="205" height="36" rx="5"/><text class="n" x="883" y="375">none (ctypes on the C lib)</text>
+</g>
+<g>
+<rect class="ow" x="20" y="396" width="168" height="36" rx="5"/><text class="o" x="30" y="419">omx-plugins</text>
+<rect class="d" x="200" y="396" width="213" height="36" rx="5"/><text class="k" x="208" y="419">descriptors, presets, pins</text>
+<rect class="y" x="425" y="396" width="213" height="36" rx="5"/><text class="k" x="433" y="419">&lt;omx-plugins/*.h&gt;</text>
+<rect class="x" x="650" y="396" width="213" height="36" rx="5"/><text class="n" x="658" y="419">none</text>
+<rect class="x" x="875" y="396" width="205" height="36" rx="5"/><text class="n" x="883" y="419">none</text>
+</g>
+<rect class="y" x="200" y="446" width="14" height="14" rx="2"/><text class="n" x="220" y="458">a reader the owner ships</text>
+<rect class="d" x="400" y="446" width="14" height="14" rx="2"/><text class="n" x="420" y="458">installed data, read in place</text>
+<rect class="x" x="620" y="446" width="14" height="14" rx="2"/><text class="n" x="640" y="458">no reader in that language</text>
+</svg>

@@ -1,0 +1,469 @@
+<!DOCTYPE html><html  lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The libraries that read our plugins | OpenMixer</title><script type="importmap">{"imports":{"#entry":"/_nuxt/C7pWGzgk.js"}}</script><style id="nuxt-ui-colors">@layer theme {
+  :root, :host {
+  --ui-color-primary-50: var(--color-omx-50, );
+  --ui-color-primary-100: var(--color-omx-100, );
+  --ui-color-primary-200: var(--color-omx-200, );
+  --ui-color-primary-300: var(--color-omx-300, );
+  --ui-color-primary-400: var(--color-omx-400, );
+  --ui-color-primary-500: var(--color-omx-500, );
+  --ui-color-primary-600: var(--color-omx-600, );
+  --ui-color-primary-700: var(--color-omx-700, );
+  --ui-color-primary-800: var(--color-omx-800, );
+  --ui-color-primary-900: var(--color-omx-900, );
+  --ui-color-primary-950: var(--color-omx-950, );
+  --ui-color-secondary-50: var(--color-blue-50, oklch(97% 0.014 254.604));
+  --ui-color-secondary-100: var(--color-blue-100, oklch(93.2% 0.032 255.585));
+  --ui-color-secondary-200: var(--color-blue-200, oklch(88.2% 0.059 254.128));
+  --ui-color-secondary-300: var(--color-blue-300, oklch(80.9% 0.105 251.813));
+  --ui-color-secondary-400: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+  --ui-color-secondary-500: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+  --ui-color-secondary-600: var(--color-blue-600, oklch(54.6% 0.245 262.881));
+  --ui-color-secondary-700: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+  --ui-color-secondary-800: var(--color-blue-800, oklch(42.4% 0.199 265.638));
+  --ui-color-secondary-900: var(--color-blue-900, oklch(37.9% 0.146 265.522));
+  --ui-color-secondary-950: var(--color-blue-950, oklch(28.2% 0.091 267.935));
+  --ui-color-success-50: var(--color-green-50, oklch(98.2% 0.018 155.826));
+  --ui-color-success-100: var(--color-green-100, oklch(96.2% 0.044 156.743));
+  --ui-color-success-200: var(--color-green-200, oklch(92.5% 0.084 155.995));
+  --ui-color-success-300: var(--color-green-300, oklch(87.1% 0.15 154.449));
+  --ui-color-success-400: var(--color-green-400, oklch(79.2% 0.209 151.711));
+  --ui-color-success-500: var(--color-green-500, oklch(72.3% 0.219 149.579));
+  --ui-color-success-600: var(--color-green-600, oklch(62.7% 0.194 149.214));
+  --ui-color-success-700: var(--color-green-700, oklch(52.7% 0.154 150.069));
+  --ui-color-success-800: var(--color-green-800, oklch(44.8% 0.119 151.328));
+  --ui-color-success-900: var(--color-green-900, oklch(39.3% 0.095 152.535));
+  --ui-color-success-950: var(--color-green-950, oklch(26.6% 0.065 152.934));
+  --ui-color-info-50: var(--color-blue-50, oklch(97% 0.014 254.604));
+  --ui-color-info-100: var(--color-blue-100, oklch(93.2% 0.032 255.585));
+  --ui-color-info-200: var(--color-blue-200, oklch(88.2% 0.059 254.128));
+  --ui-color-info-300: var(--color-blue-300, oklch(80.9% 0.105 251.813));
+  --ui-color-info-400: var(--color-blue-400, oklch(70.7% 0.165 254.624));
+  --ui-color-info-500: var(--color-blue-500, oklch(62.3% 0.214 259.815));
+  --ui-color-info-600: var(--color-blue-600, oklch(54.6% 0.245 262.881));
+  --ui-color-info-700: var(--color-blue-700, oklch(48.8% 0.243 264.376));
+  --ui-color-info-800: var(--color-blue-800, oklch(42.4% 0.199 265.638));
+  --ui-color-info-900: var(--color-blue-900, oklch(37.9% 0.146 265.522));
+  --ui-color-info-950: var(--color-blue-950, oklch(28.2% 0.091 267.935));
+  --ui-color-warning-50: var(--color-yellow-50, oklch(98.7% 0.026 102.212));
+  --ui-color-warning-100: var(--color-yellow-100, oklch(97.3% 0.071 103.193));
+  --ui-color-warning-200: var(--color-yellow-200, oklch(94.5% 0.129 101.54));
+  --ui-color-warning-300: var(--color-yellow-300, oklch(90.5% 0.182 98.111));
+  --ui-color-warning-400: var(--color-yellow-400, oklch(85.2% 0.199 91.936));
+  --ui-color-warning-500: var(--color-yellow-500, oklch(79.5% 0.184 86.047));
+  --ui-color-warning-600: var(--color-yellow-600, oklch(68.1% 0.162 75.834));
+  --ui-color-warning-700: var(--color-yellow-700, oklch(55.4% 0.135 66.442));
+  --ui-color-warning-800: var(--color-yellow-800, oklch(47.6% 0.114 61.907));
+  --ui-color-warning-900: var(--color-yellow-900, oklch(42.1% 0.095 57.708));
+  --ui-color-warning-950: var(--color-yellow-950, oklch(28.6% 0.066 53.813));
+  --ui-color-error-50: var(--color-red-50, oklch(97.1% 0.013 17.38));
+  --ui-color-error-100: var(--color-red-100, oklch(93.6% 0.032 17.717));
+  --ui-color-error-200: var(--color-red-200, oklch(88.5% 0.062 18.334));
+  --ui-color-error-300: var(--color-red-300, oklch(80.8% 0.114 19.571));
+  --ui-color-error-400: var(--color-red-400, oklch(70.4% 0.191 22.216));
+  --ui-color-error-500: var(--color-red-500, oklch(63.7% 0.237 25.331));
+  --ui-color-error-600: var(--color-red-600, oklch(57.7% 0.245 27.325));
+  --ui-color-error-700: var(--color-red-700, oklch(50.5% 0.213 27.518));
+  --ui-color-error-800: var(--color-red-800, oklch(44.4% 0.177 26.899));
+  --ui-color-error-900: var(--color-red-900, oklch(39.6% 0.141 25.723));
+  --ui-color-error-950: var(--color-red-950, oklch(25.8% 0.092 26.042));
+  --ui-color-neutral-50: var(--color-slate-50, oklch(98.4% 0.003 247.858));
+  --ui-color-neutral-100: var(--color-slate-100, oklch(96.8% 0.007 247.896));
+  --ui-color-neutral-200: var(--color-slate-200, oklch(92.9% 0.013 255.508));
+  --ui-color-neutral-300: var(--color-slate-300, oklch(86.9% 0.022 252.894));
+  --ui-color-neutral-400: var(--color-slate-400, oklch(70.4% 0.04 256.788));
+  --ui-color-neutral-500: var(--color-slate-500, oklch(55.4% 0.046 257.417));
+  --ui-color-neutral-600: var(--color-slate-600, oklch(44.6% 0.043 257.281));
+  --ui-color-neutral-700: var(--color-slate-700, oklch(37.2% 0.044 257.287));
+  --ui-color-neutral-800: var(--color-slate-800, oklch(27.9% 0.041 260.031));
+  --ui-color-neutral-900: var(--color-slate-900, oklch(20.8% 0.042 265.755));
+  --ui-color-neutral-950: var(--color-slate-950, oklch(12.9% 0.042 264.695));
+  }
+  :root, :host, .light {
+  --ui-primary: var(--ui-color-primary-500);
+  --ui-secondary: var(--ui-color-secondary-500);
+  --ui-success: var(--ui-color-success-500);
+  --ui-info: var(--ui-color-info-500);
+  --ui-warning: var(--ui-color-warning-500);
+  --ui-error: var(--ui-color-error-500);
+  }
+  .dark {
+  --ui-primary: var(--ui-color-primary-400);
+  --ui-secondary: var(--ui-color-secondary-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
+  }
+}</style><link rel="stylesheet" href="/_nuxt/entry.BVP5WIcF.css" crossorigin><style>@layer base {:where(.i-lucide\:menu){display:inline-block;width:1em;height:1em;background-color:currentColor;-webkit-mask-image:var(--svg);mask-image:var(--svg);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:100% 100%;mask-size:100% 100%;--svg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 5h16M4 12h16M4 19h16'/%3E%3C/svg%3E")}}</style><link rel="preload" as="fetch" crossorigin="anonymous" href="/notes/the-libraries-that-read-our-plugins/_payload.json?_b=d607e62e-2639-4e5d-b698-1ad604dc4d59"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/C7pWGzgk.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/D2Zj6ZUv.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DFgqGmOc.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/Dv0ruBhP.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DSyqKEA_.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/bW6NxFOP.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/bFKAhFce.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DK3Fl9T5.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DiylCA0m.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/Be8nbhfH.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/jIsoclg_.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/CugU5NJj.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/Oo1W3yiQ.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DA5mqUYa.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BvrqxSKK.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/B7f_ts-K.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BugNhU2l.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/D43rHncM.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/TKoHwHZk.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/CNs_Ozdc.js"><script type="module" src="/_nuxt/C7pWGzgk.js" crossorigin></script><link rel="prefetch" as="script" crossorigin href="/_nuxt/CWz6eIky.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/BDNMzG2s.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/DZ9z1Q1r.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/CMWkIGvv.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/D0JepDdL.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/CdfbR5j2.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/C4LhWnh7.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/Ck0NxqTC.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/C_Vo6Cpv.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/CkUevp-A.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/CneUOyDN.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/CkceDeHA.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/E51ZuhFc.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/MpqZPowV.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/B0iY1H9N.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/Dga5QANZ.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/MwI9Nav-.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/ulUwPlFc.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/BxJRRP96.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/495XL0kX.js"><meta name="theme-color" content="#0b0e11" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f5f7f9" media="(prefers-color-scheme: light)"><link rel="icon" type="image/svg+xml" href="/img/openmixer-mark.svg"><link id="i18n-xd" rel="alternate" href="https://openmixer.org/notes/the-libraries-that-read-our-plugins" hreflang="x-default"><link id="i18n-alt-en" rel="alternate" href="https://openmixer.org/notes/the-libraries-that-read-our-plugins" hreflang="en"><link id="i18n-alt-ca" rel="alternate" href="https://openmixer.org/ca/notes/the-libraries-that-read-our-plugins" hreflang="ca"><link id="i18n-can" rel="canonical" href="https://openmixer.org/notes/the-libraries-that-read-our-plugins"><meta id="i18n-og-url" property="og:url" content="https://openmixer.org/notes/the-libraries-that-read-our-plugins"><meta id="i18n-og" property="og:locale" content="en"><meta id="i18n-og-alt-ca" property="og:locale:alternate" content="ca"><meta name="description" content="Every owner ships the reader of what it writes, in the languages it is read from. Per owner and per language, what to install, the entry point and one call, copied from the owner's repository."><script>"use strict";(()=>{const o=window,e=document.documentElement,c=["dark","light"],s=getStorageValue("localStorage","nuxt-color-mode")||"system";let r=s==="system"?f():s;const l=e.getAttribute("data-color-mode-forced");l&&(r=l),i(r),o["__NUXT_COLOR_MODE__"]={preference:s,value:r,getColorScheme:f,addColorScheme:i,removeColorScheme:d};function i(t){const a=""+t+"",n="theme";e.classList?e.classList.add(a):e.className+=" "+a,n&&e.setAttribute("data-"+n,t)}function d(t){const a=""+t+"",n="theme";e.classList?e.classList.remove(a):e.className=e.className.replace(new RegExp(a,"g"),""),n&&e.removeAttribute("data-"+n)}function u(t){return o.matchMedia("(prefers-color-scheme"+t+")")}function f(){if(o.matchMedia&&u("").media!=="not all"){for(const t of c)if(u(":"+t).matches)return t}return"dark"}})();function getStorageValue(o,e){switch(o){case"localStorage":try{return window.localStorage.getItem(e)}catch{return null}case"sessionStorage":try{return window.sessionStorage.getItem(e)}catch{return null}case"cookie":try{return getCookie(e)}catch{return null}default:return null}}function getCookie(o){const c=("; "+window.document.cookie).split("; "+o+"=");if(c.length===2){const s=c.pop();return s?s.split(";").shift():null}}</script></head><body><div id="__nuxt" class="isolate"><!--[--><!--[--><!--[--><!--[--><!--[--><div class="min-h-screen bg-field text-ink font-sans antialiased flex flex-col"><header class="sticky top-0 z-50 border-b border-edge bg-field/85 backdrop-blur-md"><div class="mx-auto flex max-w-6xl items-center gap-6 px-6 py-4"><a href="/" class="group flex items-center gap-3" aria-label="OpenMixer home"><img src="/img/openmixer-mark.svg" alt class="h-8 w-8" width="32" height="32"><span class="font-display text-xl font-semibold tracking-tight"><span class="text-ink">open</span><span class="text-accent">mixer</span></span></a><nav class="ml-auto hidden items-center gap-1 md:flex" aria-label="Main"><!--[--><a href="/architecture" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Architecture</a><a href="/features" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Features</a><a href="/plugins" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Plugins</a><a href="/benchmarks" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Benchmarks</a><a href="/docs" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Docs</a><a href="/notes" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Notes</a><a href="/docs/zynthian" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Zynthian</a><a href="/faq" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">FAQ</a><a href="/get-it" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Get it</a><a href="/links" class="rounded px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink">Links</a><!--]--></nav><!--[--><a href="/ca/notes/the-libraries-that-read-our-plugins" class="hidden rounded px-2 py-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-dim transition-colors hover:text-ink md:block" hreflang="ca" lang="ca" aria-label="Català" title="Català">ca</a><!--]--><!--[--><span class="ml-auto size-8 md:ml-0"></span><!--]--><button type="button" data-slot="base" aria-expanded="false" aria-label="Menu" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5 md:hidden"><!--[--><!--[--><span class="iconify i-lucide:menu shrink-0 size-5" aria-hidden="true" style="" data-slot="leadingIcon"></span><!--]--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--]--></button></div><!----></header><main class="flex-1"><!--[--><div><section class="border-b border-edge"><div class="mx-auto max-w-6xl px-6 py-16 sm:py-20"><p class="font-mono text-xs uppercase tracking-[0.2em] text-accent">Technical note</p><h1 class="mt-4 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">The libraries that read our plugins</h1><p class="mt-6 max-w-3xl text-lg leading-relaxed text-ink-dim">Every owner ships the reader of what it writes, in the languages it is read from. Per owner and per language, what to install, the entry point and one call, copied from the owner&#39;s repository.</p><!--[--><!--]--></div></section><section><div class="mx-auto grid max-w-6xl gap-10 px-6 py-14 lg:grid-cols-[1fr_16rem]"><div class="min-w-0"><article><!--[--><!--[--><div class="doc-body"><p>Each piece of OpenMixer writes one kind of data: omx-contract the vocabulary and the scales, plugin-hostd's protocol the
+words of the wire, plugin-db and plugin-qualify the records and the pins, omx-panel the layouts, omx-plugins the
+descriptors and presets of its own plugins. Each one also ships the reader of what it writes. A program that shows a
+plugin, as Zynthian's interface does, reads through those readers and keeps no copy of its own.</p>
+<p>This note lists them, per owner and per language: what to install, the entry point, and one call. Every call below is
+copied from the owner's repository, with the file and line it comes from. Where the repository has no example, the note
+says so rather than make one up.</p>
+<p><img src="/technical-notes/the-libraries-that-read-our-plugins/owners-and-readers.svg" alt="Each owner and the readers it ships, by language"></p>
+<p>The packages are named rpm first, then deb. Every dependency between these packages states a floor and a ceiling, the
+next minor below 1.0 and <code>&lt; 4</code> for omx-contract; the rule is written down once, in plugin-hostd's
+<code>tests/clap_core_floor.py</code>.</p>
+<h2 id="omx-contract">omx-contract</h2>
+<p>The vocabulary, the units and scales, and the contract directory every other owner installs its words into.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td><code>omx-contract-devel</code> / <code>libomx-contract-dev</code></td>
+<td><code>&lt;omxcontract/omx_contract_limits.h&gt;</code> and the other headers under <code>/usr/include/omxcontract/</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>omx-contract-data</code></td>
+<td><code>/usr/share/omx-contract/</code>, the contract directory <code>contract.d/3/&lt;owner&gt;/</code></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><code>omx-contract-data</code></td>
+<td><code>omx_contract_catalog.py</code>, <code>omx_contract_scale.py</code> in <code>/usr/share/omx-contract/</code>, loaded by path</td>
+</tr>
+<tr>
+<td>TypeScript</td>
+<td>npm <code>@openmixer/omx-contract</code></td>
+<td><code>/catalog</code>, <code>/scale</code>, <code>/descriptor</code>, <code>/validate</code></td>
+</tr>
+</tbody>
+</table>
+<p>C, from the README (<code>README.md:31,35</code>):</p>
+<pre><code class="language-c">#include &lt;omxcontract/omx_contract_limits.h&gt;
+</code></pre>
+<pre><code class="language-sh">cc -c app.c $(pkg-config --cflags omx-contract)
+</code></pre>
+<p>A catalog sentence in TypeScript, from <code>test/catalog.test.mjs:65-66</code>:</p>
+<pre><code class="language-js">const ca = loadCatalog('omx-contract', 'ca', root);
+assert.equal(fill(sentenceOf(ca, CODE, 'No contract directory at {path}'), { path: '/x' }), 'Cap directori de contracte a /x');
+</code></pre>
+<p>A position on a scale, from <code>test/scale-position.test.mjs:52-53</code>:</p>
+<pre><code class="language-js">const travel = { scale: 'log', min: 20, max: 20000 };
+assert.equal(scalePosition(travel, 1000).toFixed(4), '0.5663');
+</code></pre>
+<p>The Python modules are not on <code>sys.path</code>: a program loads them by their file. plugin-db does it for the catalog reader,
+in <code>python/plugin_db/text.py:28,35-37</code>:</p>
+<pre><code class="language-python">READER = _installed(&quot;share&quot;, &quot;omx-contract&quot;, &quot;omx_contract_catalog.py&quot;)
+        spec = importlib.util.spec_from_file_location(&quot;omx_contract_catalog&quot;, READER)
+        _reader = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_reader)
+</code></pre>
+<p>and omx-contract's own test reads the scale that way, in <code>test/scale-position-py.test.mjs:121-122</code>:</p>
+<pre><code class="language-python">t = {&quot;scale&quot;: &quot;log&quot;, &quot;min&quot;: 20, &quot;max&quot;: 20000}
+print(m[&quot;scale_position&quot;](t, 20))
+</code></pre>
+<p>Overriding a descriptor, from <code>test/descriptor-export.test.mjs:9,17</code>:</p>
+<pre><code class="language-js">import { applyOverride } from '@openmixer/omx-contract/descriptor';
+const r = applyOverride(read('examples/descriptors/scanned-clap-unknown.json'), [read('test/fixtures/overrides/good.json')], { paramsFingerprint: '5f0c' });
+</code></pre>
+<p><code>/validate</code> and the generated <code>omx_contract.py</code> (<code>CLAP_IDS</code>, <code>CLAP_NUMBERS</code>): no example in the repository.</p>
+<h2 id="omx-dsp">omx-dsp</h2>
+<p>The DSP kernels, and their TypeScript twins for drawing what a kernel does.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td><code>omx-dsp-devel</code> / <code>libomxdsp-dev</code></td>
+<td><code>&lt;omxdsp/omxdsp.h&gt;</code>, <code>omxdsp/{fx,analysis,mix}/*.h</code>: static inline kernels</td>
+</tr>
+<tr>
+<td>TypeScript</td>
+<td>npm <code>@openmixer/omx-dsp</code> (npm only)</td>
+<td><code>dbToLinearGain</code>, <code>linearGainToDb</code>, <code>biquadMagnitudeDb</code>, <code>curvePoints</code>, the meter views</td>
+</tr>
+</tbody>
+</table>
+<p>C, from the README (<code>README.md:32,36-37</code>):</p>
+<pre><code class="language-c">#include &lt;omxdsp/fx/omx_delay.h&gt;
+</code></pre>
+<pre><code class="language-sh">cc $(pkg-config --cflags omxdsp) -c my_plugin.c
+cc -shared -o my_plugin.so my_plugin.o $(pkg-config --libs omxdsp)
+</code></pre>
+<p>A twin, from <code>ts/test/agreement.test.mjs:70</code>:</p>
+<pre><code class="language-js">assert.equal(linearGainToDb(0), -Infinity);
+</code></pre>
+<h2 id="omx-clap-core">omx-clap-core</h2>
+<p>The CLAP host library, the LV2 adapter, and the tables of its codes for a program in JavaScript.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td><code>omx-clap-core</code> + <code>-devel</code> / <code>libomx-clap-core1</code> + <code>-dev</code></td>
+<td><code>&lt;omx-clap-host/clap_host.h&gt;</code>: <code>omx_clap_host_config_default</code>, <code>omx_clap_host_configure</code>, <code>omx_clap_host_open</code>, <code>omx_clap_host_activate</code>, <code>omx_clap_host_close</code></td>
+</tr>
+<tr>
+<td>C, LV2</td>
+<td><code>omx-clap-lv2-devel</code> / <code>libomx-clap-lv2-dev</code></td>
+<td><code>&lt;omx_clap_lv2.h&gt;</code></td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td><code>omx-clap-core</code> / <code>libomx-clap-core1</code></td>
+<td><code>omx-clap-core-vocabulary.js</code>, <code>omx-clap-core-hosting.js</code> in <code>pkg-config --variable=tsdir omx-clap-core</code></td>
+</tr>
+</tbody>
+</table>
+<p>From <code>tests/active_race_test.c:66-68,77,83</code>:</p>
+<pre><code class="language-c">    omx_clap_host_config_default(&amp;config);
+    config.lane_channels = 0;
+    if (omx_clap_host_configure(&amp;config) != 0 || omx_clap_host_open(argv[1], STEREO_MONO, &amp;in, why) != 0 || !in)
+    // …
+        if (omx_clap_host_activate(in, SAMPLE_RATE, BLOCK, why) != 0)
+    // …
+    omx_clap_host_close(in);
+</code></pre>
+<p>The JavaScript tables have no example in the repository; plugin-qualify reads them in its <code>tools/clap-core-tsdir.mjs</code>.</p>
+<h2 id="plugin-hostd-protocol">plugin-hostd-protocol</h2>
+<p>The words of the wire, as a C header and as the table both clients read.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td><code>plugin-hostd-protocol</code> + <code>-devel</code> / <code>libplugin-hostd-protocol0</code> + <code>-dev</code></td>
+<td><code>&lt;plugin-hostd/protocol.h&gt;</code>: the pin path codec <code>phd_pin_path_encode</code>, <code>phd_pin_path_decode</code>; the X-macro tables <code>PHD_VERBS</code>, <code>PHD_ERRORS</code>, <code>PHD_EVENTS</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>the runtime package</td>
+<td><code>/usr/share/plugin-hostd-protocol/plugin-hostd-protocol.json</code>, the table (<code>pkg-config --variable=table plugin-hostd-protocol</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>From <code>tests/protocol_test.c:816</code>:</p>
+<pre><code class="language-c">if (phd_pin_path_decode(&quot;Surge%20xt%2c.clap&quot;, back, sizeof(back)) != 0 || strcmp(back, &quot;Surge xt,.clap&quot;))
+</code></pre>
+<h2 id="plugin-hostd">plugin-hostd</h2>
+<p>The daemon's two clients, one codec over the table above.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TypeScript</td>
+<td>npm <code>@openmixer/plugin-hostd-client</code> (npm only)</td>
+<td><code>class Protocol</code>: <code>encode</code>, <code>decode</code>, <code>parse</code>, <code>code</code>, <code>name</code>, <code>sentence</code></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><code>python3-plugin-hostd-protocol</code></td>
+<td><code>plugin_hostd_protocol</code>: <code>Protocol</code>, with the same calls</td>
+</tr>
+<tr>
+<td>C</td>
+<td><code>plugin-hostd-devel</code> / <code>plugin-hostd-dev</code></td>
+<td><code>&lt;plugin-hostd/plugin_hostd_vocabulary.h&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>TypeScript, from <code>clients/ts/README.md:26-39</code>:</p>
+<pre><code class="language-ts">import { Protocol } from '@openmixer/plugin-hostd-client';
+
+const protocol = new Protocol();            // the installed table and vocabulary
+// …
+protocol.encode('add', ['clap:...', 0]);     // the line to send, by the table's form
+// …
+protocol.parse('resp 0');                     // what the host answered: a reply, feedback or a protocol error
+// …
+protocol.sentence(-2, 'ca');                  // its sentence in a listed language, English when the catalog lacks it
+</code></pre>
+<p>Python, from <code>clients/python/tests/test_codec.py:10,28,58</code>:</p>
+<pre><code class="language-python">from plugin_hostd_protocol import RETRY_REASONS, Protocol, ProtocolError, format_number
+# …
+        cls.protocol = Protocol()
+# …
+        reply = self.protocol.parse(line)
+</code></pre>
+<p>The two clients are held to the same answers by <code>tests/clients_agree.py</code>.</p>
+<h2 id="plugin-db">plugin-db</h2>
+<p>The records of what each plugin is on this machine, and the verdict a surface shows.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td><code>python3-plugin-db</code></td>
+<td><code>plugin_db</code>: <code>query(address, here)</code>, <code>read(entry, here)</code>, <code>why(answer, lang)</code>, <code>vocabulary</code></td>
+</tr>
+<tr>
+<td>C</td>
+<td><code>plugin-db-devel</code> / <code>plugin-db-dev</code></td>
+<td><code>&lt;plugin-db/db.h&gt;</code>, <code>&lt;plugin-db/pin.h&gt;</code>: <code>pdb_address_parse</code>, <code>pdb_state</code>, <code>pdb_check</code>, <code>pdb_word</code></td>
+</tr>
+<tr>
+<td>command</td>
+<td><code>plugin-db</code></td>
+<td><code>plugin-db query --json</code></td>
+</tr>
+</tbody>
+</table>
+<p>Python, from <code>README.md:101-105</code>:</p>
+<pre><code class="language-python">from plugin_db import query, read, why, vocabulary as v
+
+answer = query(&quot;lv2:http://example.org/plugins/amp&quot;, here)   # asks the command plugin-db
+if answer[&quot;state&quot;] == v.states.qualified: ...
+why(answer, &quot;ca&quot;)                                            # the sentence of its reason, in Catalan
+</code></pre>
+<p>C, from <code>tests/consumer.c:11,33-35</code>:</p>
+<pre><code class="language-c">#include &lt;plugin-db/db.h&gt;
+// …
+    if (pdb_address_parse(&quot;lv2:http://example.org/amp&quot;, &amp;address) != 0)
+        return 1;
+    printf(&quot;%s\n&quot;, pdb_word(formats, PDB_ADDRESS_FORMATS_COUNT, address.format));
+</code></pre>
+<p>Its TypeScript twin is private and not published.</p>
+<h2 id="plugin-qualify">plugin-qualify</h2>
+<p>The qualification records and the pins file the daemon reads.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TypeScript</td>
+<td>npm <code>@openmixer/plugin-qualify</code>; the <code>plugin-qualify</code> package carries it</td>
+<td><code>parsePinLine</code>, <code>pinLine</code>; <code>recordFigures</code>; <code>readDistributedLayer</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>plugin-qualify</code> writes, <code>plugin-qualification-records</code> ships</td>
+<td><code>/var/lib/omx/qualified.pins</code>, <code>/var/lib/omx/qualification/</code>, <code>/usr/share/omx/qualification/</code></td>
+</tr>
+</tbody>
+</table>
+<p>A pin line, from <code>src/pins-file.test.ts:89</code>:</p>
+<pre><code class="language-ts">const p = parsePinLine(pinLine(entry(&quot;clap:/p/x.clap#id&quot;, { verdict: &quot;isolated&quot; }))!);
+</code></pre>
+<p>A record's figures, from <code>src/record-figures.test.ts:28</code>:</p>
+<pre><code class="language-ts">const figures = recordFigures(rec, 48000, 128);
+</code></pre>
+<p><code>readDistributedLayer</code>: no example in the repository. There is no Python reader of records or of the pins file.</p>
+<h2 id="omx-panel">omx-panel</h2>
+<p>The layout of a plugin's pages, its gestures and its looks, and the renderer that draws them.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TypeScript</td>
+<td>npm <code>@openmixer/omx-panel</code>; the <code>omx-panel</code> package carries it</td>
+<td><code>/describe</code>: <code>describe</code>; <code>/panel-description</code>: <code>pagesOf</code>; <code>/gestures</code>; <code>/look</code></td>
+</tr>
+<tr>
+<td>C</td>
+<td><code>omx-panel-render</code> + <code>-devel</code> / <code>libomx-panel-render0</code> + <code>-dev</code></td>
+<td><code>&lt;omx_panel_render.h&gt;</code>: <code>omx_panel_view_create_from_files</code>, <code>omx_panel_word_name</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>omx-panel</code></td>
+<td><code>/usr/share/omx-panel/schema/gestures.json</code>, <code>schema/look-roles.json</code></td>
+</tr>
+</tbody>
+</table>
+<p>From <code>test/describe.test.mjs:35</code> and <code>test/pages.test.mjs:17</code>:</p>
+<pre><code class="language-js">  const { description, refusals } = describe(descriptor(dyn(), lv2('lv2:CompressorPlugin')));
+  // …
+  const eight = pagesOf(x, { perPage: 8 });
+</code></pre>
+<p>C, from <code>renderer/src/cli.c:386</code>:</p>
+<pre><code class="language-c">omx_panel_view_t *v = omx_panel_view_create_from_files(desc, data, err, sizeof err);
+</code></pre>
+<p>No Python reader is shipped; the repository's <code>test/host_reads.py</code> reads the word names from the C library with ctypes.</p>
+<h2 id="omx-plugins">omx-plugins</h2>
+<p>OpenMixer's own plugins: their descriptors, presets and pins, and the static entry of each CLAP plugin.</p>
+<table>
+<thead>
+<tr>
+<th>language</th>
+<th>install</th>
+<th>entry point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><code>omx-plugins-contract</code>, <code>omx-plugins</code></td>
+<td>descriptors <code>contract.d/3/omx-plugins/plugins/&lt;stem&gt;.json</code>; presets <code>/usr/share/omx/presets/&lt;plugin id&gt;/&lt;preset id&gt;.json</code>; pins <code>/usr/share/plugin-hostd/pins.d/omx-plugins.pins</code></td>
+</tr>
+<tr>
+<td>C</td>
+<td><code>omx-plugins-devel</code> / <code>omx-plugins-dev</code></td>
+<td><code>&lt;omx-plugins/omx_clap_static.h&gt;</code>: <code>omx_clap_static_find</code>; <code>&lt;omx-plugins/omx_preset_file.h&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>From <code>docs/catalogue.md:690-695</code>:</p>
+<pre><code class="language-c">#include &lt;omx-plugins/omx_clap_static.h&gt;
+
+const clap_plugin_entry_t *e = omx_clap_static_find(&quot;org.openmixer.delay&quot;);
+e-&gt;init(&quot;&quot;);
+const clap_plugin_factory_t *f = e-&gt;get_factory(CLAP_PLUGIN_FACTORY_ID);
+const clap_plugin_t *delay = f-&gt;create_plugin(f, host, &quot;org.openmixer.delay&quot;);
+</code></pre>
+<h2 id="not-there-yet">Not there yet</h2>
+<ul>
+<li>plugin-qualify cites a Python reader of record figures for Zynthian (<code>tools/record_figures.py</code>) that does not exist:
+there is no Python reader of records or of the pins file.</li>
+<li>omx-contract's Python modules are not on <code>sys.path</code>; every program loads them by their file, as plugin-db's
+<code>text.py</code> does. A package is on its way, <code>python3-omx-contract</code> (<code>import omx_contract.catalog</code>).</li>
+<li>Three kinds of name a client compares against are not constants of their owner's reader yet, so the Zynthian fork
+writes them as text on a few listed lines, each naming the owner's issue: which refusals are transient
+(plugin-hostd-protocol), the verbs and the reply codes in the Python client (plugin-hostd-protocol) and the grouping
+reasons of <code>grouping.json</code> (plugin-hostd).</li>
+<li>omx-contract's <code>/validate</code> export, its generated <code>omx_contract.py</code> and plugin-qualify's <code>readDistributedLayer</code> have
+no example in their repositories.</li>
+<li>omx-dsp's TypeScript twins and plugin-hostd's TypeScript client are on npm only, not in the rpm or deb packages;
+plugin-db's TypeScript twin is private.</li>
+</ul>
+</div><!--]--><!--]--></article><footer class="mt-12 border-t border-edge pt-4"><p class="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint">Technical data</p><p class="mt-1 font-mono text-xs leading-relaxed text-ink-faint">read from each owner&#39;s repository on its main branch, its tests and its README.</p></footer></div><nav class="hidden lg:block" aria-label="Contents"><p class="font-mono text-xs uppercase tracking-[0.2em] text-accent">Contents</p><ul class="mt-4 space-y-2 text-sm"><!--[--><li><a href="#omx-contract" class="text-ink-dim hover:text-accent">omx-contract</a></li><li><a href="#omx-dsp" class="text-ink-dim hover:text-accent">omx-dsp</a></li><li><a href="#omx-clap-core" class="text-ink-dim hover:text-accent">omx-clap-core</a></li><li><a href="#plugin-hostd-protocol" class="text-ink-dim hover:text-accent">plugin-hostd-protocol</a></li><li><a href="#plugin-hostd" class="text-ink-dim hover:text-accent">plugin-hostd</a></li><li><a href="#plugin-db" class="text-ink-dim hover:text-accent">plugin-db</a></li><li><a href="#plugin-qualify" class="text-ink-dim hover:text-accent">plugin-qualify</a></li><li><a href="#omx-panel" class="text-ink-dim hover:text-accent">omx-panel</a></li><li><a href="#omx-plugins" class="text-ink-dim hover:text-accent">omx-plugins</a></li><li><a href="#not-there-yet" class="text-ink-dim hover:text-accent">Not there yet</a></li><!--]--></ul><p class="mt-8 text-sm"><a href="/notes" class="text-accent hover:underline">All the technical notes</a></p></nav></div></section></div><!--]--></main><footer class="mt-24 border-t border-edge bg-surface/40"><div class="mx-auto grid max-w-6xl gap-8 px-6 py-12 sm:grid-cols-3"><div><p class="font-display text-lg font-semibold tracking-tight"><span class="text-ink">open</span><span class="text-accent">mixer</span></p><p class="mt-2 max-w-xs text-sm leading-relaxed text-ink-dim">A software mixing console for Linux. The desk is the software; the browser is the surface.</p></div><div><p class="font-mono text-xs uppercase tracking-[0.14em] text-ink-faint">Pages</p><ul class="mt-3 space-y-2 text-sm"><!--[--><li><a href="/architecture" class="text-ink-dim hover:text-accent">Architecture</a></li><li><a href="/features" class="text-ink-dim hover:text-accent">Features</a></li><li><a href="/docs" class="text-ink-dim hover:text-accent">Documentation</a></li><li><a href="/faq" class="text-ink-dim hover:text-accent">FAQ</a></li><li><a href="/get-it" class="text-ink-dim hover:text-accent">Get it</a></li><li><a href="/links" class="text-ink-dim hover:text-accent">Links</a></li><!--]--></ul></div><div><p class="font-mono text-xs uppercase tracking-[0.14em] text-ink-faint">Licence</p><p class="mt-3 text-sm leading-relaxed text-ink-dim">OpenMixer is free software under the <span class="font-mono text-ink">GPL-3.0-or-later</span>. Every package in the workspace carries the same licence.</p></div></div><div class="border-t border-edge"><p class="mx-auto max-w-6xl px-6 py-5 font-mono text-xs text-ink-faint">Roland, Midas, Behringer, RME and the product names used here belong to their respective owners. OpenMixer is an independent project and is not affiliated with any of them.</p></div></footer></div><!--]--><!--]--><!--[--><!--]--><!--v-if--><!--]--><!--[--><!--]--><!--]--><!--]--></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{i18n:{baseUrl:"https://openmixer.org",defaultLocale:"en",rootRedirect:"",redirectStatusCode:302,skipSettingLocaleOnNavigate:false,locales:[{code:"en",language:"en",name:"English",domains:[],defaultForDomains:[]},{code:"ca",language:"ca",name:"Català",domains:[],defaultForDomains:[]}],detectBrowserLanguage:false,experimental:{localeDetector:"",typedPages:true,typedOptionsAndMessages:false,alternateLinkCanonicalQueries:true,devCache:false,cacheLifetime:"",stripMessagesPayload:false,preload:false,strictSeo:false,nitroContextDetection:true,httpCacheDuration:10,compactRoutes:false,prerenderMessages:false,optimizeMessageBundling:true},domainLocales:{en:{domain:""},ca:{domain:""}}}},app:{baseURL:"/",buildId:"d607e62e-2639-4e5d-b698-1ad604dc4d59",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script><script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/notes/the-libraries-that-read-our-plugins/_payload.json?_b=d607e62e-2639-4e5d-b698-1ad604dc4d59">[{"state":1,"once":14,"_errors":15,"serverRendered":5,"path":17,"prerenderedAt":18},["Reactive",2],{"$scolor-mode":3,"$si18n:cached-locale-configs":7,"$si18n:resolved-locale":12,"$stoasts":13},{"preference":4,"value":4,"unknown":5,"forced":6},"system",true,false,{"en":8,"ca":10},{"fallbacks":9,"cacheable":5},[],{"fallbacks":11,"cacheable":5},[],"",[],["Set"],["ShallowReactive",16],{"note-the-libraries-that-read-our-plugins-en":-1},"\u002Fnotes\u002Fthe-libraries-that-read-our-plugins",1794581365144]</script></body></html>
