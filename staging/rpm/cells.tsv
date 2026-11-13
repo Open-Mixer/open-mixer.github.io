@@ -1,0 +1,64 @@
+# package	version	set	cells
+omx-clap-core	0.32.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+omx-clap-core-contract	0.32.0	-	fc44/noarch fc45/noarch
+omx-clap-core-devel	0.32.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+omx-clap-host	0.32.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+omx-clap-host-tests	0.32.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+omx-clap-lv2-devel	0.32.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+omx-contract	3.14.0	-	fc44/noarch
+omx-contract	3.15.0	-	fc44/noarch fc45/noarch
+omx-contract	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract	3.17.1	quick	fc44/noarch fc45/noarch
+omx-contract-data	3.14.0	-	fc44/noarch
+omx-contract-data	3.15.0	-	fc44/noarch fc45/noarch
+omx-contract-data	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract-data	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract-data	3.17.1	quick	fc44/noarch fc45/noarch
+omx-contract-devel	3.14.0	-	fc44/noarch
+omx-contract-devel	3.15.0	-	fc44/noarch fc45/noarch
+omx-contract-devel	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract-devel	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract-devel	3.17.1	quick	fc44/noarch fc45/noarch
+omx-contract-langpack-ca	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-ca	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-ca	3.17.1	quick	fc44/noarch fc45/noarch
+omx-contract-langpack-de	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-de	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-de	3.17.1	quick	fc44/noarch fc45/noarch
+omx-contract-langpack-es	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-es	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-es	3.17.1	quick	fc44/noarch fc45/noarch
+omx-contract-langpack-fr	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-fr	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-fr	3.17.1	quick	fc44/noarch fc45/noarch
+omx-contract-langpack-it	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-it	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-it	3.17.1	quick	fc44/noarch fc45/noarch
+omx-contract-langpack-pt	3.16.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-pt	3.17.0	-	fc44/noarch fc45/noarch
+omx-contract-langpack-pt	3.17.1	quick	fc44/noarch fc45/noarch
+plugin-hostd-protocol	0.5.4	-	fc44/x86_64
+plugin-hostd-protocol	0.5.5	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-hostd-protocol	0.5.6	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-hostd-protocol	0.5.7	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-hostd-protocol-contract	0.5.4	-	fc44/noarch
+plugin-hostd-protocol-contract	0.5.5	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-contract	0.5.6	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-contract	0.5.7	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-devel	0.5.4	-	fc44/x86_64
+plugin-hostd-protocol-devel	0.5.5	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-hostd-protocol-devel	0.5.6	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-hostd-protocol-devel	0.5.7	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+plugin-hostd-protocol-langpack-ca	0.5.6	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-ca	0.5.7	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-de	0.5.6	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-de	0.5.7	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-es	0.5.6	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-es	0.5.7	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-fr	0.5.6	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-fr	0.5.7	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-it	0.5.6	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-it	0.5.7	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-pt	0.5.6	-	fc44/noarch fc45/noarch
+plugin-hostd-protocol-langpack-pt	0.5.7	-	fc44/noarch fc45/noarch
