@@ -116,6 +116,41 @@ Description: one shared source of truth for every OpenMixer knob, range, default
  .
  Its documentation is on openmixer.org.
 
+Package: libomx-contract-dev
+Architecture: all
+Version: 3.17.1
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 120
+Depends: omx-contract-data (= 3.17.1)
+Recommends: omx-contract (= 3.17.1)
+Breaks: libomx-clap-core-dev (<< 0.13.0~), libomxdsp-dev (<< 0.25.0~), omx-plugins-dev (<< 0.13.0~)
+Filename: ./all/libomx-contract-dev_3.17.1_all.deb
+Size: 23476
+MD5sum: 5983b51cbe3b21e488d74c79e0b4b0ae
+SHA1: 290e1b722f540f19732624833d7f100aa46b008f
+SHA256: 326d506b488bd94b04d01d57cba6d747716f27875969960f689e6255f65e1971
+SHA512: 37767fdf3d4023e0c63e8da0c20510f4bc243227b466a03a637df58d97a0d77cf5a4226c4d418d6950bceb8bbb9a4753a806cff29b30c3a8c457b8a5522be32f
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: one shared source of truth for every OpenMixer knob, range, default
+ A fader range, a default, a plugin parameter, a supported sample rate: in
+ OpenMixer each of these is written down once, in omx-contract, and everything
+ else reads it. That is why the console, the DSP library and the plugins agree
+ on what a knob does and how far it turns. The declarations are plain JSON with
+ a JSON Schema, so tools in any language can read them, and they are rendered
+ as C headers for the code that is built from them.
+ .
+ This package holds the c render under /usr/include/omxcontract,
+ omx-contract.pc and install-contract-dir.sh, which an owner's build
+ installs its definitions with. The data it builds against is
+ omx-contract-data, which it depends on. A consumer requires it at a floor,
+ the lowest release whose declarations it builds against.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-clap-core-contract
 Architecture: all
 Version: 0.31.2
@@ -519,6 +554,39 @@ Description: OpenMixer declarations read at run time: contract directory, schema
  .
  Its documentation is on openmixer.org.
 
+Package: omx-contract-data
+Architecture: all
+Version: 3.17.1
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 835
+Breaks: libomx-contract-dev (<< 3.17.1), omx-plugins-contract (<< 0.19.3~)
+Replaces: libomx-contract-dev (<< 3.17.1)
+Filename: ./all/omx-contract-data_3.17.1_all.deb
+Size: 76772
+MD5sum: ebad894e317f1f117a90c2463cde454c
+SHA1: 2f1d247761194da0fb80fddaef1d0c903342d156
+SHA256: fead1ec62618967b3a05fc2c9f74cd61aba817a3b90d251a447f5567b747e30b
+SHA512: 198a12aad7f65838f38c43f8de135d2f5241797b5d408bc2a774620c3daa0090a1f06a87c234a3d4f9f90176db33828b18c579f36b6aedf1cc05340433cade73
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: OpenMixer declarations read at run time: contract directory, schema
+ A fader range, a default, a plugin parameter, a supported sample rate: in
+ OpenMixer each of these is written down once, in omx-contract, and everything
+ else reads it. The declarations are plain JSON with a JSON Schema.
+ .
+ This package holds the files a program reads at run time: omx-contract's
+ own package of the contract directory
+ (/usr/share/omx-contract/contract.d/3/omx-contract/, where every owner
+ installs its definitions beside it), the JSON Schema, the resolved json
+ render, the vocabulary's schema fragment and the resource hints' Turtle,
+ under /usr/share/omx-contract. A package that reads them at run time
+ depends on this one, never on the development package.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-contract-l10n-ca
 Architecture: all
 Version: 3.17.0
@@ -537,6 +605,31 @@ MD5sum: fbf8c8a9e7f68609e4d8320ca3cc8852
 SHA1: 007eb0b59b887886d8c1faaac3139436226d8385
 SHA256: bca5ffb04e2005508266613219f57e88eaefeeda6adef8f50c7ee9ad0cb35808
 SHA512: bcc113f4660c9fdd821768ed14166c83ae68db4cc7f5a17647925a6bc0d01cb902f1b1204c976d7e683839c97a9d822ee4c01e2147f170b68ffdd620b7fb2671
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: Catalan sentences of the OpenMixer declarations' codes and words
+ The Catalan catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/ca.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
+Package: omx-contract-l10n-ca
+Architecture: all
+Version: 3.17.1
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 87
+Depends: omx-contract-data (= 3.17.1)
+Breaks: omx-contract-data (<< 3.16.0~)
+Replaces: omx-contract-data (<< 3.16.0~)
+Filename: ./all/omx-contract-l10n-ca_3.17.1_all.deb
+Size: 23636
+MD5sum: a5d19db8eb02b61d2d41ff03fb2ebda8
+SHA1: f80df38e4651ed220d7d68aa3ef9c97f114ebecb
+SHA256: 078c4ab0c49ac45b58b6432ca5102b6b7e11908f0e5074d5281a042f4bdf7f55
+SHA512: 6b3e288bcbb005c1a89608ab3e4d0c64a7c52419188e6e6392b47a3d8052ca6bbeecb69e12bd2ed313d034af8074fe8ac0d4853503509799290dd251f4a51ca7
 Homepage: https://github.com/Open-Mixer/omx-contract
 Description: Catalan sentences of the OpenMixer declarations' codes and words
  The Catalan catalog of omx-contract's codes and words
@@ -567,6 +660,29 @@ Description: German sentences of the OpenMixer declarations' codes and words
  on a host in that language, and the English source sentence for any key the
  catalog lacks.
 
+Package: omx-contract-l10n-de
+Architecture: all
+Version: 3.17.1
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 95
+Depends: omx-contract-data (= 3.17.1)
+Filename: ./all/omx-contract-l10n-de_3.17.1_all.deb
+Size: 26476
+MD5sum: 32ce3a9c7f9b2b96c584e8a9c27243ea
+SHA1: c007a150a70b2c06628c9bbd21d7e7bde31ac239
+SHA256: 4d38dbfc438506f6ba366cc7e0e8c61bb0e9155e6554c4674325006a0fd01482
+SHA512: 5146f58138467da54bdf34b4e65ef252a50d8d7c38e87d24e0fc342e56b51eb8056e1b063156dfc43d94bdda6c01232440bc4e6ab7db241932cf9b8ca52c964c
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: German sentences of the OpenMixer declarations' codes and words
+ The German catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/de.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
 Package: omx-contract-l10n-es
 Architecture: all
 Version: 3.17.0
@@ -583,6 +699,29 @@ MD5sum: 52539ce33b44e32007f2ecc7f1e52786
 SHA1: 4bd83a40d999479ffaeb85e604c7803a948def33
 SHA256: 1ab0b15654ac52de22cd9ba11c15a405edae5253572cbdf998bf9a479ad619ce
 SHA512: 50ae588bdb7bbd8d2b81dc9ec497edcd48f08ed6ba40a366aa1f9b15fa50db3d64df27d1b914bd70e871478cb7060a72a8fcce563c16099c8cd087258a260a6f
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: Spanish sentences of the OpenMixer declarations' codes and words
+ The Spanish catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/es.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
+Package: omx-contract-l10n-es
+Architecture: all
+Version: 3.17.1
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 94
+Depends: omx-contract-data (= 3.17.1)
+Filename: ./all/omx-contract-l10n-es_3.17.1_all.deb
+Size: 25508
+MD5sum: 37db92c92548c172cf3497dac7dd9901
+SHA1: 2dd0d6d12cd23f05822df9b36f30a698c8f5352b
+SHA256: ecc56b02ba621f755c411da8a7372ee1eb18a0bc7739371a945aa052a3ed8525
+SHA512: fce02d1f5a8d8b7e929b8e3520e5c73fa4db17287c80993bf51750ab21bed7ce24996117c5459dbb00e0d9477e57bf640f6b8a69fb309556f37311817e79ca24
 Homepage: https://github.com/Open-Mixer/omx-contract
 Description: Spanish sentences of the OpenMixer declarations' codes and words
  The Spanish catalog of omx-contract's codes and words
@@ -613,6 +752,29 @@ Description: French sentences of the OpenMixer declarations' codes and words
  on a host in that language, and the English source sentence for any key the
  catalog lacks.
 
+Package: omx-contract-l10n-fr
+Architecture: all
+Version: 3.17.1
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 95
+Depends: omx-contract-data (= 3.17.1)
+Filename: ./all/omx-contract-l10n-fr_3.17.1_all.deb
+Size: 25864
+MD5sum: 82f84252ff83e9bf9eddc47d1ce22823
+SHA1: 6ecae4a1e90b79f0e493baf2526a9552e52c7fac
+SHA256: d851850f5ff95a66f296fdd0f12543925951202a66de89589f92fbe041cacb07
+SHA512: 605623c25f948498c3b240a5a9b2a5ed74a8476b8c29139ffb6719d73052331a21f34e51b7ff200badbe161870d16b6dd0b61e851ea4f7c185a5cd4ce43a1601
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: French sentences of the OpenMixer declarations' codes and words
+ The French catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/fr.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
 Package: omx-contract-l10n-it
 Architecture: all
 Version: 3.17.0
@@ -636,6 +798,29 @@ Description: Italian sentences of the OpenMixer declarations' codes and words
  on a host in that language, and the English source sentence for any key the
  catalog lacks.
 
+Package: omx-contract-l10n-it
+Architecture: all
+Version: 3.17.1
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 94
+Depends: omx-contract-data (= 3.17.1)
+Filename: ./all/omx-contract-l10n-it_3.17.1_all.deb
+Size: 25576
+MD5sum: c54503baf9ce0858df7f223e96303467
+SHA1: cec54e67218541a13ef83971aeb10b3449b48eb5
+SHA256: 06c9fd3b6c81864b2574e0cb0bad0d7484675036a20a685a196240cdb7762bc2
+SHA512: 5c8538509ed4280c92339203ef7960df08b5b24152777d3580c54aba5dd1016a65ddbbb99e89416870bfd73009c3b01c65f0334685307f36f33262a4e8b53fc6
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: Italian sentences of the OpenMixer declarations' codes and words
+ The Italian catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/it.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
 Package: omx-contract-l10n-pt
 Architecture: all
 Version: 3.17.0
@@ -652,6 +837,29 @@ MD5sum: e60992168c7fa1c282fe1483a739b2ec
 SHA1: aeadb7ee6cc6f9ddb1a831cf6163291f216867b1
 SHA256: 21de9320ae88701b6db087a0ee4d382c03d79eb3440ac32cc78c4c48bb15f7e8
 SHA512: d41ea1ebf975eed8daf3520fd9efb0430dd2a428b51b65dd5268ffaa8fa4ee73c20ce34505df36a3ec0bc0ee8c9d0c7e528311e876028323542980bed0db2ad1
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: Portuguese sentences of the OpenMixer declarations' codes and words
+ The Portuguese catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/pt.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
+Package: omx-contract-l10n-pt
+Architecture: all
+Version: 3.17.1
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 93
+Depends: omx-contract-data (= 3.17.1)
+Filename: ./all/omx-contract-l10n-pt_3.17.1_all.deb
+Size: 25256
+MD5sum: 17576a5736bb144cf105e8c7c32b6346
+SHA1: 23418609d5e2c5a789a4efa6aab9ea4e734d9f7d
+SHA256: c20b06e34089aff1d01fd92c2e7ad3624e0c4fe3c2f924becc59a9af76941274
+SHA512: 709bb4329e6dfe1b53ff59d3229abf7e2a93b92cc2e1a6bf8ba282171f6f5930baef3fae19a2d5bc5daaa59ea5f85db618db5bb21ecdddff5ada0f24619a7525
 Homepage: https://github.com/Open-Mixer/omx-contract
 Description: Portuguese sentences of the OpenMixer declarations' codes and words
  The Portuguese catalog of omx-contract's codes and words
@@ -703,6 +911,35 @@ MD5sum: 6c565ad0bfddaf07656f9786404fbb7d
 SHA1: bdc00be15f673f0e1f56a46395ce0836722fc949
 SHA256: fed74ce3d828465597404172e0e7e462e8a6db3e462b2755bc8705948867535a
 SHA512: 066ac046f54715c10ffe7fe03e0861ec25468bf5ed6998cc52d71dde503cb373cd4b566d6bdc40d2f528428d90cab7ba62cda35989ce25390bb4a80e22d9bdd5
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: command that checks and renders the OpenMixer declarations
+ A fader range, a default, a plugin parameter, a supported sample rate: in
+ OpenMixer each of these is written down once, in omx-contract, and everything
+ else reads it. The declarations are plain JSON with a JSON Schema.
+ .
+ This package holds the omx-contract command, which validates, formats and
+ renders the declarations, and reads the contract directory the packages
+ install their definitions into as one checked set. It carries the npm
+ packages it runs on (ajv and its dependencies), so it needs node and
+ nothing else.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-contract
+Architecture: all
+Version: 3.17.1
+Priority: optional
+Section: devel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2824
+Depends: nodejs, omx-contract-data (= 3.17.1)
+Recommends: pkgconf | pkg-config
+Filename: ./all/omx-contract_3.17.1_all.deb
+Size: 296992
+MD5sum: 410ec283e18ae9816dde7d45997a106a
+SHA1: da9371b3838b8717b8891e6f7f56635614a6606e
+SHA256: 06b19e6f0a4afa9b56941453881ac40bba96eef34fe96fc7ea91690f26e1593c
+SHA512: f4d8ec9a8f1c0c9d6d30dea7a7ffb8a8325c51d22f7527ea86660077c92d1b3415c29c0c351a21455eca089a5bf9e4410d9f8088e47208a34a3e6346fabc6385
 Homepage: https://github.com/Open-Mixer/omx-contract
 Description: command that checks and renders the OpenMixer declarations
  A fader range, a default, a plugin parameter, a supported sample rate: in
