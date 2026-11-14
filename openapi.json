@@ -3,7 +3,7 @@
   "info": {
     "title": "openmixer REST API",
     "description": "Generated from the running console’s own address space, field limits and refusal catalog — never hand-written. Every entity also answers OPTIONS with its live contract (writable fields, ranges, enumerated options), which is the source of truth this document mirrors at generation time.",
-    "version": "2026-11-13",
+    "version": "2026-11-14",
     "license": {
       "name": "GPL-3.0-or-later",
       "identifier": "GPL-3.0-or-later"
@@ -38288,15 +38288,237 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "resolved": {
-                      "type": "array",
-                      "readOnly": true
-                    },
                     "warnings": {
                       "type": "array",
-                      "readOnly": true
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "source": {
+                            "type": "string"
+                          },
+                          "message": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "params": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "params"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "detail": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "params": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "params"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "appearedAt": {
+                            "type": "integer"
+                          },
+                          "fields": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "kind": {
+                                      "type": "string"
+                                    },
+                                    "index": {
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "required": [
+                                    "kind",
+                                    "index"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "source",
+                          "message",
+                          "appearedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "resolved": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "source": {
+                            "type": "string"
+                          },
+                          "message": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "params": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "params"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "detail": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "params": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "params"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "appearedAt": {
+                            "type": "integer"
+                          },
+                          "fields": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "kind": {
+                                      "type": "string"
+                                    },
+                                    "index": {
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "required": [
+                                    "kind",
+                                    "index"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            }
+                          },
+                          "clearedAt": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "source",
+                          "message",
+                          "appearedAt",
+                          "clearedAt"
+                        ],
+                        "additionalProperties": false
+                      }
                     }
-                  }
+                  },
+                  "required": [
+                    "warnings",
+                    "resolved"
+                  ],
+                  "additionalProperties": false,
+                  "readOnly": true
                 }
               }
             }
