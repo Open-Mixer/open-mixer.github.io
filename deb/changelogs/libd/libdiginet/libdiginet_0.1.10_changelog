@@ -1,0 +1,22 @@
+libdiginet (0.1.10) unstable; urgency=medium
+
+  * release: libdiginet 0.1.10
+  * commit-msg: take the current stub from the checker's release line
+  * The census: every control of the desk, checked against the inventory
+  * Move the commit-message checkout variable to OPENMIXER_DOTGITHUB
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+  * release: build the DEBs beside the RPMs (#1)
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: packaging runs on v* tags and workflow_dispatch only
+  * ci: proof push
+  * ci: cancel a pull request's stale runs
+  * packaging: only root and the group diginet run the cap_net_raw binaries
+  * packaging check: the cap_net_raw binaries are root:diginet 0750
+  * Add a threat model
+  * release: the fc44 install check downloads the artifact the RPM job names
+  * release: no DEB is published after a failed RPM job
+  * githooks: commit-msg is the shared v1 stub
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 14 Nov 2026 11:51:36 +0000

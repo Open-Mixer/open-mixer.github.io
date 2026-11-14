@@ -1,8 +1,12 @@
 # package	version	set	cells
 clap-headers	1.2.10	-	bookworm/all trixie/all
+diginet-tools	0.1.10	quick	trixie/amd64 trixie/arm64
 diginet-tools	0.1.9	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+libdiginet-dev	0.1.10	quick	trixie/amd64 trixie/arm64
 libdiginet-dev	0.1.9	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+libdiginet-transport0	0.1.10	quick	trixie/amd64 trixie/arm64
 libdiginet-transport0	0.1.9	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+libdiginet0	0.1.10	quick	trixie/amd64 trixie/arm64
 libdiginet0	0.1.9	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libmackie-dev	0.1.2	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libmackie0	0.1.2	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
