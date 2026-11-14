@@ -1,0 +1,12 @@
+omx-contract (3.18.1) unstable; urgency=medium
+
+  * commit-msg: take the current stub from the checker's release line
+  * ci: the python-import and deb matrices follow the release set (D25)
+  * test: no CI matrix names bookworm by hand (red)
+  * release 3.18.1
+  * changelog: python3-omx-contract and the npm exports (#28)
+  * python3-omx-contract: the readers as the package omx_contract (#28)
+  * test: the Python readers are a package, omx_contract with catalog, scale
+    and clap, on rpm and deb (#28)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 14 Nov 2026 16:37:20 +0000
