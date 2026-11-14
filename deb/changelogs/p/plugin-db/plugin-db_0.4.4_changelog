@@ -1,0 +1,10 @@
+plugin-db (0.4.4) unstable; urgency=medium
+
+  * commit-msg: take the current stub from the checker's release line
+  * ci: the test job's images follow the release set (D25)
+  * ci: a check that no CI matrix names bookworm by hand (red)
+  * release: 0.4.4, plugin-hostd-protocol floor 0.5.8
+  * release: 0.4.4, built against omx-contract 3.18.0 (D30)
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 14 Nov 2026 11:15:22 +0000
