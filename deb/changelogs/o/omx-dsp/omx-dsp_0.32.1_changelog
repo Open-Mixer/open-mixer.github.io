@@ -1,0 +1,31 @@
+omx-dsp (0.32.1) unstable; urgency=medium
+
+  * ci: the contract-floor and deb matrices follow the release set (D25)
+  * ci: a check that no CI matrix names bookworm by hand (red)
+  * ci: make test on bookworm only on a full release pass (D25)
+  * contract-dir-check: omx-contract's golden vectors are not installed as
+    definitions
+  * ci: omx-contract from its tag installs with its devDependencies
+  * release 0.32.1: the version in omxdsp.h, which make version reads
+  * definitions-render: omx-contract's golden vectors are not installed as
+    definitions
+  * release: 0.32.1, built against omx-contract 3.18.0 (D30)
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+  * release: a staged run publishes to the staging channel
+  * packaging: the package metadata names the Open-Mixer repository
+  * release: build the DEBs beside the RPMs (#1)
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * workflows: run in Open-Mixer while FreeMixer is restricted
+  * ci: packaging runs on v* tags and workflow_dispatch only
+  * fuzz: the two slew records sit directly above their checks
+  * ci: cancel a pull request's stale runs
+  * docs: fuzz-checks.md, every fuzz check read against its comment
+  * fuzz: hold five weak checks to their claims, and every record to today's
+    lines
+  * Add a threat model
+  * dyn: makeup never enters the gain-reduction readout
+  * test: gain-reduction readout is the same at every makeup step (red, #308)
+  * README: refresh apt after adding the repository, download into /tmp
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 14 Nov 2026 21:59:56 +0000
