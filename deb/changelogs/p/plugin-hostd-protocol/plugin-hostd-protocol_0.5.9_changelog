@@ -1,0 +1,26 @@
+plugin-hostd-protocol (0.5.9) unstable; urgency=medium
+
+  * commit-msg: take the current stub from the checker's release line
+  * packaging: the Debian build floors omx-dsp at 0.32.1, as the spec does
+  * packaging: 0.5.9 changelog names the default CLAP folders (#36)
+  * search_paths: the default CLAP path names the folders distributions
+    install plugins in (plugin-hostd#82)
+  * tests: the default CLAP search path names the folders distributions
+    install plugins in (red, plugin-hostd#82)
+  * release: plugin-hostd-protocol 0.5.9
+  * fuzz: gen-corpus.sh writes the same corpus in every locale: LC_ALL=C (#33)
+  * fuzz: the job installs diffutils, which fuzz-corpus-check compares the
+    corpus with
+  * fuzz: the corpus check runs after the dependencies are installed
+  * fuzz: the seed corpus written again from the scenario file, and both
+    golden transcripts over it (#33)
+  * tests: golden.c defines its monitor_output_off backend only where the
+    library has the hook
+  * fuzz: make fuzz-corpus-check, run on every pull request, holds the seed
+    corpus to its generator (red, #33)
+  * ci: a daily run renders against what the channel serves, the render check
+    alone, naming the packages on failure (#27)
+  * test: a served render change turns main red when it is served, not at the
+    next pull request (red, #27)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 15 Nov 2026 02:01:41 +0000
