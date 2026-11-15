@@ -2,30 +2,29 @@
 Hash: SHA512
 
 Architectures: all amd64 arm64
-Changelogs: https://www.openmixer.org/staging/deb/changelogs/@CHANGEPATH@_changelog
 Codename: bookworm
-Date: Fri, 13 Nov 2026 08:06:05 +0000
+Date: Sun, 15 Nov 2026 21:07:42 +0000
 Label: OpenMixer-Staging
 Origin: OpenMixer-Staging
 Suite: bookworm
 MD5Sum:
- d41605fb0b2e52201ce25913b8fd3f8b            72653 Packages
- fece276f2f22b8f212faa14cecb2c19e            15560 Packages.gz
+ d41d8cd98f00b204e9800998ecf8427e                0 Packages
+ 4a4dd3598707603b3f76a2378a4504aa               20 Packages.gz
 SHA1:
- 83ef12a0ce5294872c1b1d3c4cb23bd4dd3b51d3            72653 Packages
- a91ca6a55962449c05ff43d517b88da11a8c82d1            15560 Packages.gz
+ da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
+ a0fddd5458378c1bf3c10dd2f5c060d1347741ed               20 Packages.gz
 SHA256:
- 4b99911d13f5d3ef4434c5743a9cb2cf0410e4335b4c41b703abb20e0a4507fd            72653 Packages
- 5b63b580587ec0859f9507738d02405b23cbaf8bd8b1d4f00b79d31b4ce42cfa            15560 Packages.gz
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
+ f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec               20 Packages.gz
 SHA512:
- 0108482a20a337ee0d4bbc729ccb1781bca9cb4321e0e965002bbc478bc4fd8fd5dcdb93daa284740a50d1f78894ec08cac449a4f0521ab8c362fcde2fc90128            72653 Packages
- 6b5d0734f08944a1537ea1698e955bb01dbcd6d075d30374a04e1dfbdc8780d343a58aa21c02dc048b1a9319f0065f73d76c5e391e517375bf5a643d05b47b72            15560 Packages.gz
+ cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
+ 1b46b9b08d5b338be9d732a1724795b2eab63daffde377218727c90857b79fe6a47bceed495117fcde60f7339812ef75ef4c69f82dd79fb69b6cbf8006b521f2               20 Packages.gz
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQRq8cYv9wvRDVyp3eWKJ2VTI7rdpgUCavbE7gAKCRCKJ2VTI7rd
-pmo3AP47RHAcltCBoTJZz1H+81kJZB6LgpwohEMA8rhZCaNGJgD+P43mDnbBCGXH
-ZjcEzq7BU67cVBJpjvMmKKlCDuDIngmIdQQBFgoAHRYhBLo/7q1TyELPeUummNWW
-Bqoh9NN7BQJq9sTuAAoJENWWBqoh9NN7o0IA/218ijiI0npgjatJASnas+ardOEU
-NRbaTxBa1V7dy30HAQCzJVPKf3rGx09EYImLxu8HqBnOIVSfoJYdZ2dfPNaIDw==
-=K5Ls
+iHUEARYKAB0WIQRq8cYv9wvRDVyp3eWKJ2VTI7rdpgUCavofHwAKCRCKJ2VTI7rd
+pofoAQC66js/QfFWvzseEvcQ3XUcVA3UsFhVCr9vFRa1t+YvcQEA8DEzdfmc1wPh
+jIz3yFpQQTYok+I51ILfi1GDUhRR5AeIdQQBFgoAHRYhBLo/7q1TyELPeUummNWW
+Bqoh9NN7BQJq+h8fAAoJENWWBqoh9NN7igMA/Rmt8e+YA9yufVUW3C2+521sR07w
+KlwcQ+mpxaa6BClYAP4vp1fDtP2kUgpvzji5mTmvPngRf04xlQKRFo0iF/6gCw==
+=F6Eh
 -----END PGP SIGNATURE-----
