@@ -18,6 +18,13 @@ name: Prune the package repository
 # e.g. plugin-hostd@0.20.6:trixie/arm64,plugin-hostd-contract@0.20.6:trixie/all. A malformed cell (an unknown
 # suite or architecture, a missing part) stops the plan. The invariant holds per cell: a kept package of that
 # suite or release and architecture whose only satisfier the drop deletes fails the plan, named.
+# An entry package=<binary>@<version>:<cell> drops one binary package, not a source: only that binary's file in
+# that cell (the .deb, or the .rpm of an rpm cell) and its index stanza go; the other binaries of its source and
+# the source stay. The cell is required. e.g. package=plugin-hostd-full@0.20.5:trixie/all, beside source entries
+# in the same list. A deb suite is one flat index for every architecture, so an Architecture: all binary has one
+# listing: <suite>/all removes it for every architecture, and a binary entry naming amd64 or arm64 for an all
+# binary is refused (flat index: one listing for every architecture). The same invariant judges what remains,
+# over every architecture: a binary a kept package needs fails the plan, named.
 #
 # apply=false (the default) is a dry run: it prints, per package and format, what would be kept and what
 # deleted, writes that plan to the job summary and as an artifact, and changes nothing.
@@ -49,7 +56,7 @@ on:
         type: boolean
         default: false
       drop:
-        description: 'Drop mode: name@version,... removes every build of those source versions (subpackages, architectures, source) and nothing else; name@version:trixie/amd64 (deb suite/arch) or name@version:fedora/44/x86_64 (rpm) only that cell''s. newest does not apply. Empty runs the normal prune.'
+        description: 'Drop mode: name@version,... removes every build of those source versions (subpackages, architectures, source) and nothing else; name@version:trixie/amd64 (deb suite/arch) or name@version:fedora/44/x86_64 (rpm) only that cell''s; package=<binary>@version:<cell> removes that one binary in that cell, not its source''s other binaries (an Architecture: all deb takes <suite>/all: the suite index is flat). newest does not apply. Empty runs the normal prune.'
         type: string
         default: ''
       newest:

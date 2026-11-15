@@ -16,6 +16,15 @@
 //                           source) and nothing else; --newest and the orphan sweep do not apply.
 //                           A cell (trixie/arm64, bookworm/all, fedora/44/x86_64) limits an entry to that
 //                           suite or release and architecture: only those builds go, the source stays.
+//                           package=<binary>@<version>:<cell> is a binary entry: it deletes that one binary's
+//                           build in that cell (its .deb, or its .rpm in an rpm cell, and so its index stanza)
+//                           and nothing else: not the source's other binaries, not the source. The cell is
+//                           required. A deb suite is one flat index (one Packages for every architecture), so an
+//                           Architecture: all binary has one listing: its cell is <suite>/all, which removes it for
+//                           every architecture; a binary entry naming an architecture for an all binary is refused
+//                           (exit 1, 'flat index: one listing for every architecture'). Binary and source entries mix
+//                           in one list; the plan prints a binary entry's deletions as such, and the invariant below
+//                           judges what remains, over every architecture.
 // A drop overrides a pin on the versions it names (they are printed under 'dropped although pinned').
 // --only rpm|deb reads that half alone.
 // --skip-closure plans without the dependency closure, to see the plan invariant fail (a test uses it).
@@ -152,6 +161,7 @@ async function main() {
     notes: results.flatMap((r) => r.notes),
     warnings: only ? [] : unusedPins(keep, all),
     missingPins: only ? [] : missing(keepLines, all),
+    refused: results.flatMap((r) => r.refused || []),
     uninstallable: results.flatMap((r) => r.uninstallable),
     lost: pinsLost(keep, all, new Set(results.flatMap((r) => r.keep).map((r) => r.path))),
   };
@@ -167,6 +177,10 @@ async function main() {
   }
   if (tree) console.log(`  files no index lists: ${plan.orphans.length}`);
   if (opt('--json')) fs.writeFileSync(opt('--json'), JSON.stringify(plan, null, 2) + '\n');
+  if (plan.refused.length) {
+    console.error(`the drop names a cell its index cannot remove alone:\n${plan.refused.map((n) => '  ' + n).join('\n')}`);
+    process.exit(1);
+  }
   if (plan.missingPins.length) {
     console.error(`the keep-list names versions the channel does not serve:\n${plan.missingPins.map((n) => '  ' + n).join('\n')}`);
     process.exit(1);
