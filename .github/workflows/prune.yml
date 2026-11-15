@@ -174,7 +174,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: Open-Mixer/.github
-          ref: v1
+          ref: openmixer-v1
           path: .fmx
 
       - uses: actions/checkout@v4
@@ -286,7 +286,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: Open-Mixer/.github
-          ref: v1
+          ref: openmixer-v1
           path: .fmx
 
       - uses: actions/checkout@v4
