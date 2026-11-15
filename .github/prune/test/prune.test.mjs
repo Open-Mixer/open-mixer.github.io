@@ -807,3 +807,91 @@ test('cli drop: a bare name@version still drops every build in every suite, rele
     'rpm/fedora/44/x86_64/plugin-hostd-0.20.6-1.fc44.x86_64.rpm',
   ]);
 });
+
+// ------------------------------------------------------------------ binary entry: package=<binary>@<version>:<cell>
+
+// the trixie of 2026-11-15, flat (one Packages for all, amd64 and arm64): source plugin-hostd 0.20.5 builds four
+// Architecture: all binaries; plugin-hostd-full needs plugin-qualify 0.20.x, whose 0.20.3 the same plan drops on amd64
+const trixieHostd = () => [
+  debPkg('plugin-hostd-full', '0.20.5-1', 'all', { source: 'plugin-hostd', depends: 'plugin-qualify (>= 0.20.1~), plugin-qualify (<< 0.21~), plugin-hostd-contract (= 0.20.5-1)' }),
+  debPkg('plugin-hostd-contract', '0.20.5-1', 'all', { source: 'plugin-hostd' }),
+  debPkg('plugin-hostd-dev', '0.20.5-1', 'all', { source: 'plugin-hostd', depends: 'plugin-hostd-contract (= 0.20.5-1)' }),
+  debPkg('python3-plugin-hostd-protocol', '0.20.5-1', 'all', { source: 'plugin-hostd' }),
+  debPkg('plugin-qualify', '0.20.3-1', 'amd64', { source: 'plugin-qualify' }),
+  debPkg('plugin-qualify', '0.20.3-1', 'arm64', { source: 'plugin-qualify' }),
+  debPkg('plugin-db-qualification', '0.3.1-1', 'amd64', { source: 'plugin-db-qualification', depends: 'plugin-qualify (>= 0.20.3~)' }),
+  debPkg('plugin-db-qualification', '0.3.1-1', 'arm64', { source: 'plugin-db-qualification', depends: 'plugin-qualify (>= 0.20.3~)' }),
+].join('\n\n') + '\n';
+
+const binaryRun = () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-binary-'));
+  fs.writeFileSync(path.join(tmp, 'keep.yml'), 'keep:\n');
+  const tree = path.join(tmp, 'tree');
+  writeCells(tree, { trixie: trixieHostd(), bookworm: trixieHostd() }, {});
+  return (...more) => spawnSync(process.execPath, [select, '--keep', path.join(tmp, 'keep.yml'), '--tree', tree, '--delete-list', ...more], { encoding: 'utf8' });
+};
+
+test('drop binary: package=<binary>@<version>:<suite>/all drops exactly that binary in that suite and keeps its siblings', () => {
+  const drop = parseDrop('package=plugin-hostd-full@0.20.5:trixie/all');
+  const t = selectRepo(parsePackages(trixieHostd(), 'debian/trixie'), [], { drop });
+  assert.deepEqual(t.delete.map((d) => d.file), ['all/plugin-hostd-full_0.20.5-1_all.deb']);
+  assert.match(t.delete[0].reason, /binary entry package=plugin-hostd-full@0\.20\.5:trixie\/all/);
+  for (const sib of ['plugin-hostd-contract', 'plugin-hostd-dev', 'python3-plugin-hostd-protocol']) {
+    assert.ok(t.keep.some((k) => k.name === sib && k.version === '0.20.5-1'), `${sib} 0.20.5 stays`);
+  }
+  assert.deepEqual(selectRepo(parsePackages(trixieHostd(), 'debian/bookworm'), [], { drop }).delete, [], 'another suite is not touched');
+});
+
+test('drop binary: an arch-specific binary goes in its own cell only', () => {
+  const drop = parseDrop('package=plugin-db-qualification@0.3.1:trixie/amd64');
+  const t = selectRepo(parsePackages(trixieHostd(), 'debian/trixie'), [], { drop });
+  assert.deepEqual(t.delete.map((d) => d.file), ['amd64/plugin-db-qualification_0.3.1-1_amd64.deb'], 'arm64 stays');
+  const f44 = Object.entries(hostdRpms(44)).flatMap(([dir, xml]) => parsePrimary(xml, 'fedora/44', dir));
+  const r = selectRepo(f44, [], { drop: parseDrop('package=plugin-hostd-devel@0.20.6:fedora/44/noarch') });
+  assert.deepEqual(r.delete.map((d) => `${cellOf(d)} ${d.name}`), ['fedora/44/noarch plugin-hostd-devel'], 'not plugin-hostd, not the source');
+});
+
+test('drop binary: an entry needs package=name@version and a cell', () => {
+  for (const bad of ['package=plugin-hostd-full@0.20.5', 'package=@0.20.5:trixie/all', 'package=plugin-hostd-full:trixie/all', 'package=plugin-hostd-full@0.20.5:sid/all']) {
+    assert.throws(() => parseDrop(bad), (e) => e.message.includes(`'${bad}'`), bad);
+  }
+  assert.deepEqual(parseDrop('package=a@1.0:trixie/all,b@2.0'), [
+    { binary: 'a', version: '1.0', scope: { format: 'deb', repo: 'debian/trixie', arch: 'all' } },
+    { name: 'b', version: '2.0' },
+  ]);
+});
+
+test('cli drop binary, replay: plugin-qualify 0.20.3 with plugin-hostd-full and plugin-db-qualification passes and keeps the siblings', () => {
+  const run = binaryRun();
+  // without the binary entry, plugin-hostd-full is stranded on amd64: the case the entry exists for
+  const short = run('--drop', 'plugin-qualify@0.20.3:trixie/amd64,plugin-db-qualification@0.3.1:trixie/amd64');
+  assert.equal(short.status, 1, short.stdout + short.stderr);
+  assert.match(short.stderr, /deb debian\/trixie plugin-hostd-full 0\.20\.5-1 \(amd64\) requires plugin-qualify/);
+  const r = run('--drop', 'plugin-qualify@0.20.3:trixie/amd64,package=plugin-hostd-full@0.20.5:trixie/all,plugin-db-qualification@0.3.1:trixie/amd64');
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.deepEqual(deletedPaths(r.stdout), [
+    'deb/debian/trixie/all/plugin-hostd-full_0.20.5-1_all.deb',
+    'deb/debian/trixie/amd64/plugin-db-qualification_0.3.1-1_amd64.deb',
+    'deb/debian/trixie/amd64/plugin-qualify_0.20.3-1_amd64.deb',
+  ]);
+  assert.match(r.stdout, /plugin-hostd-full\n\s+delete\s+0\.20\.5-1\s+all\s+binary entry package=plugin-hostd-full@0\.20\.5:trixie\/all/);
+  for (const sib of ['plugin-hostd-contract', 'plugin-hostd-dev', 'python3-plugin-hostd-protocol']) {
+    assert.match(r.stdout, new RegExp(`deb debian/trixie ${sib}\\n\\s+keep\\s+0\\.20\\.5-1`), `${sib} kept`);
+  }
+});
+
+test('cli drop binary, sabotage: a binary a kept package needs is refused by the invariant on every architecture, named', () => {
+  const r = binaryRun()('--drop', 'package=plugin-hostd-contract@0.20.5:trixie/all');
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stderr, /the plan leaves a kept package uninstallable:/);
+  assert.match(r.stderr, /deb debian\/trixie plugin-hostd-dev 0\.20\.5-1 \(amd64\) requires plugin-hostd-contract = 0\.20\.5-1; its only satisfiers are deleted: plugin-hostd-contract 0\.20\.5-1/);
+  assert.match(r.stderr, /deb debian\/trixie plugin-hostd-dev 0\.20\.5-1 \(arm64\) requires plugin-hostd-contract/);
+  assert.doesNotMatch(r.stdout, /^delete\t/m);
+});
+
+test('cli drop binary: an arch cell for an Architecture: all binary is refused, the suite index being flat', () => {
+  const r = binaryRun()('--drop', 'package=plugin-hostd-full@0.20.5:trixie/amd64');
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stderr, /package=plugin-hostd-full@0\.20\.5:trixie\/amd64: plugin-hostd-full 0\.20\.5-1 is Architecture: all in debian\/trixie, a flat index: one listing for every architecture/);
+  assert.doesNotMatch(r.stdout, /^delete\t/m);
+});
