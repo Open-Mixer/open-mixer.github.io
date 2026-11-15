@@ -1,0 +1,8 @@
+omx-dsp (0.32.3) unstable; urgency=medium
+
+  * release 0.32.3: the version in omxdsp.h, the spec, debian/changelog and
+    the TypeScript package
+  * flavour-check: the TSan consumer under setarch -R
+  * packaging: the JACK headers by pkgconfig(jack), jack2's runtime by name
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 15 Nov 2026 15:56:28 +0000

@@ -33,6 +33,7 @@ libomx-panel-render0	0.13.7	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/
 libomxdsp-dev	0.31.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomxdsp-dev	0.32.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomxdsp-dev	0.32.1	quick	trixie/amd64 trixie/arm64
+libomxdsp-dev	0.32.3	quick	trixie/amd64 trixie/arm64
 libplugin-hostd-protocol-dev	0.5.5	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libplugin-hostd-protocol-dev	0.5.7	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libplugin-hostd-protocol-dev	0.5.8	quick	trixie/amd64 trixie/arm64
@@ -111,6 +112,7 @@ omx-contract-l10n-pt	3.18.1	quick	trixie/all
 omx-dsp-contract	0.31.0	-	bookworm/all trixie/all
 omx-dsp-contract	0.32.0	-	bookworm/all trixie/all
 omx-dsp-contract	0.32.1	quick	trixie/all
+omx-dsp-contract	0.32.3	quick	trixie/all
 omx-panel	0.13.5	-	bookworm/all trixie/all
 omx-panel	0.13.7	-	bookworm/all trixie/all
 omx-panel-l10n-ca	0.13.7	-	bookworm/all trixie/all
@@ -127,6 +129,8 @@ omx-plugins-lv2	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-plugins-test	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-rt-gate	0.32.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-rt-gate	0.32.1	quick	trixie/amd64 trixie/arm64
+omx-rt-gate	0.32.3	quick	trixie/amd64 trixie/arm64
+omx-rta-read	0.32.3	quick	trixie/amd64 trixie/arm64
 openmixer-release	1	-	bookworm/all trixie/all
 plugin-db	0.4.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64
 plugin-db	0.4.1	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
