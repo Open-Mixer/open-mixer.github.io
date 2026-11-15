@@ -290,7 +290,7 @@ test('rpm: every package is either kept or deleted, once', () => {
   assert.equal(new Set([...kept(r), ...deleted(r)]).size, all.length);
 });
 
-// openmixer#2216: mod-host 5.1.freemixer1 carries libmod-host-protocol.so.0 itself and declares no conflict
+// mod-host 5.1.freemixer1 carries libmod-host-protocol.so.0 itself and declares no conflict
 // with the split mod-host-protocol, so while it is served dnf takes it for the soname and mod-host-protocol
 // 11.1.fmx for the name, and the two file-conflict on /usr/lib64/libmod-host-protocol.so.0.1.0
 test('rpm: an old build that carries a soname a split package now provides goes, and the closure does not bring it back', () => {

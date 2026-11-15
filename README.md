@@ -32,3 +32,5 @@ deb/debian/<suite>/<arch>/               amd64, arm64: the .deb files
 ```
 
 The code in this repository (the prune and publish tooling) is GPL-3.0-or-later, see `LICENSE`. The packages under `rpm/` and `deb/` keep the licences of their own sources.
+
+There is no public-sources lint yet: this repository publishes release records that name the private openmixer repository, and its prune reads that repository. The lint lands when openmixer is public (delivery-pipeline section 12 allows at most one lint, so zero is within it).

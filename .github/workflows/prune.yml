@@ -39,7 +39,7 @@ name: Prune the package repository
 #   OPENMIXER_PACKAGES_SIGNING_KEY   signs the dnf metadata and the apt index
 #   RPM_GPG_KEY, RPM_GPG_PASSPHRASE  the original key, co-signs the apt index when this repository may read it
 #   PAGES_TOKEN, SITE_GPG_KEY        push to this repository, signed
-#   OPENMIXER_READ_TOKEN             reads Open-Mixer/openmixer while it is private; not needed once it is public
+#   OPENMIXER_READ_TOKEN             reads the console repository, whose pins this prune keeps, while that repository is not public
 
 on:
   workflow_dispatch:
