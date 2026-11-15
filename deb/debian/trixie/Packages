@@ -1678,6 +1678,28 @@ Description: OpenMixer package repository configuration for apt
  trixie, Raspberry Pi OS included). apt upgrade keeps this configuration
  current.
 
+Package: openmixer-release
+Architecture: all
+Version: 1-5
+Multi-Arch: foreign
+Priority: optional
+Section: admin
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Filename: ./all/openmixer-release_1-5_all.deb
+Size: 9224
+MD5sum: d01a5829baafd64cfed3edfb944d0a54
+SHA1: e92570a56aaeb5bc96ee38d72ed9b6e1c674af0d
+SHA256: e65b100c400be9803e43906e92188432d151ae2fe2dab8abde680042719a6edc
+SHA512: 2e7821b03ee95f6375592dbc017f638b2f9067463265e1b73505bf4cb52ea327534bf48354dbf99e18c2bd49afe39015619376698a48f486cf8a3049d4563a68
+Homepage: https://www.openmixer.org
+Description: OpenMixer package repository configuration for apt
+ Adds the apt source of the OpenMixer repository, which carries the OpenMixer
+ console and its plugin hosts, with the key that signs its index. The source
+ names the Debian release of the system it is installed on (bookworm or
+ trixie, Raspberry Pi OS included). apt upgrade keeps this configuration
+ current.
+
 Package: plugin-db-contract
 Architecture: all
 Version: 0.4.1
