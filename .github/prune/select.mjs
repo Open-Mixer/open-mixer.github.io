@@ -161,6 +161,7 @@ async function main() {
     notes: results.flatMap((r) => r.notes),
     warnings: only ? [] : unusedPins(keep, all),
     missingPins: only ? [] : missing(keepLines, all),
+    refused: results.flatMap((r) => r.refused || []),
     uninstallable: results.flatMap((r) => r.uninstallable),
     lost: pinsLost(keep, all, new Set(results.flatMap((r) => r.keep).map((r) => r.path))),
   };
@@ -176,6 +177,10 @@ async function main() {
   }
   if (tree) console.log(`  files no index lists: ${plan.orphans.length}`);
   if (opt('--json')) fs.writeFileSync(opt('--json'), JSON.stringify(plan, null, 2) + '\n');
+  if (plan.refused.length) {
+    console.error(`the drop names a cell its index cannot remove alone:\n${plan.refused.map((n) => '  ' + n).join('\n')}`);
+    process.exit(1);
+  }
   if (plan.missingPins.length) {
     console.error(`the keep-list names versions the channel does not serve:\n${plan.missingPins.map((n) => '  ' + n).join('\n')}`);
     process.exit(1);

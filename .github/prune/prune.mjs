@@ -474,6 +474,10 @@ export function uninstallable(pkgs, keptFiles) {
 // name@version:<cell> scopes it to one cell: only that repository's builds of that architecture go (the source
 // stays, the other suites, releases and architectures are not touched). A cell is <suite>/<arch> for deb
 // (trixie|bookworm, amd64|arm64|all) or fedora/<rel>/<arch> for rpm (x86_64|aarch64|noarch).
+// package=<binary>@<version>:<cell> is a binary entry: only that binary's build in that cell goes, never its
+// source's other binaries or the source; the cell is required. A deb suite is one flat index for every
+// architecture, so an Architecture: all binary has one listing: <suite>/all removes it for every architecture,
+// and a binary entry that names an architecture for an all binary is refused (result.refused), not narrowed.
 export const DROP_SUITES = ['bookworm', 'trixie'];
 export const DROP_ARCHES = { deb: ['amd64', 'arm64', 'all'], rpm: ['x86_64', 'aarch64', 'noarch'] };
 
@@ -496,6 +500,11 @@ function parseCell(entry, cell) {
 
 export function parseDrop(text) {
   return String(text || '').split(/[,\s]+/).filter(Boolean).map((d) => {
+    if (d.startsWith('package=')) {
+      const m = d.slice('package='.length).match(/^([^@:\s]+)@([^@:\s]+):(.+)$/);
+      if (!m) throw new Error(`drop entry '${d}' is not package=<binary>@<version>:<cell>`);
+      return { binary: m[1], version: m[2], scope: parseCell(d, m[3]) };
+    }
     const i = d.lastIndexOf('@');
     if (i < 1 || i === d.length - 1) throw new Error(`drop entry '${d}' is not name@version`);
     const name = d.slice(0, i), rest = d.slice(i + 1);
@@ -508,16 +517,37 @@ export function parseDrop(text) {
 
 const inCell = (p, s) => !s || (p.format === s.format && p.repo === s.repo && p.arch === s.arch);
 
-export const dropMatches = (F, p, drops) => {
+const dropEntry = (d) => d.binary
+  ? `package=${d.binary}@${d.version}:${d.scope.format === 'rpm' ? `${d.scope.repo}/${d.scope.arch}` : `${d.scope.repo.replace(/^debian\//, '')}/${d.scope.arch}`}`
+  : d.name + '@' + d.version;
+
+// the entry that drops p: a source entry first, then a binary one; undefined when none does
+const dropFor = (F, p, drops) => {
   const src = p.arch === 'src' ? p.name : sourceName(p);
-  return drops.some((d) => d.name === src && F.upstream(p.evr) === d.version && inCell(p, d.scope));
+  const v = F.upstream(p.evr);
+  return drops.find((d) => !d.binary && d.name === src && v === d.version && inCell(p, d.scope))
+    || drops.find((d) => d.binary && p.arch !== 'src' && d.binary === p.name && v === d.version && inCell(p, d.scope));
 };
 
+export const dropMatches = (F, p, drops) => !!dropFor(F, p, drops);
+
 function selectDrop(pkgs, F, drops) {
-  const out = { keep: [], delete: [], notes: [] };
+  const out = { keep: [], delete: [], notes: [], refused: [] };
+  // a flat deb index lists an Architecture: all binary once for every architecture: an entry naming one
+  // architecture for it cannot remove that architecture's listing alone, and is refused rather than narrowed
+  for (const d of drops) {
+    if (!d.binary || F.id !== 'deb' || d.scope.format !== 'deb' || d.scope.repo !== pkgs[0].repo || d.scope.arch === F.indep) continue;
+    for (const p of pkgs) {
+      if (p.name === d.binary && p.arch === F.indep && F.upstream(p.evr) === d.version) {
+        out.refused.push(`${dropEntry(d)}: ${p.name} ${F.show(p.evr)} is Architecture: ${F.indep} in ${p.repo}, a flat index: one listing for every architecture; drop it with ${p.repo.split('/').pop()}/${F.indep}, which removes it for all of them`);
+      }
+    }
+  }
   for (const p of pkgs) {
     const row = { format: p.format, repo: p.repo, dir: p.dir, file: p.file, name: p.name, arch: p.arch, version: F.show(p.evr), source: p.source, size: p.size || 0 };
-    if (dropMatches(F, p, drops)) out.delete.push(row);
+    const d = dropFor(F, p, drops);
+    if (d && d.binary) out.delete.push({ ...row, reason: `binary entry ${dropEntry(d)}` });
+    else if (d) out.delete.push(row);
     else out.keep.push({ ...row, reason: 'not dropped' });
   }
   return out;
