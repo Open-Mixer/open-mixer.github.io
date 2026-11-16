@@ -1,0 +1,86 @@
+omx-clap-host (0.32.5) unstable; urgency=medium
+
+  * test: the installed build dependencies meet the spec's ranges, refused by
+    name before a suite
+  * release: a same_pass dispatch input reaches the channel-installability
+    gate
+  * fuzz: fuzz_manifest compares the answer with 1 and 0 exactly
+  * fuzz: fuzz_manifest records a read failure answered where the rule names
+    the URI
+  * Artifact retention: explicit retention-days, 30 on a tag and 2 otherwise
+  * host: one one-event list for params.flush, shared by the property set and
+    the preset bypass reset
+  * abi: the ABI cell is the oldest release of check-matrix's answer, read in
+    the job
+  * abi: the ABI cell check is a block scalar, so the workflow parses
+  * abi: the baseline is compared on the declared ABI cell; another cell
+    names its skip (ruling on #73)
+  * tests: an ABI-XML format the baseline is not in is a measured skip off
+    the ABI cell (red, ruling on #73)
+  * tests: the instance's layout check carries ABI 22, the properties after
+    the bypass delay (#15)
+  * Makefile: bench-stage copies omx_msgring.h beside clap_stage.h (#15)
+  * host, fuzz: omx_clap_param_in keeps its doc comment; the seed corpus
+    holds the property fixture (#15)
+  * tests: lv2_parity.py --properties: a property set by both hosts, compared
+    on the oracle (#15)
+  * tests: the property fixture through the parity harness, set by both hosts
+    (red, #15)
+  * Makefile: test-parity-lv2 after LV2_BUNDLES, so it builds the fixture
+    bundles
+  * commit-msg: take the current stub from the checker's release line
+  * catalogs: the four property codes in every language, made by draft-prose
+    (#15)
+  * host: omx-clap-host answers property_list, property_info, property_get
+    and property_set (#15)
+  * src, ts: the vocabulary and host verbs rendered from data/ with the
+    property verbs and codes (#15)
+  * data: property_list, property_info, property_get and property_set, and
+    their codes (red, #15)
+  * CHANGELOG: properties, and the minor bump ABI 22 asks of the release (#15)
+  * tests: the properties oracle green, and its three sabotages red (#15)
+  * lv2: a property set into the plugin's patch:Set, and one patch:Get after
+    an activate (#15)
+  * host: org.openmixer.properties/1, a plugin's file and text properties
+    (#15)
+  * tests: file and text properties end to end through the host and the
+    adapter (red, #15)
+  * tests: the coverage self-test takes a port pair it can hold, and names a
+    dead run broken
+  * tests: the coverage self-test holds up beside other tests (red)
+  * src: the vocabulary header rendered by omx-contract 3.18.0
+  * host: a preset never leaves the plugin bypassed (#20)
+  * tests: a preset never leaves the plugin bypassed (red, #20)
+  * ci, abi, fuzz: the contract, build, sabotage, rpm, ABI and fuzz jobs take
+    their cells from check-matrix
+  * ci: fedora-cells over the workflows, red on the fc44-only jobs
+  * release 0.32.5: plugin-hostd-protocol >= 0.5.9 and below 0.6
+  * ci: the built package requires plugin-hostd-protocol 0.5.9 and below 0.6
+    (red)
+  * release 0.32.5: plugin-hostd-protocol >= 0.5.8 and below 0.6, its newest
+    served (D30)
+  * contract: src/omx_clap_core_vocabulary.h re-rendered on omx-contract
+    3.18.0
+  * release: 0.32.5, built against omx-contract 3.18.0 (D30)
+  * ci: an ordinary run builds against the channel, not the staging channel
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+  * pkgconfig: omx-clap-core.pc takes its library ranges from the spec's
+    BuildRequires
+  * tests: the installed omx-clap-core.pc carries the spec's library ranges
+    (red)
+  * ci: the seed corpus check runs on every pull request
+  * fuzz: the seed corpus with the rtSafetyOwnThreads block #62 added to the
+    fixture
+  * release: 0.32.4 carries the run path's lock fix (#63)
+  * lv2: activate is serialised against a block without a lock on the audio
+    thread
+  * tests: lv2_run_test counts the locks lv2_instance_run takes, the RT law
+    (red)
+  * catalogs: hosting.rt-safety.own-threads in es, fr, de, it and pt
+  * release: 0.32.4, hosting.rt-safety.own-threads
+  * hosting: hosting.rt-safety.own-threads, the code a qualifier writes for a
+    plugin that starts threads of its own
+  * ci: the jobs install and check the floors the packaging states
+  * Makefile: test-fake runs test-identity-align, as CI runs test-fake
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 16 Nov 2026 00:08:15 +0000
