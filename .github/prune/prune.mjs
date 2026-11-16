@@ -443,6 +443,10 @@ const providerIndex = (binaries) => {
 // repository satisfies on that architecture, a kept package must satisfy it too. Returns one line per failure,
 // naming the package, the requirement and the deleted satisfiers. keptFiles: the files the plan keeps.
 export function uninstallable(pkgs, keptFiles) {
+  return uninstallableRows(pkgs, keptFiles).map((r) => r.line);
+}
+
+function uninstallableRows(pkgs, keptFiles) {
   if (!pkgs.length) return [];
   const F = fmt[pkgs[0].format];
   const binaries = pkgs.filter((p) => p.arch !== 'src');
@@ -450,18 +454,82 @@ export function uninstallable(pkgs, keptFiles) {
   const archList = arches.length ? arches : [F.indep];
   const providers = providerIndex(binaries);
   const show = (alt) => [alt, ...(alt.and || [])].map((t) => t.op ? `${t.name} ${t.op} ${t.evr.ver ?? t.evr}` : t.name).join(' with ');
-  const out = [];
+  const out = new Map();
   for (const p of binaries) {
     if (!keptFiles.has(p.file)) continue;
     for (const group of p.requires) {
       for (const a of p.arch === F.indep ? archList : [p.arch]) {
         const cands = groupCandidates(F, providers, p, group, a);
         if (!cands.length || cands.some((c) => keptFiles.has(c.file))) continue;
-        out.push(`${p.format} ${p.repo} ${p.name} ${F.show(p.evr)} (${a}) requires ${group.map(show).join(' or ')}; its only satisfiers are deleted: ${cands.map((c) => `${c.name} ${F.show(c.evr)}`).join(', ')}`);
+        const line = `${p.format} ${p.repo} ${p.name} ${F.show(p.evr)} (${a}) requires ${group.map(show).join(' or ')}; its only satisfiers are deleted: ${cands.map((c) => `${c.name} ${F.show(c.evr)}`).join(', ')}`;
+        if (!out.has(line)) out.set(line, { line, pkg: p, arch: a });
       }
     }
   }
-  return [...new Set(out)];
+  return [...out.values()];
+}
+
+// The same invariant, judged against the repository as it is: the plan refuses only what it NEWLY breaks. A
+// dependent that already does not install before the plan (the solver below, on the whole index, untouched)
+// is not the plan's doing: its line goes to `already` ("already uninstallable, unchanged") and does not fail
+// the plan. Everything else stays in `refused`, exactly as uninstallable() reports it. (ruled 2026-11-16: a
+// trixie/amd64 plugin-qualify retirement was refused over dependents apt could not install either way.)
+export function judgeUninstallable(pkgs, keptFiles, { installableBefore = installsBefore } = {}) {
+  const refused = [], already = [];
+  const memo = new Map();
+  for (const r of uninstallableRows(pkgs, keptFiles)) {
+    const k = `${r.pkg.file}\t${r.arch}`;
+    if (!memo.has(k)) memo.set(k, installableBefore(pkgs, r.pkg, r.arch));
+    if (memo.get(k)) refused.push(r.line);
+    else already.push(`${r.pkg.format} ${r.pkg.repo} ${r.pkg.name} ${fmt[r.pkg.format].show(r.pkg.evr)} (${r.arch}): already uninstallable, unchanged`);
+  }
+  return { refused, already: [...new Set(already)] };
+}
+
+// Does p install on architecture a from the repository as it is, the way the format's own installer resolves
+// it? A small solver over the same satisfies and candidate rules as the invariant (groupCandidates): one build
+// per package name, every requirement group met by a chosen build, alternatives tried in order and newest
+// first, backtracking on a clash. p itself is named explicitly (name=version, as the apply's install check
+// names it). apt installs a dependency at its candidate, the newest build of the name on that architecture,
+// and never steps it back to an older one to meet a range ("Depends: x (<< 0.32~) but 0.32.3 is to be
+// installed"), so for deb only candidates satisfy a dependency; dnf (libsolv) does step back, so for rpm any
+// build may. A requirement no package of this repository provides (any architecture: libc6, rpmlib(...), a
+// file) comes from the distribution and is assumed met; so is a group with any such alternative. A name the
+// repository does provide must be met from it: the installer has nowhere else to take it. Breaks and
+// Conflicts are not read, so a clash they cause counts as installable. A search that runs out of its step
+// budget answers true (installable): every gap leaves the case a refusal, the judgement only relaxes on proof.
+export function installsBefore(pkgs, p, a, { budget = 200000 } = {}) {
+  const F = fmt[p.format];
+  const binaries = pkgs.filter((x) => x.arch !== 'src');
+  const providers = providerIndex(binaries);
+  const owned = new Set(providers.keys());
+  // deb: the candidate of each name on this architecture, the newest build of it (apt's Candidate)
+  const candidate = new Map();
+  if (F.id === 'deb') for (const x of binaries) if (x.arch === a || x.arch === F.indep) {
+    const c = candidate.get(x.name);
+    if (!c || F.cmp(x.evr, c.evr) > 0) candidate.set(x.name, x);
+  }
+  const pool = (x) => F.id !== 'deb' || candidate.get(x.name) === x;
+  const chosen = new Map([[p.name, p]]);
+  let steps = 0;
+  const met = (group) => group.some((alt) => !owned.has(alt.name));
+  const solve = (agenda) => {
+    if (++steps > budget) throw new Error('budget');
+    if (!agenda.length) return true;
+    const [[who, group], ...rest] = agenda;
+    if (met(group)) return solve(rest);
+    const cands = groupCandidates(F, providers, who, group, a).filter((x) => x === p || pool(x));
+    if (cands.includes(p) || cands.some((c) => chosen.get(c.name) === c)) return solve(rest);
+    // a requirement a package meets by itself is met (groupCandidates leaves the package out)
+    if (group.some((alt) => [alt, ...(alt.and || [])].every((t) => who.provides.some((pr) => pr.name === t.name && F.satisfies(pr, t))))) return solve(rest);
+    for (const c of cands.filter((x) => !chosen.has(x.name)).sort((x, y) => F.cmp(y.evr, x.evr))) {
+      chosen.set(c.name, c);
+      if (solve([...rest, ...c.requires.map((g) => [c, g])])) return true;
+      chosen.delete(c.name);
+    }
+    return false;
+  };
+  try { return solve(p.requires.map((g) => [p, g])); } catch (e) { if (e.message === 'budget') return true; throw e; }
 }
 
 // one repository: all the packages of one rpm/fedora/<release> (every dir) or one deb/debian/<suite>
