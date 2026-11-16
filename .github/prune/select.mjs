@@ -39,7 +39,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
 import { parseKeepList, keepEntries, missing } from './keeplist.mjs';
-import { parseKeep, parsePrimary, parsePackages, selectRepo, parseDrop, unusedPins, pinsLost, uninstallable, report } from './prune.mjs';
+import { parseKeep, parsePrimary, parsePackages, selectRepo, parseDrop, unusedPins, pinsLost, uninstallable, judgeUninstallable, report } from './prune.mjs';
 
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
@@ -134,7 +134,10 @@ async function main() {
       all.push(...pkgs);
       const r = selectRepo(pkgs, keep, { newest, closure: !flag('--skip-closure'), drop: drops });
       for (const row of [...r.keep, ...r.delete]) { row.path = `${format}/${repo}/${row.file}`; listed.add(row.path); }
-      r.uninstallable = uninstallable(pkgs, new Set(r.keep.map((x) => x.file)));
+      // only what the plan NEWLY breaks fails it; a dependent that already did not install is named, unchanged
+      const judged = judgeUninstallable(pkgs, new Set(r.keep.map((x) => x.file)));
+      r.uninstallable = judged.refused;
+      r.alreadyUninstallable = judged.already;
       results.push(r);
     }
   }
@@ -163,11 +166,13 @@ async function main() {
     missingPins: only ? [] : missing(keepLines, all),
     refused: results.flatMap((r) => r.refused || []),
     uninstallable: results.flatMap((r) => r.uninstallable),
+    alreadyUninstallable: results.flatMap((r) => r.alreadyUninstallable),
     lost: pinsLost(keep, all, new Set(results.flatMap((r) => r.keep).map((r) => r.path))),
   };
   console.log(report(results));
   if (plan.orphans.length) console.log(`\nfiles no index lists (deleted):\n${plan.orphans.map((f) => '  ' + f).join('\n')}`);
   if (plan.notes.length) console.log(`\nnotes:\n${plan.notes.map((n) => '  ' + n).join('\n')}`);
+  if (plan.alreadyUninstallable.length) console.log(`\nkept packages that already did not install before the plan (not its doing, not a refusal):\n${plan.alreadyUninstallable.map((n) => '  ' + n).join('\n')}`);
   if (plan.warnings.length) console.log(`\nkeep.yml pins that match nothing:\n${plan.warnings.map((n) => '  ' + n).join('\n')}`);
   const count = (rows, f) => rows.filter((r) => r.format === f).length;
   console.log('\nsummary:');

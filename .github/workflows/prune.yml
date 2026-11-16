@@ -8,6 +8,9 @@ name: Prune the package repository
 # specifiers of packages/*/package.json and pnpm-lock.yaml), read by .github/prune/pins.mjs; a plan that would
 # delete a pinned version fails, and so does one that leaves a kept package uninstallable (a dependency, a rich
 # range like (a >= 1 with a < 2) included, whose only satisfier it deletes).
+# Only what the plan NEWLY breaks fails it: a dependent that already did not install before the plan (judged on
+# the index as it is, as apt or dnf resolve it: prune.mjs installsBefore) is listed as 'already uninstallable,
+# unchanged' and does not (ruled 2026-11-16).
 #
 # drop (a list of name@version) switches to drop mode: those versions of those source packages go, every build of
 # them, and everything else stays whatever its age. A pinned version, or one a kept package needs, fails the plan.
