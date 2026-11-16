@@ -1,0 +1,141 @@
+plugin-hostd (0.20.7) unstable; urgency=medium
+
+  * release: read same-pass without a ref-pinned checkout
+  * release: plugin-hostd-full releases later in this same pass (#125)
+  * release: same-pass from a same_pass input or a tracked file at the built
+    commit (#125)
+  * test: drop the two plugin-hostd-full checks the merge listed again
+  * tests: four verbs declared ahead of the daemon, answered from 0.20.8
+  * fuzz: the answer-fits-one-line record changes the recorder's bound
+  * fuzz: a record changes a file of the tree, never an installed header (red)
+  * packaging: plugin-hostd-full and python3-plugin-hostd-protocol leave
+    plugin-hostd (green)
+  * tests: plugin-hostd builds no plugin-hostd-full and no
+    python3-plugin-hostd-protocol (red)
+  * tests: rendered_at_tag runs with no .git present and no git
+  * check-rendered: a package build judges the render at the renderer it
+    recorded
+  * tests: a release build judges its render at the renderer the tag recorded
+    (red)
+  * tests: the CLAP default is the list plugin-hostd-protocol declares,
+    ~/.clap then /usr/lib/clap first
+  * docs: the guide's clap_path default is plugin-hostd-protocol 0.5.9's five
+    folders (make gen)
+  * tests: the CLAP default is the list plugin-hostd-protocol declares,
+    ~/.clap then /usr/lib/clap first
+  * fuzz: the seed corpus holds node_label
+  * fuzz: the pin_set record names the line of pin_words.c it changes
+  * fuzz: each check's mutant and input records sit in its own comment
+  * Artifact retention: explicit retention-days, 30 on a tag and 2 otherwise
+  * bench: the smoke job's container gets a /dev/shm large enough for jackd
+  * bench/report: the facts cite the zynthian issues under Open-Mixer
+  * tools: bounded-install reads a process's stat quietly when it ends
+    mid-scan (#81)
+  * tools: bounded-install ends a silent attempt only when it is also still
+    (#81)
+  * tests: an attempt silent but busy is waited for, one silent and still is
+    ended, red (#81)
+  * tests: the lock holder's stub counts a running process, not an unreaped
+    one (#81)
+  * tools: bounded-install ends the dpkg an ended apt attempt leaves holding
+    the lock (#81)
+  * tests: a dpkg that outlives its ended apt attempt is ended before the
+    next (red, #81)
+  * commit-msg: take the current stub from the checker's release line
+  * bench: RSS and PSS from one walk of the process's memory
+  * bench: RSS and PSS come from one walk of the process's memory (red)
+  * packaging: 0.20.7 floors at the chain line's needs, with their ceilings
+  * tools: bounded-install bounds an attempt by inactivity, with a generous
+    total (ruling on #81)
+  * tests: an install is bounded by inactivity, never a short total: a slow
+    one that prints passes (red)
+  * tools: bounded-install finishes dpkg's work between apt attempts
+  * tests: an apt attempt killed by its timeout is followed by dpkg
+    --configure -a before the next (red)
+  * ci: every package manager call runs bounded, a hung mirror a fast red
+    naming it
+  * tests: a timing proof reads the load: it warns on a loaded node and fails
+    on a quiet one
+  * tools: bounded-install.sh, a package manager's command bounded in CI
+  * tests: every package manager step in CI is bounded, a hung mirror a fast
+    red naming it (red)
+  * test: a timing proof reads the load: warns on a loaded node, fails on a
+    quiet one (red)
+  * clients: sentence() reads a catalog through omx-contract's catalog
+    reader, the entry's text whatever its shape (#78)
+  * tests: a catalog entry reads as its text in both clients, whatever its
+    shape (red, #78)
+  * packaging: plugin-hostd-protocol >= 0.5.8, the first table whose reply
+    codes carry transient
+  * clients: the fixtures name reply -104 as plugin-hostd-protocol 0.5.8's
+    table does
+  * bench: the debs job installs lintian, which the shared deb-deps action
+    runs on what it builds
+  * bench: the smoke run installs the plugin-hostd DEBs its own run built,
+    the channel only for the rest
+  * tests: bench.yml's smoke run installs the daemon its own run built, like
+    every workflow (red)
+  * release 0.20.7: build against omx-contract 3.18.0, whose render the
+    headers are; bookworm on a full pass only (D30, D25)
+  * release 0.20.7: the version in the daemon, the man pages and the
+    TypeScript client
+  * release 0.20.7: the changelog names what main gained since the release
+    was first prepared
+  * include: the rendered vocabulary as omx-contract 3.18.0 renders it
+  * include: the vocabulary header rendered by omx-contract 3.18.0
+  * grouping: the rendered C vocabulary carries the new retry group item (#67)
+  * grouping: each reason declares its retry property in grouping.json and
+    both clients' RETRY_REASONS is written from it (#67)
+  * clients: tests that RETRY_REASONS is read from the property each grouping
+    reason declares (red) (#67)
+  * include: the vocabulary header rendered by omx-contract 3.18.0
+  * Contract files keep the $schema the floor's reader reads
+  * confine: proc_confine is the one setter of no new privileges, checked;
+    the probe child's duplicate goes (#68)
+  * ci: an ordinary run builds against the channel, not the staging channel
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+  * release: a catch-up dispatch input
+  * tests: the probe child's no_new_privs arm removes the one setter,
+    proc_confine's, checked (red, #68)
+  * tests: a nice the daemon cannot apply is logged, seen on any host by a
+    daemon under RLIMIT_NICE 0 (#68)
+  * clients: the verbs and the reply codes as constants, and a code's
+    transient from the table
+  * tests: the clients name every verb and reply code by a constant, and read
+    a code's transient (red)
+  * clients: the grouping reasons are constants of both readers, written from
+    grouping.json (#67)
+  * clients: tests that the grouping reasons are constants of the readers
+    (#67)
+  * probe schema: ownThreads and otherThreads in the source the generated
+    schema is written from
+  * test-preset-identity: a factory patch that names its macros, so loading
+    it renames Surge XT's parameters (#27)
+  * release: 0.20.7, every child confined and the probe's thread figures
+  * probe: a point carries the rt-safety arm's own-thread count and
+    other-thread figures (D20)
+  * tests: the probe document carries the rt-safety arm's own-thread count
+    and other-thread figures (red)
+  * probe: the child runs confined as a daemon worker does, by the one
+    proc_confine
+  * tests: the probe's child runs confined as a daemon worker does
+  * tests: a sabotage arm for the checkpoint of a value the plugin moved
+    itself
+  * daemon: a client's node_label names a hosted node and outlives its worker
+    (#35)
+  * tests: the protocol floor counts a daemon verb that carries its own since
+  * tests: a client's node_label names a hosted node and outlives its worker
+    (#35)
+  * tests: the preset-identity save in mod-host's form (plugin-hostd#38)
+  * make test-preset-identity: the Surge XT save, factory patch, load back of
+    #27
+  * tests: a preset the instance saved loads back after a factory patch of
+    Surge XT (#27)
+  * proc: a worker's stdin is /dev/null, not the daemon's
+  * tests: sabotage arms for each layer of a worker's confinement
+  * proc: a worker runs with no_new_privs, no daemon descriptor and a seccomp
+    denylist
+  * test: a worker runs with no_new_privs, no daemon descriptor and a seccomp
+    filter
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 16 Nov 2026 11:07:03 +0000
