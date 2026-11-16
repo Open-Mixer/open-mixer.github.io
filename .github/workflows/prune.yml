@@ -230,29 +230,23 @@ jobs:
           PUBLISH_TOKEN: ${{ secrets.PAGES_TOKEN }}
         run: .self/.github/prune/unmoved.sh build/channel "$PLANNED"
 
+      # only a plan that deletes an rpm regenerates and re-signs; a deb-only plan hands the tree over as served
+      # (.github/prune/rpm-metadata.sh, ruled 2026-11-16)
       - name: Regenerate and sign the metadata
-        run: |
-          set -euo pipefail
-          # publish-tree.sh adds the packages of a directory and rewrites the metadata of every directory of
-          # the tree; given the kept packages it adds nothing, and the metadata describes only them
-          # (only the per-release trees: the release package beside them would be filed again under its fixed name)
-          mkdir staging
-          find build/channel/rpm/fedora -name '*.rpm' -exec cp -t staging {} +
-          .fmx/.github/actions/publish-rpms/publish-tree.sh build/channel/rpm staging "$OPENMIXER_GPG_KEY_ID"
-          for d in build/channel/rpm/fedora/*/*/; do
-            test -s "$d/repodata/repomd.xml.asc" || { echo "::error::$d has no signed metadata"; exit 1; }
-          done
+        run: .self/.github/prune/rpm-metadata.sh build/channel rpm-delete.txt "$OPENMIXER_GPG_KEY_ID" .fmx/.github/actions/publish-rpms/publish-tree.sh
 
       - name: The pruned tree has nothing left to delete
         run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only rpm --expect-clean
 
       # nothing is pushed here: the deb job pushes rpm and deb in ONE signed commit, so Pages deploys once (three
       # deploys timed out at the 10-minute limit on 2026-11-07). What this job changed is the deletions and the
-      # regenerated, re-signed repodata of every directory.
+      # regenerated, re-signed repodata of every directory, or, when the plan deletes no rpm, nothing: the
+      # repodata handed over is then the served one, unchanged.
       - name: Hand the pruned rpm tree to the deb job
         run: |
           set -euo pipefail
           cp rpm-delete.txt build/channel/.rpm-delete.txt
+          # shellcheck disable=SC2046 # one word per repodata directory: the tree's paths hold no space
           tar -C build/channel -czf rpm-handover.tgz .rpm-delete.txt $(cd build/channel && find rpm -type d -name repodata)
           ls -l rpm-handover.tgz
       - uses: actions/upload-artifact@v4
