@@ -29,12 +29,12 @@
       "description": "Rows under /patchbay."
     },
     {
-      "name": "clock",
-      "description": "Rows under /clock."
-    },
-    {
       "name": "surface",
       "description": "Rows under /surface."
+    },
+    {
+      "name": "clock",
+      "description": "Rows under /clock."
     },
     {
       "name": "telemetry",
@@ -9493,7 +9493,7 @@
         "operationId": "get_channel_kind_index_spectrum",
         "summary": "/channel/{kind}/{index}/spectrum",
         "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first. Computes only while at least one client is watching it (`?watch=1`); otherwise idle.",
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first. Computes only while at least one client is watching it (`?watch=1`); otherwise idle. Add `?bands=N` to choose the resolution; without it the row answers log-spaced bands at the default of 640, never the raw bins.",
         "responses": {
           "200": {
             "description": "The row’s current value.",
@@ -18273,987 +18273,6 @@
         }
       }
     },
-    "/api/clock": {
-      "get": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "get_clock",
-        "summary": "/clock",
-        "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
-        "responses": {
-          "200": {
-            "description": "The row’s current value.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "quantum": {
-                      "oneOf": [
-                        {
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "rate": {
-                      "oneOf": [
-                        {
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "supportedRates": {
-                      "type": "array",
-                      "items": {
-                        "type": "integer"
-                      }
-                    },
-                    "requestedQuantum": {
-                      "oneOf": [
-                        {
-                          "type": "integer"
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "quantumNotApplied": {
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "quantum",
-                    "rate",
-                    "supportedRates",
-                    "requestedQuantum",
-                    "quantumNotApplied"
-                  ],
-                  "additionalProperties": false,
-                  "readOnly": true
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "options_clock",
-        "summary": "The live contract for /clock",
-        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
-        "responses": {
-          "200": {
-            "description": "The row’s live contract.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      }
-    },
-    "/api/clock/devices": {
-      "get": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "get_clock_devices",
-        "summary": "/clock/devices",
-        "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
-        "responses": {
-          "200": {
-            "description": "The row’s current value.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "devices": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "supportedRates": {
-                            "type": "array",
-                            "items": {
-                              "type": "integer"
-                            }
-                          },
-                          "sampleSynchronous": {
-                            "type": "boolean"
-                          },
-                          "enabled": {
-                            "type": "boolean"
-                          },
-                          "source": {
-                            "type": "string"
-                          },
-                          "onGraph": {
-                            "type": "boolean"
-                          },
-                          "actuation": {
-                            "type": "string"
-                          },
-                          "proAudio": {
-                            "type": "boolean"
-                          },
-                          "profile": {
-                            "type": "string"
-                          },
-                          "priorityDriver": {
-                            "type": "number"
-                          },
-                          "prioritySession": {
-                            "type": "number"
-                          },
-                          "livePriorityDriver": {
-                            "type": "number"
-                          },
-                          "driving": {
-                            "type": "boolean"
-                          }
-                        },
-                        "required": [
-                          "name",
-                          "description",
-                          "supportedRates",
-                          "sampleSynchronous",
-                          "enabled",
-                          "source",
-                          "onGraph",
-                          "actuation",
-                          "proAudio",
-                          "profile",
-                          "priorityDriver",
-                          "prioritySession",
-                          "livePriorityDriver",
-                          "driving"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "graphRate": {
-                      "type": "integer"
-                    },
-                    "driverNode": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "devices",
-                    "graphRate",
-                    "driverNode"
-                  ],
-                  "additionalProperties": false,
-                  "readOnly": true
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "options_clock_devices",
-        "summary": "The live contract for /clock/devices",
-        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
-        "responses": {
-          "200": {
-            "description": "The row’s live contract.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      }
-    },
-    "/api/clock/devices/{name}": {
-      "get": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "get_clock_devices_name",
-        "summary": "/clock/devices/{name}",
-        "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
-        "responses": {
-          "200": {
-            "description": "The row’s current value.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "options_clock_devices_name",
-        "summary": "The live contract for /clock/devices/{name}",
-        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
-        "responses": {
-          "200": {
-            "description": "The row’s live contract.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "parameters": [
-        {
-          "name": "name",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ]
-    },
-    "/api/clock/force": {
-      "get": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "get_clock_force",
-        "summary": "/clock/force",
-        "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
-        "responses": {
-          "200": {
-            "description": "The row’s current value.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "rate": {
-                      "type": "number",
-                      "enum": [
-                        0,
-                        44100,
-                        48000,
-                        88200,
-                        96000,
-                        176400,
-                        192000
-                      ]
-                    },
-                    "rateNotApplied": {
-                      "type": "boolean",
-                      "readOnly": true
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "options_clock_force",
-        "summary": "The live contract for /clock/force",
-        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
-        "responses": {
-          "200": {
-            "description": "The row’s live contract.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "patch_clock_force",
-        "summary": "Update /clock/force",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "rate": {
-                    "type": "number",
-                    "enum": [
-                      0,
-                      44100,
-                      48000,
-                      88200,
-                      96000,
-                      176400,
-                      192000
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "The row after the write.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "rate": {
-                      "type": "number",
-                      "enum": [
-                        0,
-                        44100,
-                        48000,
-                        88200,
-                        96000,
-                        176400,
-                        192000
-                      ]
-                    },
-                    "rateNotApplied": {
-                      "type": "boolean",
-                      "readOnly": true
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      }
-    },
-    "/api/clock/ownership": {
-      "get": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "get_clock_ownership",
-        "summary": "/clock/ownership",
-        "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
-        "responses": {
-          "200": {
-            "description": "The row’s current value.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "designatedReference": {
-                      "type": "string"
-                    },
-                    "freeRunOverride": {
-                      "type": "boolean"
-                    },
-                    "role": {
-                      "type": "string",
-                      "enum": [
-                        "master",
-                        "follower"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "options_clock_ownership",
-        "summary": "The live contract for /clock/ownership",
-        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
-        "responses": {
-          "200": {
-            "description": "The row’s live contract.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "patch_clock_ownership",
-        "summary": "Update /clock/ownership",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "designatedReference": {
-                    "type": "string"
-                  },
-                  "freeRunOverride": {
-                    "type": "boolean"
-                  },
-                  "role": {
-                    "type": "string",
-                    "enum": [
-                      "master",
-                      "follower"
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "The row after the write.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "designatedReference": {
-                      "type": "string"
-                    },
-                    "freeRunOverride": {
-                      "type": "boolean"
-                    },
-                    "role": {
-                      "type": "string",
-                      "enum": [
-                        "master",
-                        "follower"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      }
-    },
-    "/api/clock/ownership/reference": {
-      "get": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "get_clock_ownership_reference",
-        "summary": "/clock/ownership/reference",
-        "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
-        "responses": {
-          "200": {
-            "description": "The row’s current value.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "reference": {
-                      "oneOf": [
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string"
-                            },
-                            "label": {
-                              "type": "string"
-                            },
-                            "grade": {
-                              "type": "string"
-                            },
-                            "why": {
-                              "type": "string"
-                            },
-                            "priority": {
-                              "type": "number"
-                            },
-                            "driving": {
-                              "type": "boolean"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "label",
-                            "grade",
-                            "why",
-                            "priority",
-                            "driving"
-                          ],
-                          "additionalProperties": false
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "eligible": {
-                      "type": "boolean"
-                    },
-                    "designated": {
-                      "type": "boolean"
-                    },
-                    "flagged": {
-                      "type": "boolean"
-                    },
-                    "override": {
-                      "type": "boolean"
-                    },
-                    "reason": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "string"
-                        },
-                        "params": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "oneOf": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "number"
-                              }
-                            ]
-                          }
-                        }
-                      },
-                      "required": [
-                        "code",
-                        "params"
-                      ],
-                      "additionalProperties": false
-                    },
-                    "missing": {
-                      "oneOf": [
-                        {
-                          "type": "object",
-                          "properties": {
-                            "code": {
-                              "type": "string"
-                            },
-                            "params": {
-                              "type": "object",
-                              "additionalProperties": {
-                                "oneOf": [
-                                  {
-                                    "type": "string"
-                                  },
-                                  {
-                                    "type": "number"
-                                  }
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "code",
-                            "params"
-                          ],
-                          "additionalProperties": false
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    },
-                    "paceOwner": {
-                      "type": "string"
-                    },
-                    "paceLocked": {
-                      "type": "boolean"
-                    },
-                    "lockDetail": {
-                      "type": "object",
-                      "properties": {
-                        "code": {
-                          "type": "string"
-                        },
-                        "params": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "oneOf": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "number"
-                              }
-                            ]
-                          }
-                        }
-                      },
-                      "required": [
-                        "code",
-                        "params"
-                      ],
-                      "additionalProperties": false
-                    },
-                    "rates": {
-                      "type": "array",
-                      "items": {
-                        "type": "integer"
-                      }
-                    }
-                  },
-                  "required": [
-                    "reference",
-                    "eligible",
-                    "designated",
-                    "flagged",
-                    "override",
-                    "reason",
-                    "missing",
-                    "paceOwner",
-                    "paceLocked",
-                    "lockDetail",
-                    "rates"
-                  ],
-                  "additionalProperties": false,
-                  "readOnly": true
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "options_clock_ownership_reference",
-        "summary": "The live contract for /clock/ownership/reference",
-        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
-        "responses": {
-          "200": {
-            "description": "The row’s live contract.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      }
-    },
-    "/api/clock/references": {
-      "get": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "get_clock_references",
-        "summary": "/clock/references",
-        "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
-        "responses": {
-          "200": {
-            "description": "The row’s current value.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "references": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "label": {
-                            "type": "string"
-                          },
-                          "grade": {
-                            "type": "string"
-                          },
-                          "why": {
-                            "type": "string"
-                          },
-                          "priority": {
-                            "type": "number"
-                          },
-                          "driving": {
-                            "type": "boolean"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "label",
-                          "grade",
-                          "why",
-                          "priority",
-                          "driving"
-                        ],
-                        "additionalProperties": false
-                      }
-                    }
-                  },
-                  "required": [
-                    "references"
-                  ],
-                  "additionalProperties": false,
-                  "readOnly": true
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "options_clock_references",
-        "summary": "The live contract for /clock/references",
-        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
-        "responses": {
-          "200": {
-            "description": "The row’s live contract.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      }
-    },
-    "/api/clock/warnings": {
-      "get": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "get_clock_warnings",
-        "summary": "/clock/warnings",
-        "x-sse-watchable": true,
-        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
-        "responses": {
-          "200": {
-            "description": "The row’s current value.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "warnings": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "titleCode": {
-                            "type": "object",
-                            "properties": {
-                              "code": {
-                                "type": "string"
-                              },
-                              "params": {
-                                "type": "object",
-                                "additionalProperties": {
-                                  "oneOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "type": "number"
-                                    }
-                                  ]
-                                }
-                              }
-                            },
-                            "required": [
-                              "code",
-                              "params"
-                            ],
-                            "additionalProperties": false
-                          },
-                          "detailCode": {
-                            "type": "object",
-                            "properties": {
-                              "code": {
-                                "type": "string"
-                              },
-                              "params": {
-                                "type": "object",
-                                "additionalProperties": {
-                                  "oneOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "type": "number"
-                                    }
-                                  ]
-                                }
-                              }
-                            },
-                            "required": [
-                              "code",
-                              "params"
-                            ],
-                            "additionalProperties": false
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "titleCode"
-                        ],
-                        "additionalProperties": false
-                      }
-                    }
-                  },
-                  "required": [
-                    "warnings"
-                  ],
-                  "additionalProperties": false,
-                  "readOnly": true
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "clock"
-        ],
-        "operationId": "options_clock_warnings",
-        "summary": "The live contract for /clock/warnings",
-        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
-        "responses": {
-          "200": {
-            "description": "The row’s live contract.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/Refusal"
-          }
-        }
-      }
-    },
     "/api/surface/autodetect": {
       "get": {
         "tags": [
@@ -19378,6 +18397,111 @@
                     },
                     "startedAt": {
                       "type": "string",
+                      "readOnly": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      }
+    },
+    "/api/surface/control24": {
+      "get": {
+        "tags": [
+          "surface"
+        ],
+        "operationId": "get_surface_control24",
+        "summary": "/surface/control24",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "running": {
+                      "type": "boolean",
+                      "readOnly": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "surface"
+        ],
+        "operationId": "options_surface_control24",
+        "summary": "The live contract for /surface/control24",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "surface"
+        ],
+        "operationId": "patch_surface_control24",
+        "summary": "Update /surface/control24",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The row after the write.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "running": {
+                      "type": "boolean",
                       "readOnly": true
                     }
                   }
@@ -20507,6 +19631,987 @@
                       "type": "boolean"
                     }
                   }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      }
+    },
+    "/api/clock": {
+      "get": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "get_clock",
+        "summary": "/clock",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "quantum": {
+                      "oneOf": [
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "rate": {
+                      "oneOf": [
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "supportedRates": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "requestedQuantum": {
+                      "oneOf": [
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "quantumNotApplied": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "quantum",
+                    "rate",
+                    "supportedRates",
+                    "requestedQuantum",
+                    "quantumNotApplied"
+                  ],
+                  "additionalProperties": false,
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "options_clock",
+        "summary": "The live contract for /clock",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      }
+    },
+    "/api/clock/devices": {
+      "get": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "get_clock_devices",
+        "summary": "/clock/devices",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "devices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "supportedRates": {
+                            "type": "array",
+                            "items": {
+                              "type": "integer"
+                            }
+                          },
+                          "sampleSynchronous": {
+                            "type": "boolean"
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "onGraph": {
+                            "type": "boolean"
+                          },
+                          "actuation": {
+                            "type": "string"
+                          },
+                          "proAudio": {
+                            "type": "boolean"
+                          },
+                          "profile": {
+                            "type": "string"
+                          },
+                          "priorityDriver": {
+                            "type": "number"
+                          },
+                          "prioritySession": {
+                            "type": "number"
+                          },
+                          "livePriorityDriver": {
+                            "type": "number"
+                          },
+                          "driving": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "description",
+                          "supportedRates",
+                          "sampleSynchronous",
+                          "enabled",
+                          "source",
+                          "onGraph",
+                          "actuation",
+                          "proAudio",
+                          "profile",
+                          "priorityDriver",
+                          "prioritySession",
+                          "livePriorityDriver",
+                          "driving"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "graphRate": {
+                      "type": "integer"
+                    },
+                    "driverNode": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "devices",
+                    "graphRate",
+                    "driverNode"
+                  ],
+                  "additionalProperties": false,
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "options_clock_devices",
+        "summary": "The live contract for /clock/devices",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      }
+    },
+    "/api/clock/devices/{name}": {
+      "get": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "get_clock_devices_name",
+        "summary": "/clock/devices/{name}",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "options_clock_devices_name",
+        "summary": "The live contract for /clock/devices/{name}",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "name",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/api/clock/force": {
+      "get": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "get_clock_force",
+        "summary": "/clock/force",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rate": {
+                      "type": "number",
+                      "enum": [
+                        0,
+                        44100,
+                        48000,
+                        88200,
+                        96000,
+                        176400,
+                        192000
+                      ]
+                    },
+                    "rateNotApplied": {
+                      "type": "boolean",
+                      "readOnly": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "options_clock_force",
+        "summary": "The live contract for /clock/force",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "patch_clock_force",
+        "summary": "Update /clock/force",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rate": {
+                    "type": "number",
+                    "enum": [
+                      0,
+                      44100,
+                      48000,
+                      88200,
+                      96000,
+                      176400,
+                      192000
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The row after the write.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rate": {
+                      "type": "number",
+                      "enum": [
+                        0,
+                        44100,
+                        48000,
+                        88200,
+                        96000,
+                        176400,
+                        192000
+                      ]
+                    },
+                    "rateNotApplied": {
+                      "type": "boolean",
+                      "readOnly": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      }
+    },
+    "/api/clock/ownership": {
+      "get": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "get_clock_ownership",
+        "summary": "/clock/ownership",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "designatedReference": {
+                      "type": "string"
+                    },
+                    "freeRunOverride": {
+                      "type": "boolean"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "master",
+                        "follower"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "options_clock_ownership",
+        "summary": "The live contract for /clock/ownership",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "patch_clock_ownership",
+        "summary": "Update /clock/ownership",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "designatedReference": {
+                    "type": "string"
+                  },
+                  "freeRunOverride": {
+                    "type": "boolean"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "master",
+                      "follower"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The row after the write.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "designatedReference": {
+                      "type": "string"
+                    },
+                    "freeRunOverride": {
+                      "type": "boolean"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "master",
+                        "follower"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      }
+    },
+    "/api/clock/ownership/reference": {
+      "get": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "get_clock_ownership_reference",
+        "summary": "/clock/ownership/reference",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "reference": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "label": {
+                              "type": "string"
+                            },
+                            "grade": {
+                              "type": "string"
+                            },
+                            "why": {
+                              "type": "string"
+                            },
+                            "priority": {
+                              "type": "number"
+                            },
+                            "driving": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "label",
+                            "grade",
+                            "why",
+                            "priority",
+                            "driving"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "eligible": {
+                      "type": "boolean"
+                    },
+                    "designated": {
+                      "type": "boolean"
+                    },
+                    "flagged": {
+                      "type": "boolean"
+                    },
+                    "override": {
+                      "type": "boolean"
+                    },
+                    "reason": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "params": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "oneOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "params"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "missing": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string"
+                            },
+                            "params": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "number"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "code",
+                            "params"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "paceOwner": {
+                      "type": "string"
+                    },
+                    "paceLocked": {
+                      "type": "boolean"
+                    },
+                    "lockDetail": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "params": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "oneOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "params"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "rates": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "required": [
+                    "reference",
+                    "eligible",
+                    "designated",
+                    "flagged",
+                    "override",
+                    "reason",
+                    "missing",
+                    "paceOwner",
+                    "paceLocked",
+                    "lockDetail",
+                    "rates"
+                  ],
+                  "additionalProperties": false,
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "options_clock_ownership_reference",
+        "summary": "The live contract for /clock/ownership/reference",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      }
+    },
+    "/api/clock/references": {
+      "get": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "get_clock_references",
+        "summary": "/clock/references",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "references": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "grade": {
+                            "type": "string"
+                          },
+                          "why": {
+                            "type": "string"
+                          },
+                          "priority": {
+                            "type": "number"
+                          },
+                          "driving": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "label",
+                          "grade",
+                          "why",
+                          "priority",
+                          "driving"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "references"
+                  ],
+                  "additionalProperties": false,
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "options_clock_references",
+        "summary": "The live contract for /clock/references",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      }
+    },
+    "/api/clock/warnings": {
+      "get": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "get_clock_warnings",
+        "summary": "/clock/warnings",
+        "x-sse-watchable": true,
+        "description": "Add `?watch=1` to follow this row live over server-sent events, snapshot first.",
+        "responses": {
+          "200": {
+            "description": "The row’s current value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "warnings": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "titleCode": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "params": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "params"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "detailCode": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "params": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "params"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "titleCode"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "warnings"
+                  ],
+                  "additionalProperties": false,
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/Refusal"
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "clock"
+        ],
+        "operationId": "options_clock_warnings",
+        "summary": "The live contract for /clock/warnings",
+        "description": "Publishes this row’s writable fields, ranges and enumerated options as the server currently serves them — the authority this generated document mirrors at build time, not a substitute for asking the running console.",
+        "responses": {
+          "200": {
+            "description": "The row’s live contract.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
                 }
               }
             }
