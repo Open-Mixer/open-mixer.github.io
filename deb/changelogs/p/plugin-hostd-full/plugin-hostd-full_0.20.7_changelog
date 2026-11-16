@@ -1,0 +1,11 @@
+plugin-hostd-full (0.20.7) unstable; urgency=medium
+
+  * release: 0.20.7, the first from its own repository
+  * version: the first release is 0.20.7, lockstep with plugin-hostd
+  * workflows: every pull-request workflow cancels its superseded runs
+  * tests: the records package found for this machine's architecture alone,
+    from plugin-hostd
+  * plugin-hostd-full in its own repository (ruling 2026-11-09)
+  * plugin-hostd-full: the repository, with its licence
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 16 Nov 2026 16:17:25 +0000
