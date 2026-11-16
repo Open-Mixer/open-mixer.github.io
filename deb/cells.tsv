@@ -31,8 +31,10 @@ libomx-contract-dev	3.18.0	quick	trixie/all
 libomx-contract-dev	3.18.1	quick	trixie/all
 libomx-panel-render-dev	0.13.5	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomx-panel-render-dev	0.13.7	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+libomx-panel-render-dev	0.13.8	quick	trixie/amd64 trixie/arm64
 libomx-panel-render0	0.13.5	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomx-panel-render0	0.13.7	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+libomx-panel-render0	0.13.8	quick	trixie/amd64 trixie/arm64
 libomxdsp-dev	0.31.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomxdsp-dev	0.32.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomxdsp-dev	0.32.1	quick	trixie/amd64 trixie/arm64
@@ -127,12 +129,19 @@ omx-dsp-contract	0.32.1	quick	trixie/all
 omx-dsp-contract	0.32.3	quick	trixie/all
 omx-panel	0.13.5	-	bookworm/all trixie/all
 omx-panel	0.13.7	-	bookworm/all trixie/all
+omx-panel	0.13.8	quick	trixie/all
 omx-panel-l10n-ca	0.13.7	-	bookworm/all trixie/all
+omx-panel-l10n-ca	0.13.8	quick	trixie/all
 omx-panel-l10n-de	0.13.7	-	bookworm/all trixie/all
+omx-panel-l10n-de	0.13.8	quick	trixie/all
 omx-panel-l10n-es	0.13.7	-	bookworm/all trixie/all
+omx-panel-l10n-es	0.13.8	quick	trixie/all
 omx-panel-l10n-fr	0.13.7	-	bookworm/all trixie/all
+omx-panel-l10n-fr	0.13.8	quick	trixie/all
 omx-panel-l10n-it	0.13.7	-	bookworm/all trixie/all
+omx-panel-l10n-it	0.13.8	quick	trixie/all
 omx-panel-l10n-pt	0.13.7	-	bookworm/all trixie/all
+omx-panel-l10n-pt	0.13.8	quick	trixie/all
 omx-plugins	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-plugins-clap	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-plugins-contract	0.19.3	-	bookworm/all trixie/all

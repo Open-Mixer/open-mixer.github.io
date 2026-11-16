@@ -1,0 +1,56 @@
+omx-panel (0.13.8) unstable; urgency=medium
+
+  * tools/rta-console-reference.mjs is not executable
+  * Remove omx-panel's back-compat machinery
+  * test: no back-compat mechanism is left in omx-panel (red)
+  * release-version test: a dry-run snapshot suffix is accepted on the same
+    base only
+  * ci: the shared checks at openmixer-v1, not the missing v1
+  * ci: the release proof checks out the shared checks at openmixer-v1
+  * Every omx-contract floor says 3.18.0: the offline build check named 3.12.0
+  * test: every declared omx-contract floor is the same version (red)
+  * group-infer: the omx-eq8 fixture is omx-plugins 0.19.5's installed file
+  * group-infer: the omx-eq8 fixture matches the installed file, its version
+    lines aside
+  * debian: libomx-contract-dev floored at 3.16.0, as the spec floors
+    omx-contract-devel
+  * test: the spec and debian/control floor every build library the same (red)
+  * renderer: a time_response's edges — one tap, 32 taps, the floor, a
+    letter at the ceiling
+  * renderer: a time_response draws its stems and its envelope on a time axis
+  * The time_response display kind: a delay's taps and a reverb's decay
+  * packaging: omx-dsp floors at 0.32.3, the release line's needs
+  * renderer test: the soname check reads readelf in the C locale
+  * renderer tests remove their scratch directories at exit
+  * renderer-check counts the scratch its tests leave behind
+  * The renderer builds against omx-dsp >= 0.32.2 < 0.33
+  * The spectrum layer's provenance states what the reference is
+  * describe: a declared panel's roles back its family and name a disagreeing
+    meaning
+  * describe: the panel a plugin serves is read as the declared form
+  * test: describe given omx-comp's served panel over a scan's descriptor, red
+  * renderer: the spectrum layer, on the console analyser's axes
+  * renderer: the spectrum layer's tests, red first
+  * Makefile: the shared checks' checkout is OPENMIXER_DOTGITHUB
+  * Artifact retention: explicit retention-days, 30 on a tag and 2 otherwise
+  * commit-msg: take the current stub from the checker's release line
+  * ci: the package, lint and runtime-install cells follow the release set
+    (D25)
+  * test: no CI matrix names bookworm by hand (red)
+  * release 0.13.8: plugin-hostd and plugin-hostd-contract >= 0.20.7 and
+    below 0.21
+  * release 0.13.8: the plugin-hostd floors are the version every quick cell
+    serves
+  * release 0.13.8: the omx-contract npm dependency floors at 3.18.0 too
+  * release: 0.13.8, built against omx-contract 3.18.0 (D30)
+  * ci: the staging channel out again: an ordinary run builds against the
+    channel (D25)
+  * ci: every omx package comes from the channel, refused from staging;
+    staging added back to show it fire (red, D25)
+  * Contract files keep the $schema the floor's reader reads
+  * ci: an ordinary run builds against the channel, not the staging channel
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+  * systemd: a sync drop-in's post step exits 0 when its opt-in unit is
+    disabled (plugin-qualify#56)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 16 Nov 2026 21:53:32 +0000
