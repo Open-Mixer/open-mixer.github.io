@@ -1,0 +1,170 @@
+omx-contract (3.19.0) unstable; urgency=medium
+
+  * omx-contract 3.19.0 changelog: name every user-facing PR since 3.18.1,
+    date it at the cut
+  * omx-contract 3.19.0: one release for #44, #52, #73, #79 and #82
+  * release.yml: the Prove job installs the pinned shape generators, as
+    ci.yml does
+  * domain.mts: each doc comment sits on the constant it describes
+  * domain directory: its catalogs/<lang>.json sit beside the document
+  * domain document: $schema must be JSON Schema 2020-12; the docs claim only
+    what the loader does (cross-domain $ref and version validation are #84)
+  * ownership gate: say what a new word is
+  * ownership gate: word sets, schema enums, loader read, moved-back and
+    duplicate refusals, fetched base, bootstrap that ends (A2 review of #82)
+  * ownership gate tests first: word sets, schema enums, moved back,
+    duplicates, bootstrap end, unfetchable base (red against the first gate)
+  * contract-dir: the ownership gate holds word sets and schema enums, reads
+    through the loader, refuses an unreadable base (A2 review of #82)
+  * ownership gate: every data/ item owned here or moving out, the moving-out
+    list only shrinking (omx-contract#81)
+  * contract-dir: the ownership gate, what omx-contract owns and what only
+    moves out (omx-contract#81)
+  * contract dir: the loader reads a domain document (oneOf/const words) as
+    the classic items; its renders are byte-equal
+  * contract dir: a words item of a domain is a oneOf of const words (spec)
+  * contract dir: a domain is one OpenAPI-3.1-style document at
+    <contractdir>/<domain>/, its owner is info.x-owner, no major in the path
+    (spec)
+  * vocabulary: the display sources' and placements' docs name omx-panel's
+    tool
+  * render: a doc comment on every vocabulary macro, so the doc gate holds
+  * vocabulary: PANEL_DISPLAY_SOURCES and PANEL_PLACEMENTS declared here,
+    since 3.20.0
+  * test: the panel display sources and placements are required as vocabulary
+    (red)
+  * vocabulary: PANEL_DISPLAY_KINDS gains time_response (code 4); its doc
+    names omx-panel's tool
+  * test: the panel display kinds carry time_response at code 4
+  * shapes: a oneOf's words get their macro, patternProperties are refused by
+    name, and a title two shapes share is refused by both files
+  * shapes: prose reaches a C comment with its doxygen command characters
+    escaped, and the data package's expected file list reads the shapes from
+    the tree's root
+  * shapes test: the Python render arm skips only where no generator is
+    installed and CI is not set, so a red py --check step is a red test there
+  * shapes: the C render is refused where it would be wrong, both generators
+    are held to their pins at run time, the house header
+  * render --check: the hand-written CLAP kind vectors and the shapes' Python
+    render are named beside the json, lv2 and py renders
+  * spec: the dated copy of the typed-contracts document is removed; the
+    move's deletion side, left behind by a pathspec commit
+  * spec: the typed-contracts document moves to
+    docs/typed-contracts-shared-behaviour.md and states the console's facts
+    without pointers into it
+  * shapes installed: the schemas under share/omx-contract/shapes, the
+    TypedDicts as omx_contract.shapes.<name>, and CI holds the three renders
+    by the pinned generators
+  * shapes: a document's shape is one JSON Schema under shapes/, rendered to
+    TypeScript, Python and C by render --shapes and held by --check
+  * spec: the owner rules the shapes decisions; JSON Schema now, TypeSpec
+    only possibly later; the shapes directory and where a schema is
+    installed, as lane S1 builds it
+  * spec: the owner rules behaviour as C + WebAssembly for every JavaScript
+    runtime; shapes stay proposed with the TypeSpec-as-authoring note
+  * spec: typed contracts and shared behaviour, one shape source and one
+    implementation bound per runtime
+  * descriptors: the vectors' readers named without a private path
+  * clap-kind-vectors: every default inside its range, and the wider stepped
+    range, the lone enumeration flag and a half step as cases
+  * share/omx-contract/clap-kind-vectors.json: the thirteen vectors,
+    installed beside scale-vectors.json
+  * test: the CLAP kind vectors are one table every reader is held to (red)
+  * docs/descriptors: a scanned CLAP parameter's kind is read by one rule,
+    held by a vectors table
+  * param-contract: pc is percent, with no range of its own
+  * doxygen gate: a Doxyfile that suppresses what it counts, or drops a
+    setting it needs, is a finding by key (read back through doxygen -x); a
+    header hiding code under @cond is refused by name, as is a @file outside
+    a doc comment; an empty DOXYGEN_BASE is refused; the JSON writer's put
+    macro moves to file scope so doxygen can read its block (a define inside
+    a function body takes none); build/ ignored
+  * render: the documentation law names the gate's refusals (a @cond, a @file
+    outside a doc comment, a Doxyfile that suppresses), its limit (a false
+    preprocessor condition), --list, --update, DOXYGEN_BASE and the exit codes
+  * doxygen gate: the tracked headers only, so a stray file counts on neither
+    side; --update writes the baseline only when it lowers, refused by name
+    otherwise; no Doxyfile, no baseline, no header refused by name; the set
+    arms (a swapped line red by both names, a dropped newline no change); the
+    README names the gate
+  * param-units test: the define's trailing doc is read past, the regex
+    literal's slashes escaped
+  * omx_param_units.h and omx_json_write.h documented: a docs line per unit
+    token in the data, so the header's defines and the json carry it; the
+    writer's three functions name each parameter, its owner and the return,
+    its own put macro is hidden from the reader; the baseline falls 670 to 636
+  * omx_contract_limits.h documented from the data: every limit, scalar,
+    list, set, readout and rate define carries its item's doc, unit and
+    since, a sheet's leaves as one member group, the rates function its
+    parameters and return; the resolved item keeps since, so the json render
+    carries it; the one doxygen-line helper spells the vocabulary, hints and
+    owner headers too; the baseline falls 719 to 670
+  * render: a define's or a function's doxygen block stands above its line, a
+    member's one line trails it
+  * doxygen-check: a base ref git cannot read is a refusal, exit 2, never a
+    pass with no base; a commit with no baseline yet says so
+  * doxygen gate: make doxygen-check holds the installed headers'
+    undocumented public declarations to docs/doxygen-baseline.txt (719
+    today), red on a new one, a stale line and a line added against main; CI
+    runs it and its red-first test
+  * render: every installed header opens with a @file block, so doxygen reads
+    its declarations; the JSON writer's own block too, its escape spelled so
+    doxygen reads no command in it
+  * render: the documentation law of the installed headers: a @file block per
+    header, a doxygen block per public declaration spelled from the item, the
+    undocumented ones a baseline that only shrinks
+  * render: the C text helpers in their own module; the frozen limits
+    renderer goes
+  * test: the C text helpers are in their own module, the frozen limits
+    renderer is gone (red first)
+  * Remove the backward-compatibility machinery
+  * test: no backward-compatibility machinery is left (red first)
+  * Remove the schema history and the floor-understated check
+  * test: the reader keeps no schema history (red)
+  * docs: the reader keeps no schema history
+  * schema/history: schema 3.18.0 frozen; owner-requires reads only its own
+    directories
+  * test: the host's installed contract directory never reaches
+    owner-requires (red first)
+  * test: every schema minor a release shipped is frozen in schema/history
+    (red first)
+  * vocabulary: every words item renders an X-macro; PANEL_DISPLAY_KINDS
+    declared here
+  * test: words items render an X-macro; panel display kinds are declared
+    here (red first)
+  * override schema: the family enum lists utility, held against
+    PANEL_FAMILIES
+  * utility family: the c, ts and json renders and the six catalog sentences
+  * plugin-vocabulary: the panel families list ends with utility
+  * panel.json: the utility panel family joins PANEL_FAMILIES
+  * ci: no bookworm package cells (no new bookworm releases)
+  * ci: the heavy workflows run by dispatch and tags; the fast checks alone
+    on a pull request
+  * ci: the trigger gate on every pull request, red
+  * Makefile: the shared checks' checkout is OPENMIXER_DOTGITHUB
+  * Artifact retention: explicit retention-days, 30 on a tag and 2 otherwise
+  * tests: npm pack runs on a staged copy, never in ROOT: its prepack rebuilt
+    lib/ under the parallel suite (#39)
+  * build-lib is a file target, and the suite removes its scratch directories
+    (#39)
+  * translate --owner: resolve a tree's requires, read schema/codes.json, or
+    refuse by name
+  * test: translate --owner of a tree that requires a package or declares its
+    codes in schema/ (red: false undeclared)
+  * contract codes: contract.requires.unresolved and
+    contract.owner.codes-unlocated, declared with their catalog entries
+  * translate --owner: resolve a tree's requires, read its declared code
+    locations, or refuse by name
+  * release 3.19.0: the verb and role fixtures state the schema floor of this
+    release
+  * release 3.19.0: a catalog entry may be by: same (schema 3.19.0)
+  * ca catalog: give the 51 plain entries their by form, RESOURCE_UNITS.bytes
+    by: same, reword the two refused glossary forms
+  * schema: catalogEntry gains by: same with its source hash; readers keep it
+    and never regenerate it
+  * test: a by: same catalog entry validates, is read, is stale on a changed
+    source and is never regenerated
+  * docs: a catalog entry may be by: same, the same word as the English
+    source sentence
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 17 Nov 2026 22:05:26 +0000
