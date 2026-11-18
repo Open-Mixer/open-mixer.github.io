@@ -85,6 +85,10 @@ async function main() {
   const tree = opt('--tree');
   const url = opt('--url');
   if (!tree === !url) throw new Error('give exactly one of --tree and --url');
+  if (args.includes('--require-files') && !tree) {
+    console.error('--require-files needs --tree: the files are checked on disk, and --url reads no disk; refusing rather than skipping the check');
+    process.exit(1);
+  }
   const rpmRepos = new Map(); // fedora/44 -> pkgs
   const debRepos = new Map();
   const listed = new Set();
@@ -119,6 +123,22 @@ async function main() {
     }
     for (const suite of want('deb') ? opt('--deb', 'bookworm,trixie').split(',') : []) {
       add(debRepos, `debian/${suite}`, parsePackages((await get(`${base}/deb/debian/${suite}/Packages`)).toString('utf8'), `debian/${suite}`));
+    }
+  }
+
+  // --require-files: every file an index lists is on disk where its own location says (the repodata href under
+  // the repository directory; a deb's Filename under its suite). A listed file that is missing is a channel
+  // inconsistency: it is named, and the run refuses before the plan, so nothing is ever half pruned.
+  if (args.includes('--require-files')) {
+    const absent = [];
+    for (const [format, repos] of [['rpm', rpmRepos], ['deb', debRepos]]) {
+      for (const [repo, pkgs] of repos) {
+        for (const p of pkgs) if (!fs.existsSync(path.join(tree, format, repo, p.file))) absent.push(`${format}/${repo}/${p.file}`);
+      }
+    }
+    if (absent.length) {
+      console.error(`the index lists ${absent.length} file(s) that are not on disk where it says: a channel inconsistency, refusing before any delete:\n${absent.sort().join('\n')}`);
+      process.exit(1);
     }
   }
 
