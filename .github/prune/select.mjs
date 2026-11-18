@@ -133,7 +133,12 @@ async function main() {
   }
 
   // the cells the release matrix publishes, judged alone (--cells); every architecture when none is named
-  const cellSet = opt('--cells') === undefined ? null : new Set(opt('--cells').split(',').filter(Boolean));
+  const cellList = opt('--cells');
+  if (cellList !== undefined && !cellList.split(',').some(Boolean)) {
+    console.error('--cells is empty: the release matrix published no cells; refusing to judge nothing');
+    process.exit(1);
+  }
+  const cellSet = cellList === undefined ? null : new Set(cellList.split(',').filter(Boolean));
   const judgedIn = (p) => !cellSet || p.arch === 'src' || p.arch === 'noarch' || p.arch === 'all' || cellSet.has(`${p.repo}/${p.arch}`);
 
   const results = [];

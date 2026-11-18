@@ -110,6 +110,13 @@ test('the matrix publishes no aarch64 rpm: the aarch64-only skew is not judged, 
   assert.doesNotMatch(r.stderr, /aarch64/, 'no refusal names the unpublished cell');
 });
 
+test('an empty cell set is refused by name, never green by judging nothing', () => {
+  // the aarch64 skew is present; an empty --cells would judge no binary and pass it (green by nothing)
+  const r = run({ cells: '' });
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stderr, /--cells is empty: the release matrix published no cells/);
+});
+
 test('a skew inside a published cell is still refused with the matrix set', () => {
   const r = run({ x86Pinned: true, cells: PUBLISHED });
   assert.equal(r.status, 1, r.stdout + r.stderr);

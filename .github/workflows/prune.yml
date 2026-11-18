@@ -119,6 +119,7 @@ jobs:
         run: |
           set -euo pipefail
           list=$(node -e 'for (const c of JSON.parse(process.env.MATRIX_CELLS)) console.log(c.fedora ? `fedora/${c.fedora}/${c.arch}` : `debian/${c.suite}/${c.arch}`)' | paste -sd, -)
+          test -n "$list" || { echo "::error::the release matrix published no cells: the prune would judge nothing"; exit 1; }
           echo "list=$list" >> "$GITHUB_OUTPUT"
       - name: What openmixer pins
         env:
