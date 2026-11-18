@@ -85,6 +85,7 @@ jobs:
       rpm-count: ${{ steps.cells.outputs.rpm-count }}
       deb: ${{ steps.cells.outputs.deb }}
       deb-count: ${{ steps.cells.outputs.deb-count }}
+      cells: ${{ steps.published.outputs.list }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -111,6 +112,15 @@ jobs:
           rpm-arches: '["x86_64", "aarch64"]'
           deb-releases: '["bookworm", "trixie"]'
           deb-arches: '["amd64", "arm64"]'
+      # the cells the release matrix publishes, named as select.mjs judges them (--cells): the check-matrix JSON above
+      - id: published
+        env:
+          MATRIX_CELLS: ${{ steps.cells.outputs.cells }}
+        run: |
+          set -euo pipefail
+          list=$(node -e 'for (const c of JSON.parse(process.env.MATRIX_CELLS)) console.log(c.fedora ? `fedora/${c.fedora}/${c.arch}` : `debian/${c.suite}/${c.arch}`)' | paste -sd, -)
+          test -n "$list" || { echo "::error::the release matrix published no cells: the prune would judge nothing"; exit 1; }
+          echo "list=$list" >> "$GITHUB_OUTPUT"
       - name: What openmixer pins
         env:
           TOKEN: ${{ secrets.OPENMIXER_READ_TOKEN }}
@@ -135,9 +145,10 @@ jobs:
         env:
           NEWEST: ${{ inputs.newest }}
           DROP: ${{ inputs.drop }}
+          CELLS: ${{ steps.published.outputs.list }}
         run: |
           set -o pipefail
-          node .github/prune/select.mjs --keep keep.yml --pins pins.json --keeplist keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree . --json plan.json --delete-list | tee plan.txt
+          node .github/prune/select.mjs --keep keep.yml --pins pins.json --keeplist keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree . --cells "$CELLS" --json plan.json --delete-list | tee plan.txt
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           git rev-parse HEAD > plan.sha
           { echo '### What openmixer pins'; echo '```'; cat pins.txt; echo '```';
@@ -165,6 +176,7 @@ jobs:
     env:
       NEWEST: ${{ inputs.newest }}
       DROP: ${{ inputs.drop }}
+      CELLS: ${{ needs.plan.outputs.cells }}
     steps:
       - name: Install the packaging tools
         run: dnf install -y --setopt=install_weak_deps=False createrepo_c rpm-sign gnupg2 pinentry findutils diffutils git curl python3-rpm zstd
@@ -236,7 +248,7 @@ jobs:
         run: .self/.github/prune/rpm-metadata.sh build/channel rpm-delete.txt "$OPENMIXER_GPG_KEY_ID" .fmx/.github/actions/publish-rpms/publish-tree.sh
 
       - name: The pruned tree has nothing left to delete
-        run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only rpm --expect-clean
+        run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only rpm --cells "$CELLS" --expect-clean
 
       # nothing is pushed here: the deb job pushes rpm and deb in ONE signed commit, so Pages deploys once (three
       # deploys timed out at the 10-minute limit on 2026-11-07). What this job changed is the deletions and the
@@ -272,6 +284,7 @@ jobs:
       HAS_COSIGN: ${{ secrets.RPM_GPG_KEY != '' }}
       NEWEST: ${{ inputs.newest }}
       DROP: ${{ inputs.drop }}
+      CELLS: ${{ needs.plan.outputs.cells }}
     steps:
       - name: Install the packaging tools
         run: apt-get update -qq && apt-get install -y --no-install-recommends apt-utils gnupg git curl ca-certificates findutils dpkg-dev
@@ -345,7 +358,7 @@ jobs:
       - name: The tree is the one the plan was made from
         run: |
           set -euo pipefail
-          node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only deb --json now.json > /dev/null
+          node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only deb --cells "$CELLS" --json now.json > /dev/null
           node -e '
             const a = require("./plan/plan.json"), b = require("./now.json");
             const pick = (p) => JSON.stringify({ keep: p.keep.filter((r) => r.format === "deb").map((r) => r.path).sort(),
@@ -393,7 +406,7 @@ jobs:
           done
 
       - name: The pruned tree has nothing left to delete
-        run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only deb --expect-clean
+        run: node .self/.github/prune/select.mjs --keep .self/keep.yml --pins plan/pins.json --keeplist plan/keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree build/channel --only deb --cells "$CELLS" --expect-clean
 
       # the last check before the push; after it, a moved main refuses the push as not a fast-forward (its parent
       # is the planned commit), and channel-push has no rebuild here and never forces: a lost race fails the job
