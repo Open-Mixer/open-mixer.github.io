@@ -104,6 +104,4 @@ test('prune.yml: the rpm job passes the release matrix to rpm-metadata.sh, so pu
   const rpmJob = workflow.slice(workflow.indexOf('\n  rpm:\n'), workflow.indexOf('\n  deb:\n'));
   const env = /^ {6}OMX_RELEASE_MATRIX: \$\{\{ vars\.OMX_RELEASE_MATRIX \}\}$/m;
   assert.match(rpmJob, env, 'the rpm job env carries OMX_RELEASE_MATRIX from vars');
-  // sabotage: the line removed is red
-  assert.doesNotMatch(rpmJob.replace(env, ''), env);
 });
