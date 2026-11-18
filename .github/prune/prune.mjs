@@ -679,6 +679,23 @@ export function selectRepo(pkgs, keep, opts = {}) {
     }
   }
 
+  // a kept architecture-independent binary whose exact dependency (name (= X)) has no build of X on an architecture
+  // of this repository is uninstallable there, and so is its l10n-style sibling of a main that was retired:
+  // it goes with the main (2026-11-16: plugin-qualify-l10n-* kept as the newest of their own name over a
+  // plugin-qualify 0.20.4 that trixie/amd64 never had). A pinned one stays; the closure below still keeps
+  // what a kept package needs.
+  const exactProviders = providerIndex(binaries);
+  for (const p of binaries) {
+    if (p.arch !== F.indep || !kept.has(p.file)) continue;
+    if (pinsFor(keep, F.id, p.name, sourceName(p), p.repo).some((pin) => pinned(F, p.evr, pin))) continue;
+    const orphaned = p.requires.some((group) => group.length === 1 && group[0].op === '=' && !(group[0].and || []).length
+      && exactProviders.has(group[0].name)
+      && archList.some((a) => !groupCandidates(F, exactProviders, p, group, a).length));
+    if (!orphaned) continue;
+    kept.delete(p.file);
+    notes.push(`${p.name}: ${F.show(p.evr)} is dropped, its exact dependency has no build on every architecture`);
+  }
+
   // what a kept package needs and only a deleted package would provide stays as well
   const providers = providerIndex(binaries);
   const byFile = new Map(pkgs.map((p) => [p.file, p]));
