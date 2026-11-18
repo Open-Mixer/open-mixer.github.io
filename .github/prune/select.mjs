@@ -125,7 +125,11 @@ async function main() {
   // --require-files: every file an index lists is on disk where its own location says (the repodata href under
   // the repository directory; a deb's Filename under its suite). A listed file that is missing is a channel
   // inconsistency: it is named, and the run refuses before the plan, so nothing is ever half pruned.
-  if (tree && args.includes('--require-files')) {
+  if (args.includes('--require-files') && !tree) {
+    console.error('--require-files needs --tree: the files are checked on disk, and --url reads no disk; refusing rather than skipping the check');
+    process.exit(1);
+  }
+  if (args.includes('--require-files')) {
     const absent = [];
     for (const [format, repos] of [['rpm', rpmRepos], ['deb', debRepos]]) {
       for (const [repo, pkgs] of repos) {

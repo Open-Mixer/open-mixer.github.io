@@ -38,3 +38,27 @@ test('every listed file on disk: the plan runs; without the flag a missing file 
   assert.equal(run(tree(all.slice(1)), '--require-files').status, 1);
   assert.equal(run(tree(all.slice(1))).status, 0);
 });
+
+test('--require-files without --tree refuses by name instead of skipping the check', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'requrl-'));
+  fs.writeFileSync(path.join(dir, 'keep.yml'), 'keep:\n');
+  const r = spawnSync('node', [select, '--keep', path.join(dir, 'keep.yml'), '--url', 'http://127.0.0.1:9', '--require-files'], { encoding: 'utf8' });
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stderr, /--require-files needs --tree/);
+});
+
+test('deb: a Filename listed under a suite whose file is absent is named', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'reqdeb-'));
+  const suite = path.join(dir, 'deb/debian/trixie');
+  fs.mkdirSync(path.join(suite, 'amd64'), { recursive: true });
+  const stanza = (v) => `Package: bar\nVersion: ${v}\nArchitecture: amd64\nSource: bar\nFilename: ./amd64/bar_${v}_amd64.deb\nSize: 10\n`;
+  fs.writeFileSync(path.join(suite, 'Packages'), [stanza('1'), stanza('2'), stanza('3')].join('\n'));
+  fs.writeFileSync(path.join(suite, 'amd64/bar_1_amd64.deb'), 'x');
+  fs.writeFileSync(path.join(suite, 'amd64/bar_3_amd64.deb'), 'x');
+  fs.writeFileSync(path.join(dir, 'keep.yml'), 'keep:\n');
+  const r = run(dir, '--require-files');
+  assert.equal(r.status, 1, r.stdout + r.stderr);
+  assert.match(r.stderr, /deb\/debian\/trixie\/\.?\/?amd64\/bar_2_amd64\.deb/);
+  fs.writeFileSync(path.join(suite, 'amd64/bar_2_amd64.deb'), 'x');
+  assert.equal(run(dir, '--require-files').status, 0);
+});
