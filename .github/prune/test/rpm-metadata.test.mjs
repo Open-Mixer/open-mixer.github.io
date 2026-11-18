@@ -99,3 +99,11 @@ test('prune.yml: the rpm job regenerates only through rpm-metadata.sh, given the
   // the delete list the script reads is the one the deletion step wrote, before it
   assert.ok(rpmJob.indexOf('> rpm-delete.txt') < rpmJob.indexOf('rpm-metadata.sh'));
 });
+
+test('prune.yml: the rpm job passes the release matrix to rpm-metadata.sh, so publish-tree.sh judges only the published arches', () => {
+  const rpmJob = workflow.slice(workflow.indexOf('\n  rpm:\n'), workflow.indexOf('\n  deb:\n'));
+  const env = /^ {6}OMX_RELEASE_MATRIX: \$\{\{ vars\.OMX_RELEASE_MATRIX \}\}$/m;
+  assert.match(rpmJob, env, 'the rpm job env carries OMX_RELEASE_MATRIX from vars');
+  // sabotage: the line removed is red
+  assert.doesNotMatch(rpmJob.replace(env, ''), env);
+});
