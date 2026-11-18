@@ -27,6 +27,11 @@
 //                           judges what remains, over every architecture.
 // A drop overrides a pin on the versions it names (they are printed under 'dropped although pinned').
 // --only rpm|deb reads that half alone.
+// --cells fedora/44/x86_64,debian/trixie/amd64,... the cells the release matrix publishes (check-matrix, read by the
+// workflow). The invariant judges the binaries of those cells, and the noarch and all packages against those
+// architectures alone; a binary of an architecture outside the set (aarch64 rpm while the rpi5 builder is not up)
+// is kept and planned as before, but a skew that exists only there is not judged. Without --cells every
+// architecture of the tree is judged.
 // --skip-closure plans without the dependency closure, to see the plan invariant fail (a test uses it).
 // --check plan.json judges a plan already written: every kept package of it must still install from the kept
 // ones (exit 1 and the failures if not), and nothing is selected.
@@ -127,6 +132,10 @@ async function main() {
     process.exit(bad.length ? 1 : 0);
   }
 
+  // the cells the release matrix publishes, judged alone (--cells); every architecture when none is named
+  const cellSet = opt('--cells') === undefined ? null : new Set(opt('--cells').split(',').filter(Boolean));
+  const judgedIn = (p) => !cellSet || p.arch === 'src' || p.arch === 'noarch' || p.arch === 'all' || cellSet.has(`${p.repo}/${p.arch}`);
+
   const results = [];
   const all = [];
   for (const [format, repos] of [['rpm', rpmRepos], ['deb', debRepos]]) {
@@ -135,7 +144,7 @@ async function main() {
       const r = selectRepo(pkgs, keep, { newest, closure: !flag('--skip-closure'), drop: drops });
       for (const row of [...r.keep, ...r.delete]) { row.path = `${format}/${repo}/${row.file}`; listed.add(row.path); }
       // only what the plan NEWLY breaks fails it; a dependent that already did not install is named, unchanged
-      const judged = judgeUninstallable(pkgs, new Set(r.keep.map((x) => x.file)));
+      const judged = judgeUninstallable(pkgs.filter(judgedIn), new Set(r.keep.map((x) => x.file)));
       r.uninstallable = judged.refused;
       r.alreadyUninstallable = judged.already;
       results.push(r);
