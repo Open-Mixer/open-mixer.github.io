@@ -85,6 +85,10 @@ async function main() {
   const tree = opt('--tree');
   const url = opt('--url');
   if (!tree === !url) throw new Error('give exactly one of --tree and --url');
+  if (args.includes('--require-files') && !tree) {
+    console.error('--require-files needs --tree: the files are checked on disk, and --url reads no disk; refusing rather than skipping the check');
+    process.exit(1);
+  }
   const rpmRepos = new Map(); // fedora/44 -> pkgs
   const debRepos = new Map();
   const listed = new Set();
@@ -125,10 +129,6 @@ async function main() {
   // --require-files: every file an index lists is on disk where its own location says (the repodata href under
   // the repository directory; a deb's Filename under its suite). A listed file that is missing is a channel
   // inconsistency: it is named, and the run refuses before the plan, so nothing is ever half pruned.
-  if (args.includes('--require-files') && !tree) {
-    console.error('--require-files needs --tree: the files are checked on disk, and --url reads no disk; refusing rather than skipping the check');
-    process.exit(1);
-  }
   if (args.includes('--require-files')) {
     const absent = [];
     for (const [format, repos] of [['rpm', rpmRepos], ['deb', debRepos]]) {
