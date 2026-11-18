@@ -1,0 +1,170 @@
+omx-contract (3.20.0) unstable; urgency=medium
+
+  * omx-contract 3.20.0: a domain document is <domain>/<last segment>.json
+  * omx-contract 3.20.0: the domain document, its C loader, and the scan,
+    machine and qualification words out
+  * ownership: contract.catalog.invalid is omx-contract's own code
+  * consumer-move: step 6 rewrapped to the line width
+  * consumer-move: a repository without a Makefile calls the installer from
+    its packaging
+  * consumer-move: the worked example is plugin-hostd#167
+  * consumer-move: fmt is a step of a move
+  * %{omx_contract_domain_dir}: the RPM macro of the domain directory
+  * Test the RPM macro of the domain directory, before it exists
+  * style: reformat the domain fixtures with the new fmt rule
+  * fix: fmt formats a domain document by the one rule
+  * consumer-move: two paragraphs rewrapped to the line width
+  * consumer-move: a domain ships in a <pkg>-contract subpackage, with its
+    macro
+  * test: fmt formats a domain document by the one rule (red)
+  * consumer-move: no note about a loader that was never released
+  * consumer-move: words passed on as strings need no mark; description is
+    optional
+  * consumer-move: the worked example is plugin-hostd#165; fmt names its issue
+  * consumer-move: fmt is not part of a move; arm 5 may be n/a; read and
+    install ship together
+  * consumer-move: step 6 names the installer PR and its refusals
+  * Install a domain with install-contract-dir.sh --domain
+  * Test install-contract-dir.sh --domain, before the mode exists
+  * consumer-move: the front lines a recipe index reads
+  * The fuzz harness reads a word whose description is NULL
+  * Red: the fuzz corpus holds a word without a description
+  * Format the merged codes and label the catalog sentences lane-draft
+  * fix: the C loader accepts a word with no description
+  * test: the C loader must open a word with no description
+  * consumer-move: a domain installs with the installer's domain mode; an
+    installed-tree arm
+  * docs/consumer-move.md: the recipe of one consumer move onto a domain
+  * Require info.x-stability in the C domain loader
+  * Test the C domain loader's info.x-stability
+  * codes: contract.item.prefix is appended to CONTRACT_CODES, not inserted
+  * The domain schema requires info.x-stability and allows nested x-from refs
+  * Red: the domain schema requires info.x-stability, allows nested x-from
+    refs, names the nested path
+  * An x-from $ref may name a nested domain
+  * The reader requires info.x-stability, experimental or stable
+  * Red: a domain document must carry info.x-stability, experimental or stable
+  * The domain document has a schema: schema/domain.schema.json, exported,
+    typed, installed
+  * Red: the domain document has a schema, shipped beside the data schema
+  * catalogs: the five contract.item.prefix entries are lane-draft machine
+    text
+  * The C loader refuses a bad catalog as contract.catalog.invalid
+  * contract.catalog.invalid: a bad catalog of a domain has its own code (red)
+  * Close the spec gaps of the C domain loader
+  * Test the C domain loader's spec gaps, red: x-code place, duplicate keys,
+    $ref, ranges, catalogs, owner
+  * A path the loader cannot hold is contract.manifest.invalid, not
+    contract.dir.absent
+  * Test: a path the loader cannot hold is refused as an unusable input, by
+    code
+  * Fix the C domain loader's memory-safety bugs
+  * Test the C domain loader's memory safety, red: fuzz target, corpus,
+    hostile-directory tests
+  * debian: libomx-domain0 symbols file, so consumers get a version floor
+  * check-abi counts every exported symbol, data as well as functions
+  * Tests: check-abi must catch an exported data symbol, and the package must
+    give consumers a floor
+  * The qualification domain items carry the domain prefix
+  * descriptor check: a choiceUnits key must name a control and a choice
+    control
+  * The prefix check takes the domain from the one document-path rule of the
+    reader
+  * Red: the prefix check takes the domain from the document path the reader
+    uses
+  * The ownership lists follow the qualification domain out
+  * The ownership lists follow the machine domain out
+  * The ownership lists follow the scan domain out
+  * A domain renders its codes header only, and its item names carry the
+    domain prefix
+  * docs: a domain's file path and its $id stated apart
+  * Red: a domain renders only its codes header, and its item names carry the
+    domain prefix
+  * omx_domain: a domain name is a slash-separated path, the file is named by
+    its last segment
+  * test: nested domain names open, and an invalid path is refused by name,
+    red against the flat loader
+  * docs: a domain name is a slash-separated path; omx_domain_text is NULL
+    for a word with no x-text
+  * schema: x-omx-schema-version 3.20.0 for the $id change
+  * schema ids: omx-contract.schema.json at /v3/, the vocabulary at its major
+  * schema-ids: every $id names the major version only
+  * Spec: OMX_<ITEM>_<WORD>, every item name starts with its domain
+  * Spec: a domain renders its codes header only, marked x-c-codes
+  * docs: BUILDING lists the C loader's packages
+  * release and tests: the loader's packages are built, listed and held to
+    the headers they ship
+  * package-files: a deb symlink is listed by its path, not its target
+  * packaging: omx-domain(1), and the command's libc dependency
+  * package-files: the loader's library requires pattern matches rpm's isa
+    form
+  * packaging: libomx-domain and libomx-domain-devel (rpm), libomx-domain0
+    and libomx-domain-dev (deb), arch-specific, with the ABI list and
+    libomx-domain.pc
+  * omx_domain: the lookups return the CONTRACT_CODES values; the docs say
+    full validation is at package build
+  * test: the loader returns the CONTRACT_CODES values of
+    omx_contract_codes.h, red against the loader's own enum
+  * render: omx_contract_codes.h, CONTRACT_CODES as the integers a function
+    returns
+  * build: the test command finds its library by an absolute rpath
+  * docs: the C loader built, its range items, its three codes, make test-c
+  * build: install-c, the CI step for the C loader, render --check knows
+    omx_domain.h is hand-written
+  * codes: the three lookup codes translated, owned, and named as raised by
+    the C loader
+  * test: omx_domain_open_or_exit exits 78 and prints the code
+  * The render gate holds the qualification domain: no committed render names
+    its items
+  * omx_domain: the C loader on jansson, and the omx-domain command
+  * The render gate holds the machine domain: no committed render names its
+    five MACHINE_* items
+  * The render gate holds the scan domain: no committed render names
+    SCAN_DOCUMENTS or SCAN_FIELD_SCOPES
+  * A gate: no committed render or golden is a render of a domain that is not
+    codes
+  * test: the C domain loader's checks, red against the refusing stub
+  * omx_domain.h: the C loader's declaration, its ABI list, and a stub that
+    refuses everything
+  * codes: contract.item.unknown, contract.word.unknown and
+    contract.index.range, the refusals of a domain lookup
+  * Spec: the review's seven doc fixes
+  * Spec: info.x-stability on every domain, and the precedents
+  * Spec: the omx-dsp domain family, and the EQ words that move to the console
+  * Spec: the owner's rulings on the eight questions, panels and stored data
+  * Spec: other generated files: the protocol pages, the console reference
+    docs and its OpenAPI
+  * Spec: functions for data, generated constants only for codes
+  * ci: the checks job's deb cells follow the release set on the line that
+    names bookworm (D25)
+  * test: the doxygen gate's stray-header test runs in a scratch repository,
+    and the suite ends on a clean-tree check
+  * ci: the import and rpm jobs take their cells from check-matrix, fc45
+    beside fc44
+  * ci: fedora-cells over the workflows, red on the fc44-only jobs
+  * schema: choiceUnits stands after meters, as docs/descriptors.md lists it;
+    the tests follow
+  * schema: a descriptor declares choiceUnits, a choice control name to a
+    descriptor unit
+  * test: a descriptor with choiceUnits validates and an unknown unit is
+    refused (red first)
+  * docs: descriptors.md and CHANGELOG.md name the descriptor choiceUnits word
+  * test: the contract header is checked as C only
+  * contract dir: x-group lookup typed for the system tsc
+  * machine move: the doxygen baseline drops the five MACHINE_* items that
+    left
+  * qualification words leave omx-contract: MEASUREMENT_*, six RESOURCE_* and
+    MACHINE_CLASSES are plugin-qualify's qualification domain
+    (omx-contract#81 move 2)
+  * machine words leave omx-contract: five MACHINE_* items are plugin-hostd's
+    machine domain (omx-contract#81 move 3)
+  * contract dir: the loader reads a word with no description
+  * contract dir: a domain word's description is optional (spec)
+  * contract dir: the loader reads x-group, x-groups, x-from and a domain's
+    catalogs, the owner of a catalog taken from x-owner
+  * contract dir: a domain's word groups, format origins and catalogs (spec,
+    omx-contract#81)
+  * scan words leave omx-contract: SCAN_DOCUMENTS and SCAN_FIELD_SCOPES are
+    omx-clap-core's scan domain (omx-contract#81 move 1)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 18 Nov 2026 18:43:44 +0000
