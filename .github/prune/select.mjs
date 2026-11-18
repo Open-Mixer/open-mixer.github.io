@@ -122,6 +122,22 @@ async function main() {
     }
   }
 
+  // --require-files: every file an index lists is on disk where its own location says (the repodata href under
+  // the repository directory; a deb's Filename under its suite). A listed file that is missing is a channel
+  // inconsistency: it is named, and the run refuses before the plan, so nothing is ever half pruned.
+  if (tree && args.includes('--require-files')) {
+    const absent = [];
+    for (const [format, repos] of [['rpm', rpmRepos], ['deb', debRepos]]) {
+      for (const [repo, pkgs] of repos) {
+        for (const p of pkgs) if (!fs.existsSync(path.join(tree, format, repo, p.file))) absent.push(`${format}/${repo}/${p.file}`);
+      }
+    }
+    if (absent.length) {
+      console.error(`the index lists ${absent.length} file(s) that are not on disk where it says: a channel inconsistency, refusing before any delete:\n${absent.sort().join('\n')}`);
+      process.exit(1);
+    }
+  }
+
   if (opt('--check')) {
     const kept = new Set(JSON.parse(fs.readFileSync(opt('--check'), 'utf8')).keep.map((r) => r.path));
     const bad = [];

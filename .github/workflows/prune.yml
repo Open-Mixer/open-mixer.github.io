@@ -148,7 +148,7 @@ jobs:
           CELLS: ${{ steps.published.outputs.list }}
         run: |
           set -o pipefail
-          node .github/prune/select.mjs --keep keep.yml --pins pins.json --keeplist keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree . --cells "$CELLS" --json plan.json --delete-list | tee plan.txt
+          node .github/prune/select.mjs --keep keep.yml --require-files --pins pins.json --keeplist keep-list.txt --newest "$NEWEST" --drop "$DROP" --tree . --cells "$CELLS" --json plan.json --delete-list | tee plan.txt
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           git rev-parse HEAD > plan.sha
           { echo '### What openmixer pins'; echo '```'; cat pins.txt; echo '```';
