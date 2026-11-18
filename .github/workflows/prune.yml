@@ -177,6 +177,7 @@ jobs:
       NEWEST: ${{ inputs.newest }}
       DROP: ${{ inputs.drop }}
       CELLS: ${{ needs.plan.outputs.cells }}
+      OMX_RELEASE_MATRIX: ${{ vars.OMX_RELEASE_MATRIX }}
     steps:
       - name: Install the packaging tools
         run: dnf install -y --setopt=install_weak_deps=False createrepo_c rpm-sign gnupg2 pinentry findutils diffutils git curl python3-rpm zstd
