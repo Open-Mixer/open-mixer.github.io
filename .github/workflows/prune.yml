@@ -58,7 +58,7 @@ on:
         type: boolean
         default: false
       drop:
-        description: 'Drop mode: name@version,... removes every build of those source versions (subpackages, architectures, source) and nothing else; name@version:trixie/amd64 (deb suite/arch) or name@version:fedora/44/x86_64 (rpm) only that cell''s; package=<binary>@version:<cell> removes that one binary in that cell, not its source''s other binaries (an Architecture: all deb takes <suite>/all: the suite index is flat). newest does not apply. Empty runs the normal prune.'
+        description: 'Drop mode: name@version,... removes every build of those source versions (subpackages, architectures, source) and nothing else; name@version:trixie/amd64 (deb suite/arch) or name@version:fedora/45/x86_64 (rpm) only that cell''s; package=<binary>@version:<cell> removes that one binary in that cell, not its source''s other binaries (an Architecture: all deb takes <suite>/all: the suite index is flat). newest does not apply. Empty runs the normal prune.'
         type: string
         default: ''
       newest:
@@ -107,7 +107,7 @@ jobs:
         uses: Open-Mixer/.github/.github/actions/check-matrix@openmixer-v1
         with:
           wave: ${{ vars.OMX_RELEASE_MATRIX }}
-          rpm-releases: '["44", "45"]'
+          rpm-releases: '["45"]'
           rpm-arches: '["x86_64", "aarch64"]'
           deb-releases: '["bookworm", "trixie"]'
           deb-arches: '["amd64", "arm64"]'
@@ -171,7 +171,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     container:
-      image: fedora:44
+      image: fedora:45
     env:
       NEWEST: ${{ inputs.newest }}
       DROP: ${{ inputs.drop }}

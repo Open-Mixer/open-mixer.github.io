@@ -26,7 +26,12 @@ jobs:
           sparse-checkout: |
             keep.yml
             .github
+            tools/test
           sparse-checkout-cone-mode: false
+      - name: No Fedora 44 reference in the workflows
+        run: |
+          tools/test/workflow-fedora-check.sh --self-test
+          tools/test/workflow-fedora-check.sh .
       - uses: actions/setup-node@v4
         with:
           node-version: 22
