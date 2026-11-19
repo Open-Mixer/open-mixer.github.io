@@ -1,0 +1,14 @@
+omx-contract (3.20.2) unstable; urgency=medium
+
+  * CHANGELOG: the release empties Unreleased
+  * omx-contract 3.20.2
+  * pkg-config: clidir's files ship in omx-contract, not in -devel
+  * pkg-config: clidir names the installed omx-contract command's directory
+  * test: pkg-config names the installed CLI directory (red)
+  * entry: export isMain at @openmixer/omx-contract/entry
+  * test: other packages take isMain from omx-contract, not a copy (red)
+  * cli: decide "run, not imported" on real paths, so a symlinked bin runs
+  * test: the CLI run through a symlinked bin refuses as it does by its own
+    path (red)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 19:39:19 +0000
