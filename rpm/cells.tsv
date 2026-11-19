@@ -130,13 +130,16 @@ omx-dsp-contract	0.32.0	-	fc44/noarch fc45/noarch
 omx-dsp-contract	0.32.3	quick	fc44/noarch fc45/noarch
 omx-dsp-contract	0.32.4	quick	fc44/noarch fc45/noarch
 omx-dsp-contract	0.33.0	quick	fc44/x86_64 fc45/x86_64
+omx-dsp-contract	0.33.1	quick	fc45/x86_64
 omx-dsp-devel	0.31.0	-	fc44/aarch64 fc45/aarch64
 omx-dsp-devel	0.32.0	-	fc44/aarch64 fc45/aarch64
 omx-dsp-devel	0.32.3	quick	fc44/x86_64 fc45/x86_64
 omx-dsp-devel	0.32.4	quick	fc44/x86_64 fc45/x86_64
 omx-dsp-devel	0.33.0	quick	fc44/x86_64 fc45/x86_64
+omx-dsp-devel	0.33.1	quick	fc45/x86_64
 omx-dsp-devel	0.6.1	-	fc44/aarch64 fc44/x86_64
 omx-dsp-wasm	0.33.0	quick	fc44/x86_64 fc45/x86_64
+omx-dsp-wasm	0.33.1	quick	fc45/x86_64
 omx-panel	0.13.5	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 omx-panel	0.13.6	-	fc44/aarch64 fc45/aarch64
 omx-panel	0.13.7	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
@@ -180,9 +183,11 @@ omx-rt-gate	0.32.0	-	fc44/aarch64 fc45/aarch64
 omx-rt-gate	0.32.3	quick	fc44/x86_64 fc45/x86_64
 omx-rt-gate	0.32.4	quick	fc44/x86_64 fc45/x86_64
 omx-rt-gate	0.33.0	quick	fc44/x86_64 fc45/x86_64
+omx-rt-gate	0.33.1	quick	fc45/x86_64
 omx-rta-read	0.32.3	quick	fc44/x86_64 fc45/x86_64
 omx-rta-read	0.32.4	quick	fc44/x86_64 fc45/x86_64
 omx-rta-read	0.33.0	quick	fc44/x86_64 fc45/x86_64
+omx-rta-read	0.33.1	quick	fc45/x86_64
 openmixer-release	1	-	fc44/noarch fc45/noarch
 plugin-db	0.4.0	-	fc44/aarch64 fc45/aarch64
 plugin-db	0.4.1	-	fc44/aarch64 fc45/aarch64
