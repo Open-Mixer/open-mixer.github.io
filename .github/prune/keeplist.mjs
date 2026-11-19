@@ -57,18 +57,25 @@ const upstream = (p) => (p.format === 'rpm' ? p.evr.ver : parseDebVersion(p.evr)
 const releaseOf = (p) => (p.format === 'rpm' ? p.evr.rel : parseDebVersion(p.evr).revision);
 const vcmp = (p, v) => (p.format === 'rpm' ? rpmvercmp(upstream(p), v) : debVersionCmp(upstream(p), v));
 
+// the builds of l's package the channel serves (every version, every cell the line names)
+function served(l, allPkgs) {
+  const archOk = (p) => { const a = l.where.split('/')[2]; return !a || a === '*' || p.arch === a || p.arch === 'noarch' || p.arch === 'all'; };
+  return allPkgs.filter((p) => p.arch !== 'src' && formats(l).includes(p.format) && whereMatches(whereRepo(l.where), p.repo) && archOk(p)
+    && (l.pkg.startsWith('source:') ? sourceName(p) === l.pkg.slice(7) : p.name === l.pkg));
+}
+
 // the lines the channel cannot serve: allPkgs are every package of every repository read. A line marked pending
-// (a floor the generator saw unserved) is not a refusal: it is returned by pendingPins instead, and the moment the
-// channel serves it again it is in neither list.
-export const missing = (lines, allPkgs) => unserved(lines.filter((l) => !l.pending), allPkgs);
-export const pendingPins = (lines, allPkgs) => unserved(lines.filter((l) => l.pending), allPkgs);
+// (a floor the generator saw unserved) stays pending only while no build of that package is served at all; once any
+// version is served it is judged as an ordinary floor, so a package served only BELOW the floor is a missing pin
+// (refused), and one at or above it is satisfied.
+const isPending = (l, allPkgs) => l.pending && served(l, allPkgs).length === 0;
+export const missing = (lines, allPkgs) => unserved(lines.filter((l) => !isPending(l, allPkgs)), allPkgs);
+export const pendingPins = (lines, allPkgs) => unserved(lines.filter((l) => isPending(l, allPkgs)), allPkgs);
 
 function unserved(lines, allPkgs) {
   const out = [];
   for (const l of lines) {
-    const archOk = (p) => { const a = l.where.split('/')[2]; return !a || a === '*' || p.arch === a || p.arch === 'noarch' || p.arch === 'all'; };
-    const mine = allPkgs.filter((p) => p.arch !== 'src' && formats(l).includes(p.format) && whereMatches(whereRepo(l.where), p.repo) && archOk(p)
-      && (l.pkg.startsWith('source:') ? sourceName(p) === l.pkg.slice(7) : p.name === l.pkg));
+    const mine = served(l, allPkgs);
     let ok;
     if (l.version === 'newest') ok = mine.length > 0;
     else if (l.version.startsWith('>=')) ok = mine.some((p) => vcmp(p, l.version.slice(2)) >= 0);

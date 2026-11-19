@@ -120,6 +120,13 @@ test('keep-list: a pending:>=floor line is named as pending, never a missing pin
   const served = pkgs(debs('foo', ['1.0-1']) + '\n' + debs('foo-devel', ['0.6-1']));
   assert.deepEqual(pendingPins(lines, served), []);
   assert.deepEqual(missing(lines, served), []);
+  const below = pkgs(debs('foo', ['1.0-1']) + '\n' + debs('foo-devel', ['0.4-1']));
+  assert.equal(missing(lines, below).length, 1, 'served only below the floor: an ordinary floor, missing (refused)');
+  assert.match(missing(lines, below)[0], /foo-devel >=0\.5/);
+  assert.deepEqual(pendingPins(lines, below), [], 'and not pending');
+  const atFloor = pkgs(debs('foo', ['1.0-1']) + '\n' + debs('foo-devel', ['0.5-1']));
+  assert.deepEqual(missing(lines, atFloor), [], 'served at the floor: satisfied');
+  assert.deepEqual(pendingPins(lines, atFloor), []);
   assert.throws(() => parseKeepList(keepList([['foo', 'pending:1.0-1', 'debian/bookworm/*', 'p']])), /bad version/);
 });
 
