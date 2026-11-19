@@ -1,0 +1,24 @@
+omx-contract (3.20.1) unstable; urgency=medium
+
+  * CHANGELOG: the release empties Unreleased
+  * omx-contract 3.20.1
+  * Move the x-since rule out of the domain reader into validate
+    (omx-contract#124)
+  * Add `domain check` and the x-since rule to validate (omx-contract#124)
+  * Tests for the domain check and the x-since rule (omx-contract#124)
+  * docs: x-since names a package version only when it is the domain's
+  * docs: an item's x-since is the domain version that first carried it
+  * ci: the C-against-TypeScript conformance comparison runs, never skipped
+  * docs: openDomainAt beside the C loader, one conformance suite, the codes
+  * omx_domain: info problems are manifest.invalid; a catalog's lang is its
+    name
+  * openDomainAt: the TS runtime reader of one domain; loadContractDir's fixes
+  * tests: one domain conformance suite for the C loader and the TS reader
+    (red)
+  * packaging: the typescript ceiling goes; the floor stays
+  * ci: the shared deps-render check runs on this repository
+  * domain_test: a test that cannot run says so, and the summary counts it
+  * Test the C domain loader's remaining paths, and read a child's whole
+    output
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 17:03:53 +0000
