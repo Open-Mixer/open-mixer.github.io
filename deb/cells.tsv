@@ -60,6 +60,8 @@ libplugin-hostd-protocol0	0.5.7	-	bookworm/amd64 bookworm/arm64
 libplugin-hostd-protocol0	0.5.8	quick	trixie/arm64
 libplugin-hostd-protocol0	0.5.9	quick	trixie/arm64
 libplugin-hostd-protocol0	0.6.0	quick	trixie/arm64
+libplugin-qualification-db-dev	2026111901	quick	trixie/arm64
+libplugin-qualification-db0	2026111901	quick	trixie/arm64
 libreac-dev	1.11.0	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libreac-tests	1.11.0	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libreac-transport-dev	1.11.0	-	bookworm/amd64 bookworm/arm64 trixie/arm64
@@ -297,8 +299,12 @@ plugin-hostd-protocol-l10n-pt	0.6.0	quick	trixie/all
 plugin-hostd-tests	0.20.4	-	bookworm/amd64 bookworm/arm64
 plugin-hostd-tests	0.20.6	quick	trixie/arm64
 plugin-hostd-tests	0.20.7	quick	trixie/arm64
+plugin-qualification-db	2026111901	quick	trixie/arm64
+plugin-qualification-db-schema	2026111901	quick	trixie/all
+plugin-qualification-db-write	2026111901	quick	trixie/all
 plugin-qualification-records	2026110902	-	trixie/arm64
 plugin-qualification-records	2026111001	-	trixie/arm64
+plugin-qualification-records	2026111901	quick	trixie/arm64
 plugin-qualify	0.20.3	-	bookworm/amd64 bookworm/arm64
 plugin-qualify	0.20.4	quick	trixie/arm64
 plugin-qualify	0.20.5	quick	trixie/arm64

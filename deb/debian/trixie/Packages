@@ -3741,6 +3741,51 @@ Description: pt catalog of plugin-hostd-protocol's codes
  every surface that shows them on a host in that locale; without it a surface
  shows the English source sentence.
 
+Package: plugin-qualification-db-schema
+Architecture: all
+Version: 2026111901
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Filename: ./all/plugin-qualification-db-schema_2026111901_all.deb
+Size: 9764
+MD5sum: 91b483d5a1fb8f9466a3de394280ebd5
+SHA1: a3f17137023fb03a5690acb4d8b5a56df48fd28b
+SHA256: e01193f45d2c7420ee10e980b70f4ffdf88aeb6b4a685e5a034b3ee16d689af5
+SHA512: 5bb49a5d06fbfd49ebcb74e191050ef4c2bb3787d581c58d1f8c1e0cfe295450376833d34f001a960d621930950b6446c3b88f36df475a7a80e4d5460c0dc0bc
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: DDL of the OpenMixer qualification store
+ The SQL that creates the qualification store, one copy, at
+ /usr/share/plugin-qualification-db/qualification.sql. The writer creates a
+ user layer from it, and test fixtures read it with no checkout.
+
+Package: plugin-qualification-db-write
+Architecture: all
+Version: 2026111901
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 70
+Depends: python3, python3-jsonschema, libsqlite3-0 (>= 3.37.0), plugin-qualification-db-schema (= 2026111901)
+Filename: ./all/plugin-qualification-db-write_2026111901_all.deb
+Size: 18952
+MD5sum: 284e79ef31fce9be8acb58760ae2476b
+SHA1: 4abb0cead378b0a6fcea3fabdcb4930045b72d03
+SHA256: fd99246eed70251ca3fc6c04ec30105700bbbd6b39f9a2dc8b7a9b2546720b34
+SHA512: eddc2735101149af7b55c1d077ebddf006bfa8ec8b4db63b44a133bbf4e9efa3179fbd37562228c2b445b003916e266fe9ff59919bc25c393dd407bb917aa2f5
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: writer of the OpenMixer qualification store's user and system layers
+ plugin-qualification-db-write put reads one qualification record on standard
+ input and replaces the record of its key in the layer of the scope; delete
+ removes one. Every word is checked against the installed contract domains and
+ the binary's path, file list and key against the rules of the store; a
+ refusal is named on standard error and writes nothing.
+
 Package: plugin-qualify-contract
 Architecture: all
 Version: 0.20.6
@@ -5466,6 +5511,50 @@ Description: plugin-hostd protocol library, a superset of mod-host's text protoc
  .
  Its documentation is on openmixer.org.
 
+Package: libplugin-qualification-db-dev
+Architecture: arm64
+Version: 2026111901
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 28
+Depends: libplugin-qualification-db0 (= 2026111901), plugin-qualification-db-schema (= 2026111901)
+Filename: ./arm64/libplugin-qualification-db-dev_2026111901_arm64.deb
+Size: 7984
+MD5sum: c35f99ce125c6291f56e5b3208e3e794
+SHA1: 4cdd0259f7dd0be40de0cb2c437a2f39a1ecc717
+SHA256: 2c237a5763e3b717aa7d5d3dcf41f9f504ace61dbf6f889524dc9b58c933d3bf
+SHA512: f811a769c1e79c02b9a3bbecbbb87bae6c6b2265643711ddb2375473b316010ac3354ca32def633021ab6b3875baa63ee288d4218488c8bb00ec99e6cc228169
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: reader of the OpenMixer qualification store, development files
+ The header, the shared library link and plugin-qualification-db.pc, whose
+ variable schema names the DDL of plugin-qualification-db-schema.
+
+Package: libplugin-qualification-db0
+Architecture: arm64
+Version: 2026111901
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 149
+Depends: libc6 (>= 2.38), libomx-domain0 (>= 3.20.0), libsqlite3-0 (>= 3.37.0)
+Filename: ./arm64/libplugin-qualification-db0_2026111901_arm64.deb
+Size: 29192
+MD5sum: 8ed6700530e0d5fffd1d861343f21714
+SHA1: 7cf1e54c28d0e38fa7bbd762f930c315489c9bc8
+SHA256: f2df0d03bc4ca4822d86a8b62cfb6437d0f50abfa2b0db3ea2710f2c57fd6631
+SHA512: 717972c8d982bdd846347dc51d4614aa0fdfe9e06d4f9f300af88ef61d3588a7c3ad24ee1145c5b816b953b133c5115c9fb8c115b1075d2f609527aa56f641be
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: reader of the OpenMixer qualification store
+ The C library that reads the qualification store: the base database of
+ plugin-qualification-records and a user layer, merged by whole record, with
+ every word column checked against the contract domains that own its words.
+ It reads figures at start-up, never in a real-time path.
+
 Package: libreac-dev
 Architecture: arm64
 Version: 1.11.0
@@ -6615,6 +6704,27 @@ Description: run LV2 and CLAP plugins so that one crash cannot stop the show
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-qualification-db
+Architecture: arm64
+Version: 2026111901
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 83
+Depends: libc6 (>= 2.38), libplugin-qualification-db0 (>= 2026111901)
+Filename: ./arm64/plugin-qualification-db_2026111901_arm64.deb
+Size: 13360
+MD5sum: 0bd2732afca59cd4b77b7ba3d12e833d
+SHA1: 67b0fbe00c4284da3ac028cf5716825acad0526b
+SHA256: 24eb61ca270f1fb1fab5f9927023d8f98e5c81ea603bee08de7e5788014f2dc6
+SHA512: d80366fc994f244aaa9babf526f610036df7b1ad8feaeb3838244292b11fde317dd80353cbe8bd511a59f6b2a45c7832c7c50bd73ca69cb24f857240953840e5
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: command to query the OpenMixer qualification store
+ plugin-qualification-db query --json prints the results of the base
+ database and the user layer, one JSON object per line; check opens both
+ layers and the words they hold.
+
 Package: plugin-qualification-records
 Architecture: arm64
 Version: 2026110902
@@ -6673,6 +6783,45 @@ SHA1: a26160d5d62f3f7ae969b0b6ba0a3d55f4bd6199
 SHA256: d33aacbea6af51233c845ecfe23a02abd53edea31bd5f13888c87e02d231593e
 SHA512: bce9341ab941cbd5facd93d0dbde2ec22b4b5b2e8e42860d3e3c4f5d9dd0452d6f340683efaa991d76bb62697a1d2a71504211d59611864cadfd1eee1ae06eff
 Homepage: https://github.com/FreeMixer/plugin-db-qualification
+Description: plugin-db qualification layer: records of OpenMixer plugin sets
+ The qualification layer of the plugin database: the plugin-qualify records
+ of the plugin sets measured on a reference machine of a host class.
+ plugin-qualify-sync takes a plugin from them instead of measuring it, and
+ only when every file of the installed plugin hashes as the measured one
+ did; any other plugin is measured on the machine as before. The sync
+ chooses the set of the machine's class and cell.
+ .
+ Each architecture carries the sets of its machine classes:
+ .
+  arm64: the rpi5 class, the zynthian-vangelis set measured on a Raspberry
+  Pi 5 with ZynthianOS. Hardware records: measured on the machine's own
+  audio interface; the verdicts hold, the figures describe that interface
+  and are not compared with the reference tier.
+ .
+  amd64: the x86-64 class, the fedora44 sets, one per sample rate and
+  quantum. Provisional records: measured on JACK's dummy driver without
+  real-time priority; the crash, hang and unmeasured verdicts hold, the
+  cost, latency and xrun figures are not reference figures.
+
+Package: plugin-qualification-records
+Architecture: arm64
+Version: 2026111901
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 34255
+Provides: omx-qualification-rpi5-zynthian-vangelis (= 2026111901), plugin-db-qualification-rpi5-zynthian-vangelis (= 2026111901)
+Depends: plugin-qualify (>= 0.20.0~)
+Breaks: omx-qualification-rpi5-zynthian-vangelis (<< 2026111901), plugin-db-qualification-rpi5-zynthian-vangelis (<< 2026111901)
+Replaces: omx-qualification-rpi5-zynthian-vangelis (<< 2026111901), plugin-db-qualification-rpi5-zynthian-vangelis (<< 2026111901)
+Filename: ./arm64/plugin-qualification-records_2026111901_arm64.deb
+Size: 974000
+MD5sum: bfec134e45749d08989ba1abd960b6a9
+SHA1: ac070a0dd16d81b711df7f619d392be6f8848c3c
+SHA256: 046fe4efd0a8a47e1ec16e7ee4af04c7e9fc1cbbe0ae128ae27e68faf5713133
+SHA512: 197d9c18274c73f81f8b2887883d1a9d500ea65d331b1e0b0a1e6c7a0e89edd05e130617b91affad72c6d69f6133ea7111c35447855a43fc34207fd8d06ceebf
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
 Description: plugin-db qualification layer: records of OpenMixer plugin sets
  The qualification layer of the plugin database: the plugin-qualify records
  of the plugin sets measured on a reference machine of a host class.
