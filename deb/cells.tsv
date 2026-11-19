@@ -13,16 +13,14 @@ libmackie0	0.1.2	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libmod-host-protocol-dev	0.10.11	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libmod-host-protocol0	0.10.11	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomx-clap-core-dev	0.32.2	-	bookworm/amd64 bookworm/arm64
-libomx-clap-core-dev	0.32.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
-libomx-clap-core-dev	0.32.5	quick	trixie/amd64 trixie/arm64
+libomx-clap-core-dev	0.32.3	-	bookworm/amd64 bookworm/arm64
 libomx-clap-core0	0.12.0	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomx-clap-core1	0.31.2	-	bookworm/amd64 bookworm/arm64
 libomx-clap-core1	0.32.2	-	bookworm/amd64 bookworm/arm64
 libomx-clap-core1	0.32.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomx-clap-core1	0.32.5	quick	trixie/amd64 trixie/arm64
 libomx-clap-lv2-dev	0.32.2	-	bookworm/amd64 bookworm/arm64
-libomx-clap-lv2-dev	0.32.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
-libomx-clap-lv2-dev	0.32.5	quick	trixie/amd64 trixie/arm64
+libomx-clap-lv2-dev	0.32.3	-	bookworm/amd64 bookworm/arm64
 libomx-contract-dev	2.6.0	-	bookworm/all trixie/all
 libomx-contract-dev	3.14.0	-	bookworm/all
 libomx-contract-dev	3.17.0	-	bookworm/all trixie/all
@@ -147,7 +145,7 @@ omx-panel-l10n-pt	0.13.8	quick	trixie/all
 omx-plugins	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-plugins-clap	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-plugins-contract	0.19.3	-	bookworm/all trixie/all
-omx-plugins-dev	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+omx-plugins-dev	0.19.3	-	bookworm/amd64 bookworm/arm64
 omx-plugins-lv2	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-plugins-test	0.19.3	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 omx-rt-gate	0.32.0	-	bookworm/amd64 bookworm/arm64
