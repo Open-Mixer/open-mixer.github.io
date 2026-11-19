@@ -1,0 +1,28 @@
+plugin-db (0.4.7) unstable; urgency=medium
+
+  * release: plugin-db 0.4.7, the spec changelog names the floors that moved
+  * release: plugin-db 0.4.7 (0.4.6 to 0.4.7), a patch, re-cut on current main
+  * formats_test: state the unloaded arm's one assumption
+  * An unreadable domain is PDB_ERR_FORMATS, never "no address", and the fill
+    is once
+  * Red: an unreadable domain is its own result, not "no address"
+  * Separate the protocol's headers from the codes header, one translation
+    unit each
+  * Red: no translation unit sees both the protocol's vocabulary and the
+    codes header
+  * PLUGIN_DB_ADDRESS_FORMATS moves to the plugin-db domain, read through the
+    loader
+  * Red: PLUGIN_DB_ADDRESS_FORMATS lives only in the plugin-db domain
+  * Document make render-domain as a release step
+  * The formats domain takes its version from VERSION and keeps its codes
+    stable
+  * Red: the formats domain's version and codes are stable
+  * CI: the words job installs the loader's command for make test-domain
+  * Publish the address formats as the plugin-db domain, rendered from
+    data/db.json
+  * Red: plugin-db's address formats as a domain item the loader opens
+  * schema addresses: the store schema takes
+    https://openmixer.org/schema/plugin-db/store.schema.json as its $id, not
+    a code-hosting address
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 11:00:42 +0000
