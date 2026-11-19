@@ -1,0 +1,9 @@
+plugin-db (0.4.6) unstable; urgency=medium
+
+  * release: 0.4.6, built against omx-contract 3.19.1
+  * packaging: omx-contract, -data and -devel floors 3.19.1, the release that
+    renders the committed headers (red: make deps-check names the spec and
+    control until they carry it)
+  * render: the declared words re-rendered by omx-contract 3.19.1
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 08:17:00 +0000
