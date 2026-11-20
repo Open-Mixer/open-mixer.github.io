@@ -2239,6 +2239,28 @@ Description: panel domain: the words a panel description speaks
  translations, installed into the contract directory where omx-contract's
  loader reads it. A program that reads the panel words depends on this package.
 
+Package: omx-panel-contract
+Architecture: all
+Version: 0.15.1
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 150
+Filename: ./all/omx-panel-contract_0.15.1_all.deb
+Size: 18740
+MD5sum: 3fc6defe0fbc1485356bc0c788cef694
+SHA1: 1e145e1fab217dc1802ee940764518c3b1e95bb5
+SHA256: 97e7b87448ea44afecac740ee42eb8cb9b4a3ed4be0f9c503fd1d2a6c81b09a4
+SHA512: 4773fdac15662ca602d4c998805af61ec88527c454daf9a3ec9295a50be9b91c537223f68949a2560aff3106f887afea35683e142ec0627ec450ea3c04f3af71
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: panel domain: the words a panel description speaks
+ The panel domain (contract.d/panel): the families, widgets, display kinds,
+ display sources and placements a panel description speaks, with their
+ translations, installed into the contract directory where omx-contract's
+ loader reads it. A program that reads the panel words depends on this package.
+
 Package: omx-panel-l10n-ca
 Architecture: all
 Version: 0.13.7
@@ -2298,6 +2320,27 @@ MD5sum: fcaad08ef096eccb4ddc0ef095776bea
 SHA1: ab7cbd06cb9058f4eac1704367197370d73f1fc9
 SHA256: ba5f8d8b55b9e463de59fc953c244f4fb5b76a64f60bae78cc23fdd5f14c5f06
 SHA512: 94a106acbdad9b39c42ba01b6bd6a0cf016868e62fe2bd593279f2c4cefb7fc433cc3650ea18c7080d6fe4d3e968d5f5dba6f32df552ef1846fd82fc30233835
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: ca catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language ca, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-ca
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 20
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-ca_0.15.1_all.deb
+Size: 3872
+MD5sum: 6d16ae4968771839495efda79db1b8cf
+SHA1: 76616745ba71ec78b24664b9a10041bb27d8979b
+SHA256: 303e11c75ef3de3985dc883919b26c4b91bd6d1cb3f9db68f14fa51249bb1bb4
+SHA512: 9f3817fbfd71093dcbe38b9a52b3de999df9279545667d620ba82f49dfdf103b6d9dda34c4036944c185414fc2014c420b7788e9505bfb7ee318a2a02aceb4d5
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: ca catalog of omx-panel's codes
  The sentences of omx-panel's codes in the language ca, read by every surface
@@ -2367,6 +2410,27 @@ Description: de catalog of omx-panel's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: omx-panel-l10n-de
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-de_0.15.1_all.deb
+Size: 5412
+MD5sum: a465665154d85f2b3d20dce569e7f477
+SHA1: 758b25c52aa24319e51c7e14609e75f1030d09b3
+SHA256: ea04aa471906ac5761fa3c99329aa5e557ddd7d24feb5dd38f5413780e195da4
+SHA512: 08276f60641e03a54995d2738d3433655214e19df9dcbf6f5660ac2629865c95a58903f0085e19495f11a92457c49cf5df60a38bc32ee3287acfaccf6740bf64
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: de catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language de, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: omx-panel-l10n-es
 Architecture: all
 Version: 0.13.7
@@ -2424,6 +2488,27 @@ MD5sum: 5d0a329f132db7ed947227b940768031
 SHA1: 8d835b8528ef21f0bb80aefe8d19ea332f28697d
 SHA256: 48caa6316e54f4ad6d682daea57b42eb484878554c4fcb07fa4e45e9ddd0f741
 SHA512: ee295cac1a5cca3cb9747905570bf624223736e56f5888b5bebb7d00fe1cd489d1bb3456956794b10939f0b9367e24ea26782620fb64d4d5ee29eeaa6be0c4c9
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: es catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language es, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-es
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 22
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-es_0.15.1_all.deb
+Size: 5244
+MD5sum: 35a5d1f4abb1eb5a3da2d69716b17b41
+SHA1: 971812674b1f8534fb8b71f6f5c1dbdab995acc0
+SHA256: c45b8bad81e020b623d1e3c82b2fd1695858529d6c2c1d6fd67f13b13f3c13c0
+SHA512: f03edf2aef2db68e493f7b2f371c23f5f8e45dae5831cb03e667b9a6ce8fad4f952659ca9ecb24e382338c074408187ce52373f7fe4e4d5e6c997c166f71a118
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: es catalog of omx-panel's codes
  The sentences of omx-panel's codes in the language es, read by every surface
@@ -2493,6 +2578,27 @@ Description: fr catalog of omx-panel's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: omx-panel-l10n-fr
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-fr_0.15.1_all.deb
+Size: 5348
+MD5sum: 6c8ddaf4225f0834b4d4b9381bcc7f7f
+SHA1: 1093b43abbb1996c6ad496a5ba03fcde79fddef4
+SHA256: 893f321e68680d7f8ecaa87717f171a37c1b5e80bfc92092e7f7e9b3941b0b60
+SHA512: 973d71237d35a78e10b697d4d6446622915dc58e75621fc9a0d9b5a04b3464bd0ec6ae60102c4a9f29ed7995d2f3d29a5f59d8cb6262407a259bfee8e6e7e496
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: fr catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language fr, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: omx-panel-l10n-it
 Architecture: all
 Version: 0.13.7
@@ -2556,6 +2662,27 @@ Description: it catalog of omx-panel's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: omx-panel-l10n-it
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 22
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-it_0.15.1_all.deb
+Size: 5280
+MD5sum: 3eb89dd4c52ebc5aff4930f2a3ab83fc
+SHA1: a981ec13891c56c8703f07e839a8f45cb3a3c273
+SHA256: de6a44518dd0a8ee4d808c80ecb5b9d276c275bd77ff13c6257e3938bc692216
+SHA512: b02d5e240bfd5178292373312798f3decc76dc4b282111ca1fef84a1ab70c04c445ef2b2a9f02bd2f21c71cf76fef6f07d18eacc70b58b1bb57e08e84e61a76b
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: it catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language it, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: omx-panel-l10n-pt
 Architecture: all
 Version: 0.13.7
@@ -2613,6 +2740,27 @@ MD5sum: 3204a3ffc00784a2b506df88a047eba5
 SHA1: 07d535ed6facdfc1f6b60e7aefb41a61e4fbd6b5
 SHA256: 227c6b61e54778ecdd4122ab21a2b5381443f72a9385651825157199853446d5
 SHA512: ae684c5295bd9485b53a42a2430c2f29484b28bd932d839ec2a50714f8e0715efff88b8a6ad3a49c13cccd2bf1cbe1eed77c1f5378dbd78c236f73858de5a5e8
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: pt catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language pt, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-pt
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 22
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-pt_0.15.1_all.deb
+Size: 5256
+MD5sum: e33ba370cffbc79c742855c1e2fc111a
+SHA1: bb92a4902aa7ac04a488110f9313e1d19f4951b2
+SHA256: 6a8c01298ec29c4c22cf8a79f3033f6f13fe5b837892dda2f2095b850d2b6f92
+SHA512: 0f6ad646a5b8c2fc5867a011105c1ca719f5f83fa5fa4d676223ecf633ed7e1995551f1a1ab5cd879ae773e420e3de3534c029f78e53bfebfbf36ac7e62df7b4
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: pt catalog of omx-panel's codes
  The sentences of omx-panel's codes in the language pt, read by every surface
@@ -2723,6 +2871,35 @@ MD5sum: 5e8ead9de6fceaa875c00a12e8a8b160
 SHA1: 9b0d089ccadeac315f5aa644c55717a97b27842a
 SHA256: 2dae0b2fe18de2e3cdc700bcd19f17c17f5b01e1d5bf44cbc5b242bedd64b609
 SHA512: 9f440a7ae38225dff51a026cd44599dd5851c65236a6afae72fa05f062af4123a1520d14d606a0d880a8443fc3a5c3eff9a49ca174eead1afc2e0f6cbabec101
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: panels for LV2 and CLAP plugins, generated from what each plugin declares
+ omx-panel makes panels for LV2 and CLAP plugins from what each plugin
+ declares. It lays a panel out from a plugin's descriptor (sections, controls,
+ roles, the pages of eight a controller shows), writes a MOD GUI for MOD and
+ Zynthian in the omx look, imports a plugin's own MOD GUI into a skin package,
+ and carries the skin package schema, its validator and the directory skin
+ packages are installed into. The omx-panel command runs each; the tools are
+ under /usr/share/omx-panel for a build that calls them.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-panel
+Architecture: all
+Version: 0.15.1
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2965
+Depends: nodejs (>= 18), omx-contract-data (>= 3.20.2~), plugin-hostd-contract (>= 0.20.7~), omx-dsp-wasm (>= 0.33.0~), omx-contract (>= 3.20.2~)
+Recommends: plugin-hostd (>= 0.20.7~)
+Suggests: python3-lilv
+Filename: ./all/omx-panel_0.15.1_all.deb
+Size: 607644
+MD5sum: f493ae22faaede48447ec70e4d60486b
+SHA1: 0cd3b9a2cecdc1edf7687d78b067ed95f272436b
+SHA256: d65b992e4b8332e2c66436003220f98d218d9461bdc1be4b57e97c3bb50f64ae
+SHA512: f877cf2b76d8287db165f1cb3543bf8d08963c87f14a1fde4fc86252fe8710f419bedfefcff027b8092cb061c3cf00110051241bc508a86e39f7b58fc0e981d6
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: panels for LV2 and CLAP plugins, generated from what each plugin declares
  omx-panel makes panels for LV2 and CLAP plugins from what each plugin
@@ -5856,6 +6033,28 @@ Description: omx-panel renderer, development files
  libomx-panel-render.so link and the omx-panel-render pkg-config file, to
  build against the omx-panel renderer and its gesture reference.
 
+Package: libomx-panel-render-dev
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 41
+Depends: libomx-panel-render0 (= 0.15.1), libcjson-dev
+Filename: ./arm64/libomx-panel-render-dev_0.15.1_arm64.deb
+Size: 10988
+MD5sum: ffa6f6562f667adf92b93112ba787d2e
+SHA1: 842826264977f4971396bec82081f006844fafee
+SHA256: 0d9dcc21717b3e317e62a0289720a1df17fdf49adece75db53eb8150b32f9146
+SHA512: dd961e7532fe377915b83493ab96758ac656833a4f7edd7f552dd931e4750e40694018b18969c3474acafe88c767f2682cdc3587bb14ae041c0ed33aff053dbc
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, development files
+ The headers omx_panel_render.h and omx_panel_gesture.h, the
+ libomx-panel-render.so link and the omx-panel-render pkg-config file, to
+ build against the omx-panel renderer and its gesture reference.
+
 Package: libomx-panel-render0
 Architecture: arm64
 Version: 0.13.5
@@ -5948,6 +6147,29 @@ Description: omx-panel renderer, a library that draws a panel into a pixel buffe
  loads it at run time (Zynthian's panel view); its look, geometry and fonts
  are omx-panel's.
 
+Package: libomx-panel-render0
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 143
+Depends: libc6 (>= 2.35), libcjson1 (>= 1.7.5), omx-panel (= 0.15.1)
+Filename: ./arm64/libomx-panel-render0_0.15.1_arm64.deb
+Size: 56536
+MD5sum: fb5a39a76fe99a98ec980d9a95aedfe1
+SHA1: b980e101cb88651a9237098da85dcb510ab3fde5
+SHA256: f40e1fa5ff03562600d3895bc48b77903ef0c0760bf8854816aadacd8fe8ce28
+SHA512: 8b346caeab16edd8da3766e721cb211fc44e1ff3f607449fe998f8a0f9c1a29901bad0f138a80dc49d694606e96a59a8d55801561622859301e8075bd88c886a
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, a library that draws a panel into a pixel buffer
+ libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
+ pixel buffer and answers input with the one gesture vocabulary. A surface
+ loads it at run time (Zynthian's panel view); its look, geometry and fonts
+ are omx-panel's.
+
 Package: libomx-panel-store-dev
 Architecture: arm64
 Version: 0.15.0
@@ -5970,6 +6192,28 @@ Description: descriptions store of panel descriptions, development files
  omx-panel-store pkg-config file and the store's DDL (panel.sql), to build
  against the descriptions store.
 
+Package: libomx-panel-store-dev
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 31
+Depends: libomx-panel-store0 (= 0.15.1), libsqlite3-dev (>= 3.38.0~), libcjson-dev, libomx-domain-dev (>= 3.20.0~)
+Filename: ./arm64/libomx-panel-store-dev_0.15.1_arm64.deb
+Size: 6992
+MD5sum: 85ebd03eb2a05455a1f58415104fff58
+SHA1: 2921d73708db9eaae1999ac6a183769e22f92f40
+SHA256: 2883196a600a015910555ae4d617cf616ca8a2c23f2e36bcc5b2ea9db18cfca8
+SHA512: 247422d029e462c4db511bbc7e4760428f9e9eeea2d0410e3ff9a6c9bb545f4ae463a8da6bfc2ca324cbc96ee804c64e9dd0115519d0d0c57d53d66714f5b9ed
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, development files
+ The header omx-panel/omx_panel_store.h, the libomx-panel-store.so link, the
+ omx-panel-store pkg-config file and the store's DDL (panel.sql), to build
+ against the descriptions store.
+
 Package: libomx-panel-store0
 Architecture: arm64
 Version: 0.15.0
@@ -5986,6 +6230,28 @@ MD5sum: bcc5e018f5b5a8b24f70d24368dd8b8d
 SHA1: 37f8ec549e7a7f17e7ca34c08675febd3d23a62b
 SHA256: 874c9872c7b54580a759c54c742676827b358f12fd6c8fdc68de7632b0f4a976
 SHA512: 62f2b528541021a8f6b13d2204649a9ef4eb7388c4c7190fc0d7617ee9b0d78a0854cf1d2462e0c62124f4de8e25bfcdd7550418de6c8449cafc1534d9e60e0f
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, the library
+ libomx-panel-store.so.0 reads and writes the descriptions store: the base,
+ the system layer and the user layer of panel.sqlite, merged in that order of
+ precedence, its words checked against the panel domain.
+
+Package: libomx-panel-store0
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 79
+Depends: libc6 (>= 2.33), libcjson1 (>= 1.7.13), libomx-domain0 (>= 3.20.0~), libsqlite3-0 (>= 3.7.15), omx-panel-contract (>= 0.15.1)
+Filename: ./arm64/libomx-panel-store0_0.15.1_arm64.deb
+Size: 20004
+MD5sum: 74514dd8c68e114a41b61433888df312
+SHA1: 7344a8c5a84ba4252fb1739200923e515912e739
+SHA256: 778fd73ba7e753e7de048030397ed8b3737ca8b0a0b92833e4790e9867e9a2e6
+SHA512: 5aafdfe463413ed0b2f42f3ea7bd681d0f94cbc64539277e4098418ef621b301b633c966c593b5350028bd8a71b7d5c71326f6cdf0dd53350be35a6a456848ac
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: descriptions store of panel descriptions, the library
  libomx-panel-store.so.0 reads and writes the descriptions store: the base,
@@ -6960,6 +7226,29 @@ MD5sum: ae029428df568ca1963c912dbbc15d0e
 SHA1: 0b021d9182c3dab22f8ca9b32b51d7d63d11101f
 SHA256: 8eaf2415a94d8ecd94758bfc986065f4d5555d7e5c56566ef5032175db634d9d
 SHA512: 2041f55a1ae92a368fe6fc379ac2d03b6285c80c9396ea56e742e413cedb9060be5ed0481ad9794732a8a223aa2ea9638657793fbe63c1089d482c55d3249092
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, the command
+ The command omx-panel-store gets, puts and removes an entry of the
+ descriptions store (the base, the system layer and the user layer of
+ panel.sqlite) and checks the layers; omx-panel's tools and the console's
+ server call it.
+
+Package: omx-panel-store
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 80
+Depends: libc6 (>= 2.38), libcjson1 (>= 1.7.13), libomx-domain0 (>= 3.20.0~), libsqlite3-0 (>= 3.7.15), omx-panel-contract (>= 0.15.1)
+Filename: ./arm64/omx-panel-store_0.15.1_arm64.deb
+Size: 23160
+MD5sum: 3113b484f9faf3900c8d7be22d1bf129
+SHA1: 1abd161a710ca81ab6281049bc0cbef64299dcc4
+SHA256: 59d2e47d1214400ca7cec8926b69e5f4d0c5161fd458ab4985d367aba9ac2596
+SHA512: 23f7979f893cb8f8f929d76d7777ee4a1ef3eb2c1bfff370827d0e0e3e1c5149e8ac5ec48bb3ac2b25fa0032d1fdf7ebcde76befb861a4d6013e62c78453b9de
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: descriptions store of panel descriptions, the command
  The command omx-panel-store gets, puts and removes an entry of the
