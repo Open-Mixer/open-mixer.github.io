@@ -1,0 +1,45 @@
+omx-dsp (0.33.0) unstable; urgency=medium
+
+  * omx-dsp 0.33.0: the #101 entry says where the package installs
+  * release 0.33.0: the version in omxdsp.h, the spec, debian/changelog and
+    the TypeScript package
+  * omx-dsp-wasm: the loader is built by the package's pinned TypeScript
+  * omx-dsp-wasm ships its JavaScript loader beside the .wasm (ruling a)
+  * wasm-loader-check: the install check of omx-dsp-wasm, red until the
+    loader ships
+  * contract-include-selftest: the BUILDING.md prose check matches any
+    ceiling form in backticks
+  * omx-dsp: BUILDING.md names no ceiling, and the selftest refuses a ceiling
+    planted in deps.txt
+  * contract-include-selftest: BUILDING.md names no ceiling on omx-contract
+    (red)
+  * docs: the bench command is tools/curve-bench.sh --reps 1000, as run
+  * ts: curve-types.ts header says the interfaces moved from curve.ts and
+    their types come from the owner schema
+  * ts: butterworthQs stays (the loader's change had dropped a public export
+    the console imports, its agreement arm and the @twin line the fuzz
+    records count lines against); the q-range sabotage copies the curve
+    module its agreement test loads (ci run 44282152130)
+  * curve: a benchmark of the module against the twin it replaced (CPU per
+    call, peak memory, load time, precision), reproduced by
+    tools/curve-bench.sh (lane B4, part 4)
+  * ts: the loader test reads the module's WASI imports as a subset of the
+    five, as the debian build links three (the twins job on trixie)
+  * wasm: the stack first so an overflow traps, the stack sabotage cut to 16
+    bytes, and the package description wrapped to 80 columns (ci run
+    44150943329: debian cell and lintian)
+  * curve vectors through the WebAssembly door, with the native-against-wasm
+    report (lane B4, part 4)
+  * wasm-build: omx-contract's include directory with -idirafter, so an
+    installed one under /usr/include does not shadow the wasi sysroot (ci run
+    44149738383, both wasm cells)
+  * ts: @openmixer/omx-dsp loads the C as WebAssembly; the TypeScript curve
+    twin is deleted (lane B4, part 3)
+  * ts: the curve agreement test asks the WebAssembly module, and the
+    loader's own test (lane B4, part 3, red first)
+  * wasm: omx_curve_points_json as one module, packaged as omx-dsp-wasm and
+    in the npm tarball (lane B4, part 2)
+  * wasm: the build recipe, the module check and its sabotages, red until the
+    source exists (lane B4, part 2)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 18 Nov 2026 23:13:42 +0000

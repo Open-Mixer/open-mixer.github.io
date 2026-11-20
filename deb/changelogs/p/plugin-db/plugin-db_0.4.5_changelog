@@ -1,0 +1,25 @@
+plugin-db (0.4.5) unstable; urgency=medium
+
+  * release: 0.4.5, built against omx-contract 3.19.0 (D30)
+  * sabotages restored: the spec states no ceiling again
+  * sabotage (to be reverted): the spec states a ceiling for omx-contract
+  * sabotage (to be reverted): omx-contract-data is missing from
+    packaging/deps.txt
+  * deps: the deps-render check runs at pull request time, from
+    public-sources.yml, at the shared openmixer-v1 ref
+  * install-check: the Cflags arm builds without the host's plugin-db headers
+  * py sabotage: the English-read arm bites against omx-contract 3.19.0,
+    whose reader gives a bare-string entry no sentence; the fixture is an
+    {text, by} entry the reader reads
+  * deps: the spec and debian/control state the floors packaging/deps.txt
+    declares, and no ceiling
+  * deps: the floors are declared once in packaging/deps.txt, held by
+    deps-render (red)
+  * debian: python3-plugin-db depends on plugin-db exactly, as the spec does
+  * tests: a dependency between this source's packages has one shape in the
+    spec and in debian/control (red)
+  * ci: the heavy workflows run by dispatch and tags; the fast checks alone
+    on a pull request
+  * ci: the trigger gate on every pull request, red
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 17 Nov 2026 23:11:10 +0000

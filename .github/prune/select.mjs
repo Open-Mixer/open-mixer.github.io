@@ -27,6 +27,11 @@
 //                           judges what remains, over every architecture.
 // A drop overrides a pin on the versions it names (they are printed under 'dropped although pinned').
 // --only rpm|deb reads that half alone.
+// --cells fedora/44/x86_64,debian/trixie/amd64,... the cells the release matrix publishes (check-matrix, read by the
+// workflow). The invariant judges the binaries of those cells, and the noarch and all packages against those
+// architectures alone; a binary of an architecture outside the set (aarch64 rpm while the rpi5 builder is not up)
+// is kept and planned as before, but a skew that exists only there is not judged. Without --cells every
+// architecture of the tree is judged.
 // --skip-closure plans without the dependency closure, to see the plan invariant fail (a test uses it).
 // --check plan.json judges a plan already written: every kept package of it must still install from the kept
 // ones (exit 1 and the failures if not), and nothing is selected.
@@ -38,7 +43,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
-import { parseKeepList, keepEntries, missing } from './keeplist.mjs';
+import { parseKeepList, keepEntries, missing, pendingPins } from './keeplist.mjs';
 import { parseKeep, parsePrimary, parsePackages, selectRepo, parseDrop, unusedPins, pinsLost, uninstallable, judgeUninstallable, report } from './prune.mjs';
 
 const args = process.argv.slice(2);
@@ -80,6 +85,10 @@ async function main() {
   const tree = opt('--tree');
   const url = opt('--url');
   if (!tree === !url) throw new Error('give exactly one of --tree and --url');
+  if (args.includes('--require-files') && !tree) {
+    console.error('--require-files needs --tree: the files are checked on disk, and --url reads no disk; refusing rather than skipping the check');
+    process.exit(1);
+  }
   const rpmRepos = new Map(); // fedora/44 -> pkgs
   const debRepos = new Map();
   const listed = new Set();
@@ -117,6 +126,22 @@ async function main() {
     }
   }
 
+  // --require-files: every file an index lists is on disk where its own location says (the repodata href under
+  // the repository directory; a deb's Filename under its suite). A listed file that is missing is a channel
+  // inconsistency: it is named, and the run refuses before the plan, so nothing is ever half pruned.
+  if (args.includes('--require-files')) {
+    const absent = [];
+    for (const [format, repos] of [['rpm', rpmRepos], ['deb', debRepos]]) {
+      for (const [repo, pkgs] of repos) {
+        for (const p of pkgs) if (!fs.existsSync(path.join(tree, format, repo, p.file))) absent.push(`${format}/${repo}/${p.file}`);
+      }
+    }
+    if (absent.length) {
+      console.error(`the index lists ${absent.length} file(s) that are not on disk where it says: a channel inconsistency, refusing before any delete:\n${absent.sort().join('\n')}`);
+      process.exit(1);
+    }
+  }
+
   if (opt('--check')) {
     const kept = new Set(JSON.parse(fs.readFileSync(opt('--check'), 'utf8')).keep.map((r) => r.path));
     const bad = [];
@@ -127,6 +152,15 @@ async function main() {
     process.exit(bad.length ? 1 : 0);
   }
 
+  // the cells the release matrix publishes, judged alone (--cells); every architecture when none is named
+  const cellList = opt('--cells');
+  if (cellList !== undefined && !cellList.split(',').some(Boolean)) {
+    console.error('--cells is empty: the release matrix published no cells; refusing to judge nothing');
+    process.exit(1);
+  }
+  const cellSet = cellList === undefined ? null : new Set(cellList.split(',').filter(Boolean));
+  const judgedIn = (p) => !cellSet || p.arch === 'src' || p.arch === 'noarch' || p.arch === 'all' || cellSet.has(`${p.repo}/${p.arch}`);
+
   const results = [];
   const all = [];
   for (const [format, repos] of [['rpm', rpmRepos], ['deb', debRepos]]) {
@@ -135,7 +169,7 @@ async function main() {
       const r = selectRepo(pkgs, keep, { newest, closure: !flag('--skip-closure'), drop: drops });
       for (const row of [...r.keep, ...r.delete]) { row.path = `${format}/${repo}/${row.file}`; listed.add(row.path); }
       // only what the plan NEWLY breaks fails it; a dependent that already did not install is named, unchanged
-      const judged = judgeUninstallable(pkgs, new Set(r.keep.map((x) => x.file)));
+      const judged = judgeUninstallable(pkgs.filter(judgedIn), new Set(r.keep.map((x) => x.file)));
       r.uninstallable = judged.refused;
       r.alreadyUninstallable = judged.already;
       results.push(r);
@@ -164,6 +198,7 @@ async function main() {
     notes: results.flatMap((r) => r.notes),
     warnings: only ? [] : unusedPins(keep, all),
     missingPins: only ? [] : missing(keepLines, all),
+    pendingPins: only ? [] : pendingPins(keepLines, all),
     refused: results.flatMap((r) => r.refused || []),
     uninstallable: results.flatMap((r) => r.uninstallable),
     alreadyUninstallable: results.flatMap((r) => r.alreadyUninstallable),
@@ -173,6 +208,7 @@ async function main() {
   if (plan.orphans.length) console.log(`\nfiles no index lists (deleted):\n${plan.orphans.map((f) => '  ' + f).join('\n')}`);
   if (plan.notes.length) console.log(`\nnotes:\n${plan.notes.map((n) => '  ' + n).join('\n')}`);
   if (plan.alreadyUninstallable.length) console.log(`\nkept packages that already did not install before the plan (not its doing, not a refusal):\n${plan.alreadyUninstallable.map((n) => '  ' + n).join('\n')}`);
+  if (plan.pendingPins.length) console.log(`\nkeep-list floors pending (the channel serves no such package yet; not a refusal, resolved when it is served):\n${plan.pendingPins.map((n) => '  ' + n).join('\n')}`);
   if (plan.warnings.length) console.log(`\nkeep.yml pins that match nothing:\n${plan.warnings.map((n) => '  ' + n).join('\n')}`);
   const count = (rows, f) => rows.filter((r) => r.format === f).length;
   console.log('\nsummary:');

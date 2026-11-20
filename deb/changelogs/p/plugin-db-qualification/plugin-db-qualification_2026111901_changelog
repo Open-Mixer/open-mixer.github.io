@@ -1,0 +1,163 @@
+plugin-db-qualification (2026111901) unstable; urgency=medium
+
+  * release 2026111901: the qualification store reader and writer
+  * reader: the hosting exception is back: hosting words are passed over,
+    every other word is checked
+  * qualification_db: the hosting words are read from the installed
+    omx-clap-core package again
+  * tests: the hosting exception stays this pass (red)
+  * tests: the hosting exception restored, red (the hosting words are the
+    installed omx-clap-core package's)
+  * spec: the hosting exception stays this pass
+  * spec 6.1: what does not move
+  * spec: pqdb_number and pqdb_message
+  * spec 6.1: the stderr-kept check goes; adjust finds the install root
+  * reader: every path refuses a non-finite figure and writes numbers as
+    JSON.stringify does
+  * tests: pqdb_each and query --json refuse a non-finite figure and write
+    numbers as JSON.stringify does (red)
+  * tests: the contract fixtures hold QUALIFICATION_HISTORY_BLOCKERS
+  * tests: history_blocked.code checks QUALIFICATION_HISTORY_BLOCKERS (red)
+  * spec: a non-finite REAL is not-a-store
+  * reader: the record document is written under the C locale; a non-finite
+    REAL is refused
+  * qualification_db: history_blocked.code takes
+    QUALIFICATION_HISTORY_BLOCKERS and the reason.code items
+  * tests: history_blocked.code takes QUALIFICATION_HISTORY_BLOCKERS, red
+  * tests: the document under a comma locale; a non-finite REAL is refused
+    (red)
+  * spec: blockedBy words are their own item
+  * reader: plugin.name, the pool's DSP load and xruns, and history[] in the
+    record document
+  * tests: plugin.name, the pool's DSP load and xruns, and history[] in the
+    record document (red)
+  * qualification_db: plugin.name, the pool step's load and xruns, and
+    history[]
+  * tests: the seven fields of today's records the writer refused, red
+    (plugin.name, pool dsp load and xruns, history[])
+  * spec, schema: the seven fields a live writer run refused
+  * tests: the read-only snapshots skip the shared parent directory
+  * tests: the read-only snapshots must not see a neighbour (red)
+  * reader: latencyLineMs and latencyMs laid out as ECMAScript
+    Number::toString
+  * tests: numbers as JSON.stringify writes them (red)
+  * reader: the hosting exception is gone; every hosting column is checked
+  * qualification_db: the hosting words are read from the hosting domain
+    document again
+  * tests: the hosting words are a domain again, red (omx-contract 3.21.0
+    renders domain strings in this pass)
+  * tests: the hosting columns are checked like any other (red)
+  * spec 6.1: plugin-qualify's other qualification_dir users move to the store
+  * spec: the hosting exception is dropped; the hosting domain comes in this
+    pass
+  * reader: latencyLineMs, rules and latencyMs in the record document;
+    adapter hosts from their own item
+  * tests: latencyLineMs, rules, latencyMs and the adapter hosts' own item
+    (red)
+  * qualification_db: latencyLineMs, rules and latencyMs, and the adapter's
+    hosts
+  * tests: latencyLineMs, rules and latencyMs, and the adapter's hosts, red
+  * schema: the DDL takes latency_line_ms, rules and latency_ms
+  * spec: latencyLineMs, rules and a cell's latencyMs get columns; adapter
+    hosts are their own item
+  * README: the release proof runs in Fedora 45
+  * spec: name the schema-major segment of the hosting package path
+  * tests: the hosting skip's edges, in every hosting column
+  * reader: a column with hosting items skips only the hosting words; CI ends
+    the exception
+  * tests: a column of hosting and other words skips only the hosting words;
+    the exception ends by itself (red)
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * spec: the reader passes over hosting words only, and the end is held
+  * reader: pqdb_open does not open the hosting row and skips its columns
+  * tests: the reader opens a store whose hosting row no domain holds (red)
+  * qualification_db: the hosting words keep the label hosting in
+    store_domain and word_check
+  * spec: the hosting package path as the installer lays it out
+  * tests: store_domain and word_check name the hosting words 'hosting', at
+    the package's version (red)
+  * spec: the hosting exception, this pass only
+  * qualification_db: the hosting words are the codes of the package
+    omx-clap-core
+  * tests: the hosting words are the omx-clap-core package's, red (no hosting
+    domain)
+  * tests: case 21 holds non-ASCII text and control characters
+  * spec: the row judge reads a NULL host_extensions as [], as the probe
+    judge does; the verdicts key of query --json
+  * sets: a package that carries no set, or an image whose host class cannot
+    be read, fails the proof
+  * tests: an empty carry and an unreadable host class fail the proof (red)
+  * spec: what the writer and the reader met: put's offer and host class, a
+    CLAP probe that ended before the offer, layer-unknown, one schema version
+    in two places
+  * sets: the proof's count line gives the real numbers
+  * tests: the proof's count line gives the real numbers (red)
+  * command: the widened query, --records, counts, --layer, --scope and the
+    key rule in check
+  * check.yml: the layer writer's tests run in CI
+  * package: plugin-qualification-db-schema and plugin-qualification-db-write
+  * reader: pqdb_record_json and pqdb_counts
+  * tests: the source package grows from four binary packages to six, red
+  * plugin-qualification-db-write: the command, put and delete over the layer
+    writer
+  * tests: the command plugin-qualification-db-write, red (put, delete, every
+    refusal on standard error)
+  * qualification_db: the layer writer, put and delete with the section 3.7
+    refusals
+  * tests: the layer writer, red (put and delete of the user and system
+    layer, every refusal by name)
+  * tests: counts, whole records, the widened command and the key rule (red)
+  * reader: binary_path and layer in the query; the identity fields in the
+    result; pqdb_files
+  * tests: the identity fields, the per-file list and the binary_path and
+    layer filters (red)
+  * tests: the fixture stores hold item-root-relative paths and the binary's
+    list entry
+  * spec: the pin set's owner, the ownership section, rulings 10 and 11, the
+    release order
+  * spec: records/ is rewritten once; the builder and the writer refuse an
+    absolute path
+  * spec: rejudge works from rows only; every field the judge reads has a
+    column
+  * spec: plugin-qualify-sync reads and writes the store; the per-file pin
+    replaces probe.sha256 (ruling (a))
+  * sets: prove only the sets measured on the image's host class
+  * tests: the prove proves only the sets measured on the image's host class
+    (red)
+  * reader: PQDB_QUERY_ANY is a positional initializer
+  * tests: PQDB_QUERY_ANY compiles as C++11 and holds what it says
+  * reader: PQDB_QUERY_ANY
+  * tests: a query that starts from PQDB_QUERY_ANY
+  * hygiene: no bytecode files in the tree
+  * ci, packaging: diffutils for the reader job, the four package names in
+    the build test, a manual page, long file names
+  * release: the install-and-sync job on Fedora 45
+  * install: the .pc is made at install time; the symbols version is this
+    pass's release
+  * tests: the installed .pc says the prefix of its own install
+  * packaging: the reader's three packages beside plugin-qualification-records
+  * tools: red tests for the exact list of four binary packages
+  * ci: the reader builds and passes make check
+  * reader: the C library and its command
+  * reader: red tests for the C library and its command
+  * spec, schema: fractional reason params, adapter params
+  * spec: changes 1 to 3 remove nothing; the switch stops the files
+  * spec: the consumer switch is in this release pass
+  * schema and header: the qualification store's DDL and pqdb.h
+  * spec: probe, hosting and adapter words checked against their owners'
+    domains
+  * spec: tier_offered.tier holds hosting paths, checked by
+    QUALIFICATION_VERDICT_HOSTINGS
+  * spec: the qualification SQLite spec without a date in its name
+  * tools: qualify_floor, as it returns one floor
+  * docs: the qualification SQLite spec checks every word against its owner,
+    with the owner's rulings
+  * packaging: plugin-qualify floors only, no ceiling; add the deps-render job
+  * tests: the packaging states floors only, no plugin-qualify ceiling
+  * docs: spec for the qualification records in SQLite, a base database and a
+    user layer
+  * commit-msg: take the current stub from the checker's release line
+  * Move the commit-message checkout variable to OPENMIXER_DOTGITHUB
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 22:07:20 +0000

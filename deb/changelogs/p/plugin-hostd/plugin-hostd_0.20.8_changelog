@@ -1,0 +1,185 @@
+plugin-hostd (0.20.8) unstable; urgency=medium
+
+  * clients: the short forms of plan, plan_get and estimate are errors, as
+    protocol 0.7.0 made their trailing fields mandatory
+  * docs/guide.md: regenerated against plugin-hostd-protocol 0.7.0
+  * release 0.20.8: floors at plugin-hostd-protocol 0.7.0 and omx-clap-core
+    0.33.1
+  * release 0.20.8: the changelog entry names what main added since the
+    branch point
+  * packaging: build-depend on sqlite's development files, which the Debian
+    reader package does not pull in
+  * ci: the rpm job's artifact no longer shares the release build's name
+  * ci: the deb smoke compares the daemon version with the package's upstream
+    version
+  * ci: the deb smoke container adds the OpenMixer channel instead of a
+    hand-kept download list
+  * ci: the deb smoke installs every channel dependency the floors name
+  * proc: proc_term of a worker already stopped adds no second entry
+  * proc_term test: a worker stopped twice leaves one entry, none once reaped
+  * clients/ts: omx-contract is a floor only
+  * deps: the lockfile resolves @openmixer/omx-contract 3.20.2
+  * tests: the packaged daemon is checked to carry no test seam for the
+    qualification store
+  * ci: the deb jobs take their cells from check-matrix and run on the ARM
+    runner
+  * proc: the stopped-worker list grows instead of dropping past 64 (#153)
+  * clients/ts: the codec command decides "run, not imported" with isMain
+  * clients/ts: test the codec command through a symlinked bin (red)
+  * ci: the contract rpm's expected file list holds the machine and probe
+    domains
+  * qualification store: no protocol conf key, the test seam is a test-build
+    variable; queries start from PQDB_QUERY_ANY
+  * tests/consumer: a ledger of replace-keyed is a known kind of the protocol
+    0.6 header
+  * tests: the daemon makes no qualification directory
+  * tests/contract_derived: the generator test reads plugin-db's domain from
+    the installed contract directory too
+  * tests: a cell figure given as a number is read as itself
+  * qualcost: document the reader's header for the doxygen gate, and export
+    PKG_CONFIG_PATH in the temporary CI build
+  * ci: build the qualification reader from a pinned commit (temporary, until
+    libplugin-qualification-db is published)
+  * plugin-hostd reads qualifications through libplugin-qualification-db,
+    record files no longer read
+  * tests: the daemon tests put the figures in a qualification store, the
+    sabotage names the new reader
+  * tests: the qualification store fixtures take the installed DDL of
+    plugin-qualification-db
+  * ci: the rpm arch matrix is a plain list; protocol-gen: a miscounted LISTS
+    slot is a build error
+  * verbs_ahead: the four property verbs are answered by the daemon, so they
+    leave the declared-ahead list
+  * tests: plugin-hostd reads qualifications through
+    libplugin-qualification-db, red first
+  * probe schema: the plugin address formats are read from plugin-db's
+    domain, not typed in the template
+  * tests/ci_guards: the Fedora 44 scan matches any 44 in a Fedora list
+  * ci: Fedora 45 only (F44 dropped), as omx-dsp and omx-clap-core
+  * release: 0.20.8
+  * packaging: floors at plugin-hostd-protocol 0.6.0 and omx-clap-core
+    0.33.0, and no Breaks or Replaces between our packages
+  * machine domain: x-since is the domain version that added the item
+  * test: an item's x-since is the domain version that added it
+  * probe_words.h: document the X macros the enums expand
+  * probe domain: the reasons, outcomes, steps and signals a probe run writes
+    are a domain the loader opens (green)
+  * test: the probe domain: its items are the words the probe writes, and a
+    missing one is refused (red)
+  * machine domain: MACHINE_FAMILIES, and the probe writes the domain's
+    family word (green)
+  * tests: arm 8 of the machine domain test: MACHINE_FAMILIES and the probe's
+    family from the domain
+  * test: one tracked() for the tests that scan the tree
+  * tests: arm 2 walks the tree when git answers nothing
+  * test: the qualification domain test lists the tree when git refuses the
+    checkout
+  * Makefile: the format and verbs-alloc tests link the domain loader
+  * tests: the added latency method takes the next x-code
+  * machine.h: document the band words, the floor and the functions
+  * the daemon reads the installed contract directory only; a test build for
+    its tests (green)
+  * tests: the daemon reads no contract path from the environment (red)
+  * the daemon reads the machine domain where OMX_CONTRACT_PATH says (green)
+  * tests: the daemon reads the machine domain where OMX_CONTRACT_PATH says
+    (red)
+  * machine words: read from the machine domain through the loader (green)
+  * tests: the machine words are read from the machine domain at start-up
+    (red)
+  * machine domain: omx-contract fmt --contract-dir contract.d (green)
+  * tests: the machine domain is in the one formatting (red)
+  * plugin-hostd.spec: the machine domain is
+    %{omx_contract_domain_dir}/machine/
+  * packaging: plugin-hostd requires plugin-qualify-contract, the data
+    package that holds the qualification domain
+  * qualification_words.h: every parameter, return and macro is documented
+  * gitignore: no built library under tests/ is added again
+  * protocol-gen: one helper reads the items of any domain through the
+    loader; sabotage arms follow
+  * machine domain: the document as it left omx-contract, less the copied
+    descriptions
+  * machine words: contract.d/machine is plugin-hostd's domain, installed by
+    the installer's domain mode (green)
+  * tests: the machine words are plugin-hostd's own domain,
+    contract.d/machine (red)
+  * qualification words: the probe and the schema generator read
+    plugin-qualify's domain through the loader, no render here (green)
+  * tests: the qualification words are plugin-qualify's domain, read through
+    the loader, with no render here (red)
+  * sabotage: the pool's table name is a module function, not a lambda
+  * sabotage: an arm whose command fails is a named FAIL, not a traceback
+  * deps.txt: align the omx-clap-host row with the others
+  * tests: the no-pins sabotage arms plant into the lines as the floor re-cut
+    renders them
+  * deps: floors only, declared once in packaging/deps.txt (re-cut of #132 on
+    main)
+  * Make the chain-refusal arm tell a refusal from a death again
+  * describe fixture: the contract directory's MANIFEST names the digest of
+    role-meanings.json as it now reads (red: the describe test refused the
+    file as not matching its manifest)
+  * schema addresses: the descriptor writer, its fixtures and the
+    probe-output schema name https://openmixer.org/schema/, not a
+    code-hosting address
+  * perturbation: exempt the quiet-exit grace that shares the suspect
+    window's value
+  * Render the vocabulary with omx-contract 3.19.1
+  * Stop a worker without waiting for it to leave
+  * Test that stopping a worker that ignores SIGTERM does not hold the daemon
+    up
+  * Skip the suspect and blame logic for a worker the daemon stopped itself
+  * Test that a worker the daemon stops itself blames and drops nothing
+  * Ask a worker to leave before killing it, so it closes its JACK client
+  * tests: a worker the daemon gives up on is asked to leave before it is
+    killed
+  * doc_shrink: a remote base is fetched first, and a failed fetch is
+    refused, by name
+  * tests: a remote doc-gate base is fetched, and a failed fetch is red, by
+    name (red)
+  * doc_shrink: an empty DOC_GATE_BASE is refused, by name
+  * tests: an empty doc-gate base is red, by name (red)
+  * doxygen gate: it refuses a header without @file, a missing log, an unread
+    header and another doxygen
+  * tests: the doxygen gate proves doxygen read every header (red)
+  * docs(transforms.h): document the public API (baseline 119 -> 99)
+  * docs(history.h): document the public API (baseline 153 -> 119)
+  * docs(planner.h): document the public API (baseline 185 -> 153)
+  * docs(headers): the documented headers follow the review's style rules
+    (baseline 185 -> 185)
+  * grouping-reasons: the generator writes the docstring ruff's D rules want
+  * docs(writer.h): document the public API (baseline 200 -> 185)
+  * docs(json.h): document the public API (baseline 221 -> 200)
+  * docs(formats.h): document the public API (baseline 266 -> 221)
+  * docs(confine.h): document the public API (baseline 266 -> 266)
+  * docs(relay.h): document the public API (baseline 266 -> 266)
+  * docs(verbs.h): document the public API (baseline 266 -> 266)
+  * docs(session.h): document the public API (baseline 266 -> 266)
+  * docs(proc.h): document the public API (baseline 319 -> 291 -> 291)
+  * docs(supervisor.h): document the public API (baseline 445 -> 319)
+  * tests: the real-doxygen arm reads its header under the repository's
+    Doxyfile
+  * doxygen gate: doxygen writes throwaway HTML, so it reads @param and
+    @return
+  * tests: a fully documented function gives no doxygen warning (red)
+  * ci: the doc-gates job installs doxygen through tools/bounded-install.sh
+  * doc gates: the baseline and the noqa comments only shrink; --update only
+    lowers
+  * tests: the documentation gates only shrink, by mechanism (red)
+  * tests: the build and run arms pass the pkg-config step whatever is
+    installed
+  * tests: an arm for every test-consumer step, run under $(MAKE)
+  * test-consumer names its failing step and pkg-config's reason
+  * tests: test-consumer must name its failing step and pkg-config's reason
+    (red)
+  * tests: the listing shim copies an entry's d_reclen bytes, not a whole
+    dirent
+  * tests: the bundle rule's listing is the reverse of byte order, so its arm
+    can fail
+  * tests: the bundle rule's one-directory arm reads a listing the test sets
+    (red)
+  * Documentation gates by the standard tools: doxygen for C, ruff for Python
+  * tests: the dead sabotage-shard machinery goes, the package jobs run a
+    named smoke (test audit rows 1, 2, 11)
+  * Documentation gates: a C header comment ratchet and ruff D1 on the Python
+    clients
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 20 Nov 2026 01:05:15 +0000

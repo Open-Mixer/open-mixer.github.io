@@ -1,0 +1,62 @@
+plugin-qualify (0.20.5) unstable; urgency=medium
+
+  * release.yml: the install matrix holds no cell the build does not make
+  * hosting codes: regenerate for omx-clap-core 0.32.5, which adds
+    rtSafetyOwnThreads
+  * qualify: a killed jalv leaves its state directory in the run's scratch
+  * ca: translate qualify.compare.load-resp
+  * commit-msg: take the current stub from the checker's release line
+  * release 0.20.5: the changelogs name #62 (ZamVerb) and #61 (a pass that
+    ends on its own)
+  * Merge main into the lane: the decaying-patch curves are timing proofs
+    (#26)
+  * packaging: 0.20.5 floors plugin-hostd-protocol >= 0.5.9 and omx-dsp >=
+    0.32.1
+  * release: 0.20.5, built against the 3.18.0 pass's releases
+  * tests: a cost test's timing proofs read the load: warn on a loaded node,
+    fail on a quiet one
+  * test: a timing proof reads the load: it warns on a loaded node and fails
+    on a quiet one (red)
+  * test: the LV2 fixture set is 29 with synth-crash (#28)
+  * lv2-measure: a latency or cost pass that crashes ends alone as
+    probe-crashed (#28)
+  * test: a voice-curve pass that crashes ends alone and the run writes its
+    document (#28, red)
+  * lv2-measure: a pass in its own child hands back what it changed of the
+    run (#28)
+  * test: the LV2 fixture set is 28 with synth-decay (#26)
+  * test: the LV2 fixture set is 28 with stepped (#29)
+  * probers: an instrument's held notes are struck again as its cost is timed
+    (#26)
+  * test: a decaying CLAP patch's voice curve rises with the notes held (#26,
+    red)
+  * test: a decaying patch's voice curve rises with the notes held (#26, red)
+  * ci: the staging channel out again: an ordinary run builds against the
+    channel (D25)
+  * ci: every omx package comes from the channel, refused from staging;
+    staging added back to show it fire (red, D25)
+  * test: the repository.url sabotage keeps the value v0.20.2 shipped
+  * Contract files keep the $schema the floor's reader reads
+  * ci: an ordinary run builds against the channel, not the staging channel
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+  * lv2-measure: an integer port gets integers, a toggled port 0 or 1 (#29)
+  * measurement: readLifecycle keeps unmeasuredReason and unmeasuredDetail
+    (#28)
+  * lv2-measure: every pass that makes an instance runs in a child of its own
+    (#28)
+  * test: a lifecycle reading keeps the code of cycles the memory bound ended
+    (red)
+  * here: the facts of this machine for a plugin-db query, --json by
+    plugin-db's keys (#56)
+  * test: the measurer sends an integer port integers and a toggled port 0 or
+    1 (#29)
+  * test: a measuring pass gives its memory back, and a bound ends a pass,
+    not the run (red)
+  * release: a dispatch can catch a served version up (Open-Mixer/.github#49)
+    catch-up hands on to build-rpm.yml and build-deb.yml, which build and
+    publish only the cells of the set the version of source-ref lacks in the
+    channel and never rewrite a served file. The install-and-qualify job
+    skips, saying so, an image whose cell the catch-up did not build, and
+    qualifies the new one.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 16 Nov 2026 19:55:07 +0000

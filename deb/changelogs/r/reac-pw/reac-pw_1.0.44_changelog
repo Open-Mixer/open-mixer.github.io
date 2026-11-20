@@ -1,0 +1,92 @@
+reac-pw (1.0.44) unstable; urgency=medium
+
+  * release: 1.0.44
+  * meson: the usage test depends on the daemon it runs
+  * tests: reac_cli and reac_main_own read the protocol's numbers by name
+  * tests: reac_ifscan calls libreac's opt-in directly, with no weak shim
+  * tests: reac_ifscan is compiled from libreac's source, not linked to the
+    package
+  * ci, tests: the suite job fetches libreac source pinned by commit; the
+    no-pins guard names that one exception
+  * tests: the meson install_headers check is an if, not an and-or chain
+  * tests: the floor reader strips the comparator in the shell, not with sed
+  * tests: reac_ifscan no longer needs the host to own the NICs it makes up
+  * tests: the header list is one global name; BUILDING.md names the devel
+    packages
+  * tests: reac_ifscan names a missing interface instead of dying on it
+  * tests: the no-pins guard names one exception, the conformance job's
+    sibling
+  * docs: the note-after-a-value rule cites the reader's own line
+  * tests: a LIBREAC_SRCDIR that is set but is not a libreac checkout is
+    refused by name
+  * tests: a LIBREAC_SRCDIR that is set but is not a libreac checkout must be
+    refused by name (red)
+  * ci, build: libreac's source is pinned by commit, and the stale comments
+    about it are fixed
+  * ci: the suite job clones libreac main beside the checkout, so the
+    never-emitted arm runs
+  * docs, tests: a conf value with a note after it is refused, and the doc
+    says so
+  * reac-pw source: the rate-match test pins the clamp counter to a lock-free
+    32-bit atomic
+  * reac-pw: a bad plane is silent and the other planes keep playing; the
+    bad-buffer count is published
+  * tests: a bad plane is silent and the other planes keep playing (red)
+  * build: the sanitizer for the process-callback tests is an option, off by
+    default
+  * reac-pw source: 32-bit clamp counter, drop the unread accessor
+  * tests: three CLI front-door scripts become one
+  * tests: the process callbacks' bad-buffer cases cover every check
+  * tests: the slug and README checks fold into check-public-hygiene.sh
+  * reac-pw: the sink and source process callbacks check the stream buffer
+    before they touch it
+  * tests: the daemon's code list is read off src/, not kept by hand
+  * tests: the node process callbacks read and write out of bounds on a bad
+    stream buffer (red)
+  * reac-pw source: clamp the follower rate at the sink's bound, count it
+  * tests: delete the two meta-checkers that pinned nothing
+  * tests: the one-door sweep stops skipping, and loses its dead positive
+    control
+  * reac-pw source: route the follower rate through one pure helper, with a
+    test that is red
+  * main: conf REAC_RATE, REAC_BOX_CHANNELS and REAC_SRC_MAC are read whole
+  * tests: a conf REAC_RATE, REAC_BOX_CHANNELS or REAC_SRC_MAC with trailing
+    text is refused (red)
+  * tests: main.c's per-segment decisions, from conf key to listener, without
+    a daemon
+  * tests: reac-pw's own capture node code, compiled without PipeWire or a
+    wire
+  * tests: reac-pw's own sink node code, compiled without PipeWire or a wire
+  * cli: --rate and --box-channels read the whole argument as a number
+  * tests: reac_cli refuses a --rate or --box-channels with trailing text
+    (red)
+  * main: the command-line flag loop moves to reac_cli_parse, with a unit test
+  * cli: a MAC or head-amp cell with trailing text is refused
+  * tests: reac_cli refuses trailing text after a MAC or a head-amp cell (red)
+  * main: the flag and list parsers move to src/reac_cli.c, with a unit test
+  * tests: the devel check asserts no daemon line, so the producer scan
+    passes (#108)
+  * packaging: no consumer ceiling on libreac (floors only)
+  * tests: no consumer ceiling on libreac, floors only (#108, #110)
+  * packaging: reac-pw-devel / reac-pw-dev install the facts headers
+    consumers pin (#108)
+  * tests: the devel check reads the spec's %files and the floors-only rule
+    right (#108)
+  * tests: the devel package must ship the headers a consumer pins (#108)
+  * fuzz: the trunk probes ask the model first; the crash that found it is a
+    seed
+  * hearing: the cold ledger follows the override file live, and the knock
+    stays backed off (#99)
+  * hearing: a declared trunk's VLANs are minted cold and knocked on (#99)
+  * segconf: a trunk's VLANs declared once, [trunk <parent>] / vlans = ...
+    (#99)
+  * hook: the commit-msg stub as Open-Mixer/.github@openmixer-v1 ships it
+    today (#95)
+  * The shared workflows, the commit checker and the channel come from
+    Open-Mixer (#93)
+  * fuzz: five checks prove what their comments say
+  * Add a threat model
+  * release: no DEB after a failed RPM job; the shared commit-msg stub,
+    checked
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 17 Nov 2026 18:35:25 +0000
