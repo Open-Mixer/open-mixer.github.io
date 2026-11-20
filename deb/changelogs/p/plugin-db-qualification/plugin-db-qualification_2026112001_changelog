@@ -1,0 +1,144 @@
+plugin-db-qualification (2026112001) unstable; urgency=medium
+
+  * The changelog names the claimant command and the proof's findings
+  * The proof reads a sync that could not measure the records it refused as
+    UNPROVEN
+  * The proof installs the channel's omx-plugins and names the records it
+    cannot prove
+  * query --json --records takes --rate and --quantum and prints the
+    claimant's record, with its set
+  * Test: --records at a cell prints the claimant's whole record, with its
+    set (red)
+  * The proof records what plugin-qualify 0.20.7 takes per cell, against the
+    store rule's winner
+  * The install-and-sync proof expects the tier/date winner of the cell
+  * The changelog names the proof's settings file and the 0.20.7 floor
+  * The build test reads the arm64 floor from arch-classes
+  * The records package floors plugin-qualify at 0.20.7
+  * Floor tests: plugin-qualify 0.20.7 once, in the spec block and the deb
+    substvar (red)
+  * The proof writes the folders into plugin-hostd's settings file
+  * Proof tests: plugin-qualify's refusal of the moved keys, and the settings
+    file (red)
+  * debian/changelog: the 2026112001 entry names the release proof's base fix
+    (#41, #42)
+  * sets.py prove: the base database beside the classes is no class; its
+    absence fails
+  * tests: the proof's package installs the base database beside the classes
+    (red)
+  * release 2026112001: the sqlite records base, the reference-tier sets and
+    the absent base
+  * tests: the reader's symbols file names every function its header declares
+    (red)
+  * records-db: records go in the byte order of their whole paths where one
+    set's name begins another's
+  * records: the Pi re-measure's provenance names the one package its records
+    attest
+  * records: the Raspberry Pi re-measure joins as zynthian-vangelis-48000-256
+    and -96000-256, tier hardware
+  * tests: the Raspberry Pi re-measure is two sets of its own, tier hardware
+    (red)
+  * records-db: at one cell and one tier, the set measured later claims it;
+    console-only records kept, no verdict
+  * tests: at one cell and one tier, the set measured later claims it (red)
+  * check-records, tests: the merged tree's checks hold over the new sets
+  * records: the non-real-time run at 192000/128 joins as the set
+    fedora44-192000-128, tier provisional
+  * tests: the non-real-time run at 192000/128 is a set of its own, tier
+    provisional (red)
+  * records: the reference-tier sets take the migration's one-time rewrite,
+    as every set did
+  * records-db: the base holds back the console key and refuses a
+    console-profile set
+  * tests: the base holds back the console key; a console-profile set is
+    refused (red)
+  * records-db: a set's provenance cell is checked against its name and not
+    stored
+  * tests: a set's provenance cell is checked against its name, not refused
+    as unmapped (red)
+  * records-db: a cell both tiers hold is claimed by the reference tier,
+    whatever the set order
+  * tests: the base build gives a cell both tiers hold to the reference tier,
+    whatever the set order (red)
+  * check-records: a dry run or the console key in a set is refused by name
+  * tests: a dry run or the console key in a set turns the records check red
+    (red)
+  * records: the x86-64 reference-tier sets join as their own sets; the
+    reader answers with the reference tier
+  * tests: the x86-64 reference-tier sets join as their own sets, and the
+    reader answers with the reference tier (red)
+  * sets.py prove keys on the host class, not the OS name
+  * tests: sets.py prove keys on the host class, not the OS name (red)
+  * tests: the base database tests use the record's other-thread names
+  * README: the base is the existing records, every set; new measurements are
+    new sets
+  * Remove tools/replace-sets.sh and its test: qualification results are
+    stable
+  * store: the absent-base signal goes to stderr, stdout stays records
+  * store: an absent base is an empty base layer
+  * test: an absent base is an empty base layer (red)
+  * store: a cell's other-thread counts keep the record's names
+  * test: a cell's other-thread counts keep the record's names (red)
+  * tests: the replace-sets refusals are asserted by code and message
+  * replace-sets.sh: the runbook for a class measured again
+  * tests: tools/replace-sets.sh, the runbook for a class measured again, red
+  * sets.py import, and no amd64 deb in the release
+  * tests: sets.py import, and the deb release without amd64, red
+  * README: wrap the hosting exception line
+  * README: the hosting exception ends with the hosting domain
+  * README: name the spec in words, so the private-refs check passes on the
+    file
+  * README: rewritten for the store, the five packages and the hosting
+    exception
+  * package: no relations between this source's packages, and none to the
+    older per-set names
+  * tests: no relations between this source's packages, red
+  * packaging: the -dev packages pull sqlite3 and libomx-domain
+  * tests: the -dev packages carry what the .pc file requires (red)
+  * tests: the base database reads the hosting words from the omx-clap-core
+    package again (the hosting exception)
+  * tests: the base database's test contract carries
+    QUALIFICATION_HISTORY_BLOCKERS
+  * tests: the base database's test contract carries the pin-verdict and
+    history word items
+  * package: the omx-clap-core contract floor is 0.33.1, the release that
+    publishes the hosting domain
+  * tests: the hosting domain again, and its floor 0.33.1 (red)
+  * tests: the base database's test contract carries
+    QUALIFICATION_ADAPTER_HOSTS
+  * tests: the base database's store_domain holds the label hosting at the
+    package's version
+  * package: the omx-clap-core contract floor is 0.25.1, the first release
+    that declares the hosting words of records/
+  * tests: the base database reads the hosting words from omx-clap-core's
+    package, and its floor (red)
+  * tests: the measured-run fixtures take the section 3.7 form; check.yml
+    runs the rewrite tests
+  * records: rewritten once by tools/rewrite-records.py (binary.path
+    relative, hostExtensions added)
+  * rewrite-records: the one-off rewrite tool, and check-records refuses an
+    absolute binary.path
+  * tests: the one-off rewrite of records/, red (rewrite tool, check-records,
+    the form of the corpus)
+  * plugin-qualification-db-write: the command, put and delete over the layer
+    writer
+  * tests: the command plugin-qualification-db-write, red (put, delete, every
+    refusal on standard error)
+  * qualification_db: put and delete into a user or system layer, with the
+    section 3.7 refusals
+  * tests: the layer writer, red (put and delete of the user and system
+    layer, every refusal by name)
+  * qualification_db: write and export record_extension, host_extensions and
+    the other-thread columns
+  * tests: the columns of the row judge, red (record_extension,
+    host_extensions, rt_own_threads, rt_other_*)
+  * check: the base database round-trips records/ in CI, with the owners' own
+    words
+  * package: qualification.sqlite beside the sets, built from them
+  * records-db: --min-domain, and the BUILT_FROM placeholder in a checkout
+  * tests: red tests for the domain floor, the BUILT_FROM fallback and the
+    package
+  * records-db: the base database built from records/
+  * tests: red tests for the base database built from records/
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 20 Nov 2026 22:17:29 +0000
