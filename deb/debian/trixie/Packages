@@ -3478,6 +3478,32 @@ Description: whole plugin host stack: daemon, workers, plugins, qualifier
  omx-panel, the plugin panels in a browser, is a recommendation: install with
  --no-install-recommends for a machine with no screen.
 
+Package: plugin-hostd-full
+Architecture: all
+Version: 0.20.8
+Priority: optional
+Section: metapackages
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 8
+Depends: plugin-hostd (>= 0.20.8~), plugin-hostd-protocol (>= 0.7.0~), omx-clap-host (>= 0.33.1~), omx-plugins (>= 0.19.3~), plugin-qualify (>= 0.20.1~)
+Recommends: omx-panel (>= 0.13.0~), plugin-qualification-records (>= 2026110902~)
+Filename: ./all/plugin-hostd-full_0.20.8_all.deb
+Size: 2316
+MD5sum: b48bc38a36f9eeb4fec8cc246621f1c5
+SHA1: 8a5d0b2c3176d73f65bd186ca3d478e5312e0914
+SHA256: 5bfbbc6850fb3ac8fd0fba0a6017f06b5c88a7e1d5424ead09b329b4725595ea
+SHA512: d4d1c63d9b87d7fffa90234bc920975f7ed912994ae6f6aa7fa5633da41209904189521a803141fabf1b9dc86940b192b60b530aa417a3a1a645c47fc0aa8ad4
+Homepage: https://github.com/Open-Mixer/plugin-hostd-full
+Description: whole plugin host stack: daemon, workers, plugins, qualifier
+ Installs plugin-hostd with everything it runs plugins with: omx-clap-host,
+ the CLAP worker that also runs LV2 plugins through its adapter, the OpenMixer
+ plugins, plugin-qualify, which measures each installed plugin before it is
+ trusted live, and the qualification records of this machine's class, so the
+ plugins measured on a machine like this one are taken from the records.
+ .
+ omx-panel, the plugin panels in a browser, is a recommendation: install with
+ --no-install-recommends for a machine with no screen.
+
 Package: plugin-hostd-protocol-contract
 Architecture: all
 Version: 0.5.8
