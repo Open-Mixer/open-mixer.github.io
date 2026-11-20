@@ -3508,6 +3508,31 @@ Description: plugin-hostd protocol, its verbs in omx-contract's contract directo
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-hostd-protocol-contract
+Architecture: all
+Version: 0.7.0
+Multi-Arch: foreign
+Priority: optional
+Section: libs
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 66
+Depends: omx-contract (>= 3.19.1~)
+Filename: ./all/plugin-hostd-protocol-contract_0.7.0_all.deb
+Size: 13020
+MD5sum: 7822849b7b27bf083582211777753fdc
+SHA1: 1a2909d1eb400a33d64bb1219648d65ccfcfab32
+SHA256: dd587cbfe4d1ddd74a781a7e15d91aeefef82cbccdfd7b32e02db91e7943ab0d
+SHA512: f3172058fb03de172f5e115691c776805ec2cb5633768b2fad4d86d5a626caec1a95292cb4857ea3c3bf85844834a0d1e81b9363fa3a3f7068055f40dcfa77bb
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol, its verbs in omx-contract's contract directory
+ data/verbs.json of plugin-hostd-protocol, the verbs and reply codes
+ plugin-hostd adds to mod-host's protocol, as the package plugin-hostd-protocol
+ of omx-contract's contract directory, under
+ /usr/share/omx-contract/contract.d/3/plugin-hostd-protocol.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-hostd-protocol-l10n-ca
 Architecture: all
 Version: 0.5.8
@@ -3577,6 +3602,27 @@ Description: ca catalog of plugin-hostd-protocol's codes
  every surface that shows them on a host in that locale; without it a surface
  shows the English source sentence.
 
+Package: plugin-hostd-protocol-l10n-ca
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-ca_0.7.0_all.deb
+Size: 5352
+MD5sum: ccc79cae42d37e7dc8649622218bdbfc
+SHA1: 5fc3e86271113f7203e9bf92d9604901483f5c58
+SHA256: f1e4ee918bb41136f618311c0a60365818728aa7eed625713d2a891d4413f3a8
+SHA512: 08df245a977cb22eaee6b88a70b47975fd952398e0c50c6d4271438c867e1b6ce1a0599bb69d5a41cd662263eedf1c54e6c4b5f450bde6490be40daa32a517d6
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: ca catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language ca, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
 Package: plugin-hostd-protocol-l10n-de
 Architecture: all
 Version: 0.5.8
@@ -3634,6 +3680,27 @@ MD5sum: 7f9ecc148971a514bd6809c1b996b0f0
 SHA1: f4104abcba21ccae1c1f0baeb272f75c9200ec71
 SHA256: 81d7b39bd5be3ca05fac2c6c15b9aa857f955d96ccc6777e4ce693670f1875ec
 SHA512: c2cacc6d43857cc99070ab5e7658b81a56a212979bd14f88d2a8a63c7e6c9612a27013a33159cbd1ba0d6a55196ca6c0553af54985741c1cd9f2e3809a4c516b
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: de catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language de, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-de
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-de_0.7.0_all.deb
+Size: 7228
+MD5sum: d5efa3b5a955bf03edc35e858240f6bf
+SHA1: 1456ede96770b2c2c55f5c6a372e78f887a5b102
+SHA256: 1437eafaa25e7169ac9110bd477e0922692db757cb824f0c45347597cd062afd
+SHA512: ce258ddbc19e0c7f98d8353a2bf7dc765f53b8f5d091df4c9c476ca97e66dd6293443516a11a0e088bbf3ea0752244331c145f2fa4ef53f19cda33a155ca7dcf
 Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
 Description: de catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language de, read by
@@ -3703,6 +3770,27 @@ Description: es catalog of plugin-hostd-protocol's codes
  every surface that shows them on a host in that locale; without it a surface
  shows the English source sentence.
 
+Package: plugin-hostd-protocol-l10n-es
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-es_0.7.0_all.deb
+Size: 7004
+MD5sum: b258acd9fa83b97242747a8afe1757b5
+SHA1: 8da0925e563bddcce38fba10c48564dfa1ae1b50
+SHA256: 2848a0dd419cd4e45e564c089a8f4df2a950a8edf3cb5654e1c2600744461414
+SHA512: f1749ed69444eb76f643755bb7b950e90c2a1cc175e6d6ebfc56b2c4f14b671d13c67853b5c451117a2d4092dbf0f785f55a8036a890c3d3846f0b07843ef38d
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: es catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language es, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
 Package: plugin-hostd-protocol-l10n-fr
 Architecture: all
 Version: 0.5.8
@@ -3760,6 +3848,27 @@ MD5sum: 707edc2e9db15bd9eeece0318a6fb39e
 SHA1: 07607444715cd498cebf672295d58675b1709a64
 SHA256: 6d4dbf3694507f57d8f412e16cdda3e9093e2155e2289ea09e30d4ed0cfed765
 SHA512: 53a09da28d97226d0e4d0b5da6a7ad733c5bf189e48640f9757231db90d2d8ec68360ca609f5d1e1212ff60e75ebb2dcb5cc34236d7d6a35160592bc4b9a1fef
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: fr catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language fr, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-fr
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-fr_0.7.0_all.deb
+Size: 7144
+MD5sum: 0898a2757b1c360152d99cb446ddd7ac
+SHA1: de89cbb5d3c31937329bb3781b162f922f23838d
+SHA256: f9cca30a4ab0158ed9769e2c4045b25fd9df035dd03a148a7519822d822e0d02
+SHA512: d9d421b21e639c01e30b9657881a5736af8bfe45f2661a8cc2421ea304b2d96119af3a891a06e0b113f2569c818c2c47f94400a236139be138cb26173a3d0351
 Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
 Description: fr catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language fr, read by
@@ -3829,6 +3938,27 @@ Description: it catalog of plugin-hostd-protocol's codes
  every surface that shows them on a host in that locale; without it a surface
  shows the English source sentence.
 
+Package: plugin-hostd-protocol-l10n-it
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-it_0.7.0_all.deb
+Size: 7036
+MD5sum: 642734ad124d90f3b2019855e77e3cd3
+SHA1: 747b3e696a0331b6193a3af1ed867ed7d68ba5b2
+SHA256: 9ea69634e6594c75d5f5cda9cc3fd84799bed0992a94623bdf31888b5d34f0bc
+SHA512: 2be0835559c89d192b2ffe416833768fd1267108dfbe356e6797cf2aa7d506de2de80ef775b8e2b62d0879e15587f7bd06d54d23a5e7ea2c392ca65fc7e9a3a5
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: it catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language it, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
 Package: plugin-hostd-protocol-l10n-pt
 Architecture: all
 Version: 0.5.8
@@ -3886,6 +4016,27 @@ MD5sum: f42205832ab4f83bf4cddfa566ca0198
 SHA1: 67fb08f6410a90cf561d5924cfc5195df9d0158d
 SHA256: 48d9f91bf94d072e7c5a417cdd5f314daa3c70830a8bd18b73b6a10dcd3cf484
 SHA512: 9589b588dc54fe0db4c5c1426752667f9c6edac6efe37f4ecc51ab55e8458306a6750a54db967bb2ddea8b4ad2d2b6413fa6a211ef4337bd05104942dff7c63e
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: pt catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language pt, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-pt
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-pt_0.7.0_all.deb
+Size: 6984
+MD5sum: 60f0f31ab2065e1c3c6af8786500dfaf
+SHA1: 74636919817d93de7fcfb1c3f44624e6485e5c5e
+SHA256: 705f506c453593b95b6f55e8a3ecd270eaa6d9db7f04b880f0244746f965e39d
+SHA512: b95d23875a007a382d366aed17ae638bee692ba313b8815fe717f16c9635f422a1844555840c58c83dcddbcc52d4b09a3ab730e8437823e4f741ca0d1932b117
 Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
 Description: pt catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language pt, read by
@@ -4487,6 +4638,34 @@ Description: plugin-hostd line protocol, its Python client
  .
  Its documentation is on openmixer.org.
 
+Package: python3-plugin-hostd-client
+Architecture: all
+Version: 0.7.0
+Multi-Arch: foreign
+Priority: optional
+Section: python
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 17
+Depends: python3
+Filename: ./all/python3-plugin-hostd-client_0.7.0_all.deb
+Size: 4336
+MD5sum: f62830960f610455838b4f526b4248a3
+SHA1: a2b766429ececdd17d0a2c7f663a1b956ba40199
+SHA256: 1aee42720f105e6c6508632071788357cbb7e76e39f075d9c43161e15c3bd549
+SHA512: 16c70ce90749f54ae6cda594c6247cd95655c27c3971943e9e0735c68a2e346bc8a4243614a7b07310d53926763fdce950d9f7be355f32b5f24118dc843e6d07
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd line protocol, its Python client
+ plugin_hostd_client, the Python client of the plugin-hostd line protocol: a
+ command is one line ended by a NUL, a reply one NUL-ended line; send,
+ try_send (a timeout or a closed peer named, never raised) and expect. The
+ transport every test of plugin-hostd, omx-clap-host and the controllers
+ imports; the codec of the declared commands and replies is
+ plugin_hostd_protocol. plugin-hostd-tests before 0.21.0 carried the same
+ module under /usr/libexec/plugin-hostd/tests/lib.
+ .
+ Its documentation is on openmixer.org.
+
 Package: python3-plugin-hostd-protocol
 Architecture: all
 Version: 0.6.0
@@ -4503,6 +4682,33 @@ MD5sum: 9880be41bcff8dcc9f3dfb3e75e58541
 SHA1: 89c3e2107a492a3daee201ba871380f64d96e27d
 SHA256: e5b3856ba30e455170b60f8049791e4012c9b6da22e0819df44d6c358a2ebc86
 SHA512: cb8b71ebc691bab351dcaa5983c39efb64a9b9e9cdce955b854e3db033bf52d0f2ef998387350ee0514d15ae4383f7480b3ca568f50eab6f3ce276298c552f17
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol, its Python codec
+ plugin_hostd_protocol: one codec over the files plugin-hostd-protocol
+ installs, which encodes and decodes every command the protocol declares,
+ parses the replies, feedback lines and protocol errors, and gives each reply
+ code its sentence. A controller speaks the protocol through it and restates
+ nothing; the npm package @openmixer/plugin-hostd-client is the same codec in
+ TypeScript. The transport is plugin_hostd_client.
+ .
+ Its documentation is on openmixer.org.
+
+Package: python3-plugin-hostd-protocol
+Architecture: all
+Version: 0.7.0
+Multi-Arch: foreign
+Priority: optional
+Section: python
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 48
+Depends: python3, libplugin-hostd-protocol0 (>= 0.5.8~), plugin-hostd-protocol-contract (>= 0.5.8~), omx-clap-core-contract (>= 0.32.3~), omx-contract (>= 3.19.1~), omx-contract-data (>= 3.16.0~)
+Filename: ./all/python3-plugin-hostd-protocol_0.7.0_all.deb
+Size: 12916
+MD5sum: 2cbb9ffb1ea24aa86118e04806aba484
+SHA1: a534bb975bd858a78df9df8b9240d58ec75422b5
+SHA256: 5412ff3b9b975ac40f8326444fea0123394d24aa24bc35066d3bec0f05b60b54
+SHA512: 30048642f61439e6f35e52c0e91c5d92d7d6f0c45478d112c7cca02e6b86244c076fef3ba31ecffc03b29d1fc00bd3e227efd22ba1d608ff5dec74cbe20c658e
 Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
 Description: plugin-hostd protocol, its Python codec
  plugin_hostd_protocol: one codec over the files plugin-hostd-protocol
@@ -5670,6 +5876,35 @@ Description: plugin-hostd protocol library, development files
  .
  Its documentation is on openmixer.org.
 
+Package: libplugin-hostd-protocol-dev
+Architecture: arm64
+Version: 0.7.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 584
+Depends: libplugin-hostd-protocol0 (= 0.7.0)
+Filename: ./arm64/libplugin-hostd-protocol-dev_0.7.0_arm64.deb
+Size: 102088
+MD5sum: c7c86a991a887a5d579cca912d36818b
+SHA1: 05a7ce519c1db425b11b19c28d62ff58e00f3947
+SHA256: 00839179c0bb379ccbd0047eca53173c1d857039d7664ae82a406ed12bd0c1c9
+SHA512: c1107512bd9ef160b754a77675d243ef24f3914350c8ad33fe694b48450be9b0cbd1c6be85106323b1a4482087b9c61cf1d59c80d812089e568b2efd9068eb73
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol library, development files
+ Headers, the pkg-config file, the scenario corpus and its runner of
+ libplugin-hostd-protocol. The headers have the names and the API of
+ libmod-host-protocol's, so a host built against mod-host-protocol changes only
+ the package name it asks pkg-config for.
+ .
+ It also carries the declared protocol: plugin-hostd/protocol.h and the
+ headers it includes, the one verb table, the grammar of a line in ABNF, and
+ the protocol as JSON, each named by a pkg-config variable.
+ .
+ Its documentation is on openmixer.org.
+
 Package: libplugin-hostd-protocol0
 Architecture: arm64
 Version: 0.5.8
@@ -5734,6 +5969,30 @@ MD5sum: b61172a71c747b269efb721c445c2ffe
 SHA1: 9dab35d3e033c59fea1e26c3d5b41dd1df74caf9
 SHA256: e3b5673e1fcf96167ddea5f896756ff9fcbd5be074385b2703b162f446770487
 SHA512: d1e4f2e24621bea9d25451a94a5a377c23d71d0a58d038f0359064bbecf994159846c8c74f168c80481f289991c6972ae5036cbe90a150a2008d8747c6666c9c
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol library, a superset of mod-host's text protocol
+ The socket server, line protocol and command dispatch that plugin-hostd and
+ omx-clap-host answer their controllers with: mod-host's text protocol, so any
+ mod-host client works unchanged.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libplugin-hostd-protocol0
+Architecture: arm64
+Version: 0.7.0
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 326
+Depends: libc6 (>= 2.38)
+Filename: ./arm64/libplugin-hostd-protocol0_0.7.0_arm64.deb
+Size: 63304
+MD5sum: 58ee118a5eabe776c71ffefb94557792
+SHA1: 89fcecd692fe96af2f066cce48e15d5fdfb11842
+SHA256: 5203da15f6149833be9b8e5f49010792aaa84e6eca36064afb53cc830bca67bd
+SHA512: 706682642fe2059f1401f637238fe91334186dbc3d890e755959a2b53df8930911b3f170222f9399b30aff165598b15b400011fc4e678a21cc34f9e9dbf0ade7
 Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
 Description: plugin-hostd protocol library, a superset of mod-host's text protocol
  The socket server, line protocol and command dispatch that plugin-hostd and
