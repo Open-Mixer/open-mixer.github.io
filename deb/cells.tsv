@@ -67,6 +67,7 @@ libomxdsp-dev	0.32.3	quick	trixie/arm64
 libomxdsp-dev	0.32.4	quick	trixie/arm64
 libomxdsp-dev	0.33.0	quick	trixie/arm64
 libomxdsp-dev	0.33.1	quick	trixie/arm64
+libomxdsp-dev	0.34.0	quick	trixie/arm64
 libplugin-hostd-protocol-dev	0.5.5	-	bookworm/amd64 bookworm/arm64
 libplugin-hostd-protocol-dev	0.5.7	-	bookworm/amd64 bookworm/arm64
 libplugin-hostd-protocol-dev	0.5.8	quick	trixie/arm64
@@ -202,8 +203,10 @@ omx-dsp-contract	0.32.3	quick	trixie/all
 omx-dsp-contract	0.32.4	quick	trixie/all
 omx-dsp-contract	0.33.0	quick	trixie/all
 omx-dsp-contract	0.33.1	quick	trixie/all
+omx-dsp-contract	0.34.0	quick	trixie/all
 omx-dsp-wasm	0.33.0	quick	trixie/all
 omx-dsp-wasm	0.33.1	quick	trixie/all
+omx-dsp-wasm	0.34.0	quick	trixie/all
 omx-panel	0.13.5	-	bookworm/all trixie/all
 omx-panel	0.13.7	-	bookworm/all trixie/all
 omx-panel	0.13.8	quick	trixie/all
@@ -248,10 +251,12 @@ omx-rt-gate	0.32.3	quick	trixie/arm64
 omx-rt-gate	0.32.4	quick	trixie/arm64
 omx-rt-gate	0.33.0	quick	trixie/arm64
 omx-rt-gate	0.33.1	quick	trixie/arm64
+omx-rt-gate	0.34.0	quick	trixie/arm64
 omx-rta-read	0.32.3	quick	trixie/arm64
 omx-rta-read	0.32.4	quick	trixie/arm64
 omx-rta-read	0.33.0	quick	trixie/arm64
 omx-rta-read	0.33.1	quick	trixie/arm64
+omx-rta-read	0.34.0	quick	trixie/arm64
 openmixer-release	1	-	bookworm/all trixie/all
 plugin-db	0.4.0	-	bookworm/amd64 bookworm/arm64
 plugin-db	0.4.1	-	bookworm/amd64 bookworm/arm64
