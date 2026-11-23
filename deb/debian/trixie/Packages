@@ -2961,6 +2961,28 @@ Description: OpenMixer plugins' descriptors in omx-contract's contract directory
 
 Package: openmixer-release
 Architecture: all
+Version: 1-10
+Multi-Arch: foreign
+Priority: optional
+Section: admin
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 20
+Filename: ./all/openmixer-release_1-10_all.deb
+Size: 4324
+MD5sum: da7777f191e47eab25675124df97781a
+SHA1: 04fe301fc1269a90383579ab567d0e88e378f2c8
+SHA256: e55fd5d462f5c94d875bd1df3628de322a96b3e1a21815f57414e88998925307
+SHA512: 3a9862bbca7fbe8d2ec39fa3fbcf8463613a58ef2ef1460f43f9cda5769d94a30d7ecd17f84ffdcba767a17f24cb6e7d17bca805263067e9afcced6ab054358a
+Homepage: https://www.openmixer.org
+Description: OpenMixer package repository configuration for apt
+ Adds the apt source of the OpenMixer repository, which carries the OpenMixer
+ console and its plugin hosts, with the key that signs its index. The source
+ names the Debian release of the system it is installed on (bookworm or
+ trixie, Raspberry Pi OS included). apt upgrade keeps this configuration
+ current.
+
+Package: openmixer-release
+Architecture: all
 Version: 1-4
 Multi-Arch: foreign
 Priority: optional
