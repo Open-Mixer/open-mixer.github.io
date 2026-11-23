@@ -18,6 +18,26 @@ Description: CLAP audio plugin API headers
  CMake files. Debian carries no package of them; this one is published by
  FreeMixer for the -dev packages of CLAP hosts, which Build-Depend on it.
 
+Package: freereac-release
+Architecture: all
+Version: 1-2
+Multi-Arch: foreign
+Priority: optional
+Section: admin
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 20
+Filename: ./all/freereac-release_1-2_all.deb
+Size: 4000
+MD5sum: 8c29f34804e27d36b6cef386960004d8
+SHA1: 5cfa5fcaecbe191829dd63683bfd11dec87db4a2
+SHA256: ca56ab16d726006ee6793caa01103f9f0940264b63a45cd7f480cc858a4042d5
+SHA512: 9ae593b8c580d93ce00afa1e5f70d4ff7d0d89a2f4277b90b9fa3e4c8f214468ab099097d9e874b133365e4eeb2ff0fd12c926bde67e9bd4d602f9adb667e10f
+Homepage: https://freereac.github.io
+Description: FreeREAC package repository configuration for apt
+ Adds the apt source of the FreeREAC repository, which carries libreac, reac-pw
+ and reac-stageboxes, with the key that signs its index. apt upgrade keeps this
+ configuration current.
+
 Package: libomx-contract-dev
 Architecture: all
 Version: 2.6.0
