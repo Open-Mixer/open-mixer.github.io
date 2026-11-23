@@ -285,6 +285,29 @@ Description: one shared source of truth for every OpenMixer knob, range, default
  .
  Its documentation is on openmixer.org.
 
+Package: omx-clap-contract
+Architecture: all
+Version: 0.34.0~git1795461597.8d263d3
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Depends: omx-contract-data (>= 3.21.0~)
+Filename: ./all/omx-clap-contract_0.34.0~git1795461597.8d263d3_all.deb
+Size: 50660
+MD5sum: 70d849439dbcfc113c8d58f3cf5c03ba
+SHA1: 85401103f566ee65a95719135541797ad38c10c6
+SHA256: adb106e8bf5a6a2da12067ca4b92dbbf494b9d4b2cb7970292ee05282533908e
+SHA512: d4d94b5ed49e3f0cb06440dc20583350e23cee823740665d41d013b05446ebe9bd5add3f82ab1350ddb4ae39789525595ffdd208abac2d6cba3a2aacb0a8921c
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: omx-clap's definitions in omx-contract's contract directory
+ omx-clap's definitions as files in omx-contract's contract directory,
+ for any program that reads them at run time: the hosting limits and refusal
+ codes, and the verbs omx-clap-host and plugin-hostd answer, with their
+ formats, replies, refusal codes and what each host owes each verb.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-clap-core-contract
 Architecture: all
 Version: 0.32.3
