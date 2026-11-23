@@ -3272,6 +3272,32 @@ Description: OpenMixer package repository configuration for apt
 
 Package: openmixer-release
 Architecture: all
+Version: 1-11
+Multi-Arch: foreign
+Priority: optional
+Section: admin
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Filename: ./all/openmixer-release_1-11_all.deb
+Size: 4916
+MD5sum: 4eca2e9abfaff4c4e8a5dafac3fadb95
+SHA1: 13e8d7ef5e6e637fc4b784f81b5cfb52925466e4
+SHA256: d0c66be783fb56a56de2ed20bb85464f34d5aa75b566b172682b85edf5b7048a
+SHA512: 621a8d83113d0381b52faa6f6eabfacbff055f5679cd4e3002094b40ee6d2c48281e9ceed2d0fa8981ff568ec3dc4745b7c2dbb08f923c663acddf31e21aae59
+Homepage: https://www.openmixer.org
+Description: OpenMixer package repository configuration for apt
+ Adds the apt source of the OpenMixer repository, which carries the OpenMixer
+ console and its plugin hosts, with the key that signs its index. The source
+ names the Debian release of the system it is installed on (bookworm or
+ trixie, Raspberry Pi OS included). apt upgrade keeps this configuration
+ current.
+ .
+ It also adds the testing source, openmixer-testing.sources, disabled: the
+ builds a release wave has proved before their release, as Fedora's
+ updates-testing. Setting Enabled: yes in it is the whole opt-in.
+
+Package: openmixer-release
+Architecture: all
 Version: 1-4
 Multi-Arch: foreign
 Priority: optional
