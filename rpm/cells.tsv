@@ -2,7 +2,6 @@
 clap-devel	1.2.10	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 diginet-tools	0.1.10	quick	fc44/x86_64 fc45/x86_64
 diginet-tools	0.1.9	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
-freereac-release	1	-	fc45/noarch
 libdiginet	0.1.10	quick	fc44/x86_64 fc45/x86_64
 libdiginet	0.1.8	-	fc44/aarch64
 libdiginet	0.1.9	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
@@ -21,11 +20,6 @@ libplugin-qualification-db	2026111901	quick	fc45/x86_64
 libplugin-qualification-db	2026112001	quick	fc45/x86_64
 libplugin-qualification-db-devel	2026111901	quick	fc45/x86_64
 libplugin-qualification-db-devel	2026112001	quick	fc45/x86_64
-libreac	1.11.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
-libreac-devel	1.11.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
-libreac-tests	1.11.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
-libreac-transport	1.11.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
-libreac-transport-devel	1.11.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 libsurface	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 libsurface-devel	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 libsurface-diginet	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
@@ -383,8 +377,4 @@ python3-plugin-hostd-client	0.6.0	quick	fc45/x86_64
 python3-plugin-hostd-client	0.7.0	quick	fc45/x86_64
 python3-plugin-hostd-protocol	0.6.0	quick	fc45/x86_64
 python3-plugin-hostd-protocol	0.7.0	quick	fc45/x86_64
-reac-pw	1.0.43	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
-reac-pw	1.0.44	quick	fc44/x86_64 fc45/x86_64
-reac-pw-devel	1.0.44	quick	fc44/noarch fc45/noarch
-reac-stageboxes	0.1.0	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 surface-c24	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
