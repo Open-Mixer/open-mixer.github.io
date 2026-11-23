@@ -5518,6 +5518,32 @@ Description: first test of a Digidesign Control|24 or ProControl
  .
  Its documentation is on openmixer.org.
 
+Package: jackd2
+Architecture: arm64
+Version: 1.9.22~dfsg-4+omx1
+Priority: optional
+Section: sound
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Installed-Size: 1099
+Provides: jack-daemon
+Depends: debconf (>= 0.5) | debconf-2.0, libjack-jackd2-0 (= 1.9.22~dfsg-4+omx1), python3-dbus, python3:any, libasound2t64 (>= 1.0.29), libc6 (>= 2.38), libdbus-1-3 (>= 1.10), libexpat1 (>= 2.0.1), libgcc-s1 (>= 3.0), libopus0 (>= 1.3.1-2~), libsamplerate0 (>= 0.1.7), libstdc++6 (>= 13.1), libsystemd0
+Recommends: jack-example-tools, libpam-modules, qjackctl
+Suggests: jack-tools, meterbridge
+Conflicts: jack-daemon
+Replaces: jack-daemon
+Filename: ./arm64/jackd2_1.9.22~dfsg-4+omx1_arm64.deb
+Size: 195100
+MD5sum: b540c98592e590ce84df93cfe778f861
+SHA1: 9d966dc2cbafc8e91393ff49a03a948564c0486a
+SHA256: 8c0ab20b0606357ef5d3843a4197bd4b577e4e683c3b818d1aff3f653441eb73
+SHA512: 9564f4f0ab66ec7344b2b9644f47b25558ed62fc15d8ea9d05be09d84757224879c60d2d5a3c0d06026769fd3e3c83410d8e6d7a1c14dd78d47c1919db687151
+Homepage: https://jackaudio.org/
+Description: JACK Audio Connection Kit (server and example clients)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the daemon jackd.
+
 Package: libdiginet-dev
 Architecture: arm64
 Version: 0.1.10
@@ -5677,6 +5703,60 @@ Description: protocol library for the Digidesign Control|24 and ProControl
  memory-writing message family.
  .
  Its documentation is on openmixer.org.
+
+Package: libjack-jackd2-0
+Architecture: arm64
+Version: 1.9.22~dfsg-4+omx1
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: jackd2
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Installed-Size: 1277
+Provides: libjack-0.116, libjack-0.125
+Depends: libc6 (>= 2.38), libdb5.3t64, libgcc-s1 (>= 3.0), libopus0 (>= 1.3.1-2~), libsamplerate0 (>= 0.1.7), libstdc++6 (>= 14)
+Suggests: jackd2 (= 1.9.22~dfsg-4+omx1)
+Conflicts: libjack-0.116, libjack-0.125, libjack0
+Replaces: libjack-0.116, libjack-0.125
+Filename: ./arm64/libjack-jackd2-0_1.9.22~dfsg-4+omx1_arm64.deb
+Size: 266216
+MD5sum: 93812a12de2e6b5e8090ddac9b9721ca
+SHA1: f1dbacbe492e93af4af4ca24ff42bdc7788f90d1
+SHA256: 3543a66a036a603672be9e1af248c98346cc985b1ced0d0be1a62850c46723d0
+SHA512: 9ba635575011778b318d565c52b26884c0a3de37e1b739ea90c6ea442868e7fc1f9c903e619f0bd42ce9dd0559b82352c2606056b5988327d6e5aba28efb006f
+Homepage: https://jackaudio.org/
+Description: JACK Audio Connection Kit (libraries)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the shared libraries.
+
+Package: libjack-jackd2-dev
+Architecture: arm64
+Version: 1.9.22~dfsg-4+omx1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: jackd2
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Installed-Size: 244
+Provides: libjack-dev, libjack-dev-session, libjack0.100.0-dev
+Depends: libjack-jackd2-0 (= 1.9.22~dfsg-4+omx1)
+Conflicts: libjack-dev
+Breaks: libjack0.100.0-dev (<< 0.102.20-2)
+Filename: ./arm64/libjack-jackd2-dev_1.9.22~dfsg-4+omx1_arm64.deb
+Size: 60076
+MD5sum: b2e08a1e44517c7f250758379eb73dc3
+SHA1: 0aa25f877b94d98d2cb9498c32663056129ae57a
+SHA256: 76bf479e488fd853201fce5089771711fdaa757af94180aebeab8cdfed4ca9b2
+SHA512: 0edc3135fdccfb17ce01339560ac41fb189e60e532fe0914eaf8d612eab831e87d0e13d46691edd178fcb6c19d4c441fa049cbf80fb08b13beb0ae594301e1ef
+Homepage: https://jackaudio.org/
+Description: JACK Audio Connection Kit (development files)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains files needed for the development of JACK applications
+ and an API reference.
 
 Package: libmackie-dev
 Architecture: arm64
