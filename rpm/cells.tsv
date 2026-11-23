@@ -13,9 +13,11 @@ libmackie-devel	0.1.2	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 libomx-domain	3.20.0	quick	fc44/x86_64 fc45/x86_64
 libomx-domain	3.20.1	quick	fc45/x86_64
 libomx-domain	3.20.2	quick	fc45/x86_64
+libomx-domain	3.21.0	quick	fc45/x86_64
 libomx-domain-devel	3.20.0	quick	fc44/x86_64 fc45/x86_64
 libomx-domain-devel	3.20.1	quick	fc45/x86_64
 libomx-domain-devel	3.20.2	quick	fc45/x86_64
+libomx-domain-devel	3.21.0	quick	fc45/x86_64
 libplugin-qualification-db	2026111901	quick	fc45/x86_64
 libplugin-qualification-db	2026112001	quick	fc45/x86_64
 libplugin-qualification-db-devel	2026111901	quick	fc45/x86_64
@@ -86,12 +88,14 @@ omx-contract	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract	3.20.1	quick	fc45/x86_64
 omx-contract	3.20.2	quick	fc45/x86_64
+omx-contract	3.21.0	quick	fc45/x86_64
 omx-contract-data	3.17.0	-	fc44/noarch fc45/noarch
 omx-contract-data	3.19.0	quick	fc44/noarch fc45/noarch
 omx-contract-data	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract-data	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract-data	3.20.1	quick	fc45/x86_64
 omx-contract-data	3.20.2	quick	fc45/x86_64
+omx-contract-data	3.21.0	quick	fc45/x86_64
 omx-contract-devel	2.3.0	-	fc44/noarch
 omx-contract-devel	2.6.0	-	fc44/noarch
 omx-contract-devel	3.17.0	-	fc44/noarch fc45/noarch
@@ -100,42 +104,49 @@ omx-contract-devel	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract-devel	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract-devel	3.20.1	quick	fc45/x86_64
 omx-contract-devel	3.20.2	quick	fc45/x86_64
+omx-contract-devel	3.21.0	quick	fc45/x86_64
 omx-contract-langpack-ca	3.17.0	-	fc44/noarch fc45/noarch
 omx-contract-langpack-ca	3.19.0	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-ca	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-ca	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract-langpack-ca	3.20.1	quick	fc45/x86_64
 omx-contract-langpack-ca	3.20.2	quick	fc45/x86_64
+omx-contract-langpack-ca	3.21.0	quick	fc45/x86_64
 omx-contract-langpack-de	3.17.0	-	fc44/noarch fc45/noarch
 omx-contract-langpack-de	3.19.0	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-de	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-de	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract-langpack-de	3.20.1	quick	fc45/x86_64
 omx-contract-langpack-de	3.20.2	quick	fc45/x86_64
+omx-contract-langpack-de	3.21.0	quick	fc45/x86_64
 omx-contract-langpack-es	3.17.0	-	fc44/noarch fc45/noarch
 omx-contract-langpack-es	3.19.0	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-es	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-es	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract-langpack-es	3.20.1	quick	fc45/x86_64
 omx-contract-langpack-es	3.20.2	quick	fc45/x86_64
+omx-contract-langpack-es	3.21.0	quick	fc45/x86_64
 omx-contract-langpack-fr	3.17.0	-	fc44/noarch fc45/noarch
 omx-contract-langpack-fr	3.19.0	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-fr	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-fr	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract-langpack-fr	3.20.1	quick	fc45/x86_64
 omx-contract-langpack-fr	3.20.2	quick	fc45/x86_64
+omx-contract-langpack-fr	3.21.0	quick	fc45/x86_64
 omx-contract-langpack-it	3.17.0	-	fc44/noarch fc45/noarch
 omx-contract-langpack-it	3.19.0	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-it	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-it	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract-langpack-it	3.20.1	quick	fc45/x86_64
 omx-contract-langpack-it	3.20.2	quick	fc45/x86_64
+omx-contract-langpack-it	3.21.0	quick	fc45/x86_64
 omx-contract-langpack-pt	3.17.0	-	fc44/noarch fc45/noarch
 omx-contract-langpack-pt	3.19.0	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-pt	3.19.1	quick	fc44/noarch fc45/noarch
 omx-contract-langpack-pt	3.20.0	quick	fc44/x86_64 fc45/x86_64
 omx-contract-langpack-pt	3.20.1	quick	fc45/x86_64
 omx-contract-langpack-pt	3.20.2	quick	fc45/x86_64
+omx-contract-langpack-pt	3.21.0	quick	fc45/x86_64
 omx-dsp-contract	0.31.0	-	fc44/noarch fc45/noarch
 omx-dsp-contract	0.32.0	-	fc44/noarch fc45/noarch
 omx-dsp-contract	0.32.3	quick	fc44/noarch fc45/noarch
@@ -369,6 +380,7 @@ python3-omx-contract	3.19.1	quick	fc44/noarch fc45/noarch
 python3-omx-contract	3.20.0	quick	fc44/x86_64 fc45/x86_64
 python3-omx-contract	3.20.1	quick	fc45/x86_64
 python3-omx-contract	3.20.2	quick	fc45/x86_64
+python3-omx-contract	3.21.0	quick	fc45/x86_64
 python3-plugin-db	0.4.4	quick	fc44/noarch fc45/noarch
 python3-plugin-db	0.4.5	quick	fc44/noarch fc45/noarch
 python3-plugin-db	0.4.6	quick	fc44/x86_64 fc45/x86_64
