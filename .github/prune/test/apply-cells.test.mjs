@@ -78,17 +78,38 @@ function withOf(jobText, action) {
   return w;
 }
 
+// The environment the action's step hands check-matrix.sh, read from its action.yml: every `NAME: ${{ inputs.x }}`
+// of the step's env, valued by the caller's with: x, else the input's default. An input the action gains needs no
+// change here.
+function actionEnv(w) {
+  const lines = fs.readFileSync(path.join(actions(), 'check-matrix', 'action.yml'), 'utf8').split('\n');
+  const defaults = {};
+  let input = null;
+  let inInputs = false;
+  for (const l of lines) {
+    if (/^\S/.test(l)) { inInputs = /^inputs:\s*$/.test(l); input = null; continue; }
+    if (!inInputs) continue;
+    const name = l.match(/^ {2}([\w-]+):\s*$/);
+    if (name) { input = name[1]; defaults[input] = ''; continue; }
+    const def = l.match(/^ {4}default:\s*(.*)$/);
+    if (def && input) defaults[input] = unq(def[1]);
+  }
+  const env = {};
+  for (const l of lines) {
+    const m = l.match(/^\s+([A-Z][A-Z0-9_]*):\s*\$\{\{\s*inputs\.([\w-]+)\s*\}\}\s*$/);
+    if (m) env[m[1]] = m[2] in w ? w[m[2]] : (defaults[m[2]] ?? '');
+  }
+  assert.ok(Object.keys(env).length > 0, 'check-matrix action.yml maps no input into its step env');
+  return env;
+}
+
 // check-matrix.sh run as the action runs it, for one wave: its key=value outputs
 function renderCheckMatrix(w, wave) {
   const out = path.join(tmpRoot(), 'out');
   fs.writeFileSync(out, '');
   const r = spawnSync('bash', [path.join(actions(), 'check-matrix', 'check-matrix.sh')], {
     encoding: 'utf8',
-    env: {
-      ...process.env, GITHUB_OUTPUT: out, WAVE: wave, MATRIX: '',
-      RPM_RELEASES: w['rpm-releases'] || '', RPM_ARCHES: w['rpm-arches'] || '["x86_64", "aarch64"]',
-      DEB_RELEASES: w['deb-releases'] || '', DEB_ARCHES: w['deb-arches'] || '["amd64", "arm64"]',
-    },
+    env: { ...process.env, ...actionEnv(w), GITHUB_OUTPUT: out, WAVE: wave, MATRIX: '' },
   });
   assert.equal(r.status, 0, r.stderr + r.stdout);
   return Object.fromEntries(fs.readFileSync(out, 'utf8').split('\n').filter(Boolean).map((l) => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1)]));
