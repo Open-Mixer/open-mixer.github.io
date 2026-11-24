@@ -1,0 +1,11 @@
+plugin-hostd (0.21.1) unstable; urgency=medium
+
+  * no_moved_packages: the codec dependency is a floor with no epoch
+  * ci: no OpenMixer package installed by hand that the packaging does not
+    declare
+  * 0.21.1: the libplugin-qualification-db floor is 2026112001
+  * tests: an absent qualification store opens as an empty base layer and
+    names no plugin
+  * 0.21.1: the build requires python3-plugin-hostd-protocol
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 24 Nov 2026 11:30:27 +0000

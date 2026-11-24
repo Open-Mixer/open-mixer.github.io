@@ -353,14 +353,17 @@ plugin-hostd	0.20.4	-	bookworm/amd64 bookworm/arm64
 plugin-hostd	0.20.6	quick	trixie/arm64
 plugin-hostd	0.20.7	quick	trixie/arm64
 plugin-hostd	0.20.8	quick	trixie/arm64
+plugin-hostd	0.21.1	quick	trixie/arm64
 plugin-hostd-contract	0.20.4	-	bookworm/all trixie/all
 plugin-hostd-contract	0.20.6	quick	trixie/all
 plugin-hostd-contract	0.20.7	quick	trixie/all
 plugin-hostd-contract	0.20.8	quick	trixie/all
+plugin-hostd-contract	0.21.1	quick	trixie/all
 plugin-hostd-dev	0.20.4	-	bookworm/all
 plugin-hostd-dev	0.20.6	quick	trixie/all
 plugin-hostd-dev	0.20.7	quick	trixie/all
 plugin-hostd-dev	0.20.8	quick	trixie/all
+plugin-hostd-dev	0.21.1	quick	trixie/all
 plugin-hostd-full	0.20.4	-	bookworm/all
 plugin-hostd-full	0.20.7	quick	trixie/all
 plugin-hostd-full	0.20.8	quick	trixie/all
@@ -418,6 +421,7 @@ plugin-hostd-tests	0.20.4	-	bookworm/amd64 bookworm/arm64
 plugin-hostd-tests	0.20.6	quick	trixie/arm64
 plugin-hostd-tests	0.20.7	quick	trixie/arm64
 plugin-hostd-tests	0.20.8	quick	trixie/arm64
+plugin-hostd-tests	0.21.1	quick	trixie/arm64
 plugin-qualification-db	2026111901	quick	trixie/arm64
 plugin-qualification-db	2026112001	quick	trixie/arm64
 plugin-qualification-db-schema	2026111901	quick	trixie/all
