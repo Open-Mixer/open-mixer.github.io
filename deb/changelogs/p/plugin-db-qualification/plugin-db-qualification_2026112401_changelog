@@ -1,0 +1,26 @@
+plugin-db-qualification (2026112401) unstable; urgency=medium
+
+  * debian/changelog: the 2026112401 entry names the records build's contract
+    floors (#78)
+  * package: the records build on plugin-hostd-contract and
+    plugin-hostd-protocol-contract (#78)
+  * Test, red first: the records build depends on the domains' owners only
+    (#78)
+  * spec: the records build reads qualification and probe from their owners'
+    packages (#78)
+  * release 2026112401: the hosting words from the package omx-clap (#78)
+  * tests: the docstrings name the sibling clones the fixture reads (#78)
+  * provenance: the measuring stack names omx-clap-libs and omx-clap-contract
+    (#78)
+  * Test, red first: a measuring run's provenance names omx-clap 0.34.0's
+    packages (#78)
+  * The writer reads the hosting words from the package omx-clap (Fixes #78)
+  * Test, red first: the hosting words are read from the package omx-clap
+    (#78)
+  * spec: the hosting words are the contract package omx-clap's (#78)
+  * ci: every pull request body closes an issue
+  * fedora44/job.yaml: the measurement pod runs fedora:45
+  * lint: the fedora44 record-set name is data, not a Fedora 44 reference
+  * lint: no Fedora 44 build or container in the workflows (red)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 24 Nov 2026 13:40:40 +0000
