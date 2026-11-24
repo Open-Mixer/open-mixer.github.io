@@ -471,7 +471,8 @@ jobs:
               if dnf -y install "$a" >/dev/null && dnf -y remove "$a" >/dev/null; then echo "installs   $a"
               else echo "::error::$a does not install"; fail=1; fi
             else
-              got=$(dnf repoquery -q --repo openmixer --repo openmixer-noarch --latest-limit=1 --qf '%{evr}\n' "$a" | head -1)
+              # repoquery prints the latest build of each arch: the newest is taken across them, by rpm's comparison
+              got=$(dnf repoquery -q --repo openmixer --repo openmixer-noarch --latest-limit=1 "$a" | node .github/prune/newest-evr.mjs "$a")
               if [ "$got" = "$b" ]; then echo "newest     $a $b"; else echo "::error::$a resolves to '$got', not $b"; fail=1; fi
             fi
           done < expect.txt
