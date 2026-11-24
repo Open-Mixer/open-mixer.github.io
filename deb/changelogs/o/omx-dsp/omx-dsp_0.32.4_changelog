@@ -1,0 +1,152 @@
+omx-dsp (0.32.4) unstable; urgency=medium
+
+  * release 0.32.4: the changelog lists everything merged since v0.32.3;
+    floors only
+  * curve-json: no separator touched by a comma-decimal locale, duplicate
+    keys refused, rt-gate tags, measured tolerances (review of #89)
+  * curve: omx_curve_points_json, the curve function with JSON text on both
+    sides (lane B4, part 1)
+  * curve: the shared vectors, the oracle and the curve-json arm, red until
+    omx_curve_points_json exists (lane B4, part 1)
+  * docs-check: this clone as the remote, or a base that is HEAD, is refused
+    by name (#70)
+  * docs-check: the base is fetched and named, never skipped, never the
+    head's own copy (#70)
+  * fuzz: the three trim records pin the lines this lane's doc blocks moved
+    them to (#70)
+  * docs: every instance face's run and clear state their parameters; a doc
+    block binds to its function (#70)
+  * tools: face-conformance reads the resolve definition, not the prose that
+    names it (#70)
+  * docs: every instance face's init and latency state their parameters and
+    returns (#70)
+  * fuzz: the three trim records pin the lines omx_trim_instance.h's @file
+    block moved them to (#70)
+  * docs: omx_delay.h states what three functions return (#70)
+  * docs-check: what doxygen cannot see is refused by name before it runs
+    (#70)
+  * docs: the drive kernel documented in full (#70)
+  * docs: the reverb kernel documented in full (#70)
+  * docs: {@link fn} becomes fn() across the headers, so every doxygen
+    version resolves the same references (#70)
+  * docs-check: a missing Doxyfile or baseline, an untracked header and a
+    failed git read are refused by name; docs-baseline only lowers (#70)
+  * docs: the delay, chorus and flanger kernels documented in full (#70)
+  * docs: the delay, chorus, drive and limiter instance faces documented in
+    full (#70)
+  * tools: install-confined's image file carries its licence (#75)
+  * docs: the EQ, compressor and gate instance faces documented in full (#70)
+  * docs-check: doxygen's undocumented-declaration warnings against a
+    baseline that only shrinks (#70)
+  * docs: every installed header carries a @file block, so doxygen sees its
+    file-scope declarations (#70)
+  * tests: an undocumented public declaration, a grown baseline and a stale
+    baseline row must turn make docs-check red (red, #70)
+  * tools: install-confined requires every header, sees mode and owner
+    changes (#75)
+  * tests: one child-run helper for the pool-wrap arm and the hrp_track NULL
+    doors
+  * tests: the badbound arm comment states the 1..3600 range (#73)
+  * tools: flavour-check caps the compile bound at 3600 s and tells a killed
+    compiler from a timeout (#73)
+  * tests: the compile bound is capped at 3600 s, and a killed compiler is
+    not a timeout (red, #73)
+  * tests: the pool-wrap arm runs its take in a child, the length through a
+    volatile
+  * tests: the pool-wrap revert must be a counted failure (red, #71 review)
+  * tools: install-confined's image is pinned by digest, declared once (#75)
+  * tools: install-confined reads the checkout on an SELinux Enforcing host
+    (#75)
+  * reverb instance: the clear states why its layout cannot refuse (#72)
+  * tests: the reverb clear's layout cannot refuse, and says why (red, #72)
+  * tools: install-confined runs in place only on an explicit opt-in, never
+    on a container marker (#75)
+  * tools: a container marker alone must not start install-confined's inner
+    check (red first, #75)
+  * tools: flavour-check refuses a bound of zero and reads a killed compile
+    as the timeout
+  * tests: a zero bound and a compiler that ignores SIGTERM slip past
+    flavour-check's timeout (red first)
+  * tools: install-confined cannot pass unjudged, runs on a public image and
+    in CI (#75)
+  * Makefile: the contract directory installs under PREFIX, never the
+    system's (#75)
+  * tools: make install must stay inside DESTDIR+PREFIX (red first, #75)
+  * tests: the stand-in compiler runs the real one without its own directory
+    on PATH
+  * tests: the stand-in compiler loops through a masquerade wrapper (red
+    first)
+  * tools: every compile flavour-check starts is bounded, and a timeout is
+    red by name
+  * tests: flavour-check has no bound on a compiler that never returns (red
+    first)
+  * hrp track: tag omx_hrp_track_config_valid with a thread the rt gate knows
+    (review of #71)
+  * reverb: correct the headroom comment, 384 kHz is refused above the
+    ceiling (review of #71)
+  * hrp render init refuses a track config the tracker refuses (review of #71)
+  * test: render init must refuse a track config the tracker refuses (red,
+    review of #71)
+  * test: omx_pool_take refuses a length whose sum wraps, called directly
+    (review of #71)
+  * test: reverb layout refuses a rate above the ceiling with a pool that
+    fits (review of #71)
+  * reverb layout and hrp track update refuse what does not fit (P0 doors)
+  * Makefile: TEST_TARGETS is defined before the check-package rule reads it
+  * tools: check-package must run make test's targets, not nothing (red first)
+  * test: reverb layout and hrp track update must refuse what does not fit
+    (red)
+  * contract tests: drop the perturbation cases that test the renderer
+  * contract tests: drop items-1.3.0
+  * contract tests: no test reads an old commit of this repository
+  * ci: make test runs in one cell; the contract job needs no history
+  * Makefile: CHECK_PACKAGE is derived from make test's list; the checker goes
+  * tools: a check that make check-package is derived from make test's list
+    (red)
+  * debian: drop Breaks and Replaces from omx-dsp-contract
+  * contract tests: drop the arms that read old-release fixtures
+  * contract-proof: keep completeness, drop the proofs pinned to v0.1.3
+  * remove the patch-release API gate
+  * checks: red guard, no old-release machinery in the tree
+  * data: the time_response docs say "since 0.32.4", the release that ships
+    them
+  * data: REVERB_DECAY_LOOPS names the curve that reads it
+  * fuzz_laws: each sample of a ramp is held to its rule
+  * release: the deb job publishes omx-dsp-contract with libomxdsp-dev
+  * release: check that the deb job releases every binary a sibling depends on
+  * devel package: the rta vectors are in the expected file list
+  * test: the models oracle's perturbation arms name the arms that can see
+    them
+  * twins job: the EQ Q sabotage sizes its jobs from the jobs action
+  * drive-instance: the controls helper is tagged audio
+  * ci: the trigger gate on every pull request, red
+  * ci: the twin-vs-C EQ Q range sabotage runs in the twins job, which has
+    node
+  * eq-q-range-sabotage: the EQ Q range moves the kernel and the twin
+    together, a stale twin goes red
+  * ts: the time_response twin, pinned to omx_curve_time by the oracle
+  * curve: the time_response of a delay and a reverb, against the kernels
+    (red first)
+  * curve: the time_response words and the reverb's decay loops, declared
+    once (data)
+  * curve: CURVE_FAMILIES' doc reads the drive as dB in to dB out
+  * curve: omx_curve_drive_sample's doc names its thread, control
+  * ts: the drive curve draws the same dB level axis as the C header
+  * curve: the drive answers dB in to dB out on the level axis (green)
+  * test: the drive's transfer curve is dB in to dB out, against the kernel
+    (red)
+  * curve: a drive's default grid is a level in dB, -60..0 (data)
+  * release 0.32.4: the version in omxdsp.h, the spec, debian/changelog and
+    the TypeScript package
+  * drive-instance: name resolve in the controls' doc as a link
+  * ts: curvePoints draws the drive, the twin of omx_curve_drive
+  * curve: the drive family's transfer curve, the kernel's static path
+  * test: the drive's transfer curve is what the kernel does (red)
+  * curve: the drive family, its five roles and the pc unit (data)
+  * drive-instance: the static control mapping as its own inline
+  * patch-names-check: a moved count or size macro needs its proof
+  * patch-names-check: a moved count or size macro needs its proof (red)
+  * flavour-check: the TSan probe says why it cannot read TSan
+  * test: flavour-check's TSan probe names its own failure (red)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 18 Nov 2026 01:50:38 +0000

@@ -1,0 +1,41 @@
+omx-dsp (0.33.1) unstable; urgency=medium
+
+  * omx-dsp 0.33.1: the changelog names #107 and #108
+  * ci: turn the commit identity check on for pull requests
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * omx-dsp 0.33.1: the changelog names #109, #111 and #112
+  * ci: the devel package's file list names the test support and the TSan gate
+  * ci: the arm gate check and the wasm loader job on Fedora 45
+  * comp feedback test: write the peak scans as comparisons
+  * ci, release: Fedora 45, no Fedora aarch64 RPM
+  * ci: refuse a Fedora 44 reference in the workflows
+  * rt-gate: omx-clap-core.abi, the embedder's audio-thread callbacks (#28)
+  * rt-gate: omx-clap-core's embedder callbacks, red first (#28)
+  * rt-gate: cpu-identity's row, sched_getcpu, measured (#28)
+  * rt-gate: a run that asks which CPU it is on, red first (#28)
+  * rt-gate: the cpu-identity class, closed to sched_getcpu (#28)
+  * rt-gate: strnlen joins bulk-memory, with its line of reason (#28)
+  * rt-gate: strnlen bounded by its buffer, red first (#28)
+  * rt-gate: thread-identity's three rows, each measured (#28)
+  * rt-gate: a run that asks who it is, red first (#28)
+  * rt-gate: the thread-identity class, closed to three symbols (#28)
+  * rt-gate: syscall's futex wake read at the call, the class wake (#28)
+  * rt-gate: a futex wake through syscall is a wake, red first (#28)
+  * comp key isolation: the ledger is drained per rate, the undeclared rates'
+    own records explained
+  * comp key isolation: the shared-state sabotage carries state between
+    blocks, not a one-off call count
+  * comp key: the key never reaching the audio and the N-thread identity, as
+    oracles
+  * comp feedback: the bus preset's O7, O8 and O9 arms, with five sabotages
+  * install: the devel package ships the test support and the TSan gate a
+    consumer's native tests read
+  * omx-dsp 0.33.1
+  * ts: delete the TypeScript twins no Open-Mixer repository consumes
+  * ci: the below-floor job lists with -y, and pins the debian data package
+    with the devel
+  * ci: the below-floor job installs the newest published omx-contract below
+    the floor
+  * ci: a self-test for the below-floor picker, red until the picker lands
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 21:30:00 +0000

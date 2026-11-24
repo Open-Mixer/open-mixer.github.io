@@ -1,0 +1,182 @@
+omx-contract (3.21.0) unstable; urgency=medium
+
+  * Revert the chain-2 fold (V29, #169): it waits for chain 3
+  * the old-home grep: the sorted-out homes are named by what they were, not
+    by their old paths
+  * sorting V1, the old-holder step (SZ): drop data/panel.json and the six
+    PANEL_* items
+  * validate: a consumer's data reads the shared words from this package
+  * param: PARAM_SCALES words carry their meanings again
+  * omx-contract 3.22.0: the tree version carries V29 for chain 2's tag
+  * The catalog-change test makes its files before the rewind, and CI runs
+    the C loader on the Fedora cells
+  * docs: the protocol's verbs are the plugin-hostd domain, the hosts
+    omx-clap's (V16, V29)
+  * ci: the verbs step installs the verb hosts fixture as omx-clap's (V29)
+  * V29: the verb hosts are omx-clap's HOSTING_VERB_HOSTS, read with no
+    fallback
+  * V29: red first, the verbs read their hosts from omx-clap's
+    HOSTING_VERB_HOSTS only
+  * set-standard: the <SET>_STANDARD name clash is tested; Q4 marked
+    superseded
+  * set: `standard`, the PARAM_UNITS const each id of a set stands for
+  * set: red first, a classic set names the standard unit of each id
+    (`standard`)
+  * docs: V22 READOUT_RATE_HZ goes to omx-dsp, as its classic
+    data/primitives/readout.json
+  * param-contract: the vendor codes 260 dbPerOct, 261 dbPerS, 262 dbtp and
+    263 lu
+  * ownership: a moving-out item grows only by the words a ruling names
+    (ownership/grow-exceptions.txt)
+  * param-contract: red first, the units sheet holds 260..263 and its codes
+    are append-only
+  * V23d: the param-contract sheet stays, one home, until its one move
+  * Revert "V23d: the param-contract unit codes are omx-clap's"
+  * V27b: the python package's file list no longer names omx_contract.clap
+  * S0: --with-domain names a nested domain by its path
+  * S0: --with-domain names a nested domain by its path (red)
+  * S0: a domain item's banner names its domain's document
+  * S0: a domain item's banner names its domain's document (red)
+  * S0: a words item's word carries x-uri
+  * S0: a words item's word carries x-uri (red)
+  * V23d: the param-contract unit codes are omx-clap's
+  * V23d: the param-contract unit codes leave omx-contract (red)
+  * omx-contract 3.21.0: the release entry lists the sorting pass
+  * V27b: the package import check no longer imports omx_contract.clap
+  * V27b: the CLAP terms, their renders and their coverage leave omx-contract
+  * S0: an installed domain's run-time items stay out of its owner's render
+  * S0: an installed domain's run-time items stay out of its owner's render
+    (red)
+  * V27a: the LV2 inventory and its coverage are plugin-db's
+  * V27b: the CLAP terms leave omx-contract (red)
+  * S0: the CLAP core's packages are omx-clap
+  * V27a: the LV2 terms leave omx-contract
+  * V27a: the LV2 terms leave omx-contract (red)
+  * V22, V24, V25, V26: the leaving items leave omx-contract
+  * V22, V24, V25, V26: the leaving items are gone from omx-contract (red)
+  * V21, V23a+b: semver reads the param domain at the commit it compares to
+  * S0 (V15, V16): one owner's several domains, and an owner of domains only
+  * S0 (V15, V16): one owner's several domains, and an owner of domains only
+    (red)
+  * V21, V23a+b: the scales and the grown unit list are the param domain
+  * V21, V23a+b: the param domain gains the scales, the grown units and their
+    dimensions (red)
+  * S0 (V15/V16, V27a/b): the domain format carries verbs, reply codes and
+    terms
+  * S0 (V15/V16, V27a/b): verbs, reply codes and terms items in a domain (red)
+  * S0 (V23a+b): the data form's words carry a dimension
+  * ci: every pull request body closes an issue
+  * S0 (V21, V23a+b): the domain format reads a set and a unit list
+  * S0 (V21, V23a+b): a domain set and a unit list with symbols and
+    dimensions (red)
+  * Green: a sweep of mixed units is refused by name (#155)
+  * Red: a sweep of mixed units is refused by name (#155)
+  * Green: latency.sweep, the range a modulated delay's lag lies in (Fixes
+    #155)
+  * Red: latency.sweep, the range a modulated delay's lag lies in (#155)
+  * Green: copies only, so an absent description or x-text is refused (ruling
+    b)
+  * Red: a word taken from a word copies its description and x-text (ruling b)
+  * Green: word-from-differs refuses a word that differs from the word it
+    names
+  * Red: a word taken from a word of a words item is that word
+    (word-from-differs)
+  * render: drop the reader's table by item, not the contract domain by file
+  * Green: a from into a package outside the read never takes another
+    package's item
+  * test: a second item of the contract domain renders on both paths
+  * render: the reader's own table is no part of a whole-read render
+  * Red: a from into a package outside the read never takes another package's
+    item
+  * test: the installed tree renders what data/ renders, with the contract
+    domain installed
+  * Green: a word's x-from may name a word of another domain's words item
+  * contract.d: the contract domain in the one formatting
+  * Red: a word's x-from may name a word of another domain's words item
+  * Green: a domain declares its required packages in info.x-requires
+  * Red: a domain declares the packages its words take terms from in
+    info.x-requires
+  * render: OMX_PARAM_UNITS_WORDS by a fixed list, not by the renders present
+    (green)
+  * test: the PARAM_UNITS X-macro name does not depend on the code sheet (red)
+  * omx-contract 3.21.0: the tree version carries the items added since 3.20.0
+  * render: the PARAM_UNITS words item's X-macro is OMX_PARAM_UNITS_WORDS
+    (green)
+  * S0: render --with-domain refuses a rebuilt word's cross-package from by
+    name
+  * test: every installed header compiles together under -Werror (red)
+  * test: a rebuilt word's cross-package from is refused by name (red)
+  * docs/units.md: the resource units join the list; the scale codes go with
+    the unit codes
+  * map amendment: every question ruled; omx-formats folds into plugin-db
+  * S0: the runtime readers serve scalars and check x-args; x-file-less
+    items; --installed --with-domain
+  * V20: CONTRACT_CODES is read from the contract domain; data/codes.json is
+    removed
+  * map amendment: no cell contradicts it; packaging follows the read
+  * test: runtime scalars and x-args in both readers, x-file-less items,
+    --installed --with-domain (red)
+  * map: standard vocabulary in one place (owner amendment)
+  * docs/units.md: Q16 ruled, the split is kept; the codes are written in one
+    base
+  * V20: the contract domain gains CONTRACT_CODES, the 57 codes with their
+    texts and args
+  * docs/units.md: Q15 ruled and the descriptor unit refusal adopted
+  * S0: the domain format stores code args and rebuilds words and scalar items
+  * docs/units.md: five fixes to the one-list design
+  * docs/units.md: one list of standard units in omx-contract, per the
+    owner's ruling of 2026-11-20
+  * test: the domain kinds render --with-domain rebuilds, red first (sorting
+    pass S0)
+  * docs/units.md: Q6 and Q8 ruled; omx-panel declares display rules, not
+    units
+  * docs/units.md: the owner's answers to questions 1 to 7, and proposals 13
+    and 14
+  * V20: the call-level test of CONTRACT_CODES in the contract domain (red)
+  * docs/units.md: question 4 states what a custom ratio costs
+  * docs/units.md: one argument order for the display text lookup
+  * docs/units.md: settle the ids of omx-dsp's 12 units
+  * docs/units.md: the two-source staging is open question 12
+  * docs: units owned per producer and the merged units reader (design)
+  * docs: row 10 says the qualification move as approved
+  * docs: the map speaks as the approved plan
+  * docs: the ownership map is the approved plan
+  * docs: the map names each package, release and risk
+  * docs: the ownership map is a proposal with its impact
+  * docs: units owned per producer, one merged reader
+  * docs: PARAM_UNITS ships in 3.21.0
+  * docs: units are split by role, the standard ones stay
+  * docs: 1b carries only the domain render
+  * docs: units have no single owner
+  * docs: the ownership map follows the host principle
+  * docs: row 6 names the layers of the ruled order
+  * docs: the ownership map follows the owner's layering
+  * domain: an x-file that leaves the data directory is refused by name
+  * docs: the ownership map of the vocabularies
+  * Revert "docs: the PARAM_UNITS item is deferred out of 3.21.0"
+  * ownership: PARAM_UNITS is omx-contract's (owner ruling 2026-11-19)
+  * Reapply "PARAM_UNITS: the unit list as a words item, the schema enum its
+    render (wip)"
+  * Reapply "test: the unit list is one words item, the schema enum its
+    render (red)"
+  * render --with-domain: a domain rebuilds the data files it came from
+  * test: a domain renders as its data form, through --with-domain (red)
+  * docs: the domain renders through a combined read, file by file (x-file)
+  * docs: the PARAM_UNITS item is deferred out of 3.21.0
+  * Revert "test: the unit list is one words item, the schema enum its render
+    (red)"
+  * Revert "PARAM_UNITS: the unit list as a words item, the schema enum its
+    render (wip)"
+  * PARAM_UNITS: the unit list as a words item, the schema enum its render
+    (wip)
+  * test: the unit list is one words item, the schema enum its render (red)
+  * libomx-domain: omx_domain_word_group() answers a word's x-group
+  * test: the loader answers a word's group (red)
+  * docs: a sheet and its source move with the domain; byte identity's checks
+  * docs: the group answer is omx_domain_word_group(), the struct is unchanged
+  * docs: the PARAM_UNITS item and the loader's group answer (spec)
+  * docs: a domain renders as its data form does (spec)
+  * ci: turn the commit identity check on for pull requests
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 23 Nov 2026 16:17:59 +0000

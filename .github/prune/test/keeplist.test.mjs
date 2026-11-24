@@ -12,7 +12,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { parsePackages, selectRepo } from '../prune.mjs';
-import { parseKeepList, keepEntries, missing } from '../keeplist.mjs';
+import { parseKeepList, keepEntries, missing, pendingPins } from '../keeplist.mjs';
 
 const select = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'select.mjs');
 
@@ -109,4 +109,40 @@ test('a pinned build names its release: the other builds of that version are not
   assert.deepEqual(verdict(r).keep, ['1.0-2', '1.2-1', '1.3-1', '1.4-1']);
   assert.ok(r.delete.some((p) => p.version === '1.0-1'));
   assert.ok(missing(lines, pkgs(debs('foo', ['1.0-1']))).length === 1, 'a release the channel lacks is a missing pin');
+});
+
+test('keep-list: a pending:>=floor line is named as pending, never a missing pin, and is silent once served', () => {
+  const lines = parseKeepList(keepList([['foo-devel', 'pending:>=0.5', 'debian/bookworm/*', 'p'], ['foo', '1.0-1', 'debian/bookworm/*', 'p']]));
+  assert.equal(lines[0].pending, true);
+  const none = pkgs(debs('foo', ['1.0-1']));
+  assert.deepEqual(missing(lines, none), []);
+  assert.deepEqual(pendingPins(lines, none).map((x) => x.split(':')[0]), ['foo-devel >=0.5 debian/bookworm/*']);
+  const served = pkgs(debs('foo', ['1.0-1']) + '\n' + debs('foo-devel', ['0.6-1']));
+  assert.deepEqual(pendingPins(lines, served), []);
+  assert.deepEqual(missing(lines, served), []);
+  const below = pkgs(debs('foo', ['1.0-1']) + '\n' + debs('foo-devel', ['0.4-1']));
+  assert.equal(missing(lines, below).length, 1, 'served only below the floor: an ordinary floor, missing (refused)');
+  assert.match(missing(lines, below)[0], /foo-devel >=0\.5/);
+  assert.deepEqual(pendingPins(lines, below), [], 'and not pending');
+  const atFloor = pkgs(debs('foo', ['1.0-1']) + '\n' + debs('foo-devel', ['0.5-1']));
+  assert.deepEqual(missing(lines, atFloor), [], 'served at the floor: satisfied');
+  assert.deepEqual(pendingPins(lines, atFloor), []);
+  assert.throws(() => parseKeepList(keepList([['foo', 'pending:1.0-1', 'debian/bookworm/*', 'p']])), /bad version/);
+});
+
+test('cli: a pending line prints and the plan exits 0; the same line without pending: exits 1', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'keeplist-'));
+  const suite = path.join(dir, 'deb/debian/bookworm');
+  fs.mkdirSync(suite, { recursive: true });
+  fs.writeFileSync(path.join(suite, 'Packages'), debs('foo', ['1.0-1']));
+  fs.writeFileSync(path.join(dir, 'keep.yml'), 'keep:\n');
+  const run = (v) => {
+    fs.writeFileSync(path.join(dir, 'kl.txt'), keepList([['foo-devel', v, 'debian/bookworm/*', 'p']]));
+    return spawnSync('node', [select, '--keep', path.join(dir, 'keep.yml'), '--keeplist', path.join(dir, 'kl.txt'), '--tree', dir], { encoding: 'utf8' });
+  };
+  const pend = run('pending:>=0.5');
+  assert.equal(pend.status, 0, pend.stderr);
+  assert.match(pend.stdout, /floors pending[\s\S]*foo-devel >=0\.5/);
+  assert.equal(run('>=0.5').status, 1);
+  fs.rmSync(dir, { recursive: true });
 });

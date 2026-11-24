@@ -1,0 +1,186 @@
+plugin-hostd-protocol (0.6.0) unstable; urgency=medium
+
+  * release-same-pass: omx-clap-host, the source package, not the repository
+    name
+  * ts client: its encode and parse run on the codec's shared vectors
+  * release: the 0.6.0 same-pass list
+  * release: plugin-hostd-protocol 0.6.0
+  * release: the same-pass list is read as plugin-hostd reads it
+  * release: a same-pass wiring check, red at main
+  * ci: on the schedule the render and its matrix source run, the render
+    reads its cells from check-matrix
+  * ci: the ABI job carries the fedora-cells tool mark, and its name says the
+    baseline writer
+  * ci: the schedule is the render check alone again, and the ABI baseline is
+    compared on fc44
+  * ci.yml: the test job's two if lines (the lane's and main's) are one
+    condition
+  * schema addresses: the protocol schema and the 18 reply shapes take
+    https://openmixer.org/schema/plugin-hostd-protocol/ as their $id, not a
+    code-hosting address
+  * tests: epoch_test plants its changelog case into the first version,
+    whatever it is
+  * packaging: no epoch on any package of this source
+  * The omx-dsp floor is 0.32.4: the curve verbs use what omx_curve.h
+    declares from there
+  * include/plugin-hostd: the headers re-rendered with omx-contract 3.19.1
+  * rendered-sabotage.sh copies packaging/ into its scratch tree
+  * doc/protocol.md: the delay and reverb curves, the time_response display,
+    -536
+  * fuzz/corpus-abnf: GRAMMAR.sha256 follows the grammar
+  * curve verbs: a time_response draws the delay and the reverb, as omx-dsp
+    does
+  * grammar: curve_bind takes time_response and the 37 roles of omx-dsp 0.32.4
+  * The curve verbs mirror omx-dsp 0.32.4: tests, red at main first
+  * Revert the spec ceiling sabotage: the spec carries the floor only again
+  * sabotage: a ceiling in the spec's omx-contract-devel (the floors job must
+    go red)
+  * Revert the omx-contract-data sabotage: it is in packaging/deps.txt again
+  * sabotage: omx-contract-data is gone from packaging/deps.txt (the floors
+    job must go red)
+  * workflows: the floors check runs in public-sources at pull request time
+  * rpc_timeout_ms: a silent worker gets SIGTERM first, SIGKILL two seconds
+    later
+  * The TypeScript client generator: a single word is a literal only when the
+    table declares it, so a mistyped form type is refused by name
+  * The TypeScript client: float and all are declared, a backslash is
+    escaped, control characters and the cap are refused, transport errors are
+    typed
+  * ts client tests: every verb encodes and reads back, a backslash and a
+    control character, the cap and the transport errors (red)
+  * ts client tests: close every scripted peer when the file ends, so a red
+    arm fails instead of hanging
+  * The TypeScript client: the transport, the generated vocabulary and
+    curvePoints, published in the protocol package
+  * ts client tests: the transport, the generated vocabulary, curvePoints and
+    its typed errors, and the packed client (red)
+  * The TypeScript client of the protocol: what it is, that it is thin, what
+    it does not do, and that it is versioned with the protocol
+  * shapes tests: the shellcheck notes on the lines this change added
+  * reply shapes: preset_get's name is the rest of the line and may be empty
+  * reply shapes: arms for a preset_get reply with a spaced name and with an
+    empty one (red)
+  * check-protocol-tools no longer runs test-reply-shapes: the shapes job
+    owns it (#81)
+  * ci: a shapes job holds the reply schemas, their TypeScript render and the
+    npm package (#81)
+  * reply shapes: the schemas installed under shapesdir, the page that says
+    what is where and what the console deletes (#81)
+  * reply shapes: one JSON Schema per typed reply of the table, the
+    TypeScript render published as an npm package (#81)
+  * hello_test guards the whitespace-only line, and the docs and comment say
+    it
+  * mod-host.h: the command and feedback markers the generator reads are back
+  * An untagged empty line is ignored: no reply, no state change
+  * hello_test checks that an untagged empty line gets no reply (red)
+  * docs: no blank line inside a doc block, and the param_info and
+    remote_page_get docs say any value >= 0 is accepted
+  * docs(protocol.h): the docs state today's behaviour for the empty line and
+    the negative zero
+  * doc_shrink: a remote base is fetched first, and a failed fetch is
+    refused, by name
+  * tests: a remote doc-gate base is fetched, and a failed fetch is red, by
+    name (red)
+  * doc_shrink: an empty DOC_GATE_BASE is refused, by name
+  * tests: an empty doc-gate base is red, by name (red)
+  * doxygen gate: it refuses a header without @file, a missing log, an unread
+    header and another doxygen
+  * tests: the doxygen gate proves doxygen read every header (red)
+  * docs(socket.h): socket_adopt says what it does (baseline 10 -> 9)
+  * docs(mod-host.h): document the public API (baseline 62 -> 10)
+  * docs(utils.h): document the public API (baseline 74 -> 62)
+  * docs(socket.h): document the public API (baseline 84 -> 74)
+  * protocol.h: phd_number_in reads one spelling a value, and its range is
+    the caller's
+  * docs(host-scenario.h): document the public API (baseline 115 -> 84)
+  * tests: phd_number_in's grammar, one named arm a spelling (red)
+  * docs(host-backend.h): document the public API (baseline 127 -> 115)
+  * docs(host-dispatch.h): document the public API (baseline 163 -> 127)
+  * protocol.h: phd_note_valid tests count before it reads a word
+  * protocol.h: phd_pin_path_decode refuses an out of size 0
+  * tests: protocol.h's inline functions read no word past count and write no
+    byte past size (red)
+  * docs: style pass over the C API doc blocks, from the review of the docs
+    PR (baseline 164 -> 164)
+  * doxygen gate: the local X list macro is not API (EXCLUDE_SYMBOLS = X)
+  * docs(plugin-hostd/protocol.h): document PHD_HISTORY_RECORD (baseline 165
+    -> 164)
+  * docs(include/protocol.h, search_paths.h): document the command table API
+    and the default search paths (baseline 191 -> 165)
+  * docs(plugin-hostd/protocol.h): document the settings, history, directory,
+    descriptor and panel words (baseline 242 -> 191)
+  * docs(plugin-hostd/protocol.h): document the feedback events and the typed
+    tables (baseline 302 -> 242)
+  * docs(plugin-hostd/protocol.h): document the inline functions with @param
+    and @return (baseline 316 -> 302)
+  * doxygen gate: doxygen writes throwaway HTML, so it reads @param and
+    @return
+  * tests: a fully documented function gives no doxygen warning (red)
+  * docs(plugin-hostd/protocol.h): document the public API, instance verbs,
+    notes and host tables (baseline 351 -> 316)
+  * docs(plugin-hostd/protocol.h): document the public API, error codes, pins
+    and the daemon's verbs (baseline 382 -> 351)
+  * docs(plugin-hostd/protocol.h): document the public API, readiness to
+    probe tables (baseline 436 -> 382)
+  * doc gates: the baseline and the noqa comments only shrink; --update only
+    lowers
+  * tests: the documentation gates only shrink, by mechanism (red)
+  * Documentation gates by the standard tools: doxygen for C, ruff for Python
+  * Documentation gates: a C header comment ratchet and ruff D1 on the Python
+    clients
+  * deps: floors only, declared once in packaging/deps.txt and generated from
+    it
+  * deps-check: the spec and debian/control are held to a declaration of the
+    floors, which is missing
+  * tests: runner_test captures the runner's output and names each expected
+    refusal as ok
+  * tests: the runner's refusal demonstration asserts its refusal, no FAIL
+    line (red first)
+  * ci: the build, protocol and ABI jobs take their cells from check-matrix,
+    on main's ci.yml
+  * ci: main's ci.yml whole; the lane's check-matrix cells did not apply on
+    it and are to be re-applied by hand
+  * doc: the protocol page lists the panel file's keys
+  * protocol: the panel file declares its keys, meters among them
+  * packaging: the omx-clap-core-contract ranges admit 0.33
+  * tests: every omx-clap-core-contract range admits the next minor (red)
+  * ci: the declared-protocol job reads omx-clap-core's data/verbs.json from
+    its source
+  * grammar: the reply's status is resp-status, so worker_died's status is
+    not an int
+  * split: an escape is a quote before the character it keeps, so "" is one
+    quote again (omx-clap-core#15)
+  * tests: "" inside quotes is one quote and a raw control byte is a byte
+    (red, omx-clap-core#15)
+  * fuzz: the quoted-word mutant record names src/utils.c:227, where quote =
+    0 moved (omx-clap-core#15)
+  * protocol: property_list, property_info, property_get and property_set,
+    instance verbs the daemon relays (omx-clap-core#15)
+  * abnf-gen: a named argument type takes core.abnf's rule of its name when
+    it has one
+  * tests: the property verbs in the daemon's tables and the grammar (red,
+    omx-clap-core#15)
+  * grammar: quoted-escaped, a quoted value that is text, for the property
+    verbs
+  * split: a quoted value arrives as its bytes, \\ a backslash and \" a quote
+  * tests: a quoted value arrives as its bytes, \\ a backslash and \" a quote
+    (red)
+  * build and CI carry what the codec's tests read: omx-clap-core's contract
+    package and omx-contract's data
+  * python3-plugin-hostd-protocol is built from this source, at epoch 1
+  * The Python codec moves here from plugin-hostd: plugin_hostd_protocol, its
+    fixtures and its tests
+  * The protocol's Python client ships from here: python3-plugin-hostd-client
+  * tests: the protocol's Python client, framed by NUL, with its newline
+    sabotage
+  * ci: the nightly schedule stays, for the served-render check alone
+  * ci: the heavy workflows run by dispatch and tags; the fast checks alone
+    on a pull request
+  * ci: the trigger gate on every pull request, red
+  * ci: each cell uploads its own fuzz-findings artifact
+  * ci, fuzz: the protocol, ABI and fuzz jobs name their cell
+  * ci, fuzz: the build, the protocol, the ABI and the fuzz jobs take their
+    cells from check-matrix
+  * ci: fedora-cells over the workflows, red on the fc44-only jobs
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 10:03:49 +0000

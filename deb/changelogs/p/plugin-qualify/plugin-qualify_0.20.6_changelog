@@ -1,0 +1,54 @@
+plugin-qualify (0.20.6) unstable; urgency=medium
+
+  * release: 0.20.6, the qualification domain in plugin-qualify-contract
+  * records package: depend on plugin-qualify by a floor only
+  * test: the records package depends on plugin-qualify by a floor only (red)
+  * packaging: floors only, no version ceiling on a dependency
+  * packaging: prune the bundled dependency trees to what the packages publish
+  * test: the bundled dependency trees carry no dotfile, spec or test
+    directory (red)
+  * ci: the tests that need omx-contract installed run in a Fedora container
+    job
+  * test: the installed package carries every module the built program imports
+  * release: the install job proves the installed program loads its run-time
+    modules and domain
+  * ci: the unit jobs install omx-contract 3.20.0 from the channel
+  * packaging: ship ajv in the installed package, beside the code that
+    imports it
+  * release: install plugin-qualify-contract with the package, rpm and deb
+  * packaging: the contract package synopsis starts without an article
+  * test: stanza returns the found paragraph without an index read
+  * packaging: omx-contract floor 3.20.0, where the installer's domain mode is
+  * test: the installer call spans its continuation line
+  * qualification.json: the one formatting of omx-contract fmt
+  * packaging: plugin-qualify requires plugin-qualify-contract of the same
+    version
+  * packaging: the qualification domain ships in the plugin-qualify-contract
+    subpackage
+  * packaging: install the qualification domain with the installer's domain
+    mode
+  * test: the spec and debian/rules call the installer's domain mode
+    directly; fmt check uses the installed command (red)
+  * test: the qualification domain ships in plugin-qualify-contract,
+    installed by the installer's domain mode (red)
+  * qualification domain: OMX_CONTRACT_PATH is a colon list whose first
+    directory holding the domain wins, and $id must be the domain's
+  * qualification domain: info.x-stability is required (experimental or
+    stable) and the document states experimental
+  * qualification domain: the TODO beside the schema const names
+    omx-contract#113
+  * qualification domain: a page hands the document with init(doc), the CLIs
+    read OMX_CONTRACT_PATH, the library reads the installed path only
+  * qualification domain: the C codes header is removed, no item is marked
+    for one
+  * qualification domain: items named QUALIFICATION_*, $schema stated, no
+    render, words read from the installed JSON
+  * schema addresses: the descriptor writers and their field fixtures name
+    https://openmixer.org/schema/omx-contract/v3/, not a code-hosting address
+  * qualification domain: memory-bound is a declared word the measurer reads
+    rendered, and the rpm and deb install the domain (omx-contract#81)
+  * qualification domain: contract.d/qualification and its TypeScript render,
+    moved from omx-contract (omx-contract#81 move 2)
+  * The sync fills plugin-db's store, in plugin-db's grammar (#73)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 18 Nov 2026 21:02:46 +0000

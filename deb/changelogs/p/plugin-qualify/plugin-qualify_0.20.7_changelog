@@ -1,0 +1,98 @@
+plugin-qualify (0.20.7) unstable; urgency=medium
+
+  * packaging: plugin-hostd floor 0.20.8
+  * release: 0.20.7 carries main: the domain 1.4.0, codes for reasons, the
+    record's package
+  * catalogs: 450 entries made by draft-prose in ca, de, es, fr, it, pt
+  * ci: the catalogs job only checks; the fill runs on the shared fill
+    workflow
+  * ci: the cluster DNS guard tests the hosted image family
+  * ci: the cluster DNS only when the job runs on our runners
+  * package: tools/release-matrix.mjs does not ship
+  * tools/release-matrix.mjs: executable again, as its shebang says
+  * ci: the CLAP floor lint job installs the dependencies too
+  * ci: the omx-contract 3.20.2 floor in the jobs that read it
+  * The qualification domain 1.4.0 holds the pin verdicts and the history
+    words (#135)
+  * release-matrix: deriveMatrix returns the install architectures, not
+    literal cells (#130)
+  * tools/release-matrix.mjs: executable, as its shebang says (lintian
+    script-not-executable, #130)
+  * The qualification domain 1.4.0: QUALIFICATION_ADAPTER_HOSTS, the hosts a
+    plugin ran under (#135)
+  * test: the copied clap-floor script resolves omx-contract
+  * deps: omx-contract is a floor only, 3.20.2 wherever it is built against
+  * deps: the lockfile resolves @openmixer/omx-contract 3.20.2
+  * ci: turn the commit identity check on for pull requests
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * release: a staged run names the trixie arm64 cell it builds (#130)
+  * release: the install job takes its cells and runners from check-matrix,
+    arm64 first (#130)
+  * check-clap-floor: run by real path, not a file URL string (#126)
+  * docs: a package distro or arch outside the domain's words is null (#123)
+  * The package's distro and arch are the domain's words or null (#123)
+  * test: a package distro or arch the domain does not hold is null, and the
+    arch is the owner's own (#123)
+  * lint: run the CLAP floor check on a pull request (#126)
+  * entry points: decide "run, not imported" with omx-contract's isMain
+  * test: an entry point run through a symlink refuses as it does by its own
+    path (red)
+  * lv2-measure: ownThreads is left out when the thread count is unknown
+  * rt-interpose: the other threads' counters are atomic in both builds
+  * The qualification record holds the package its binary came from (#123)
+  * test: the record's package object is read from the package manager and
+    maps onto the store's columns (#123)
+  * docs: the qualification record's package object (#123)
+  * Keep the lint.yml comment clear of the pattern the check refuses (#120)
+  * Fix the comment above the Fedora check in lint.yml (#120)
+  * release: 0.20.7, the qualification domain words and the Fedora 45 packages
+  * Name Fedora 45 in the container image and the install notes (#120)
+  * Build and test on Fedora 45; the RPM is x86_64 only (#120)
+  * Refuse a Fedora 44 reference in the workflows (#120)
+  * test: the LV2 fixture set is 31 with worker-allocates (#53)
+  * note sweep: under a host's thread pool the helpers' calls stay the
+    verdict's too (#53)
+  * rt-safety arm: under a host's thread pool the helpers' calls stay the
+    verdict's (#53)
+  * test: lv2-measure's other-thread counts come back from the rt-safety
+    child (#53)
+  * docs: the audio thread decides; own threads are conditional and groupable
+    (D20, #53)
+  * tiers: a tier offers a plugin whose measured verdict shares a worker, as
+    it offers a qualified one
+  * test: a tier offers a plugin that started threads of its own, which never
+    runs alone (red)
+  * rt-safety arm: the audio thread and the other threads counted apart, and
+    the threads the plugin started
+  * test: a plugin with a thread of its own reads own-threads with a clean
+    audio thread, one verdict over five runs (red)
+  * hosting: own threads are conditional and groupable; the pin, the hosting
+    and the tiers follow the reasons
+  * test: own threads are conditional under own-threads and groupable; the
+    audio thread's calls stay violations (red)
+  * ci: the language packs container resolves the router through the cluster
+    DNS (#42)
+  * ci: the language packs job runs on the organisation's runners and fills
+    its own gaps (#42)
+  * reasons and usage errors are codes of schema/codes.json (#42)
+  * test: no reason or error of plugin-qualify's own is English inline (#42)
+  * release.yml: the install matrix is derived from the build matrix,
+    declared once
+  * ci: the suite runs by workflow_dispatch only; public-sources moves to
+    lint.yml
+  * lint: the one lint workflow runs the shared trigger gate
+  * The adapter code kinds and the step codes hold every word their producers
+    emit
+  * The qualification domain 1.3.0: the adapter code kinds and the
+    memory-bound outcome are read from it
+  * Test: the adapter code kinds and the memory-bound outcome are items of
+    the qualification domain
+  * QUALIFICATION_VERDICT_HOSTINGS holds every hosting path the producer
+    writes
+  * Export the record-only dimensions once and read them in the test
+  * Add the record store's words to the qualification domain (1.2.0)
+  * Test: the words the records hold are items of the qualification domain
+  * ci: the shared deps-render check holds this repo's packaging to floors
+    only
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 20 Nov 2026 19:13:32 +0000

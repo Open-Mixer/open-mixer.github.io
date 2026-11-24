@@ -1,0 +1,70 @@
+omx-dsp (0.34.0) unstable; urgency=medium
+
+  * the old-home grep: curve-vocabulary names omx-contract's curves file by
+    what it was
+  * contract-dir check: the no-floor arm removes the floor as data, with node
+  * checks: the rendered vocabulary header is a separate header; the goal
+    check reads a built tree
+  * build: find omx-contract beside a contract-free goal; doc-check skips the
+    rendered vocabulary
+  * contract tests: require omx-contract 3.21.0's layout; comments stripped
+    token by token
+  * curve: CURVE_UNITS names its standard units, rendered as
+    OMX_CURVE_UNITS_STANDARD
+  * curve: red first, each curve unit word names its standard unit
+    (CURVE_UNITS.standard)
+  * contract tests: read omx-contract 3.21.0's render and tree (the sorting
+    pass)
+  * Document omx_rotary_sweep and omx_rotary_instance_sweep for the docs gate
+  * ts-golden: the oracle rates are read from data/primitives/rates.json
+  * ts-golden: red first, the oracle rates come from
+    data/primitives/rates.json, not omx-contract
+  * release: the rotary's lines in the 0.34.0 changelog
+  * fx: the rotary sweep functions state their outputs as a precondition
+  * fx: ROTARY_LONGEST_MS is held by the rotary resolve that makes the far end
+  * test: the rotary's published sweep is held to the rotors' geometry, and a
+    refused instance publishes none
+  * fx: OMX_ROTARY_INSTANCE_LATENCY_FRAMES is removed; the latency is the
+    face's function
+  * test: the rotary instance publishes one latency figure, its function (red)
+  * release: omx-dsp 0.34.0 (the sorting pass)
+  * readout: READOUT_RATE_HZ is this library's data, not a domain (sorting
+    pass, row V22)
+  * readout: READOUT_RATE_HZ is this library's readout domain (sorting pass,
+    row V22)
+  * tests: READOUT_RATE_HZ is the readout domain's, this library's (red
+    first, row V22)
+  * rates: RT_HARD_TARGET, ORACLE_FLOOR_RATES and ORACLE_FULL_RATES are this
+    library's (sorting pass, row V25)
+  * tests: RT_HARD_TARGET and the ORACLE rates are this library's (red first,
+    row V25)
+  * catalogs: the 21 curve words travel with their translations (sorting
+    pass, row V26)
+  * ci: every pull request body closes an issue
+  * packaging, ci: the floors rise to omx-contract 3.21.0 (rows V20
+    follow-up, V26)
+  * curves: CURVE_AXES and CURVE_KINDS are this library's (sorting pass, row
+    V26)
+  * tests: CURVE_AXES and CURVE_KINDS are this library's (red first, row V26)
+  * fx: ROTARY_LONGEST_MS, the rotary sweep's far end, a kernel scalar
+  * test: ROTARY_LONGEST_MS, the sweep's declared far end, is the kernel's
+    longest read (red)
+  * fx: the rotary publishes its sweep, shortest and longest read in frames
+  * test: the rotary instance publishes its sweep, and every measured lag
+    lies inside it (red)
+  * fx: the rotary reports its sweep's shortest read as latency (L1 for a
+    modulated delay)
+  * test: the rotary instance's latency is the impulse's peak at the sweep's
+    shortest phase (red)
+  * tools: install-confined runs in Fedora 45
+  * ci, publish: check-matrix gets the fork-guarded x86 runner
+  * test: the x86 runner keeps the fork guard (red)
+  * ci: the deb releases follow the release set
+  * ci: make test drops the Ubuntu 24.04 include
+  * tools/test: the Debian jobs take no include and no ubuntu: image outside
+    check-matrix (red)
+  * ci, publish: the deb jobs take their cells and runner from check-matrix
+  * tools/test: a check that the Debian jobs take their cell and runner from
+    check-matrix (red)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 23 Nov 2026 20:54:19 +0000

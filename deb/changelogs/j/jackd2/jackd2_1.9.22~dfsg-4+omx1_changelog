@@ -1,0 +1,237 @@
+jackd2 (1.9.22~dfsg-4+omx1) trixie; urgency=medium
+
+  * OpenMixer build of Debian's jackd2 1.9.22~dfsg-4 with the jack2 metadata fix
+    (https://github.com/jackaudio/jack2/issues/988): the server releases
+    what dead clients leave in the Berkeley DB environment.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 23 Nov 2026 00:00:00 +0000
+
+jackd2 (1.9.22~dfsg-4) unstable; urgency=medium
+
+  * debian/patches: Replace deprecated module pipes with shlex.
+    Thanks to Alexandre Detiste (Closes: #1084581)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 23 Dec 2024 00:04:31 +0100
+
+jackd2 (1.9.22~dfsg-3) unstable; urgency=medium
+
+  * debian/control: Recommend jack-example-tools (Closes: #1076379)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Fri, 26 Jul 2024 14:04:45 +0200
+
+jackd2 (1.9.22~dfsg-2) unstable; urgency=medium
+
+  [ Remus-Gabriel Chelu ]
+  * Add translation for Romanian (Closes: #1031925)
+
+  [ Sebastian Ramacher ]
+  * debian/control:
+    - Drop unused Build-Depends
+    - Restrict libffado-dev Build-Depends to architectures where needed
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 08 Jul 2024 23:06:15 +0200
+
+jackd2 (1.9.22~dfsg-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Nicholas D Steeves ]
+  * Mark reproducibility patches as forwarded, and set URL
+
+  [ Sebastian Ramacher ]
+  * New upstream version 1.9.22~dfsg
+  * debian/patches:
+    - Remove patches included upstream
+    - Refresh patches
+    - Fix build with Python 3.12 (Closes: #1074647)
+  * debian/control:
+    - Bump Standards-Version
+    - Drop unnecessary pkg-config dependency from -dev packages
+  * debian/: No longer install dropped tools and examples
+  * debian/copyright: Remove dropped files
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 08 Jul 2024 15:25:39 +0200
+
+jackd2 (1.9.21~dfsg-3) unstable; urgency=medium
+
+  * Team upload.
+  * Import Vagrant Cascadian's reproducible builds patches:
+    - Add 0001-man-fill_template-Use-numeric-year-month-date-for-ma.patch.
+      Without this patch, manpages may contain a locale-translated month name,
+      as well as a different date based on the build environment timezone.
+      (Closes: #1035331).
+    - Add 0002-man-fill_template-Use-UTC-date-to-avoid-differences-.patch.
+      This patch solves variance in generated man page date stamps introduced
+      when man pages generated in different timezones are compared to each
+      other.
+    - Add 0003-man-fill_template-Use-POSIX-compatible-comparison.patch.  When
+      built in an environment where /bin/sh -> bash, all of these manpages are
+      built and included in the package.  When /bin/sh -> dash, the manpages
+      that users depend on are absent from bin:jackd2.
+      (Closes: #1035329, #1035308).
+
+ -- Nicholas D Steeves <sten@debian.org>  Thu, 04 May 2023 15:29:39 -0400
+
+jackd2 (1.9.21~dfsg-2) unstable; urgency=medium
+
+  * Team upload
+  * Bump Standards-Version to 4.6.2
+  * Fix FTBFS: ValueError: invalid mode: 'rUb' (Closes: #1028710)
+
+ -- Dennis Braun <snd@debian.org>  Tue, 17 Jan 2023 21:34:44 +0100
+
+jackd2 (1.9.21~dfsg-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster
+
+  [ Dennis Braun ]
+  * New upstream version 1.9.21~dfsg
+  * Bump Standards Version to 4.6.1
+  * Fix Conflicts/Breaks of libjack-jackd2-0 and libjack-jackd2-dev
+  * d/rules: Add hardening
+  * d/rules: Build with --example-tools, not anymore default
+  * d/upstream/metadata: Add Archive, Repository & Repository-Browse fields
+  * Add Peter Bridgman to d/copyright
+
+  [ Sebastian Ramacher ]
+  * debian/control:
+    - Remove useless Breaks
+    - Remove obsolete Replaces
+
+ -- Dennis Braun <d_braun@kabelmail.de>  Thu, 26 May 2022 12:35:45 +0200
+
+jackd2 (1.9.20~dfsg-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit.
+
+  [ Erich Eickmeyer ]
+  * Build without LTO Unfortunately, if built with LTO, jackd2 will hang and
+    deny any client connection. Per
+    https://github.com/jackaudio/jack2/issues/776
+
+  [ Sebastian Ramacher ]
+  * New upstream version 1.9.20~dfsg
+  * debian/patches: Remove obsolete patch. Upstream supports SOURCE_DATE_EPOCH
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 23 Jan 2022 17:38:32 +0100
+
+jackd2 (1.9.19~dfsg-2) unstable; urgency=medium
+
+  * Team upload
+  * debian/:
+    - Convert to debhelper compat 13
+    - Filter linux-any specific files using dh-exec
+    - Fix FTCBFS (Closes: #912907)
+  * debian/control: Remove obsolete Depends and Replaces
+  * debian/copyright: Clean up copyright file and merge paragraphs
+  * debian/patches: Remove unused patch
+  * debian/libjack-jackd2-0.lintian-overrides: Fix lintian tag name
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 02 Sep 2021 13:35:50 +0200
+
+jackd2 (1.9.19~dfsg-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Erich Eickmeyer ]
+  * Add libdb-dev is a build dependency for metadata per upstream (Closes:
+    #985050)
+
+  [ Sebastian Ramacher ]
+  * New upstream release
+  * debian/copyright:
+    - Remove bogus paragraphs
+    - Add new paragraph for zalsa
+  * debian/copyright: Bump Standards-Version
+  * debian/: Build with zalsa client
+  * debian/jackd2.maintscript: Remove now obsolete rm_conffile
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 02 Sep 2021 00:31:19 +0200
+
+jackd2 (1.9.17~dfsg-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Olivier Humbert ]
+  * d/control: freebob isn't provided anymore
+  * d/control.in: freebob isn't provided anymore
+
+  [ Sebastian Ramacher ]
+  * New upstream release
+  * debian/control: Bump Standards-Version
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 21 Jan 2021 21:52:23 +0100
+
+jackd2 (1.9.16~dfsg-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release
+  * debian/copyright:
+    - Fix pattern in Files-Excluded
+    - Update paths of moved files
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sun, 18 Oct 2020 16:56:14 +0200
+
+jackd2 (1.9.14~dfsg-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Sebastian Ramacher ]
+  * debian/control:
+    - Remove obsolete Pre-Depends
+    - Remove d-shlibs from B-Ds
+    - Add libsystemd-dev to B-Ds to build with sd_notify support
+    - Remove unused asound:Depends
+  * debian/copyright: Remove waf from Files-Excluded (Closes: #884082)
+  * debian/jackd2.maintscript: Update maintscript to remove old conffiles
+    (Closes: #726079)
+  * debian/audio.conf: Fix command (Closes: #951432)
+
+  [ Jonas Smedegaard ]
+  * remove myelf as uploader
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Mon, 24 Aug 2020 21:13:05 +0200
+
+jackd2 (1.9.14~dfsg-0.1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Remove trailing whitespaces
+
+  [ Felipe Sateler ]
+  * Change maintainer address to debian-multimedia@lists.debian.org
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat
+
+  [ Olivier Humbert ]
+  * d/control: http -> https
+  * d/control.in: http -> https
+  * d/copyright: http -> https
+
+  [ Ross Gammon ]
+  * New upstream version 1.9.14
+  * Add a gitlab-ci.yml file
+  * Fix name of gilab-ci file
+  * Update watch file to use repack suffix in downloaded tarball
+  * New upstream version 1.9.14~dfsg
+  * Unapply patches from source
+  * Refresh patches & drop the one applied upstream
+  * Add pyc files to clean target
+
+  [ Erich Eickmeyer ]
+  * Change compat level to 10, add back compat file
+
+  [ Sandro Tosi ]
+  * NMU
+  * Switch to python3; Closes: #936757, #959177
+
+ -- Sandro Tosi <morph@debian.org>  Thu, 09 Jul 2020 00:07:53 -0400
+
+# Older entries have been removed from this changelog.
+# To read the complete changelog use `apt changelog jackd2`.

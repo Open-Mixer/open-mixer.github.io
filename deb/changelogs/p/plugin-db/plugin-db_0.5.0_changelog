@@ -1,0 +1,66 @@
+plugin-db (0.5.0) unstable; urgency=medium
+
+  * the old-home grep: plugin-db names its words by their domain, no longer
+    by data/pin.json, data/db.json, data/constants.json
+  * packaging: every floor on a package this delivery releases is its
+    delivered version
+  * lv2: the 20 terms used by the plugin features name the domain
+    plugin-feature (sorting pass, V27a, V24)
+  * tests: the standard in its one form, refused by name when absent; no
+    term's user an old home (red; sorting pass, V27a, F1)
+  * tests: the domains lv2 and plugin-feature are the one source, no old-home
+    comparison (sorting pass, V24, V27a, F1)
+  * tests: no plugin-db test reads omx-contract's old homes of the moved
+    items (red; sorting pass, V24, V27a, F1)
+  * lv2: each OpenMixer unit word gives its exact urn spelling, x-uri
+    (sorting pass, F1)
+  * tests: each OpenMixer unit word carries its exact urn as x-uri (red;
+    sorting pass, F1)
+  * plugin-db 0.5.0 (sorting pass)
+  * lv2: the LV2 inventory and its coverage check, from omx-contract (sorting
+    pass, V27a, O1)
+  * tests: every installed LV2 term is mapped by the domain lv2 (red; sorting
+    pass, V27a, O1)
+  * lv2: LV2_RESOURCE_KINDS, the LV2 terms of a resource mapped to the
+    standard kinds (sorting pass, F1)
+  * tests: the LV2 resource mapping read from plugin-db's domain lv2 (red;
+    sorting pass, F1)
+  * plugin-feature: the domain reads no CLAP domain, and plugin-db no CLAP
+    package (sorting pass, V24)
+  * tests: the domain plugin-feature reads no CLAP domain (red; sorting pass,
+    V24)
+  * packaging: the loader and build floors stay 3.20.0 (sorting pass, V11,
+    V13)
+  * plugin-db: the 18 items move into the domain plugin-db, data/ keeps the
+    store's schema (sorting pass, V11, V13)
+  * tests: plugin-db's 18 items read from its domain plugin-db (red; sorting
+    pass, V11, V13)
+  * lv2: the domain in the one formatting (sorting pass, V27a)
+  * lv2, plugin-feature: the terms in the domain format's terms kind (sorting
+    pass, V27a, F1, V24)
+  * plugin-feature: plugin-db gains the plugin features (sorting pass, V24)
+  * tests: the plugin features read from plugin-db's domain plugin-feature
+    (red; sorting pass, V24)
+  * lv2: the moved items' x-since is the domain's version (sorting pass,
+    V27a, F1)
+  * tests: the LV2 terms and the F1 mapping read from plugin-db's domains
+    (sorting pass, V27a, F1, O1)
+  * ci: every pull request body closes an issue
+  * lv2, format: plugin-db gains the LV2 terms and the F1 mapping (sorting
+    pass, V27a, F1, O1)
+  * pin: data/pin.json no longer holds the verdict and pool words (sorting
+    pass, V12, last PR of the row)
+  * tests: plugin-db holds no pin verdict or pool item (red; sorting pass,
+    V12)
+  * pin: the verdict and pool words are read from plugin-hostd-protocol's
+    domain pin (sorting pass, V12)
+  * tests: the pin words' packaging arm (red; sorting pass, V12)
+  * tests: the validators and the twins read the pin words from protocol's
+    domain (red; sorting pass, V12)
+  * ci: turn the commit identity check on for pull requests
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * plugin-db: the commit hook stays the shared stub, byte for byte
+  * plugin-db: remove the ABI baseline, the Breaks/Replaces, the @freemixer
+    scope and the FREEMIXER hook names
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 23 Nov 2026 20:54:19 +0000
