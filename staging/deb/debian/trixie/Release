@@ -1,18 +1,19 @@
-Architectures: amd64 arm64
+Architectures: all arm64
+Changelogs: https://www.openmixer.org/staging/deb/changelogs/@CHANGEPATH@_changelog
 Codename: trixie
-Date: Tue, 17 Nov 2026 23:30:30 +0000
+Date: Tue, 24 Nov 2026 21:19:46 +0000
 Label: OpenMixer-Staging
 Origin: OpenMixer-Staging
 Suite: trixie
 MD5Sum:
- d41d8cd98f00b204e9800998ecf8427e                0 Packages
- 4a4dd3598707603b3f76a2378a4504aa               20 Packages.gz
+ 4317d65ab0ce29acc7cdfebd3a7d5954            14420 Packages
+ 9446b57c7dac2ee17f2d88f6fd41b5dc             4449 Packages.gz
 SHA1:
- da39a3ee5e6b4b0d3255bfef95601890afd80709                0 Packages
- a0fddd5458378c1bf3c10dd2f5c060d1347741ed               20 Packages.gz
+ 9c8d781cda2f345690e5e74230802113da19ab08            14420 Packages
+ d65c8b261c9ec4494af38939e6f8837a1cc8e6f8             4449 Packages.gz
 SHA256:
- e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855                0 Packages
- f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec               20 Packages.gz
+ 786868d6a77b6ec1af18425ee8ec870136ace0c0ae62119b889fd9afe160d647            14420 Packages
+ a43d26e942282af40e6e8ff510342771bedfe8bbf5ae7df4db250c33435cad47             4449 Packages.gz
 SHA512:
- cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e                0 Packages
- 1b46b9b08d5b338be9d732a1724795b2eab63daffde377218727c90857b79fe6a47bceed495117fcde60f7339812ef75ef4c69f82dd79fb69b6cbf8006b521f2               20 Packages.gz
+ 80b2a1e1f5c540c5c66e65ead925f1a0414713b149a0463fbaaacc4e61bbe86331a77a9036bf7cb28d7796397ff08af9128134edb201ca28f4631902981d6514            14420 Packages
+ 006c8d566a3983acafc6105b12d229d190adf96f9b0c7ace0c0bfb67f8796166b649da5421284f4b5266f0b3d03e4adcab7506e51695b3e10253c38020609977             4449 Packages.gz
