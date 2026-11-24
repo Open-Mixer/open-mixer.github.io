@@ -1,0 +1,89 @@
+omx-clap-host (0.34.0) unstable; urgency=medium
+
+  * test-socket: the host is a client of the test's own PipeWire, through
+    PipeWire's libjack
+  * test-socket: where /proc is masked, socket_e2e.sh runs as a session of
+    its own
+  * tests: importing plugin-hostd's client writes no bytecode into
+    plugin-hostd's tree
+  * test-codes: the reply-codes check reads the host domain, where V15 moved
+    HOST_REPLY_CODES
+  * Revert the chain-2 fold (V16 + V29, #172): it waits for chain 3
+  * the old-home grep: the CLAP plugin features name their user at its new
+    home
+  * packaging: every floor on a package this delivery releases is its
+    delivered version
+  * release: omx-clap-core 0.34.0 (the sorting pass)
+  * V29: the scan domain's check reads the package as it installs, so the
+    verbs meet HOSTING_VERB_HOSTS
+  * V16: the host verbs check reads plugin-hostd-protocol's verbs from its
+    domain only, and refuses a data file of the package by name
+  * V16: a stale 3/plugin-hostd-protocol/verbs.json is refused by the host
+    verbs check, a test that fails while it reads it (red)
+  * V29: the committed renders of omx-clap follow omx-contract's
+    HOSTING_VERB_HOSTS read
+  * V16: the host verbs check reads plugin-hostd-protocol's verbs from its
+    domain plugin-hostd, through omx-contract's reader
+  * V16: the host verbs check reads plugin-hostd-protocol's verbs from its
+    domain plugin-hostd, a test that fails while it reads data/verbs.json
+    (red)
+  * V29: VERB_HOSTS is HOSTING_VERB_HOSTS of omx-clap's hosting data
+  * V15: the host verbs check binds the curve in a standard unit id, and the
+    lower-case id is refused
+  * V25: the comment of host_transport_test.c names omx-dsp's
+    ORACLE_FULL_RATES
+  * V25: the tests read the oracle rates from omx-dsp's definitions, and
+    omx-dsp-devel is the 0.34.0 floor
+  * V23d revert: the two stray CI lines go, and the vendor-code checks read
+    omx-contract's header, red until it carries them
+  * V23d: revert for this chain: the param-contract sheet stays
+    omx-contract's, and this tree reads it there
+  * V23d: x-file is the data path again (the x-file half of c9a4421
+    reverted); the renders follow omx-contract S0 ec71185
+  * V15: revert 6dbd6f0, the verbs items name their data file again
+  * release-same-pass: plugin-qualify no longer names a
+    plugin-qualify-contract
+  * ci: plugin-hostd.sh takes a release tag or a branch by name, never a
+    commit
+  * ci: plugin-hostd is read from main by name; the chain passes its own head
+    through the same variable
+  * ci: read plugin-hostd's sorting branch by name, as the chain does, not a
+    sha pin
+  * V27b: the comments that named omx-contract as the source of the CLAP and
+    LV2 terms name their domains
+  * V15: host_verbs_check.py reads the verbs and reply codes from the
+    installed domains
+  * V27b: the CLAP header inventory and its coverage check live here, with
+    the terms
+  * V15: the verbs items name the domain's own document as their data file
+  * V27a reader: the scan's field list is held to the LV2 terms of
+    plugin-db's lv2 domain
+  * V15: the host words and the verbs are the domains host and omx-clap;
+    data/verbs.json is gone
+  * V23d: the vocabulary renders are as before: omx-contract's S0 keeps an
+    installed domain's run-time items out of its owner's render
+  * V23d: the committed vocabulary renders carry the scan domain's words, as
+    omx-contract renders them now
+  * V23d: the mapping names coef for the coefficient unit; the check installs
+    omx-contract's own domains
+  * V23d: the code sheet's data file is named for its domain, and the header
+    banner says where it is rendered from
+  * V27b, V23d: drop the transition excludes; name the clap domain in the
+    scan's comment
+  * V27b: the CLAP terms are the items of the clap domain, and the scan reads
+    them there
+  * rename: the two checks that named the old header files and the rpm
+    library package follow the rename
+  * ci: every pull request body closes an issue
+  * V1: untrack the scan_panel_words_test binary the previous commit swept
+    in, and ignore it
+  * V1: omx_clap_ext.h takes the panel words from omx-panel's rendered header
+  * V27b: the CLAP domain, with the flag-to-scale mapping (F2)
+  * V21: the scale codes are this tree's, mapped to the standard scales (F2);
+    the header stops spelling them
+  * V23d: the param-contract code sheet is this tree's, with its mapping to
+    the standard units (F2)
+  * rename: omx-clap-core becomes omx-clap in every package, library and
+    install name
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 23 Nov 2026 20:54:18 +0000

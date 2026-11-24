@@ -26,10 +26,13 @@ libomx-clap-core1	0.32.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libomx-clap-core1	0.32.5	quick	trixie/arm64
 libomx-clap-core1	0.33.0	quick	trixie/arm64
 libomx-clap-core1	0.33.1	quick	trixie/arm64
+libomx-clap-dev	0.34.0	quick	trixie/arm64
 libomx-clap-lv2-dev	0.32.2	-	bookworm/amd64 bookworm/arm64
 libomx-clap-lv2-dev	0.32.3	-	bookworm/amd64 bookworm/arm64
 libomx-clap-lv2-dev	0.33.0	quick	trixie/arm64
 libomx-clap-lv2-dev	0.33.1	quick	trixie/arm64
+libomx-clap-lv2-dev	0.34.0	quick	trixie/arm64
+libomx-clap1	0.34.0	quick	trixie/arm64
 libomx-contract-dev	2.6.0	-	bookworm/all trixie/all
 libomx-contract-dev	3.14.0	-	bookworm/all
 libomx-contract-dev	3.17.0	-	bookworm/all trixie/all
@@ -112,41 +115,49 @@ omx-clap-host	0.32.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 omx-clap-host	0.32.5	quick	trixie/arm64
 omx-clap-host	0.33.0	quick	trixie/arm64
 omx-clap-host	0.33.1	quick	trixie/arm64
+omx-clap-host	0.34.0	quick	trixie/arm64
 omx-clap-host-l10n-ca	0.32.2	-	bookworm/all
 omx-clap-host-l10n-ca	0.32.3	-	bookworm/all trixie/all
 omx-clap-host-l10n-ca	0.32.5	quick	trixie/all
 omx-clap-host-l10n-ca	0.33.0	quick	trixie/all
 omx-clap-host-l10n-ca	0.33.1	quick	trixie/all
+omx-clap-host-l10n-ca	0.34.0	quick	trixie/all
 omx-clap-host-l10n-de	0.32.2	-	bookworm/all
 omx-clap-host-l10n-de	0.32.3	-	bookworm/all trixie/all
 omx-clap-host-l10n-de	0.32.5	quick	trixie/all
 omx-clap-host-l10n-de	0.33.0	quick	trixie/all
 omx-clap-host-l10n-de	0.33.1	quick	trixie/all
+omx-clap-host-l10n-de	0.34.0	quick	trixie/all
 omx-clap-host-l10n-es	0.32.2	-	bookworm/all
 omx-clap-host-l10n-es	0.32.3	-	bookworm/all trixie/all
 omx-clap-host-l10n-es	0.32.5	quick	trixie/all
 omx-clap-host-l10n-es	0.33.0	quick	trixie/all
 omx-clap-host-l10n-es	0.33.1	quick	trixie/all
+omx-clap-host-l10n-es	0.34.0	quick	trixie/all
 omx-clap-host-l10n-fr	0.32.2	-	bookworm/all
 omx-clap-host-l10n-fr	0.32.3	-	bookworm/all trixie/all
 omx-clap-host-l10n-fr	0.32.5	quick	trixie/all
 omx-clap-host-l10n-fr	0.33.0	quick	trixie/all
 omx-clap-host-l10n-fr	0.33.1	quick	trixie/all
+omx-clap-host-l10n-fr	0.34.0	quick	trixie/all
 omx-clap-host-l10n-it	0.32.2	-	bookworm/all
 omx-clap-host-l10n-it	0.32.3	-	bookworm/all trixie/all
 omx-clap-host-l10n-it	0.32.5	quick	trixie/all
 omx-clap-host-l10n-it	0.33.0	quick	trixie/all
 omx-clap-host-l10n-it	0.33.1	quick	trixie/all
+omx-clap-host-l10n-it	0.34.0	quick	trixie/all
 omx-clap-host-l10n-pt	0.32.2	-	bookworm/all
 omx-clap-host-l10n-pt	0.32.3	-	bookworm/all trixie/all
 omx-clap-host-l10n-pt	0.32.5	quick	trixie/all
 omx-clap-host-l10n-pt	0.33.0	quick	trixie/all
 omx-clap-host-l10n-pt	0.33.1	quick	trixie/all
+omx-clap-host-l10n-pt	0.34.0	quick	trixie/all
 omx-clap-host-tests	0.32.2	-	bookworm/amd64 bookworm/arm64
 omx-clap-host-tests	0.32.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 omx-clap-host-tests	0.32.5	quick	trixie/arm64
 omx-clap-host-tests	0.33.0	quick	trixie/arm64
 omx-clap-host-tests	0.33.1	quick	trixie/arm64
+omx-clap-host-tests	0.34.0	quick	trixie/arm64
 omx-contract	3.14.0	-	bookworm/all
 omx-contract	3.17.0	-	bookworm/all trixie/all
 omx-contract	3.19.0	quick	trixie/all
