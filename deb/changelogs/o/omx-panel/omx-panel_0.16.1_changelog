@@ -1,0 +1,13 @@
+omx-panel (0.16.1) unstable; urgency=medium
+
+  * test: one tree grep for the name guards, read from the files; two more
+    guards used git grep
+  * ci: the renderer, store and meter jobs install plugin-db-contract, whose
+    lv2 domain the layout reads
+  * omx-panel 0.16.1: the release builds run their checks from a tree with no
+    .git and with no panel domain installed
+  * installed-tools-check: the staged tools read the panel domain the same
+    build staged
+  * units-standard: the plugin-hostd guard reads the files itself, no git grep
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 24 Nov 2026 05:52:07 +0000
