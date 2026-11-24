@@ -1,0 +1,351 @@
+omx-plugins (0.20.0) unstable; urgency=medium
+
+  * Makefile: presets-figures once in make test, no install-pins phony
+  * packaging: every omx-clap floor is 0.34.1
+  * param contract: a unit is served by the sheet's own token (dbPerOct)
+  * packaging: git is a build dependency of %check
+  * make test: a red part no longer hides the others
+  * face: a remote-controls page of blank slots alone is not served
+  * role-meanings-source: mirror the domains kept outside the major
+  * no shipped pins: our plugins are qualified like any plugin
+  * the old-home grep: the deb cells comment names libomx-clap-dev
+  * resource hints: the words are read from omx-contract, their owner today;
+    sorting row V28 waits for its design
+  * units: the vendor block is omx-contract 3.21.0's eight, and dB/oct is
+    served as dbperoct (clap#163)
+  * packaging: every floor on a package this delivery releases is its
+    delivered version
+  * gen: the descriptors, params headers and LV2 ttl carry 0.20.0
+    (hand-applied gen output)
+  * changelog: omx-plugins 0.20.0 (spec %changelog, debian/changelog)
+  * release: the version moves to 0.20.0 (Makefile VERSION, spec Version)
+  * Green: the oracle rates are read as omx-dsp's ORACLE_FULL_RATES (sorting
+    row V25, B2's finding)
+  * Red: the oracle rates are omx-dsp's ORACLE_FULL_RATES, read from nowhere
+    else (sorting row V25, B2's finding)
+  * V23d out of this chain: the unit codes are read from omx-contract's sheet
+    again, as on main (%4 ruling 2026-11-20)
+  * Red: no file reads omx-clap's omx-param-contract; the unit codes are
+    omx-contract's sheet (%4 ruling: V23d out of this chain)
+  * Green: the generator keeps a stated sweep, and the omx-contract floor is
+    3.21.0
+  * Red: omx-rotary's descriptor states its sweep, which the generator drops
+  * packaging: the omx-dsp floor is 0.34.0, the rotary's latency and sweep
+  * deps-check: the control-ceiling sabotage plants its ceiling at any
+    omx-dsp floor
+  * Green: the own LV2 units are F1's and every published unit is a standard
+    unit by its symbol (sorting rows M3 + F4)
+  * Red: the declarations' own LV2 units are F1's, and every published unit
+    is a standard unit by its symbol (sorting rows M3 + F4)
+  * Green: schema/plugin.decl.schema.json's graph kinds are omx-dsp's
+    CURVE_KINDS rendered (sorting row V26, PR 3)
+  * Green: the resource hint words are read as plugin-hostd's (sorting row
+    V28, PR 4)
+  * Red: the graph kinds a declaration names are omx-dsp's CURVE_KINDS, all
+    eight (sorting row V26)
+  * Green: include/omx_panel_description.h expands omx-panel's panel lists
+    (sorting row V1, row 3)
+  * Red: the panel words of omx_panel_description.h are omx-panel's, none
+    spelled here (sorting row V1, row 3)
+  * Green: the scale codes come from omx-clap's
+    <omx-clap-host/omx_param_scales.h> (sorting row V21b, PR 2)
+  * Red: the scale codes are omx-clap's rendered header's, none spelled here
+    (sorting row V21b, PR 2)
+  * format-tables: a CLAP feature term is read by its x-term (value, id), as
+    omx-clap's clap domain carries it
+  * release: the DEBs and the Zynthian tarball are arm64 only (the
+    development matrix is trixie arm64 and fc45 x86_64): the dry run's
+    tarball no longer asks for an amd64 artifact nothing builds
+  * Red: the resource hint words are read as plugin-hostd's (sorting row V28)
+  * packaging: the build floors on plugin-hostd-contract 0.21.0, whose
+    domains the generators read
+  * ci: the deb install check asserts the metapackage has no Breaks, Replaces
+    or Conflicts (the owner rule), not the Breaks/Replaces it no longer
+    carries
+  * Green: the format tables are read from plugin-hostd's domains
+    plugin-hostd/clap and plugin-hostd/lv2 (sorting row V19, PR 4)
+  * param-units-check: the vendor block is append-only, held at its first
+    four codes
+  * rename: omx-clap-core is omx-clap (packages, pkg-config name, library),
+    floors on its first release 0.34.0
+  * packaging: the build floors on plugin-hostd-contract 0.21.0, whose
+    domains the generators read
+  * Red: the format tables are read from plugin-hostd's domains
+    plugin-hostd/clap and plugin-hostd/lv2 (sorting row V19)
+  * Green: the CLAP feature terms are read from omx-clap-core's clap domain
+    (sorting row V24/27, PR 5)
+  * ci: every pull request body closes an issue
+  * Green: the unit codes are read where omx-clap-core declares them (sorting
+    row V23d, PR 2a)
+  * tools: domainDocument reads a domain of the contract directory; the build
+    floors on omx-clap-core-contract 0.34.0
+  * tools: domainDocument reads a domain of the contract directory; the build
+    floors on omx-clap-core-contract 0.34.0
+  * Red: the CLAP features a descriptor writes are read from omx-clap-core's
+    clap domain (sorting row V24/27)
+  * Red: param-units-check reads the unit codes where omx-clap-core declares
+    them (sorting row V23d)
+  * no-modgui: a tree that is no git checkout (the package build's) is read
+    from its files; a planted MOD GUI file in it is found
+  * ci-scope: omx-geq is named by recipe-selftest.mjs, so a change to it runs
+    the selftest
+  * descriptor-view: the render that hides the installed omx-contract still
+    names its command directory, which gen.mjs's isMain reads
+  * omx-rotary: a latency check, mix 50 reports 0 (a guard)
+  * role-meanings: the utility family's seven roles each have a row (gain,
+    bassMonoFreq a frequency, pseudoTime a delay; the rest unknown)
+  * face-header: include/omx_plugin_face_ids.h is omx-contract 3.20.2's
+    render (one space before the trailing comment), regenerated by the tool
+  * recipe-selftest: the modgui widgets check reads omx-panel 0.14.0's
+    look-named fader films (fader-vintage|console|3d.png) and an amount that
+    is no fader image
+  * panel-words-check: the display kinds are held against omx-panel's table
+    alone (omx-clap-core 0.33.1 dropped OMX_CLAP_PANEL_DISPLAY_KINDS); an arm
+    renumbers one
+  * round-trip ledger: counted against plugin-hostd 0.20.8, omx-contract
+    3.20.2 and omx-clap-host 0.33.1; clap controls[].meaning loses 4 words,
+    not 10
+  * schema: the utility family and its roles, as omx-panel 0.14.0's ROLES
+    table has them (make selftest: families are not omx-panel's)
+  * docs: omx-strip's matrix has at most 34 columns, as many bands as run
+  * docs: omx-strip and the MOD GUI images, grouped controls explained
+  * ci: clap-validator job does not install Fedora's nodejs beside
+    omx-contract's nodejs22-bin (the builddep already brings node)
+  * round-trip-contract-dir: a domain directory beside the majors
+    (plugin-hostd 0.20.8's machine domain) is carried whole, not read as a
+    major of packages
+  * tests: a domain directory beside the majors is carried whole into the
+    composed contract dir (red: machine/machine.json is lost)
+  * schema-urls-check: run-not-imported is decided by omx-contract's isMain,
+    not by comparing argv[1] by hand (entry-symlink-check refuses the hand
+    comparison)
+  * tests: the deb-cells fixture's x86-runner keeps its quotes, so the
+    noguard arm is a real arm (8 planted trees green)
+  * ci: the check-matrix x86-runner keeps the fork guard; the deb-cells check
+    requires it
+  * tests: the deb cells' x86-runner keeps the fork guard (red: the noguard
+    tree is accepted)
+  * test-split: schema-urls is in the fast set, as make test lists it
+  * gen: the EQ params headers regenerated against omx-panel 0.14.0
+    (omx-contract 3.20.2 from the channel); gen --check green, a second gen
+    writes nothing
+  * role-meanings-source-check: the install's $schema is read off
+    omx-contract's own package, one URL or refused by name; self-test arms
+    for one, two and no URL
+  * role-meanings-source-check: the stale package it builds is written as an
+    install writes it, $schema the major's URL (omx-contract's reader refuses
+    the whole directory otherwise)
+  * test-split: entry-symlink is a listed step of make test
+  * packaging: nodejs >= 20.19 for the tools
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * ci: the deb job takes its cells from check-matrix, each on its own
+    architecture's runner
+  * test: a DEB job runs on its check-matrix cell's runner (red on ci.yml's
+    deb job)
+  * packaging: omx-plugins-lv2 recommends omx-panel (omx-modgui-sync
+    generates the MOD GUI on the host); deps-check holds both formats
+  * deps-check self-test: omx-plugins-lv2 recommends omx-panel at the
+    BuildRequires floor, so omx-modgui-sync is present (red: 3 arms STAYED
+    GREEN)
+  * omx-plugins ships no generated MOD GUI: the files, the build and check
+    steps, the manifest reference (owner decision 2026-11-19, omx-panel#137
+    section B)
+  * tests: no-modgui-check, omx-plugins ships no generated MOD GUI (red on
+    main: 208 refusals; 6 sabotage arms)
+  * packaging: no Breaks, Replaces or Conflicts between our packages;
+    deps-check refuses any (owner rule 2026-11-16)
+  * deps-check self-test: no Breaks, Replaces or Conflicts between our
+    packages either, a continued field included (red: 3 arms STAYED GREEN)
+  * tools: decide "run, not imported" with omx-contract's isMain
+  * packaging: drop Breaks and Conflicts omx-clap-host < 0.23.0; deps-check
+    refuses a Breaks or Conflicts naming a sibling
+  * deps-check self-test: a Breaks or Conflicts naming a sibling package must
+    be refused (red: both arms STAYED GREEN)
+  * test: a tool run through a symlink answers as by its own path (red)
+  * ci, release: the comments say what the arm builds are now
+  * spec: the released 0.19.3 changelog entry keeps its text
+    (omx-contract-data >= 3.13.0 and < 4)
+  * lint: the Fedora 44 refusal reads every fedora matrix list and refuses a
+    missing tree
+  * lint: refuse a Fedora 44 reference in the workflows
+  * ci: Fedora 45 only (F44 dropped), as omx-dsp and omx-clap-core
+  * packaging: omx-clap-core floor 0.33.0 (the panel words utility 12 and
+    time_response 4 of its omx_clap_ext.h)
+  * recipe-selftest: the debt arm names the new and the stale gaps, not only
+    how many
+  * declaration schema: $id and $ref name openmixer.org, never a code host
+  * schema-urls check: schema/*.json names the project's own domain (red on
+    main: a code-host $id and three code-host $refs)
+  * recipe-selftest: the stand-in contract carries the installed render's
+    owners.json
+  * deps-check: refuse a ceiling on every dependency line, bare or with
+  * panel description header: OMX_CLAP_FAMILY_UTILITY and
+    OMX_CLAP_DISPLAY_TIME_RESPONSE
+  * packaging: floors only, no ceiling on any dependency
+  * round-trip-contract-dir: the other installed packages are copied, not
+    linked
+  * round-trip-contract-dir check: an installed package must not be a link
+  * descriptor.mjs: no installed-manifests fallback for a link's owner
+  * descriptor-view: a render without owners.json is refused by name
+  * tree-contract test: the fake install names a version inside the packaging
+    range
+  * build reads this tree's omx-plugins contract, never the installed one
+  * packaging: omx-contract floor 3.19.1, the release whose install and
+    reader take the relative $schema
+  * tree-contract: a test that the build's contract CLI never reads the
+    installed omx-plugins package
+  * gen: delay and reverb MOD GUIs generated again on omx-panel 0.13.8
+  * round-trip-contract-dir check: shellcheck clean
+  * round-trip-contract-dir check: the install rewrites line 2
+  * contract: the descriptors and definition files name the relative $schema
+    the install rewrites
+  * contract-dir check: the source $schema is the relative address the
+    install rewrites
+  * declaration schema: its refs into omx-panel name omx-panel 0.13.8's $id,
+    so omx-geq and omx-strip validate again
+  * recipe selftest: the declaration schema's refs into omx-panel name the
+    installed schema's $id (red: omx-geq and omx-strip lack their declaration)
+  * round-trip: the band-group count's comment names omx-strip's 32 bands
+  * round-trip: the ledger counts the LV2 port groups of the band sections
+    (#99)
+  * tests: the recipe selftest's growth arm builds a real origin to fetch
+    main from
+  * completeness: a remote base the fetch could not refresh is refused by name
+  * tests: a stale origin/main with a failed fetch passes a grown debt (red)
+  * tests: test-split's self-test sabotages the last prerequisite of make
+    test, now debt-base
+  * completeness: the debt growth base is fetched, verified, and refused by
+    name everywhere
+  * tests: the completeness debt's growth base is fetched, and refused by
+    name when it cannot be resolved (red)
+  * A section's port groups keep together in display order (omx-strip: EQ 1
+    ... EQ 32 before Comp)
+  * band-groups: a section's port groups come together in display order (red:
+    omx-strip)
+  * tests: every line of a core init is held to the template forms, and the
+    answers are the core's instances
+  * tests: control flow, hidden folds and a deleted fold pass the core-init
+    answers check (red)
+  * omx-strip: each EQ band is an LV2 port group of its own (EQ 1 ... EQ 32)
+  * tests: every line naming ok in a core init is one of three held forms
+  * tests: ok++ and a write through a pointer pass the core-init answers
+    check (red)
+  * tests: the core-init answers check matches whole lines and refuses any
+    other assignment to ok
+  * tests: three core-init plants the answers check passes (red)
+  * band-groups: a check that every band of several controls has its own LV2
+    port group (red: omx-strip)
+  * tests: comp-published-scan's self-test runs the script and holds its exit
+    statuses
+  * tests: comp-published-scan exits 2 for a setup problem, as the other
+    tools here do; its Makefile header line
+  * tests: comp-published-scan names the failed control, a missing scanner or
+    plugin, answers --help; python3 is a build dependency
+  * tests: comp-published-scan's self-test asserts which reading names each
+    change (red: one arm expects the wrong one)
+  * tests: the LV2 refusal and every chain element's rate answer are held;
+    the probe init is not a second guard; the clap-validate text says what
+    the code does
+  * tests: the activate-refusal line is built by a function, not a printf
+    format variable
+  * tests: Ratio's expected unit is ratio, as omx-comp declares it
+  * tests: comp-published-scan reads omx-comp's meters and contract by value
+    (red: Ratio's unit expected as none)
+  * Hold the panel-description structures to omx-clap-core's installed header
+    (make panel-abi)
+  * gen: delay and reverb panels generated again on omx-panel 0.13.8; build
+    floor 0.13.8
+  * clap-validate: accept only activate's refusal at a rate outside the nine
+    oracle rates
+  * test: the clap-validator verdict accepts only a refusal outside the nine
+    oracle rates (red)
+  * debian: extended descriptions wrapped to 80 columns
+  * contract: the descriptors and definition files name the ONE unversioned
+    contract $schema
+  * contract: the descriptors and definition files name the openmixer.org
+    $schema
+  * face: activate refuses a rate the kernel refuses (no silent wire)
+  * test: every face's activate must refuse a rate the kernel refuses (red)
+  * ci: remove the stale-units bridge script and every call to it
+  * tests: a check that the tree carries no CI bridge script and no call to
+    one
+  * width: state its resource hints, regenerate its files after the merge,
+    raise the round-trip ledger for 34 plugins
+  * omx-trim: the declaration states its resource hints
+  * omx-trim: the parameter docs and the round-trip ledger
+  * docs: the compressor's parameter page lists the release mode
+  * round-trip: the ledger counts the compressor's release mode control
+  * omx-comp: the factory presets carry the release mode
+  * omx-trim: the LV2 manifest lists the presets
+  * omx-comp: the MOD GUI follows the release mode control
+  * test: the split list names the release-mode check
+  * omx-trim: three factory presets
+  * omx width: four factory presets
+  * omx width: in the catalogue (docs/catalogue.md)
+  * omx width: the kernel-identity test
+  * packaging: omx width in omx-plugins-clap and omx-plugins-lv2
+  * omx width: CLAP and LV2 faces in plain C over omx-dsp's width kernel
+  * omx width: the generated parameter header and LV2 description
+  * omx width: its declaration, parameters by reference to the width kernel
+  * omx-trim: the console's input trim as a plugin
+  * omx-comp: the release mode is a parameter, read from the kernel (green)
+  * test: omx-comp carries the compressor's release mode as a parameter (red)
+  * omx-reverb: the return's nine controls on both faces, proven through them
+    (#68, FX-7)
+  * lint: public-sources runs on every pull request, from lint.yml
+  * test-split: a pull_request control and a push-only refusal in the
+    self-test
+  * test-split: the split runs on a pull request, a dispatch or a call
+  * test-split: a ci.yml run by dispatch is an accepted shape (red)
+  * ci: run the suite on dispatch, lint on pull requests
+  * commit-msg: take the current stub from the checker's release line
+  * ci: a dispatch builds the trixie DEBs alone while a release wave is open
+    The DEB job named bookworm and trixie whatever OMX_RELEASE_MATRIX said,
+    so a lane's dispatch built bookworm amd64, where a quick wave's
+    dependencies are not published (run 43412676885: plugin-qualify 0.20.4
+    not installable). With OMX_RELEASE_MATRIX=quick it builds trixie, the
+    cell the shared release dry run builds; bookworm and trixie otherwise.
+  * packaging: floors move to the latest releases
+  * omx-clap-core and omx-clap-host floored at the latest served, 0.32.2
+  * Ceilings follow the channel: omx-clap-core and omx-clap-host < 0.33
+  * recipe-selftest: the debt ratchet checks the tree once; each checker arm
+    checks its entry
+  * omx-contract.mjs: pkg-config's answer is remembered per pkg-config
+    environment
+  * test: the contract's directories are asked of pkg-config once per
+    environment (red)
+  * round-trip: the ledger names omx-contract 3.14.0, the channel's
+  * round trip: the probe reads this tree's role meanings; the clap meaning
+    loss is 10 (#35)
+  * test: the round trip's contract directory holds this tree's omx-plugins,
+    never an installed one (#35)
+  * test: omx-comp's in and out meters are bound by its transfer curve (#35)
+  * tools: the role meanings are this tree's contract file, never an
+    installed omx-plugins (#35)
+  * test: gen reads this tree's role meanings, with no omx-plugins installed
+    or another release's (#35)
+  * release: a staged run publishes to the staging channel
+  * recipe self-test: the chain proof reads its oracles from make test-heavy
+  * packaging: omx-panel >= 0.13.5 and < 0.14
+  * omx-comp: the generated header is omx-panel 0.13.5's
+  * round-trip: the ledger names every version it was counted against,
+    counted in a clean build environment
+  * omx-panel: the roles' meanings are this tree's own
+  * ci: gcc is installed only when absent; the cluster's worker image carries
+    it and its verify runs unprivileged
+  * round-trip: the losses ledger is counted against plugin-hostd 0.20.3 and
+    says which release it holds
+  * round-trip self-test: a ledger counted against another plugin-hostd
+    release reads as that (red)
+  * ci: gcc is installed only when absent; the cluster's worker image carries
+    it and its verify runs unprivileged
+  * plugin recipe: a plugin's tests are its test and test-heavy targets
+    together
+  * make test-heavy: the checks that run the built plugins through a host
+    leave the package build
+  * test-split: make test and make test-heavy list every check once (red)
+  * ci: packaging runs on v* tags and workflow_dispatch only
+  * ci: the recipe selftest runs for a change that can move it (#336)
+  * README: refresh apt after adding the repository, download into /tmp
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 24 Nov 2026 14:34:49 +0000
