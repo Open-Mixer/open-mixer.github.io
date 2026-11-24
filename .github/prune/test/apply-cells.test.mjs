@@ -230,7 +230,7 @@ test('apply checks: a scoped drop that strands a kept package in trixie/arm64 is
 // an entry that matches no line is red too.
 const ALLOW = [
   ['', /description: 'Drop mode:/, 'the drop input\'s description: examples of the entry syntax, not a cell the workflow runs'],
-  ['rpm', /^\s+image: fedora:44$/, 'the toolchain of the job that rewrites every release\'s metadata, not a cell it checks'],
+  ['rpm', /^\s+image: fedora:45$/, 'the toolchain of the job that rewrites every release\'s metadata, not a cell it checks'],
   ['deb', /^\s+image: debian:bookworm$/, 'the toolchain of the job that rewrites every suite\'s index, not a cell it checks'],
 ];
 const PLAN_KEYS = new Set(['rpm-releases', 'rpm-arches', 'deb-releases', 'deb-arches']);
