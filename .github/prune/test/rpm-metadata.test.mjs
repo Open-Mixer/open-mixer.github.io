@@ -9,11 +9,11 @@
 // signed repodata, committed as main serves it and then pulled the way channel-pull pulls it (strip: rpm, the
 // repodata discarded), and a stand-in for publish-tree.sh that records its call and rewrites the metadata.
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import { spawnSync, execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, readdirSync, existsSync, chmodSync, rmSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { mkdirSync, writeFileSync, readFileSync, readdirSync, existsSync, chmodSync, rmSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -22,7 +22,7 @@ const script = join(here, '..', 'rpm-metadata.sh');
 const workflow = readFileSync(join(here, '..', '..', 'workflows', 'prune.yml'), 'utf8');
 
 function fixture(deletes) {
-  const dir = mkdtempSync(join(tmpdir(), 'prune-rpm-meta-'));
+  const dir = scratch('prune-rpm-meta-');
   const channel = join(dir, 'channel');
   for (const d of ['44/x86_64', '44/noarch', '45/x86_64']) {
     const r = join(channel, 'rpm/fedora', d, 'repodata');

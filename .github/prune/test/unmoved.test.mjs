@@ -9,10 +9,10 @@
 // unmoved.sh as the guard and a stand-in for createrepo (an index listing the tree's rpms). Whatever the timing,
 // main must end with an index that lists every rpm its tree holds.
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, readdirSync, rmSync, cpSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { mkdirSync, writeFileSync, readFileSync, readdirSync, rmSync, cpSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -34,7 +34,7 @@ const regenerate = (tree) => {
 const indexed = (tree) => readFileSync(join(tree, ARCH, 'repodata', 'repomd.xml'), 'utf8').split('\n').filter(Boolean);
 
 function fixture() {
-  const dir = mkdtempSync(join(tmpdir(), 'prune-race-'));
+  const dir = scratch('prune-race-');
   const origin = join(dir, 'origin.git');
   git(dir, 'init', '-q', '--bare', '-b', 'main', origin);
   const seed = join(dir, 'seed');

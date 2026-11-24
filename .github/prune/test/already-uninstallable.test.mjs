@@ -8,9 +8,9 @@
 // 0.32.3), so its dependents did not install either, and dropping it must not be refused over them. The same
 // drop on an architecture where the dependent DID install is still refused.
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -38,7 +38,7 @@ const trixie = (amd64ClapHost = '0.32.3') => [
 ].join('\n\n') + '\n';
 
 function run(packages, drop) {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-already-'));
+  const tmp = scratch('prune-already-');
   fs.writeFileSync(path.join(tmp, 'keep.yml'), 'keep:\n');
   const s = path.join(tmp, 'tree/deb/debian/trixie');
   fs.mkdirSync(s, { recursive: true });

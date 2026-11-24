@@ -9,9 +9,9 @@
 // shared tree is not a skew the release publishes, so the apply does not refuse it. A skew inside a published cell
 // is still refused. The cell set reaches select.mjs as --cells, and the workflow gives every select call that set.
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -60,7 +60,7 @@ ${pkgs.join('\n')}
 // plugin-hostd 0.20.6 on aarch64 needs the noarch contract 0.20.6 (exact pin). On x86_64 it needs nothing; with
 // x86Pinned the x86_64 build pins the same contract, so the drop below strands a package in a published cell.
 function channel({ x86Pinned = false } = {}) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-published-'));
+  const dir = scratch('prune-published-');
   const tree = path.join(dir, 'channel');
   const pin = ['plugin-hostd-contract = 0.20.6-1.fc44'];
   const xml = {
