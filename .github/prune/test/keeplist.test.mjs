@@ -12,7 +12,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { parsePackages, selectRepo } from '../prune.mjs';
-import { parseKeepList, keepEntries, missing, pendingPins } from '../keeplist.mjs';
+import { parseKeepList, keepEntries, missing, pendingPins, pinsUnsatisfied } from '../keeplist.mjs';
 
 const select = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'select.mjs');
 
@@ -145,4 +145,41 @@ test('cli: a pending line prints and the plan exits 0; the same line without pen
   assert.match(pend.stdout, /floors pending[\s\S]*foo-devel >=0\.5/);
   assert.equal(run('>=0.5').status, 1);
   fs.rmSync(dir, { recursive: true });
+});
+
+// open-mixer.github.io#17: a drop that deletes every build satisfying a keep-list floor overrides that pin, and the
+// plan names it (line, pin, the builds it deleted) as it names an exact pin it drops; it is never silently overridden.
+test('cli: a drop that leaves a keep-list floor unsatisfied names the pin under dropped although pinned', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'keeplist-'));
+  const suite = path.join(dir, 'deb/debian/bookworm');
+  fs.mkdirSync(suite, { recursive: true });
+  fs.writeFileSync(path.join(suite, 'Packages'), debs('foo-devel', ['0.4-1', '0.5-1', '0.6-1']));
+  fs.writeFileSync(path.join(dir, 'keep.yml'), 'keep:\n');
+  fs.writeFileSync(path.join(dir, 'kl.txt'), keepList([['foo-devel', '>=0.5', 'debian/bookworm/*', 'platform:baked']]));
+  const run = (...extra) => spawnSync('node', [select, '--keep', path.join(dir, 'keep.yml'), '--keeplist', path.join(dir, 'kl.txt'),
+    '--tree', dir, '--newest', '3', '--json', path.join(dir, 'plan.json'), ...extra], { encoding: 'utf8' });
+  const drop = run('--drop', 'foo-devel@0.5,foo-devel@0.6');
+  assert.equal(drop.status, 0, drop.stderr);
+  const plan = JSON.parse(fs.readFileSync(path.join(dir, 'plan.json'), 'utf8'));
+  const floor = plan.lost.filter((l) => l.startsWith('foo-devel >=0.5 debian/bookworm/*'));
+  assert.equal(floor.length, 1, `the floor is named in plan.lost: ${JSON.stringify(plan.lost)}`);
+  assert.match(floor[0], /pin: platform:baked/);
+  assert.match(floor[0], /foo-devel 0\.5-1 debian\/bookworm\/amd64/);
+  assert.match(floor[0], /foo-devel 0\.6-1 debian\/bookworm\/amd64/);
+  assert.match(drop.stdout, /dropped although pinned[\s\S]*foo-devel >=0\.5/);
+  // a drop that leaves one satisfier (0.6) overrides nothing
+  run('--drop', 'foo-devel@0.5');
+  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(dir, 'plan.json'), 'utf8')).lost, []);
+  fs.rmSync(dir, { recursive: true });
+});
+
+test('pinsUnsatisfied: floor and newest lines served before the plan and by none of its kept builds, exact lines left to pinsLost', () => {
+  const lines = parseKeepList(keepList([['foo', '>=1.1', 'debian/bookworm/*', 'p1'], ['foo', 'newest', 'debian/bookworm/*', 'p2'],
+    ['foo', '1.0-1', 'debian/bookworm/*', 'p3'], ['bar', '>=9', 'debian/bookworm/*', 'p4']]));
+  const all = pkgs(debs('foo', ['1.0-1', '1.1-1', '1.2-1']));
+  const keptOnly = (vers) => new Set(all.filter((p) => vers.includes(p.evr)).map((p) => `${p.format}/${p.repo}/${p.file}`));
+  assert.deepEqual(pinsUnsatisfied(lines, all, keptOnly(['1.0-1', '1.1-1', '1.2-1'])), []);
+  assert.deepEqual(pinsUnsatisfied(lines, all, keptOnly(['1.0-1'])).map((x) => x.split(':')[0]), ['foo >=1.1 debian/bookworm/*']);
+  assert.deepEqual(pinsUnsatisfied(lines, all, keptOnly([])).map((x) => x.split(':')[0]), ['foo >=1.1 debian/bookworm/*', 'foo newest debian/bookworm/*'],
+    'the exact line is pinsLost\'s, and bar >=9 was never served (a missing pin, not this)');
 });

@@ -72,18 +72,37 @@ const isPending = (l, allPkgs) => l.pending && served(l, allPkgs).length === 0;
 export const missing = (lines, allPkgs) => unserved(lines.filter((l) => !isPending(l, allPkgs)), allPkgs);
 export const pendingPins = (lines, allPkgs) => unserved(lines.filter((l) => isPending(l, allPkgs)), allPkgs);
 
+// the builds of l's package that satisfy it: any for newest, those at or above a floor, the exact version otherwise
+function satisfiers(l, allPkgs) {
+  const mine = served(l, allPkgs);
+  if (l.version === 'newest') return mine;
+  if (l.version.startsWith('>=')) return mine.filter((p) => vcmp(p, l.version.slice(2)) >= 0);
+  const [v, ...r] = l.version.split(/-(.*)/s);
+  return mine.filter((p) => upstream(p) === v && (!r[0] || releaseOf(p) === r[0] || releaseOf(p).startsWith(r[0] + '.')));
+}
+
 function unserved(lines, allPkgs) {
   const out = [];
   for (const l of lines) {
-    const mine = served(l, allPkgs);
-    let ok;
-    if (l.version === 'newest') ok = mine.length > 0;
-    else if (l.version.startsWith('>=')) ok = mine.some((p) => vcmp(p, l.version.slice(2)) >= 0);
-    else {
-      const [v, ...r] = l.version.split(/-(.*)/s);
-      ok = mine.some((p) => upstream(p) === v && (!r[0] || releaseOf(p) === r[0] || releaseOf(p).startsWith(r[0] + '.')));
-    }
-    if (!ok) out.push(`${l.pkg} ${l.version} ${l.where}: the channel serves no such version (pin: ${l.pin})`);
+    if (!satisfiers(l, allPkgs).length) out.push(`${l.pkg} ${l.version} ${l.where}: the channel serves no such version (pin: ${l.pin})`);
+  }
+  return out;
+}
+
+// The floor and newest lines (the ones keepEntries does not turn into keep entries, so pinsLost cannot see them) that
+// the channel serves before the plan and that no build the plan keeps satisfies: the plan takes away the last build of
+// a pin. keptPaths holds "<format>/<repo>/<file>" of every kept package. Each is named with its pin and the builds the
+// plan deletes, in the form of pinsLost's lines, so select.mjs reports both alike: an override a drop names, else a
+// refusal. A line never served is missing(), not this.
+export function pinsUnsatisfied(lines, allPkgs, keptPaths) {
+  const out = [];
+  const pathOf = (p) => `${p.format}/${p.repo}/${p.file}`;
+  for (const l of lines) {
+    if (l.version !== 'newest' && !l.version.startsWith('>=')) continue;
+    const before = satisfiers(l, allPkgs);
+    if (!before.length || before.some((p) => keptPaths.has(pathOf(p)))) continue;
+    const gone = before.map((p) => `${p.name} ${upstream(p)}-${releaseOf(p)} ${p.repo}/${p.arch}`).sort();
+    out.push(`${l.pkg} ${l.version} ${l.where}: the plan keeps no build that satisfies it (pin: ${l.pin}); it deletes ${gone.join(', ')}`);
   }
   return out;
 }

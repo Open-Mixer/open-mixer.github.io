@@ -25,7 +25,8 @@
 //                           (exit 1, 'flat index: one listing for every architecture'). Binary and source entries mix
 //                           in one list; the plan prints a binary entry's deletions as such, and the invariant below
 //                           judges what remains, over every architecture.
-// A drop overrides a pin on the versions it names (they are printed under 'dropped although pinned').
+// A drop overrides a pin on the versions it names (they are printed under 'dropped although pinned'), a keep-list
+// floor or newest line it leaves with no build included, named with the builds it deleted.
 // --only rpm|deb reads that half alone.
 // --cells fedora/44/x86_64,debian/trixie/amd64,... the cells the release matrix publishes (check-matrix, read by the
 // workflow). The invariant judges the binaries of those cells, and the noarch and all packages against those
@@ -43,7 +44,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
-import { parseKeepList, keepEntries, missing, pendingPins } from './keeplist.mjs';
+import { parseKeepList, keepEntries, missing, pendingPins, pinsUnsatisfied } from './keeplist.mjs';
 import { parseKeep, parsePrimary, parsePackages, selectRepo, parseDrop, unusedPins, pinsLost, uninstallable, judgeUninstallable, report } from './prune.mjs';
 
 const args = process.argv.slice(2);
@@ -202,8 +203,11 @@ async function main() {
     refused: results.flatMap((r) => r.refused || []),
     uninstallable: results.flatMap((r) => r.uninstallable),
     alreadyUninstallable: results.flatMap((r) => r.alreadyUninstallable),
-    lost: pinsLost(keep, all, new Set(results.flatMap((r) => r.keep).map((r) => r.path))),
+    lost: [],
   };
+  // a pin the plan takes the last build of: an exact pin (keep entries), or a keep-list floor or newest line
+  const keptPaths = new Set(plan.keep.map((r) => r.path));
+  plan.lost = [...pinsLost(keep, all, keptPaths), ...(only ? [] : pinsUnsatisfied(keepLines, all, keptPaths))];
   console.log(report(results));
   if (plan.orphans.length) console.log(`\nfiles no index lists (deleted):\n${plan.orphans.map((f) => '  ' + f).join('\n')}`);
   if (plan.notes.length) console.log(`\nnotes:\n${plan.notes.map((n) => '  ' + n).join('\n')}`);
