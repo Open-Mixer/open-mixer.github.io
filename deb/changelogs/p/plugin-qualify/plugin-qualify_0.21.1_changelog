@@ -1,0 +1,20 @@
+plugin-qualify (0.21.1) unstable; urgency=medium
+
+  * ci: the container jobs mark the checkout safe, so git reads it
+  * packaging: the store floor is plugin-db-qualification 2026112401
+  * packaging: 0.21.1 declares the -contract package 0.21.0 stopped building
+  * release: plugin-qualify 0.21.1 (the v0.21.0 release fixed forward)
+  * ci, publish: the suite runs in a fedora:45 container with the channel,
+    where plugin-hostd 0.21 is served
+  * test-setup: the tests' contract directory is the installed one, whole,
+    with the named overlays
+  * store: the spawned commands get the installed contract directory unless
+    one is named
+  * plugin-qualify-sync: import QualificationStore, which the stored-plugin
+    count constructs
+  * release: a rerun keeps the tarball already attached with the same bytes
+  * release: the Fedora install check names omx-clap-libs as the owner of the
+    hosting codes
+  * packaging: every shipped script is executable, so lintian passes the DEB
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 24 Nov 2026 14:39:43 +0000
