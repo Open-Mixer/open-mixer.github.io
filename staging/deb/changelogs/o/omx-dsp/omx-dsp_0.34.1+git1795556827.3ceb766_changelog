@@ -1,0 +1,86 @@
+omx-dsp (0.34.1+git1795556827.3ceb766) unstable; urgency=medium
+
+  * face-descriptor-check reads the kernel unit as its PARAM_UNITS id; three
+    fuzz records cite their lines again
+  * .githooks/commit-msg is the shared stub, byte for byte
+  * Wave review fixes: the render stages omx-contract's domains, units-check
+    reads "standard id", the clipper knee's home, the 0.34.1 changelog
+  * ci: spdx-check, deps-render and no-floor-check run in a lint job, never
+    before make test
+  * packaging, build, CI: no hand-kept omx-contract floor;
+    tools/no-floor-check.sh refuses one
+  * unit enumerators: the C names follow the PARAM_UNITS title (_DB, _DBFS,
+    _DBU, _DBTP, _KHZ)
+  * data: no file states a schema floor; requires goes where it names nothing
+  * kernels: the leveler's and the balancer's speed travel in dBPerS
+  * tests: a rate in dB per second states dBPerS, a slope in dB per octave
+    dBPerOct (red)
+  * The clipper's drive arm keeps its parameter read (#97)
+  * README names the generic face's spec (#97)
+  * The clipper and width perturbation arms aim at the shared bodies (#97)
+  * One copy of each body: the clipper's block and the width's redesign
+    shared by both faces (#97)
+  * The generic face over a kernel descriptor, first batch trim, width and
+    clipper (#97)
+  * docs: the kernel and primitive words are this library's, not
+    omx-contract's (sorting pass, row V30)
+  * fdelay: the read's L1 norm is this library's value, its oracle the kernel
+    (sorting pass, row V30)
+  * The generic face's tests, red first: descriptor against kernel file, face
+    against hand-written face (#97)
+  * The generic face specified: one face from a kernel descriptor (#97)
+  * tests: FDELAY_READ_L1_NORM is this library's value, held by its kernel
+    (red first, row V30)
+  * packaging: the omx-contract floor is 3.22.0, the first with the coef unit
+    data/ uses (#156)
+  * make rtsan: the RealtimeSanitizer probe kept as a dev tool, with a
+    self-test that must see a planted usleep (#98)
+  * tools: retire the TypeScript golden tools, C is the only source of their
+    numbers
+  * packaging: the rpm builds the npm tree under Node 26; the deb keeps the
+    archive's Node (#147)
+  * fx/ and analysis/ state the contracts their bodies evaluate; doc-check
+    holds them (#146)
+  * contract tests: the omx-contract checkout holds no release fixtures
+  * docs-sabotage: the swap arm is built on the listed probe, so it holds at
+    an empty baseline (#70)
+  * The remaining effect headers and the key documented: baseline 140 to 0
+    (#70)
+  * release.yml: no dispatch publish input; the release jobs publish on a tag
+    push alone
+  * The harmonic resonance pass's tracker, baseline and correction, and the
+    RTA headers documented: baseline 250 to 140 (#70)
+  * Six effect instances' headers documented: baseline 367 to 250 (#70)
+  * The harmonic resonance pass's pitch, render and LV2 headers documented:
+    baseline 461 to 367 (#70)
+  * The feedback suppressor's headers documented: baseline 570 to 461 (#70)
+  * Nine instances' atom and state members documented: baseline 587 to 570
+    (#70)
+  * The instances' ready, sr and enabled members documented: baseline 645 to
+    587 (#70)
+  * Struct members whose plain comment already documented them are doc
+    comments: baseline 682 to 645 (#70)
+  * {@link} to the generated defines is plain text: baseline 688 to 682 (#70)
+  * The instances' CHANNELS and LATENCY_FRAMES defines documented: baseline
+    715 to 688 (#70)
+  * The doc blocks the stage define hid reach their functions, with every
+    parameter: baseline 742 to 715 (#70)
+  * curve, meter: the unit words are the PARAM_UNITS ids, no lowercase copy
+  * doc-check: only what doxygen cannot check, a body's contracts stated
+  * curve: the band role prefix is declared, with a predicate in C and TS
+  * docs: the fuzz README's record and the reverb allpasses' bounds are true
+  * ci: every workflow Node is 26, held by tools/ci-node-26.sh
+  * tests: the denormal arm puts back the float mode, clamps judged in it
+  * curve: an EQ frequency at or below 0 Hz is refused, not drawn flat
+  * C2: omxdsp_definitions.h re-rendered from the ids
+  * make docs-site and docs.yml: the API reference published per release
+    under /reference/omx-dsp/ (Open-Mixer/.github#242)
+  * tests: a curve term's unit is its PARAM_UNITS id, "Hz" and "dB" are read
+    (red)
+  * C2: every unit data/ and recipes/answers/ state is the PARAM_UNITS id
+  * units-check: every unit data/ and recipes/answers/ state is a PARAM_UNITS
+    symbol
+  * release: omx-dsp 0.34.1 (0.34.0 to 0.34.1), a patch
+  * rotary: ROTARY_ACCEL_RANGE travels in coef, not "x"
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 24 Nov 2026 21:47:07 +0000
