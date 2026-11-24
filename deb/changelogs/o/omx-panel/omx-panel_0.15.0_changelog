@@ -1,0 +1,117 @@
+omx-panel (0.15.0) unstable; urgency=medium
+
+  * packaging: the store packages require omx-panel-contract by a floor (>=
+    the same version), no exact pin
+  * tests: the store packages depend on omx-panel-contract by a floor, never
+    an exact pin (red: debian and the spec pin it with =)
+  * changelogs 0.15.0: the descriptions store is packaged (omx-panel-store,
+    omx-panel-store-devel; libomx-panel-store0, libomx-panel-store-dev,
+    omx-panel-store), no longer 'built in the tree, not packaged'
+  * packaging: ship the descriptions store: omx-panel-store
+    (libomx-panel-store.so.0, the command, its page) and
+    omx-panel-store-devel (.so link, header, pkg-config file, panel.sql) in
+    the spec; libomx-panel-store0, libomx-panel-store-dev and omx-panel-store
+    in debian; make install-store; SQLite >= 3.38.0 floored the same on both
+    sides; the release publishes them, CI reads the built packages
+    (tools/store-package-check.sh)
+  * test: the descriptions store is packaged (red): omx-panel-store and
+    -devel in the spec, libomx-panel-store0, -dev and omx-panel-store in
+    debian, each file they carry, the build, the install, the release names;
+    sabotage arms
+  * ci: the RPM job keeps the fedora:45 pair of package checks only (the
+    fedora:44 pair of the old branch goes)
+  * omx-panel 0.15.0 changelogs: the first trixie arm64 release, Fedora 45
+    only, the panel domain 1.1.0, isMain, the store core built but not
+    packaged
+  * ci: the shared Fedora workflow guard (public-sources-check
+    fedora-workflows: true, .github#175) replaces the copied
+    workflow-fedora-check.sh
+  * release-version test: the dry run's +git snapshot stamp is accepted on
+    the same base, as ~git is
+  * test: a +git snapshot stamp of the dry run is accepted on the same base
+    (red: only ~git is)
+  * tests: workflow-fedora-check also reads a releases line carrying 44
+    (rpm-releases: ["44", "45"]); 12 planted trees green
+  * tests: workflow-fedora-check reads an rpm-releases list that carries 44
+    (red: the rpm44 tree is accepted)
+  * ci: take #145's shared workflow-fedora-check (+ self-test, the offline
+    build's default image, the CI step) instead of a second test; #145 closes
+    as superseded
+  * ci: the Fedora jobs run in fedora:45 and build for fc45 (the channel's
+    omx-contract >= 3.20.2 is fc45 only; Fedora 44 is out)
+  * test: no workflow runs in a fedora:44 image or builds for fc44 (red:
+    ci.yml 7 places, release.yml)
+  * ci: main's new job installs omx-contract at the 3.20.2 floor too
+  * packaging: every omx-contract floor is 3.20.2
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * ci: the DEB jobs run on check-matrix cells, each on its own runner
+  * test: every DEB job in ci runs on a check-matrix cell on its own runner
+    (red)
+  * descriptions store: say where gui-stage reads the other package's
+    keys.json
+  * descriptions store: key staged GUIs on binary, source and rules; link only
+  * descriptions store: generated GUIs ship key-gated for known sets
+  * docs: the descriptions store spec states what the store core was built as
+  * store: the trigger covers the update of a description too, green
+  * store: a description with controls cannot become a refused entry, tests
+    first (red)
+  * store: no bytecode in the tree
+  * descriptions store: the key is shared with the qualification store, the
+    layers differ, and why
+  * ci: the store job installs the vocabulary describe reads
+  * tools: decide "run, not imported" with omx-contract's isMain
+  * test: a tool run through a symlink refuses as it does by its own path
+    (red)
+  * store: a test for the hot-journal refusal, and its sabotage arm
+  * store: libomx-panel-store, the reader, the writer and the command, green
+  * panel domain 1.1.0: the store's refusals, the describe codes, and the
+    port-group words
+  * store: a control under a refused entry is refused, tests first (red)
+  * store: the descriptions store's DDL and the reader's and writer's tests,
+    red
+  * docs: descriptions store: description_control keys a control three ways
+  * docs: descriptions store: what describeFromStored needs for the matrices
+  * docs: descriptions store: skins and pages from the stored entry
+  * docs: descriptions store: the description schema owner's review
+  * docs: descriptions store: a refused store is no store for plugin-hostd
+  * docs: descriptions store: the owner's answers recorded
+  * docs: descriptions store: stale entries, a schema change, protocol owner,
+    figures under load
+  * docs: the descriptions store spec (draft)
+  * docs/behaviour-core.md: Zynthian's plugin panels still come through the
+    renderer today
+  * docs/renderer.md: drop the Zynthian clause (Zynthian's panel still loads
+    the renderer today)
+  * docs/renderer.md: the buffer is for a host that embeds the plugin's view;
+    no web console shows renderer pixels
+  * omx-panel 0.15.0: the vintage knob in the renderer, its static-layer
+    cache, the panel domain's x-since
+  * docs: the behaviour core, the owner's decisions
+  * docs: the behaviour core, the review's fixes
+  * panel domain: x-since is 1.0.0, the version that carried every item
+  * test: a panel item's x-since is the domain version that added it
+  * docs: the behaviour core, a design spec
+  * renderer: omx_scene_paint writes the scene (cache): one thread at a time,
+    said in scene.h
+  * test: the cache is held to the scale it was made at
+  * scene: the static layers are painted once over a backdrop and kept
+    (omx-panel#123, PR 2b)
+  * test: the scene's static-layer cache paints the bytes of no cache, over
+    any backdrop (red)
+  * window: the NanoVG backend names its missing scene callback
+  * scene: each shape is painted over its own box, not the whole frame
+  * test: the knob probes at 1x, 2x and 1.5x, so the knob's scale is held
+  * test: the pinned data keeps the gesture declaration beside the tools
+    directory
+  * the renderer paints the vintage knob from the look's scene
+    (omx-panel#123, PR 2)
+  * test: the cap-highlight probe is the first stop within a few levels, the
+    solid probes stay exact
+  * test: the renderer paints the vintage knob scene, byte for byte as the
+    film painter does (red)
+  * the vintage knob is a scene of look.json, the only copy: the film strips
+    and the face are rendered from it (omx-panel#123, PR 1)
+  * test: the vintage knob is a scene of look.json, rendered from it, in the
+    bytes the SVG drew (red)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 20 Nov 2026 16:41:01 +0000

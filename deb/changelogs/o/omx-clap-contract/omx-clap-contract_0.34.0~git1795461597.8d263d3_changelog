@@ -1,0 +1,1101 @@
+omx-clap-host (0.34.0) unstable; urgency=medium
+
+  * Sorting pass: the panel words (V1), the host reply codes and track kinds (V15),
+    the CLAP scale codes mapped to PARAM_SCALES (V21), the unit code sheet and
+    omx_param_units.h (V23d), the rates (V25) and the CLAP terms (V27a, V27b) now
+    owned here.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 22 Nov 2026 12:30:00 +0100
+
+omx-clap-host (0.33.1) unstable; urgency=medium
+
+  * The scan domain's x-since on SCAN_DOCUMENTS and SCAN_FIELD_SCOPES is the
+    domain version that carried them, 1.0.0, not the omx-contract release
+    3.7.0; a check holds an x-since to a version of its own domain and never
+    above its info.version (#139).
+  * The fuzz workflow checks the repository out before dnf builddep reads the
+    spec (#142).
+  * The sources use the ERR_HOST_* names of plugin-hostd-protocol, whose first
+    release is 0.6.0, so the floor is plugin-hostd-protocol >= 0.6.0 (was
+    0.5.9). Floors only: no ceilings, no Conflicts, Breaks, Replaces or
+    Obsoletes, no epoch (#144).
+  * clap-core no longer depends upward on omx-panel: OMX_CLAP_PANEL_DISPLAY_KINDS
+    and the check that installed omx-panel are dropped; the display kind table
+    is omx-panel's, the struct field stays a number (an ABI code) and
+    omx-clap-scan prints it as a number (#145).
+  * ci: the deb, rpm and fuzz cells come from check-matrix and run on the runner
+    it names, deb cells on arm64 (the channel's trixie development debs are
+    arm64 only), and Fedora 44 is out, Fedora 45 alone (#147).
+  * ci: the commit identity check of public-sources is on (#150).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 18:00:00 +0100
+
+omx-clap-host (0.33.0) unstable; urgency=medium
+
+  * Floors only, no ceilings on our own packages, no epochs: omx-dsp >= 0.33.0
+    (was 0.32.0 and below 0.33), omx-contract >= 3.20.0 (was 3.18.0 and below
+    4), omx-contract-data >= 3.20.0, plugin-hostd-protocol >= 0.5.9 and
+    plugin-db >= 0.4.2 as before, clap-headers >= 1.2.10. New: libomx-domain
+    >= 3.20.0 (build and run time), for the scan domain; omx-clap-host
+    requires omx-clap-core-contract at its own version, and libomx-clap-core-dev
+    requires libomx-clap-core1 at its own version (#97). The installed
+    omx-clap-core.pc names the omx-contract and omx-dsp floors, no ceiling.
+    The floors are declared once, in packaging/deps.txt (#114).
+  * Dropped between our packages: Breaks and Replaces libomx-clap-core-dev (<<
+    version) on omx-clap-core-contract, Breaks and Replaces
+    omx-clap-core-contract (<< 0.32.1~) on omx-clap-host-l10n-ca, and the spec
+    Conflicts omx-clap-core-devel < version (#108); the channel prunes the old
+    packages.
+  * ABI: the OMX_CLAP_CORE_0.15 symbol version node of libomx-clap-core is
+    removed (#108), so this release is a minor, 0.33.0. The backward-
+    compatibility machinery is removed: the older-ABI range, the ABI baseline
+    gate and the staged dependencies (#108).
+  * The scan domain (contract.d/scan, moved from omx-contract): omx-clap-scan
+    --fields reads its scopes from the domain through libomx-domain and
+    refuses by name, exit 78, when it is absent, invalid or too old (#126).
+  * org.openmixer.properties/1, a plugin's file and text properties: the host
+    offers omx_clap_host_property_count, _info, _get and _set (version node
+    OMX_CLAP_CORE_0.33); the LV2 adapter forges it into the plugin's patch:Set
+    and patch:Get (#15).
+  * The panel family utility, code 12 (append only), as omx-contract 3.19.0
+    has it (#130), and the display kind time_response (#118).
+  * The panel description layout and its codes are declared here and read
+    nothing of omx-plugins; a parameter id past every table is 0xffffffff,
+    checked at run time (#119, #121).
+  * host: omx-clap-host closes its JACK clients on SIGHUP as on SIGTERM and
+    SIGINT: a host killed by the default action left its clients open (#125).
+  * host: a plugin that needs a host feature it was not offered is refused by
+    name, never a crash (#116).
+  * ci and tests: no job sizes itself from the host's nproc (#90), no
+    bookworm package cells (#99), every test target runs in a CI step (#112),
+    and the xrun report sabotage forces the interleaving that loses a note
+    (#120).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 09:00:00 +0000
+
+omx-clap-host (0.32.5) unstable; urgency=medium
+
+  * Built against omx-contract >= 3.18.0 and below 4, plugin-db >= 0.4.2 and
+    below 0.5, and plugin-hostd-protocol >= 0.5.9 and below 0.6: every
+    dependency at its newest version, served or released before it in the
+    same pass, with its ceiling (D30). The installed omx-clap-core.pc names the same omx-contract floor.
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer (#69).
+  * ci: an ordinary run builds against the channel, not the staging channel;
+    the seed corpus check runs on every pull request, with the
+    rtSafetyOwnThreads block (#70).
+  * 0.32.4 was never released (D29); this carries its changes.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 17:00:00 +0100
+
+omx-clap-host (0.32.4) unstable; urgency=medium
+
+  * hosting: hosting.rt-safety.own-threads, the code a qualifier writes for a
+    plugin that starts threads of its own: conditional and still groupable
+    (D20, #61).
+  * lv2: activate is serialised against a block without a lock on the audio
+    thread; since 0.32.1 every LV2 block took activate_lock there (#63).
+  * ci: the jobs install and check the floors the packaging states;
+    test-fake runs test-identity-align (#59).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 13:30:00 +0100
+
+omx-clap-host (0.32.3) unstable; urgency=medium
+
+  * The rpm spec's CLAP floor is 1.2.10, the Debian control's: the two
+    packagings state one floor for the same headers (#50).
+  * fuzz: the seed corpus follows the test fixtures again, so make
+    fuzz-corpus-check passes (#55).
+  * tests: the identity feeder's recorder counts from the cycle the source
+    started in, not one cycle early (#56, #58).
+  * A build takes plugin-db >= 0.4.1 and below 0.5 and plugin-hostd-protocol
+    >= 0.5.7 and below 0.6, the newest the channel serves.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 05:20:00 +0000
+
+omx-clap-host (0.32.2) unstable; urgency=medium
+
+  * node_label <instance> [<label word> ...] (plugin-hostd#35): a client's
+    label joins the hosted node's pretty-name in JACK metadata, <label>:
+    <plugin name> (<instance>), at once and after each activation; no words
+    clears it; a label over 64 bytes or not UTF-8 is refused -545 and the
+    label stays. Built against plugin-hostd-protocol >= 0.5.6, which declares
+    it.
+  * A build takes plugin-db >= 0.4.0 and below 0.5: the release the channel
+    serves, which both builds are built and tested against.
+  * libomx-clap-core-dev depends on clap-headers >= 1.2.10 and below 2, the
+    floor and ceiling the build has, so pkg-config omx-clap-core resolves on
+    a clean trixie or bookworm system (#52).
+  * No change to the packages: the tree ignores the LV2 build of the hosted
+    cost bench (#51), and the host-verbs check in CI fetches the commit of
+    the staged protocol build it installs (#53).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 13 Nov 2026 01:00:00 +0000
+
+omx-clap-host (0.32.1) unstable; urgency=medium
+
+  * Every number the host answers has its code in HOST_REPLY_CODES, with its
+    English sentence and its Catalan: -2 (the instance number already taken),
+    -101, -102, -104, -105, the audio server's -201 to -207 and -404 (#34);
+    tests/host-reply-codes-check.py holds every number the sources answer to a
+    code.
+  * preset_save takes mod-host's own form, <instance> <dir> <file name>
+    <label>, the form plugin-hostd-protocol's table declares, and writes
+    <dir>/<file name> (plugin-hostd#38).
+  * Language packs: omx-clap-host-langpack-<lang> (rpm) and
+    omx-clap-host-l10n-<lang> (deb), one per language omx-contract lists (ca,
+    es, fr, de, it, pt), each owning
+    /usr/share/omx-clap-core/catalogs/<lang>.json; omx-clap-core-contract
+    keeps the directory, and the Catalan deb takes over its catalog (#30).
+    Catalan is a person's, the other languages are made by omx-contract
+    translate.
+  * A package build runs the plain test tier (test-package); the sanitizer
+    tiers run in CI (#32). make test-host-verbs runs as any user.
+  * Built against omx-contract >= 3.16.0 and plugin-hostd-protocol >= 0.5.5.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 18:00:00 +0000
+
+omx-clap-host (0.32.0) unstable; urgency=medium
+
+  * A bypassed plugin's dry path is delayed by the latency the plugin
+    publishes, so a bypass does not move the lane against the latency the rest
+    of the chain compensates for; the crossfades read the same delayed input,
+    on a lane and in a chain alike, and a sleeping plugin's skipped blocks
+    count as silence.
+  * The instance ABI is 21: struct omx_clap_bypass_delay added at the tail of
+    struct omx_clap_instance; no field moves, libomx-clap-core.so.1 stays.
+  * A preset load answers once the plugin has applied the preset (it has run
+    once since), or PRESET_NOT_APPLIED (-544) when the host's wait for that,
+    presetAppliedWaitUs, runs out (#24).
+  * A preset's identity is the plugin's layout recorded at add, so a plugin
+    that renames its parameters later still loads the presets saved under that
+    layout.
+  * Each instance's own client carries the JACK metadata plugin-hostd-protocol
+    declares (node_metadata): the pretty name '<plugin name> (<instance>)' and
+    the instance key a graph client matches it on; its name stays
+    effect_<instance> (plugin-hostd#33).
+  * The LV2 adapter answers org.openmixer.properties/1, read only; a bundle
+    directory with a space and a preset's file URI are decoded by
+    plugin-hostd-protocol's phd_pin_path_decode.
+  * The LV2 adapter classifies CV, side-chain and atom ports by their shape,
+    gives an instrument the inputs a CLAP instrument has, and serialises
+    activate against the first run.
+  * The meter test and the state walks compare unsigned with unsigned, and CI
+    builds the meter test and its sabotage.
+  * Built against plugin-hostd-protocol >= 0.5.5 and < 0.6.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 12 Nov 2026 13:30:00 +0000
+
+omx-clap-host (0.31.2) unstable; urgency=medium
+
+  * omx-clap-scan states what a plugin exports through clap.meters/1 and
+    org.openmixer.param-contract/1: each meter with its kind, channels,
+    range and flags, the contract's version and fingerprint (or the rule it
+    is not trusted by) and each parameter's contract entry, in the text,
+    in --json (meters, param_contract, each parameter's contract) and in
+    --fields.
+  * tests/published-comp-scan.py holds omx-plugins' published omx-comp to
+    its meters and contract by value (omx-plugins 0.19.3).
+  * The state root is made at 0700 (a looser one is brought to it), a dead
+    instance's lv2-<pid>-<n> directories and .saved copies are pruned at the
+    next start, and the process's cwd moves into the root.
+  * MAX_PLUGIN_INSTANCES and MAX_TOOL_INSTANCES are read from the rendered
+    contract header, not restated.
+  * omx-clap-scan frees every path its walk and its argument list built
+    before it exits.
+  * tests: the LV2 adapter's restart bookkeeping against a cycle thread
+    under ThreadSanitizer.
+  * Built against plugin-hostd-protocol >= 0.5.2 and < 0.6, plugin-db
+    >= 0.3.1 and < 0.4, omx-dsp >= 0.32.0 and < 0.33, omx-contract
+    >= 3.12.0 and < 4.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 11 Nov 2026 00:45:00 +0000
+
+omx-clap-host (0.31.1) unstable; urgency=medium
+
+  * The instance data races: active and latency_published are atomic (#531).
+  * Every code's Catalan moves to catalogs/ca.json; the source sentence stays
+    in data (#532).
+  * remote_pages, audio_ports, hide_external_ui, note_drops and note_out_drops
+    refuse an instance word that is no number (#533).
+  * The ThreadSanitizer test program is a build product, no longer tracked
+    (#534).
+  * Built against plugin-hostd-protocol >= 0.5.2 and << 0.6, plugin-db
+    >= 0.3.1 and << 0.4, omx-dsp >= 0.32.0 and << 0.33, omx-contract
+    >= 3.12.0 and << 4.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 09 Nov 2026 15:20:00 +0100
+
+omx-clap-host (0.31.0) unstable; urgency=medium
+
+  * Held meters: a plugin that holds its block value until the host reads
+    it is read at omx-dsp's host read rate, and a level meter's clip word is
+    read with it; monitor_output_off ends a monitor, and a monitor ends with
+    the connection that set it.
+  * curve_bind and curve_points are answered through plugin-hostd-protocol's
+    hook, at the rate the instance runs at.
+  * Every code omx-clap-core owns carries its sentence in English and
+    Catalan.
+  * Built against omx-dsp >= 0.32.0 and < 0.33, plugin-hostd-protocol
+    >= 0.5.0 and < 0.6, plugin-db >= 0.3.0 and < 0.4, and omx-contract
+    >= 3.11.0.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 08 Nov 2026 22:49:41 +0100
+
+omx-clap-host (0.30.6) unstable; urgency=medium
+
+  * The LV2 adapter no longer drops the worker's queue at deactivate and
+    reset: after the worker thread is joined, every queued request goes
+    through work(), every response through work_response and end_run is
+    called once, on the control thread, before the plugin's deactivate
+    (worker.h: what returned SUCCESS is delivered).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 07 Nov 2026 16:00:00 +0100
+
+omx-clap-host (0.30.5) unstable; urgency=medium
+
+  * data/verbs.json declares hide_external_ui as optional of plugin-hostd
+    (and mod-host as not offering it): the daemon relays show_external_ui
+    and hide_external_ui to the worker, and its verb check found the second
+    declared for omx-clap-host alone. The host itself is unchanged.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 07 Nov 2026 15:00:00 +0100
+omx-clap-host (0.30.4) unstable; urgency=medium
+
+  * patch_set and patch_get reach an LV2 plugin's patch:writable properties:
+    a number as the parameter above the port indices, a path or a string
+    through the plugin's patch port (omx_clap_lv2_patch_text_*); patch_get
+    answers the value the plugin last reported. A path with spaces arrives
+    double-quoted. They answered -902, so samplv1's sample file could not
+    be set over the socket, by this host or through plugin-hostd.
+  * The LV2 adapter gives the parameter of a numeric patch property by its
+    URI (omx_clap_lv2_patch_param_id).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 07 Nov 2026 14:00:00 +0100
+
+omx-clap-host (0.30.2) unstable; urgency=medium
+
+  * With no display (neither DISPLAY nor WAYLAND_DISPLAY), Qt is given the
+    offscreen platform before a plugin loads, unless the user set
+    QT_QPA_PLATFORM: synthv1 and other Qt-linked LV2 plugins aborted with
+    SIGABRT as they were instantiated.
+  * add reads a bare clap: uri whose path holds a space with the protocol's
+    phd_add_uri(), not a copy of its own.
+  * plugin-hostd-protocol floor 0.4.1, ceiling below 0.5.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 06 Nov 2026 21:30:00 +0100
+
+omx-clap-host (0.30.1) unstable; urgency=medium
+
+  * omx-dsp is taken at 0.31: libomxdsp-dev >= 0.31.0 and << 0.32, so the
+    channel's omx-dsp 0.31.0 resolves beside this release; nothing else
+    changes.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 06 Nov 2026 20:10:00 +0100
+
+omx-clap-host (0.30.0) unstable; urgency=medium
+
+  * omx-clap-scan --json has a schema, installed with the host, and a test
+    that the JSON holds the data the text lists; docs/scan.md describes the
+    output.
+  * omx-clap-core-contract depends on omx-contract-data with a floor and a
+    ceiling, as the rpm does.
+  * plugin-hostd-protocol floor 0.4.0, ceiling below 0.5; plugin-db floor 0.2.0, ceiling below 0.3.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 06 Nov 2026 03:00:00 +0100
+
+omx-clap-host (0.29.0) unstable; urgency=medium
+
+  * omx-clap-host speaks the protocol through libplugin-hostd-protocol, and
+    plugin-hostd's verbs it answers are that library's declaration; the
+    mod-host verbs it refuses are the library's list, not one of its own. A
+    build that finds no protocol headers fails.
+  * The parameter contract's fingerprint is libcrypto's SHA-256: the packages
+    build against OpenSSL, and a program that links the static adapter links
+    libcrypto too.
+  * omx_clap_host_open_timed() takes a NULL id again, as omx_clap_host_open()
+    does: the factory's first descriptor. Since 0.27.0 a plugin opened that
+    way failed with hosting.clap.headless-failed (#485).
+  * The hosted stage's numbers are spelled once, as OMX_HOSTED_STAGE_*.
+  * omx-clap-host answers hello (plugin-hostd-protocol 0.3.0): a session can
+    be granted request tags, error words and event sequence numbers.
+  * add: a clap: uri whose path holds a space is one uri; it answered -101.
+  * preset_list: the scanner may take nine tenths of the rpc timeout, 4.5 s;
+    Surge XT 1.4 needs up to 4.1 s and was refused at 3 s.
+  * The thread pool's helpers run at the scheduling of the audio thread, not
+    at the priority the JACK client answered at add: on a busy machine the
+    helpers did next to nothing and the audio thread rendered the whole block.
+  * The unit code table and the JSON string writer are omx-contract 3.9.0's,
+    and the pin is plugin-db's: nothing is built from plugin-hostd any more.
+  * lv2: the adapter's control writes and MIDI-out sink are direct calls on
+    the audio path.
+  * Floors and ceilings: omx-contract >= 3.9.0 and < 4, omx-dsp >= 0.30.0 and
+    < 0.31, plugin-hostd-protocol >= 0.3.0 and < 0.4, plugin-db >= 0.1.0 and
+    < 0.2.
+  * Tests: the socket conformance check waits for the daemon's first answer
+    before its timed cases, and its dropping stand-in is deterministic (#483,
+    #488); the xruns sabotage no longer depends on the wall clock (#489); the
+    LV2 parity harness against mod-host stays as a test, without its list of
+    known faults; no copy of omx-contract's units table or JSON writer or of
+    the protocol's tables is allowed in the tree.
+  * The commit message, private reference and no-copy checks run from the
+    shared FreeMixer/.github workflow; the local copies are gone (#477).
+  * The packages install their licence and a short README and no other
+    markdown; their descriptions point to openmixer.org, where the
+    measurements and design notes now live.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 04 Nov 2026 18:00:00 +0100
+
+omx-clap-host (0.28.0) unstable; urgency=medium
+
+  * preset_show answers what a load would apply, on one line of JSON: a
+    listed preset's name, key and location, or a preset file's document;
+    a key the plugin does not list answers -523 and a file that is no
+    preset file -524 (#480, plugin-hostd#269).
+  * A CLAP plugin's presets are listed by omx-clap-scan --json in a process
+    of its own, so a plugin whose discovery disturbs a live instance no
+    longer takes it down: Surge XT 1.4 died on preset_list (#480).
+  * An LV2 plugin lists and loads the presets of every bundle on the LV2
+    path that names it and holds no binary (the user's, the ones Zynthian
+    ships); a preset with a file: URI loads by either path, and integer,
+    long, double and bool values apply (#480).
+  * preset_list and preset_get are found again in a build against
+    plugin-hostd-protocol 0.2.0, and a build that finds no verbs header
+    fails instead of dropping them (#480).
+  * Tests: the chain end-to-end run ends at once when the host can answer
+    nothing more, and the sabotage arms run side by side (#476).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 04 Nov 2026 09:30:00 +0100
+
+omx-clap-host (0.27.0) unstable; urgency=medium
+
+  * A chain runs in place: each member's plugin reads the block the member
+    before it wrote, with one clamp at the chain's output, a quiet block hands
+    the plugin one shared empty event list, and the LV2 adapter runs audio
+    ports on the host's buffers instead of copying (#464, #465, #466, #469).
+    On a Raspberry Pi 5 a 24-member chain costs 56 ns/sample instead of 165
+    for CLAP, 71 instead of 197 for LV2, and an 8-member chain of real work 48
+    instead of 67 ns/frame with the same output.
+  * A block is read for silence only for a plugin that can sleep on it, and in
+    vector runs: a chain fed silence costs no more than one fed a tone (x86,
+    24 members: 5090 against 10854 ns/block) (#472).
+  * The control tick walks only the live instances, tool ids included (#459).
+  * Every plugin call outside process goes through the instance's register
+    guard (#461); an abandoned timed open, the stream bound and the list of
+    binaries are checked (#462); take_role waits out the cycle under way and
+    the log slot is claimed whole (#463).
+  * A non-finite parameter value is refused, and the sample-rate callback is
+    honoured (#458, #460).
+  * Tests: the plugin-hostd end-to-end steps keep their directories in the
+    run's tree and run against plugin-hostd v0.15.9; preset_show's instance
+    form is exercised; the xruns test sees a global client opened at the first
+    tick (#467, #468, #470, #471).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 03 Nov 2026 15:00:00 +0100
+
+omx-clap-host (0.26.4) unstable; urgency=medium
+
+  * A plugin that changed only the floating-point control registers is no
+    longer moved to a worker of its own. Libraries built with -ffast-math
+    (Calf, the DPF and Zam plugins) set flush-to-zero when they are loaded;
+    the guard still writes it back and counts it, but only a changed
+    integer, vector or frame register isolates a plugin (#455).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 02 Nov 2026 19:15:00 +0100
+
+omx-clap-host (0.26.3) unstable; urgency=medium
+
+  * A hosted plugin's output clamp no longer calls the maths library for
+    every sample: an empty plugin's hosting cost falls from 5.3 to 1.9 ns
+    per sample on x86 (96 kHz, block 1024). Finite samples are unchanged,
+    bit for bit (#453).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 02 Nov 2026 14:30:00 +0100
+
+omx-clap-host (0.26.2) unstable; urgency=medium
+
+  * Every call into a plugin goes through a guard that saves the registers
+    the calling convention says a function must keep (x19-x28, d8-d15 and
+    FPCR on aarch64; rbx, rbp, r12-r15, the MXCSR and x87 control words and
+    the direction flag on x86-64), compares them on return and puts them
+    back. A plugin that changed one is recorded once per instance, from the
+    audio thread with no lock and no log, and the worker says abi_clobber
+    with the registers, the call and the block, so a supervisor runs that
+    plugin alone. The LV2 adapter guards its calls the same way, lilv's
+    state save and restore included (#449).
+  * abi_guard.h ships in the -devel and lv2-devel packages, for a host that
+    builds its own calls on the same guard.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 01 Nov 2026 23:00:00 +0100
+
+omx-clap-host (0.26.1) unstable; urgency=medium
+
+  * One JACK client per worker: the members of a worker share its client
+    instead of opening one each, which saves a client's start (about 24 ms
+    on a Raspberry Pi 5) and its shared memory per plugin (#446).
+  * A mono member runs inside a stereo chain: its input is the sum of both
+    channels and its output goes to both, as Zynthian wires a mono plugin
+    between stereo ones. The run stays one worker instead of three (#361).
+  * --capabilities prints what a planner may ask of the host, one word a
+    line: chain_expect and mono_in_stereo. A planner reads it instead of the
+    version.
+  * An option the host does not know is now an error. Before, it was
+    ignored and the host started on the rest.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 01 Nov 2026 07:30:17 +0100
+
+omx-clap-host (0.26.0) unstable; urgency=medium
+
+  * chain_expect <instance> <chain>: the next add of the instance joins
+    that chain at its end, in the head's client, with no JACK client of its
+    own. plugin-hostd sends it for each member after a chain's first, so a
+    chain added one plugin at a time no longer opens a client per member and
+    closes it again (plugin-hostd#348). An add that cannot join answers -902
+    and leaves nothing behind.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 31 Oct 2026 23:10:21 +0100
+
+omx-clap-host (0.25.4) unstable; urgency=medium
+
+  * A state or a preset loads with the plugin out of processing. Most
+    omx plugins refuse a load while they process, so a parameter went back
+    to its default when a chain formed or a worker restarted, and a preset
+    load was refused (#438).
+  * A chain's member keeps its auxiliary ports, on the head's client, so a
+    plugin with a side chain such as omx-keyed-gate runs in a chain
+    (plugin-hostd#342).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 31 Oct 2026 15:47:35 +0100
+
+omx-clap-host (0.25.3) unstable; urgency=medium
+
+  * Requires libmod-host-protocol0 0.1.0-8~omx or newer: the host's ports
+    listen on 127.0.0.1 and are not reached from another machine
+    (plugin-hostd#333).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 31 Oct 2026 09:57:15 +0100
+
+omx-clap-host (0.25.2) unstable; urgency=medium
+
+  * The LV2 adapter sends a patch parameter only once the host has written it
+    or the plugin has reported it, not every lv2:default on a new instance's
+    first block. Surge XT's TTL says 0 for all 775 of them, and its LV2 gave
+    digital silence; it now reads as under jalv (#433).
+  * A state or preset restored into a new LV2 instance is not overwritten by
+    those values (#433).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 31 Oct 2026 02:41:43 +0100
+
+omx-clap-host (0.25.1) unstable; urgency=medium
+
+  * The hosting codes of the memory dimension, hosting.memory.*, for a
+    qualifier to read a plugin's measured memory against a host's budget
+    (plugin-qualify#114).
+  * The preset reader refuses a number JSON does not allow, 1. and 1.e3
+    (#338).
+  * plugin-hostd is floored at 0.5.0, and the note-queue-full test reads its
+    code from the header (#167).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 30 Oct 2026 20:00:00 +0100
+
+omx-clap-host (0.25.0) unstable; urgency=medium
+
+  * omx-clap-host describes a plugin from our extensions first, then from the
+    standard CLAP params: a plugin without our extensions gets its parameters,
+    their meaning and remote pages from clap.params. The library adds
+    omx_clap_host_param_described, omx_clap_host_standard_pages and
+    omx_clap_host_standard_page (#391).
+  * A chain line forms with a member that has a note port; the chain lock is
+    held to its rule by a sabotage arm that fails on every run (#400).
+  * The host verbs check reads plugin-hostd's own declarations, from the
+    release it builds against (0.15.1), and drives chain with two members (#361).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 30 Oct 2026 18:00:00 +0100
+
+omx-clap-host (0.24.3) unstable; urgency=medium
+
+  * preset_load answers an error when the plugin did not load the preset (its
+    on_error, or a false from the load), and a key's path may hold a space
+    written %20 (#401).
+  * omx-clap-host answers pin_layout: the layout an instance has after init,
+    which plugin-hostd 0.15 records in a pin that has none yet (#383).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 30 Oct 2026 02:30:00 +0100
+
+omx-clap-host (0.24.2) unstable; urgency=medium
+
+  * preset_load of an unknown location in mod-host's form (a preset URI, not a
+    key of preset_get) answers the bare code again, as mod-host does, for a
+    CLAP plugin as for an LV2 one (#413, #383).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 29 Oct 2026 20:00:00 +0100
+
+omx-clap-host (0.24.1) unstable; urgency=medium
+
+  * omx-clap-host answers preset_list and preset_get: the plugin's own
+    presets, from its file's preset-discovery factory for a CLAP plugin and
+    from the bundle's pset:Preset through the adapter for an LV2 plugin, keyed
+    as docs/presets.md says (file:, plugin:, an LV2 preset's URI). Before,
+    neither verb was registered and the protocol answered "not found", so a
+    plugin-hostd chain showed no presets in Zynthian (#383, plugin-hostd#269).
+  * preset_save writes the instance into an org.openmixer.preset/2 file
+    (parameters at their exact values, the state for the preset context), and
+    preset_load reads one back, refusing a file for another plugin, version or
+    layout with plugin-hostd's codes; an LV2 preset URI the bundle does not
+    hold is answered as mod-host answers it (#383).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 29 Oct 2026 18:00:00 +0100
+
+omx-clap-host (0.24.0) unstable; urgency=medium
+
+  * The CLAP host has a thread pool: pinned real-time helper threads run the
+    tasks a plugin hands to the host through thread-pool request_exec, and
+    the plugin's grant comes from its qualification, per plugin. Helpers are
+    named omx-pool-<core>. omx-clap-host takes --thread-pool=qualified|off|on
+    (qualified is the default). The library ABI is 19: a new version node
+    OMX_CLAP_CORE_0.24 holds omx_clap_host_thread_pool_use,
+    omx_clap_host_thread_pool and omx_clap_host_thread_pool_late; the soname
+    stays libomx-clap-core.so.1 (#395, #399).
+  * fuzz_preset: no_overread compares its three readings only when none ran
+    out of memory, so a large valid preset under AddressSanitizer no longer
+    aborts it (Theorem's port, #396, #397).
+  * A manifest reader that runs out of memory answers its own code, and
+    open_lv2 and fields_lv2 treat it as a failure, not an invalid URI (#340).
+  * pj_write writes a lax number as a strict JSON one, and the preset grammar
+    is stated in preset_file.h (#347).
+  * The commit-message check is named for what it runs, tools/commit-message-check.sh
+    (#398).
+  * Checks and tests: the fuzz seed floor goes red on an empty reach file or
+    an unknown harness (#342), abi-check tracks the data-member heading depth
+    as a stack (#325), lv2_host_test runs under the address sanitizer (#293),
+    and test-jack, test-scan and test-identity skip a missing
+    CLAP_TEST_PLUGIN instead of failing.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 29 Oct 2026 12:00:00 +0100
+
+omx-clap-host (0.23.2) unstable; urgency=medium
+
+  * The shared verbs that plugin-hostd answers declare -901 (data/verbs.json
+    and the generated header) (Sami Jawhar, #363).
+  * lv2_locate reads a prefixed name in work linear in the manifest; the
+    fuzz corpus and the sabotage arms follow (Sami Jawhar, #370).
+  * preset_base64_decode refuses a third '=' as soon as it reads it (Sami
+    Jawhar, #358).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 28 Oct 2026 10:00:00 +0100
+
+omx-clap-host (0.23.0) unstable; urgency=medium
+
+  * The parameter contract no longer carries migration steps: the
+    org.openmixer.param-contract/1 extension is version, fingerprint and
+    get, and the host's R5 rule is gone. The two removed members were the
+    last of the extension's table, so a plugin that still fills them is
+    read as before. libomx-clap-core's soname stays .so.1.
+  * omx-clap-scan --json writes a "labels" list on each enum parameter
+    (the plugin's own text for every whole value of the range) and a
+    "remote_controls" list on each plugin (page id, section, name and the
+    eight parameter slots of every remote-control page).
+  * omx-clap-host writes xruns <count> on its feedback port, the count of
+    xruns since it started, so a client of the worker can tell when
+    the rig dropped a cycle.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 27 Oct 2026 12:00:00 +0100
+
+omx-clap-host (0.22.1) unstable; urgency=medium
+
+  * remote_pages declares -902 beside -3: a line missing its instance is
+    answered with -902 by plugin-hostd, and the shared declaration names
+    every code either host answers.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 26 Oct 2026 19:00:00 +0100
+
+omx-clap-host (0.22.0) unstable; urgency=medium
+
+  * The verbs omx-clap-host shares with plugin-hostd (track_info,
+    remote_pages, remote_page_get, param_info, pin_expect, note_input,
+    note_on, note_off, all_notes_off) and the ones it adds for itself
+    (audio_ports, hide_external_ui, idle_hold, note_drops, note_out_drops)
+    are declared once in data/verbs.json, with their formats, replies,
+    refusal codes and what each host owes them, and the host names them
+    by their render, omx_clap_core_host_verbs.h. The build no longer
+    reads plugin-hostd's protocol.h.
+  * New package omx-clap-core-contract (Architecture: all): omx-clap-core's
+    files in omx-contract's contract directory, the hosting limits and
+    codes and now the verbs, move there from libomx-clap-core-dev, which
+    it Breaks and Replaces below this version. libomx-clap-core1 and
+    libomx-clap-core-dev depend on it at their version.
+  * Built with omx-contract 3.3.0.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 26 Oct 2026 18:00:00 +0100
+
+omx-clap-host (0.21.0) unstable; urgency=medium
+
+  * omx-clap-host runs plugin-hostd's chain line in one JACK client:
+    chain <chain> <instance> ... makes the instances, in order, one
+    chain in the first one's client through the library's chain, one
+    node of the graph, each member running as it does in a client of its
+    own (bypass, parameters and latency per plugin, the latency summed
+    between the head's ports). A line for a running chain changes it in
+    place, a member left out getting a client of its own back, a move in
+    one walk; remove of a member closes the chain around it. A member
+    with a note or an auxiliary port is refused. A line with another
+    head and a remove of the head are all or none: a JACK failure part
+    way leaves the chain and every instance as they were, a member
+    stopped on the way running again with its links. A client's
+    thread-init callback names its thread in one atomic store, takes no
+    lock and writes no audio role, so it never races the resize tick
+    and a client's first cycle runs the plugin on the audio role, never
+    passing dry. OMX_CLAP_HOST_CHAIN,
+    the Stage 0 prototype, is gone. make test-chain-host, make test-
+    chain-host-tsan, make test-hostd-chain (the crash drill behind
+    plugin-hostd 0.7.0) and make test-chain-host-sabotage prove it
+    (#104).
+  * libomx-clap-core: omx_clap_chain_order puts a chain's members in a
+    new order as one published walk, so a move never runs a cycle
+    without the moved member (OMX_CLAP_CORE_0.21, one function added)
+    (#104).
+  * libomx-clap-core: omx_clap_host_name_slot names a carrier's thread
+    on the audio role with no lock: the thread the carrier stores in
+    its slot holds the role from that store, and no role the control
+    thread gives back covers it (ABI 18, the instance's audio_slot
+    appended; OMX_CLAP_CORE_0.21) (#104).
+  * The fuzz harnesses hold the readers to limits of their own: the
+    preset grammar's depth of 32 and the manifest rule's 16
+    declarations, a compact write whose allocation fails giving no text
+    and a rewritten member holding the value its rewrite set; the
+    library does not change (#345).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 26 Oct 2026 12:00:00 +0100
+
+omx-clap-host (0.20.1) unstable; urgency=medium
+
+  * The fuzz harnesses read each input by its own grammar, never by the
+    reader they test: the preset file's JSON, the state body's base64 and
+    lv2_locate.h's naming rule, so a reader and writer that share a
+    mistake, or a reader that refuses everything, is found. Every check
+    of fuzz/ records the one-line bug it catches and the seed that shows
+    it, and make fuzz-records proves each alone (42 records and the 12
+    patches of fuzz/sabotage/); the library does not change (#345).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 25 Oct 2026 12:00:00 +0200
+
+omx-clap-host (0.20.0) unstable; urgency=medium
+
+  * omx-clap-scan prints the panel a plugin publishes through
+    org.openmixer.panel-description/1: --json carries it as "panel" (family,
+    fingerprint, sections, controls, roles, displays, placementDefaults),
+    null when the plugin serves none, and --fields as the scopes panel,
+    section:<i>, control:<i>, role:<i>, display:<i> and
+    placement_default:<i>. Nothing is filled in: an empty table is empty.
+    omx_clap_ext.h states the extension's structures, held to omx-plugins'
+    omx_panel_description.h by make test-panel-abi; no export changes (#337).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 25 Oct 2026 01:30:00 +0200
+
+omx-clap-host (0.19.1) unstable; urgency=medium
+
+  * lv2_locate reads a manifest in work linear in its size: each declaration
+    of a namespace the plugin URI starts with read the whole text again, so a
+    4 MiB manifest repeating one took 10.7 s per lookup. Past
+    LV2_LOCATE_PREFIXES_MAX (16) such declarations the bundle is a candidate
+    the caller opens to know; tests/lv2_locate_test.c counts the readings
+    (16 for 1024 declarations). libFuzzer harnesses for the preset file, its
+    state body and the manifest (fuzz/, make fuzz, fuzz-run, fuzz-sabotage,
+    fuzz-coverage, fuzz-static), run in CI on every push and pull request
+    (#326).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sun, 25 Oct 2026 01:30:00 +0200
+
+omx-clap-host (0.19.0) unstable; urgency=medium
+
+  * show_external_ui tries a Wayland window first: on a session whose
+    WAYLAND_DISPLAY names a compositor that answers, a plugin that offers a
+    Wayland window opens its own floating toplevel there (create("wayland",
+    true), show); X11 embedded, then X11 floating, follow for a plugin with no
+    Wayland window and for X11 sessions. hide_external_ui and remove work the
+    same on it. The host links no Wayland library and keeps no Wayland
+    connection, so a build without xcb (X11=0) shows Wayland windows too, and
+    hosting.window.not-built, which nothing answers any more, is gone from the
+    window codes; no export changes. A plugin that offers X11 embedded but
+    has no set_parent is shown floating when it offers that, where it was
+    hosting.window.unsupported (#329).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 24 Oct 2026 23:30:00 +0200
+
+omx-clap-host (0.18.0) unstable; urgency=medium
+
+  * omx-clap-host shows a plugin's own window, over clap.gui and X11, on
+    request: show_external_ui <N> as mod-host takes it, hide_external_ui <N>,
+    and -S (--show-ui) for every plugin at its add. The plugin's window is set
+    into a window of the host's titled with the plugin's name, or floats on its
+    own when that is all it offers; its timers and descriptors run on the host's
+    tick. With no display, or a plugin with no X11 window, the command answers
+    resp -404 and a code (hosting.window.no-display, unsupported, refused,
+    not-built) and the audio runs on. libxcb is linked when found at build time.
+    omx_clap_host_offer_gui, in the version node OMX_CLAP_CORE_0.18, hands a
+    plugin the caller's clap.gui; the library draws nothing (#180).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 24 Oct 2026 21:40:46 +0200
+
+omx-clap-host (0.17.0) unstable; urgency=medium
+
+  * omx_clap_host_resource_hints reads the resource hints a plugin declares about
+    itself (org.openmixer.resource-hints.draft/0, omx-contract 3.1.0's
+    RESOURCE_HINTS), asked once at create: whole or refused by code
+    (hosting.resource-hints.unknown-hint, wrong-unit, out-of-range), a hint whose
+    bit is clear unknown, never zero. omx_clap_resource_hint_word, _unit and
+    _figure give each hint in the contract's words and units. The LV2 adapter
+    reads the same hints from the TTL's omxres properties and offers them through
+    the draft; omx_clap_lv2_resource_hints_why names a refusal. omx-clap-scan
+    --json writes them. ABI 17; the calls are in the version node
+    OMX_CLAP_CORE_0.17. omx-contract 3.1.0 or newer (#323).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 24 Oct 2026 12:55:37 +0200
+
+omx-clap-host (0.16.0) unstable; urgency=medium
+
+  * clap_chain.h, a new header of libomx-clap-core: the chain, an ordered list of
+    stages one audio cycle runs in order, each an instance the library hosts or a
+    stage of the caller's own, each with a bypass flag (a bypassed member is not
+    run, copied or counted), its latency and its channel layout; the chain reports
+    the sum of its non-bypassed members' latencies and tells every change of it.
+    omx_clap_chain_remove takes a member out and the next cycle equals a chain built
+    without it. The cycle allocates, locks and waits for nothing; a cycle longer
+    than OMX_CLAP_CHAIN_FRAMES_MAX (8192) passes dry and says so. Every structure a
+    consumer allocates carries its ABI and size first and a mismatch is refused,
+    OMX_CLAP_CHAIN_ERR_ABI. The functions are in the version node
+    OMX_CLAP_CORE_0.16 (docs/chain.md, #311).
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 22 Oct 2026 12:00:00 +0200
+
+omx-clap-host (0.15.0) unstable; urgency=medium
+
+  * omx_clap_host_config_default_sized(config, caller_size) bounds the defaults' stamp to caller_size,
+    never to the library's own current sizeof: a consumer whose struct is smaller, because it was built
+    against an older header and not rebuilt since, is filled only that far and never overrun past its own
+    allocation. caller_size too short to carry even `version` is refused whole, not a byte moved.
+    omx_clap_host_config_default, unchanged, still stamps its own current size and cannot make this
+    promise; prefer the sized call. The call is in the version node OMX_CLAP_CORE_0.15 (#301).
+  * The hosting codes' TypeScript modules (omx-clap-core-hosting.js,
+    omx-clap-core-vocabulary.js and their .d.ts) move from libomx-clap-core-dev
+    to libomx-clap-core1, at the same path, so a program that only reads them
+    at run time, such as plugin-qualify, needs no development package.
+    pkg-config --variable=tsdir omx-clap-core still names that path.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 22 Oct 2026 09:00:00 +0200
+
+omx-clap-host (0.14.0) unstable; urgency=medium
+
+  * libomx-clap-core holds /dev/cpu_dma_latency while a hosted plugin is
+    active, at 10 us by default (C1 only), 0 for no idle state, or off: one
+    descriptor per process, opened at the first activate and closed at the
+    last, so a crash restores the machine's default. A device that cannot be
+    opened is reported by code, hosting.idle.hold-refused, declared in this
+    tree's data/hosting.json, and the host runs on. omx-clap-host takes
+    --idle-hold and an idle_hold command; its packages ship a udev rule
+    giving the audio group the device. The calls are in the version node
+    OMX_CLAP_CORE_0.14. The library ABI is 16.
+  * The hosting codes are this tree's: omx-contract's 16 data/hosting files
+    moved here byte for byte, installed under contract.d/3/omx-clap-core/
+    hosting/ and rendered as omx_clap_core_vocabulary.h and the omx-clap-core-
+    vocabulary TypeScript module, the OMX_HOSTING_ names unchanged. The six
+    retired codes are removed (72 codes are left) and featuresMissingAtLoad is
+    featuresMissing. omx-clap-scan --fields clap:<path>#<id> | lv2:<uri>
+    writes one plugin's field dump for plugin-hostd's format tables, an LV2
+    plugin read from the adapter's lilv world with its binary never opened.
+    omx-contract 3.0.0 or newer.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 20 Oct 2026 20:30:00 +0200
+
+omx-clap-host (0.13.0) unstable; urgency=medium
+
+  * Every audio port a plugin declares is described, main and auxiliary, up
+    to 64 a side and 64 channels a port, with the refusal codes of omx-
+    contract for what the bus cannot carry; the main pair may differ in
+    width and the carrier runs any width (run_ports); an LV2 plugin's main
+    and auxiliary ports are told apart by the port-group rules; surround and
+    ambisonic ports are read through the CLAP extensions, a rescan reported
+    and never a restart; request_layout asks a plugin for the carrier's
+    layout; omx-clap-host binds a JACK port per auxiliary channel. The
+    calls, with bind_aux_input in its per-channel-buffer shape and
+    bind_aux_output, are in the version node OMX_CLAP_CORE_0.13.
+  * The LV2 adapter reads an ev:EventPort MIDI port as it reads the atom
+    MIDI port, hosts a control-only plugin or a MIDI sink as a pass-through
+    tool, and counts a CV port against the auxiliary limit of 64 a side and
+    nothing else: the cap of 8 is gone and hosting.features.cv-ports is no
+    longer raised.
+  * A CLAP plugin is admitted by what its ports declare, as the LV2 adapter
+    decides; the descriptor's feature list refuses nothing and
+    hosting.clap.not-audio-effect is no longer raised.
+  * tests/clap_coverage.py measures which installed CLAP plugins the host
+    hosts and which extensions they ask for and are not offered; docs/clap-
+    compatibility.md names every CLAP id the host offers or reads and the
+    test behind it.
+  * The library ABI is 14. omx-contract 2.19.0 or newer.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 20 Oct 2026 13:35:53 +0000
+
+omx-clap-host (0.12.0) unstable; urgency=medium
+
+  * The host offers a plugin clap.note-ports, clap.note-name and
+    clap.voice-info: supported_dialects answers CLAP, MIDI, MIDI MPE and
+    MIDI 2.0; a rescan of every note port while active asks for a restart,
+    and the next activate reads the note input again; note names read through
+    omx_clap_host_note_name_count and omx_clap_host_note_name; a voice count
+    the plugin says changed is asked again by the tick. A note port that
+    speaks MIDI 2.0 gets every channel message as its MIDI 2.0 channel voice
+    message, CLAP_EVENT_MIDI2, scaled by the UMP specification's rule.
+    omx-clap-scan lists a plugin's note names and its voice info.
+  * The host is a fuller CLAP host: timer-support, posix-fd-support (called
+    by the tick), thread-pool (every task runs before request_exec returns,
+    and a request made from inside exec is refused), tail, render
+    (omx_clap_host_set_render), state-context (omx_clap_host_state_save_context
+    and _load_context) and port activation. A plugin that answers SLEEP, or
+    that is silent for its tail, is not processed until a transport change, a
+    note, a sysex, a parameter event or its own request wakes it; a sleep
+    never takes a sounding voice. A plugin file's presets are listed through
+    its preset-discovery factory (omx_clap_host_presets), and an LV2
+    adapter's entry lists the bundle's pset:Preset.
+  * The LV2 adapter admits more of the specification, each with the test that
+    runs it: bufsz:fixedBlockLength where the host declares
+    OMX_LV2_BLOCK_FIXED (a smaller JACK block re-activates the plugin, under a
+    lock that serialises the lilv world); lv2:inPlaceBroken as a required
+    feature; one atom port that carries MIDI and patch; a second and later
+    MIDI input or output (a later input is fed empty); a MIDI tool with no
+    audio port (passed through); a generator with no input of any kind, as a
+    source; state:mapPath and freePath, state:threadSafeRestore,
+    options:interface, units, log and stepped scale points, trigger ports
+    reset after a block, a worker woken when it has work, the transport at
+    every block, and param_info read from the plugin's TTL. The refusal
+    hosting.topology.no-audio-input is no longer raised: a plugin with no
+    input is admitted as a source, and one with only control ports keeps
+    hosting.topology.no-audio-output.
+  * An LV2 plugin is hosted as mod-host hosts it, checked plugin by plugin
+    against mod-host by the parity runner: a plugin that reports its latency
+    only after its first run is no longer reset by the restart that follows
+    (the LV2 instance stays active unless the rate, the block lengths or a
+    pending state load need a full activate; the core's warm-up still resets
+    it); control output ports start at their default, else their minimum, as
+    mod-host starts them (an equalizer that reads its own output port was 18
+    dB loud); and a default state is restored only for a plugin that has a
+    real state:state (an empty state wiped a synth's modulation matrix).
+  * tests/lv2_parity.py compares every LV2 plugin that mod-host and this
+    adapter both host, from the same cycles of one input, and classifies each
+    (identical, within tolerance, differs, nondeterministic, silent, crash).
+    It is a test, not a part of the packages.
+  * The calls are in the version node OMX_CLAP_CORE_0.12. The library ABI
+    is 11.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 20 Oct 2026 08:00:00 +0000
+
+omx-clap-host (0.11.0) unstable; urgency=medium
+
+  * An instrument's clap.voice-info is read at activate and answered through
+    omx_clap_host_voice_info, in the version node OMX_CLAP_CORE_0.11. The
+    library ABI is 8.
+  * A note input holds a lower and an upper MPE zone together; a master
+    channel's expressions reach only the notes of its own zone, and a note that
+    starts later begins with its master's last values. omx_clap_host_set_mpe
+    sets one zone (members 0 ends it; OFF ends both). The instance gains
+    mpe_zones and omx_clap_note_in_ids takes the zones. The library ABI is 9.
+  * The LV2 adapter frees the side-chain names of a plugin it refuses to open.
+  * The reference says what the code does: the message types each note dialect
+    passes, and that there is no plugin window. A test compares those lines
+    with clap_stage.h.
+  * The hosting headers are tested value by value against what omx-contract
+    reads, and OMX_CLAP_PARAM_SCALES against omx-contract's PARAM_SCALES.
+  * The oracle tests take their rates from OMX_ORACLE_FULL_RATES_*, so the
+    package requires omx-contract 2.16.0 or newer.
+  * Steadier tests: the transport over jack reads beats and seconds in one
+    process(), and the LV2 worker test holds the worker inside work(). The
+    stage bench builds and runs in CI.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 19 Oct 2026 00:00:00 +0000
+
+omx-clap-host (0.10.0) unstable; urgency=medium
+
+  * A CLAP note input takes note ids, an MPE zone and note end; a note port
+    that prefers MIDI_MPE gets raw MIDI. The library ABI is 6.
+  * A plugin's note output reaches effect_<N>:midi_out, through a lock-free
+    ring the audio role reads, and omx_clap_midi.h installs the MIDI form of a
+    CLAP note. The library ABI is 7.
+  * omx-clap-host hands every plugin a transport: set_bpm, set_bpb, transport
+    and -t, the beat and bar worked out from the frames played, never by
+    adding increments.
+  * A plugin's own parameter events, modulation, gestures, rescan and text
+    reach the host, and omx-clap-host answers param_info and reports param_set
+    and param_gesture on the feedback socket.
+  * omx-clap-host takes a state root, so state:makePath is offered to plugins.
+  * The LV2 adapter hosts an atom control input that takes no MIDI.
+  * The LV2 worker's ring is the declared 16384 bytes, where the host handed
+    it 4096.
+  * The hosting limits and refusal codes are declared in data/hosting.json,
+    and the headers clap_host_limits.h and hosted_stage_limits.h and a
+    TypeScript module are rendered from it. They install into omx-contract's
+    contract directory.
+  * The package requires omx-contract 2.15.0 or newer, which owns that
+    directory.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 17 Oct 2026 00:00:00 +0000
+
+omx-clap-host (0.9.0) unstable; urgency=medium
+
+  * omx-clap-host runs LV2 plugins: `add lv2:<uri>` finds the bundle on
+    LV2_PATH and loads it through the LV2 adapter, and a refusal answers
+    with its code.
+  * The LV2 adapter tells a host the code of its last refusal and the LV2
+    symbol of a parameter.
+  * LV2 CV ports work, each one a mono CLAP audio port, up to 8 each way.
+  * LV2 atom messages work at every rate; a reported text that fills its
+    slot with no terminator is dropped instead of overrunning it. Patch
+    parameter ids come in a different order than in earlier versions.
+  * A plugin's makePath requests stay in a directory of its own under the
+    configured state root; a path that would leave it, a symbolic link or a
+    request on the audio thread is refused with a code.
+  * A crash ends omx-clap-host at once, without writing a core dump;
+    OMX_CLAP_HOST_CORE_DUMPS=1 keeps the dump for debugging a plugin.
+  * A burst of notes can no longer swallow the note-off that ends them: the
+    last half of each block's note room is kept for note-offs and
+    all-notes-off, and omx-clap-host reports what it dropped with
+    note_drops <N>.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 16 Oct 2026 00:00:00 +0000
+
+omx-clap-host (0.8.0) unstable; urgency=medium
+
+  * A new header, omx_clap_raw.h, opens a CLAP plugin the raw way (dlopen,
+    clap_entry, factory, a null host) for programs that do not use the core.
+  * The LV2 adapter takes the feature options a host applies, and installs
+    omx_lv2_features.h, the one provider of the features an LV2 plugin asks for.
+  * The omx-dsp dependency is a floor (0.18.0) with no upper bound.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 15 Oct 2026 14:00:00 +0000
+
+omx-clap-host (0.7.0) unstable; urgency=medium
+
+  * The host's whole transport (position, bar, time signature, loop) reaches the
+    plugins, and the LV2 adapter forges it as time:Position.
+  * A plugin with auxiliary inputs (side chains) can have them: they are fed
+    silence until the host binds a pair, and LV2 port groups become CLAP
+    inputs.
+  * A program hosting in process reads a plugin's clap.meters/1 through the
+    library: omx_clap_host_meter_count, _info and _values.
+  * LV2 MIDI ports carry MIDI through clap.note-ports.
+  * The new library functions are in the OMX_CLAP_CORE_0.7 version node.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 15 Oct 2026 12:00:00 +0000
+
+omx-clap-host (0.6.0) unstable; urgency=medium
+
+  * LV2 numeric patch properties appear as CLAP parameters, and a value the
+    plugin emits on its own is kept.
+  * The headers install clap_meters.h with the other core headers.
+  * A new package, omx-clap-host-tests, carries the worker's test fixtures for
+    a program that tests itself against the worker.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 14 Oct 2026 21:00:00 +0000
+
+omx-clap-host (0.5.0) unstable; urgency=medium
+
+  * LV2 plugins keep their state: the adapter saves and restores it through
+    clap.state and loads a preset through clap.preset-load. A state longer
+    than 1 MiB is refused on load.
+  * A plugin activated with blocks larger than the ones it then runs at is
+    warmed up at the activated size.
+  * An LV2 plugin whose worker thread cannot start again after a reset stays
+    unusable until it is activated again, instead of running without its
+    worker.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 14 Oct 2026 12:00:00 +0000
+
+omx-clap-host (0.4.2) unstable; urgency=medium
+
+  * clap_host_limits.h carries CLAP_HOST_LATENCY_HOLD_MS, the hold before a
+    hosted stage's new latency takes effect.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 12 Oct 2026 12:00:00 +0000
+
+omx-clap-host (0.4.1) unstable; urgency=medium
+
+  * A plugin is now prepared for playing at the block size your host runs it at.
+    Before, the short warm-up after a plugin was activated used blocks of at
+    most 128 frames, so a plugin that counts in frames, such as a decimator, a
+    smoother or a sample-and-hold, started playing in a slightly different state
+    than it would on a host running its own block size. The warm-up now uses the
+    size the host activated for, and those plugins sound the same from the first
+    block.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 12 Oct 2026 12:00:00 +0000
+
+omx-clap-host (0.4.0) unstable; urgency=medium
+
+  * New development package, omx-clap-lv2-devel (libomx-clap-lv2-dev on
+    Debian): a library that lets a CLAP host run LV2 plugins. An LV2 plugin
+    with one or two audio channels in and out is presented as a CLAP plugin,
+    with its controls as parameters, its reported latency, its default
+    settings and its background worker.
+  * A plugin the library cannot run yet (MIDI or other event ports, CV ports,
+    other channel layouts, a feature it does not provide) is refused when it
+    is created, with a reason the host can log.
+  * The CLAP host, its scanner, libomx-clap-core and the LV2 library now share
+    one version, 0.4.0, so the packages you install together always match. The
+    core library itself is unchanged from 0.3.1: same interface, same soname,
+    libomx-clap-core.so.0.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 08 Oct 2026 12:01:00 +0000
+
+omx-clap-host (0.3.1) unstable; urgency=medium
+
+  * A plugin may have at most 2048 parameters. One that reports more is served
+    its first 2048, and the host's log says so once, when the plugin is
+    opened; the library no longer sizes its tables or its scans from whatever
+    count the plugin gives. Its layout cannot be pinned.
+  * A plugin whose parameter table cannot be allocated is refused when it is
+    opened, instead of being opened with the table missing.
+  * A parameter name the plugin did not terminate is read no further than its
+    own buffer.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 08 Oct 2026 12:00:00 +0000
+
+omx-clap-host (0.3.0) unstable; urgency=medium
+
+  * A plugin whose parameter list has a hole is refused whole, never served
+    short; the whole list comes in one call.
+  * A host can give an instance its tempo: the plugin reads it from the
+    transport of every block.
+  * The list of host extensions has a header of its own,
+    `clap_host_extensions.h`.
+  * The qualifier's fault plugins come with the tests (`make fixtures`).
+  * A plugin re-engaged after a bypass is reset on the control thread, never
+    in the audio path.
+  * The worker message ring an in-process plugin shares with its worker thread
+    ships as `omx_msgring.h`.
+  * The library's ABI number is 2: a program built against the 0.2 headers
+    keeps working, and one built against these is refused by an older library.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 07 Oct 2026 12:00:00 +0000
+
+omx-clap-host (0.2.0) unstable; urgency=medium
+
+  * The library names the threads that carry audio with a test the host
+    supplies, so every worker of a split processing chain counts as an audio
+    thread.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 03 Oct 2026 12:00:00 +0000
+
+omx-clap-host (0.1.1) unstable; urgency=medium
+
+  * Plugin meters are reported the way mod-host reports its output meters.
+  * Before a plugin is activated, the host checks the layout that plugin-hostd
+    expects.
+  * Answers the new plugin information commands: track_info, remote_pages,
+    remote_page_get and param_info.
+  * Built against plugin-hostd 0.1.2.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 01 Oct 2026 12:00:00 +0000
+
+omx-clap-host (0.1.0) unstable; urgency=medium
+
+  * First package: the CLAP host, and the library it is built on with its
+    development files.
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Tue, 29 Sep 2026 12:00:00 +0000

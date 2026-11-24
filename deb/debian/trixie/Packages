@@ -251,6 +251,63 @@ Description: one shared source of truth for every OpenMixer knob, range, default
  .
  Its documentation is on openmixer.org.
 
+Package: libomx-contract-dev
+Architecture: all
+Version: 3.21.0
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 86
+Depends: omx-contract-data (= 3.21.0)
+Recommends: omx-contract (= 3.21.0)
+Filename: ./all/libomx-contract-dev_3.21.0_all.deb
+Size: 21924
+MD5sum: 4c3a31522a18644d0c8502526281b235
+SHA1: d568078c7cf29c297c416b5778b6ad203c059286
+SHA256: ddd82d5bb98ce7590255f2e6e9b470fa06b8fdf4b4b1887a089a5041741bd3ec
+SHA512: 3dae2a41c0ef3ebadd92f1c36bcada4192dc60051577ad151fdf1cf3c7042f3ba9cba855344e77b7df2228c95ff81e6480784038d0cf46f94ee917ddd7df6e8e
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: one shared source of truth for every OpenMixer knob, range, default
+ A fader range, a default, a plugin parameter, a supported sample rate: in
+ OpenMixer each of these is written down once, in omx-contract, and everything
+ else reads it. That is why the console, the DSP library and the plugins agree
+ on what a knob does and how far it turns. The declarations are plain JSON with
+ a JSON Schema, so tools in any language can read them, and they are rendered
+ as C headers for the code that is built from them.
+ .
+ This package holds the c render under /usr/include/omxcontract,
+ omx-contract.pc and install-contract-dir.sh, which an owner's build
+ installs its definitions with. The data it builds against is
+ omx-contract-data, which it depends on. A consumer requires it at a floor,
+ the lowest release whose declarations it builds against.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-clap-contract
+Architecture: all
+Version: 0.34.0~git1795461597.8d263d3
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Depends: omx-contract-data (>= 3.21.0~)
+Filename: ./all/omx-clap-contract_0.34.0~git1795461597.8d263d3_all.deb
+Size: 50660
+MD5sum: 70d849439dbcfc113c8d58f3cf5c03ba
+SHA1: 85401103f566ee65a95719135541797ad38c10c6
+SHA256: adb106e8bf5a6a2da12067ca4b92dbbf494b9d4b2cb7970292ee05282533908e
+SHA512: d4d94b5ed49e3f0cb06440dc20583350e23cee823740665d41d013b05446ebe9bd5add3f82ab1350ddb4ae39789525595ffdd208abac2d6cba3a2aacb0a8921c
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: omx-clap's definitions in omx-contract's contract directory
+ omx-clap's definitions as files in omx-contract's contract directory,
+ for any program that reads them at run time: the hosting limits and refusal
+ codes, and the verbs omx-clap-host and plugin-hostd answer, with their
+ formats, replies, refusal codes and what each host owes each verb.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-clap-core-contract
 Architecture: all
 Version: 0.32.3
@@ -330,6 +387,31 @@ Description: omx-clap-core's definitions in omx-contract's contract directory
  .
  Its documentation is on openmixer.org.
 
+Package: omx-clap-core-contract
+Architecture: all
+Version: 0.33.1
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 126
+Depends: omx-contract-data (>= 3.20.0~)
+Filename: ./all/omx-clap-core-contract_0.33.1_all.deb
+Size: 21848
+MD5sum: 20fb2b6fd46da3221e55cb91351d9ea3
+SHA1: 865c4801412b7547b5b332f9c47829f8066af5dd
+SHA256: c27a701579d3b445295c439d27b4b0861db61b52d1f781c96d6283a37d6684c9
+SHA512: 8ab6512401278df100789eb561e32067a6b4fdd4298ac71e8962f936963b33cbb1c54ac23021c578ca6a420dc63d63a91ded14d22bd48156e35049097a666ec2
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: omx-clap-core's definitions in omx-contract's contract directory
+ omx-clap-core's definitions as files in omx-contract's contract directory,
+ for any program that reads them at run time: the hosting limits and refusal
+ codes, and the verbs omx-clap-host and plugin-hostd answer, with their
+ formats, replies, refusal codes and what each host owes each verb.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-clap-host-l10n-ca
 Architecture: all
 Version: 0.32.3
@@ -391,6 +473,27 @@ MD5sum: c80c9b9bc9ca0ee7cf7f54f287dffa24
 SHA1: 8eb9cc5ed838f5b8e0482a2273f851b7d7f6cf62
 SHA256: b42a815756feb97169179ec21621b11ee7bf1128997400d9938a3ec82288c992
 SHA512: 0f6b29dfbf3ca9df207bb4a4123cdbd31a4343a19f387058a348712696fc875c29766908e7bbdca49c423ad6df183700d877cef81b679900a0250a4a3734d4fb
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: ca catalog of omx-clap-host's codes
+ The sentences of omx-clap-host's codes in the language ca, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: omx-clap-host-l10n-ca
+Architecture: all
+Version: 0.33.1
+Priority: optional
+Section: localization
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 39
+Depends: omx-clap-core-contract (= 0.33.1)
+Filename: ./all/omx-clap-host-l10n-ca_0.33.1_all.deb
+Size: 8972
+MD5sum: 9813b1eddf694aeefcc13fbe1bc00d3b
+SHA1: 25de8e41dc05b780acd6d19d5c45455f6ea47ed6
+SHA256: fa7db7d933fb70c7a6fa47e99f069f93e21d36cd16293e751ccea2672b2e4710
+SHA512: 4b71d6dba0702439990737252b7b00f728012b8592a563d11f22b3f8f2cd5e9254763207c858e5e39a601289ca33ab99a14c877fd92b6323fe2868012d0ae104
 Homepage: https://github.com/Open-Mixer/omx-clap-core
 Description: ca catalog of omx-clap-host's codes
  The sentences of omx-clap-host's codes in the language ca, read by every
@@ -460,6 +563,27 @@ Description: de catalog of omx-clap-host's codes
  surface that shows them on a host in that locale; without it a surface shows
  the English source sentence.
 
+Package: omx-clap-host-l10n-de
+Architecture: all
+Version: 0.33.1
+Priority: optional
+Section: localization
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 48
+Depends: omx-clap-core-contract (= 0.33.1)
+Filename: ./all/omx-clap-host-l10n-de_0.33.1_all.deb
+Size: 13184
+MD5sum: 5e0e426fd3e3c12b4b530e435815e5be
+SHA1: 77b7bbdbe5534442df7a347f49d271585eb35ea9
+SHA256: 536577026d4ff3e63604d4ba9a6548322a6a0bfd232d3788027ad81ccdad4fda
+SHA512: 43650565a5797c96a85a3273f20318224feecdebc854c86f4de3508a8f01000a6eba5c2c137f042899725d92a2ec88547e2af6821ce4a4edb9962d6696103816
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: de catalog of omx-clap-host's codes
+ The sentences of omx-clap-host's codes in the language de, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
 Package: omx-clap-host-l10n-es
 Architecture: all
 Version: 0.32.3
@@ -517,6 +641,27 @@ MD5sum: 88e896b83f8ff944bdb234d53aeec2d0
 SHA1: 67c9763a31921cdf15162911ab5567120bc76b9a
 SHA256: 1b51e27d3d31facb965a096a1b08c2c1be0e7beb2bd3c9c3bf783510c9c64d46
 SHA512: ba8d541fdbd872f3058cbae020a1470a23a6f02a7826c66e4bc64c1f2c8d2996e9aa48148fc5ca7049d0af1478dd2f3e0121238088b9d426e0b298777cebaf6a
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: es catalog of omx-clap-host's codes
+ The sentences of omx-clap-host's codes in the language es, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: omx-clap-host-l10n-es
+Architecture: all
+Version: 0.33.1
+Priority: optional
+Section: localization
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 46
+Depends: omx-clap-core-contract (= 0.33.1)
+Filename: ./all/omx-clap-host-l10n-es_0.33.1_all.deb
+Size: 12784
+MD5sum: 44cc7c988a5d4c6cb80cef70f6b8eaa6
+SHA1: 2b6234d54d1cf12c937f9e9685562009db8dda37
+SHA256: 1050bdbba2a3a3632fba3f459019fc982bf363e3ea799be170ab93b19d0507f9
+SHA512: 58a07a3ba1aff50e3aa8189f8ed682b557f4ce126d39388ae0388c8adee0f604c7f844a3178cd09b414ce809ef3f6154803f384b1b110b719e784d5e330957a7
 Homepage: https://github.com/Open-Mixer/omx-clap-core
 Description: es catalog of omx-clap-host's codes
  The sentences of omx-clap-host's codes in the language es, read by every
@@ -586,6 +731,27 @@ Description: fr catalog of omx-clap-host's codes
  surface that shows them on a host in that locale; without it a surface shows
  the English source sentence.
 
+Package: omx-clap-host-l10n-fr
+Architecture: all
+Version: 0.33.1
+Priority: optional
+Section: localization
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 47
+Depends: omx-clap-core-contract (= 0.33.1)
+Filename: ./all/omx-clap-host-l10n-fr_0.33.1_all.deb
+Size: 12980
+MD5sum: d505cea76dd16a4f50d6c2bc46135b67
+SHA1: 48e6fc8f502837782e90ecc6f2117bb893d03c3b
+SHA256: 497a0b4257f203639e9adaa6706a34477acc21a86d3da93d4ab4277be2ece3d9
+SHA512: 02b72ad0b13b64cdfb4727c1a57c9a311d414ae3ce920c0d22b25d69928c5046dce6efc08dd8a7baaba78eeef4f6611bf6b868a7d8f6f4eaa83029c61d377396
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: fr catalog of omx-clap-host's codes
+ The sentences of omx-clap-host's codes in the language fr, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
 Package: omx-clap-host-l10n-it
 Architecture: all
 Version: 0.32.3
@@ -649,6 +815,27 @@ Description: it catalog of omx-clap-host's codes
  surface that shows them on a host in that locale; without it a surface shows
  the English source sentence.
 
+Package: omx-clap-host-l10n-it
+Architecture: all
+Version: 0.33.1
+Priority: optional
+Section: localization
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 47
+Depends: omx-clap-core-contract (= 0.33.1)
+Filename: ./all/omx-clap-host-l10n-it_0.33.1_all.deb
+Size: 12696
+MD5sum: f0f5eebdeaf1032e1af20e1a48a3abcc
+SHA1: e8b5cff33912626ff2cc2440af06b885baf73845
+SHA256: d63d5d7654d11538a9c8deb8b78f1d448f4f32b045e7208306c70c87c5ec4087
+SHA512: 5d139a834612a40faf8b46b2e960158bdbe8d3a8fa22212dcb903a0ef229fc897b69b5f61acb994b18dc565549bc433884bd3e5b6ebb6451ef2fc7d5768a9469
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: it catalog of omx-clap-host's codes
+ The sentences of omx-clap-host's codes in the language it, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
 Package: omx-clap-host-l10n-pt
 Architecture: all
 Version: 0.32.3
@@ -706,6 +893,27 @@ MD5sum: 6d8baf3a10211f7c3c11d2b40549adfe
 SHA1: 37a61f4736cbca34b7710337e2a3279df0d633d3
 SHA256: 3b62974a4fc666cb525e063d3375ec639e37695611873b6f1ebccb06de43ad18
 SHA512: 938046166f238c29fe3ac125f5349267ce149c01ee11d4931869ec6baba1d290b7cfdbbf9c3f13a6855e7dba33b34797bbd66b29933e2aa3e9741f1a0e7a42bf
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: pt catalog of omx-clap-host's codes
+ The sentences of omx-clap-host's codes in the language pt, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: omx-clap-host-l10n-pt
+Architecture: all
+Version: 0.33.1
+Priority: optional
+Section: localization
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 46
+Depends: omx-clap-core-contract (= 0.33.1)
+Filename: ./all/omx-clap-host-l10n-pt_0.33.1_all.deb
+Size: 12672
+MD5sum: 8a6a0d1dde57b63b87da70ae325ce8c8
+SHA1: c730fbdc2fe10bbf3ba75e632abc6ab2af66f350
+SHA256: d6abb7f7860508a40fc3cde23122c1665d67f4c9f9136711acc43a0e418facd3
+SHA512: c01aac8ee619ace646d6571ce8612f2db7387dc0248040e2520bd9baa8971d8a161516ed60007eae11cb4288a42c9ff127d65fbb9abc7b116b9849c92e17beb6
 Homepage: https://github.com/Open-Mixer/omx-clap-core
 Description: pt catalog of omx-clap-host's codes
  The sentences of omx-clap-host's codes in the language pt, read by every
@@ -900,6 +1108,37 @@ Description: OpenMixer declarations read at run time: contract directory, schema
  .
  Its documentation is on openmixer.org.
 
+Package: omx-contract-data
+Architecture: all
+Version: 3.21.0
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 244
+Filename: ./all/omx-contract-data_3.21.0_all.deb
+Size: 41284
+MD5sum: 9803452f72ff1c26e05528d31fa5ebf8
+SHA1: 9d600944873992d119f3af51af6e8c974ae6dde1
+SHA256: 94e650751b30f953b0a952087169352d6af05dfbcb1eacf337168506f44ddeea
+SHA512: 9397bed1a196794e6318d363402aef01735adb41c0d73fd6bc37881be8b37611a77a48c67f8bfc54bb88b32d28bbf2731df8358bb23ca587802320087d636f30
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: OpenMixer declarations read at run time: contract directory, schema
+ A fader range, a default, a plugin parameter, a supported sample rate: in
+ OpenMixer each of these is written down once, in omx-contract, and everything
+ else reads it. The declarations are plain JSON with a JSON Schema.
+ .
+ This package holds the files a program reads at run time: omx-contract's
+ own package of the contract directory
+ (/usr/share/omx-contract/contract.d/3/omx-contract/, where every owner
+ installs its definitions beside it), the JSON Schema, the resolved json
+ render, the vocabulary's schema fragment and the resource hints' Turtle,
+ under /usr/share/omx-contract. A package that reads them at run time
+ depends on this one, never on the development package.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-contract-l10n-ca
 Architecture: all
 Version: 3.17.0
@@ -1033,6 +1272,29 @@ MD5sum: b8fd0c088d03d2641a3cf6b27c68c803
 SHA1: 0793baaac030af9b01f1b48660434a8e45f09d5a
 SHA256: 89e950661dd11208c2f3f16d52ac62c51ebc12e5c3905cd302baf0c00dd5a01d
 SHA512: bed268d5acf6e484551b95730bf5414ef93d707f172040a772bab56e3db184d90e6bee1aff65d79729720d9679557340013e68da961a54bb2368ca0c25094aaf
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: Catalan sentences of the OpenMixer declarations' codes and words
+ The Catalan catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/ca.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
+Package: omx-contract-l10n-ca
+Architecture: all
+Version: 3.21.0
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 48
+Depends: omx-contract-data (= 3.21.0)
+Filename: ./all/omx-contract-l10n-ca_3.21.0_all.deb
+Size: 15464
+MD5sum: 2784d06ce43d99c5454f7da83473e37f
+SHA1: 81b57ef8fa8bd17d8cc455dfb07b1e94f6c704a3
+SHA256: 7c9299eac46eacb89f9507183cac0f99a6e073effe3e2878d017e0136664d944
+SHA512: 0b701201fb639a6badce3699c174892b5c15bcf532b93fe8086697fc46ae698571b9676bc021ce6db5d66356cdb05f85b2d841dad7baad7585075a6c23f9e4cf
 Homepage: https://github.com/Open-Mixer/omx-contract
 Description: Catalan sentences of the OpenMixer declarations' codes and words
  The Catalan catalog of omx-contract's codes and words
@@ -1178,6 +1440,29 @@ Description: German sentences of the OpenMixer declarations' codes and words
  on a host in that language, and the English source sentence for any key the
  catalog lacks.
 
+Package: omx-contract-l10n-de
+Architecture: all
+Version: 3.21.0
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 54
+Depends: omx-contract-data (= 3.21.0)
+Filename: ./all/omx-contract-l10n-de_3.21.0_all.deb
+Size: 17816
+MD5sum: 099f7a0d28c39c2ed6f18aee38de96e8
+SHA1: fe649c656b7b247e888a3deef13034f3386b537f
+SHA256: 4c5e989f097ea76cec09b9ec3d24c24e42b8a9e1a4bc1c61fd9ed1140bb0de67
+SHA512: 34d81f52497a319f54dee96d31f9e2af83e1259eca2f8e9017c3beee11ca2436175ec2c08a37535f46e9cfb83b7e1ee0c67fc3bca25affb813b853fe29b05474
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: German sentences of the OpenMixer declarations' codes and words
+ The German catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/de.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
 Package: omx-contract-l10n-es
 Architecture: all
 Version: 3.17.0
@@ -1309,6 +1594,29 @@ MD5sum: 31d21081b275197535345e4a5dc7cde7
 SHA1: cdf25c82beef8dd35d49637c54be0585264d4263
 SHA256: 1020fe495638797f7efec9616d37c506f62a94794cd22e3b556c006d4df875c3
 SHA512: d8bb5910b4aa4be03fe13b4f7961d8b7c0964dc52a9d7d6eb470bf7c7daadc18662e2117c0598647bb7152bbfbabb45da036debdb2518f439827baf81932890b
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: Spanish sentences of the OpenMixer declarations' codes and words
+ The Spanish catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/es.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
+Package: omx-contract-l10n-es
+Architecture: all
+Version: 3.21.0
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 53
+Depends: omx-contract-data (= 3.21.0)
+Filename: ./all/omx-contract-l10n-es_3.21.0_all.deb
+Size: 17332
+MD5sum: 8e5ad3543ee268fdbc06c772867d936d
+SHA1: b875e8c6df72c12babd345d78a2c65bf820b6140
+SHA256: 43ec91d5d794851247372070f75a05d30d1fa2abadb9c3ccbdff169e489229ce
+SHA512: fc5c15201497ded8a24ba6c5585d3c8da6f5d359ba2f50107a013ac83cd48aa6e3485a752fbe04cee2cd2b25bcf5340df4c0a472c2eda9c57f322e3d3a98e250
 Homepage: https://github.com/Open-Mixer/omx-contract
 Description: Spanish sentences of the OpenMixer declarations' codes and words
  The Spanish catalog of omx-contract's codes and words
@@ -1454,6 +1762,29 @@ Description: French sentences of the OpenMixer declarations' codes and words
  on a host in that language, and the English source sentence for any key the
  catalog lacks.
 
+Package: omx-contract-l10n-fr
+Architecture: all
+Version: 3.21.0
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 54
+Depends: omx-contract-data (= 3.21.0)
+Filename: ./all/omx-contract-l10n-fr_3.21.0_all.deb
+Size: 17512
+MD5sum: 2c5969245db735e650b4dc88d1bb24e9
+SHA1: 2d5fbe55cac9360bfb84bf472d3ee8950486a080
+SHA256: aae1ca6cf3687101f256d70940ce77c736c64669ed4bd6bd57a19ad8d5521b93
+SHA512: e7eecef695f655e2c681c0dd618538e1c604bd03b6ac7366aae3b6690136e64e71c1cee29e5f44dce4bc12cf471c6c399d9b3d14e79e9658f89544b823d540ca
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: French sentences of the OpenMixer declarations' codes and words
+ The French catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/fr.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
 Package: omx-contract-l10n-it
 Architecture: all
 Version: 3.17.0
@@ -1592,6 +1923,29 @@ Description: Italian sentences of the OpenMixer declarations' codes and words
  on a host in that language, and the English source sentence for any key the
  catalog lacks.
 
+Package: omx-contract-l10n-it
+Architecture: all
+Version: 3.21.0
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 53
+Depends: omx-contract-data (= 3.21.0)
+Filename: ./all/omx-contract-l10n-it_3.21.0_all.deb
+Size: 17360
+MD5sum: d07f14fab43fb72151400923a3b3ee29
+SHA1: 795f2306ecbf1db4c04d8b079319a9d463b546c0
+SHA256: 91ad62b81e651a1a8818dd63cfa9d5886c3693a34c82fcf8a7aa86fdce0012e1
+SHA512: ed200b9a993c7d667ecd9d55407e7f8ab7a934d7f4452c5c3504e62e48b7d25a4a03c2d069fcff3cc9c1f7b10dadec7668280edf6b2dcc6a3bd57412486b21bb
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: Italian sentences of the OpenMixer declarations' codes and words
+ The Italian catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/it.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
 Package: omx-contract-l10n-pt
 Architecture: all
 Version: 3.17.0
@@ -1723,6 +2077,29 @@ MD5sum: 087b73bd2288e27f8b367dad64e03af5
 SHA1: 9c00fcb72c0be203f6ed6142e65b49a290828608
 SHA256: 39ffdb28372224125a9e5e26f2b06fdcc7115e352c9340903330ff7f655c1692
 SHA512: 2247038392e45ff49cdfae2724cb498a300dbcbb1606b7544c757f75e6c18676e764905536dbae707a0b89a361ae14914bd75d609624d364678a64569a9d310e
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: Portuguese sentences of the OpenMixer declarations' codes and words
+ The Portuguese catalog of omx-contract's codes and words
+ (/usr/share/omx-contract/catalogs/pt.json): a surface shows these sentences
+ on a host in that language, and the English source sentence for any key the
+ catalog lacks.
+
+Package: omx-contract-l10n-pt
+Architecture: all
+Version: 3.21.0
+Multi-Arch: foreign
+Priority: optional
+Section: localization
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 53
+Depends: omx-contract-data (= 3.21.0)
+Filename: ./all/omx-contract-l10n-pt_3.21.0_all.deb
+Size: 17264
+MD5sum: f421a8e20c5eaab176ee63591126f8a5
+SHA1: 49944ba6ddc53e6b28b9b19fa2c0fbdbd0ec59b0
+SHA256: 3984887bfa971872bebe4f78a5740ff227d566f21c8d258754cb355e1ec76454
+SHA512: 6ba4ca3f46e1e61191040198bb889e76a0759ea763a973af50c192f14aeed5e394bcd42b069a64d35b89c4eceaa06465c3d29a52ce228ebce7d1e6267c22bc41
 Homepage: https://github.com/Open-Mixer/omx-contract
 Description: Portuguese sentences of the OpenMixer declarations' codes and words
  The Portuguese catalog of omx-contract's codes and words
@@ -1904,6 +2281,35 @@ Description: command that checks and renders the OpenMixer declarations
  .
  Its documentation is on openmixer.org.
 
+Package: omx-contract
+Architecture: all
+Version: 3.21.0
+Priority: optional
+Section: devel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2011
+Depends: nodejs, omx-contract-data (= 3.21.0)
+Recommends: pkgconf | pkg-config
+Filename: ./all/omx-contract_3.21.0_all.deb
+Size: 300816
+MD5sum: 42202c0bec3a8a0dcc185b5996783a19
+SHA1: a7577ab3947346567a702876f1673a537873a014
+SHA256: 3950feaa4e07691a84fcc7112f5df4be6946b577c25e3ea534b692df4b3df062
+SHA512: fe38e82a85065c934d54ce1c3edd659ac7adf198e35f9327bcd17b28237b276ac85bc3722816fbd2914c1b1f114c488ffd7df928fa7abfb6ef91f8311bbe434b
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: command that checks and renders the OpenMixer declarations
+ A fader range, a default, a plugin parameter, a supported sample rate: in
+ OpenMixer each of these is written down once, in omx-contract, and everything
+ else reads it. The declarations are plain JSON with a JSON Schema.
+ .
+ This package holds the omx-contract command, which validates, formats and
+ renders the declarations, and reads the contract directory the packages
+ install their definitions into as one checked set. It carries the npm
+ packages it runs on (ajv and its dependencies), so it needs node and
+ nothing else.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-dsp-contract
 Architecture: all
 Version: 0.32.3
@@ -1984,6 +2390,58 @@ Description: omx-dsp's kernel and instance declarations, read at run time
  .
  Its documentation is on openmixer.org.
 
+Package: omx-dsp-contract
+Architecture: all
+Version: 0.33.1
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 339
+Depends: omx-contract-data (>= 3.18.0~)
+Filename: ./all/omx-dsp-contract_0.33.1_all.deb
+Size: 58424
+MD5sum: 310a3642826f120342a6405c524adcdc
+SHA1: 0c1b3308547ad462e0dc334df1df8b50a1d8c995
+SHA256: 88c9010bf42e0239f2b312b797a3882c934ce1cea625497491ee996e740b619b
+SHA512: d7d0c2b8656285da55757554dbaa08cff2a4c6946205248e42c538e5511ec1c80cf16f0d2db972043ca5363f7e05a3954d9b5d799be5691cda0e2f7ffe783364
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: omx-dsp's kernel and instance declarations, read at run time
+ omx-dsp's package of omx-contract's contract directory: the declarations of
+ its kernels and instance faces (their controls, units and readouts) under
+ /usr/share/omx-contract/contract.d/3/omx-dsp. A program that reads them while
+ it runs (a panel, the omx-contract command) needs this package, not the
+ development one.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-dsp-contract
+Architecture: all
+Version: 0.34.0
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 389
+Depends: omx-contract-data (>= 3.21.0~)
+Filename: ./all/omx-dsp-contract_0.34.0_all.deb
+Size: 66764
+MD5sum: 2317123404a0a8cdae19631d02d6231c
+SHA1: 47903b8d1827df3c87458b8b7bea99fc1d0391d3
+SHA256: c7603dd553a81aa1d1eb0fee2c5e6a2ac89ea4c2d4ae6638f5b82cf21dc08e50
+SHA512: 9fbda3d8a52f92b6a7283a40be142fbb42753d2b0118d9fcf63c48b2b0a8825830b52ca0447645f246f80dbda2bc72d2dd40ec38ad040c3a85007a2e7c2ca708
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: omx-dsp's kernel and instance declarations, read at run time
+ omx-dsp's package of omx-contract's contract directory: the declarations of
+ its kernels and instance faces (their controls, units and readouts) under
+ /usr/share/omx-contract/contract.d/3/omx-dsp. A program that reads them while
+ it runs (a panel, the omx-contract command) needs this package, not the
+ development one.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-dsp-wasm
 Architecture: all
 Version: 0.33.0
@@ -2011,6 +2469,106 @@ Description: omx-dsp's curve function as a WebAssembly module, with its JavaScri
  the console's and the plugins', not a second implementation of it.
  .
  Its documentation is on openmixer.org.
+
+Package: omx-dsp-wasm
+Architecture: all
+Version: 0.33.1
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 332
+Filename: ./all/omx-dsp-wasm_0.33.1_all.deb
+Size: 69776
+MD5sum: 90814947d54f0c22a4a36ad184fbf7fb
+SHA1: fe901c40dfcc1e15f1d441d351afd3f6358daff0
+SHA256: 114937f31e3cbe3cfe96c8619e802f6b5816f836a32e5fafa9b9ddc67309e287
+SHA512: 488bd39fcdd279ecd6bdee649308c32b2e25f765a2def20a6ea7a3bc497d3c28dd908743f5eecaf4c76f8c8a3003bca0cca8b56ffaf6ef41884c1eca6e57d338
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: omx-dsp's curve function as a WebAssembly module, with its JavaScript loader
+ The curve function of omx-dsp (the points of an EQ or transfer curve from a
+ panel description's terms) compiled to one WebAssembly module,
+ /usr/share/omx-dsp/wasm/omx-dsp.wasm, and the loader that loads it, beside it
+ under /usr/share/omx-dsp/: dist/index.js, the files the npm package
+ @openmixer/omx-dsp publishes (package.json, dist/, src/, oracle/, wasm/), the
+ same files. A Node program imports /usr/share/omx-dsp/dist/index.js and calls
+ loadCurve on the module; a browser bundles the same files. The arithmetic is
+ the console's and the plugins', not a second implementation of it.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-dsp-wasm
+Architecture: all
+Version: 0.34.0
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 333
+Filename: ./all/omx-dsp-wasm_0.34.0_all.deb
+Size: 70324
+MD5sum: 42606c3daba7cbfd76d8041f5a7f20e8
+SHA1: 50fc097e24f7a276133f0fb3264ad2c7f20e2a84
+SHA256: c5ff3c8f7a3d6ff290ae86f0006b7a56c4250e4af360b127ca633f4617ecb2b0
+SHA512: cd08057ca74c9cf58f60b346cb921c384e3e267b38fbb4b8eb0bc223b5582c53d31e1d40e3ea6545b05a3fb7e39cb08664920b5b6f6cfeef0e58a8349cc9a92f
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: omx-dsp's curve function as a WebAssembly module, with its JavaScript loader
+ The curve function of omx-dsp (the points of an EQ or transfer curve from a
+ panel description's terms) compiled to one WebAssembly module,
+ /usr/share/omx-dsp/wasm/omx-dsp.wasm, and the loader that loads it, beside it
+ under /usr/share/omx-dsp/: dist/index.js, the files the npm package
+ @openmixer/omx-dsp publishes (package.json, dist/, src/, oracle/, wasm/), the
+ same files. A Node program imports /usr/share/omx-dsp/dist/index.js and calls
+ loadCurve on the module; a browser bundles the same files. The arithmetic is
+ the console's and the plugins', not a second implementation of it.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-panel-contract
+Architecture: all
+Version: 0.15.0
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 152
+Filename: ./all/omx-panel-contract_0.15.0_all.deb
+Size: 20852
+MD5sum: 9db7598deeabd7bcbece22b666aa36c7
+SHA1: 675665156d2eb4dfe62e2823618ca5155736d68e
+SHA256: e49ac9c7d41c7849c081ff9e1c554e018ca3981a36c4237ba83411971aac8ea1
+SHA512: 155caa4d4227695a43a7180a1c04338e124a138c867f9e921d6d0a52e434955ec9845ba24c9d384b9e4a35ca073260ed758c2b5eb16407b3ea9d9591f9fadd9f
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: panel domain: the words a panel description speaks
+ The panel domain (contract.d/panel): the families, widgets, display kinds,
+ display sources and placements a panel description speaks, with their
+ translations, installed into the contract directory where omx-contract's
+ loader reads it. A program that reads the panel words depends on this package.
+
+Package: omx-panel-contract
+Architecture: all
+Version: 0.15.1
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 150
+Filename: ./all/omx-panel-contract_0.15.1_all.deb
+Size: 18740
+MD5sum: 3fc6defe0fbc1485356bc0c788cef694
+SHA1: 1e145e1fab217dc1802ee940764518c3b1e95bb5
+SHA256: 97e7b87448ea44afecac740ee42eb8cb9b4a3ed4be0f9c503fd1d2a6c81b09a4
+SHA512: 4773fdac15662ca602d4c998805af61ec88527c454daf9a3ec9295a50be9b91c537223f68949a2560aff3106f887afea35683e142ec0627ec450ea3c04f3af71
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: panel domain: the words a panel description speaks
+ The panel domain (contract.d/panel): the families, widgets, display kinds,
+ display sources and placements a panel description speaks, with their
+ translations, installed into the contract directory where omx-contract's
+ loader reads it. A program that reads the panel words depends on this package.
 
 Package: omx-panel-l10n-ca
 Architecture: all
@@ -2050,6 +2608,48 @@ MD5sum: b61f00a904a14388340cce96384ecff0
 SHA1: aab78122d76b1a6a17cc75ba859f5b29ff542008
 SHA256: 44bc64321c6e85df5929f864c10fd66b247d2f69cddb86ef01755b49410648fe
 SHA512: b6279ebefbc5a50ed012e2af78e2bbb435f4344466e05d44b0d503b4edfb3d369348140f726f13321d210fe7b06e3a2467b01f80b99812227205b9ffa38c5151
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: ca catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language ca, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-ca
+Architecture: all
+Version: 0.15.0
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 22
+Depends: omx-panel (= 0.15.0)
+Filename: ./all/omx-panel-l10n-ca_0.15.0_all.deb
+Size: 5952
+MD5sum: fcaad08ef096eccb4ddc0ef095776bea
+SHA1: ab7cbd06cb9058f4eac1704367197370d73f1fc9
+SHA256: ba5f8d8b55b9e463de59fc953c244f4fb5b76a64f60bae78cc23fdd5f14c5f06
+SHA512: 94a106acbdad9b39c42ba01b6bd6a0cf016868e62fe2bd593279f2c4cefb7fc433cc3650ea18c7080d6fe4d3e968d5f5dba6f32df552ef1846fd82fc30233835
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: ca catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language ca, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-ca
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 20
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-ca_0.15.1_all.deb
+Size: 3872
+MD5sum: 6d16ae4968771839495efda79db1b8cf
+SHA1: 76616745ba71ec78b24664b9a10041bb27d8979b
+SHA256: 303e11c75ef3de3985dc883919b26c4b91bd6d1cb3f9db68f14fa51249bb1bb4
+SHA512: 9f3817fbfd71093dcbe38b9a52b3de999df9279545667d620ba82f49dfdf103b6d9dda34c4036944c185414fc2014c420b7788e9505bfb7ee318a2a02aceb4d5
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: ca catalog of omx-panel's codes
  The sentences of omx-panel's codes in the language ca, read by every surface
@@ -2098,6 +2698,48 @@ Description: de catalog of omx-panel's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: omx-panel-l10n-de
+Architecture: all
+Version: 0.15.0
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: omx-panel (= 0.15.0)
+Filename: ./all/omx-panel-l10n-de_0.15.0_all.deb
+Size: 7524
+MD5sum: 6ad44d2fad135ab48608b991290f7070
+SHA1: fcc8d533d83865b4e9b3f9857286df4b8418e015
+SHA256: 5a7ac3c3d419d3ba4f8b65e08adc57cf5b9a861687b5748b73b88d3c63362164
+SHA512: 695d5f290b00386a33f3ec1c3719b88d45aed71be4dea7c13e7912fee4621651a072d041efa459c0d81a247bd808508122a787815cad281d32213d60e89e4566
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: de catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language de, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-de
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-de_0.15.1_all.deb
+Size: 5412
+MD5sum: a465665154d85f2b3d20dce569e7f477
+SHA1: 758b25c52aa24319e51c7e14609e75f1030d09b3
+SHA256: ea04aa471906ac5761fa3c99329aa5e557ddd7d24feb5dd38f5413780e195da4
+SHA512: 08276f60641e03a54995d2738d3433655214e19df9dcbf6f5660ac2629865c95a58903f0085e19495f11a92457c49cf5df60a38bc32ee3287acfaccf6740bf64
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: de catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language de, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: omx-panel-l10n-es
 Architecture: all
 Version: 0.13.7
@@ -2134,6 +2776,48 @@ MD5sum: 5b7eb3b0692b0f55b48060166720677e
 SHA1: f12f102e26fb469e76ff717d1d9c07a4bdd11971
 SHA256: 91fd7f1b75d89b047ba2ced06306d3d51d666c76bf444812af04e2593c9e8d03
 SHA512: c999df4a102f6c3c252ece5218d587c7cd96b807d58b4f53923ab84eafa549cc6fdd64ece68457ed7b9f5d7a27b93b0335355b284f29cc8dfae6cc606a1e35df
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: es catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language es, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-es
+Architecture: all
+Version: 0.15.0
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 24
+Depends: omx-panel (= 0.15.0)
+Filename: ./all/omx-panel-l10n-es_0.15.0_all.deb
+Size: 7356
+MD5sum: 5d0a329f132db7ed947227b940768031
+SHA1: 8d835b8528ef21f0bb80aefe8d19ea332f28697d
+SHA256: 48caa6316e54f4ad6d682daea57b42eb484878554c4fcb07fa4e45e9ddd0f741
+SHA512: ee295cac1a5cca3cb9747905570bf624223736e56f5888b5bebb7d00fe1cd489d1bb3456956794b10939f0b9367e24ea26782620fb64d4d5ee29eeaa6be0c4c9
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: es catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language es, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-es
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 22
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-es_0.15.1_all.deb
+Size: 5244
+MD5sum: 35a5d1f4abb1eb5a3da2d69716b17b41
+SHA1: 971812674b1f8534fb8b71f6f5c1dbdab995acc0
+SHA256: c45b8bad81e020b623d1e3c82b2fd1695858529d6c2c1d6fd67f13b13f3c13c0
+SHA512: f03edf2aef2db68e493f7b2f371c23f5f8e45dae5831cb03e667b9a6ce8fad4f952659ca9ecb24e382338c074408187ce52373f7fe4e4d5e6c997c166f71a118
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: es catalog of omx-panel's codes
  The sentences of omx-panel's codes in the language es, read by every surface
@@ -2182,6 +2866,48 @@ Description: fr catalog of omx-panel's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: omx-panel-l10n-fr
+Architecture: all
+Version: 0.15.0
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: omx-panel (= 0.15.0)
+Filename: ./all/omx-panel-l10n-fr_0.15.0_all.deb
+Size: 7456
+MD5sum: 3da9c52d5c5b36f1845b3ffdc437d706
+SHA1: 80b81ad73fdb5918f8a97650f32323fc936011ed
+SHA256: 9272a239954f0d893afea9e55f4301d20b7b8bd56d906c3f1b57d53f831a954d
+SHA512: edc0293d1e9014d6d29890cf6d1e3779e89728be865115eb2619798f5dcb02f49ecb3ef15316e4456b0581cb1dddd877f623b779bd7988e6e5206eb52f81f974
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: fr catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language fr, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-fr
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-fr_0.15.1_all.deb
+Size: 5348
+MD5sum: 6c8ddaf4225f0834b4d4b9381bcc7f7f
+SHA1: 1093b43abbb1996c6ad496a5ba03fcde79fddef4
+SHA256: 893f321e68680d7f8ecaa87717f171a37c1b5e80bfc92092e7f7e9b3941b0b60
+SHA512: 973d71237d35a78e10b697d4d6446622915dc58e75621fc9a0d9b5a04b3464bd0ec6ae60102c4a9f29ed7995d2f3d29a5f59d8cb6262407a259bfee8e6e7e496
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: fr catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language fr, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: omx-panel-l10n-it
 Architecture: all
 Version: 0.13.7
@@ -2224,6 +2950,48 @@ Description: it catalog of omx-panel's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: omx-panel-l10n-it
+Architecture: all
+Version: 0.15.0
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 24
+Depends: omx-panel (= 0.15.0)
+Filename: ./all/omx-panel-l10n-it_0.15.0_all.deb
+Size: 7388
+MD5sum: 2354533a47fd07ff33a0e1ec0896de59
+SHA1: f770f3b7d4bf7d010b4165f7574879e4922d13ba
+SHA256: e9a708cb3af28a9eb4926a9a94bbb664cc5e3de00fd7f75ff3aba4fe8197e4f2
+SHA512: 974a29062defd9813e86f16d2660f48cf849dad0b912198a5b09991d9d075079e03a0e2b0f951de588119b5d39e7f543b12d22ecb3fd68d1d4a3674f798f0d84
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: it catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language it, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-it
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 22
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-it_0.15.1_all.deb
+Size: 5280
+MD5sum: 3eb89dd4c52ebc5aff4930f2a3ab83fc
+SHA1: a981ec13891c56c8703f07e839a8f45cb3a3c273
+SHA256: de6a44518dd0a8ee4d808c80ecb5b9d276c275bd77ff13c6257e3938bc692216
+SHA512: b02d5e240bfd5178292373312798f3decc76dc4b282111ca1fef84a1ab70c04c445ef2b2a9f02bd2f21c71cf76fef6f07d18eacc70b58b1bb57e08e84e61a76b
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: it catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language it, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: omx-panel-l10n-pt
 Architecture: all
 Version: 0.13.7
@@ -2260,6 +3028,48 @@ MD5sum: f6dd9d54a0a0e849f88d614e97784e37
 SHA1: 2c1e43055f0071040f75fa38f75b2afc1a711a49
 SHA256: 705e29541d3221d8007b099d0e98543ef609e5dd8d48db317652caa0fb317030
 SHA512: a332b82a0f87c8bc5cfb21db7d215bcd8065b395e1b2e1fd01cc7dd5d1ed5937f177a4643b3edbd4b7110e82c9597843b85abc38960636ae6f9036ea547c8b84
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: pt catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language pt, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-pt
+Architecture: all
+Version: 0.15.0
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 24
+Depends: omx-panel (= 0.15.0)
+Filename: ./all/omx-panel-l10n-pt_0.15.0_all.deb
+Size: 7368
+MD5sum: 3204a3ffc00784a2b506df88a047eba5
+SHA1: 07d535ed6facdfc1f6b60e7aefb41a61e4fbd6b5
+SHA256: 227c6b61e54778ecdd4122ab21a2b5381443f72a9385651825157199853446d5
+SHA512: ae684c5295bd9485b53a42a2430c2f29484b28bd932d839ec2a50714f8e0715efff88b8a6ad3a49c13cccd2bf1cbe1eed77c1f5378dbd78c236f73858de5a5e8
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: pt catalog of omx-panel's codes
+ The sentences of omx-panel's codes in the language pt, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: omx-panel-l10n-pt
+Architecture: all
+Version: 0.15.1
+Priority: optional
+Section: localization
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 22
+Depends: omx-panel (= 0.15.1)
+Filename: ./all/omx-panel-l10n-pt_0.15.1_all.deb
+Size: 5256
+MD5sum: e33ba370cffbc79c742855c1e2fc111a
+SHA1: bb92a4902aa7ac04a488110f9313e1d19f4951b2
+SHA256: 6a8c01298ec29c4c22cf8a79f3033f6f13fe5b837892dda2f2095b850d2b6f92
+SHA512: 0f6ad646a5b8c2fc5867a011105c1ca719f5f83fa5fa4d676223ecf633ed7e1995551f1a1ab5cd879ae773e420e3de3534c029f78e53bfebfbf36ac7e62df7b4
 Homepage: https://github.com/Open-Mixer/omx-panel
 Description: pt catalog of omx-panel's codes
  The sentences of omx-panel's codes in the language pt, read by every surface
@@ -2353,6 +3163,64 @@ Description: panels for LV2 and CLAP plugins, generated from what each plugin de
  .
  Its documentation is on openmixer.org.
 
+Package: omx-panel
+Architecture: all
+Version: 0.15.0
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2966
+Depends: nodejs (>= 18), omx-contract-data (>= 3.20.2~), plugin-hostd-contract (>= 0.20.7~), omx-dsp-wasm (>= 0.33.0~)
+Recommends: plugin-hostd (>= 0.20.7~)
+Suggests: python3-lilv
+Filename: ./all/omx-panel_0.15.0_all.deb
+Size: 609176
+MD5sum: 5e8ead9de6fceaa875c00a12e8a8b160
+SHA1: 9b0d089ccadeac315f5aa644c55717a97b27842a
+SHA256: 2dae0b2fe18de2e3cdc700bcd19f17c17f5b01e1d5bf44cbc5b242bedd64b609
+SHA512: 9f440a7ae38225dff51a026cd44599dd5851c65236a6afae72fa05f062af4123a1520d14d606a0d880a8443fc3a5c3eff9a49ca174eead1afc2e0f6cbabec101
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: panels for LV2 and CLAP plugins, generated from what each plugin declares
+ omx-panel makes panels for LV2 and CLAP plugins from what each plugin
+ declares. It lays a panel out from a plugin's descriptor (sections, controls,
+ roles, the pages of eight a controller shows), writes a MOD GUI for MOD and
+ Zynthian in the omx look, imports a plugin's own MOD GUI into a skin package,
+ and carries the skin package schema, its validator and the directory skin
+ packages are installed into. The omx-panel command runs each; the tools are
+ under /usr/share/omx-panel for a build that calls them.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-panel
+Architecture: all
+Version: 0.15.1
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 2965
+Depends: nodejs (>= 18), omx-contract-data (>= 3.20.2~), plugin-hostd-contract (>= 0.20.7~), omx-dsp-wasm (>= 0.33.0~), omx-contract (>= 3.20.2~)
+Recommends: plugin-hostd (>= 0.20.7~)
+Suggests: python3-lilv
+Filename: ./all/omx-panel_0.15.1_all.deb
+Size: 607644
+MD5sum: f493ae22faaede48447ec70e4d60486b
+SHA1: 0cd3b9a2cecdc1edf7687d78b067ed95f272436b
+SHA256: d65b992e4b8332e2c66436003220f98d218d9461bdc1be4b57e97c3bb50f64ae
+SHA512: f877cf2b76d8287db165f1cb3543bf8d08963c87f14a1fde4fc86252fe8710f419bedfefcff027b8092cb061c3cf00110051241bc508a86e39f7b58fc0e981d6
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: panels for LV2 and CLAP plugins, generated from what each plugin declares
+ omx-panel makes panels for LV2 and CLAP plugins from what each plugin
+ declares. It lays a panel out from a plugin's descriptor (sections, controls,
+ roles, the pages of eight a controller shows), writes a MOD GUI for MOD and
+ Zynthian in the omx look, imports a plugin's own MOD GUI into a skin package,
+ and carries the skin package schema, its validator and the directory skin
+ packages are installed into. The omx-panel command runs each; the tools are
+ under /usr/share/omx-panel for a build that calls them.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-plugins-contract
 Architecture: all
 Version: 0.19.3
@@ -2379,6 +3247,54 @@ Description: OpenMixer plugins' descriptors in omx-contract's contract directory
  console's panels and the omx-contract command.
  .
  Its documentation is on openmixer.org.
+
+Package: openmixer-release
+Architecture: all
+Version: 1-10
+Multi-Arch: foreign
+Priority: optional
+Section: admin
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 20
+Filename: ./all/openmixer-release_1-10_all.deb
+Size: 4324
+MD5sum: da7777f191e47eab25675124df97781a
+SHA1: 04fe301fc1269a90383579ab567d0e88e378f2c8
+SHA256: e55fd5d462f5c94d875bd1df3628de322a96b3e1a21815f57414e88998925307
+SHA512: 3a9862bbca7fbe8d2ec39fa3fbcf8463613a58ef2ef1460f43f9cda5769d94a30d7ecd17f84ffdcba767a17f24cb6e7d17bca805263067e9afcced6ab054358a
+Homepage: https://www.openmixer.org
+Description: OpenMixer package repository configuration for apt
+ Adds the apt source of the OpenMixer repository, which carries the OpenMixer
+ console and its plugin hosts, with the key that signs its index. The source
+ names the Debian release of the system it is installed on (bookworm or
+ trixie, Raspberry Pi OS included). apt upgrade keeps this configuration
+ current.
+
+Package: openmixer-release
+Architecture: all
+Version: 1-11
+Multi-Arch: foreign
+Priority: optional
+Section: admin
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Filename: ./all/openmixer-release_1-11_all.deb
+Size: 4916
+MD5sum: 4eca2e9abfaff4c4e8a5dafac3fadb95
+SHA1: 13e8d7ef5e6e637fc4b784f81b5cfb52925466e4
+SHA256: d0c66be783fb56a56de2ed20bb85464f34d5aa75b566b172682b85edf5b7048a
+SHA512: 621a8d83113d0381b52faa6f6eabfacbff055f5679cd4e3002094b40ee6d2c48281e9ceed2d0fa8981ff568ec3dc4745b7c2dbb08f923c663acddf31e21aae59
+Homepage: https://www.openmixer.org
+Description: OpenMixer package repository configuration for apt
+ Adds the apt source of the OpenMixer repository, which carries the OpenMixer
+ console and its plugin hosts, with the key that signs its index. The source
+ names the Debian release of the system it is installed on (bookworm or
+ trixie, Raspberry Pi OS included). apt upgrade keeps this configuration
+ current.
+ .
+ It also adds the testing source, openmixer-testing.sources, disabled: the
+ builds a release wave has proved before their release, as Fedora's
+ updates-testing. Setting Enabled: yes in it is the whole opt-in.
 
 Package: openmixer-release
 Architecture: all
@@ -2438,6 +3354,29 @@ MD5sum: b0d5df9dab6f8a1af98634f50b5051f0
 SHA1: 71c77107f335b580defe3e7e3a981901c576f09b
 SHA256: 1df124a0a6f2b222f2eede408788508dfda8eeb0cb693bbd4546797202876b2c
 SHA512: e4bca8a4d83dcf4efc80034f1fcd0c2c5625e1912ab4c9536663c78d28764c9f34fb90726d16e030eb3e5e5a2672f47926eb109f956b35dcef70885c810ec7c6
+Homepage: https://www.openmixer.org
+Description: OpenMixer package repository configuration for apt
+ Adds the apt source of the OpenMixer repository, which carries the OpenMixer
+ console and its plugin hosts, with the key that signs its index. The source
+ names the Debian release of the system it is installed on (bookworm or
+ trixie, Raspberry Pi OS included). apt upgrade keeps this configuration
+ current.
+
+Package: openmixer-release
+Architecture: all
+Version: 1-9
+Multi-Arch: foreign
+Priority: optional
+Section: admin
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 20
+Depends: freereac-release (>= 1-2)
+Filename: ./all/openmixer-release_1-9_all.deb
+Size: 4276
+MD5sum: 87432300e1b9376bd89e7f1859aee958
+SHA1: 56f0642ecb7fc84c957217ed3d66e65451f37769
+SHA256: 9729a4ac8db9f6cd3d3cd47bca643b95fbe9207501a250e2e8d77a3df7c3f167
+SHA512: c35bc96f10ad6fedf3412a307ffe38bd3492893c3bf9513aa9e25e2d91d0ac91c58ca26db16b77cdd77858e8345ea1ce6420340e249d7f609ec04a394c9d8ad2
 Homepage: https://www.openmixer.org
 Description: OpenMixer package repository configuration for apt
  Adds the apt source of the OpenMixer repository, which carries the OpenMixer
@@ -2550,6 +3489,33 @@ Description: words of the plugin database in omx-contract's contract directory
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-db-contract
+Architecture: all
+Version: 0.5.0
+Multi-Arch: foreign
+Priority: optional
+Section: libs
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 445
+Depends: omx-contract (>= 3.21.0~)
+Filename: ./all/plugin-db-contract_0.5.0_all.deb
+Size: 40596
+MD5sum: 5662c384366c0b9a21aff35ca1c65b02
+SHA1: db6f319b6e9f8728212cdcd37388cce0430cf237
+SHA256: d3a0864fe73e1287e7f4363b8c611e50df3cef5580dd52165df204da55e9bd9a
+SHA512: 633ad42e02b2cde33f559932096042730dcfa488174b819972510932e0de1f9077b63fa94a49b8c42f332e3953e83d7a4b85ca1c66264a3bc6034e37c1356fcb
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: words of the plugin database in omx-contract's contract directory
+ The domains of plugin-db in omx-contract's contract directory: plugin-db (the
+ words of a pin, the address formats, the bundle rule, the layers, the
+ attributes, the record changes and their actions, the states and the
+ reasons), lv2 (the LV2 terms and their mapping to the standard words), format
+ (the kinds and statuses of a format's terms) and plugin-feature (the plugin
+ features), under /usr/share/omx-contract/contract.d/.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-db-l10n-ca
 Architecture: all
 Version: 0.4.4
@@ -2642,6 +3608,27 @@ Description: ca catalog of plugin-db's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: plugin-db-l10n-ca
+Architecture: all
+Version: 0.5.0
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 21
+Depends: plugin-db-contract (= 0.5.0)
+Filename: ./all/plugin-db-l10n-ca_0.5.0_all.deb
+Size: 4480
+MD5sum: b97d1892033a3b85bd1fb5e6762d9b58
+SHA1: 42c3092c9d47e72980efee90338e8f824b11c7fb
+SHA256: 857d3641ca4dc472645dfc39471a44ec82b43d2642c8b8f7a23aca94bf4297e6
+SHA512: d631d83d68feb8c87e45128f80c76059097394f6901277e301153bcb361a4f174560494f5685941e56e76d5d9d5900fb818ca15897c3da12ea20520e049e0b20
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: ca catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language ca, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: plugin-db-l10n-de
 Architecture: all
 Version: 0.4.4
@@ -2720,6 +3707,27 @@ MD5sum: b4259f1c5f4e1234e5a5269448f0338c
 SHA1: 79af071a2bf9d3b6aa7e6851f115c2d480e1b6cb
 SHA256: b5f4bdc46786db3c1954dc1d0ca44221e8ed4f795d611e0ac89dcbf87639cde0
 SHA512: 12e21d77919a15c653da09065e8d8b833491448657f7410d3d5fe9e1024876e539c16b85e752c806724d19385aea02e1be17c842959afc5e374e44feeac70dca
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: de catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language de, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: plugin-db-l10n-de
+Architecture: all
+Version: 0.5.0
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: plugin-db-contract (= 0.5.0)
+Filename: ./all/plugin-db-l10n-de_0.5.0_all.deb
+Size: 6508
+MD5sum: 1408a1cf5f8ad5b5d5e9fa3584efd01d
+SHA1: 82df89f740b9e8206846ea33b03e0e430a8c7670
+SHA256: ff9cad74584ef563a97e870a23afdae7cc635adcfcebc35ae60b3f9cde346fb9
+SHA512: 1985594586f7c2fe21a97e993334f22e3b31ff7624572a4bf6c6d1d87ac3792c490c317d8662fe1f2761face0eeb73e9f16627f716c970b087a24f5cf05cbb95
 Homepage: https://github.com/Open-Mixer/plugin-db
 Description: de catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language de, read by every surface
@@ -2810,6 +3818,27 @@ Description: es catalog of plugin-db's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: plugin-db-l10n-es
+Architecture: all
+Version: 0.5.0
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: plugin-db-contract (= 0.5.0)
+Filename: ./all/plugin-db-l10n-es_0.5.0_all.deb
+Size: 6476
+MD5sum: 4c3ea746cb02f6b942273e8a693d2d08
+SHA1: 0a9a31225cc493008673d5f59d86e234d538efff
+SHA256: 223ba8502070493d1a8229ca1678adeef04d9d9e7430983390e18e78dff23873
+SHA512: 0d0bd115515e8e2660135dd9994a2b55322c0963d13de28df7e0aca7fb8c36f391bfe9634c07f20d3a988ca015d0e0d274d7661c4e610ed55bcfb338ceaec08c
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: es catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language es, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: plugin-db-l10n-fr
 Architecture: all
 Version: 0.4.4
@@ -2888,6 +3917,27 @@ MD5sum: 64a010f9958d61878d8a83495160f173
 SHA1: 7753860a7adb98d87ebb85bbc8e06b73078d01c9
 SHA256: c376f83c6720d849303951c13cb55de12da2bfa056818db47dca9bc77ce67ce3
 SHA512: 1ea676ea29d53782752fc061436867ce8d310c5c65fe3a0951d85a36880c6be61b684a8e91e4bebe9618a56a9b942942a832c071c61392bf996cdf59bef0c417
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: fr catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language fr, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: plugin-db-l10n-fr
+Architecture: all
+Version: 0.5.0
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: plugin-db-contract (= 0.5.0)
+Filename: ./all/plugin-db-l10n-fr_0.5.0_all.deb
+Size: 6520
+MD5sum: 2a44b781b459744d8841fa48fe79408e
+SHA1: b08ebe7c06442fb4ea4766f6d277e24694e2bc43
+SHA256: 616dca35b46b8c7e05c4f75ec7180d435c6e2ea00be56caa109a6f352380cc84
+SHA512: b84e8b37d06316c4a4bb909c11854cb6d1b36363321300699a937cb52754fd9652e7cfab65a75d95004320dc80b7cd49a2c9bb0855703590f4b596418fe7faf1
 Homepage: https://github.com/Open-Mixer/plugin-db
 Description: fr catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language fr, read by every surface
@@ -2978,6 +4028,27 @@ Description: it catalog of plugin-db's codes
  that shows them on a host in that locale; without it a surface shows the
  English source sentence.
 
+Package: plugin-db-l10n-it
+Architecture: all
+Version: 0.5.0
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: plugin-db-contract (= 0.5.0)
+Filename: ./all/plugin-db-l10n-it_0.5.0_all.deb
+Size: 6424
+MD5sum: 2c9609e758d55575cde88214882c3332
+SHA1: 7724d6e52f0b45dd6d00d5b20b8f072344a2fcf3
+SHA256: 7ded754318dba743426a7172bc7342476f5f231554f2ec7b3dbe79067083eefe
+SHA512: 70d5b4b294e2b3acfee6da05e793d5c36953e4dc7c17478f2c84d86a4bd7f3089545373005f796037eb8cbdc49517ecde98160afed26333baf9043911ca88a70
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: it catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language it, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
 Package: plugin-db-l10n-pt
 Architecture: all
 Version: 0.4.4
@@ -3056,6 +4127,27 @@ MD5sum: fe10034d519d7a81cb2be211f76749bc
 SHA1: fa91b66ba76e74827b27ba6cb1286d1dedef1bcb
 SHA256: 31a0c87c38645fa68e550c52e498632ef25f8ea4b81887b10d0b064029ccad21
 SHA512: dbfbe971c00e92fa099c96103e0dc9a80d3b5431c2aad00a2510c29b0882c8198eed4b534731f781c91f8e5e719961936f3a49f98cf78a654a4f869ab9a65323
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: pt catalog of plugin-db's codes
+ The sentences of plugin-db's codes in the language pt, read by every surface
+ that shows them on a host in that locale; without it a surface shows the
+ English source sentence.
+
+Package: plugin-db-l10n-pt
+Architecture: all
+Version: 0.5.0
+Priority: optional
+Section: localization
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: plugin-db-contract (= 0.5.0)
+Filename: ./all/plugin-db-l10n-pt_0.5.0_all.deb
+Size: 6456
+MD5sum: 4775cf2bfc3ed610af493b9874893b3c
+SHA1: f24d405838eefd55b84da7825847c908ca967ee4
+SHA256: 6cbeda1447de369efb30b4beb9173e7ed9119155fc84ead46ba24b850748aefd
+SHA512: 86202cdc39c96463f6c85d910262a3872fbfaaaade9c64c0386b562097b041cd2fb957078f347da73b6d666543ea4b3c486d17ffdc1f8ea74f93de33329bbd55
 Homepage: https://github.com/Open-Mixer/plugin-db
 Description: pt catalog of plugin-db's codes
  The sentences of plugin-db's codes in the language pt, read by every surface
@@ -3146,6 +4238,32 @@ Description: plugin-hostd's format tables, read at run time
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-hostd-contract
+Architecture: all
+Version: 0.20.8
+Priority: optional
+Section: sound
+Source: plugin-hostd
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 222
+Depends: omx-clap-core-contract (>= 0.33.1~), omx-contract (>= 3.20.0~), plugin-hostd-protocol-contract (>= 0.7.0~)
+Filename: ./all/plugin-hostd-contract_0.20.8_all.deb
+Size: 27692
+MD5sum: fcefd147ccc9ef91c9cf4e6d01611d18
+SHA1: c1f7a48253d3c590d9ede7902ccafa99f70c4cdd
+SHA256: cfa1ebd604edc984dd45ae9622ff03a9557e95fa742e4779c4babae9828a16d4
+SHA512: 134dd953c0062c34d87341e8e56a77b141f90a08f6b6d18a9c33432177819356bbe98704f2e52733199bd3b6d182cdda265499c5f67918ec9139c268e746f099
+Homepage: https://github.com/Open-Mixer/plugin-hostd
+Description: plugin-hostd's format tables, read at run time
+ plugin-hostd's package of omx-contract's contract directory: the format
+ tables a scan maps a CLAP or LV2 plugin through (formats/clap.json,
+ formats/lv2.json), the keys of the running history (history.json) and the
+ reasons a plan gives for a plugin it leaves alone (grouping.json), under
+ /usr/share/omx-contract/contract.d/3/plugin-hostd. A program that reads
+ them at run time depends on this package, never on the development one.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-hostd-dev
 Architecture: all
 Version: 0.20.6
@@ -3196,6 +4314,31 @@ Description: C headers to drive plugin-hostd from your own controller
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-hostd-dev
+Architecture: all
+Version: 0.20.8
+Priority: optional
+Section: libdevel
+Source: plugin-hostd
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 65
+Depends: plugin-hostd-contract (= 0.20.8), libplugin-hostd-protocol-dev (>= 0.7.0~), plugin-db-dev (>= 0.4.7~)
+Filename: ./all/plugin-hostd-dev_0.20.8_all.deb
+Size: 15176
+MD5sum: fa9f53621197b23dcc796eaa35bf6656
+SHA1: 2e8aaa592285a5df6996383f0143380d20df83ba
+SHA256: df0d89f227537bd9d20a994cf6c86e860309d109d6da570651a1394ec461170f
+SHA512: 1590a91a400b545f0c6772fda08df2c7c029796a2cd56d586b3fc21061a54f8f3842b0204a2a038b2c98020f2b54b1ea38f5d9ca6fff93f1b534cde0c917c033
+Homepage: https://github.com/Open-Mixer/plugin-hostd
+Description: C headers to drive plugin-hostd from your own controller
+ The words of the grouping planner and the running history,
+ and the schemas of the probe output and of a preset file. The protocol a
+ controller speaks (the verbs, error codes, feedback events and settings) is
+ declared in libplugin-hostd-protocol-dev, which this package depends on:
+ pkg-config plugin-hostd gives the flags for both.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-hostd-full
 Architecture: all
 Version: 0.20.7
@@ -3211,6 +4354,32 @@ MD5sum: 2da4fc6af590e0110edb4d63e3bf27fa
 SHA1: 388cb5eaf100df3a05747b3ca5f08493d25dbe87
 SHA256: 03efe58bcc5f3e5369e058fc810daab08143472eb5b2c4a8cb6bb1cfa94b5d73
 SHA512: e3dcdbe5dbcd76b2b0eacf4ff1a8405f30a95bd3b5eb7668c80206e2623d1d82de268adfd82f76d78311c56c5fe89644830ee11418f03538502b4b69e48bc137
+Homepage: https://github.com/Open-Mixer/plugin-hostd-full
+Description: whole plugin host stack: daemon, workers, plugins, qualifier
+ Installs plugin-hostd with everything it runs plugins with: omx-clap-host,
+ the CLAP worker that also runs LV2 plugins through its adapter, the OpenMixer
+ plugins, plugin-qualify, which measures each installed plugin before it is
+ trusted live, and the qualification records of this machine's class, so the
+ plugins measured on a machine like this one are taken from the records.
+ .
+ omx-panel, the plugin panels in a browser, is a recommendation: install with
+ --no-install-recommends for a machine with no screen.
+
+Package: plugin-hostd-full
+Architecture: all
+Version: 0.20.8
+Priority: optional
+Section: metapackages
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 8
+Depends: plugin-hostd (>= 0.20.8~), plugin-hostd-protocol (>= 0.7.0~), omx-clap-host (>= 0.33.1~), omx-plugins (>= 0.19.3~), plugin-qualify (>= 0.20.1~)
+Recommends: omx-panel (>= 0.13.0~), plugin-qualification-records (>= 2026110902~)
+Filename: ./all/plugin-hostd-full_0.20.8_all.deb
+Size: 2316
+MD5sum: b48bc38a36f9eeb4fec8cc246621f1c5
+SHA1: 8a5d0b2c3176d73f65bd186ca3d478e5312e0914
+SHA256: 5bfbbc6850fb3ac8fd0fba0a6017f06b5c88a7e1d5424ead09b329b4725595ea
+SHA512: d4d1c63d9b87d7fffa90234bc920975f7ed912994ae6f6aa7fa5633da41209904189521a803141fabf1b9dc86940b192b60b530aa417a3a1a645c47fc0aa8ad4
 Homepage: https://github.com/Open-Mixer/plugin-hostd-full
 Description: whole plugin host stack: daemon, workers, plugins, qualifier
  Installs plugin-hostd with everything it runs plugins with: omx-clap-host,
@@ -3303,6 +4472,81 @@ Description: plugin-hostd protocol, its verbs in omx-contract's contract directo
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-hostd-protocol-contract
+Architecture: all
+Version: 0.7.0
+Multi-Arch: foreign
+Priority: optional
+Section: libs
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 66
+Depends: omx-contract (>= 3.19.1~)
+Filename: ./all/plugin-hostd-protocol-contract_0.7.0_all.deb
+Size: 13020
+MD5sum: 7822849b7b27bf083582211777753fdc
+SHA1: 1a2909d1eb400a33d64bb1219648d65ccfcfab32
+SHA256: dd587cbfe4d1ddd74a781a7e15d91aeefef82cbccdfd7b32e02db91e7943ab0d
+SHA512: f3172058fb03de172f5e115691c776805ec2cb5633768b2fad4d86d5a626caec1a95292cb4857ea3c3bf85844834a0d1e81b9363fa3a3f7068055f40dcfa77bb
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol, its verbs in omx-contract's contract directory
+ data/verbs.json of plugin-hostd-protocol, the verbs and reply codes
+ plugin-hostd adds to mod-host's protocol, as the package plugin-hostd-protocol
+ of omx-contract's contract directory, under
+ /usr/share/omx-contract/contract.d/3/plugin-hostd-protocol.
+ .
+ Its documentation is on openmixer.org.
+
+Package: plugin-hostd-protocol-contract
+Architecture: all
+Version: 0.8.0
+Multi-Arch: foreign
+Priority: optional
+Section: libs
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 92
+Depends: omx-contract (>= 3.21.0~)
+Filename: ./all/plugin-hostd-protocol-contract_0.8.0_all.deb
+Size: 17184
+MD5sum: 31c23fb960e1a2be9542530fed44bea5
+SHA1: 117a0a2e78e9a4965cc768eb52dbaa6709f41383
+SHA256: d64479f204d6a8c15a426bca641bf5f28d010d6d5bfb69437db876e93c974482
+SHA512: 0714a45f85741c310b30d52b1e04539baf196c175ed16593f94b1e808431762b9a95e6623da4622707628c887c09eee12b153866d2fd03171ed79ba5c84ed31a
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol, its verbs in omx-contract's contract directory
+ data/verbs.json of plugin-hostd-protocol, the verbs and reply codes
+ plugin-hostd adds to mod-host's protocol, as the package plugin-hostd-protocol
+ of omx-contract's contract directory, under
+ /usr/share/omx-contract/contract.d/3/plugin-hostd-protocol.
+ .
+ Its documentation is on openmixer.org.
+
+Package: plugin-hostd-protocol-contract
+Architecture: all
+Version: 0.8.1
+Multi-Arch: foreign
+Priority: optional
+Section: libs
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 91
+Depends: omx-contract (>= 3.21.0~)
+Filename: ./all/plugin-hostd-protocol-contract_0.8.1_all.deb
+Size: 15496
+MD5sum: b70bfca5faa682fdbd2b1d85aa26a01a
+SHA1: 6f933ea9f857b218077d8db85bfa2b0597c01e95
+SHA256: 27d6ae26e9d14981cfd14ca4b853801ac4367b840a59a39c70ee36dbb13ce9bb
+SHA512: d7c2d1df046300ff20cd533ebf64326e1bd052167bd4f403e94aa53a6d141d1572e2d3771ca442937071334d72a0ad7b2ca04e1cb587f4f5c32baecc803b1b52
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol, its verbs in omx-contract's contract directory
+ data/verbs.json of plugin-hostd-protocol, the verbs and reply codes
+ plugin-hostd adds to mod-host's protocol, as the package plugin-hostd-protocol
+ of omx-contract's contract directory, under
+ /usr/share/omx-contract/contract.d/3/plugin-hostd-protocol.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-hostd-protocol-l10n-ca
 Architecture: all
 Version: 0.5.8
@@ -3372,6 +4616,69 @@ Description: ca catalog of plugin-hostd-protocol's codes
  every surface that shows them on a host in that locale; without it a surface
  shows the English source sentence.
 
+Package: plugin-hostd-protocol-l10n-ca
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-ca_0.7.0_all.deb
+Size: 5352
+MD5sum: ccc79cae42d37e7dc8649622218bdbfc
+SHA1: 5fc3e86271113f7203e9bf92d9604901483f5c58
+SHA256: f1e4ee918bb41136f618311c0a60365818728aa7eed625713d2a891d4413f3a8
+SHA512: 08df245a977cb22eaee6b88a70b47975fd952398e0c50c6d4271438c867e1b6ce1a0599bb69d5a41cd662263eedf1c54e6c4b5f450bde6490be40daa32a517d6
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: ca catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language ca, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-ca
+Architecture: all
+Version: 0.8.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 23
+Depends: plugin-hostd-protocol-contract (= 0.8.0)
+Filename: ./all/plugin-hostd-protocol-l10n-ca_0.8.0_all.deb
+Size: 6240
+MD5sum: 907f2a7978a49b3101edeff73eb5d3d8
+SHA1: f703c2e50c19ef2f71f1b72bd6e24885a6cd9c33
+SHA256: bb7901a40e1b6c8672eb42ecfbbef3f232a7d1459ceef8f7e80a68ca62289674
+SHA512: 9cd4e8b93ba28af61be1c70f0718d88cfad90e0fd8404f6aceedb725b4af004c1e89fdb7fe93a8dfee16aede71ce996a58fb0bfde803d86af647996bba771361
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: ca catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language ca, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-ca
+Architecture: all
+Version: 0.8.1
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 22
+Depends: plugin-hostd-protocol-contract (= 0.8.1)
+Filename: ./all/plugin-hostd-protocol-l10n-ca_0.8.1_all.deb
+Size: 4572
+MD5sum: f18c7e768fde3a544f3050d932ccdae6
+SHA1: ca441e275036f0f6421b2091564c9778a1362c80
+SHA256: 20b7b7eea313e2ba83c94bd47b07bdeecd716fa868211f96166b06b2d93375bf
+SHA512: fc9aa8d6830615105069a4b167628f41a6587a2f92235384c926d62edb54077458b12ba0ee8198a9f0f0aaff8c5f41a8fc6b9906c9bf28a95afe202ee6480fb7
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: ca catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language ca, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
 Package: plugin-hostd-protocol-l10n-de
 Architecture: all
 Version: 0.5.8
@@ -3429,6 +4736,69 @@ MD5sum: 7f9ecc148971a514bd6809c1b996b0f0
 SHA1: f4104abcba21ccae1c1f0baeb272f75c9200ec71
 SHA256: 81d7b39bd5be3ca05fac2c6c15b9aa857f955d96ccc6777e4ce693670f1875ec
 SHA512: c2cacc6d43857cc99070ab5e7658b81a56a212979bd14f88d2a8a63c7e6c9612a27013a33159cbd1ba0d6a55196ca6c0553af54985741c1cd9f2e3809a4c516b
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: de catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language de, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-de
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-de_0.7.0_all.deb
+Size: 7228
+MD5sum: d5efa3b5a955bf03edc35e858240f6bf
+SHA1: 1456ede96770b2c2c55f5c6a372e78f887a5b102
+SHA256: 1437eafaa25e7169ac9110bd477e0922692db757cb824f0c45347597cd062afd
+SHA512: ce258ddbc19e0c7f98d8353a2bf7dc765f53b8f5d091df4c9c476ca97e66dd6293443516a11a0e088bbf3ea0752244331c145f2fa4ef53f19cda33a155ca7dcf
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: de catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language de, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-de
+Architecture: all
+Version: 0.8.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.8.0)
+Filename: ./all/plugin-hostd-protocol-l10n-de_0.8.0_all.deb
+Size: 8128
+MD5sum: 4053626241c70f1f78d5b4dc4f2a33c2
+SHA1: 2b6339786d6ca9aaec2613c1cf97d935eaa9cdd6
+SHA256: 96edd4bb6a4155bb6903e5786d2278d16e4de2867a0c99239f0ff21abb74930f
+SHA512: 56e9c0565bd99b9f6c4b7d5fb2501b448dbfd14321fb355b6977663f6c9c6a1d50695c25cdd0ee8ed993b96ed701f8759e3d0d9f32976707c4ce3618173ed759
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: de catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language de, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-de
+Architecture: all
+Version: 0.8.1
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.8.1)
+Filename: ./all/plugin-hostd-protocol-l10n-de_0.8.1_all.deb
+Size: 6448
+MD5sum: 4fa0aaebc0f016968558f4b9897dbb37
+SHA1: 864e5eb4ec96fbd6d5d20e4e2f029713e359e431
+SHA256: 2e497bb1684336ec73529cf25dec3b90a6bb46f9af1f1f84327397291bd9940e
+SHA512: dd22565b04529a0f68abb3711a1ff0f28d8284948a602d0cc5ec5487ba39b91ac4f01b9ae854a42917c8f8591390e13349f8c4b834a06f03358c36fd956dbcb3
 Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
 Description: de catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language de, read by
@@ -3498,6 +4868,69 @@ Description: es catalog of plugin-hostd-protocol's codes
  every surface that shows them on a host in that locale; without it a surface
  shows the English source sentence.
 
+Package: plugin-hostd-protocol-l10n-es
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-es_0.7.0_all.deb
+Size: 7004
+MD5sum: b258acd9fa83b97242747a8afe1757b5
+SHA1: 8da0925e563bddcce38fba10c48564dfa1ae1b50
+SHA256: 2848a0dd419cd4e45e564c089a8f4df2a950a8edf3cb5654e1c2600744461414
+SHA512: f1749ed69444eb76f643755bb7b950e90c2a1cc175e6d6ebfc56b2c4f14b671d13c67853b5c451117a2d4092dbf0f785f55a8036a890c3d3846f0b07843ef38d
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: es catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language es, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-es
+Architecture: all
+Version: 0.8.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.8.0)
+Filename: ./all/plugin-hostd-protocol-l10n-es_0.8.0_all.deb
+Size: 7904
+MD5sum: 42c99c8f6169933e58929388a768f413
+SHA1: d708014af527933f8ed94c4c9debb8222f1722cd
+SHA256: ef9ed38f901f9c336f6cd533b9424e0a6c8afd40ee573e7d35e38cf5afd23cce
+SHA512: fd0942011f7948fa642aff5e448e39e3b285eac6e6d0d1bb83ce50eddbdd68a6f58294be070e0cf93ae13b7a4a49432aae4216f6a13bb584a9e8f3e7bf225e8d
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: es catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language es, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-es
+Architecture: all
+Version: 0.8.1
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: plugin-hostd-protocol-contract (= 0.8.1)
+Filename: ./all/plugin-hostd-protocol-l10n-es_0.8.1_all.deb
+Size: 6224
+MD5sum: c8f8e1623abf1ba32e35200780350eeb
+SHA1: f541554bfe651abfd4444d3476cf466f30205994
+SHA256: 1d4b59f7dafc3efd9f5bd56dc1c57517c9d52bfad62ddc4d5e4c5c7cdec009b4
+SHA512: 836cf1f58004934ba85213f716a06584d7496c075bf6df85bab974ddce36debb966a03f1c0b6b1c725ddceb0b637aa409beb851ac794c5bd59073e0d12453e26
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: es catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language es, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
 Package: plugin-hostd-protocol-l10n-fr
 Architecture: all
 Version: 0.5.8
@@ -3555,6 +4988,69 @@ MD5sum: 707edc2e9db15bd9eeece0318a6fb39e
 SHA1: 07607444715cd498cebf672295d58675b1709a64
 SHA256: 6d4dbf3694507f57d8f412e16cdda3e9093e2155e2289ea09e30d4ed0cfed765
 SHA512: 53a09da28d97226d0e4d0b5da6a7ad733c5bf189e48640f9757231db90d2d8ec68360ca609f5d1e1212ff60e75ebb2dcb5cc34236d7d6a35160592bc4b9a1fef
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: fr catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language fr, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-fr
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-fr_0.7.0_all.deb
+Size: 7144
+MD5sum: 0898a2757b1c360152d99cb446ddd7ac
+SHA1: de89cbb5d3c31937329bb3781b162f922f23838d
+SHA256: f9cca30a4ab0158ed9769e2c4045b25fd9df035dd03a148a7519822d822e0d02
+SHA512: d9d421b21e639c01e30b9657881a5736af8bfe45f2661a8cc2421ea304b2d96119af3a891a06e0b113f2569c818c2c47f94400a236139be138cb26173a3d0351
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: fr catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language fr, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-fr
+Architecture: all
+Version: 0.8.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.8.0)
+Filename: ./all/plugin-hostd-protocol-l10n-fr_0.8.0_all.deb
+Size: 8044
+MD5sum: e44e57c37c079b9686e290cac36d8b1e
+SHA1: d0e0cfbb92fdd3147d2bcc90801e8ed3f67cfc0a
+SHA256: c2aaffafc62f3d75f252f48e28974a145e46b1bccacbe95a5cacfccdd35e6387
+SHA512: bb2b38ff6d4ab7b3a544f08983c02935535c2ed25b841e9733390edb7673e465ca16d5c039dadb2b4009e13f76079ae5f7a20dc8793e0f0a7799525e1b2f8a21
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: fr catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language fr, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-fr
+Architecture: all
+Version: 0.8.1
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.8.1)
+Filename: ./all/plugin-hostd-protocol-l10n-fr_0.8.1_all.deb
+Size: 6368
+MD5sum: 313900625108c525e2bc5970a35cc2d5
+SHA1: b70e4195b40458d8171e3e0d35f57d5a922989e9
+SHA256: 4d29587cd1d1d63dd3cc5e15ccfd9d10cbec66cd759ca55db8d627a2bab6774f
+SHA512: 690e4e734565fe57f0cd2b1296795c064d22862ca33516859f08f4d0dff7339229f34fc0c246069ce7d694072d6c6ae64b0a69b360081cffdcf055a7fceed20c
 Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
 Description: fr catalog of plugin-hostd-protocol's codes
  The sentences of plugin-hostd-protocol's codes in the language fr, read by
@@ -3624,6 +5120,69 @@ Description: it catalog of plugin-hostd-protocol's codes
  every surface that shows them on a host in that locale; without it a surface
  shows the English source sentence.
 
+Package: plugin-hostd-protocol-l10n-it
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-it_0.7.0_all.deb
+Size: 7036
+MD5sum: 642734ad124d90f3b2019855e77e3cd3
+SHA1: 747b3e696a0331b6193a3af1ed867ed7d68ba5b2
+SHA256: 9ea69634e6594c75d5f5cda9cc3fd84799bed0992a94623bdf31888b5d34f0bc
+SHA512: 2be0835559c89d192b2ffe416833768fd1267108dfbe356e6797cf2aa7d506de2de80ef775b8e2b62d0879e15587f7bd06d54d23a5e7ea2c392ca65fc7e9a3a5
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: it catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language it, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-it
+Architecture: all
+Version: 0.8.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 27
+Depends: plugin-hostd-protocol-contract (= 0.8.0)
+Filename: ./all/plugin-hostd-protocol-l10n-it_0.8.0_all.deb
+Size: 7932
+MD5sum: e2af4fbdd8689a920941f1de1096ae5a
+SHA1: d13b43c0685a23d256a22db5b70a9ba3827729dc
+SHA256: f4f16f863c7ce9bc86de1e6e83c8c249423c619dbc434c46cf919861ddd3112a
+SHA512: ff2b1e3c4cbf55bf95e18cf6d70c31fd346eafe2b3fe372730b48b30996d571694f766ee083633d806f4ebc91795bf604dd2bc4847bc7f84a76f207c0e9ffd2e
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: it catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language it, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-it
+Architecture: all
+Version: 0.8.1
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.8.1)
+Filename: ./all/plugin-hostd-protocol-l10n-it_0.8.1_all.deb
+Size: 6256
+MD5sum: b4a9944a06aa34231aad7fedb317efc5
+SHA1: 1e2855ec67922d8a5fbdb1933974b73c4419fa9c
+SHA256: 9c917cc5e87690febf69e84a6eaac591b66cd566ff5a178edb071441b56e6337
+SHA512: caef4a945f1598b1ddcc8aaffc7c9ce6a843df4d15dfecf6cff983ed0a78ee6bbaf849bf2c7bcf0c6b136fdf9e6284390d49698ea648411f66141d7d4f9fb02d
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: it catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language it, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
 Package: plugin-hostd-protocol-l10n-pt
 Architecture: all
 Version: 0.5.8
@@ -3687,6 +5246,159 @@ Description: pt catalog of plugin-hostd-protocol's codes
  every surface that shows them on a host in that locale; without it a surface
  shows the English source sentence.
 
+Package: plugin-hostd-protocol-l10n-pt
+Architecture: all
+Version: 0.7.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.7.0)
+Filename: ./all/plugin-hostd-protocol-l10n-pt_0.7.0_all.deb
+Size: 6984
+MD5sum: 60f0f31ab2065e1c3c6af8786500dfaf
+SHA1: 74636919817d93de7fcfb1c3f44624e6485e5c5e
+SHA256: 705f506c453593b95b6f55e8a3ecd270eaa6d9db7f04b880f0244746f965e39d
+SHA512: b95d23875a007a382d366aed17ae638bee692ba313b8815fe717f16c9635f422a1844555840c58c83dcddbcc52d4b09a3ab730e8437823e4f741ca0d1932b117
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: pt catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language pt, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-pt
+Architecture: all
+Version: 0.8.0
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 26
+Depends: plugin-hostd-protocol-contract (= 0.8.0)
+Filename: ./all/plugin-hostd-protocol-l10n-pt_0.8.0_all.deb
+Size: 7872
+MD5sum: 06ac845d5d0d527fe57424c9ca0e0d82
+SHA1: b9ca81f3562d655543fdf18100e1a5785d80fefe
+SHA256: c781f057410615b212c01af1207db3f13cec97e778a8d3cb263602911bc9c617
+SHA512: b5cf9bae15d77c7f3a0e8c8f80c1f57dc3768bb3b5c2d5688994157aeae085bb0214218d6c007053cbe44b61908426659fd45839849ed8a53956b4c045d49dc2
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: pt catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language pt, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-hostd-protocol-l10n-pt
+Architecture: all
+Version: 0.8.1
+Priority: optional
+Section: localization
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 25
+Depends: plugin-hostd-protocol-contract (= 0.8.1)
+Filename: ./all/plugin-hostd-protocol-l10n-pt_0.8.1_all.deb
+Size: 6204
+MD5sum: 22b98357f332212e39a4886eb451e7d8
+SHA1: a106bad1f796a10d44ac99a00ed786488e7a21e3
+SHA256: 3f02517db00d7983d0c788e79b6a063f72ef30fa14c12a132888c78c0adec39b
+SHA512: 8e7c688edeb974896f8f3f9c3894940a12f7b253447546bc2046313cfd262bbd5d0bd1c118eb2c42bba3c04764c3672fbb90298a8bf87011f95da6cac2c21e5d
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: pt catalog of plugin-hostd-protocol's codes
+ The sentences of plugin-hostd-protocol's codes in the language pt, read by
+ every surface that shows them on a host in that locale; without it a surface
+ shows the English source sentence.
+
+Package: plugin-qualification-db-schema
+Architecture: all
+Version: 2026111901
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Filename: ./all/plugin-qualification-db-schema_2026111901_all.deb
+Size: 9764
+MD5sum: 91b483d5a1fb8f9466a3de394280ebd5
+SHA1: a3f17137023fb03a5690acb4d8b5a56df48fd28b
+SHA256: e01193f45d2c7420ee10e980b70f4ffdf88aeb6b4a685e5a034b3ee16d689af5
+SHA512: 5bb49a5d06fbfd49ebcb74e191050ef4c2bb3787d581c58d1f8c1e0cfe295450376833d34f001a960d621930950b6446c3b88f36df475a7a80e4d5460c0dc0bc
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: DDL of the OpenMixer qualification store
+ The SQL that creates the qualification store, one copy, at
+ /usr/share/plugin-qualification-db/qualification.sql. The writer creates a
+ user layer from it, and test fixtures read it with no checkout.
+
+Package: plugin-qualification-db-schema
+Architecture: all
+Version: 2026112001
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Filename: ./all/plugin-qualification-db-schema_2026112001_all.deb
+Size: 9264
+MD5sum: 379db734bd039e0e4ae3c2b0065f3972
+SHA1: 6d0c28979f9795b774c2514c6420c9a2eacb0545
+SHA256: 0bb3bc4423b7a289f751ae2f570b5cdeadcee5efdcbc2128b4a966658e77e847
+SHA512: 827b344e16255af3d5014847664270c955318996a9ba963cad89c27ca72ecb65911ab49be35f8fbd623594faf874e6340d4e3241c61195da6e687d0097dad122
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: DDL of the OpenMixer qualification store
+ The SQL that creates the qualification store, one copy, at
+ /usr/share/plugin-qualification-db/qualification.sql. The writer creates a
+ user layer from it, and test fixtures read it with no checkout.
+
+Package: plugin-qualification-db-write
+Architecture: all
+Version: 2026111901
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 70
+Depends: python3, python3-jsonschema, libsqlite3-0 (>= 3.37.0), plugin-qualification-db-schema (= 2026111901)
+Filename: ./all/plugin-qualification-db-write_2026111901_all.deb
+Size: 18952
+MD5sum: 284e79ef31fce9be8acb58760ae2476b
+SHA1: 4abb0cead378b0a6fcea3fabdcb4930045b72d03
+SHA256: fd99246eed70251ca3fc6c04ec30105700bbbd6b39f9a2dc8b7a9b2546720b34
+SHA512: eddc2735101149af7b55c1d077ebddf006bfa8ec8b4db63b44a133bbf4e9efa3179fbd37562228c2b445b003916e266fe9ff59919bc25c393dd407bb917aa2f5
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: writer of the OpenMixer qualification store's user and system layers
+ plugin-qualification-db-write put reads one qualification record on standard
+ input and replaces the record of its key in the layer of the scope; delete
+ removes one. Every word is checked against the installed contract domains and
+ the binary's path, file list and key against the rules of the store; a
+ refusal is named on standard error and writes nothing.
+
+Package: plugin-qualification-db-write
+Architecture: all
+Version: 2026112001
+Multi-Arch: foreign
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 70
+Depends: python3, python3-jsonschema, libsqlite3-0 (>= 3.37.0), plugin-qualification-db-schema (= 2026112001)
+Filename: ./all/plugin-qualification-db-write_2026112001_all.deb
+Size: 18444
+MD5sum: afa23323834d3534b15e61f78c6fad1b
+SHA1: 8ec86e0d2f1536ef8b6052e583578e4c86f0b077
+SHA256: 988e3381e54aa1e995e27054f5b60734ff7922fd677ce558bff9a3ed3f7d54eb
+SHA512: 2db20c6949d176318b178f6801b328a801a041b969580233ecc0dcf0d9d29c32ca4832de4279a70bd02f1f95aa41d15c695e83de7eee33299d3bba3a0f12b081
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: writer of the OpenMixer qualification store's user and system layers
+ plugin-qualification-db-write put reads one qualification record on standard
+ input and replaces the record of its key in the layer of the scope; delete
+ removes one. Every word is checked against the installed contract domains and
+ the binary's path, file list and key against the rules of the store; a
+ refusal is named on standard error and writes nothing.
+
 Package: plugin-qualify-contract
 Architecture: all
 Version: 0.20.6
@@ -3701,6 +5413,26 @@ MD5sum: bc71d4b0ac9e37ca8575bf86447a595d
 SHA1: a0d02efba267c0059563ab3558f5bfc057b16b49
 SHA256: 685aa9898cb86f2ef781bcbc99e9f2f168fd36f0cf0c915ea75c4cdea15d188f
 SHA512: f9687b6716397f7698b672efc6e5cc92781e0b36356d02630f8af1a188ba1f027f0865a017db307787c5c085bc5bd21d445ee1b0a5d6b9862ea5f7e629026d20
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: qualification domain of plugin-qualify, as data
+ The qualification domain (its words, verdict ratings and catalogs) in
+ omx-contract's contract directory, read at run time by plugin-qualify and by
+ the programs that name its words.
+
+Package: plugin-qualify-contract
+Architecture: all
+Version: 0.20.7
+Priority: optional
+Section: sound
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 186
+Filename: ./all/plugin-qualify-contract_0.20.7_all.deb
+Size: 27276
+MD5sum: 5821c6061b5844e0e97f038a3f4d7e2b
+SHA1: 076f9e15f83d10fef1f73fa282c72c8a644af942
+SHA256: 148256a6c09502ac7456a852136063595babbe730d0ab92398cf2803939c1762
+SHA512: eeef39b641feb52ea53f88b11da97d43d4d0fc2bbfeb49a62529a0528827f60b0a9d6f258c4f4df70bb0c4aaf9ff9aca8f47ecd8a3e4ea89b75957bbe2e89754
 Homepage: https://github.com/Open-Mixer/plugin-qualify
 Description: qualification domain of plugin-qualify, as data
  The qualification domain (its words, verdict ratings and catalogs) in
@@ -3749,6 +5481,27 @@ Description: ca catalog of plugin-qualify's codes
  surface that shows them on a host in that locale; without it a surface shows
  the English source sentence.
 
+Package: plugin-qualify-l10n-ca
+Architecture: all
+Version: 0.20.7
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 41
+Depends: plugin-qualify (= 0.20.7)
+Filename: ./all/plugin-qualify-l10n-ca_0.20.7_all.deb
+Size: 11876
+MD5sum: 0566dee697efd1832e40edb2ac2c43ee
+SHA1: 442dcf94d73abba75601f36ce1c74811029c7a9c
+SHA256: abe2c9bab1277b707bde19e924cf36a166d9ae321e8af06b4e076d8158ace276
+SHA512: b86c7b542a904a532654416326436b9d712c0e2ed01f2add12ab39f2000a1e9f3ac45e53f4aa79d4254daa5671b0b557b5e3cc52d5357fc9e92bad87030515a4
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: ca catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language ca, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
 Package: plugin-qualify-l10n-de
 Architecture: all
 Version: 0.20.5
@@ -3785,6 +5538,27 @@ MD5sum: 95b0822116dc7886fdb4bdf481485411
 SHA1: 16da318ff05354697ac1ac1a9eacbb383eae6a1c
 SHA256: dfb2a94400972d9999b5430e2a8748cbce3c6cf22fc77c1f8ba14baba9c67c97
 SHA512: 1b16ab921c5e75752532f58961a66a9decf0a9fac80050a8656f9b125ab4e95b628b5cf009c9af6d366e7a117e40008a36a5f4f317f928ebb40baeab5c468e5e
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: de catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language de, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: plugin-qualify-l10n-de
+Architecture: all
+Version: 0.20.7
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 42
+Depends: plugin-qualify (= 0.20.7)
+Filename: ./all/plugin-qualify-l10n-de_0.20.7_all.deb
+Size: 12100
+MD5sum: c12cfbcb6ed9484c7f506f0a60767d36
+SHA1: 7c218b7af9b8e541c72ec90e91d66959f617a37c
+SHA256: 411b11e4596ab1777db9b093f2f472fb1d2bb98c2cbeac90e6c3a131309da1fe
+SHA512: d47b491b619772988fa76acbbb570f57bcb4ecac5409a80ae42af12ebb39b388f303b484ecb764dedbb9cf044252e167890d74bb331853fc75ac0d66d1924c9c
 Homepage: https://github.com/Open-Mixer/plugin-qualify
 Description: de catalog of plugin-qualify's codes
  The sentences of plugin-qualify's codes in the language de, read by every
@@ -3833,6 +5607,27 @@ Description: es catalog of plugin-qualify's codes
  surface that shows them on a host in that locale; without it a surface shows
  the English source sentence.
 
+Package: plugin-qualify-l10n-es
+Architecture: all
+Version: 0.20.7
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 41
+Depends: plugin-qualify (= 0.20.7)
+Filename: ./all/plugin-qualify-l10n-es_0.20.7_all.deb
+Size: 11860
+MD5sum: 5196c29afaa698a0f0d071b86f6103ff
+SHA1: 83d0ee032b6af9115509573c9e404dbd9b76e3f6
+SHA256: 9fce917bfb6b7fb210ddc984d16f2596392c8f1c5a960d9891a613499e354811
+SHA512: 66965563c5ded9ae705ead2bde133254b2bc47d707752db43e3866dcb9e8011a2c745ac62fe2f75bf476a7cff19f55d72fe17ba7bc0f470898750db0cc54e165
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: es catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language es, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
 Package: plugin-qualify-l10n-fr
 Architecture: all
 Version: 0.20.5
@@ -3869,6 +5664,27 @@ MD5sum: 7a481d0157f0a58b45195c6e3c31af76
 SHA1: 4d6e9230bf1724b148f4caca01de9467cbf79cf1
 SHA256: 52749b89ffe853dca4db43a8ec3aec598028b182aa4497d2ea362093825fe2ae
 SHA512: a106c2000a38f528a78598c41bd4fe5ffeeac4727bd8ffff2d74995d9063e71d8a38a34dc91b78850de5c0fd78a2fe4452ba98143a5c1dc054c1daf2fd229d88
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: fr catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language fr, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: plugin-qualify-l10n-fr
+Architecture: all
+Version: 0.20.7
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 42
+Depends: plugin-qualify (= 0.20.7)
+Filename: ./all/plugin-qualify-l10n-fr_0.20.7_all.deb
+Size: 12060
+MD5sum: 5ac1bcc965f2b5f0860bc85418473aff
+SHA1: aed721c5d26c3aa24db6245d973a2bd1cfba031c
+SHA256: 555bf4275104a22aae0e0c42c7347e953f3f31ab392eaad05d3cdee574ddf831
+SHA512: a7fbccb2ec5ff2787b4037d945bf48c7b9fc798da9ded4cfe859d2229e511ae693a66e321bccb6145d7bc1ac40c23f3192a57313c4d66fdde03601ad47f9e322
 Homepage: https://github.com/Open-Mixer/plugin-qualify
 Description: fr catalog of plugin-qualify's codes
  The sentences of plugin-qualify's codes in the language fr, read by every
@@ -3917,6 +5733,27 @@ Description: it catalog of plugin-qualify's codes
  surface that shows them on a host in that locale; without it a surface shows
  the English source sentence.
 
+Package: plugin-qualify-l10n-it
+Architecture: all
+Version: 0.20.7
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 41
+Depends: plugin-qualify (= 0.20.7)
+Filename: ./all/plugin-qualify-l10n-it_0.20.7_all.deb
+Size: 11864
+MD5sum: 6222da0b5bdbe42ce462370c4d6075de
+SHA1: cd0e808ba23076cc1d739fc7654eb8e0736b3234
+SHA256: 84c6b74ef648d6fe6c0ed8733cbb2316acf296a6f7a2314416c42a973a84ee26
+SHA512: 79fcf5a39c0195781b2f28bb4cfa8306e4c672aa9c1c0747cbbfe4cd80f464fccddb3a94ce534c8ebc31baa62f4633dd720543795b84b8d60a9ef09061832ea4
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: it catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language it, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
 Package: plugin-qualify-l10n-pt
 Architecture: all
 Version: 0.20.5
@@ -3953,6 +5790,27 @@ MD5sum: 475cc3743ad35d25d763df25eae60cad
 SHA1: 218b41c1dc89d5aa9bb72f91e9bfe12ef81f5011
 SHA256: c69d5c648f75863a34a6d7f232345890fdc1a5e0fae105ae7b657cdaf465b345
 SHA512: e8eab4a954642a2f16c41c27d79583b1c098827c30e479b5859578c4f3881fe4ca3ce48315c78bf59c6f2ebf96b85daa283d768e268ef971513c05c345885ec7
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: pt catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language pt, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: plugin-qualify-l10n-pt
+Architecture: all
+Version: 0.20.7
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 41
+Depends: plugin-qualify (= 0.20.7)
+Filename: ./all/plugin-qualify-l10n-pt_0.20.7_all.deb
+Size: 11916
+MD5sum: 217040215a8de8fb61893b44f05f21bc
+SHA1: 427108925364cd86cbbc7279330c8ed23a56bcf9
+SHA256: e54caa5113edfb110449d433b7bfe9acf9512988b0cc9798714eba161449e466
+SHA512: f4e61e1da6050bd411e539e65335ca0cee5c925c877629f21171b5ad2a1f446667aa5ed191fb4fa141ba430f4d5713a1400d26f2ca84b66bc2ef976d7d4d3255
 Homepage: https://github.com/Open-Mixer/plugin-qualify
 Description: pt catalog of plugin-qualify's codes
  The sentences of plugin-qualify's codes in the language pt, read by every
@@ -4109,6 +5967,35 @@ Description: omx-contract's readers for Python: import omx_contract.catalog
  .
  Its documentation is on openmixer.org.
 
+Package: python3-omx-contract
+Architecture: all
+Version: 3.21.0
+Priority: optional
+Section: python
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 34
+Depends: python3:any
+Filename: ./all/python3-omx-contract_3.21.0_all.deb
+Size: 10824
+MD5sum: dc904d60626ea4e9a2eeb5acf54a62b9
+SHA1: 8800ba92f37a33b01ed556e2d28322d3e598b0e6
+SHA256: 93484f27046364c4597c728209cf2ca735ffdb36ca8ca9939df8bc3d6d5c59b1
+SHA512: 53bb8d228108a18b5b1f27e1ececa73f745cd079d17a99c57a591ebc1f84614e7ab9014b6645a1910aff65b116417bd3af38e47e68d0c04b88e2da7769cb826e
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: omx-contract's readers for Python: import omx_contract.catalog
+ The Python package omx_contract: omx_contract.catalog reads an owner's
+ catalogs (the sentence of a code in a language, falling back to its English
+ source), omx_contract.scale is the position law of a control
+ (scale_position, scale_value). A program writes
+ `import omx_contract.catalog` instead of loading a file by its path.
+ .
+ Each submodule is the file omx-contract-data ships under
+ /usr/share/omx-contract, byte for byte; those files stay there for one
+ release.
+ .
+ Its documentation is on openmixer.org.
+
 Package: python3-plugin-db
 Architecture: all
 Version: 0.4.4
@@ -4209,6 +6096,31 @@ Description: plugin database: reader for Python
  .
  Its documentation is on openmixer.org.
 
+Package: python3-plugin-db
+Architecture: all
+Version: 0.5.0
+Priority: optional
+Section: python
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 45
+Depends: plugin-db (= 0.5.0), plugin-db-contract (= 0.5.0), omx-contract-data (>= 3.21.0~), python3:any
+Filename: ./all/python3-plugin-db_0.5.0_all.deb
+Size: 11244
+MD5sum: 9f0ed63e30c11106b33459f99a93daa8
+SHA1: a58ed1caae80bfa12baedeb52039d674f3059e40
+SHA256: 356db1804d931e7537c31bc6a1d95bd2f0f5636114ef4b964fe7bc328299dd9f
+SHA512: fdd3c674746c278fed989d036a0f3d184aa2d7a9d7ea6309c4b579453dd4f5d92029629cf5e68a4aa89da7d2965906564fdfffec29a0b7a444e0122ad802f62f
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: plugin database: reader for Python
+ The Python module plugin_db: query() gives the answer of plugin-db query
+ --json for a plugin of the store, read() is the Python twin of the reader for
+ layers in hand, and text() gives the sentence of a word from the catalog of a
+ language. Its words are generated from data/, and the fixtures of the C reader
+ and of the TypeScript twin hold it to the same answers.
+ .
+ Its documentation is on openmixer.org.
+
 Package: python3-plugin-hostd-client
 Architecture: all
 Version: 0.6.0
@@ -4225,6 +6137,90 @@ MD5sum: a5ff3cac8845c11709e43f08055922fa
 SHA1: 669e08ad8345436be245876f88ff916f10763287
 SHA256: 3c8ef7b63a044a96ebd5f0a9e1be50c4c1a1a6bb0ece855515f09ebdce9e7e81
 SHA512: fdbd5787080cdbab81c42b1cb28ade15703a58ba0f4802853f214de812c78bce5f21ac1790b73bff4cf95dc45e9d83c2f20c1b1cbec473776ad8472938a96129
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd line protocol, its Python client
+ plugin_hostd_client, the Python client of the plugin-hostd line protocol: a
+ command is one line ended by a NUL, a reply one NUL-ended line; send,
+ try_send (a timeout or a closed peer named, never raised) and expect. The
+ transport every test of plugin-hostd, omx-clap-host and the controllers
+ imports; the codec of the declared commands and replies is
+ plugin_hostd_protocol. plugin-hostd-tests before 0.21.0 carried the same
+ module under /usr/libexec/plugin-hostd/tests/lib.
+ .
+ Its documentation is on openmixer.org.
+
+Package: python3-plugin-hostd-client
+Architecture: all
+Version: 0.7.0
+Multi-Arch: foreign
+Priority: optional
+Section: python
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 17
+Depends: python3
+Filename: ./all/python3-plugin-hostd-client_0.7.0_all.deb
+Size: 4336
+MD5sum: f62830960f610455838b4f526b4248a3
+SHA1: a2b766429ececdd17d0a2c7f663a1b956ba40199
+SHA256: 1aee42720f105e6c6508632071788357cbb7e76e39f075d9c43161e15c3bd549
+SHA512: 16c70ce90749f54ae6cda594c6247cd95655c27c3971943e9e0735c68a2e346bc8a4243614a7b07310d53926763fdce950d9f7be355f32b5f24118dc843e6d07
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd line protocol, its Python client
+ plugin_hostd_client, the Python client of the plugin-hostd line protocol: a
+ command is one line ended by a NUL, a reply one NUL-ended line; send,
+ try_send (a timeout or a closed peer named, never raised) and expect. The
+ transport every test of plugin-hostd, omx-clap-host and the controllers
+ imports; the codec of the declared commands and replies is
+ plugin_hostd_protocol. plugin-hostd-tests before 0.21.0 carried the same
+ module under /usr/libexec/plugin-hostd/tests/lib.
+ .
+ Its documentation is on openmixer.org.
+
+Package: python3-plugin-hostd-client
+Architecture: all
+Version: 0.8.0
+Multi-Arch: foreign
+Priority: optional
+Section: python
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 18
+Depends: python3, python3-plugin-hostd-protocol (= 0.8.0)
+Filename: ./all/python3-plugin-hostd-client_0.8.0_all.deb
+Size: 5616
+MD5sum: 59c740fd3047649ac818d476af230076
+SHA1: 0a682fdeac0c589d9e17092fb290c24049b9dec5
+SHA256: c305b7206c5cd7c810987ac605994f972337ac984284108d5f68bbdacab0be63
+SHA512: 4df3b9895c9fcc10eb95baf2609509d6fbd051f2088430dc7d0715b05cfd9cd21d671e7fcbd9f02eaee7bfcd33a8e98abe19ef25d0643f0599b61055b92dac31
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd line protocol, its Python client
+ plugin_hostd_client, the Python client of the plugin-hostd line protocol: a
+ command is one line ended by a NUL, a reply one NUL-ended line; send,
+ try_send (a timeout or a closed peer named, never raised) and expect. The
+ transport every test of plugin-hostd, omx-clap-host and the controllers
+ imports; the codec of the declared commands and replies is
+ plugin_hostd_protocol. plugin-hostd-tests before 0.21.0 carried the same
+ module under /usr/libexec/plugin-hostd/tests/lib.
+ .
+ Its documentation is on openmixer.org.
+
+Package: python3-plugin-hostd-client
+Architecture: all
+Version: 0.8.1
+Multi-Arch: foreign
+Priority: optional
+Section: python
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 17
+Depends: python3, python3-plugin-hostd-protocol (= 0.8.1)
+Filename: ./all/python3-plugin-hostd-client_0.8.1_all.deb
+Size: 3924
+MD5sum: 0ecfe514cf8b85b40e992accba99f475
+SHA1: 7f268f8d1777aaeb878947028cc16c14ec1e3619
+SHA256: 7156531aae1ed0542573219799149cde8448aeb03e4edda084f0d394fb85a021
+SHA512: 8057db61aa4626640724c39711763c0486f54c068e5722bdbaf9933e945cb7f614e7f2b5dc48ac9233731a596908c406504a71cb0b06387179e57ad7423b42b7
 Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
 Description: plugin-hostd line protocol, its Python client
  plugin_hostd_client, the Python client of the plugin-hostd line protocol: a
@@ -4264,27 +6260,86 @@ Description: plugin-hostd protocol, its Python codec
  .
  Its documentation is on openmixer.org.
 
-Package: reac-pw-dev
+Package: python3-plugin-hostd-protocol
 Architecture: all
-Version: 1.0.44
+Version: 0.7.0
+Multi-Arch: foreign
 Priority: optional
-Section: libdevel
-Source: reac-pw
+Section: python
+Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 135
-Depends: libreac-dev (>= 1.11.0~)
-Filename: ./all/reac-pw-dev_1.0.44_all.deb
-Size: 40620
-MD5sum: 754695f57fa4599737c3e9f8e4e9e30e
-SHA1: b1682da66846490c2ce323910d5ae0984973ea5e
-SHA256: 382eec8f77552ff52f7518bf57d5dce0a49f60f94b7d0b7b1e32893dc7441544
-SHA512: 8288856e4f8574d76e23502c7a876512fa54441efb63f2147ab8197d04a60e95526d839956db5ce7e2f98327f2985da291294688882a6a4de36f1c35b93de8b7
-Homepage: https://github.com/FreeREAC/reac-pw
-Description: PipeWire-native Roland REAC endpoint, facts headers
- The public facts headers of reac-pw, installed under /usr/include/reac-pw
- with reac-pw.pc: reac_headamp_prop.h (the per-channel head-amp key prefix
- inside SPA_PROP_params) and the headers it includes. A consumer that pins
- those facts reads them from here instead of from a source checkout.
+Installed-Size: 48
+Depends: python3, libplugin-hostd-protocol0 (>= 0.5.8~), plugin-hostd-protocol-contract (>= 0.5.8~), omx-clap-core-contract (>= 0.32.3~), omx-contract (>= 3.19.1~), omx-contract-data (>= 3.16.0~)
+Filename: ./all/python3-plugin-hostd-protocol_0.7.0_all.deb
+Size: 12916
+MD5sum: 2cbb9ffb1ea24aa86118e04806aba484
+SHA1: a534bb975bd858a78df9df8b9240d58ec75422b5
+SHA256: 5412ff3b9b975ac40f8326444fea0123394d24aa24bc35066d3bec0f05b60b54
+SHA512: 30048642f61439e6f35e52c0e91c5d92d7d6f0c45478d112c7cca02e6b86244c076fef3ba31ecffc03b29d1fc00bd3e227efd22ba1d608ff5dec74cbe20c658e
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol, its Python codec
+ plugin_hostd_protocol: one codec over the files plugin-hostd-protocol
+ installs, which encodes and decodes every command the protocol declares,
+ parses the replies, feedback lines and protocol errors, and gives each reply
+ code its sentence. A controller speaks the protocol through it and restates
+ nothing; the npm package @openmixer/plugin-hostd-client is the same codec in
+ TypeScript. The transport is plugin_hostd_client.
+ .
+ Its documentation is on openmixer.org.
+
+Package: python3-plugin-hostd-protocol
+Architecture: all
+Version: 0.8.0
+Multi-Arch: foreign
+Priority: optional
+Section: python
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 50
+Depends: python3, libplugin-hostd-protocol0 (>= 0.5.8~), plugin-hostd-protocol-contract (>= 0.5.8~), omx-clap-contract (>= 0.34.0~), omx-contract (>= 3.21.0~), omx-contract-data (>= 3.21.0~)
+Filename: ./all/python3-plugin-hostd-protocol_0.8.0_all.deb
+Size: 14332
+MD5sum: 79f0b2a0a1e58103ac1739a172267933
+SHA1: eb183eb79bd1e30f857fdbd46d62bb1764120b0d
+SHA256: 67970c93407c855ca9976f8a5e866cd3b3b008bca15bfd55510fd7d57cc6ea4f
+SHA512: 692df7a67db2698e82c6b04f5e275cb8dc9409b4fc9de5d893141f6320804a7bbe3152ab4582a9e65016d9d729b577bdda4248cfb0bda4e8f59b8e8b9f494b36
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol, its Python codec
+ plugin_hostd_protocol: one codec over the files plugin-hostd-protocol
+ installs, which encodes and decodes every command the protocol declares,
+ parses the replies, feedback lines and protocol errors, and gives each reply
+ code its sentence. A controller speaks the protocol through it and restates
+ nothing; the npm package @openmixer/plugin-hostd-client is the same codec in
+ TypeScript. The transport is plugin_hostd_client.
+ .
+ Its documentation is on openmixer.org.
+
+Package: python3-plugin-hostd-protocol
+Architecture: all
+Version: 0.8.1
+Multi-Arch: foreign
+Priority: optional
+Section: python
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 49
+Depends: python3, libplugin-hostd-protocol0 (>= 0.5.8~), plugin-hostd-protocol-contract (>= 0.5.8~), omx-clap-contract (>= 0.34.0~), omx-contract (>= 3.21.0~), omx-contract-data (>= 3.21.0~)
+Filename: ./all/python3-plugin-hostd-protocol_0.8.1_all.deb
+Size: 12644
+MD5sum: 31fe031a5d5e59ed482f4366a6dace2c
+SHA1: 903c1994bd4ac0440790837b2d016695af3cb8a4
+SHA256: 0fca53e33a7189c7ecf445639a7abde2634d6380e1e057c5206aad4420469353
+SHA512: 071ca0aa7e44a3ad229316602b2b54bd6438129b85dbb89bb8a95790e57a3cb4c2726fc2be3869698e2544ed61537957494051d2c3b1f534d47a1d4f32ec3716
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol, its Python codec
+ plugin_hostd_protocol: one codec over the files plugin-hostd-protocol
+ installs, which encodes and decodes every command the protocol declares,
+ parses the replies, feedback lines and protocol errors, and gives each reply
+ code its sentence. A controller speaks the protocol through it and restates
+ nothing; the npm package @openmixer/plugin-hostd-client is the same codec in
+ TypeScript. The transport is plugin_hostd_client.
+ .
+ Its documentation is on openmixer.org.
 
 Package: libmod-host-protocol-dev
 Architecture: amd64
@@ -4416,6 +6471,32 @@ Description: first test of a Digidesign Control|24 or ProControl
  program needs no capability. It too is given cap_net_raw on install.
  .
  Its documentation is on openmixer.org.
+
+Package: jackd2
+Architecture: arm64
+Version: 1.9.22~dfsg-4+omx1
+Priority: optional
+Section: sound
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Installed-Size: 1099
+Provides: jack-daemon
+Depends: debconf (>= 0.5) | debconf-2.0, libjack-jackd2-0 (= 1.9.22~dfsg-4+omx1), python3-dbus, python3:any, libasound2t64 (>= 1.0.29), libc6 (>= 2.38), libdbus-1-3 (>= 1.10), libexpat1 (>= 2.0.1), libgcc-s1 (>= 3.0), libopus0 (>= 1.3.1-2~), libsamplerate0 (>= 0.1.7), libstdc++6 (>= 13.1), libsystemd0
+Recommends: jack-example-tools, libpam-modules, qjackctl
+Suggests: jack-tools, meterbridge
+Conflicts: jack-daemon
+Replaces: jack-daemon
+Filename: ./arm64/jackd2_1.9.22~dfsg-4+omx1_arm64.deb
+Size: 195100
+MD5sum: b540c98592e590ce84df93cfe778f861
+SHA1: 9d966dc2cbafc8e91393ff49a03a948564c0486a
+SHA256: 8c0ab20b0606357ef5d3843a4197bd4b577e4e683c3b818d1aff3f653441eb73
+SHA512: 9564f4f0ab66ec7344b2b9644f47b25558ed62fc15d8ea9d05be09d84757224879c60d2d5a3c0d06026769fd3e3c83410d8e6d7a1c14dd78d47c1919db687151
+Homepage: https://jackaudio.org/
+Description: JACK Audio Connection Kit (server and example clients)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the daemon jackd.
 
 Package: libdiginet-dev
 Architecture: arm64
@@ -4577,6 +6658,60 @@ Description: protocol library for the Digidesign Control|24 and ProControl
  .
  Its documentation is on openmixer.org.
 
+Package: libjack-jackd2-0
+Architecture: arm64
+Version: 1.9.22~dfsg-4+omx1
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: jackd2
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Installed-Size: 1277
+Provides: libjack-0.116, libjack-0.125
+Depends: libc6 (>= 2.38), libdb5.3t64, libgcc-s1 (>= 3.0), libopus0 (>= 1.3.1-2~), libsamplerate0 (>= 0.1.7), libstdc++6 (>= 14)
+Suggests: jackd2 (= 1.9.22~dfsg-4+omx1)
+Conflicts: libjack-0.116, libjack-0.125, libjack0
+Replaces: libjack-0.116, libjack-0.125
+Filename: ./arm64/libjack-jackd2-0_1.9.22~dfsg-4+omx1_arm64.deb
+Size: 266216
+MD5sum: 93812a12de2e6b5e8090ddac9b9721ca
+SHA1: f1dbacbe492e93af4af4ca24ff42bdc7788f90d1
+SHA256: 3543a66a036a603672be9e1af248c98346cc985b1ced0d0be1a62850c46723d0
+SHA512: 9ba635575011778b318d565c52b26884c0a3de37e1b739ea90c6ea442868e7fc1f9c903e619f0bd42ce9dd0559b82352c2606056b5988327d6e5aba28efb006f
+Homepage: https://jackaudio.org/
+Description: JACK Audio Connection Kit (libraries)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains the shared libraries.
+
+Package: libjack-jackd2-dev
+Architecture: arm64
+Version: 1.9.22~dfsg-4+omx1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: jackd2
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Installed-Size: 244
+Provides: libjack-dev, libjack-dev-session, libjack0.100.0-dev
+Depends: libjack-jackd2-0 (= 1.9.22~dfsg-4+omx1)
+Conflicts: libjack-dev
+Breaks: libjack0.100.0-dev (<< 0.102.20-2)
+Filename: ./arm64/libjack-jackd2-dev_1.9.22~dfsg-4+omx1_arm64.deb
+Size: 60076
+MD5sum: b2e08a1e44517c7f250758379eb73dc3
+SHA1: 0aa25f877b94d98d2cb9498c32663056129ae57a
+SHA256: 76bf479e488fd853201fce5089771711fdaa757af94180aebeab8cdfed4ca9b2
+SHA512: 0edc3135fdccfb17ce01339560ac41fb189e60e532fe0914eaf8d612eab831e87d0e13d46691edd178fcb6c19d4c441fa049cbf80fb08b13beb0ae594301e1ef
+Homepage: https://jackaudio.org/
+Description: JACK Audio Connection Kit (development files)
+ JACK is a low-latency sound server, allowing multiple applications to
+ connect to one audio device, and to share audio between themselves.
+ .
+ This package contains files needed for the development of JACK applications
+ and an API reference.
+
 Package: libmackie-dev
 Architecture: arm64
 Version: 0.1.2
@@ -4699,6 +6834,30 @@ Description: build a program that hosts CLAP plugins on libomx-clap-core
  .
  Its documentation is on openmixer.org.
 
+Package: libomx-clap-core-dev
+Architecture: arm64
+Version: 0.33.1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 410
+Depends: libomx-clap-core1 (= 0.33.1), libomx-contract-dev (>= 3.20.0~), libomxdsp-dev (>= 0.33.0~), omx-clap-core-contract (= 0.33.1), clap-headers (>= 1.2.10~)
+Filename: ./arm64/libomx-clap-core-dev_0.33.1_arm64.deb
+Size: 85028
+MD5sum: f539610dee17edf56bafb1bfc515ab16
+SHA1: f496c47460a8a4a729a0b8b33b661c28cdd9233a
+SHA256: 952187a3ade9dd7f9194488fc5474ebdb8f6b12166309ffd57378cc61b848b84
+SHA512: 7b273e2d41d40d92ec70d2d30c8a8b8728f6d53db941fff4102b031b2fb28013ff7e74fc000614f6738aa9f3fa939f34afef6bb2b0d7fd1370a4294289c40181
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: build a program that hosts CLAP plugins on libomx-clap-core
+ What you need to write a program that hosts CLAP plugins on libomx-clap-core:
+ the headers, the pkg-config file, and the list of functions the library
+ promises to keep, with the baseline each release is checked against.
+ .
+ Its documentation is on openmixer.org.
+
 Package: libomx-clap-core0
 Architecture: arm64
 Version: 0.12.0
@@ -4801,6 +6960,32 @@ Description: engine that runs CLAP plugins for omx-clap-host
  .
  Its documentation is on openmixer.org.
 
+Package: libomx-clap-core1
+Architecture: arm64
+Version: 0.33.1
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 361
+Depends: libc6 (>= 2.38), libssl3t64 (>= 3.0.0), omx-clap-core-contract (= 0.33.1)
+Filename: ./arm64/libomx-clap-core1_0.33.1_arm64.deb
+Size: 97488
+MD5sum: 10420e29c9e81a9d8e2c4f1943225261
+SHA1: e432da8ca56c8904ebdfdbc4272b53b3599a5582
+SHA256: 3d8d4c82cefdb740cca5e4a07cd627474dd5376737b304e87a53bd988972eb42
+SHA512: ab4033ea84e607be794f40af8664b013320d4baf30cf84333759f578399102a3a5007f800d267c6cd01e3ff0b83ff396a66c3ec4cf73ce580e1b22c9400d8727
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: engine that runs CLAP plugins for omx-clap-host
+ The library that loads and runs CLAP plugins: it checks a plugin before using
+ it, activates and warms it up, keeps its parameters and saved state, and runs
+ its audio on the thread of the program that hosts it. It knows nothing about
+ JACK or sockets, so a program of your own can host CLAP plugins on it as
+ well.
+ .
+ Its documentation is on openmixer.org.
+
 Package: libomx-clap-lv2-dev
 Architecture: arm64
 Version: 0.33.0
@@ -4817,6 +7002,36 @@ MD5sum: 80aa869c2a1775468fb92976a8e16b22
 SHA1: 7482ca308639cf9a52ec736706f8e027a51ddf1f
 SHA256: 76d78355685edcd504fb8cbe091b4e7e7c0971a20d699ca3a233435ed4e35adb
 SHA512: 2887120e4dc4d5c0175a6728c696dab11bb6641cc2d7f420a8e44947d084b1a12d8a76bbdc911a791dd6eebeb20f4f7b29fd712ed2c7b81ef96e1a4e2fd5abe9
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: LV2 adapter of omx-clap-host, as a static library to link
+ libomx-clap-lv2 is the LV2 adapter omx-clap-host links in, for a program of
+ your own that hosts plugins on libomx-clap-core: it loads an LV2 plugin
+ through lilv as a real LV2 instance and maps the host interface, presenting
+ the plugin's ports and controls as CLAP ports and parameters, with its
+ latency, its own background worker and its default settings. It is a
+ static library with its header and pkg-config file, linked at build time,
+ and it loads lilv when the first LV2 bundle is opened, so a program that
+ never opens one never needs lilv. LV2 at run time is omx-clap-host with
+ liblilv-0-0, which plugin-hostd also runs as the worker of an LV2 plugin.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libomx-clap-lv2-dev
+Architecture: arm64
+Version: 0.33.1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 315
+Depends: libomx-clap-core-dev (= 0.33.1), clap-headers (>= 1.2.10~), libssl-dev, pkgconf
+Filename: ./arm64/libomx-clap-lv2-dev_0.33.1_arm64.deb
+Size: 78100
+MD5sum: b843e6b78d5b2739d53164d9bec9e1bc
+SHA1: 07d059a0215a985a73d8a727a36a16559ea4387c
+SHA256: 6553390f13025a3b9d828492d270131d765669e5eaf7adf1579a9d98ff48c6ef
+SHA512: 61b35ca42a840c9ef1714132ef776d2fec36cf5d7ed8abed3e1d746870405c4b903242235051f377c2b36b21ec4fa097e672d30b4fdc0f2043291f9ead1e2ace
 Homepage: https://github.com/Open-Mixer/omx-clap-core
 Description: LV2 adapter of omx-clap-host, as a static library to link
  libomx-clap-lv2 is the LV2 adapter omx-clap-host links in, for a program of
@@ -4894,6 +7109,30 @@ MD5sum: ae7a501adb6be1df78a3812fa97def33
 SHA1: 15df8c0764dc9f5cb7746998c54a7598a34d0e15
 SHA256: 094ab42c81432ea71b6c03a03edfd19f4a402abf4f2e3f85ba9d53f598632882
 SHA512: c27822bfc546aa63ee433846cda21fffa1cfccf9a7d541ac480af1ff16eb4c4e1c0b79b2b8a7bae02b035e051a9984b193eb813a6a5c936482decde929100b2c
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: C loader of an OpenMixer contract domain: headers and ABI list
+ Everything to build a program on libomx-domain: omxcontract/omx_domain.h,
+ omxcontract/omx_contract_codes.h (the CONTRACT_CODES values the functions
+ return), libomx-domain.pc, the list of the library's exports
+ (/usr/share/omx-contract/abi/libomx-domain.abi) and the omx-domain command,
+ which opens a domain and prints a word or a range. A consumer requires the
+ library at a floor, the lowest release whose functions it calls.
+
+Package: libomx-domain-dev
+Architecture: arm64
+Version: 3.21.0
+Priority: optional
+Section: libdevel
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 120
+Depends: libc6 (>= 2.34), libomx-domain0 (>= 3.21.0), libjansson-dev, pkgconf | pkg-config
+Filename: ./arm64/libomx-domain-dev_3.21.0_arm64.deb
+Size: 16948
+MD5sum: da44d50fa106f0aa4568303250589821
+SHA1: 0ddcec0cb78a276aaf269ac2822bd8141b7ee9f9
+SHA256: e34b0a9847b4c84f2b603df895cdb7642e519e36950dbe6b5c36bfd6815e46a7
+SHA512: 136c5e8d83983b36c509a66f4dc6b60de6919a297dc32377aa781ebf0ac50a3dcbce2807eda60216a93733c8c3a4d471e736b7fecf74b27f230f0643736a0415
 Homepage: https://github.com/Open-Mixer/omx-contract
 Description: C loader of an OpenMixer contract domain: headers and ABI list
  Everything to build a program on libomx-domain: omxcontract/omx_domain.h,
@@ -4981,6 +7220,32 @@ Description: C loader of an OpenMixer contract domain: the library
  start-up library and is never called from an audio thread. It reads JSON
  with jansson.
 
+Package: libomx-domain0
+Architecture: arm64
+Version: 3.21.0
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-contract
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 86
+Depends: libc6 (>= 2.33), libjansson4 (>= 2.14)
+Filename: ./arm64/libomx-domain0_3.21.0_arm64.deb
+Size: 18104
+MD5sum: 89cc44a9e52df3259fd017818ce695be
+SHA1: a74c2c287c2d9115b1512048828b65fb1f13db5d
+SHA256: 9b8fb11fae167ad40d8de31d9aa8d7b8ab00d407fae3c2896f68fe669575d918
+SHA512: 756b83f3c947f623e29711a1e4ca52cb45715fc5a06272367f3f681b464d16bbe71b91eeaaf0375b2b3d9000673512f25c92723e4372915e69eb0a67be4364f7
+Homepage: https://github.com/Open-Mixer/omx-contract
+Description: C loader of an OpenMixer contract domain: the library
+ libomx-domain reads a contract domain (the installed
+ contract.d/<domain>/<domain>.json and its catalogs, which
+ omx-contract-data and the owners' packages install) at program start-up: a
+ word, a range, a sentence, looked up by function instead of compiled in. A
+ missing or invalid domain is refused with a code of CONTRACT_CODES. It is a
+ start-up library and is never called from an audio thread. It reads JSON
+ with jansson.
+
 Package: libomx-panel-render-dev
 Architecture: arm64
 Version: 0.13.5
@@ -5043,6 +7308,50 @@ Homepage: https://github.com/Open-Mixer/omx-panel
 Description: omx-panel renderer, development files
  The header omx_panel_render.h, the libomx-panel-render.so link and the
  omx-panel-render pkg-config file, to build against the omx-panel renderer.
+
+Package: libomx-panel-render-dev
+Architecture: arm64
+Version: 0.15.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 43
+Depends: libomx-panel-render0 (= 0.15.0), libcjson-dev
+Filename: ./arm64/libomx-panel-render-dev_0.15.0_arm64.deb
+Size: 13072
+MD5sum: fd061fd60a88b3bc62f4eafad191dc7a
+SHA1: a8d848c55ef99d920d0dc7f0c19da0745516b0f0
+SHA256: 20dd5ab6bfb3ba278c219c1d466caf4e54213c82ba187e6d13c77b78cc1d32bd
+SHA512: 98e65a4607550bdb0974e69bc692b44474b6c741c38bd69d66061e621672d895c5975d3e9fd1be021d851d975ac62022f86655e7b72b024a16f9afefba46aabb
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, development files
+ The headers omx_panel_render.h and omx_panel_gesture.h, the
+ libomx-panel-render.so link and the omx-panel-render pkg-config file, to
+ build against the omx-panel renderer and its gesture reference.
+
+Package: libomx-panel-render-dev
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 41
+Depends: libomx-panel-render0 (= 0.15.1), libcjson-dev
+Filename: ./arm64/libomx-panel-render-dev_0.15.1_arm64.deb
+Size: 10988
+MD5sum: ffa6f6562f667adf92b93112ba787d2e
+SHA1: 842826264977f4971396bec82081f006844fafee
+SHA256: 0d9dcc21717b3e317e62a0289720a1df17fdf49adece75db53eb8150b32f9146
+SHA512: dd961e7532fe377915b83493ab96758ac656833a4f7edd7f552dd931e4750e40694018b18969c3474acafe88c767f2682cdc3587bb14ae041c0ed33aff053dbc
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, development files
+ The headers omx_panel_render.h and omx_panel_gesture.h, the
+ libomx-panel-render.so link and the omx-panel-render pkg-config file, to
+ build against the omx-panel renderer and its gesture reference.
 
 Package: libomx-panel-render0
 Architecture: arm64
@@ -5112,6 +7421,140 @@ Description: omx-panel renderer, a library that draws a panel into a pixel buffe
  pixel buffer and answers input with the one gesture vocabulary. A surface
  loads it at run time (Zynthian's panel view); its look, geometry and fonts
  are omx-panel's.
+
+Package: libomx-panel-render0
+Architecture: arm64
+Version: 0.15.0
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 145
+Depends: libc6 (>= 2.35), libcjson1 (>= 1.7.5), omx-panel (= 0.15.0)
+Filename: ./arm64/libomx-panel-render0_0.15.0_arm64.deb
+Size: 58676
+MD5sum: 849a78253e65d7910e60326fc5ce5587
+SHA1: a1f5d22613220cc1414980c8765c725aa92d85b8
+SHA256: 8fb04620ac933fad685df036b17b53f36fe5dedf8c78b4bc1946925ce71822b8
+SHA512: 313a388d1993f59699d59e5948dc28c12371e1385f24cfa34d32d6cd1d0369f648124b6a2f57ed9da61ceb4402ae228306ca74dd0bd330b42604edb8f32669f6
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, a library that draws a panel into a pixel buffer
+ libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
+ pixel buffer and answers input with the one gesture vocabulary. A surface
+ loads it at run time (Zynthian's panel view); its look, geometry and fonts
+ are omx-panel's.
+
+Package: libomx-panel-render0
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 143
+Depends: libc6 (>= 2.35), libcjson1 (>= 1.7.5), omx-panel (= 0.15.1)
+Filename: ./arm64/libomx-panel-render0_0.15.1_arm64.deb
+Size: 56536
+MD5sum: fb5a39a76fe99a98ec980d9a95aedfe1
+SHA1: b980e101cb88651a9237098da85dcb510ab3fde5
+SHA256: f40e1fa5ff03562600d3895bc48b77903ef0c0760bf8854816aadacd8fe8ce28
+SHA512: 8b346caeab16edd8da3766e721cb211fc44e1ff3f607449fe998f8a0f9c1a29901bad0f138a80dc49d694606e96a59a8d55801561622859301e8075bd88c886a
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: omx-panel renderer, a library that draws a panel into a pixel buffer
+ libomx-panel-render.so.0 draws a panel description in the omx look into a CPU
+ pixel buffer and answers input with the one gesture vocabulary. A surface
+ loads it at run time (Zynthian's panel view); its look, geometry and fonts
+ are omx-panel's.
+
+Package: libomx-panel-store-dev
+Architecture: arm64
+Version: 0.15.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 33
+Depends: libomx-panel-store0 (= 0.15.0), libsqlite3-dev (>= 3.38.0~), libcjson-dev, libomx-domain-dev (>= 3.20.0~)
+Filename: ./arm64/libomx-panel-store-dev_0.15.0_arm64.deb
+Size: 9096
+MD5sum: cf7f300668598e7d8acd16c87a3042bf
+SHA1: 11f8bc4aa093240af3294fc4631499acd4156741
+SHA256: 0695fa1d2e05b99bb5ae4c39e8e34803937e76e239beae6408cb27aa2c1c44a9
+SHA512: edf70cec15e4b7b318093a6173fd7ae98125d7347bec24880ec3ca1ed409cf6dca950860c4dab0cb3d5f75a0aac66016b9d7db9d97d01902e673a1a561443134
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, development files
+ The header omx-panel/omx_panel_store.h, the libomx-panel-store.so link, the
+ omx-panel-store pkg-config file and the store's DDL (panel.sql), to build
+ against the descriptions store.
+
+Package: libomx-panel-store-dev
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 31
+Depends: libomx-panel-store0 (= 0.15.1), libsqlite3-dev (>= 3.38.0~), libcjson-dev, libomx-domain-dev (>= 3.20.0~)
+Filename: ./arm64/libomx-panel-store-dev_0.15.1_arm64.deb
+Size: 6992
+MD5sum: 85ebd03eb2a05455a1f58415104fff58
+SHA1: 2921d73708db9eaae1999ac6a183769e22f92f40
+SHA256: 2883196a600a015910555ae4d617cf616ca8a2c23f2e36bcc5b2ea9db18cfca8
+SHA512: 247422d029e462c4db511bbc7e4760428f9e9eeea2d0410e3ff9a6c9bb545f4ae463a8da6bfc2ca324cbc96ee804c64e9dd0115519d0d0c57d53d66714f5b9ed
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, development files
+ The header omx-panel/omx_panel_store.h, the libomx-panel-store.so link, the
+ omx-panel-store pkg-config file and the store's DDL (panel.sql), to build
+ against the descriptions store.
+
+Package: libomx-panel-store0
+Architecture: arm64
+Version: 0.15.0
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 81
+Depends: libc6 (>= 2.33), libcjson1 (>= 1.7.13), libomx-domain0 (>= 3.20.0~), libsqlite3-0 (>= 3.7.15), omx-panel-contract (>= 0.15.0)
+Filename: ./arm64/libomx-panel-store0_0.15.0_arm64.deb
+Size: 22084
+MD5sum: bcc5e018f5b5a8b24f70d24368dd8b8d
+SHA1: 37f8ec549e7a7f17e7ca34c08675febd3d23a62b
+SHA256: 874c9872c7b54580a759c54c742676827b358f12fd6c8fdc68de7632b0f4a976
+SHA512: 62f2b528541021a8f6b13d2204649a9ef4eb7388c4c7190fc0d7617ee9b0d78a0854cf1d2462e0c62124f4de8e25bfcdd7550418de6c8449cafc1534d9e60e0f
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, the library
+ libomx-panel-store.so.0 reads and writes the descriptions store: the base,
+ the system layer and the user layer of panel.sqlite, merged in that order of
+ precedence, its words checked against the panel domain.
+
+Package: libomx-panel-store0
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 79
+Depends: libc6 (>= 2.33), libcjson1 (>= 1.7.13), libomx-domain0 (>= 3.20.0~), libsqlite3-0 (>= 3.7.15), omx-panel-contract (>= 0.15.1)
+Filename: ./arm64/libomx-panel-store0_0.15.1_arm64.deb
+Size: 20004
+MD5sum: 74514dd8c68e114a41b61433888df312
+SHA1: 7344a8c5a84ba4252fb1739200923e515912e739
+SHA256: 778fd73ba7e753e7de048030397ed8b3737ca8b0a0b92833e4790e9867e9a2e6
+SHA512: 5aafdfe463413ed0b2f42f3ea7bd681d0f94cbc64539277e4098418ef621b301b633c966c593b5350028bd8a71b7d5c71326f6cdf0dd53350be35a6a456848ac
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, the library
+ libomx-panel-store.so.0 reads and writes the descriptions store: the base,
+ the system layer and the user layer of panel.sqlite, merged in that order of
+ precedence, its words checked against the panel domain.
 
 Package: libomxdsp-dev
 Architecture: arm64
@@ -5218,6 +7661,76 @@ Description: audio toolbox of the OpenMixer console, a real-time-safe C library
  .
  Its documentation is on openmixer.org.
 
+Package: libomxdsp-dev
+Architecture: arm64
+Version: 0.33.1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 3568
+Depends: libomx-contract-dev (>= 3.18.0~), omx-dsp-contract (= 0.33.1)
+Filename: ./arm64/libomxdsp-dev_0.33.1_arm64.deb
+Size: 532032
+MD5sum: 947bd1ccd409492b99fe1b01215185fb
+SHA1: 963dc2671079b589369f3d2dbd8c99cdcde3ca20
+SHA256: e0d122ba61cf190c42ceac88db97ed06a056eb4da95073f6262b472ad7b1c50a
+SHA512: 0d742c4ade8d8b636b9446eb5f682c992c434b27e8f93c89418bc51a88a12dd3fab4726ce03ec891a1d7dd80eef1f41c350cd1b03bbdbe25c3a95fe6fe0c468f
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: audio toolbox of the OpenMixer console, a real-time-safe C library
+ libomxdsp is the sound of the OpenMixer console, as a library: the filters,
+ envelopes, delays, limiters, gates, compressors and other building blocks of
+ a mixer channel, written in plain C that never allocates, locks or calls the
+ system while audio is running. The console and the omx plugins are built from
+ this same code, so an effect sounds the same on the desk and in your DAW,
+ sample for sample. Link it into your own plugin, effect or audio tool and
+ start from parts that are already tested against exact results at every
+ sample rate.
+ .
+ This package holds the headers and the static library in three flavours,
+ each with its pkg-config file: libomxdsp.a (omxdsp), libomxdsp-contracts.a
+ (omxdsp-contracts, contracts compiled in) and libomxdsp-tsan.a (omxdsp-tsan,
+ contracts and ThreadSanitizer). Programs link the library statically; no
+ shared library exists.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libomxdsp-dev
+Architecture: arm64
+Version: 0.34.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 3788
+Depends: libomx-contract-dev (>= 3.21.0~), omx-dsp-contract (= 0.34.0)
+Filename: ./arm64/libomxdsp-dev_0.34.0_arm64.deb
+Size: 571600
+MD5sum: 4dedf8c5ac7f77ea45d71f9c2891173c
+SHA1: 84ee4319d5c91687a19a965ec3099909c43cf4f2
+SHA256: 48e5d03fb040aa4b93507c35fa218863bf486e1667d5dbb51ffe9a409ff335e7
+SHA512: 223d648b2bb64e72b6810674f83b872c43031962669ee4d0c89ee81709a9a74eef34b0b971c4884c3edb231fbb989396600ed75dc5b739efa8ac724e64c0635c
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: audio toolbox of the OpenMixer console, a real-time-safe C library
+ libomxdsp is the sound of the OpenMixer console, as a library: the filters,
+ envelopes, delays, limiters, gates, compressors and other building blocks of
+ a mixer channel, written in plain C that never allocates, locks or calls the
+ system while audio is running. The console and the omx plugins are built from
+ this same code, so an effect sounds the same on the desk and in your DAW,
+ sample for sample. Link it into your own plugin, effect or audio tool and
+ start from parts that are already tested against exact results at every
+ sample rate.
+ .
+ This package holds the headers and the static library in three flavours,
+ each with its pkg-config file: libomxdsp.a (omxdsp), libomxdsp-contracts.a
+ (omxdsp-contracts, contracts compiled in) and libomxdsp-tsan.a (omxdsp-tsan,
+ contracts and ThreadSanitizer). Programs link the library statically; no
+ shared library exists.
+ .
+ Its documentation is on openmixer.org.
+
 Package: libplugin-hostd-protocol-dev
 Architecture: arm64
 Version: 0.5.8
@@ -5305,6 +7818,93 @@ Description: plugin-hostd protocol library, development files
  .
  Its documentation is on openmixer.org.
 
+Package: libplugin-hostd-protocol-dev
+Architecture: arm64
+Version: 0.7.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 584
+Depends: libplugin-hostd-protocol0 (= 0.7.0)
+Filename: ./arm64/libplugin-hostd-protocol-dev_0.7.0_arm64.deb
+Size: 102088
+MD5sum: c7c86a991a887a5d579cca912d36818b
+SHA1: 05a7ce519c1db425b11b19c28d62ff58e00f3947
+SHA256: 00839179c0bb379ccbd0047eca53173c1d857039d7664ae82a406ed12bd0c1c9
+SHA512: c1107512bd9ef160b754a77675d243ef24f3914350c8ad33fe694b48450be9b0cbd1c6be85106323b1a4482087b9c61cf1d59c80d812089e568b2efd9068eb73
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol library, development files
+ Headers, the pkg-config file, the scenario corpus and its runner of
+ libplugin-hostd-protocol. The headers have the names and the API of
+ libmod-host-protocol's, so a host built against mod-host-protocol changes only
+ the package name it asks pkg-config for.
+ .
+ It also carries the declared protocol: plugin-hostd/protocol.h and the
+ headers it includes, the one verb table, the grammar of a line in ABNF, and
+ the protocol as JSON, each named by a pkg-config variable.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libplugin-hostd-protocol-dev
+Architecture: arm64
+Version: 0.8.0
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 597
+Depends: libplugin-hostd-protocol0 (= 0.8.0)
+Filename: ./arm64/libplugin-hostd-protocol-dev_0.8.0_arm64.deb
+Size: 104568
+MD5sum: d37a610165f43ed6974749d55f6d6098
+SHA1: ec39965d7279fb4fbfc8b83c5f357724c6b0ed4f
+SHA256: 957b71e1c0b410b272576ec883e5d1c0b69f900a956352be0b9c12019a39bb75
+SHA512: 38792cddee970828545cce21ad9c3e68a58e29bbc2e450697df51bbc5cdc5cbf94a8bbafdfc3d1ec5a42c3d86df19dae2556768b8118708b2007af18d242ce68
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol library, development files
+ Headers, the pkg-config file, the scenario corpus and its runner of
+ libplugin-hostd-protocol. The headers have the names and the API of
+ libmod-host-protocol's, so a host built against mod-host-protocol changes only
+ the package name it asks pkg-config for.
+ .
+ It also carries the declared protocol: plugin-hostd/protocol.h and the
+ headers it includes, the one verb table, the grammar of a line in ABNF, and
+ the protocol as JSON, each named by a pkg-config variable.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libplugin-hostd-protocol-dev
+Architecture: arm64
+Version: 0.8.1
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 596
+Depends: libplugin-hostd-protocol0 (= 0.8.1)
+Filename: ./arm64/libplugin-hostd-protocol-dev_0.8.1_arm64.deb
+Size: 102892
+MD5sum: cc39296e51541a3c3e853f78e99ff2ac
+SHA1: 8f782d987e69d6e04d54666e4028f21d064c2a4c
+SHA256: a9f8e4bfbafd75f3df4a41e96f74a498551e6da4b25a755df0ce6ce06e76a0a8
+SHA512: f5ddb6abf078e43c8f348e95a329754096f5768c25ed47b7d6e9c5929dacc719bad13223da958d06128c10e7803b816de789365eced54346c9c3001f95818735
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol library, development files
+ Headers, the pkg-config file, the scenario corpus and its runner of
+ libplugin-hostd-protocol. The headers have the names and the API of
+ libmod-host-protocol's, so a host built against mod-host-protocol changes only
+ the package name it asks pkg-config for.
+ .
+ It also carries the declared protocol: plugin-hostd/protocol.h and the
+ headers it includes, the one verb table, the grammar of a line in ABNF, and
+ the protocol as JSON, each named by a pkg-config variable.
+ .
+ Its documentation is on openmixer.org.
+
 Package: libplugin-hostd-protocol0
 Architecture: arm64
 Version: 0.5.8
@@ -5377,152 +7977,165 @@ Description: plugin-hostd protocol library, a superset of mod-host's text protoc
  .
  Its documentation is on openmixer.org.
 
-Package: libreac-dev
+Package: libplugin-hostd-protocol0
 Architecture: arm64
-Version: 1.11.0
+Version: 0.7.0
 Multi-Arch: same
 Priority: optional
-Section: libdevel
-Source: libreac
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 398
-Depends: libreac7 (= 1.11.0)
-Filename: ./arm64/libreac-dev_1.11.0_arm64.deb
-Size: 115100
-MD5sum: b3138ca0ac39364d6dd1a78cfa09c8da
-SHA1: 6f55ce506e88f37cbc0c31552967f7806d6a2e6a
-SHA256: 63631cb6a995c9c9b85995b04a6d3945b901760322e4fc4d745e5c12f29ca75c
-SHA512: 1ca899c042f88e7668d574a47171e57f22030c731f3605833ead845b5dcf6f9a99f3c106dd9f14d154d6750ecc1dceb4c5616c387b9e7e4e0593a1137f685792
-Homepage: https://github.com/FreeREAC/libreac
-Description: Roland REAC protocol library, development files
- Headers and the pkg-config file for building programs against libreac, such
- as a REAC endpoint for a sound server.
-
-Package: libreac-tests
-Architecture: arm64
-Version: 1.11.0
-Priority: optional
 Section: libs
-Source: libreac
+Source: plugin-hostd-protocol
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 143
+Installed-Size: 326
 Depends: libc6 (>= 2.38)
-Filename: ./arm64/libreac-tests_1.11.0_arm64.deb
-Size: 31904
-MD5sum: 8d39ba1d5ee50c848e24f7587d4a9978
-SHA1: f316a2b7881666b1e6a1f7077d65c5021265efc8
-SHA256: 6007f4aba868ad250f76b647c4fa4652b434f1e8bfce379a3899edbfce3f46b4
-SHA512: 9df07ecbae72cb1cb96b368f5741890acc7f34a5d94cace1fae1b036d895deb08f969ee3752243af2cdbb1b7ff9ee1de3959b77825776050a46db80df9dd6a38
-Homepage: https://github.com/FreeREAC/libreac
-Description: software REAC stagebox, to test a program that talks to one
- fake_box answers on the wire the way a REAC stagebox does, so a program that
- enrols and plays to a box can be tested without one. It is built from
- libreac's own objects and needs no other package. It is installed in
- /usr/libexec/libreac/tests and is of no use to anyone else.
+Filename: ./arm64/libplugin-hostd-protocol0_0.7.0_arm64.deb
+Size: 63304
+MD5sum: 58ee118a5eabe776c71ffefb94557792
+SHA1: 89fcecd692fe96af2f066cce48e15d5fdfb11842
+SHA256: 5203da15f6149833be9b8e5f49010792aaa84e6eca36064afb53cc830bca67bd
+SHA512: 706682642fe2059f1401f637238fe91334186dbc3d890e755959a2b53df8930911b3f170222f9399b30aff165598b15b400011fc4e678a21cc34f9e9dbf0ade7
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol library, a superset of mod-host's text protocol
+ The socket server, line protocol and command dispatch that plugin-hostd and
+ omx-clap-host answer their controllers with: mod-host's text protocol, so any
+ mod-host client works unchanged.
+ .
+ Its documentation is on openmixer.org.
 
-Package: libreac-transport-dev
+Package: libplugin-hostd-protocol0
 Architecture: arm64
-Version: 1.11.0
+Version: 0.8.0
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 326
+Depends: libc6 (>= 2.38)
+Filename: ./arm64/libplugin-hostd-protocol0_0.8.0_arm64.deb
+Size: 64676
+MD5sum: 57b92355a75cb231912c5cdbecca2358
+SHA1: 26d99b2ff119fcd09522f11a5d3523652357ae6f
+SHA256: c2a15a5672beee9c29f10a315e91ef8df0cb63cbe1b8a005892143cec3b939ef
+SHA512: 17ee6ae2450450cdb2bdb379b5c2eb15e805723e24456caf6a01d55b9d4531a2e37728d413ba22c0c783aa68dd02e08e65d89196408ddfff4285045e5ee18deb
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol library, a superset of mod-host's text protocol
+ The socket server, line protocol and command dispatch that plugin-hostd and
+ omx-clap-host answer their controllers with: mod-host's text protocol, so any
+ mod-host client works unchanged.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libplugin-hostd-protocol0
+Architecture: arm64
+Version: 0.8.1
+Multi-Arch: same
+Priority: optional
+Section: libs
+Source: plugin-hostd-protocol
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 325
+Depends: libc6 (>= 2.38)
+Filename: ./arm64/libplugin-hostd-protocol0_0.8.1_arm64.deb
+Size: 62864
+MD5sum: ab8b170a968eb1a75368849ac0ec0f5f
+SHA1: 89fd26138007fc0b4ef72874e93eda7674e15f9a
+SHA256: 3a86a64be557640c5d6dcccd451e4950e49d60e0d68c92846b13c8d52e7ea92a
+SHA512: 30f1441020d4f1be8283bc44857e1dc3b1ce6b2433e27149b8f36a0cbba5246be39e06a4fe3effec434ea6f2b37da07e45f136b087780be140f94598295e9621
+Homepage: https://github.com/Open-Mixer/plugin-hostd-protocol
+Description: plugin-hostd protocol library, a superset of mod-host's text protocol
+ The socket server, line protocol and command dispatch that plugin-hostd and
+ omx-clap-host answer their controllers with: mod-host's text protocol, so any
+ mod-host client works unchanged.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libplugin-qualification-db-dev
+Architecture: arm64
+Version: 2026111901
 Multi-Arch: same
 Priority: optional
 Section: libdevel
-Source: libreac
+Source: plugin-db-qualification
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 225
-Depends: libreac-transport7 (= 1.11.0), libreac-dev (= 1.11.0)
-Filename: ./arm64/libreac-transport-dev_1.11.0_arm64.deb
-Size: 66848
-MD5sum: 90496f7fc5df6e9d5a4a08498846a8f8
-SHA1: c47c9db5f11f75a578754099178d27934442f6ea
-SHA256: 39d84aaf7185af6e2e297c22204125c547c6fd2d7e0aa7ff4bf4dadf5364ffbd
-SHA512: f8c3e08472928c443f4b6edb7b54924ebeef74ee034045b6ef488fb8759406afd56933f1f24ac3a5eef24458524749e75bd1f7e1889847b1271f93d8387f2566
-Homepage: https://github.com/FreeREAC/libreac
-Description: Roland REAC transport layer, development files
- Headers and the pkg-config file for building programs against libreac-
- transport.
+Installed-Size: 28
+Depends: libplugin-qualification-db0 (= 2026111901), plugin-qualification-db-schema (= 2026111901)
+Filename: ./arm64/libplugin-qualification-db-dev_2026111901_arm64.deb
+Size: 7984
+MD5sum: c35f99ce125c6291f56e5b3208e3e794
+SHA1: 4cdd0259f7dd0be40de0cb2c437a2f39a1ecc717
+SHA256: 2c237a5763e3b717aa7d5d3dcf41f9f504ace61dbf6f889524dc9b58c933d3bf
+SHA512: f811a769c1e79c02b9a3bbecbbb87bae6c6b2265643711ddb2375473b316010ac3354ca32def633021ab6b3875baa63ee288d4218488c8bb00ec99e6cc228169
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: reader of the OpenMixer qualification store, development files
+ The header, the shared library link and plugin-qualification-db.pc, whose
+ variable schema names the DDL of plugin-qualification-db-schema.
 
-Package: libreac-transport7
+Package: libplugin-qualification-db-dev
 Architecture: arm64
-Version: 1.11.0
+Version: 2026112001
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 28
+Depends: libplugin-qualification-db0 (= 2026112001), plugin-qualification-db-schema (= 2026112001), libsqlite3-dev (>= 3.37.0), libomx-domain-dev (>= 3.20.0)
+Filename: ./arm64/libplugin-qualification-db-dev_2026112001_arm64.deb
+Size: 7612
+MD5sum: 462b8b2684be1e0023365a11dfd01adf
+SHA1: 9e100a45b798a7332c88a14a68058c203737f55c
+SHA256: 709f802aec3ece68c5a15651f8ba836d1a834ae3f428b3b910f708160250b92f
+SHA512: 0c5e17c8aef41c8a6d25a11c70b52723b8a2be9ef0751c6cbe6dccb5b784962841a519dbe31a40e5817a217f80083a8d6aa2016143372f2a4c801d3a877a6089
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: reader of the OpenMixer qualification store, development files
+ The header, the shared library link and plugin-qualification-db.pc, whose
+ variable schema names the DDL of plugin-qualification-db-schema.
+
+Package: libplugin-qualification-db0
+Architecture: arm64
+Version: 2026111901
 Multi-Arch: same
 Priority: optional
 Section: libs
-Source: libreac
+Source: plugin-db-qualification
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 145
-Depends: libc6 (>= 2.38), libreac7 (>= 1.11.0)
-Filename: ./arm64/libreac-transport7_1.11.0_arm64.deb
-Size: 48104
-MD5sum: 0c6e1c4a6ac0cd0ef4e03238e8a83a15
-SHA1: c391f97c9d423c806c11fc14bd368426956e68a5
-SHA256: 3ab7f9cd625be79a838cd6f28fbd12207d222798a3e9375c191767d7b681095e
-SHA512: 4a05314aebbf72e61d701a6cfec73570781d4eb3fc0bb1cca01adf85689928d5810a72c43d1bad296b043a79551afe75572be09afdc303c04bfe8a9e652f2f70
-Homepage: https://github.com/FreeREAC/libreac
-Description: Roland REAC transport layer
- libreac-transport carries the REAC protocol of libreac over the network:
- AF_PACKET frame receive and send over a lock-free ring, a real-time cadence
- pacer with clock discipline, network interface and VLAN scanning, segment
- locking, and the slave and master establishment built on libreac's state
- machines.
- .
- The library holds no Linux capability itself; that belongs to the program
- that uses it.
+Installed-Size: 149
+Depends: libc6 (>= 2.38), libomx-domain0 (>= 3.20.0), libsqlite3-0 (>= 3.37.0)
+Filename: ./arm64/libplugin-qualification-db0_2026111901_arm64.deb
+Size: 29192
+MD5sum: 8ed6700530e0d5fffd1d861343f21714
+SHA1: 7cf1e54c28d0e38fa7bbd762f930c315489c9bc8
+SHA256: f2df0d03bc4ca4822d86a8b62cfb6437d0f50abfa2b0db3ea2710f2c57fd6631
+SHA512: 717972c8d982bdd846347dc51d4614aa0fdfe9e06d4f9f300af88ef61d3588a7c3ad24ee1145c5b816b953b133c5115c9fb8c115b1075d2f609527aa56f641be
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: reader of the OpenMixer qualification store
+ The C library that reads the qualification store: the base database of
+ plugin-qualification-records and a user layer, merged by whole record, with
+ every word column checked against the contract domains that own its words.
+ It reads figures at start-up, never in a real-time path.
 
-Package: libreac6
+Package: libplugin-qualification-db0
 Architecture: arm64
-Version: 1.10.0
+Version: 2026112001
 Multi-Arch: same
 Priority: optional
 Section: libs
-Source: libreac
+Source: plugin-db-qualification
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 144
-Depends: libc6 (>= 2.17)
-Filename: ./arm64/libreac6_1.10.0_arm64.deb
-Size: 33316
-MD5sum: dcc3cc74a26922884e1ce43e9ea8ff04
-SHA1: 63548829d3dade7e69f4773a811025c668336d20
-SHA256: 2d885aa4b12545235b5a74fea0825f31e076e56ca5a25874eb431f1099cab68b
-SHA512: 85b2853976f74f77035918efb5f139ffdff05efd0f7883dae5951e387cb8cc8849bbcb4da304d2b71aaba6d39ace8f524a764ffdd8fbfe2c219a1777a16df84e
-Homepage: https://github.com/FreeREAC/libreac
-Description: Roland REAC protocol library
- libreac speaks Roland REAC, the protocol between Roland digital consoles and
- their stageboxes, so a Linux machine can sit on a REAC network as an equal:
- hear a stagebox, enrol it, and read what it is straight from its own frames,
- its inputs and outputs, its model, its firmware.
- .
- It recognises a REAC frame, reads its sequence counter, detects the sample
- rate, and decodes and encodes the 24-bit audio in both directions. It also
- implements the REAC control plane: control blocks, head-amp records, box
- identity, and the master and slave establishment state machines.
-
-Package: libreac7
-Architecture: arm64
-Version: 1.11.0
-Multi-Arch: same
-Priority: optional
-Section: libs
-Source: libreac
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 144
-Depends: libc6 (>= 2.17)
-Filename: ./arm64/libreac7_1.11.0_arm64.deb
-Size: 33672
-MD5sum: 137c39f6361aef5ae5bc57f110242878
-SHA1: a13e78ab787b3969d1c84c6811f8da9bb0e7c77a
-SHA256: 8bc5e2321ee51933c656f84c1dd3bcc69262a2d80e57c2458e323c1ec726333f
-SHA512: 1187fa03b3c5b20091f20ed56471ce933b01baabd59a920e8e2786f2fb10a3bae3580aec18d8ea0e25535d3d9d47d94ec4911a87ec7a87d78eabaa1610027d73
-Homepage: https://github.com/FreeREAC/libreac
-Description: Roland REAC protocol library
- libreac speaks Roland REAC, the protocol between Roland digital consoles and
- their stageboxes, so a Linux machine can sit on a REAC network as an equal:
- hear a stagebox, enrol it, and read what it is straight from its own frames,
- its inputs and outputs, its model, its firmware.
- .
- It recognises a REAC frame, reads its sequence counter, detects the sample
- rate, and decodes and encodes the 24-bit audio in both directions. It also
- implements the REAC control plane: control blocks, head-amp records, box
- identity, and the master and slave establishment state machines.
+Installed-Size: 149
+Depends: libc6 (>= 2.38), libomx-domain0 (>= 3.20.0), libsqlite3-0 (>= 3.37.0)
+Filename: ./arm64/libplugin-qualification-db0_2026112001_arm64.deb
+Size: 28924
+MD5sum: 4524f2a0bbabd735a8b35819abf68ca7
+SHA1: ef50074672cc7c726308cdbb87b0f74cff4d2f86
+SHA256: 7ed00bba86cf44a19e741794fb4ed7d0df344cc1a417d140ddd21ed04f7c5fea
+SHA512: 40d524ded90781b496d139ee070ec3f76713a8c095a825bc998c135058d70ab07c280df8a2d3ccd5d8a2bc3f3cf698f1411d1f736c33186b8bc0e371b356a4b4
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: reader of the OpenMixer qualification store
+ The C library that reads the qualification store: the base database of
+ plugin-qualification-records and a user layer, merged by whole record, with
+ every word column checked against the contract domains that own its words.
+ It reads figures at start-up, never in a real-time path.
 
 Package: libsurface-dev
 Architecture: arm64
@@ -5780,6 +8393,35 @@ Description: fixtures to test a program that drives omx-clap-host
  .
  Its documentation is on openmixer.org.
 
+Package: omx-clap-host-tests
+Architecture: arm64
+Version: 0.33.1
+Priority: optional
+Section: sound
+Source: omx-clap-host
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 366
+Depends: omx-clap-host (= 0.33.1), python3, libc6 (>= 2.38), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125
+Filename: ./arm64/omx-clap-host-tests_0.33.1_arm64.deb
+Size: 30080
+MD5sum: 333f56e45fcbdbabcafeae389848d1ea
+SHA1: 77a59315fedae533f60321763e64b8b932319af6
+SHA256: ad79c67b8d051946be183d25a45134cbe922301c74eee191bbbcb66c907fc081
+SHA512: 0342c0a09e7e7779ddbfc7ff7fba45a9a311eb36b4d5168cb98f54c782a67daa700ab26599d26c6f381e92445628207e690f9e1fceb3c11b8d44887d9f81cccc
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: fixtures to test a program that drives omx-clap-host
+ Plugins and a signal source for testing a program that runs omx-clap-host as
+ its CLAP worker: a plugin that reads the track information the host passes
+ it, a compressor that reports meters, a gain that aborts on a write of 0.9
+ or more, a JACK client that plays a constant level, and one that plays a
+ noise into up to six effects and records each of them from the same cycles.
+ They are installed in /usr/libexec/omx-clap-host/tests, away from the
+ directories CLAP hosts scan, and are of no use to anyone else.
+ socket_conformance.py, beside them, checks how any server of the mod-host
+ socket protocol splits what it receives into commands.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-clap-host
 Architecture: arm64
 Version: 0.32.3
@@ -5872,6 +8514,83 @@ Description: use CLAP and LV2 plugins on a JACK rig, driven like mod-host
  survives a plugin that crashes while loading.
  .
  Its documentation is on openmixer.org.
+
+Package: omx-clap-host
+Architecture: arm64
+Version: 0.33.1
+Priority: optional
+Section: sound
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 630
+Depends: libplugin-hostd-protocol0 (>= 0.6.0), libomx-domain0 (>= 3.20.0~), omx-clap-core-contract (= 0.33.1), libc6 (>= 2.38), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125, libomx-clap-core1 (>= 0.33.1), libssl3t64 (>= 3.0.0), libxcb1
+Recommends: liblilv-0-0
+Filename: ./arm64/omx-clap-host_0.33.1_arm64.deb
+Size: 185652
+MD5sum: 3f2066e088750713b4bb856a37750971
+SHA1: 3dce81bfe86c82aff712018f0882443edebd5609
+SHA256: 4823f72563a90f6f10134a3a210c7d04b69fe1148de9a442a8f4eb95c14a4568
+SHA512: 5d45d33e92b7dc4d895a4541ea87425fc282aa018cdfefefa876ff5f3029df685850451dc3df6d94cdceba0c838f8c86cc920a0b8140fbae221b9d12c804cd92
+Homepage: https://github.com/Open-Mixer/omx-clap-core
+Description: use CLAP and LV2 plugins on a JACK rig, driven like mod-host
+ omx-clap-host hosts CLAP and LV2 plugins in a live JACK or PipeWire rig.
+ Each plugin runs as a JACK client with its own ports, and an instrument
+ gets a MIDI input as well. Anything that already controls mod-host can
+ control it over the same socket with the same commands. An LV2 plugin,
+ added by its URI, runs natively: a real LV2 instance loaded through lilv,
+ with no emulation and no wrapper process. The LV2 adapter linked into the
+ host maps the host interface, presenting the plugin's ports and controls
+ as CLAP ports and parameters, and loads lilv when the first one is added.
+ .
+ It comes with omx-clap-scan, which lists what is in a CLAP bundle and
+ survives a plugin that crashes while loading.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-panel-store
+Architecture: arm64
+Version: 0.15.0
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 82
+Depends: libc6 (>= 2.38), libcjson1 (>= 1.7.13), libomx-domain0 (>= 3.20.0~), libsqlite3-0 (>= 3.7.15), omx-panel-contract (>= 0.15.0)
+Filename: ./arm64/omx-panel-store_0.15.0_arm64.deb
+Size: 25380
+MD5sum: ae029428df568ca1963c912dbbc15d0e
+SHA1: 0b021d9182c3dab22f8ca9b32b51d7d63d11101f
+SHA256: 8eaf2415a94d8ecd94758bfc986065f4d5555d7e5c56566ef5032175db634d9d
+SHA512: 2041f55a1ae92a368fe6fc379ac2d03b6285c80c9396ea56e742e413cedb9060be5ed0481ad9794732a8a223aa2ea9638657793fbe63c1089d482c55d3249092
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, the command
+ The command omx-panel-store gets, puts and removes an entry of the
+ descriptions store (the base, the system layer and the user layer of
+ panel.sqlite) and checks the layers; omx-panel's tools and the console's
+ server call it.
+
+Package: omx-panel-store
+Architecture: arm64
+Version: 0.15.1
+Multi-Arch: foreign
+Priority: optional
+Section: misc
+Source: omx-panel
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 80
+Depends: libc6 (>= 2.38), libcjson1 (>= 1.7.13), libomx-domain0 (>= 3.20.0~), libsqlite3-0 (>= 3.7.15), omx-panel-contract (>= 0.15.1)
+Filename: ./arm64/omx-panel-store_0.15.1_arm64.deb
+Size: 23160
+MD5sum: 3113b484f9faf3900c8d7be22d1bf129
+SHA1: 1abd161a710ca81ab6281049bc0cbef64299dcc4
+SHA256: 59d2e47d1214400ca7cec8926b69e5f4d0c5161fd458ab4985d367aba9ac2596
+SHA512: 23f7979f893cb8f8f929d76d7777ee4a1ef3eb2c1bfff370827d0e0e3e1c5149e8ac5ec48bb3ac2b25fa0032d1fdf7ebcde76befb861a4d6013e62c78453b9de
+Homepage: https://github.com/Open-Mixer/omx-panel
+Description: descriptions store of panel descriptions, the command
+ The command omx-panel-store gets, puts and removes an entry of the
+ descriptions store (the base, the system layer and the user layer of
+ panel.sqlite) and checks the layers; omx-panel's tools and the console's
+ server call it.
 
 Package: omx-plugins-clap
 Architecture: arm64
@@ -6084,6 +8803,66 @@ Description: static real-time gate for plugin and engine C built on libomxdsp
  .
  Its documentation is on openmixer.org.
 
+Package: omx-rt-gate
+Architecture: arm64
+Version: 0.33.1
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 289
+Depends: libomxdsp-dev (= 0.33.1), gcc, libc6 (>= 2.38)
+Filename: ./arm64/omx-rt-gate_0.33.1_arm64.deb
+Size: 54828
+MD5sum: d5272604acf22461654093427e137897
+SHA1: 3850769d67379bfdaff20ec9e1a93735de9822a8
+SHA256: 4a5b718e17e0b6ed17328db915432b39dd0d89cfb0b74c6193481f162b43691a
+SHA512: f4962a660ab67974bac49490541ea346005f0d24e2f57fbcfd21d6bafcddad17349516c2af04b9aa147642008f6d225fdca7a4ab4e0f95147a63d4885caf345f
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: static real-time gate for plugin and engine C built on libomxdsp
+ omx-rt-gate proves that the real-time code of a plugin or an audio engine
+ never allocates, locks, sleeps, does I/O or logs. It compiles each real-time
+ source with the project's own flags, reads the compiler's call graph, finds
+ the functions a host calls from its audio thread in the plugin's LV2, CLAP,
+ PipeWire or JACK tables, and follows every call from there, through
+ libomxdsp's own code too. Each finding names the call, its place and the path
+ from the entry point. The tables it judges against ship with it: one
+ forbidden list, one class table and the thread roles of each ABI, with
+ libomxdsp's thread tags and call graphs.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-rt-gate
+Architecture: arm64
+Version: 0.34.0
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 290
+Depends: libomxdsp-dev (= 0.34.0), gcc, libc6 (>= 2.38)
+Filename: ./arm64/omx-rt-gate_0.34.0_arm64.deb
+Size: 55336
+MD5sum: d2050a86490bec8f962dd4c64c351fff
+SHA1: 525c37ca3813d1271cb8e6e6add75ece88b8b099
+SHA256: 74494867f95c9de174153de5e24e7e0b58c23d2e3c250166ceed136d5bddd874
+SHA512: 0f349574a8c790facca214668fb5894c83aaac1bc797a43ca3e37551e42b6d9fbef14642323e6bc1cb085ff659f1932777a12f9a97afe18e43a3a4fd54b6d153
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: static real-time gate for plugin and engine C built on libomxdsp
+ omx-rt-gate proves that the real-time code of a plugin or an audio engine
+ never allocates, locks, sleeps, does I/O or logs. It compiles each real-time
+ source with the project's own flags, reads the compiler's call graph, finds
+ the functions a host calls from its audio thread in the plugin's LV2, CLAP,
+ PipeWire or JACK tables, and follows every call from there, through
+ libomxdsp's own code too. Each finding names the call, its place and the path
+ from the entry point. The tables it judges against ship with it: one
+ forbidden list, one class table and the thread roles of each ABI, with
+ libomxdsp's thread tags and call graphs.
+ .
+ Its documentation is on openmixer.org.
+
 Package: omx-rta-read
 Architecture: arm64
 Version: 0.32.3
@@ -6154,6 +8933,60 @@ MD5sum: 3d0ff3ce5f2cc82382a57b73a1749944
 SHA1: cbb5f0ca9d65f1ce387046c9ff6c2399042a8f4d
 SHA256: 0f382476b8022e0074d0281d535c09b6b7b77577d8763e4274f458bbfeefcc6b
 SHA512: 0a7896c08805d0adc67f84b37663fcdb66981b840b2a7b2210075c02a87c73e705e48b2307e523c9f935bebdad221b851315f8e3684bbacf95c96b9356e5de73
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: spectrum of a JACK signal, read and never fed
+ omx-rta-read reads the spectrum of a processor's signal in a JACK graph,
+ what it is given and what it gives, and writes it as log-spaced bands, one
+ JSON line ten times a second, for a panel to draw. It is a JACK client with
+ input ports only, connected only from the ports it watches, so it never
+ feeds the mix. It runs only while something reads it. The window, the
+ bands and their gates are the OpenMixer console's, from libomxdsp.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-rta-read
+Architecture: arm64
+Version: 0.33.1
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 80
+Depends: libc6 (>= 2.38), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125
+Filename: ./arm64/omx-rta-read_0.33.1_arm64.deb
+Size: 13556
+MD5sum: 9d8ac4f138d72f9de74a9701eafcefa3
+SHA1: 74fc5d716272c0f37c127478958e8d8ebccea245
+SHA256: 31d942370234e6b21a07fdb1ed46a8f2bd4134c3b5ac1da300bfd4425b1043b0
+SHA512: ca96ebaad56fc08ef03fb6160c7a9a95079d9ba41de7380fd448dd6a7091d8d789d640ff4599020ed9414cebb2e92b0b6d7cea16f48c1c08fc59c53d0180034c
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: spectrum of a JACK signal, read and never fed
+ omx-rta-read reads the spectrum of a processor's signal in a JACK graph,
+ what it is given and what it gives, and writes it as log-spaced bands, one
+ JSON line ten times a second, for a panel to draw. It is a JACK client with
+ input ports only, connected only from the ports it watches, so it never
+ feeds the mix. It runs only while something reads it. The window, the
+ bands and their gates are the OpenMixer console's, from libomxdsp.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-rta-read
+Architecture: arm64
+Version: 0.34.0
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 81
+Depends: libc6 (>= 2.38), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125
+Filename: ./arm64/omx-rta-read_0.34.0_arm64.deb
+Size: 13996
+MD5sum: 8288a496ede9c521cddf5efae686bd15
+SHA1: c52242ee507dfbfdf85654c4c6a1111c1d226b05
+SHA256: c06d7674e9bc0ac347822f6974b89e98839bf0d00fd68ff544233966266d965e
+SHA512: 77fd8e47a40badd2aa2f7d4118afd0cb3ba40e694342f225495c95a3f1b684f02fec4aae908706a127f58a7f85340b275f2570b5189b59f3e1ad68c831fd558d
 Homepage: https://github.com/Open-Mixer/omx-dsp
 Description: spectrum of a JACK signal, read and never fed
  omx-rta-read reads the spectrum of a processor's signal in a JACK graph,
@@ -6265,6 +9098,31 @@ Description: plugin database: headers, static library and pkg-config file
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-db-dev
+Architecture: arm64
+Version: 0.5.0
+Priority: optional
+Section: libdevel
+Source: plugin-db
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 169
+Depends: libssl-dev, libomx-domain-dev (>= 3.20.0~), plugin-db-contract (= 0.5.0)
+Filename: ./arm64/plugin-db-dev_0.5.0_arm64.deb
+Size: 41312
+MD5sum: 8c3d41fd683d7f294d5704ea23192ffe
+SHA1: bbcd1956c8686c643f2c0356fda98753b03526dc
+SHA256: 2fdaed7307838b3a93ae525da0645d85001df35373eb7547ee1d8dcb85e1610e
+SHA512: c724fa2d9a5477dbb3c7f7712c4cdc1e7b6666c5a2bc0144ec1e0807f899c3b3b61b55dc3d9dbe88e36ba96146964af29ce50a21d8363d7191270e0c4cf0b69c
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: plugin database: headers, static library and pkg-config file
+ <plugin-db/pin.h>, header-only, on libc and libcrypto: the SHA-256 of a file,
+ the omx-layout/1 fingerprint of a parameter layout, the words a pin is written
+ with and the rules of what is a pin's. <plugin-db/db.h> and libplugin-db.a:
+ the address form, the file collection with the LV2 bundle rule, the store of
+ layers and the state function. With the pkg-config file plugin-db.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-db
 Architecture: arm64
 Version: 0.4.4
@@ -6357,6 +9215,29 @@ Description: plugin database: pin, show and verify plugins
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-db
+Architecture: arm64
+Version: 0.5.0
+Priority: optional
+Section: utils
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 89
+Depends: libc6 (>= 2.38), libomx-domain0 (>= 3.20.0~), libssl3t64 (>= 3.0.0), plugin-db-contract (= 0.5.0)
+Filename: ./arm64/plugin-db_0.5.0_arm64.deb
+Size: 30828
+MD5sum: 2cd3751a1eb7fc2fbcec1dfd886e919e
+SHA1: 2cfe458ffdb2649a88bd7034690b2d3ecb7a4c24
+SHA256: 03a94ce439fbd8586f4ff91dc84b205f8d34ac16944bbb2d1bae561e7f335247
+SHA512: 92df6a4eaeca72ac0e7ff7b147a117e630f3e61970b7a7d884423fbb5b1720d316f08d65b53579b6f416e0031f75752ddc5a4db12e12bfe953cd529aa5314858
+Homepage: https://github.com/Open-Mixer/plugin-db
+Description: plugin database: pin, show and verify plugins
+ The command plugin-db pins an entry of the plugin database from the plugin's
+ files, shows one entry's attributes, state and reason, and verifies every
+ entry as rpm -V does, with the JSON Schema of the store's layer files. It
+ loads no plugin.
+ .
+ Its documentation is on openmixer.org.
+
 Package: plugin-hostd-tests
 Architecture: arm64
 Version: 0.20.6
@@ -6398,6 +9279,32 @@ MD5sum: a1921f7d57290e12cdccd767e9def56f
 SHA1: 3dff41cd1265fde64bc7e3bb627b76a9f93c1eef
 SHA256: 4c6babb20bfa8adbb6b6cd8434810e7b017d343bab3544bdeec0eb7db9ff5366
 SHA512: a43e4eab7607d3c60434902d4e9de36c9f12bbed6a6b03132b1364b03ff3dd934e9d967f38fb4f0d6b79a104679d710f734663cb386523d607c5b20d70dc0cc3
+Homepage: https://github.com/Open-Mixer/plugin-hostd
+Description: stand-in plugin worker to test a program that drives plugin-hostd
+ A small worker that speaks the same protocol as mod-host and omx-clap-host
+ and can be made to die on cue, so a program that talks to plugin-hostd can
+ be tested against a real daemon without a plugin, a JACK server or any
+ audio. Run it with -L to print the layout it reports. It is installed in
+ /usr/libexec/plugin-hostd/tests, away from the directories programs run
+ from.
+ .
+ Its documentation is on openmixer.org.
+
+Package: plugin-hostd-tests
+Architecture: arm64
+Version: 0.20.8
+Priority: optional
+Section: sound
+Source: plugin-hostd
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 90
+Depends: plugin-hostd (= 0.20.8), libc6 (>= 2.38), libplugin-hostd-protocol0 (>= 0.7.0), libssl3t64 (>= 3.0.0)
+Filename: ./arm64/plugin-hostd-tests_0.20.8_arm64.deb
+Size: 22056
+MD5sum: 31c43fdd880992f719775437bd8e016e
+SHA1: c9889f96e5fff4d25428c65a5557205b71ab445a
+SHA256: 2fc7e861048232e8f782a32709009a91f7cb33cd40b517827642161d2034f1a8
+SHA512: 71e48aeee46ad4d033fc17e52739b002191b6a4cba7e5d8a47407d876112dc6336e0507ac4c85e21246a35076f679330c4b23af17b6bae5a3ecf81687e800c9d
 Homepage: https://github.com/Open-Mixer/plugin-hostd
 Description: stand-in plugin worker to test a program that drives plugin-hostd
  A small worker that speaks the same protocol as mod-host and omx-clap-host
@@ -6469,6 +9376,78 @@ Description: run LV2 and CLAP plugins so that one crash cannot stop the show
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-hostd
+Architecture: arm64
+Version: 0.20.8
+Priority: optional
+Section: sound
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 554
+Depends: libplugin-hostd-protocol0 (>= 0.7.0), libomx-domain0 (>= 3.20.0~), libplugin-qualification-db0 (>= 2026111901), libsqlite3-0 (>= 3.37.0~), plugin-qualify-contract (>= 0.20.6~), plugin-hostd-contract (= 0.20.8), libc6 (>= 2.38), libcjson1 (>= 1.7.5), libssl3t64 (>= 3.0.0)
+Recommends: omx-clap-host (>= 0.33.1~)
+Suggests: mod-host
+Filename: ./arm64/plugin-hostd_0.20.8_arm64.deb
+Size: 162412
+MD5sum: 99fb5b00fd4946f72e072ce0f2a92b8b
+SHA1: 23229d1cf5a3ccc8d566de7f1ab7b820f8026bb0
+SHA256: 1163763293ffd87abab344b07a8d2d91bd52dc7dcb6a4bf9b8177b97b3bc09d2
+SHA512: 9a604a6bd82cba1fa0724e1f356b6eae55bffacc9d4645dae4ece08e32b9a2b0e4ae4886beaa6ba0430660c993d67b44456cb41fec0c797ea60fe2079200fdff
+Homepage: https://github.com/Open-Mixer/plugin-hostd
+Description: run LV2 and CLAP plugins so that one crash cannot stop the show
+ plugin-hostd keeps your effects and instruments running when one of them
+ misbehaves. It gives a controller one mod-host socket and starts each plugin,
+ or each named group of plugins, in a worker process of its own: omx-clap-host
+ for CLAP and, through its LV2 adapter, for LV2. If a plugin crashes, only its
+ worker goes down and the daemon brings it back. Audio never passes through the
+ daemon, so it adds no latency: every worker is a JACK client.
+ .
+ A format whose worker is not installed refuses its adds; the other formats
+ are unaffected. mod-host runs LV2 plugins only when you ask for it.
+ .
+ Its documentation is on openmixer.org.
+
+Package: plugin-qualification-db
+Architecture: arm64
+Version: 2026111901
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 83
+Depends: libc6 (>= 2.38), libplugin-qualification-db0 (>= 2026111901)
+Filename: ./arm64/plugin-qualification-db_2026111901_arm64.deb
+Size: 13360
+MD5sum: 0bd2732afca59cd4b77b7ba3d12e833d
+SHA1: 67b0fbe00c4284da3ac028cf5716825acad0526b
+SHA256: 24eb61ca270f1fb1fab5f9927023d8f98e5c81ea603bee08de7e5788014f2dc6
+SHA512: d80366fc994f244aaa9babf526f610036df7b1ad8feaeb3838244292b11fde317dd80353cbe8bd511a59f6b2a45c7832c7c50bd73ca69cb24f857240953840e5
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: command to query the OpenMixer qualification store
+ plugin-qualification-db query --json prints the results of the base
+ database and the user layer, one JSON object per line; check opens both
+ layers and the words they hold.
+
+Package: plugin-qualification-db
+Architecture: arm64
+Version: 2026112001
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 83
+Depends: libc6 (>= 2.38), libplugin-qualification-db0 (>= 2026112001)
+Filename: ./arm64/plugin-qualification-db_2026112001_arm64.deb
+Size: 13304
+MD5sum: 0f1ec4da751e19ff1f74ce01f81e7308
+SHA1: 8df50b82c85c9f01f0e79253da7d4922299f5c3e
+SHA256: db8c971792f190aebb784e3034813b68dde8fa0321cceb044e8c4ae5041fe52f
+SHA512: 03dafc546ea0b3e51bf420b36dccff91c772c67694cf5595523756818f8d50e18ed421a76bf055758da23c5a439f0641090de398b3a5035606a21a5ad08d7a72
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: command to query the OpenMixer qualification store
+ plugin-qualification-db query --json prints the results of the base
+ database and the user layer, one JSON object per line; check opens both
+ layers and the words they hold.
+
 Package: plugin-qualification-records
 Architecture: arm64
 Version: 2026110902
@@ -6527,6 +9506,81 @@ SHA1: a26160d5d62f3f7ae969b0b6ba0a3d55f4bd6199
 SHA256: d33aacbea6af51233c845ecfe23a02abd53edea31bd5f13888c87e02d231593e
 SHA512: bce9341ab941cbd5facd93d0dbde2ec22b4b5b2e8e42860d3e3c4f5d9dd0452d6f340683efaa991d76bb62697a1d2a71504211d59611864cadfd1eee1ae06eff
 Homepage: https://github.com/FreeMixer/plugin-db-qualification
+Description: plugin-db qualification layer: records of OpenMixer plugin sets
+ The qualification layer of the plugin database: the plugin-qualify records
+ of the plugin sets measured on a reference machine of a host class.
+ plugin-qualify-sync takes a plugin from them instead of measuring it, and
+ only when every file of the installed plugin hashes as the measured one
+ did; any other plugin is measured on the machine as before. The sync
+ chooses the set of the machine's class and cell.
+ .
+ Each architecture carries the sets of its machine classes:
+ .
+  arm64: the rpi5 class, the zynthian-vangelis set measured on a Raspberry
+  Pi 5 with ZynthianOS. Hardware records: measured on the machine's own
+  audio interface; the verdicts hold, the figures describe that interface
+  and are not compared with the reference tier.
+ .
+  amd64: the x86-64 class, the fedora44 sets, one per sample rate and
+  quantum. Provisional records: measured on JACK's dummy driver without
+  real-time priority; the crash, hang and unmeasured verdicts hold, the
+  cost, latency and xrun figures are not reference figures.
+
+Package: plugin-qualification-records
+Architecture: arm64
+Version: 2026111901
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 34255
+Provides: omx-qualification-rpi5-zynthian-vangelis (= 2026111901), plugin-db-qualification-rpi5-zynthian-vangelis (= 2026111901)
+Depends: plugin-qualify (>= 0.20.0~)
+Breaks: omx-qualification-rpi5-zynthian-vangelis (<< 2026111901), plugin-db-qualification-rpi5-zynthian-vangelis (<< 2026111901)
+Replaces: omx-qualification-rpi5-zynthian-vangelis (<< 2026111901), plugin-db-qualification-rpi5-zynthian-vangelis (<< 2026111901)
+Filename: ./arm64/plugin-qualification-records_2026111901_arm64.deb
+Size: 974000
+MD5sum: bfec134e45749d08989ba1abd960b6a9
+SHA1: ac070a0dd16d81b711df7f619d392be6f8848c3c
+SHA256: 046fe4efd0a8a47e1ec16e7ee4af04c7e9fc1cbbe0ae128ae27e68faf5713133
+SHA512: 197d9c18274c73f81f8b2887883d1a9d500ea65d331b1e0b0a1e6c7a0e89edd05e130617b91affad72c6d69f6133ea7111c35447855a43fc34207fd8d06ceebf
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
+Description: plugin-db qualification layer: records of OpenMixer plugin sets
+ The qualification layer of the plugin database: the plugin-qualify records
+ of the plugin sets measured on a reference machine of a host class.
+ plugin-qualify-sync takes a plugin from them instead of measuring it, and
+ only when every file of the installed plugin hashes as the measured one
+ did; any other plugin is measured on the machine as before. The sync
+ chooses the set of the machine's class and cell.
+ .
+ Each architecture carries the sets of its machine classes:
+ .
+  arm64: the rpi5 class, the zynthian-vangelis set measured on a Raspberry
+  Pi 5 with ZynthianOS. Hardware records: measured on the machine's own
+  audio interface; the verdicts hold, the figures describe that interface
+  and are not compared with the reference tier.
+ .
+  amd64: the x86-64 class, the fedora44 sets, one per sample rate and
+  quantum. Provisional records: measured on JACK's dummy driver without
+  real-time priority; the crash, hang and unmeasured verdicts hold, the
+  cost, latency and xrun figures are not reference figures.
+
+Package: plugin-qualification-records
+Architecture: arm64
+Version: 2026112001
+Priority: optional
+Section: sound
+Source: plugin-db-qualification
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 44252
+Depends: plugin-qualify (>= 0.20.7~)
+Filename: ./arm64/plugin-qualification-records_2026112001_arm64.deb
+Size: 2184276
+MD5sum: 8fc86439740fb60a8d154b6058e141fc
+SHA1: df1197445fddf7e24c9ccd95faf29eb30ae6de7c
+SHA256: 38a7ca4f8ad34ae5baefeaf33a40100d7ede70b1eaacffe98717cfef28b2d651
+SHA512: 38fbed2499c31020af468576d6a7983d8a1249809dceae093d89b3357ebd768793d0dc735a12def8e103527cf88104f54d73e35e36bd73d95f2771775709d0a5
+Homepage: https://github.com/Open-Mixer/plugin-db-qualification
 Description: plugin-db qualification layer: records of OpenMixer plugin sets
  The qualification layer of the plugin database: the plugin-qualify records
  of the plugin sets measured on a reference machine of a host class.
@@ -6634,91 +9688,34 @@ Description: find out whether an audio plugin is safe to run live
  .
  Its documentation is on openmixer.org.
 
-Package: reac-pw
+Package: plugin-qualify
 Architecture: arm64
-Version: 1.0.43
+Version: 0.20.7
 Priority: optional
 Section: sound
 Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 319
-Depends: libc6 (>= 2.38), libpipewire-0.3-0t64 (>= 0.3.65), libreac-transport7 (>= 1.11.0), libreac7 (>= 1.11.0), init-system-helpers (>= 1.52), pipewire, libcap2-bin, iproute2
-Filename: ./arm64/reac-pw_1.0.43_arm64.deb
-Size: 108432
-MD5sum: 0b1a969d805dab65363833be71204506
-SHA1: b52b22162115c7b47f6faaf32d96fb5c83d4222e
-SHA256: 9fcf65a2b9e2dacf6849f8878fc9a7459f213c4cd0625f52d68b0b14d6c09374
-SHA512: 1fa30f5914c3b84442bba24b9208433b5c4d4b0fba33ab9382de5eb0b0fe5c75f2a5fd98f339447284585aa1ecccc9b5184793600e4e093f42aa35dcb3037ffd
-Homepage: https://github.com/FreeREAC/reac-pw
-Description: PipeWire-native Roland REAC endpoint
- reac-pw puts Roland REAC stageboxes on your Linux audio graph. Plug a box into
- a network port and its inputs appear as PipeWire capture channels and its
- outputs as playback channels, sized and named from what the box itself says
- on the wire, with its firmware alongside. No configuration and no model list
- to keep up to date.
+Installed-Size: 7930
+Depends: libc6 (>= 2.38), liblilv-0-0 (>= 0.22.0~dfsg0), libssl3t64 (>= 3.0.0), nodejs (>= 18), python3, python3-jsonschema, plugin-hostd (>= 0.20.8~), omx-clap-host (>= 0.32.5~), libomx-clap-core1 (>= 0.32.5~), python3-lilv, plugin-qualify-contract (= 0.20.7)
+Suggests: mod-host
+Filename: ./arm64/plugin-qualify_0.20.7_arm64.deb
+Size: 994636
+MD5sum: a9118a9b71a6e6d8da046bae11888f8c
+SHA1: a198db480e9b22caa6fa869ecb5548241480e18c
+SHA256: 585c05537c9cc76eee03ded7531aa4708051a360cbed46993e238606182a982e
+SHA512: d9a523ae2a63dcc058a6a0b651e6851b892b5262dd6ee47ef16708aa3585a566ee1f86037d68206f09663a76e6f1d1b8bf5f413a0899aa9865c7162723109994
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: find out whether an audio plugin is safe to run live
+ A plugin that glitches on stage is worse than one you never installed.
+ plugin-qualify takes an LV2 or CLAP plugin and tells you whether it can be
+ trusted inside a real-time audio engine: it scans the plugin, measures its
+ latency and CPU cost at the sample rates and buffer sizes you play at, runs
+ it under a real host with memory checking, and gives one plain verdict.
+ Anything it could not measure is never a pass.
  .
- It can also be the master of a REAC segment, driving the clock so that a
- stagebox slaves to this machine, or a slave that locks to a desk's cadence
- and returns its inputs upstream.
+ Use it to vet a plugin before a gig, to curate a plugin collection, or to
+ judge the same plugin against the rules of different hosts.
  .
- The package runs reac-pw as a user service, without root: it gives the
- daemon the file capabilities it needs for raw network frames, VLAN
- sub-interfaces and real-time scheduling. A small system service keeps
- NetworkManager off the network interfaces reac-pw serves.
-
-Package: reac-pw
-Architecture: arm64
-Version: 1.0.44
-Priority: optional
-Section: sound
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 320
-Depends: libc6 (>= 2.38), libpipewire-0.3-0t64 (>= 0.3.65), libreac-transport7 (>= 1.11.0), libreac7 (>= 1.11.0), init-system-helpers (>= 1.52), pipewire, libcap2-bin, iproute2
-Filename: ./arm64/reac-pw_1.0.44_arm64.deb
-Size: 115352
-MD5sum: 5fb36712c0d54c7ed6a0f2e405d978ff
-SHA1: 9b679b672aaf8922fec757cb8189a05cf2aa9888
-SHA256: 33bd7ca30da11096b86373e910aa5d8956a1bcfdb26a33ba8f6f4b7ad56c66a8
-SHA512: 6efe0d232f4197c5f00b45942640ceb51b99768aae123afcc111afeeac303b0b0516d6afb55e2af41b8b039daa562f1f6237b63c85ed97e4c8f82fba2ae667f9
-Homepage: https://github.com/FreeREAC/reac-pw
-Description: PipeWire-native Roland REAC endpoint
- reac-pw puts Roland REAC stageboxes on your Linux audio graph. Plug a box into
- a network port and its inputs appear as PipeWire capture channels and its
- outputs as playback channels, sized and named from what the box itself says
- on the wire, with its firmware alongside. No configuration and no model list
- to keep up to date.
- .
- It can also be the master of a REAC segment, driving the clock so that a
- stagebox slaves to this machine, or a slave that locks to a desk's cadence
- and returns its inputs upstream.
- .
- The package runs reac-pw as a user service, without root: it gives the
- daemon the file capabilities it needs for raw network frames, VLAN
- sub-interfaces and real-time scheduling. A small system service keeps
- NetworkManager off the network interfaces reac-pw serves.
-
-Package: reac-stageboxes
-Architecture: arm64
-Version: 0.1.0
-Priority: optional
-Section: sound
-Maintainer: Pau Aliagas <linuxnow@gmail.com>
-Installed-Size: 116
-Depends: libadwaita-1-0 (>= 1.4), libc6 (>= 2.38), libglib2.0-0t64 (>= 2.80.0), libgtk-4-1 (>= 4.10), libpipewire-0.3-0t64 (>= 0.3.65), reac-pw (>= 1.0.5), pipewire
-Filename: ./arm64/reac-stageboxes_0.1.0_arm64.deb
-Size: 28972
-MD5sum: 0e828a5e04c6ad137836360a2cb3a18f
-SHA1: 82665b9ab6f6eb7e179de6d9a19ebb9e0eef43ee
-SHA256: ad8ea36d0e1f7a493fa78f6bba5ef2dacf9a97f29afdebe8c8bd31c4d71c4ea8
-SHA512: 712f03c46672bd6dac3d590433ec9acb5e967d796c8e47140d25ac3894b56a49ed24c90404fda85857faf67e95f31730680ff925ee432e2beded9e34457449cb
-Homepage: https://github.com/FreeREAC/reac-stageboxes
-Description: Preamp control for Roland REAC stageboxes
- A GTK4 and libadwaita application that sets phantom power, the pad and the
- sensitivity on every input of every REAC stagebox on the wire.
- .
- It is a PipeWire client and nothing else. It binds the nodes reac-pw
- publishes, shows each box's inputs, and writes the change back through the
- daemon. A control the box cannot take is shown with the reason instead of a
- dead switch.
+ Its documentation is on openmixer.org.
 
 Package: surface-c24
 Architecture: arm64
