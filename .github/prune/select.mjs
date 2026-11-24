@@ -43,7 +43,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
-import { parseKeepList, keepEntries, missing } from './keeplist.mjs';
+import { parseKeepList, keepEntries, missing, pendingPins } from './keeplist.mjs';
 import { parseKeep, parsePrimary, parsePackages, selectRepo, parseDrop, unusedPins, pinsLost, uninstallable, judgeUninstallable, report } from './prune.mjs';
 
 const args = process.argv.slice(2);
@@ -198,6 +198,7 @@ async function main() {
     notes: results.flatMap((r) => r.notes),
     warnings: only ? [] : unusedPins(keep, all),
     missingPins: only ? [] : missing(keepLines, all),
+    pendingPins: only ? [] : pendingPins(keepLines, all),
     refused: results.flatMap((r) => r.refused || []),
     uninstallable: results.flatMap((r) => r.uninstallable),
     alreadyUninstallable: results.flatMap((r) => r.alreadyUninstallable),
@@ -207,6 +208,7 @@ async function main() {
   if (plan.orphans.length) console.log(`\nfiles no index lists (deleted):\n${plan.orphans.map((f) => '  ' + f).join('\n')}`);
   if (plan.notes.length) console.log(`\nnotes:\n${plan.notes.map((n) => '  ' + n).join('\n')}`);
   if (plan.alreadyUninstallable.length) console.log(`\nkept packages that already did not install before the plan (not its doing, not a refusal):\n${plan.alreadyUninstallable.map((n) => '  ' + n).join('\n')}`);
+  if (plan.pendingPins.length) console.log(`\nkeep-list floors pending (the channel serves no such package yet; not a refusal, resolved when it is served):\n${plan.pendingPins.map((n) => '  ' + n).join('\n')}`);
   if (plan.warnings.length) console.log(`\nkeep.yml pins that match nothing:\n${plan.warnings.map((n) => '  ' + n).join('\n')}`);
   const count = (rows, f) => rows.filter((r) => r.format === f).length;
   console.log('\nsummary:');

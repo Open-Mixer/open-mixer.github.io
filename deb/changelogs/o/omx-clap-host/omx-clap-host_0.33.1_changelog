@@ -1,0 +1,20 @@
+omx-clap-host (0.33.1) unstable; urgency=medium
+
+  * omx-clap-core 0.33.1
+  * public-sources: the commit identity check is on
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * ci: the x86 deb and fuzz cells keep the self-hosted runner
+  * panel display kinds leave clap-core: OMX_CLAP_PANEL_DISPLAY_KINDS and its
+    omx-panel check are dropped, the scan reports the kind as the number it is
+  * ci: Fedora 45 alone, the fc44 builds are dropped
+  * ci: deb, rpm and fuzz cells run on the runner check-matrix names
+  * Raise the plugin-hostd-protocol floor to 0.6.0 (#143)
+  * Use the ERR_HOST_* names of plugin-hostd-protocol (#143)
+  * fuzz: check out before dnf builddep reads the spec
+  * ci: the deb version check strips a + suffix as well as ~
+  * scan domain: SCAN_DOCUMENTS and SCAN_FIELD_SCOPES x-since 1.0.0, the
+    domain version that carried them (omx-contract#123)
+  * tests: the scan domain's x-since is a version of the domain, never above
+    info.version (red: SCAN_DOCUMENTS and SCAN_FIELD_SCOPES carry 3.7.0)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 23:22:27 +0000

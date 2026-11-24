@@ -1,0 +1,40 @@
+plugin-hostd-protocol (0.7.0) unstable; urgency=medium
+
+  * release: plugin-hostd-protocol 0.7.0
+  * ABI baseline carries types; release.yml header names the quick matrix
+  * ci: turn the commit identity check on for pull requests
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * CI: deb jobs on arm64 runners, Fedora 44 dropped
+  * Drop the qualification_dir conf key, its subdirectory constant and its
+    environment default
+  * Reply shapes: plan, plan_get and estimate require every word of their one
+    reply form
+  * spec: the plugin-db-contract comment says what the floor is for
+  * deps: keep the plugin-db-contract floor at 0.4.4, 0.4.7 is not served to
+    fc44 and trixie yet
+  * render: the plugin-db words come from plugin-db 0.4.7, whose address
+    formats live in its domain document
+  * commit-msg hook: follow the shared stub again, drop its arm of
+    no-backcompat (#109)
+  * commit-msg hook: read the OPENMIXER_* settings only, drop the deprecated
+    FREEMIXER_* names (#109)
+  * Tests: remove macro_compat, a build-compatibility check for older X-macro
+    shapes (#109)
+  * Packages: no relation to plugin-hostd-contract, the package this one
+    replaced (#109)
+  * Host errors: one name each, no ERR_LV2_* alias of the ERR_HOST_* codes
+    (#109)
+  * Reply forms: one per verb, no short form of an older daemon's reply (#109)
+  * protocol.h: the qualify spool and event macros carry their doxygen
+    comments
+  * tests: the table-constants check joins verb_table.py (test audit row 6)
+  * protocol: qualify_requested and the qualify spool, declared before the
+    daemon writes them
+  * ci: the TypeScript codec step takes the node the build dependencies
+    already installed
+  * ts codec: the library reads no environment, the contract floor has no
+    ceiling, CI holds the reasons and the sentences
+  * ts: the table-driven codec of plugin-hostd's TypeScript client is this
+    package's `.` export
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 23:54:40 +0000

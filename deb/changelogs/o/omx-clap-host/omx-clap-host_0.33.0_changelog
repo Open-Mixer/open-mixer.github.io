@@ -1,0 +1,147 @@
+omx-clap-host (0.33.0) unstable; urgency=medium
+
+  * omx-clap-core 0.33.0: release-same-pass names
+    plugin-qualification-records, the name both channels know
+  * release: the workflow_call same_pass description matches the dispatch one
+  * omx-clap-core 0.33.0: release-same-pass drops openmixer and names the
+    sources the dry run showed
+  * release: the workflow reads the same-pass list through the shared
+    same-pass action
+  * test: the release workflow reads the same-pass list through the shared
+    same-pass action (red)
+  * omx-clap-core 0.33.0: release-same-pass names plugin-hostd, whose
+    published 0.20.7 caps this source below 0.33
+  * omx-clap-core 0.33.0: CHANGELOG.md keeps its licence lines,
+    release-same-pass carries them
+  * omx-clap-core 0.33.0: minor, floors omx-dsp 0.33.0 and omx-contract
+    3.20.0, the scan domain, no Conflicts between our packages
+  * debian/control: main's layout with this lane's three dependencies
+  * build: the installed omx-clap-core.pc names omx-contract and omx-dsp by
+    their floors, no ceiling
+  * test: the installed .pc, debian/control and the spec carry floors and no
+    ceiling (red)
+  * packaging: omx-dsp is required at 0.33.0, a floor and no ceiling
+  * test: omx-dsp is required at 0.33.0 and no ceiling; the floors gate reads
+    a floor with or without one (red)
+  * packaging: omx-contract is required by its floor only
+  * test: omx-contract is named by its floor only, no ceiling (red)
+  * ci: build and test gets 70 minutes, not 50
+  * ci: the jobs that run plugin-hostd's daemon install its machine domain
+  * build: the scanner's AddressSanitizer test links the domain loader
+  * ci: the DEB smoke test's container gets libomx-domain0 from the channel
+    with the other packages it cannot reach
+  * tests: the scan domain's missing-word arms keep the codes in place
+  * ci: plugin-hostd at main 54eee2956 (#166, #167: machine.c), until a
+    release carries them
+  * tests and ci: the scanner's tests read this tree's scan domain, the
+    contract job has a compiler, and the vocabulary search cannot pass over
+    nothing
+  * ci: the omx-contract checkout the field-dump checks read is the v3.20.0
+    tag, no longer a commit pin
+  * ci: omx-contract at 3.20.0, the loader in the builds, the scan domain in
+    the data package's file lists
+  * renders: the four committed C headers re-rendered by omx-contract 3.20.0
+    (Doxygen @file and sentence comments, two X-macros)
+  * scan domain: installed by the installer's domain mode, listed in the data
+    package, required by the reader (recipe step 6)
+  * tests: the scan domain's install and requirements held to the
+    consumer-move recipe, step 6, red
+  * scan domain: SCAN_FIELD_SCOPES gains the meter word (x-code 13,
+    appended); the dump's meter scope is the domain's word
+  * scan domain: the document in the one formatting (omx-contract fmt
+    --contract-dir, the recipe's fmt step)
+  * tests: the meter scope is a word of the scan domain, and the document is
+    in the one formatting, red
+  * scan domain: omx-clap-scan --fields reads its scopes from the domain; no
+    scan vocabulary header
+  * tests: the scan domain held to the consumer-move recipe, red
+  * Revert the second sabotage: the spec states the floors packaging/deps.txt
+    declares
+  * Sabotage: the spec states a ceiling on omx-dsp-devel that
+    packaging/deps.txt does not declare
+  * Revert the first sabotage: omx-contract-data is back in packaging/deps.txt
+  * Sabotage: omx-contract-data is dropped from packaging/deps.txt while the
+    spec and control still state it
+  * panel families: append utility, code 12, as omx-contract 3.19.0 has it
+  * scan domain: its translations travel with it, contract.d/scan/catalogs
+    (omx-contract#81)
+  * scan domain: contract.d/scan/scan.json and its render, moved from
+    omx-contract (omx-contract#81 move 1)
+  * Make the JACK close test fail where it cannot run, and tidy the script
+  * Close the JACK clients on SIGHUP as on SIGTERM and SIGINT
+  * tests: a host told to end closes every JACK client it opened
+  * tests: a here-string is not a heredoc, and a heredoc ends with its step
+  * tests: a here-string and a heredoc left open in a step (red)
+  * tests: ci_runs_test_list.py skips heredoc bodies and joins continued
+    lines; style and two sentences fixed
+  * tests: ci_runs_test_list.py counts a make command in a heredoc body and
+    misses a continued one (red)
+  * tests: ci_runs_test_list.py reads the run line as the shell does and
+    honours a job's if:; stale text and duplicate steps fixed
+  * tests: ci_runs_test_list.py counts a trailing comment, a printf and a
+    disabled job as runs (red)
+  * panel description prose: clap-core declares the codes and the layout
+    (#117 follow-up)
+  * test-scan is desk-only: its omx-delay arm needs a plugin of omx-plugins
+  * test-published-comp leaves this repository; the seven unreached test
+    targets reach a CI step
+  * tests: no-upward-deps-check.sh finds an install of omx-plugins-clap or
+    omx-plugins-lv2 (red)
+  * tests: ci_runs_test_list.py reads only the run lines of enabled steps,
+    and every test-* target is in scope
+  * tests: ci_runs_test_list.py counts a step name as a run (red)
+  * panel abi: two stale prose lines (#117)
+  * xrun report sabotage: the atomic arm forces the interleaving that loses a
+    note
+  * panel abi test: the LP64 layout is a stated precondition (#117)
+  * A parameter id past every table is 0xffffffff, checked at run time (#117)
+  * Declare the panel-description layout here, read nothing of omx-plugins
+    (#117)
+  * Check that omx-clap-core needs nothing of omx-plugins to build or test
+    (#117)
+  * ci: the test job installs omx-plugins-clap, which make
+    test-published-comp scans
+  * fuzz: the seed corpus carries the #undeclared fixture
+  * panel description: the display kind time_response
+  * tests: the display kinds are held to omx-panel's DISPLAY_KINDS (red)
+  * host: a port that needs a host feature not offered refuses its plugin by
+    name
+  * tests: a plugin that calls a host feature it was not offered kills the
+    host (red)
+  * Revert "tests: build-floors.sh refuses a version ceiling on our own
+    packages" (row 8 leaves this PR)
+  * no_hostd_build_dep: plant the Build-Depends arm in the one-line field the
+    generator writes
+  * tests: drop a committed compiled test file (test-audit omx-clap-core row
+    12)
+  * ci: the test job runs the groups the Makefile declares for `make test`
+    (test-audit omx-clap-core row 1)
+  * build-floors: read the floor and refuse a ceiling on our packages, as
+    release 0.32.6 does
+  * tests: a check that every prerequisite of `make test` runs in a CI step
+    (test-audit omx-clap-core row 1)
+  * tests: build-floors.sh refuses a version ceiling on our own packages,
+    floors only (test-audit omx-clap-core row 8)
+  * remove the backward-compatibility machinery: older-ABI range, ABI
+    baseline gate, Breaks/Replaces, staged-deps
+  * tests: a guard that fails while omx-clap-core carries
+    backward-compatibility machinery
+  * deps: floors only, declared once in packaging/deps.txt and generated from
+    it
+  * deps-check: the floors are held to a declaration that is missing, and the
+    checks read floors only
+  * ci: the contract RPM's file list no longer expects the Catalan catalog
+  * ci: the consumer build fetches plugin-hostd 0.20.6
+  * ci: no bookworm package cells (no new bookworm releases)
+  * debian: libomx-clap-core-dev depends on libomx-clap-core1
+  * tests: a development .so depends on the package of its shared library
+    (red)
+  * ci: the Catalan catalog is checked in its language pack, not the contract
+    RPM
+  * ci: plugin-hostd from v0.20.6, the release the channel's plugin-db
+    satisfies (#89)
+  * ci: heavy steps size their parallel jobs by the jobs action, never nproc
+    (#89)
+  * test: no workflow sizes its jobs from the host's nproc, red first (#89)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 19 Nov 2026 16:15:39 +0000

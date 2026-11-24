@@ -1,0 +1,15 @@
+omx-panel (0.15.1) unstable; urgency=medium
+
+  * omx-panel 0.15.1: the installed tools resolve omx-contract (the link to
+    /usr/lib/omx-contract, Requires/Depends omx-contract >= 3.20.2)
+  * test: installed-tools-check loads each tool with its path in the
+    environment, not argv (argv[1] made isMain true and ran the tool with no
+    arguments: 5 false loads failures on the fixed tree)
+  * packaging: the installed tools resolve @openmixer/omx-contract:
+    node_modules/@openmixer/omx-contract links /usr/lib/omx-contract,
+    omx-panel requires omx-contract >= 3.20.2 (rpm and deb, a floor only)
+  * test: the installed tools load and run with their @openmixer/omx-contract
+    (red: 0.15.0 links none, ERR_MODULE_NOT_FOUND from
+    /usr/share/omx-panel/tools/modgui-gen.mjs)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 20 Nov 2026 18:18:06 +0000

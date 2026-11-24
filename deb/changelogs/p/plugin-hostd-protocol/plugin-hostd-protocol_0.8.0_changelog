@@ -1,0 +1,93 @@
+plugin-hostd-protocol (0.8.0) unstable; urgency=medium
+
+  * Revert the chain-2 fold (V16, #137) and its catalog fix: it waits for
+    chain 3
+  * check-catalogs: translate names the domain plugin-hostd, whose words the
+    catalogs hold
+  * scenarios: curve_bind terms spell the standard unit ids dB and Hz, and
+    the seed corpus and the golden transcript are written again by their
+    generators
+  * codec: a reply code's sentence is also read from the domain that keeps it
+  * test: the no-domain arm of grouping_reasons_test hides the installed
+    contract directory too
+  * the old-home grep: plugin-db's pin and db files are named by their domain
+  * packaging: the plugin-db-contract floor stays at the released 0.4.4
+  * tests: the empty-directory arm of param-scales holds the installed
+    contract out
+  * packaging: every floor on a package this delivery releases is its
+    delivered version
+  * V16: the word tests render this tree's domains as check-domain-renders
+    does, contract.d and then the installed contract directory
+  * fuzz: GRAMMAR.sha256 is the merged grammar's
+  * V16: the renders of this tree's domains read the installed contract
+    directory beside contract.d, omx-clap-contract >= 0.35.0 their floor
+  * V16: the renders of this tree's domains resolve a reference to an
+    installed owner's domain, a test that fails while they read contract.d
+    alone (red)
+  * check-rendered: plugin-db's vocabulary is the render of its domain
+    plugin-db, and the two omx-clap headers and it are rendered again from
+    the chain-1 producers
+  * grammar: curve-unit takes either case, the standard unit ids curve_bind
+    takes since 116e042
+  * grammar: every standard unit id of omx-dsp's OMX_CURVE_UNITS_STANDARD is
+    a curve-unit, a test that fails while the rule takes lower case only (red)
+  * estimate_words_test reads PARAM_UNITS from omx-contract's domain param,
+    not from a primitives.json omx-contract no longer installs
+  * V29: the rendered omx-clap vocabulary header holds HOSTING_VERB_HOSTS,
+    omx-clap's
+  * V29: the two rendered host verb headers name their hosts' item
+    HOSTING_VERB_HOSTS, omx-clap's
+  * V16: the codecs read the protocol's sentences from the domains alone,
+    never from a 3/<package>/verbs.json
+  * V16: a stale 3/plugin-hostd-protocol/verbs.json beside the domain is
+    never read by the codecs, a test that fails while they read it first (red)
+  * V16: the words of the protocol are the domain plugin-hostd, and
+    data/verbs.json is gone
+  * V16: the words of the protocol are read from the domain plugin-hostd, a
+    test that fails while they are in data/verbs.json (red)
+  * codec fixtures: the estimate reply with its verdict and reason is read,
+    with a code that has no name and an unknown plugin
+  * the generated pin and estimate lists carry a doc comment, so the doxygen
+    gate holds
+  * the seed corpus of the grammar is written again after the estimate words
+    join the tree
+  * estimate: the CPU ceiling is the domain's scalar ESTIMATE_CPU_CEILING,
+    rendered into protocol.h
+  * tests: the CPU ceiling of the insert verdict is the domain's scalar,
+    rendered by the generator (red)
+  * codec: the TypeScript codec's estimate test reads the verdict and its
+    reason
+  * estimate: the host's insert verdict is a word of the domain estimate, and
+    the reply ends with it
+  * tests: the insert verdict of estimate is the host's, its words generated
+    from the domain estimate (red)
+  * curve_bind: a term's unit is a standard id, read from omx-dsp's
+    CURVE_UNITS standard names
+  * plugin-hostd-protocol 0.8.0: VERSION, the spec, debian/changelog and
+    package.json
+  * history_get: its words are the domain plugin-hostd/history, not
+    data/history.json
+  * omx-clap domains: the shared verbs are read from contract.d/omx-clap and
+    contract.d/host
+  * omx-clap rename: the origin word and the prose name omx-clap
+  * omx-clap rename: read the new names
+  * ci: every pull request body closes an issue
+  * V12: the vendored plugin_db_vocabulary.h is re-rendered without the pin
+    verdict and pool items
+  * V17: GroupingReason and RETRY_REASONS of both clients are written from
+    plugin-hostd's domain plugin-hostd/grouping
+  * V21: PHD_PARAM_SCALES is written from omx-contract's domain param,
+    protocol.h spells no scale word
+  * V12: the pin verdict and pool words are this package's domain,
+    protocol.h's pin words are generated from it
+  * V8: the probe words are this package's domain, protocol.h's lists are
+    generated from it
+  * Python client: command() and reply() speak through plugin_hostd_protocol
+    (#34)
+  * tests: the Python client's command() and reply() go through the codec
+    (#34, red)
+  * Python codec: the NUL helper's docstring passes the ruff documentation
+    gate
+  * Python client and codec refuse a NUL: it is the protocol's line end
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Mon, 23 Nov 2026 20:54:19 +0000

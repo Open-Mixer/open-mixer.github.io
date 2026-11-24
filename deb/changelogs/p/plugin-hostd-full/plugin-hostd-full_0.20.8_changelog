@@ -1,0 +1,29 @@
+plugin-hostd-full (0.20.8) unstable; urgency=medium
+
+  * release 0.20.8: the omx-clap-host floor is the 0.33.1 this pass ships
+  * release 0.20.8: floors move to the published plugin-hostd-protocol 0.7.0
+  * ci: turn the commit identity check on for pull requests
+  * lint: the Fedora 44 refusal matches any 44 in a matrix or block list, and
+    a missing workflows dir fails
+  * ci: Fedora 45 only (F44 dropped), as omx-dsp and omx-clap-core
+  * lint: refuse a Fedora 44 cell in any workflow (red at main until the
+    cells move)
+  * release.yml: samepass reads the list at the source-ref a dispatch builds
+  * release: 0.20.8
+  * packaging: floors move to this pass's releases
+  * release.yml reads the same-pass list through the shared action
+  * commit-msg: the shared stub byte for byte
+  * plugin-hostd-full: ranges.py says a breaking release stops and asks the
+    owner
+  * commit-msg hook: drop the FREEMIXER_DOTGITHUB aliases and the
+    ../freemixer-dotgithub fallback
+  * plugin-hostd-full: tests/ranges.py holds floors only, and refuses a
+    ceiling or a pin
+  * plugin-hostd-full: every dependency a floor, no ceiling, in the spec and
+    debian/control (red)
+  * ci: the RPM and the DEB run by workflow_dispatch only; make check runs in
+    lint.yml
+  * lint: the one pull-request workflow runs the trigger gate and
+    public-sources
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 20 Nov 2026 01:45:41 +0000
