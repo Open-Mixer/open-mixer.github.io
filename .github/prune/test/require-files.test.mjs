@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // --require-files: an index entry whose file is not where its location says is named and refused before any plan.
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -13,7 +13,7 @@ const pkgXml = (name, ver) => `<package type="rpm"><name>${name}</name><arch>noa
 <size package="10" installed="1" archive="1"/><location href="${name}-${ver}-1.fc44.noarch.rpm"/></package>`;
 
 function tree(filesOnDisk) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'reqfiles-'));
+  const dir = scratch('reqfiles-');
   const rd = path.join(dir, 'rpm/fedora/44/noarch/repodata');
   fs.mkdirSync(rd, { recursive: true });
   fs.writeFileSync(path.join(rd, 'repomd.xml'), '<repomd><data type="primary"><location href="repodata/primary.xml"/></data></repomd>');
@@ -40,7 +40,7 @@ test('every listed file on disk: the plan runs; without the flag a missing file 
 });
 
 test('--require-files without --tree refuses by name instead of skipping the check', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'requrl-'));
+  const dir = scratch('requrl-');
   fs.writeFileSync(path.join(dir, 'keep.yml'), 'keep:\n');
   const r = spawnSync('node', [select, '--keep', path.join(dir, 'keep.yml'), '--url', 'http://127.0.0.1:9', '--require-files'], { encoding: 'utf8' });
   assert.equal(r.status, 1, r.stdout + r.stderr);
@@ -48,7 +48,7 @@ test('--require-files without --tree refuses by name instead of skipping the che
 });
 
 test('deb: a Filename listed under a suite whose file is absent is named', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'reqdeb-'));
+  const dir = scratch('reqdeb-');
   const suite = path.join(dir, 'deb/debian/trixie');
   fs.mkdirSync(path.join(suite, 'amd64'), { recursive: true });
   const stanza = (v) => `Package: bar\nVersion: ${v}\nArchitecture: amd64\nSource: bar\nFilename: ./amd64/bar_${v}_amd64.deb\nSize: 10\n`;

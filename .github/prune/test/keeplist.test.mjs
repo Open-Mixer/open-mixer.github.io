@@ -4,10 +4,10 @@
 //   node --test .github/prune/test/
 // The newest-N rule and the generated keep-list, on fixture trees in the shape of the real indexes.
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -82,7 +82,7 @@ test('keep-list: a pin the channel does not serve is named (missing pin)', () =>
 });
 
 test('cli: select.mjs exits 1 on a missing pin and on a tampered keep-list; --newest 3 prints sizes', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'keeplist-'));
+  const dir = scratch('keeplist-');
   const suite = path.join(dir, 'deb/debian/bookworm');
   fs.mkdirSync(suite, { recursive: true });
   fs.writeFileSync(path.join(suite, 'Packages'), debs('foo', ['1.0-1', '1.1-1', '1.2-1', '1.3-1', '1.4-1']));
@@ -131,7 +131,7 @@ test('keep-list: a pending:>=floor line is named as pending, never a missing pin
 });
 
 test('cli: a pending line prints and the plan exits 0; the same line without pending: exits 1', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'keeplist-'));
+  const dir = scratch('keeplist-');
   const suite = path.join(dir, 'deb/debian/bookworm');
   fs.mkdirSync(suite, { recursive: true });
   fs.writeFileSync(path.join(suite, 'Packages'), debs('foo', ['1.0-1']));

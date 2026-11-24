@@ -6,9 +6,9 @@
 // The kept set is closed under dependencies, rich ones and ranges included: the case is the one that broke
 // the first apply, a contract package that needs an older build of a library than the newest.
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -114,7 +114,7 @@ test('deb: a range written as two groups keeps the build both allow, and the pla
 });
 
 test('deb: the install check names the older dependency build beside the package', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'closure-'));
+  const dir = scratch('closure-');
   const pkgs = parsePackages(DEB, 'debian/bookworm');
   const r = selectRepo(pkgs, KEEP_HOSTD, { newest: 1 });
   const plan = path.join(dir, 'plan.json');
@@ -151,7 +151,7 @@ function writeTree(root) {
 }
 
 test('cli: the plan carries the invariant, and --check fails a plan that breaks it', () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'closure-'));
+  const dir = scratch('closure-');
   const tree = path.join(dir, 'tree');
   writeTree(tree);
   fs.writeFileSync(path.join(dir, 'keep.yml'), 'keep:\n  - version: 0.18.0\n    rpm: [plugin-hostd-contract]\n    deb: [plugin-hostd-contract]\n    reason: pinned\n');

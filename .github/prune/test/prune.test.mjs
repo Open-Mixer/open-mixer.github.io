@@ -3,9 +3,9 @@
 //
 //   node --test .github/prune/test/
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -401,7 +401,7 @@ function writeTree(root, rpm, packages, extraFiles = []) {
 }
 
 test('cli: a tree is planned, unindexed files go, and the pruned tree checks clean', () => {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
+  const tmp = scratch('prune-');
   const keepFile = path.join(tmp, 'keep.yml');
   fs.writeFileSync(keepFile, KEEP);
   const before = path.join(tmp, 'before');
@@ -434,7 +434,7 @@ test('cli: a tree is planned, unindexed files go, and the pruned tree checks cle
 });
 
 test('expect: a deb installs with the kept packages of its source at its version', () => {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
+  const tmp = scratch('prune-');
   const planFile = path.join(tmp, 'plan.json');
   fs.writeFileSync(planFile, JSON.stringify({ keep: selectRepo(debPkgs(), keep).keep }));
   const run = (...a) => spawnSync(process.execPath, [path.join(here, '..', 'expect.mjs'), '--plan', planFile, ...a], { encoding: 'utf8' });
@@ -447,7 +447,7 @@ test('expect: a deb installs with the kept packages of its source at its version
 });
 
 test('cli: a drop overrides a pin on the version it names, says so, and a plain run still fails on that pin', () => {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
+  const tmp = scratch('prune-');
   const keepFile = path.join(tmp, 'keep.yml');
   fs.writeFileSync(keepFile, KEEP);
   const tree = path.join(tmp, 'tree');
@@ -462,7 +462,7 @@ test('cli: a drop overrides a pin on the version it names, says so, and a plain 
 });
 
 test('cli: a broken keep.yml stops the run', () => {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
+  const tmp = scratch('prune-');
   fs.writeFileSync(path.join(tmp, 'keep.yml'), 'keep:\n  - version: 1\n');
   const r = spawnSync(process.execPath, [select, '--keep', path.join(tmp, 'keep.yml'), '--tree', tmp], { encoding: 'utf8' });
   assert.equal(r.status, 2);
@@ -560,7 +560,7 @@ function openmixerRepo(root) {
 }
 
 test('cli: what openmixer main pins survives the plan in rpm, deb and npm', () => {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
+  const tmp = scratch('prune-');
   const om = path.join(tmp, 'openmixer');
   openmixerRepo(om);
   const pinsFile = path.join(tmp, 'pins.json');
@@ -589,7 +589,7 @@ test('cli: what openmixer main pins survives the plan in rpm, deb and npm', () =
 });
 
 test('cli: no origin/main to read is an error, not an empty pin list', () => {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
+  const tmp = scratch('prune-');
   spawnSync('git', ['init', '-q', tmp]);
   const p = spawnSync(process.execPath, [path.join(here, '..', 'pins.mjs'), '--repo', tmp], { encoding: 'utf8' });
   assert.equal(p.status, 2);
@@ -624,7 +624,7 @@ test('pins: a source one format builds without the pinned version is named for t
 
 test('cli: a plan that would delete a pinned version fails the run and names it', () => {
   // the selection is broken on purpose in a copy, so the gate in select.mjs is what must catch it
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-'));
+  const tmp = scratch('prune-');
   const copy = path.join(tmp, 'prune');
   fs.cpSync(path.join(here, '..'), copy, { recursive: true });
   const lib = path.join(copy, 'prune.mjs');
@@ -758,7 +758,7 @@ function writeCells(root, debSuites, rpmRels) {
 }
 
 const cellRun = () => {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-cell-'));
+  const tmp = scratch('prune-cell-');
   fs.writeFileSync(path.join(tmp, 'keep.yml'), 'keep:\n');
   const tree = path.join(tmp, 'tree');
   writeCells(tree, { trixie: hostdDebs(), bookworm: hostdDebs() }, { 44: hostdRpms(44) });
@@ -824,7 +824,7 @@ const trixieHostd = () => [
 ].join('\n\n') + '\n';
 
 const binaryRun = () => {
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'prune-binary-'));
+  const tmp = scratch('prune-binary-');
   fs.writeFileSync(path.join(tmp, 'keep.yml'), 'keep:\n');
   const tree = path.join(tmp, 'tree');
   writeCells(tree, { trixie: trixieHostd(), bookworm: trixieHostd() }, {});

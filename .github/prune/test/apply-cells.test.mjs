@@ -9,9 +9,9 @@
 // action is read from OMX_ACTIONS (a checkout's .github/actions; the plan job sets it), else cloned at openmixer-v1.
 // PRUNE_WORKFLOW points the tests at another prune.yml (a sabotaged copy).
 import { test } from 'node:test';
+import { scratch } from './scratch.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -21,7 +21,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const select = path.join(here, '..', 'select.mjs');
 const expectMjs = path.join(here, '..', 'expect.mjs');
 const workflow = process.env.PRUNE_WORKFLOW || path.join(here, '..', '..', 'workflows', 'prune.yml');
-const tmpRoot = () => fs.mkdtempSync(path.join(os.tmpdir(), 'prune-apply-'));
+const tmpRoot = () => scratch('prune-apply-');
 
 let actionsDir = process.env.OMX_ACTIONS;
 function actions() {

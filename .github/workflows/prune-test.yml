@@ -35,7 +35,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node --test .github/prune/test/*.test.mjs
+      # The prune tests under an empty TMPDIR: they must pass and leave nothing there; then the same run with their
+      # cleanup sabotaged, which the gate must catch (.github/prune/tmp-gate.sh).
+      - run: .github/prune/tmp-gate.sh --self-test
 
   pr-fixes-issue:
     if: github.event_name == 'pull_request'
