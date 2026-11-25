@@ -1,7 +1,9 @@
 # package	version	set	cells
+libomx-domain	0.23.0	full	fc45/aarch64 fc45/x86_64
 libomx-domain	3.22.0	full	fc45/aarch64 fc45/x86_64
 libomx-domain	3.23.0	full	fc45/aarch64 fc45/x86_64
 libomx-domain-debuginfo	3.22.0	quick	fc45/x86_64
+libomx-domain-devel	0.23.0	full	fc45/aarch64 fc45/x86_64
 libomx-domain-devel	3.22.0	full	fc45/aarch64 fc45/x86_64
 libomx-domain-devel	3.23.0	full	fc45/aarch64 fc45/x86_64
 libomx-domain-devel-debuginfo	3.22.0	quick	fc45/x86_64
@@ -21,24 +23,33 @@ omx-clap-host-tests-debuginfo	0.35.0	quick	fc45/x86_64
 omx-clap-libs	0.35.0	quick	fc45/x86_64
 omx-clap-libs-debuginfo	0.35.0	quick	fc45/x86_64
 omx-clap-lv2-devel	0.35.0	quick	fc45/x86_64
+omx-contract	0.23.0	full	fc45/aarch64 fc45/x86_64
 omx-contract	3.22.0	full	fc45/aarch64 fc45/x86_64
 omx-contract	3.23.0	full	fc45/aarch64 fc45/x86_64
+omx-contract-data	0.23.0	full	fc45/noarch
 omx-contract-data	3.22.0	full	fc45/noarch fc45/x86_64
 omx-contract-data	3.23.0	full	fc45/noarch
 omx-contract-debuginfo	3.22.0	quick	fc45/x86_64
 omx-contract-debugsource	3.22.0	quick	fc45/x86_64
+omx-contract-devel	0.23.0	full	fc45/noarch
 omx-contract-devel	3.22.0	full	fc45/noarch fc45/x86_64
 omx-contract-devel	3.23.0	full	fc45/noarch
+omx-contract-langpack-ca	0.23.0	full	fc45/noarch
 omx-contract-langpack-ca	3.22.0	full	fc45/noarch fc45/x86_64
 omx-contract-langpack-ca	3.23.0	full	fc45/noarch
+omx-contract-langpack-de	0.23.0	full	fc45/noarch
 omx-contract-langpack-de	3.22.0	full	fc45/noarch fc45/x86_64
 omx-contract-langpack-de	3.23.0	full	fc45/noarch
+omx-contract-langpack-es	0.23.0	full	fc45/noarch
 omx-contract-langpack-es	3.22.0	full	fc45/noarch fc45/x86_64
 omx-contract-langpack-es	3.23.0	full	fc45/noarch
+omx-contract-langpack-fr	0.23.0	full	fc45/noarch
 omx-contract-langpack-fr	3.22.0	full	fc45/noarch fc45/x86_64
 omx-contract-langpack-fr	3.23.0	full	fc45/noarch
+omx-contract-langpack-it	0.23.0	full	fc45/noarch
 omx-contract-langpack-it	3.22.0	full	fc45/noarch fc45/x86_64
 omx-contract-langpack-it	3.23.0	full	fc45/noarch
+omx-contract-langpack-pt	0.23.0	full	fc45/noarch
 omx-contract-langpack-pt	3.22.0	full	fc45/noarch fc45/x86_64
 omx-contract-langpack-pt	3.23.0	full	fc45/noarch
 omx-dsp-contract	0.34.1	quick	fc45/noarch fc45/x86_64
@@ -111,6 +122,7 @@ plugin-qualify-langpack-es	0.21.0	quick	fc45/x86_64
 plugin-qualify-langpack-fr	0.21.0	quick	fc45/x86_64
 plugin-qualify-langpack-it	0.21.0	quick	fc45/x86_64
 plugin-qualify-langpack-pt	0.21.0	quick	fc45/x86_64
+python3-omx-contract	0.23.0	full	fc45/noarch
 python3-omx-contract	3.22.0	full	fc45/noarch fc45/x86_64
 python3-omx-contract	3.23.0	full	fc45/noarch
 python3-plugin-db	0.5.1	quick	fc45/x86_64
