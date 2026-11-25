@@ -2,6 +2,7 @@
 libomx-contract-dev	0.23.0	full	trixie/all
 libomx-domain-dev	0.23.0	full	trixie/amd64 trixie/arm64
 libomx-domain0	0.23.0	full	trixie/amd64 trixie/arm64
+libomxdsp-dev	0.34.1	full	trixie/amd64 trixie/arm64
 omx-contract	0.23.0	full	trixie/all
 omx-contract-data	0.23.0	full	trixie/all
 omx-contract-l10n-ca	0.23.0	full	trixie/all
@@ -10,4 +11,8 @@ omx-contract-l10n-es	0.23.0	full	trixie/all
 omx-contract-l10n-fr	0.23.0	full	trixie/all
 omx-contract-l10n-it	0.23.0	full	trixie/all
 omx-contract-l10n-pt	0.23.0	full	trixie/all
+omx-dsp-contract	0.34.1	full	trixie/all
+omx-dsp-wasm	0.34.1	full	trixie/all
+omx-rt-gate	0.34.1	full	trixie/amd64 trixie/arm64
+omx-rta-read	0.34.1	full	trixie/amd64 trixie/arm64
 python3-omx-contract	0.23.0	full	trixie/all
