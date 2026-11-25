@@ -45,14 +45,17 @@ libomx-contract-dev	3.20.0	quick	trixie/all
 libomx-contract-dev	3.20.1	quick	trixie/all
 libomx-contract-dev	3.20.2	quick	trixie/all
 libomx-contract-dev	3.21.0	quick	trixie/all
+libomx-contract-dev	3.22.0	full	trixie/all
 libomx-domain-dev	3.20.0	quick	trixie/arm64
 libomx-domain-dev	3.20.1	quick	trixie/arm64
 libomx-domain-dev	3.20.2	quick	trixie/arm64
 libomx-domain-dev	3.21.0	quick	trixie/arm64
+libomx-domain-dev	3.22.0	full	trixie/amd64 trixie/arm64
 libomx-domain0	3.20.0	quick	trixie/arm64
 libomx-domain0	3.20.1	quick	trixie/arm64
 libomx-domain0	3.20.2	quick	trixie/arm64
 libomx-domain0	3.21.0	quick	trixie/arm64
+libomx-domain0	3.22.0	full	trixie/amd64 trixie/arm64
 libomx-panel-render-dev	0.13.5	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libomx-panel-render-dev	0.13.7	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libomx-panel-render-dev	0.13.8	quick	trixie/arm64
@@ -180,6 +183,7 @@ omx-contract	3.20.0	quick	trixie/all
 omx-contract	3.20.1	quick	trixie/all
 omx-contract	3.20.2	quick	trixie/all
 omx-contract	3.21.0	quick	trixie/all
+omx-contract	3.22.0	full	trixie/all
 omx-contract-data	3.14.0	-	bookworm/all
 omx-contract-data	3.17.0	-	bookworm/all trixie/all
 omx-contract-data	3.19.0	quick	trixie/all
@@ -188,6 +192,7 @@ omx-contract-data	3.20.0	quick	trixie/all
 omx-contract-data	3.20.1	quick	trixie/all
 omx-contract-data	3.20.2	quick	trixie/all
 omx-contract-data	3.21.0	quick	trixie/all
+omx-contract-data	3.22.0	full	trixie/all
 omx-contract-l10n-ca	3.17.0	-	bookworm/all trixie/all
 omx-contract-l10n-ca	3.19.0	quick	trixie/all
 omx-contract-l10n-ca	3.19.1	quick	trixie/all
@@ -195,6 +200,7 @@ omx-contract-l10n-ca	3.20.0	quick	trixie/all
 omx-contract-l10n-ca	3.20.1	quick	trixie/all
 omx-contract-l10n-ca	3.20.2	quick	trixie/all
 omx-contract-l10n-ca	3.21.0	quick	trixie/all
+omx-contract-l10n-ca	3.22.0	full	trixie/all
 omx-contract-l10n-de	3.17.0	-	bookworm/all trixie/all
 omx-contract-l10n-de	3.19.0	quick	trixie/all
 omx-contract-l10n-de	3.19.1	quick	trixie/all
@@ -202,6 +208,7 @@ omx-contract-l10n-de	3.20.0	quick	trixie/all
 omx-contract-l10n-de	3.20.1	quick	trixie/all
 omx-contract-l10n-de	3.20.2	quick	trixie/all
 omx-contract-l10n-de	3.21.0	quick	trixie/all
+omx-contract-l10n-de	3.22.0	full	trixie/all
 omx-contract-l10n-es	3.17.0	-	bookworm/all trixie/all
 omx-contract-l10n-es	3.19.0	quick	trixie/all
 omx-contract-l10n-es	3.19.1	quick	trixie/all
@@ -209,6 +216,7 @@ omx-contract-l10n-es	3.20.0	quick	trixie/all
 omx-contract-l10n-es	3.20.1	quick	trixie/all
 omx-contract-l10n-es	3.20.2	quick	trixie/all
 omx-contract-l10n-es	3.21.0	quick	trixie/all
+omx-contract-l10n-es	3.22.0	full	trixie/all
 omx-contract-l10n-fr	3.17.0	-	bookworm/all trixie/all
 omx-contract-l10n-fr	3.19.0	quick	trixie/all
 omx-contract-l10n-fr	3.19.1	quick	trixie/all
@@ -216,6 +224,7 @@ omx-contract-l10n-fr	3.20.0	quick	trixie/all
 omx-contract-l10n-fr	3.20.1	quick	trixie/all
 omx-contract-l10n-fr	3.20.2	quick	trixie/all
 omx-contract-l10n-fr	3.21.0	quick	trixie/all
+omx-contract-l10n-fr	3.22.0	full	trixie/all
 omx-contract-l10n-it	3.17.0	-	bookworm/all trixie/all
 omx-contract-l10n-it	3.19.0	quick	trixie/all
 omx-contract-l10n-it	3.19.1	quick	trixie/all
@@ -223,6 +232,7 @@ omx-contract-l10n-it	3.20.0	quick	trixie/all
 omx-contract-l10n-it	3.20.1	quick	trixie/all
 omx-contract-l10n-it	3.20.2	quick	trixie/all
 omx-contract-l10n-it	3.21.0	quick	trixie/all
+omx-contract-l10n-it	3.22.0	full	trixie/all
 omx-contract-l10n-pt	3.17.0	-	bookworm/all trixie/all
 omx-contract-l10n-pt	3.19.0	quick	trixie/all
 omx-contract-l10n-pt	3.19.1	quick	trixie/all
@@ -230,6 +240,7 @@ omx-contract-l10n-pt	3.20.0	quick	trixie/all
 omx-contract-l10n-pt	3.20.1	quick	trixie/all
 omx-contract-l10n-pt	3.20.2	quick	trixie/all
 omx-contract-l10n-pt	3.21.0	quick	trixie/all
+omx-contract-l10n-pt	3.22.0	full	trixie/all
 omx-dsp-contract	0.31.0	-	bookworm/all
 omx-dsp-contract	0.32.0	-	bookworm/all
 omx-dsp-contract	0.32.3	quick	trixie/all
@@ -501,6 +512,7 @@ python3-omx-contract	3.20.0	quick	trixie/all
 python3-omx-contract	3.20.1	quick	trixie/all
 python3-omx-contract	3.20.2	quick	trixie/all
 python3-omx-contract	3.21.0	quick	trixie/all
+python3-omx-contract	3.22.0	full	trixie/all
 python3-plugin-db	0.4.0	-	bookworm/all
 python3-plugin-db	0.4.1	-	bookworm/all
 python3-plugin-db	0.4.4	quick	trixie/all
