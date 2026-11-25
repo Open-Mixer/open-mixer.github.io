@@ -1,0 +1,50 @@
+omx-contract (0.23.1) unstable; urgency=medium
+
+  * omx-contract 0.23.1: the test audit rows 9 and 16, above the 0.23.0
+    staging serves
+  * test: the md render's param page says since 0.1.0
+  * renders: the committed header and json say since 0.1.0, rendered from the
+    reset domains
+  * domains: a domain's info.version is the vocabulary's own, at 0.1.0, never
+    its package's
+  * semver: a tag of another major is refused by name, exit 2
+  * format: every domain document and manifest states x-omx-contract, and
+    every reader holds it
+  * docs/contract-dir: every domain document and manifest states its format,
+    x-omx-contract
+  * schema: omx-contract's format is 0.23.0, its ids v0
+  * packaging and docs: omx-contract's own data is <contractdir>/omx-contract/
+  * contract directory: the installer and the reader have no schema-major
+    level
+  * docs/contract-dir: the contract directory has no schema-major level
+  * release: the bump is held to the newest tag of package.json's major
+  * version: omx-contract is 0.23.0, and its two domains are 0.23.0 with no
+    x-since above it
+  * render json: the vocabulary schema's $id names the schema's major, never
+    the package version's
+  * test: the rpm-on-tag sabotage arm finds the rpm job's devel-push condition
+  * release: a merge to devel publishes the real package to staging
+  * publish.yml: only the dry-run-only promote jobs may be skipped; every
+    other promote job must succeed
+  * publish.yml: a skipped dry-run-only promote job passes the npm gate; the
+    channel jobs must each succeed
+  * omx-contract 3.23.0: the changes since 3.22.0 are MINOR
+  * install-cli: the CLI tree carries the example descriptors its
+    package.json exports
+  * domain format: a reply code's x-leaves-no-mark is the data form's
+    leavesNoMark
+  * param-units-clap-encoded test: the item ships in 3.22.0, the domain may
+    be a later 3.x
+  * param domain 3.23.0: PARAM_FILTER_RESPONSES is new in 3.23.0
+  * docs/render.md, CHANGELOG: --data --with-domain names the domain document
+    in its provenance (#241)
+  * render --data --with-domain: a rebuilt file names its domain document in
+    every provenance line
+  * filter-response test: no pin of omx-dsp's copy; omx-dsp reads the item
+  * descriptor: a filter control states its response, a word of
+    PARAM_FILTER_RESPONSES
+  * test audit rows 9 and 16: FreeMixer issue references kept as records;
+    packaging facts held on the built packages
+  * render ts: a domain's module names its domain document in GENERATED
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Wed, 25 Nov 2026 22:02:40 +0000
