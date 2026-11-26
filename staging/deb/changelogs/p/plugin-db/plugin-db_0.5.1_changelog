@@ -1,0 +1,69 @@
+plugin-db (0.5.1) unstable; urgency=medium
+
+  * release: the RPM is x86_64 only, as the build requirements it is built
+    against are
+  * The contract directory has no schema-major level: plugin-db's owner
+    manifest sits beside its domains
+  * domains: every domain is at 0.1.0, its vocabulary own version, never the
+    package one
+  * The four domains carry the package's version, 0.5.1
+  * release: a merge to devel publishes the real package to staging
+  * owner-manifest: the check reads plugin-db's install alone
+  * install-contract: plugin-db's owner manifest beside its domains (#84)
+  * test: install-contract writes plugin-db's owner manifest (red, #84)
+  * pin: the pin keys and changes are read from plugin-hostd-protocol's
+    domain pin (plugin-db#34, step 2)
+  * tests: plugin-db holds no pin key or pin change item (red; plugin-db#34)
+  * .githooks/commit-msg is the shared stub, byte for byte
+  * plugin-feature test: an empty info.x-requires is refused, an absent one
+    refers to nothing
+  * version-check: a +git snapshot's changelog entry is the release's version
+  * lv2: urn:openmixer:unit#dBs reads the standard unit dBPerS
+  * The floors the folded leaves brought, and the twin's Node ceiling
+  * plugin-feature: info.x-requires is an array of names, no version
+  * packaging, loader: no hand-kept version floor
+  * C2: the domains state PARAM_UNITS ids (units:pc reads percent, dBoct
+    reads dBPerOct)
+  * lv2: units:coef reads the standard unit coef, not "x" (omx-contract
+    3.22.0)
+  * packaging/ci-only.txt: omx-clap-contract, which only make check-tools
+    reads
+  * install-contract: every --domain call names the package that installs it
+  * ci: the jobs install what main's 0.5.0 tests read, and the two pin.h
+    sabotage patches apply again
+  * packaging: deps.txt states the floors the spec and debian/control carry
+    since 0.5.0
+  * plugin-db-contract: a noarch %package -n, so the chain can bootstrap it
+  * make docs-site and docs.yml: the C API reference published per release
+    under /reference/plugin-db/ (Open-Mixer/.github#242)
+  * the documentation gate over the installed headers: Open-Mixer/.github's
+    doc-gate, its baseline only shrinks (Open-Mixer/.github#242)
+  * python: text() imports omx_contract.catalog, python3-omx-contract is the
+    floor
+  * pin: the refusal for two CLAP files of one id names the first file
+  * ci, fuzz: the reader twin, the declared words and the fuzz jobs take
+    their cells from check-matrix
+  * ci: bookworm stays a full cell of the test job
+  * ci: the shared Fedora workflow guard replaces the local copy
+  * C2: the domains state PARAM_UNITS ids (units:pc reads percent, dBoct
+    reads dBPerOct)
+  * deps.txt: the floors the spec and debian/control state (omx-contract
+    3.21.0, plugin-hostd-protocol 0.8.0)
+  * release: plugin-db 0.5.1 (0.5.0 to 0.5.1), a patch
+  * lv2: units:coef reads the standard unit coef, not "x" (omx-contract
+    3.22.0)
+  * ci: Fedora 45 only (Fedora 44 dropped)
+  * ci: refuse a Fedora 44 reference in the workflows
+  * ci: Fedora 45 alone, the fc44 builds are dropped
+  * ci: the test cells come from check-matrix, each on its own architecture's
+    runner
+  * ci: the build, twin, words and ABI jobs take their cells from
+    check-matrix, on main's ci.yml
+  * ci: main's ci.yml whole; the lane's check-matrix cells did not apply on
+    it and are to be re-applied by hand
+  * ci: each cell uploads its own fuzz-findings artifact
+  * ci, fuzz: the build, the reader twin, the declared words, the ABI and the
+    fuzz jobs take their cells from check-matrix
+  * ci: fedora-cells over the workflows, red on the fc44-only jobs
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 26 Nov 2026 03:08:24 +0000
