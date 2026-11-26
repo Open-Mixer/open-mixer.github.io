@@ -1,0 +1,154 @@
+plugin-hostd-protocol (0.21.0) unstable; urgency=medium
+
+  * release: the devel run builds what its build requirements are served for
+    (#188)
+  * The contract directory has no schema-major level: the readers and the
+    domains follow
+  * domains: every domain is at 0.1.0, its vocabulary own version, never the
+    package one
+  * 0.M.m until 1.0: every domain at the package version, 0.21.0
+  * same_pass_test: rpm and deb wait for samepass in a needs list too
+  * Makefile: the .PHONY continuation the #181 merge broke
+  * hosting-verb carries its own translations: the HOSTING_VERB_HOSTS words
+    moved from omx-clap-core (ruling R5)
+  * release: a merge to devel publishes the real package to staging
+  * curve_bind: a unit is matched against omx-dsp's OMX_CURVE_UNIT_WORDS, the
+    PARAM_UNITS ids (#184)
+  * omx-contract-devel: the name only, no floor (#182)
+  * install-contract: every --domain call names the package that installs it
+    (#182)
+  * public-sources: the served floor runs on every pull request, not only in
+    ci.yml's dispatched run (#180)
+  * commit-msg hook: the shared stub byte for byte again (no-local-copies was
+    red: the stub dropped the FREEMIXER_ names)
+  * plugin-hostd-protocol 0.21.0: above the 0.20.6
+    python3-plugin-hostd-protocol had under plugin-hostd (#180)
+  * libplugin-hostd-protocol0 provides plugin-hostd-protocol, the library's
+    RPM name, so plugin-hostd-full installs on Debian (#180)
+  * served-floor: a release is refused below the highest version the channel
+    ever served any of its packages at (#180)
+  * clients/python: leaves_no_mark's docstring is fixed, not carried by a noqa
+  * clients/python: the leaves_no_mark docstring carries the noqa the others
+    carry
+  * C2 findings on #175: the pyc files go, leaves_no_mark() has its Python
+    test
+  * pin-refused leaves no mark on the plugin: the table half of #121, carried
+    from 4aa1524
+  * ts: one TypeScript encoder, the client over the codec's Protocol
+  * plugin-db's package is no longer rendered here: the build reads nothing
+    of plugin-db
+  * ci: the shapes job reads omx-contract from this run's branch, not a
+    pinned commit
+  * abi: the baseline is written again for host_backend_t's param_origin
+  * HOSTING_VERB_HOSTS is held to the three golden hosts here, where it lives
+    (V29 moved with the item)
+  * ci.yml: a pull request into devel may take its packages from the staging
+    channel
+  * .githooks/commit-msg is the shared stub, byte for byte
+  * test-no-clap-core-read: a domain's x-requires that is no list of names is
+    refused before anything indexes it
+  * No version in prose: abi_clobber names its worker, and no_floors refuses
+    "<package> X.Y.Z or later"
+  * Review fixes: fuzz records, no_floors arms, x-requires readers, unit ids,
+    probe format 2.0
+  * test-no-clap-core-read: no packaging/deps.txt to read, and
+    info.x-requires is a list of names
+  * No hand-kept version floors: deps.txt gone, requirements name packages
+    only
+  * curve: the unit enumerators by their PARAM_UNITS title,
+    OMX_CURVE_UNITS_DB, _DBFS, _KHZ (omx-contract#206)
+  * probe output format 2.0: the cost unit is nsPerSample
+  * install-contract: every --domain call names the package that installs it
+  * protocol: the setting ask_unknown, auto (the default), 1 or 0 (#157)
+  * tests: ask_unknown is declared, a word of auto, 1 and 0, default auto
+    (#157)
+  * What the protocol shares with omx-clap-core is this package's: the build
+    reads nothing of it (#67)
+  * The pin keys and pin changes words are this package's domain pin;
+    protocol.h reads no plugin-db header
+  * contract: the domain plugin-hostd-protocol requires host >= 0.35.0
+  * Curve unit words read as omx-dsp's B form: OMX_CURVE_UNIT_WORDS, the
+    PARAM_UNITS ids (#162)
+  * test-no-clap-core-read: the build reads nothing of omx-clap-core (red
+    first, #67)
+  * curve_points: the marks are one typed word after the count
+  * tests: curve_words_test finds omx_curve.h where the compiler does
+  * protocol_parse answers a line whose first word is empty; the fuzz models
+    skip a blanks-only line (#152)
+  * fuzz: the seed corpus carries curve_points' mark count
+  * protocol: the ask words of the descriptions store, in the table, the
+    grammar and the header (#128)
+  * contract: description_get, and -529/-530 widened to the descriptions
+    store (#128)
+  * contract: the domain plugin-hostd-protocol requires host >= 0.35.0
+  * test-client-installed: the client as its consumers get it, installed,
+    with no tree on the path
+  * PHD_PRESET_FILE_MAX documented as ruled 2026-11-23 (#70): the protocol's
+    64 MiB ceiling
+  * Revert "PHD_PRESET_FILE_MAX removed: no reader of the protocol applies it"
+  * PHD_PRESET_FILE_MAX removed: no reader of the protocol applies it
+  * host_dispatch_register_unsupported's doc block wrapped at 120 columns, as
+    the rest of the header
+  * Every public declaration of the headers documented:
+    tools/doxygen.baseline is empty (Fixes #66)
+  * fuzz: the records follow src/protocol.c's moved lines, and make test
+    holds every record's line (#149)
+  * curve: build on omx-dsp #142's unit names (OMX_CURVE_UNIT_WORDS, _D_B)
+  * rulings of 2026-11-23: history_get's none words (#86), the preset file
+    ceiling (#70)
+  * shapes sabotage: each arm is red for the reason it names
+  * reply forms and schemas for remote_page_get, note_input, note_drops,
+    note_out_drops
+  * history_get: the parsed reply tells "unavailable" from "-"
+  * make docs-site and docs.yml: the protocol and C API reference published
+    per release under /reference/plugin-hostd-protocol/
+    (Open-Mixer/.github#242)
+  * protocol.h: drop PHD_PRESET_ALIAS_MAX, a macro nothing reads
+  * quoted: a backslash inside a quoted word is written and read as \\
+  * param_info: the unit word is a PARAM_UNITS standard id
+  * plugin-hostd-protocol 0.9.0: VERSION, the spec, debian/changelog and
+    package.json
+  * codec (TypeScript): one reading of the domains, as the Python codec's;
+    the fold left two
+  * V16: the words of the protocol are the domain plugin-hostd-protocol,
+    named after the package that owns it
+  * V16 is on the sorting pass again: the fold's revert 99658e8 is reverted
+  * curve_points: the typed prose stays the points' layout, the rendered
+    verbs header follows the doc
+  * tests: the grammar's curve-origin and curve-leg are omx-dsp's words, with
+    a sabotage
+  * host-backend.h: param_origin is documented (the doxygen gate)
+  * golden: curve_points' replies end with their mark count; the ABNF
+    corpus's grammar sum
+  * tests: the positional host_backend_t tables carry param_origin's NULL
+  * host: curve_points answers the marks a corrector planted
+  * protocol: curve_points' reply carries the marks a corrector planted
+  * clients/ts: leavesNoMark(code), read from the table
+  * clients/ts: a code that leaves no mark, read from the table (red)
+  * estimate: the CPU ceiling is the domain's scalar ESTIMATE_CPU_CEILING,
+    rendered into protocol.h
+  * tests: the CPU ceiling of the insert verdict is the domain's scalar,
+    rendered by the generator (red)
+  * codec: the TypeScript codec's estimate test reads the verdict and its
+    reason
+  * estimate: the host's insert verdict is a word of the domain estimate, and
+    the reply ends with it
+  * tests: the insert verdict of estimate is the host's, its words generated
+    from the domain estimate (red)
+  * tests: the scratch tree of generated-sabotage.sh copies contract.d
+  * pin words: the domain pin is this package's, protocol.h's pin words are
+    generated from it (sorting pass, V12)
+  * tests: the pin words of protocol.h are generated from the pin domain
+    (red; sorting pass, V12)
+  * probe words: the domain probe is this package's, protocol.h's lists are
+    generated from it
+  * tests: the probe words of protocol.h are generated from the probe domain
+    (red)
+  * commit-msg: the shared stub without the old FREEMIXER names
+  * golden: curve_points' replies end with their mark count; the ABNF
+    corpus's grammar sum
+  * tests: the positional host_backend_t tables carry param_origin's NULL
+  * host: curve_points answers the marks a corrector planted
+  * protocol: curve_points' reply carries the marks a corrector planted
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Thu, 26 Nov 2026 02:57:01 +0000
