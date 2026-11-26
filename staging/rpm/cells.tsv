@@ -78,6 +78,9 @@ plugin-db-langpack-es	0.5.1	full	fc45/noarch
 plugin-db-langpack-fr	0.5.1	full	fc45/noarch
 plugin-db-langpack-it	0.5.1	full	fc45/noarch
 plugin-db-langpack-pt	0.5.1	full	fc45/noarch
+plugin-hostd	0.22.0	full	fc45/x86_64
+plugin-hostd-contract	0.22.0	full	fc45/noarch
+plugin-hostd-devel	0.22.0	full	fc45/noarch
 plugin-hostd-protocol	0.21.0	full	fc45/x86_64
 plugin-hostd-protocol-contract	0.21.0	full	fc45/noarch
 plugin-hostd-protocol-devel	0.21.0	full	fc45/x86_64
@@ -87,6 +90,7 @@ plugin-hostd-protocol-langpack-es	0.21.0	full	fc45/noarch
 plugin-hostd-protocol-langpack-fr	0.21.0	full	fc45/noarch
 plugin-hostd-protocol-langpack-it	0.21.0	full	fc45/noarch
 plugin-hostd-protocol-langpack-pt	0.21.0	full	fc45/noarch
+plugin-hostd-tests	0.22.0	full	fc45/x86_64
 plugin-qualification-db	2026112401	full	fc45/aarch64 fc45/x86_64
 plugin-qualification-db-schema	2026112401	full	fc45/noarch
 plugin-qualification-db-write	2026112401	full	fc45/noarch
