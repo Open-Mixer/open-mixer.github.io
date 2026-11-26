@@ -42,6 +42,15 @@ omx-rt-gate	0.34.1	full	fc45/x86_64
 omx-rt-gate	0.34.2	full	fc45/x86_64
 omx-rta-read	0.34.1	full	fc45/x86_64
 omx-rta-read	0.34.2	full	fc45/x86_64
+plugin-db	0.5.1	full	fc45/x86_64
+plugin-db-contract	0.5.1	full	fc45/noarch
+plugin-db-devel	0.5.1	full	fc45/x86_64
+plugin-db-langpack-ca	0.5.1	full	fc45/noarch
+plugin-db-langpack-de	0.5.1	full	fc45/noarch
+plugin-db-langpack-es	0.5.1	full	fc45/noarch
+plugin-db-langpack-fr	0.5.1	full	fc45/noarch
+plugin-db-langpack-it	0.5.1	full	fc45/noarch
+plugin-db-langpack-pt	0.5.1	full	fc45/noarch
 plugin-hostd-protocol	0.21.0	full	fc45/x86_64
 plugin-hostd-protocol-contract	0.21.0	full	fc45/noarch
 plugin-hostd-protocol-devel	0.21.0	full	fc45/x86_64
@@ -54,5 +63,6 @@ plugin-hostd-protocol-langpack-pt	0.21.0	full	fc45/noarch
 python3-omx-contract	0.23.0	full	fc45/noarch
 python3-omx-contract	0.23.1	full	fc45/noarch
 python3-omx-contract	0.23.2	full	fc45/noarch
+python3-plugin-db	0.5.1	full	fc45/noarch
 python3-plugin-hostd-client	0.21.0	full	fc45/noarch
 python3-plugin-hostd-protocol	0.21.0	full	fc45/noarch
