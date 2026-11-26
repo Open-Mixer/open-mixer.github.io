@@ -19,7 +19,9 @@ libomxdsp-dev	0.34.1	full	trixie/amd64 trixie/arm64
 libomxdsp-dev	0.34.2	full	trixie/amd64 trixie/arm64
 libplugin-hostd-protocol-dev	0.21.0	full	trixie/amd64 trixie/arm64
 libplugin-hostd-protocol0	0.21.0	full	trixie/amd64 trixie/arm64
+libplugin-qualification-db-dev	0.1.0	full	trixie/arm64
 libplugin-qualification-db-dev	2026112401	full	trixie/arm64
+libplugin-qualification-db0	0.1.0	full	trixie/arm64
 libplugin-qualification-db0	2026112401	full	trixie/arm64
 omx-clap-contract	0.35.0	full	trixie/all
 omx-clap-host	0.35.0	full	trixie/amd64 trixie/arm64
@@ -104,9 +106,13 @@ plugin-hostd-protocol-l10n-fr	0.21.0	full	trixie/all
 plugin-hostd-protocol-l10n-it	0.21.0	full	trixie/all
 plugin-hostd-protocol-l10n-pt	0.21.0	full	trixie/all
 plugin-hostd-tests	0.22.0	full	trixie/arm64
+plugin-qualification-db	0.1.0	full	trixie/arm64
 plugin-qualification-db	2026112401	full	trixie/arm64
+plugin-qualification-db-schema	0.1.0	full	trixie/all
 plugin-qualification-db-schema	2026112401	full	trixie/all
+plugin-qualification-db-write	0.1.0	full	trixie/all
 plugin-qualification-db-write	2026112401	full	trixie/all
+plugin-qualification-records	0.1.0	full	trixie/arm64
 plugin-qualification-records	2026112401	full	trixie/arm64
 plugin-qualify	0.21.2	full	trixie/amd64 trixie/arm64
 plugin-qualify-l10n-ca	0.21.2	full	trixie/all
