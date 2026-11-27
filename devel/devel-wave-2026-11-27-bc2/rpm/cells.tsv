@@ -1,6 +1,8 @@
 # package	version	set	cells
 libomx-domain	0.24.0	full	fc45/aarch64 fc45/x86_64
 libomx-domain-devel	0.24.0	full	fc45/aarch64 fc45/x86_64
+libplugin-qualification-db	0.1.2	full	fc45/aarch64 fc45/x86_64
+libplugin-qualification-db-devel	0.1.2	full	fc45/aarch64 fc45/x86_64
 omx-clap-contract	0.36.0	full	fc45/noarch
 omx-clap-devel	0.36.0	full	fc45/aarch64 fc45/x86_64
 omx-clap-host	0.36.0	full	fc45/aarch64 fc45/x86_64
@@ -26,4 +28,8 @@ plugin-hostd	0.22.2	full	fc45/aarch64 fc45/x86_64
 plugin-hostd-contract	0.22.2	full	fc45/noarch
 plugin-hostd-devel	0.22.2	full	fc45/noarch
 plugin-hostd-tests	0.22.2	full	fc45/aarch64 fc45/x86_64
+plugin-qualification-db	0.1.2	full	fc45/aarch64 fc45/x86_64
+plugin-qualification-db-schema	0.1.2	full	fc45/noarch
+plugin-qualification-db-write	0.1.2	full	fc45/noarch
+plugin-qualification-records	0.1.2	full	fc45/aarch64 fc45/x86_64
 python3-omx-contract	0.24.0	full	fc45/noarch
