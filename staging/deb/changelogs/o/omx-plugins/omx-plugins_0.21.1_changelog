@@ -1,0 +1,202 @@
+omx-plugins (0.21.1) unstable; urgency=medium
+
+  * generated: every file renders 0.21.1 and links omx-dsp 0.34.3, the
+    release staging serves
+  * release: omx-plugins 0.21.1 (0.21.0 to 0.21.1), a patch
+  * release: the RPMs build for Fedora aarch64 too, not x86_64 alone (#231)
+  * strip-bands: the strip before its band count includes a moved header from
+    its home
+  * meter-held: the self-test copies a release tarball without git
+  * descriptors: every link is at omx-dsp 0.34.2, the release installed
+  * release: the zynthian bundle waits for debs that were built, not skipped
+  * release: a devel push's qualify job reads the staging channel its build
+    was staged to
+  * contract directory: no schema-major level, the omx-plugins package is
+    <contractdir>/omx-plugins (omx-contract 0.23.0)
+  * domains: every domain is at 0.1.0, its vocabulary own version, never the
+    package one
+  * ci: the lint job folded from #214 keeps its runner and its steps key
+  * release: a merge to devel publishes the real package to staging
+  * deps-check.sh: its header names this repository's issue, not a private
+    one (#221)
+  * round-trip ledger: clap controls[].meaning loses 8 words, the four more
+    being omx-glue's ratio, attack and release choices and omx-spring's
+    damping in Hz
+  * round-trip ledger: lv2 controls[].meaning loses 121 words, the five more
+    being the new ceiling, damping, makeup, range and width
+  * A drafted declaration marks its category for review, and the selftest
+    settles it; the schema keeps its own layout
+  * commit-msg: the hook is the shared stub, byte for byte
+  * Presets and hints follow dBPerS; a fully hidden remote-controls page is
+    not served, as #212 ruled, and the check says so (#221)
+  * declarations: glue, upward, plosive, clipper and spring declare a panel
+    family and its roles
+  * declarations: each plugin states its category, as the owner ruled on
+    2026-11-25
+  * declaration: every plugin declares its category, and every shipped one a
+    panel family
+  * dBPerS: the balancer's and the leveler's Speed carry their unit and code
+    (plugin-db's dBPerS); the folded leaves' tests agree on one tree (#221)
+  * The labels domain is installed as omx-plugins', and the declaration
+    schema's two last references name a document, no host (#221)
+  * descriptor: typedBand's comment names its limit, the first run of digits
+    (#218)
+  * descriptor: the filter responses are read when a control states one,
+    never at import (#218)
+  * tests: a schema with no filterResponse stops only a control that states a
+    response (red, #218)
+  * recipes: parameters are by reference, whatever release is installed (#221)
+  * No hand-kept floors: our packages are named without a version, a link's
+    release is the installed owner's, requires is a list of names
+  * descriptors: a choice's unit is the descriptor's choiceUnits, by the
+    control's name, never an option beside it (omx-panel#68)
+  * Fold repair: the pins route devel retired (#211) stays retired; the help
+    names the curve proof
+  * descriptors: an EQ states the response of its fixed filters, a word of
+    the schema's filterResponse (#218)
+  * tests: an EQ descriptor states the response of its fixed filters, and
+    none on a typed band (red, #218)
+  * Fold repair: make test runs meter-held and meter-rows (#206), and gen.mjs
+    imports the format tables once (#200)
+  * every control states its meaning, and the renderer refuses one that
+    states none
+  * tools/meanings.mjs: the table of each control's role, its listing and its
+    apply
+  * role-meanings: every role a word, never unknown; utility's speed and
+    slope from omx-panel
+  * docs: every control states its meaning, a role's or its own; enabled is
+    no declared port's designation
+  * ci: spdx-check and private-refs-check run in a lint job, never before
+    make test
+  * Language packs: the house fill job, and the catalogs where it reads them
+  * contract-union: the stand-in install script places a domain as the real
+    one does
+  * round-trip: LV2 unit losses keyed by the PARAM_UNITS id, none and dBPerOct
+  * round-trip-loss-units: the ledger's unit keys are PARAM_UNITS ids a
+    descriptor states (red)
+  * param contract: omx-balancer v4 and omx-loudlevel v3 for speed in dBPerS
+  * meter ring: the policy masks carry 64 values
+  * ci: make selftest runs as shards packed by measured time, today one under
+    45 minutes
+  * test: make selftest runs as CI shards under a 45-minute budget, every
+    part in one (red)
+  * curve-proof: omx-comp and omx-eq mark their curve `basis: exact`, and the
+    measurement holds it
+  * test-split lists plugin-labels among make test's checks
+  * Section titles, choice labels and preset names get keys and catalogs;
+    parameter names stay English
+  * descriptors: every meter states held, clip and measurement
+  * faces hold their meters until read, with the host's held and clip flags
+  * N1: a plugin declares its own units in its declaration's `units` block
+  * own-units: a declaration's own units, held over a fixture plugin (red)
+  * meter ring: a clear ends every hold
+  * format-tables: the lv2:designation row's pairs are plugin-db's meaning
+    urns
+  * format-tables: knee and makeup want the urn plugin-db declares for them
+    (red)
+  * meter ring: a take restarts the values it took, no others
+  * meter ring: the held accumulator, the clip word and the read counter
+  * declaration schema: reach omx-panel's definitions by the document name
+    panel.schema.json
+  * test: the declaration schema reaches omx-panel's definitions by document
+    name (red)
+  * clap-ext-check: the remote-control pages are the face's fixed cut, a
+    hidden control's slot blank
+  * release.yml: no dispatch publish input; the release jobs publish on a tag
+    push alone
+  * clap-probe: value_to_text's unit is held to the declared id's x-symbol
+  * C2: every unit the tree states is the PARAM_UNITS id; a face shows the
+    x-symbol
+  * role-meanings-source-check: the scratch contract directory carries the
+    installed domains
+  * ci, release: each Fedora job runs one container per cell from
+    check-matrix and release-matrix (#54)
+  * lint: the shared fedora-cells check holds every workflow job to
+    check-matrix's cells (red, #54)
+  * debt growth: fetch the base into a private ref, and refuse a base that is
+    HEAD (#102)
+  * debt-base: the base fetch must leave the checkout's refs alone, and HEAD
+    is no base (red, #102)
+  * band-groups: a group is its plugin's URI by its symbol, and no two
+    bundles state one node (#100)
+  * band-groups: a group renamed into another plugin's namespace must go red
+    (red, #100)
+  * floors: plugin-hostd-contract >= 0.22.0 and plugin-db-contract >= 0.5.1,
+    the tables format-tables reads (#182)
+  * format-tables: the tables as x-kind map items, unit and meaning pairs
+    read from their owners (#182)
+  * test: format-tables reads the x-kind map tables and the owners' unit and
+    meaning pairs (red, #182)
+  * make docs-site and docs.yml: the per-plugin parameter reference published
+    per release under /reference/omx-plugins/ (Open-Mixer/.github#242)
+  * declaration schema: reach omx-panel's definitions by the document name
+    panel.schema.json (#183)
+  * test: the declaration schema reaches omx-panel's definitions by the
+    document's name (red, #183)
+  * docs: the format tables are x-kind map items, the unit and meaning pairs
+    read from their owners (#182)
+  * ci: an omx package from any repository but the channel's is refused,
+    testing included (#56)
+  * ci: the staging guard is one script, its self-test plants the release
+    package's testing repositories (red, #56)
+  * test-split: release-same-pass is listed among make test's prerequisites
+    (#178)
+  * no-host-nproc: a directory with no workflow is refused (exit 2), never
+    passed (#63)
+  * test: no artifact outlives 2 days off a release run, held by make test
+    (#53)
+  * packaging: the spec's CLAP floor is debian's, clap-devel >= 1.2.10 (#16)
+  * deps-check: the spec's clap-devel floor must be debian's clap-headers
+    floor (red, #16)
+  * floors: omx-dsp-devel and omx-dsp-contract >= 0.34.1, the release with
+    accel in coef
+  * gen: the generated faces carry 0.21.0, the release bcb2d4c8 moved to
+  * omx-rotary: accel travels in coef, not "x" (omx-contract 3.22.0)
+  * release: the version moves to 0.21.0 (chain 3)
+  * V23d: the omx-clap floor is 0.35.0, chain 3's omx-clap release
+  * V23d: the old-include walk runs at the check's top level and sees the
+    quoted include
+  * V23d: red first, the old-include walk must see the quoted include too
+  * V23d: the omx-clap floor is 0.36.0, the release that carries the domain
+    omx-param-contract
+  * V23d: oldUnitIncludes walks the tree for an include of omx-contract's old
+    unit header
+  * V23d: red first, make units refuses any file that includes omx-contract's
+    old unit header
+  * V23d: the unit codes are read from omx-clap's domain omx-param-contract
+    and its render; the floor is omx-clap 0.35.0
+  * V23d: red first, param-units-check reads the unit codes where omx-clap
+    declares them
+  * Contract files keep the $schema the floor's reader reads
+  * The organisation's name: FreeMixer becomes Open-Mixer and OpenMixer
+  * ci: the staging channel out again: an ordinary run builds against the
+    channel (D25)
+  * ci: staging back on the channel steps once more, so the guard fires now
+    the build resolves (red, D25)
+  * ci: the staging channel out again: an ordinary run builds against the
+    channel (D25)
+  * ci: every omx package comes from the channel, refused from staging;
+    staging added back to show it fire (red, D25)
+  * release: the same-pass list reaches every shared build call
+  * deps-check: read a rich-form relation's name past its leading paren
+  * deps-check: refuse a relation only to one of our names
+  * deps-check: refuse any Breaks, Conflicts, Replaces, Obsoletes or Provides
+  * Makefile help: panel-abi-refuses is part of make test and test-faces
+  * panel-abi refuses by name when omx-clap-core's header is absent
+  * tests: panel-abi must refuse by name when the clap-core header is absent
+    (red)
+  * round-trip: the losses ledger is generated from the run, with a drift
+    check
+  * panel-check: every meter a display reads is one the built face serves
+  * probe-checks: a display reading a meter the built face does not serve
+    goes red (red)
+  * test-split: make test's new prerequisite, test-no-host-nproc, is listed
+  * ci: heavy steps size their parallel jobs by the jobs action, never nproc
+    (#63)
+  * test: no workflow sizes its jobs from the host's nproc, red first (#63)
+  * Artifact retention: pull-request and lane runs keep 2 days, release runs
+    keep their value
+  * deps-check: clap-devel's floor and ceiling follow clap-headers' (#16)
+  * packaging: the rpm spec's clap-devel floor follows debian's, 1.2.10 (#16)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 27 Nov 2026 09:23:38 +0000
