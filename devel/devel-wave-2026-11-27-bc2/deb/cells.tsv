@@ -5,6 +5,8 @@ libomx-clap1	0.36.0	full	trixie/amd64 trixie/arm64
 libomx-contract-dev	0.24.0	full	trixie/all
 libomx-domain-dev	0.24.0	full	trixie/amd64 trixie/arm64
 libomx-domain0	0.24.0	full	trixie/amd64 trixie/arm64
+libplugin-qualification-db-dev	0.1.2	full	trixie/amd64 trixie/arm64
+libplugin-qualification-db0	0.1.2	full	trixie/amd64 trixie/arm64
 omx-clap-contract	0.36.0	full	trixie/all
 omx-clap-host	0.36.0	full	trixie/amd64 trixie/arm64
 omx-clap-host-l10n-ca	0.36.0	full	trixie/all
@@ -26,4 +28,8 @@ plugin-hostd	0.22.2	full	trixie/arm64
 plugin-hostd-contract	0.22.2	full	trixie/all
 plugin-hostd-dev	0.22.2	full	trixie/all
 plugin-hostd-tests	0.22.2	full	trixie/arm64
+plugin-qualification-db	0.1.2	full	trixie/amd64 trixie/arm64
+plugin-qualification-db-schema	0.1.2	full	trixie/all
+plugin-qualification-db-write	0.1.2	full	trixie/all
+plugin-qualification-records	0.1.2	full	trixie/amd64 trixie/arm64
 python3-omx-contract	0.24.0	full	trixie/all

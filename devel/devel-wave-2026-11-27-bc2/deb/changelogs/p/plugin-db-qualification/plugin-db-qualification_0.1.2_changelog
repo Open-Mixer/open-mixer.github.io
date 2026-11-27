@@ -1,0 +1,86 @@
+plugin-db-qualification (0.1.2) unstable; urgency=medium
+
+  * reader: the hosting exception is removed, the hosting columns are checked
+    against omx-clap's hosting domain
+  * spec: the hosting exception has ended, omx-clap ships its hosting domain
+    and the reader checks the hosting columns
+  * ci: a dispatch off main in a wave reads that wave's devel channel too, as
+    it reads staging
+  * ci: a pull request into devel in a wave reads that wave's devel channel
+    above staging
+  * store: the runner moves the tables aside and copies every column, the
+    step holds only its own rows
+  * spec: the migration's shared part is the runner's, so a layer at 1 of
+    either dated shape keeps every column
+  * store: user_version 2, and the writer and the reader migrate a user layer
+    at 1 in place
+  * spec: the store is user_version 2, and a user layer at 1 is migrated in
+    place
+  * CI: the sibling jobs find omx-clap-core where they read it, and a skipped
+    test is red
+  * writer: a reason param's word may be a measurement unmeasured reason,
+    0.1.2-2026112702
+  * spec: a reason param's word may be a measurement unmeasured reason
+  * release: the amd64 Debian package joins the release architectures,
+    0.1.1-2026112701
+  * CI: the hosting tripwire reads omx-clap-core's main by name, since its
+    default branch is devel
+  * version: 0.MAJOR.MINOR, the date stamp in the RPM Release,
+    0.1.0-2026112601 (#81)
+  * release: a merge to devel builds on the wave's plugin-hostd-contract
+  * packaging: the records recommend plugin-qualify
+  * test: the reader's fixture domains name their omx-contract format
+  * spec: the writer reads the hosting domain document
+  * store: the hosting words are omx-clap's hosting domain, read as every
+    domain
+  * tests: the wave's packaging and records as they are, not as they were
+  * check.yml: run the shared trigger gate
+  * release: a merge to devel publishes the real package to staging
+  * ci: a pull request into devel accepts staged omx packages; every other
+    run still refuses them (#86)
+  * .githooks/commit-msg is the shared stub, byte for byte
+  * records: re-cut to probe output format 2, cost unit nsPerSample
+  * packaging: no OpenMixer version written by hand; plugin-qualify by its
+    bare name
+  * rewrite-records: --probe-format-2 re-cuts records to probe output format 2
+  * tests: rewrite-records --probe-format-2, the re-cut to probe format 2
+    (red first)
+  * query --records with no cell prints each claimant set's record once
+  * Test, red first: query --records with no cell prints every claimant once
+  * reader: pqdb_record_json writes the instrument fields and the adapter's
+    content (ruling 12)
+  * store: the instrument fields and the adapter's content are mapped (ruling
+    12, #72)
+  * spec: cell.rt_events is declared among the columns, before the table's
+    CHECKs
+  * test: a cell with no counts has no events, and counts without events are
+    refused (case 26)
+  * spec: a cell's rtSafety events are present with its counts or absent with
+    them (ruling 12)
+  * test: the instrument fields and the adapter's content round-trip (case
+    26, red)
+  * tests: the fake chrt is a shell function, and a failure names its tree
+  * ci: one discover line runs every test file under tools/
+  * spec: every field plugin-qualify 0.20.6 writes is mapped (ruling 12, #72)
+  * tests: the fedora44 real-time check is run, not matched
+  * tests: fold the three floor tests into one that reads the floor from the
+    fixture
+  * test_records_db: read each domain from its owner, qualification and probe
+    moved
+  * The proofs' findings keep the release body under GitHub's limit
+  * Test, red first: the proofs' findings stay under the release body limit
+  * Release 2026112201: the plugin-qualify floor at 0.21.0 and the changelog
+    entry
+  * Rename omx-clap-core to omx-clap (the sorting pass, clap rename)
+  * The store spec names plugin-hostd as owner of every qualification word
+    (sorting pass, V5)
+  * Floor plugin-qualify at 0.20.8 (S4 release, ruled)
+  * The store spec names plugin-hostd's qualification domain as the owner of
+    record_set.tier (sorting pass, V5)
+  * Floor plugin-hostd-contract at 0.21.0 (sorting pass, V5)
+  * check-records reads the provenance words from the qualification domain
+    (sorting pass, V5)
+  * Test, red first: the provenance words are the qualification domain's
+    (sorting pass, V5)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 27 Nov 2026 22:23:28 +0000
