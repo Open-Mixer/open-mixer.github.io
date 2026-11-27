@@ -16,6 +16,9 @@ libmackie0	0.1.2	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libmod-host-protocol-dev	0.10.11	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libmod-host-protocol0	0.10.11	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
 libomx-clap-core0	0.12.0	-	bookworm/amd64 bookworm/arm64 trixie/arm64
+libomx-contract-dev	0.23.4	full	trixie/all
+libomx-domain-dev	0.23.4	full	trixie/amd64 trixie/arm64
+libomx-domain0	0.23.4	full	trixie/amd64 trixie/arm64
 libsurface-dev	0.2.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libsurface-diginet-dev	0.2.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libsurface-diginet0	0.2.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
@@ -23,8 +26,17 @@ libsurface-mackie-dev	0.2.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libsurface-mackie0	0.2.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 libsurface0	0.2.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
 mod-host	0.10.11	-	bookworm/amd64 bookworm/arm64 trixie/amd64 trixie/arm64
+omx-contract	0.23.4	full	trixie/all
+omx-contract-data	0.23.4	full	trixie/all
+omx-contract-l10n-ca	0.23.4	full	trixie/all
+omx-contract-l10n-de	0.23.4	full	trixie/all
+omx-contract-l10n-es	0.23.4	full	trixie/all
+omx-contract-l10n-fr	0.23.4	full	trixie/all
+omx-contract-l10n-it	0.23.4	full	trixie/all
+omx-contract-l10n-pt	0.23.4	full	trixie/all
 openmixer-release	1	-	bookworm/all trixie/all
 plugin-qualification-records	2026110902	-	trixie/arm64
 plugin-qualification-records	2026111001	-	trixie/arm64
 plugin-qualify	0.20.3	-	bookworm/amd64 bookworm/arm64
+python3-omx-contract	0.23.4	full	trixie/all
 surface-c24	0.2.3	-	bookworm/amd64 bookworm/arm64 trixie/arm64
