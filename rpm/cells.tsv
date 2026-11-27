@@ -10,6 +10,8 @@ libdiginet-devel	0.1.8	-	fc44/aarch64
 libdiginet-devel	0.1.9	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 libmackie	0.1.2	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 libmackie-devel	0.1.2	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+libomx-domain	0.23.4	full	fc45/aarch64 fc45/x86_64
+libomx-domain-devel	0.23.4	full	fc45/aarch64 fc45/x86_64
 libsurface	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 libsurface-devel	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 libsurface-diginet	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
@@ -19,10 +21,20 @@ libsurface-mackie-devel	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_6
 mod-host	0.10.11	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 mod-host-protocol	0.10.11	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
 mod-host-protocol-devel	0.10.11	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
+omx-contract	0.23.4	full	fc45/aarch64 fc45/x86_64
+omx-contract-data	0.23.4	full	fc45/noarch
+omx-contract-devel	0.23.4	full	fc45/noarch
+omx-contract-langpack-ca	0.23.4	full	fc45/noarch
+omx-contract-langpack-de	0.23.4	full	fc45/noarch
+omx-contract-langpack-es	0.23.4	full	fc45/noarch
+omx-contract-langpack-fr	0.23.4	full	fc45/noarch
+omx-contract-langpack-it	0.23.4	full	fc45/noarch
+omx-contract-langpack-pt	0.23.4	full	fc45/noarch
 omx-dsp-devel	0.6.1	-	fc44/aarch64 fc44/x86_64
 omx-panel	0.13.6	-	fc44/aarch64 fc45/aarch64
 omx-panel-render	0.13.6	-	fc44/aarch64 fc45/aarch64
 omx-panel-render-devel	0.13.6	-	fc44/aarch64 fc45/aarch64
 openmixer-release	1	-	fc44/noarch fc45/noarch
 plugin-qualify	0.20.3	-	fc44/aarch64 fc45/aarch64
+python3-omx-contract	0.23.4	full	fc45/noarch
 surface-c24	0.2.3	-	fc44/aarch64 fc44/x86_64 fc45/aarch64 fc45/x86_64
