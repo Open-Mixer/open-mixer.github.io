@@ -486,6 +486,48 @@ export function judgeUninstallable(pkgs, keptFiles, { installableBefore = instal
   return { refused, already: [...new Set(already)] };
 }
 
+// The noarch/arch skew of 2026-11-18 (the prune apply refused the aarch64 cells): an architecture-independent package is filed once for its release and
+// served for every architecture of it, while the arch packages of the same build (which pin it exactly) reached
+// some architectures only; the aarch64 cells served omx-dsp-contract 0.32.4 beside an omx-dsp-devel that was x86_64
+// only, and the newest-only closure of every aarch64 cell was broken. Judged on what the plan KEEPS, per cell: a kept
+// noarch (all) package whose build has a kept arch package in the release, and whose architecture never reached that
+// build (no kept arch package of the same source there, or only older ones), is named with that architecture and
+// where the build's arch packages are. An older noarch package kept beside a newer arch build of its source (the
+// per-architecture keep moved on, the shared noarch tree still holds what another architecture pins) is no skew, and
+// neither is a build with no arch package at all (openmixer-release): that one is served everywhere by design.
+// `arches` are the architectures of this repository the plan judges (the published cells; every architecture of the
+// tree when none is named). A build is the source rpm for rpm, the source name and version for deb.
+export function noarchSkew(pkgs, keptFiles, arches) {
+  if (!pkgs.length) return [];
+  const F = fmt[pkgs[0].format];
+  const kept = pkgs.filter((p) => p.arch !== 'src' && keptFiles.has(p.file) && p.source);
+  const build = (p) => (F.id === 'rpm' ? p.source : `${p.source} ${p.evr}`);
+  const sourceName = (p) => (F.id === 'rpm' ? p.source.replace(/\.src\.rpm$/, '').replace(/-[^-]+-[^-]+$/, '') : p.source);
+  const ofBuild = new Map(); // build -> name -> [arch]
+  const newestOf = new Map(); // source name -> arch -> newest kept arch evr
+  for (const p of kept) if (p.arch !== F.indep) {
+    const m = ofBuild.get(build(p)) || new Map();
+    m.set(p.name, [...new Set([...(m.get(p.name) || []), p.arch])].sort());
+    ofBuild.set(build(p), m);
+    const n = newestOf.get(sourceName(p)) || new Map();
+    if (!n.has(p.arch) || F.cmp(p.evr, n.get(p.arch)) > 0) n.set(p.arch, p.evr);
+    newestOf.set(sourceName(p), n);
+  }
+  const out = [];
+  for (const p of kept) {
+    if (p.arch !== F.indep) continue;
+    const siblings = ofBuild.get(build(p));
+    if (!siblings) continue;
+    const reached = newestOf.get(sourceName(p));
+    for (const a of arches) {
+      if (reached.has(a) && F.cmp(reached.get(a), p.evr) >= 0) continue;
+      const where = [...siblings].map(([n, as]) => `${n} is built for ${as.join(', ')}`).join('; ');
+      out.push(`${p.format} ${p.repo} ${p.name} ${F.show(p.evr)} (${F.indep}) is served for ${a} without an arch package of its build ${build(p)}: ${where}`);
+    }
+  }
+  return out;
+}
+
 // Does p install on architecture a from the repository as it is, the way the format's own installer resolves
 // it? A small solver over the same satisfies and candidate rules as the invariant (groupCandidates): one build
 // per package name, every requirement group met by a chosen build, alternatives tried in order and newest
