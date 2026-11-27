@@ -20,7 +20,9 @@ name: Prune the package repository
 #   rpm  name@version:fedora/<rel>/<arch>   arch x86_64|aarch64|noarch
 # e.g. plugin-hostd@0.20.6:trixie/arm64,plugin-hostd-contract@0.20.6:trixie/all. A malformed cell (an unknown
 # suite or architecture, a missing part) stops the plan. The invariant holds per cell: a kept package of that
-# suite or release and architecture whose only satisfier the drop deletes fails the plan, named.
+# suite or release and architecture whose only satisfier the drop deletes fails the plan, named. So does the kept tree
+# serving a noarch (all) package in a published cell whose architecture never got the arch packages of its build
+# (2026-11-18: the aarch64 cells served omx-dsp-contract 0.32.4 beside an x86_64-only omx-dsp-devel).
 # An entry package=<binary>@<version>:<cell> drops one binary package, not a source: only that binary's file in
 # that cell (the .deb, or the .rpm of an rpm cell) and its index stanza go; the other binaries of its source and
 # the source stay. The cell is required. e.g. package=plugin-hostd-full@0.20.5:trixie/all, beside source entries

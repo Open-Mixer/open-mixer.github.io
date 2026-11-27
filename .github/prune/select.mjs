@@ -31,7 +31,9 @@
 // workflow). The invariant judges the binaries of those cells, and the noarch and all packages against those
 // architectures alone; a binary of an architecture outside the set (aarch64 rpm while the rpi5 builder is not up)
 // is kept and planned as before, but a skew that exists only there is not judged. Without --cells every
-// architecture of the tree is judged.
+// architecture of the tree is judged. The kept tree is also judged for the noarch/arch skew of 2026-11-18
+// in those cells: a noarch (all) package served for an architecture that has no arch package of its build is a
+// refusal, named (prune.mjs noarchSkew).
 // --skip-closure plans without the dependency closure, to see the plan invariant fail (a test uses it).
 // --check plan.json judges a plan already written: every kept package of it must still install from the kept
 // ones (exit 1 and the failures if not), and nothing is selected.
@@ -44,7 +46,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
 import { parseKeepList, keepEntries, missing, pendingPins } from './keeplist.mjs';
-import { parseKeep, parsePrimary, parsePackages, selectRepo, parseDrop, unusedPins, pinsLost, uninstallable, judgeUninstallable, report } from './prune.mjs';
+import { parseKeep, parsePrimary, parsePackages, selectRepo, parseDrop, unusedPins, pinsLost, uninstallable, judgeUninstallable, noarchSkew, report } from './prune.mjs';
 
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
@@ -169,9 +171,16 @@ async function main() {
       const r = selectRepo(pkgs, keep, { newest, closure: !flag('--skip-closure'), drop: drops });
       for (const row of [...r.keep, ...r.delete]) { row.path = `${format}/${repo}/${row.file}`; listed.add(row.path); }
       // only what the plan NEWLY breaks fails it; a dependent that already did not install is named, unchanged
-      const judged = judgeUninstallable(pkgs.filter(judgedIn), new Set(r.keep.map((x) => x.file)));
+      const keptFiles = new Set(r.keep.map((x) => x.file));
+      const judged = judgeUninstallable(pkgs.filter(judgedIn), keptFiles);
       r.uninstallable = judged.refused;
       r.alreadyUninstallable = judged.already;
+      // the architectures of this repository the plan judges: its published cells, else every one the tree has
+      const indep = format === 'rpm' ? 'noarch' : 'all';
+      const arches = cellSet
+        ? [...cellSet].filter((c) => c.startsWith(`${repo}/`)).map((c) => c.slice(repo.length + 1)).sort()
+        : [...new Set(pkgs.map((p) => p.arch).filter((a) => a !== 'src' && a !== indep))].sort();
+      r.skew = noarchSkew(pkgs, keptFiles, arches);
       results.push(r);
     }
   }
@@ -202,6 +211,7 @@ async function main() {
     refused: results.flatMap((r) => r.refused || []),
     uninstallable: results.flatMap((r) => r.uninstallable),
     alreadyUninstallable: results.flatMap((r) => r.alreadyUninstallable),
+    skew: results.flatMap((r) => r.skew),
     lost: pinsLost(keep, all, new Set(results.flatMap((r) => r.keep).map((r) => r.path))),
   };
   console.log(report(results));
@@ -235,6 +245,10 @@ async function main() {
   }
   if (plan.uninstallable.length) {
     console.error(`the plan leaves a kept package uninstallable:\n${plan.uninstallable.map((n) => '  ' + n).join('\n')}`);
+    process.exit(1);
+  }
+  if (plan.skew.length) {
+    console.error(`the kept tree serves an architecture-independent package in a cell without its arch packages (the skew of 2026-11-18):\n${plan.skew.map((n) => '  ' + n).join('\n')}`);
     process.exit(1);
   }
   if (flag('--delete-list')) for (const r of plan.delete) console.log(`delete\t${r.size}\t${r.path}`);
