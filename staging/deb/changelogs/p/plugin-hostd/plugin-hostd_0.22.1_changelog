@@ -1,0 +1,350 @@
+plugin-hostd (0.22.1) unstable; urgency=medium
+
+  * tests: verbs_declared reads the headers of the tree its daemon was built
+    in
+  * tests: first use writes the learned pins to the store before anything runs
+  * sabotage: the stale arms break the code that holds their guards now
+  * ci: build and test may run 90 minutes, since the guards step alone runs
+    ~52
+  * sabotage: the qualcost arms build tests/qualcost-test, and each breaks
+    what its test reads
+  * tests: curve_reply writes the marks word the protocol's curve_points
+    reply carries
+  * tests: panel_wire reads the panel's bytes up to the meters beside them
+  * release: plugin-hostd 0.22.1 (0.22.0 to 0.22.1), a patch
+  * release: the RPMs build for Fedora aarch64 too, not x86_64 alone (#303)
+  * release: a push builds the deb for arm64 alone, as its qualification-db
+    Build-Depends is (#301)
+  * lint: the pull request body check runs where pull requests run (#300)
+  * ci: the installed-package smoke tests install python3-plugin-hostd-client
+  * ci: the installed-package smoke tests copy no data/ directory
+  * release dry run: a dispatch off main builds against the staging channel
+  * check-contract-dir: validate beside the caller's path, never this
+    checkout's contract.d
+  * tests/curve_reply: a term's unit is matched against OMX_CURVE_UNIT_WORDS
+  * ci: the staging reads and the provenance guard share one condition; the
+    trigger gate names lint.yml
+  * ci: a dispatch off main reads the staging channel the wave stages to
+  * Makefile: install-contract installs the whole of plugin-hostd-contract
+  * packaging: the contract package is named in full, %package -n
+    plugin-hostd-contract
+  * tests: the readers and the render check follow the contract directory
+    with no schema-major level
+  * The contract directory has no schema-major level: the package is
+    <contractdir>/plugin-hostd/
+  * Every domain starts again at 0.1.0: info.version and each x-since (owner,
+    2026-11-25)
+  * tests: the verbs contract reads the protocol's one host-verbs header, and
+    fake-host spells no patch_set line
+  * tests/verbs_declared.py: description_get has its line, answered from a
+    descriptions store of the run's own
+  * tests/probe_domain.py: the probe domain's version is its owner's to give,
+    no number of it is typed here
+  * After the fold: the PRs that never met are made to agree
+  * probe: the figure step with no map is OUT(CHILD_PROTOCOL), the outcome's
+    name in the wave
+  * tests: each word is read from its one home (ruling R5), and the guide
+    follows the protocol's wave
+  * qualification pin-from test: each domain an owner's manifest lists is
+    staged beside it
+  * .githooks/commit-msg: the shared stub again, byte for byte
+  * bench.yml: a dispatch only
+  * ci.yml: run the shared trigger gate
+  * release: a merge to devel publishes the real package to staging
+  * ci: a pull request into devel accepts staged omx packages; every other
+    run still refuses them (#295)
+  * lv2: the unit words are omx-contract 3.22.0's unit ids, percent and coef
+  * lv2: the unit words are omx-contract 3.22.0's unit ids, percent and coef
+  * lv2: the unit words follow plugin-db's lv2 domain as served, % and x
+  * tests/describe_clap_meters_test.py: pc is percent, as the clap table
+    answers
+  * Unit lookups answer omx-contract 3.22.0's unit ids: percent and coef, no
+    % or x
+  * No requires floor anywhere: the describe descriptor, the fixtures and the
+    tests
+  * qualification: info.x-requires lists names, no version floors
+  * commit-msg: the hook is the shared stub, byte for byte
+  * tests/domain_render.py: the --domain install names the package too
+  * Makefile: every --domain install names the package, plugin-hostd
+  * test: stage an owner package with the domains its manifest lists
+    (plugin-db#84 step 3)
+  * test: the pin test's scratch directory carries an owner's listed domains
+    (red, plugin-db#84)
+  * commit-msg: the hook is the shared stub, byte for byte
+  * 0.21.2: remove, the word of the remove step, in the qualification domain
+  * qualification domain: remove, the word of the remove step, beside add
+  * test: the qualification domain's reason-param words hold remove beside
+    add (red)
+  * ci.yml: a pull request into devel may take its packages from the staging
+    channel
+  * tests: plugin-db's words are read from plugin-db's own headers, never the
+    protocol's copy (#250)
+  * .githooks/commit-msg is the shared stub, byte for byte
+  * BUILDING.md: the domains are read with no version asked, and
+    omx-clap-host-tests is named, not floored
+  * ci: the header says the channel's packages are installed by the names the
+    packaging declares
+  * conf.h: conf_check's comment names ask_unknown in one reflowed paragraph
+  * requires: a sorted array of names, and none where only the schema floor
+    stood
+  * domains: no code floor, the loader is asked for no version
+  * packaging: no hand-kept floor of an Open-Mixer package, and the tools
+    that kept them go
+  * describe: the scan domain's floor is 0.33.0, the release that shipped the
+    scopes
+  * formats.h: doc blocks for the LV2 property verbs and the format's
+    property hooks, as the doxygen gate asks
+  * pins.h, supervisor.h: doc blocks for the pin store's accepted, file_at
+    and store_dir_of and the deferred add's place and client, as the doxygen
+    gate asks
+  * qualify.h: a doxygen @file block and a doc block for each function, as
+    the doxygen gate asks
+  * verbs_declared: the omx-clap floor is read from omx-clap-contract, the
+    package's name on devel
+  * probe output format 2.0: the cost unit is nsPerSample
+  * tests: probe output format 2.0, the cost unit is nsPerSample (red first)
+  * declared_domain (b): the daemon verbs are 30, description_get the 30th
+  * lv2, supervisor: param_info and an instance verb with no memory answer
+    ERR_MEMORY_ALLOCATION (#261 7)
+  * relay: an ended gesture is one line with one sequence number (#261 6)
+  * verbs: a command refused while answers wait is counted on its
+    controller's last answer, with no memory asked for (#261 5)
+  * tests: a refusal with no memory is answered in order, an ended gesture is
+    one seq line, and out of memory answers -901 (red, #261 5-7)
+  * tests: a run with no room above its nice skips the two nice tests by
+    name, and the workflows' organisation is declared for a box (#95)
+  * proc: a handled signal during proc_rpc's wait or read is no timeout and
+    no death; the wait goes on (#146 4)
+  * tests: a handled signal during proc_rpc is no timeout: the worker's
+    answer is read (red, #146 4)
+  * verbs_declared: HOSTING_WINDOW_CODES is read from omx-clap's hosting
+    domain only
+  * conf, supervisor, verbs: an integer setting, an instance, a nice and a
+    pool size are whole numbers, and an overlong config line is refused (#146
+    1-3)
+  * tests: an instance, a nice, a pool size and an integer setting are whole
+    numbers, and an overlong config line is refused whole (red, #146 1-3)
+  * tests: QUALIFICATION_UNIT_PROVENANCES is held to 1.5.0, the version that
+    adds it (#249)
+  * probe-output schema: machine.class.family is an enum of the machine
+    domain's MACHINE_FAMILIES, rendered by the generator, with an x-from
+    naming the item (#172, R4)
+  * tests: the probe-output schema's family is the machine domain's
+    MACHINE_FAMILIES, rendered, with an x-from naming the item (red, #172)
+  * qualification: QUALIFICATION_UNIT_PROVENANCES, declared or inferred,
+    where a recorded unit comes from; the domain is 1.5.0 (#249, R8)
+  * descriptions: the daemon reads ask_unknown, auto, 1 or 0 (#246)
+  * tests: the qualification domain names where a recorded unit comes from,
+    declared or inferred (red, #249)
+  * tests: ask_unknown, auto by default, 1 and 0, the add word over it (#246)
+  * contract: every --domain call names the package that installs it
+  * tests: an absent qualification store opens as an empty base layer and
+    names no plugin, as plugin-qualification-db v2026111901 on answers (#234)
+  * tests: the ledger sabotage arms link the test daemon's objects, so a
+    sabotaged daemon reads the test contract tree and starts
+  * tests: a ledger sabotage arm whose daemon never starts is red, not a pass
+    (red: all four arms start no daemon)
+  * lv2: a property refused for an unknown URI is read as
+    ERR_HOST_INVALID_URI, the protocol's name since the LV2 alias left it
+  * contract: the domain qualification requires clap >= 0.35.0
+  * qualification: remove is a word of QUALIFICATION_REASON_PARAM_WORDS,
+    beside add
+  * fuzz: the descriptions store's calls, the ask word, the corpus of 0.9.0
+  * src: verbs.c and the fuzz harness need no store or OpenSSL header
+  * src: doc blocks for the descriptions store's declarations
+  * tests: no test seam of the descriptions store in the packaged daemon
+  * docs: the descriptions store, description_get and the ask
+  * packaging: the descriptions store's reader, omx-panel-store >= 0.16.0
+  * descriptions store: groups from the store, description_get, the ask
+  * tests: the descriptions store's groups, description_get and the ask (red)
+  * contract: the domain qualification requires clap >= 0.35.0
+  * tests: qualification_pin_from stages plugin-db's domain as installed
+  * The Python client is the protocol's: tests import
+    python3-plugin-hostd-client, no copy here
+  * tests: no copy of the protocol's Python client here; the shell client's
+    test stays
+  * python client test: the short-reply refusal carries a docstring, not a
+    noqa
+  * pins_words' doc block wrapped at 120 columns, as the rest of the header
+  * python client: the NUL door's docstrings in ruff's D form
+  * pins.h documented: tools/doxygen.baseline is empty (19 to 0, Fixes #140)
+  * conf.h and probe_cgroup.h documented: 30 baseline lines struck (49 to 19,
+    #140)
+  * placement.h, describe.h, descriptors.h, probe_lock.h documented: 20
+    baseline lines struck (69 to 49, #140)
+  * words.h, fsutil.h, names.h, pages.h documented: 15 baseline lines struck
+    (84 to 69, #140)
+  * daemon_test: the held-nice arm skips a run with no nice above its own
+  * perturbation: stage the protocol domain under its own id
+  * format_domains: the fac7531 golden holds, but for the coef rename (V23d)
+  * make docs-site and docs.yml: the reference published per release under
+    /reference/plugin-hostd/ (Open-Mixer/.github#242)
+  * ci: the build and test job installs nodejs26, never Fedora's Node 22
+  * ci_guards: every workflow takes Node 26, by name (red)
+  * test-bind-sabotage: build the objects it links
+  * qualification_pin_from: stage an owner that installs only domains as its
+    domain
+  * qualcost_test: an absent store opens empty, as libplugin-qualification-db
+    reads it
+  * lv2 param_info: a port with no unit answers none
+  * describe_loader_test: the `$schema` is the v3 address, the major only in
+    the path
+  * daemon_test: an LV2 param_info answers the standard unit id (red)
+  * format_domains (e): the CLAP owner arm swaps db and dbu, keeping the
+    mapping one to one
+  * packaging/deps.txt: omx-clap-contract 0.35.0, plugin-db-contract 0.5.1,
+    the floors the M5 rows read
+  * M5: an LV2 port's unit reads plugin-db's LV2_UNIT_IDS, not a table of
+    lv2.c's own
+  * packaging: the owners' mappings the M5 rows read set the floors,
+    omx-clap-contract 0.35.0, plugin-db-contract 0.5.1
+  * format_coverage: the tables as x-kind map items, the M5 rows held to the
+    owners' mappings
+  * V19, M5: the format tables are x-kind map items; units and designations
+    read the owners' mappings
+  * format tables as x-kind map, pairs from the owners: red first (V19, M5)
+  * deps.txt: plugin-db-devel at 0.5.0, the floor the spec and debian/control
+    state
+  * docs/formats.md: the tables as x-kind map items, their unit and meaning
+    pairs read from the owners (V19, M5)
+  * probe_owner_test: (d) holds the protocol floor at 0.9.0, as 8d044c4a set
+    it
+  * format tables: coef reads the standard unit coef, not "x" (omx-contract
+    3.22.0)
+  * V16: the plugin-hostd-protocol floor is 0.9.0, the first release with the
+    domain plugin-hostd-protocol
+  * release: plugin-hostd 0.22.0 (chain 3)
+  * V16: the words of the protocol are read from the domain
+    plugin-hostd-protocol
+  * V16 is on the sorting pass again: the fold's revert 58b7145 is reverted
+  * V17, V18: the vocabulary renders straight from its two domains, and
+    tools/domain-data.mjs goes
+  * commit-msg hook: the shared stub without the old FREEMIXER names
+  * tests: a differing const, code, description or text is refused by
+    word-from-differs (sorting pass, V12)
+  * QUALIFICATION_PIN_VERDICTS takes the owner's words whole (sorting pass,
+    V12)
+  * Test, red first: the pin verdict words are the owner's, and the document
+    stays formatted (sorting pass, V12)
+  * QUALIFICATION_PIN_VERDICTS names plugin-hostd-protocol's pin verdict
+    words (sorting pass, V12)
+  * Test, red first: QUALIFICATION_PIN_VERDICTS names protocol's pin words
+    (sorting pass, V12)
+  * packaging: the protocol floors are 0.8.0, which carries the pin words
+    (sorting pass, V12)
+  * tests: the pin words are read from protocol 0.8.0 or later (red; sorting
+    pass, V12)
+  * packaging: plugin-hostd-protocol is floored at 0.8.0, the release that
+    carries the probe domain
+  * tests: the floor on plugin-hostd-protocol is 0.8.0, the release that
+    carries the probe domain (red)
+  * plugin-hostd owns the pin verdict and pool words (sorting pass, V12)
+  * Test, red first: the pin verdict and pool words are plugin-hostd's
+    (sorting pass, V12)
+  * probe: the probe domain is plugin-hostd-protocol's, this tree reads it
+    from there
+  * tests: the probe words are protocol's domain, this tree reads them from
+    there (red)
+  * describe: the scopes of a field dump are the scan domain's words
+  * Arm c of the qualification-domain test runs through a real consumer read
+    (sorting pass, V5)
+  * tests: describe takes the scopes of a field dump from the scan domain
+    (red)
+  * probe: the signal codes come from the probe domain's codes header
+  * tests: the signal words call reads its codes from the probe domain's
+    header (red)
+  * machine: the band counts and the family ids come from the domain's codes
+    header
+  * Drop QUALIFICATION_MACHINE_CLASSES from the qualification domain (sorting
+    pass, rows 5 and 20)
+  * Test, red first: QUALIFICATION_MACHINE_CLASSES leaves the domain (sorting
+    pass, rows 5 and 20)
+  * tests: the machine words call reads its ids and counts from the domain's
+    header (red)
+  * plugin-hostd owns the qualification domain (sorting pass, V5)
+  * Test, red first: plugin-hostd owns the qualification domain (sorting
+    pass, V5)
+  * own-host: the CI sentence names the container it runs
+  * own-host: the key signs every package we publish
+  * README: install instructions for Fedora 45 and Debian trixie arm64
+  * daemon: a plugin with no verdict is bypassed until it has one or the user
+    chooses (R-112)
+  * tests: a plugin with no verdict is bypassed, asks for one check, and goes
+    live by itself (R-112)
+  * sabotage: re-anchor the window-close arm on the current supervisor.c
+  * tests: describe's toggle rule asks min == 0 and is no CLAP-only rule (an
+    LV2 integer 0..1 port is a toggle), each arm red when its check is dropped
+  * describe: a scanned parameter's kind by omx-contract's rule, the
+    contract's step and the nearer default read with the merged scale
+  * tests: describe is held to omx-contract's clap-kind-vectors.json, vector
+    by vector (red)
+  * docs/formats: a scanned parameter's kind is omx-contract's one rule, held
+    by its vectors
+  * describe: a CLAP parameter that is stepped, no enumeration, from 0 to 1
+    is a toggle
+  * Tests: describe over omx-comp's dump makes its switches toggles (red)
+  * docs/formats: a CLAP parameter that is stepped, no enumeration, from 0 to
+    1 is a toggle
+  * docs: the guide regenerated against plugin-hostd-protocol 0.5.10
+  * supervisor: a preset load drops the properties set before it; they replay
+    after the tail
+  * test: a preset load supersedes the properties set before it (red)
+  * fake-host answers the property verbs a worker answers
+  * tests: the four property verbs are checked on the socket (red)
+  * describe writes the unversioned `$schema` address
+  * describe's `$schema` is one unversioned address: a red test first
+  * describe writes the openmixer.org `$schema` address
+  * describe's descriptors are read by omx-contract's loader: a red test first
+  * Remove the backward-compatibility paths (owner rule 2026-11-16)
+  * packaging: plugin-hostd-protocol is required from 0.5.10, below 0.6
+  * tests: the protocol floor is held at 0.5.10 by the replace-keyed ledger
+    kind the daemon names
+  * supervisor: the ledger keeps property_set replace-keyed, the latest per
+    symbol (R-111)
+  * test: property_set keeps the latest of each symbol and is replayed after
+    the state (red)
+  * tests: a declared verb the daemon does not answer is red, the four
+    property verbs no longer allowed ahead
+  * probe: the panel carries the meters its displays index
+  * tests: the panel file resolves the meters its displays index (red)
+  * docs: the panel file carries the meters its displays index
+  * tools: jalv_scratch.py names the jalv versions whose template is relative
+  * tools: every jalv the bench and the Zynthian tools start stands in a
+    scratch directory
+  * ci: the bench smoke run by workflow_dispatch only
+  * ci: workflow_dispatch only; public-sources on every pull request in
+    lint.yml
+  * ci: the trigger gate on every pull request, red
+  * tests: the first-run answer is waited for up to the hang bound, not the
+    prompt reply timeout
+  * tests: a first run whose worker is slow to come up is answered, not timed
+    out (red)
+  * The Python client is the protocol's: tests import
+    python3-plugin-hostd-client, no copy here
+  * tests: no copy of the protocol's Python client here; the shell client's
+    test stays
+  * tests: the property ledger is keyed per instance and symbol, with four
+    sabotage arms (omx-clap-core#15)
+  * tests: the CLAP default is the list plugin-hostd-protocol declares,
+    ~/.clap then /usr/lib/clap first (omx-clap-core#15)
+  * lv2: a property read back on mod-host says output_data_ready itself
+    (omx-clap-core#15)
+  * tests: a property read back on mod-host asks nothing of the controller
+    (red, omx-clap-core#15)
+  * tests: the property verbs on real mod-host and through the real adapter
+    are one path (omx-clap-core#15)
+  * lv2: an LV2 instance on mod-host answers the property verbs through
+    mod-host's patch verbs (omx-clap-core#15)
+  * build: the LV2 headers are a build dependency
+  * tests: an LV2 instance on mod-host answers the property verbs through its
+    patch verbs (red, omx-clap-core#15)
+  * supervisor: a replace-keyed verb is kept per instance and first argument,
+    and replayed after the state (omx-clap-core#15)
+  * tests: every property_set is replayed, the latest per symbol, after the
+    state (red, omx-clap-core#15)
+  * bench: a gone client fails its row; the cells so far are written after
+    every cell
+  * bench: the next run never takes the id of a broken one (red)
+  * bench: a gone client and a broken run keep what was measured (red)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 27 Nov 2026 07:44:27 +0000
