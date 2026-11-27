@@ -1,0 +1,94 @@
+plugin-qualify (0.21.3) unstable; urgency=medium
+
+  * release: plugin-qualify 0.21.3 (0.21.2 to 0.21.3), a patch
+  * release-matrix: the deb target is arm64 alone, as plugin-hostd's debs are
+    (#196)
+  * build.sh packs before it links the packaged omx-contract
+  * The package bundles the channel's omx-contract, not the registry's, as
+    the wave builds it
+  * release: a devel push's install check reads the staging channel its build
+    was staged to
+  * contract: the contract directory has no schema-major level
+  * domains: every domain is at 0.1.0, its vocabulary own version, never the
+    package one
+  * release.yml: the installed job judges each kind's skipped build on its own
+  * release: a devel merge that built nothing skips the install checks
+  * release: a merge to devel publishes the real package to staging
+  * packaging: no version on the organisation's own packages
+  * domains and descriptors: no floor on a domain, and no requires in a
+    scanned descriptor
+  * qualification domain: judged by its words, never by its info.version
+  * ci.yml: a pull request into devel may take its packages from the staging
+    channel
+  * .githooks/commit-msg is the shared stub, byte for byte
+  * measurement: the sweep reader lands cost and memory (format 1.7)
+  * readProbeOutput: probe output format 2, the cost unit nsPerSample is
+    required
+  * tests: probe output format 2, the cost unit is nsPerSample (red first)
+  * test: QUALIFICATION_REASON_PARAM_WORDS holds every step the adapter can
+    name (#169)
+  * qualify-spool: only an isolation that holds may start a check (lint green)
+  * plugin-qualify-sync --plugin <target> [--under-load]: one plugin, never a
+    scan
+  * qualify domain 1.1.0: QUALIFY_RUN_CONDITIONS, the word measured-under-load
+  * test: plugin-qualify-sync --plugin gives one plugin a record, a pin and a
+    descriptor, and --under-load keeps its figures out of the store (red)
+  * fixtures: the Pi's records live only under records-rpi5
+  * make docs-site and docs.yml: the commands' man pages and guide published
+    per release under /reference/plugin-qualify/ (Open-Mixer/.github#242)
+  * records-package: the provenance names its cell in grid, as the store
+    reads it
+  * test: a records package names its cell in the provenance's grid (red)
+  * records: a record names its binary below the install root wherever it is
+    written
+  * test: a record --out writes names its binary below the install root (red)
+  * qualify-sync: name every plugin the machine left unmeasured
+  * test: a sync names every plugin the machine left unmeasured (red)
+  * qualify-sync test: the lock tests order two runs by the lock, not a 300
+    ms sleep
+  * workflows, Containerfile: Node 26 everywhere
+  * test: every workflow and the Containerfile ask for Node 26 (red)
+  * store-export: the store writer's Python is named in its own repository
+  * ci: describe's oracle is built and run in the Fedora 45 container job
+  * tests: describe's oracle is built where the channel serves the loader
+    (red)
+  * packaging: the probe domain floor is plugin-hostd-protocol-contract 0.8.0
+  * tests: the probe domain floor is plugin-hostd-protocol-contract 0.8.0
+    (red)
+  * probe words: the probe domain is plugin-hostd-protocol's; the packages
+    floor its contract package
+  * tests: the probe domain is plugin-hostd-protocol's, the packages floor
+    its contract package (red)
+  * signal sites: the sweep reader and the crash table read the probe
+    domain's signal words
+  * tests: the signal sites test carries the sweep reader's full row (red)
+  * tests: the sweep reader and the crash table name signals with the probe
+    domain's words (red)
+  * build-native: say what the omx-clap-core-contract floor is
+  * probe words: the judging code reads the outcome and signal words from the
+    probe domain
+  * describe: the scopes of a field dump are the scan domain's words
+  * tests: describe takes the scopes of a field dump from the scan domain
+    (red)
+  * Floor plugin-hostd-contract at 0.21.0, pin the exact domain (sorting
+    pass, V5)
+  * The qualification domain is plugin-hostd's: this package reads it from
+    the installed place (sorting pass, V5)
+  * tests: the judging code compares a probe's output with the probe domain's
+    words (red)
+  * Test, red first: the qualification domain is plugin-hostd's, read from
+    the installed place (sorting pass, V5)
+  * the qualify runner's probe end has its own name, clear of the records'
+    (R-112)
+  * the qualify runner: a spool request is qualified isolated and always gets
+    a verdict (R-112)
+  * tests: the qualify runner's rule, before the runner (R-112)
+  * plugin-qualify: the Pi's records are a plain fixture, and the upgrade
+    scriptlets no longer refresh pins
+  * commit-msg: the shared stub without the old FREEMIXER names
+  * plugin-qualify --version answers as its sibling tools do (#72)
+  * record-figures: the citation of a Python twin goes; the fork reads
+    figures through plugin-db
+  * test: a tool or test a source cites exists (red)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 27 Nov 2026 07:54:56 +0000
