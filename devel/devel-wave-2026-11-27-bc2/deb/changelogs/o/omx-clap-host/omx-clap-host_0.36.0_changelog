@@ -1,0 +1,29 @@
+omx-clap-host (0.36.0) unstable; urgency=medium
+
+  * reference: mini-curve-display's row has a status, supported, read by
+    omx-clap-scan
+  * ci: a pull request into devel in a wave reads that wave's devel channel
+    above staging
+  * ci: a pull request into devel in a wave reads that wave's devel channel
+    above staging
+  * release: the same-pass list no longer names plugin-hostd-full
+  * release: the 0.36.0 changelog names #228, the transport sabotage log
+    folded in
+  * fuzz: the seed corpus carries hosting.json's new C link
+  * contract: HOSTING_RESOURCE_HINTS_CODES' C link names
+    resource_hints_judge, where #255 moved the refusal
+  * release: 0.36.0, the CLAP devel wave of 2026-11-27
+  * test-transport-sabotage: its expected FAIL line goes to a log, so a green
+    make test prints none
+  * Resource hints before any instance: the entry's factory read by plugin
+    id, and the LV2 adapter's entry offers it
+  * docs/panel-description.md: how any host reads
+    org.openmixer.panel-description/1
+  * window tests: a floating window's plugin is never asked set_transient,
+    and the tests now see it
+  * control layout: the cut-down shape of clap.control-layout/1 is declared,
+    and omx-clap-scan reads it under the host's rules
+  * omx-clap-scan: a plugin's clap.mini-curve-display/3 curves are read, and
+    a panel display naming a curve the plugin does not draw is refused
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 27 Nov 2026 15:02:06 +0000

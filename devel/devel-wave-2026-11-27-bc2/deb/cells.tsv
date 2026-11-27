@@ -1,7 +1,19 @@
 # package	version	set	cells
+libomx-clap-dev	0.36.0	full	trixie/amd64 trixie/arm64
+libomx-clap-lv2-dev	0.36.0	full	trixie/amd64 trixie/arm64
+libomx-clap1	0.36.0	full	trixie/amd64 trixie/arm64
 libomx-contract-dev	0.24.0	full	trixie/all
 libomx-domain-dev	0.24.0	full	trixie/amd64 trixie/arm64
 libomx-domain0	0.24.0	full	trixie/amd64 trixie/arm64
+omx-clap-contract	0.36.0	full	trixie/all
+omx-clap-host	0.36.0	full	trixie/amd64 trixie/arm64
+omx-clap-host-l10n-ca	0.36.0	full	trixie/all
+omx-clap-host-l10n-de	0.36.0	full	trixie/all
+omx-clap-host-l10n-es	0.36.0	full	trixie/all
+omx-clap-host-l10n-fr	0.36.0	full	trixie/all
+omx-clap-host-l10n-it	0.36.0	full	trixie/all
+omx-clap-host-l10n-pt	0.36.0	full	trixie/all
+omx-clap-host-tests	0.36.0	full	trixie/amd64 trixie/arm64
 omx-contract	0.24.0	full	trixie/all
 omx-contract-data	0.24.0	full	trixie/all
 omx-contract-l10n-ca	0.24.0	full	trixie/all
