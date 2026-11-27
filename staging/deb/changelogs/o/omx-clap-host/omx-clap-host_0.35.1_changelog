@@ -1,0 +1,281 @@
+omx-clap-host (0.35.1) unstable; urgency=medium
+
+  * release: the RPMs build for Fedora aarch64 too, not x86_64 alone (#246)
+  * ci: on staging, the host verbs read the installed declarations; the clean
+    roots install what R5 moved (#234, #243)
+  * tests, ci: the readers of the host words and the protocol's contract
+    follow ruling R5 (#243)
+  * tests: the aux-connect arm breaks the whole condition; hosting-one-home's
+    git archive runs in a container (#242)
+  * tests: test-contract and test-domain install the contract directory with
+    no major, the domains at 0.1.0 (#238)
+  * tools/clap_inventory.py: --check holds an older installed CLAP to the
+    inventory (#241)
+  * tests/chain_host_e2e.sh: phase 10 links the LV2 mono fixture by its
+    lv2:symbols (#240)
+  * ci: the package file lists are the packages devel builds (#239)
+  * tests: the domain checks read devel's rulings: a domain's own version,
+    the contract directory with no major (#238)
+  * release: 0.35.1, the devel wave of 2026-11-26
+  * ci: a pull request into devel, and a dispatch off main, builds on
+    plugin-hostd's devel and the staging channel (#234)
+  * packaging: name the CLAP headers without a floor no channel meets
+  * docs/chain.md: Widths, the rule a chain joins members of different widths
+    by (#232)
+  * omx-clap-host: a chain line of a mono plugin and stereo plugins forms,
+    its node as wide as its last member (#232)
+  * chain: members of different widths share a chain, a width change between
+    them is matched, never refused (#232)
+  * clap.gui: an embedded window's plugin is given its scale again when the
+    screen's changes, and request_show before a window is held by a test
+  * release: the RPM is x86_64 only, as the build requirements it is built
+    against are
+  * The contract directory has no schema-major level: omx-clap's package sits
+    beside its domain
+  * domains: every domain is at 0.1.0, its vocabulary own version, never the
+    package one
+  * The wave's merges, repaired: catalog-gate, #219's sources, the jalv test
+    in CI
+  * 0.M.m until 1.0: every domain stays at the package version, as the wave
+    had them
+  * No version bump while developing: VERSION, the spec and the omx-clap
+    domain stay where the wave has them
+  * 0.36.0: the spec's version and the changelog line; the hosting codes
+    module rendered again
+  * omx-clap-contract leaves the domain host to
+    plugin-hostd-protocol-contract (ruling R5)
+  * changelogs: the entries in date order
+  * deps.txt: the omx-contract and libomx-domain rows are 3.22.0, rendered
+  * .gitignore: tests/clap_properties_test is a build output
+  * domains never go back: revert 0.35.0's renumber to the package version
+  * ci.yml: run the shared trigger gate
+  * release: a merge to devel publishes the real package to staging
+  * ci: a pull request into devel accepts staged omx packages; every other
+    run still refuses them (#224)
+  * V23d: dbPerOct and dbPerS map onto the standard ids dBPerOct and dBPerS
+  * V23d: arm (r) refuses a second sheet of strings anywhere in the omx-clap
+    package, and ids rows in the units header
+  * V23d: the ids header is a package-scope entry of the domain's root
+    x-render; no item carries a render
+  * V23d: red first, every render of the domain is its root x-render, and the
+    ids header is a package-scope root entry
+  * V23d: arm (c) reads PARAM_UNITS_CLAP_ENCODED as the words item it is
+    ruled to be, and refuses any other kind by name
+  * V23d: arm (c) reads PARAM_UNITS_CLAP_ENCODED by name, whatever its kind
+  * V23d: red first, arm (c) holds the mapping onto omx-contract's
+    PARAM_UNITS_CLAP_ENCODED, exactly
+  * V23d: the both-headers test leaves: in chain 3 omx-contract's unit header
+    no longer exists
+  * V23d: the both-headers sabotage goes red only on the moved row, the
+    quoted include is refused, and the ids have a swap arm
+  * V23d: red first, the no-copy check also refuses the quoted include of
+    omx-contract's old unit header
+  * V23d: the CHANGELOG says what moved
+  * V23d: omx-clap renders both headers, and the code -> standard id lookup
+    is omx_param_unit_ids.h
+  * V23d: red first, the renders are omx-clap's and the code -> standard id
+    lookup is a rendered header
+  * V23d: the tokens map onto the standard ids, the PARAM_UNITS consts (dB,
+    Hz, deg, dB-oct)
+  * V23d: red first, each token maps to its standard id, the PARAM_UNITS
+    const as released
+  * V23d: src/omx_param_units.h has its own guard, OMX_CLAP_PARAM_UNITS_H
+  * V23d: red first, this tree's unit header and omx-contract's old copy
+    compile in one unit under -Werror
+  * V23d: the param-contract code sheet is this tree's, and omx_clap_ext.h
+    reads its own render
+  * V23d: red first, the unit code sheet is this tree's domain
+    omx-param-contract, mapped to the standard units
+  * code-text-check: a words item's words are ours, keyed ITEM.word
+  * C2 findings on #221: the fuzz corpus copy of verb-hosts, the scan check
+    reads the package as installed
+  * C2 findings on #221: the installer gets the package, the renders carry
+    HOSTING_VERB_HOSTS
+  * omx-clap 0.34.2: the served omx-contract 3.22.0 reads the installed
+    package
+  * host-replies-check holds every table-typed reply this source writes, read
+    from its registrations, not only those with a HOST_FIELDS macro
+  * note_input, note_drops and note_out_drops are typed by
+    plugin-hostd-protocol's table: drop them from OMX_CLAP_REPLIES
+  * The host words, the verb hosts and the shared verbs are
+    plugin-hostd-protocol's: read them from there (ruling R5)
+  * ci.yml: a pull request into devel may take its packages from the staging
+    channel
+  * .githooks/commit-msg is the shared stub, byte for byte
+  * no_floors_check: rpm's epoch prefix %{?epoch:%{epoch}:} is generated,
+    what follows it is judged
+  * no_floors_check: a floor through a macro or variable, pkg-config's
+    version flags and a pinned install are floors too
+  * install-contract probes the four-argument --domain; no-floors check gaps
+    closed
+  * tests: one home per hosting word, each second home refused by name
+  * requires: absent when it named only the schema; the seeds are read too
+  * Third-party floors stay; install-contract probes the installer's mode
+  * No hand-kept version floors: deps.txt gone, requires are names
+  * ci: make test-no-upward-deps runs in the lint job
+  * packaging/ci-only.txt: omx-contract and mod-host, which only CI jobs
+    install
+  * ci: spdx-check runs in a lint job, never before the suite
+  * ci: the file-list check reads the library package by its 0.34.0 name
+    (#209)
+  * tests: the plugin-hostd conf of the pin and chain tests names no
+    qualification_dir (#209)
+  * tests: the nopkg sabotage arm keeps the domains (#209)
+  * ci: the language packs gate reads the host domain's codes too (#209)
+  * ci: the plugin-hostd daemon's build requirements come from its spec (#209)
+  * packaging/deps.txt: the floors the spec states (#209)
+  * fuzz: the seed corpus seeds the hosting domain, the codes' one home
+  * clap_host_limits.h: the banner names the hosting domain its codes are
+    rendered from
+  * Host domain: a doc for each strip kind of HOST_TRACK_KINDS
+  * Hosting codes: the domain is their one home, data/ drops them
+  * Hosting codes: a doc for each of the 54 codes that had none
+  * Hosting domain: each code's doc is its description, its English text its
+    x-text, the item's source its x-source
+  * Hosting domain: the test's install line names omx-clap, and the packaging
+    check holds hosting
+  * install-contract: every --domain call names the package that installs it
+  * tests: MPE's lower zone through the core, and a third '=' refused at its
+    own length (#155)
+  * omx-clap domain: the replies this package owns, typed and named (#49)
+  * tests: the Python client is plugin-hostd-protocol's, not plugin-hostd's
+    copy
+  * ci: the RPM file-list check names hosting/verb-hosts.json and
+    omx-clap-libs
+  * rt-gate control: each plant's fields read by name, shellcheck clean
+  * rt-gate: comments name no private ruling desk and no foreign issue numbers
+  * rt-gate: run in CI, ship the call graphs in the -devel package, floor
+    omx-rt-gate
+  * fuzz: the seed corpus carries data-hosting-verb-hosts, the seed the
+    generator writes
+  * ci: each desk-only test target has its reason and a CI piece that runs
+  * Hosting domain: rendered again at 0.35.0, owned by omx-clap
+  * rt-gate view: work() called through its field, so respond is the worker
+    root
+  * preset file: its limit is asserted at most the protocol's
+    PHD_PRESET_FILE_MAX
+  * rt-gate: every host root spec 7.13 declares must be derived from the
+    core, red first
+  * ci: the package checks expect the hosting domain
+  * scan: the scan domain's floor is 0.33.0, the release that shipped what it
+    reads
+  * release.yml: no dispatch publish input; the release jobs publish on a tag
+    push alone
+  * tests import the protocol's Python client: python3-plugin-hostd-client,
+    or PLUGIN_HOSTD_CLIENT_DIR
+  * tests: the protocol's Python client comes from the protocol, never from
+    plugin-hostd
+  * make: test-stage and test-state-root declare what they read (#188)
+  * contract.d: every domain at the package version, each x-since the release
+    that shipped the item
+  * BUILDING.md: every domain is versioned with the package, an x-since is
+    the release that shipped the item
+  * host: an LV2 plugin's JACK ports are named by its lv2:symbols, as
+    mod-host names them
+  * C2: the code sheet maps dbPerOct and dbPerS to dBPerOct and dBPerS;
+    presets state none
+  * map: the property symbols' node says the release that shipped them, 0.32.5
+  * no-upward-deps: the forms and places #119's review named, each an arm
+  * make docs-site and docs.yml: the C API reference published per release
+    under /reference/omx-clap-core/ (Open-Mixer/.github#242)
+  * OMX_PARAM_CONTRACT_UNIT_IDS: dbPerOct is dBPerOct, dbPerS is dBPerS
+  * param-units map check, param_contract_test: dbPerOct is dBPerOct (red)
+  * host-verbs-contract: read the installed protocol domain when no checkout
+    is named
+  * domain-packaging-check: the loader floor is the tree's omx-contract floor
+  * ci: drop the pull-request arms a dispatch-only ci.yml never selects
+  * install: a red fixtures-install check leaves the scratch tree writable
+    again
+  * ci: the shared fedora-workflow-check guards the Fedora 45 matrix, the
+    local copy goes
+  * C2: the code sheet maps dbPerOct and dbPerS to dBPerOct and dBPerS;
+    presets state none
+  * param_info: the unit word is the standard unit id (omx_clap_param_unit_id)
+  * clap_host_test, jack_info_e2e: param_info answers the standard unit id
+    (red)
+  * deps.txt: the floors the spec states (plugin-hostd-protocol 0.8.0,
+    plugin-db 0.5.0)
+  * release: omx-clap-core 0.35.0 (chain 3)
+  * V23d: the omx-contract floors are 3.22.0, chain 3's omx-contract release
+  * V16: the host verbs check reads plugin-hostd-protocol's words from the
+    domain plugin-hostd-protocol
+  * V16 is on the sorting pass again: the fold's revert 45e8d1de is reverted
+  * V23d: arm (r) refuses a second sheet of strings anywhere in the omx-clap
+    package, and ids rows in the units header
+  * V23d: the ids header is a package-scope entry of the domain's root
+    x-render; no item carries a render
+  * V23d: red first, every render of the domain is its root x-render, and the
+    ids header is a package-scope root entry
+  * V23d: arm (c) reads PARAM_UNITS_CLAP_ENCODED as the words item it is
+    ruled to be, and refuses any other kind by name
+  * V23d: arm (c) reads PARAM_UNITS_CLAP_ENCODED by name, whatever its kind,
+    and omx-contract is floored at 3.23.0
+  * V23d: red first, arm (c) holds the mapping onto omx-contract's
+    PARAM_UNITS_CLAP_ENCODED, exactly
+  * V23d: the both-headers test leaves: in chain 3 omx-contract's unit header
+    no longer exists
+  * V23d: the both-headers sabotage goes red only on the moved row, the
+    quoted include is refused, and the ids have a swap arm
+  * V23d: red first, the no-copy check also refuses the quoted include of
+    omx-contract's old unit header
+  * V23d: the omx-contract floors are 3.21.0, the release whose PARAM_UNITS
+    holds every id the mapping names, and the CHANGELOG says what moved
+  * V23d: omx-clap renders both headers, and the code -> standard id lookup
+    is omx_param_unit_ids.h
+  * V23d: red first, the renders are omx-clap's and the code -> standard id
+    lookup is a rendered header
+  * V23d: the tokens map onto the standard ids, the PARAM_UNITS consts (dB,
+    Hz, deg, dB-oct)
+  * V23d: red first, each token maps to its standard id, the PARAM_UNITS
+    const as released
+  * V23d: src/omx_param_units.h has its own guard, OMX_CLAP_PARAM_UNITS_H
+  * V23d: red first, this tree's unit header and omx-contract's old copy
+    compile in one unit under -Werror
+  * V23d: the param-contract code sheet is this tree's, and omx_clap_ext.h
+    reads its own render
+  * V23d: red first, the unit code sheet is this tree's domain
+    omx-param-contract, mapped to the standard units
+  * ci: fuzz.yml comment names Fedora 45 only
+  * ci: Fedora 45 only (Fedora 44 dropped)
+  * ci: refuse a Fedora 44 reference in the workflows
+  * install: the devel package ships the test fixtures' sources and the
+    makefile that builds them
+  * install-contract: the error names the 3.20.1 floor
+  * Hosting domain: omx-contract domain check replaces the render's own
+    refusals, x-since rendered at 0.33.1
+  * Red tests: the refusals are omx-contract domain check, x-since is
+    validated
+  * Bump to 0.33.1: the hosting domain is a new item set
+  * Publish the hosting codes as a domain the loader opens
+  * Test the hosting domain: the loader opens every code of
+    data/hosting*.json, the gate refuses drift
+  * rt-gate: the embedder's audio-role predicates and log sink, bound
+    (rt-gate is_audio, log.sink)
+  * rt-gate view: the pool's plugin exec judged through its field (rt-gate
+    omx_abi_call6)
+  * lv2 urid: the lookup never allocates; the map makes segments (rt-gate #19)
+  * thread pool: no helper claims on the owner's CPU, and the owner never
+    sleeps (rt-gate #15)
+  * thread pool: a helper on the requesting thread's CPU claims nothing, red
+    first (rt-gate #15)
+  * bench: the jalv path starts each jalv in the run directory
+  * lv2 log: the line is made by the log's own printf, never vsnprintf
+    (rt-gate #18)
+  * lv2 log: the log's own printf, held to the C library's, red first
+    (rt-gate #18)
+  * thread pool: the requesting thread's id without a system call (rt-gate
+    #11)
+  * lv2 log: the line's length is bounded by its buffer (rt-gate #22)
+  * ci: workflow_dispatch only; the VERSION check and public-sources on every
+    pull request
+  * ci: the trigger gate on every pull request, red
+  * tests import the protocol's Python client: python3-plugin-hostd-client,
+    or PLUGIN_HOSTD_CLIENT_DIR
+  * tests: the protocol's Python client comes from the protocol, never from
+    plugin-hostd
+  * rt-gate: drop rt_reach.py and the four Makefile scans the gate replaces
+  * rt-gate: ship the core's call graphs, bind the host roots, run omx-rt-gate
+  * release 0.33.0: plugin-hostd-protocol >= 0.5.10 and below 0.6
+  * release: 0.33.0, org.openmixer.properties/1 and the property verbs (#15)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 27 Nov 2026 01:49:17 +0000
