@@ -1,0 +1,296 @@
+omx-panel (0.17.2) unstable; urgency=medium
+
+  * tools/installed-package-json.mjs: no shebang, the Makefile runs it with
+    node (#280)
+  * Version 0.17.1: the installed package.json names the installed tree (#272)
+  * CHANGELOG.md: the 0.17.1 line the release proof reads
+  * release: omx-panel 0.17.1 (0.17.0 to 0.17.1), a patch
+  * release: the RPMs build for Fedora aarch64 too, not x86_64 alone (#274)
+  * The installed package.json names the installed tree: every export target
+    and the bin exist after make install (#272)
+  * Package builds skip the shape renders by name: ci.yml and the release
+    proof run them (#270)
+  * base: BUILT_FROM is BUILT_FROM.txt, a one-value file the SPDX check reads
+    as data (#268)
+  * release: the proof runs the shape generators at ci.yml's pin (#266)
+  * release: the proof links the twins where the packages install them, under
+    /usr (#264)
+  * The tree reads the channel's omx-dsp and omx-contract after npm ci, as
+    the installed package does (#262)
+  * release: a devel push's proof reads the staging channel its build was
+    staged to (#260)
+  * release: the RPM is x86_64 only, as the build requirements it is built
+    against are
+  * Fix: the dirty-rectangle spectrum test hands the spectrum as devel takes
+    it
+  * store tests: the plugin-db fixture domain states its format
+  * docs, tests: two lines state the fact, not a place a reader cannot open
+  * packaging: the domains are listed under %{omx_contract_dir}
+  * Fix: the ui library keeps its own version, libomx-panel-ui.so.0
+  * contract: the contract directory has no schema-major level
+  * domains: every domain is at 0.1.0, its vocabulary own version, never the
+    package one
+  * Fix: the shapes follow the wave: the parity scripts' new place, and a
+    code of four parts
+  * Fix: the group model keeps the wave's own changes; only the unit hunk is
+    #250's
+  * release: a merge to devel publishes the real package to staging
+  * docs/renderer.md: the spectrum signature's change names no release (it is
+    unreleased; the tree is 0.16.2)
+  * test: the contract package's one direct install is omx-panel's own
+    transaction, and the proof runs after it
+  * runtime-install-check: omx-panel's requirement on omx-panel-contract is
+    met by the package this build made
+  * test: a requirement on omx-panel-contract is met by the package this
+    build made (red: the check asks the channel)
+  * packaging: the dependency on omx-contract-data states no version (no
+    hand-kept floor)
+  * test: the hostd name guard reads the files again (tree-grep.mjs), as
+    devel has it since #207
+  * 0.16.2: the role table names omx-contract 3.22.0's unit ids (#256)
+  * #170 consumers: the role table names coef where it named x, one for one
+  * #170 consumers: red first, the plain multiplier is coef: the compressor's
+    ratio in coef keeps its role
+  * V23d (P2): two comments stop naming the param-contract unit table
+  * servedUnit reads omx-contract's PARAM_UNITS_CLAP_ENCODED (#256)
+  * V23d (P2): red first, a unit is served when omx-contract's
+    PARAM_UNITS_CLAP_ENCODED holds its id
+  * tests: the last readers of a floor; the rules are version 5, describe's
+    output having moved with the folds (#239)
+  * panel_codes.h: the store codes are nine (#239)
+  * panel domain: each store code's x-code is its place (#239)
+  * store: a domain is opened as installed, with no floor; a descriptor that
+    refers to nothing states no requires (#239)
+  * No hand-kept floors: our packages are named without a version, and a
+    subpackage at the version built with it (#239)
+  * tests: no version relation on a package of ours is typed by hand (red,
+    #239)
+  * meaning-infer: a unit is its standard id, read from the vocabulary (#251)
+  * test: meaning-infer reads a unit as its standard id, never a spelled word
+    (red, #251)
+  * ci.yml: a pull request into devel may take its packages from the staging
+    channel
+  * group model: a unit's token is its standard id, read from the vocabulary
+    (#74)
+  * test: the group model's unit tokens are the vocabulary's (red, #74)
+  * install-under-test: the files are compared by sha256sum, which every
+    image has (cmp is diffutils')
+  * runtime install: the contract package under test goes over any channel
+    copy and is proven to be what is installed (#248)
+  * tests: the runtime install check installs the package file it is given,
+    over any channel copy (red, #248)
+  * install-contract: the panel and gestures domains are installed as
+    omx-panel
+  * look-roles: the knob pointer's floor is measured on the knob face, in
+    every finish of the pin (#244)
+  * docs: a floor's ground may be a key a finish sets; the knob pointer is
+    read on the knob face (#244)
+  * .githooks/commit-msg is the shared stub, byte for byte
+  * renderer test: the install check stages what is built and builds nothing
+  * changelog: the renderer's ABI break, libomx-panel-render.so.1 and the new
+    set_spectrum
+  * renderer: the spectrum's pre, both and delta goldens cut again on devel
+  * renderer: the spectrum's two taps, the console's modes and the delta
+  * renderer: the shared library's soname moves to libomx-panel-render.so.1
+  * test: the spectrum's two taps, its modes and the delta, red first
+  * docs: the spectrum takes both taps, the console's modes and the delta
+  * panel-layout: the delay example's pingpong takes its role, its meaning
+    stated since omx-contract 3.22.0
+  * docs: looks: state the console's facts instead of pointing into its tree
+    (#237)
+  * docs: looks: accepted; the ten decisions ruled and the body written to
+    them (#237)
+  * docs: looks: the coordinator's recommendation beside each open decision
+    (#237)
+  * docs: looks: control kinds x styles, widget libraries and the house skin
+    (proposed)
+  * renderer: the ui library's header and pkg-config file are installed with
+    the library, never alone
+  * renderer test: an install without the window stages nothing of the ui
+    library (red: its header and pkg-config file are staged alone)
+  * renderer: the look's style is worn whole, so the vintage panel is the MOD
+    GUI's vintage face
+  * renderer test: under the vintage style a panel is the MOD GUI's vintage
+    face, pixel for pixel (red: only the knob is the look's)
+  * describe: an override family that is no PANEL_FAMILIES word is refused by
+    name, and the panel is none
+  * panel domain 1.4.0: panel.describe.family-unknown, the refusal of an
+    override family that is no panel family
+  * test: describe refuses an override family that is no PANEL_FAMILIES word
+    (red: 'synth' is taken silently as none)
+  * CHANGELOG: the 0.17.0 line
+  * packaging: every omx-contract floor at 3.22.0, omx-dsp-wasm at 0.34.1
+  * modgui-gen: the curve's units are the standard ids (omx-dsp curve API B)
+  * test: no unit the tree states carries '/' or '-'
+  * units: a choiceUnits value is a PARAM_UNITS id, no '/' or '-'; the slope
+    reads dBPerOct
+  * docs: the slope unit's id is dBPerOct in panel-layout and describe's
+    comment
+  * renderer: the look's style is worn whole, so the vintage panel is the MOD
+    GUI's vintage face
+  * renderer test: under the vintage style a panel is the MOD GUI's vintage
+    face, pixel for pixel (red: only the knob is the look's)
+  * shapes: the gestures document's refusal codes, and GESTURE_BAD_INPUT in
+    the gesture run's refusal
+  * renderer tests: the mark-hold rasters follow main's harness: the console
+    look pinned, and no skip without the twin
+  * package: export the store codec, ./store-entry
+  * test: the npm package exports the store codec by name (red)
+  * docs: the skin refusals name override-refused and entry-missing;
+    override-invalid and view-error keep their words (#14)
+  * skin-package: override-refused and entry-missing are new codes;
+    override-invalid and view-error keep their words (#14)
+  * describe: an override family that is no PANEL_FAMILIES word is refused by
+    name, and the panel is none
+  * panel domain 1.3.0: panel.describe.family-unknown, the refusal of an
+    override family that is no panel family
+  * test: describe refuses an override family that is no PANEL_FAMILIES word
+    (red: 'synth' is taken silently as none)
+  * install-contract: the panel and gestures domains are installed as
+    omx-panel
+  * CHANGELOG: the 0.17.0 line, C2 and chain 3's content
+  * packaging: every omx-contract floor is 3.22.0, the release C2 needs
+  * describe --stored: pages cut from a descriptions-store entry (Fixes #220)
+  * spec: describe --stored, the door for a client that is not Node.js (#220)
+  * modgui: the vintage look's needle dials wear the clip lamp
+  * modgui-gen: vuFaces places the needle dials; meterLamp takes the face's
+    border
+  * meters: a clip lamp and the unheld caption on every surface; the panel's
+    own words have keys
+  * changelog: the base and omx-panel-descriptions (#168)
+  * gitignore: base/build/, where make base writes
+  * packaging: omx-panel-descriptions, the base, noarch
+  * omx-panel base: the descriptions store's base from base/inputs/
+  * store: omx-panel-store build writes the base from derived entries
+  * test: the base, reproducible and noarch, in omx-panel-descriptions (red,
+    lane 5)
+  * descriptions-store 6: the base builder and omx-panel-descriptions, ruled
+    (lane 5)
+  * complement: the marker's plugin line names the groups written
+  * docs: ruled, one home for the MOD GUI's shared resources and shots; pugl
+    and NanoVG are channel layers with floors
+  * rules: the helpers the JS tools and the C renderer share are listed, each
+    with a vector both suites read
+  * changelog: the generators read the store, omx-panel-sync and its unit
+    (#167)
+  * systemd: omx-panel-sync.service, the one pass's unit, enabled by default
+  * test: one unit for the one pass, enabled by default (red,
+    descriptions-store 10)
+  * omx-panel-sync: the one pass, its store half in omx-panel sync
+  * complement: the groups the store holds, never an inference of a stored key
+  * store: omx-panel-store list prints the keys of the layer of the effective
+    uid
+  * test: the generators read the store, omx-panel-sync without systemd (red,
+    lane 4)
+  * descriptions-store 6: the generators and the pass, ruled (lane 4)
+  * release.yml: no dispatch publish input; the release jobs publish on a tag
+    push alone
+  * describe --plugin --store: one plugin inferred once, the layer by uid
+  * store: omx-panel-store rules prints OMX_PANEL_RULES_VERSION
+  * complement: verdictOf and binaryOf, the one inference and binary per
+    plugin
+  * group model: a second number in a CLAP name keeps its band, and a
+    one-band control pages after the matrix
+  * test: describe --plugin --store, one plugin inferred once (red, lane 3)
+  * panel-layout test: the delay example's red is the installed omx-contract,
+    named
+  * descriptions-store 6: the single-plugin call's rulings (lane 3)
+  * panel: a choice's unit is read from the descriptor, and the panel block's
+    choiceUnits is retired
+  * modgui: the map table of docs/modgui.md is printed from console-map.json
+  * gesture: omx_gesture_run reads the script's events in one walk
+  * release: pass the same-pass list to the shared build calls, as
+    plugin-hostd does
+  * codes: the gesture refusal codes are in the one sheet, under their code
+    words
+  * group model: the head row opens the served matrix, and a cell carries its
+    own caption
+  * docs: three rulings, the head row first, a cell's own caption, gesture
+    code words
+  * renderer: a face without a head, omx_panel_view_set_head
+  * renderer tests: the real omx-delay is drawn from its served layout,
+    time_response included
+  * control-kind: the kind of a scanned control is one rule, omx-panel's
+  * renderer: a meter's caption shows its unit's x-symbol, the description's
+    unitText
+  * describe: servedParamOf imports unitSymbolOf, the unitText of a stated
+    unit with no token
+  * make docs-site and docs.yml: the renderer API and design pages published
+    per release under /reference/omx-panel/ (Open-Mixer/.github#242)
+  * the documentation gate over the renderer's installed headers:
+    Open-Mixer/.github's doc-gate, its baseline only shrinks
+    (Open-Mixer/.github#242)
+  * ci: the package jobs install and check the build dependencies the
+    packaging declares
+  * gestures: the parity scripts live under fixtures/, the export keeps its
+    name
+  * C2: units are PARAM_UNITS ids; a face shows the x-symbol
+  * vocabulary test: the clap-encoded refusal names omx-contract-data >=
+    3.22.0
+  * release: omx-panel 0.17.0 (chain 3)
+  * V23d (P2): the omx-contract-data floor is 3.22.0, chain 3's omx-contract
+    release
+  * V23d (P2): two comments stop naming the param-contract unit table
+  * #170 consumers: the role table names coef where it named x, one for one
+  * #170 consumers: red first, the plain multiplier is coef: the compressor's
+    ratio in coef keeps its role
+  * V23d (P2): servedUnit reads omx-contract's PARAM_UNITS_CLAP_ENCODED, and
+    the omx-contract-data floor is 3.23.0
+  * V23d (P2): red first, a unit is served when omx-contract's
+    PARAM_UNITS_CLAP_ENCODED holds its id
+  * renderer: libomx-panel-ui, a plugin's layout bound to its parameters for
+    clap.gui and ui:X11UI; the window takes input; create_from_data
+  * test: the plugin ui library binds a layout to a plugin's parameters, with
+    sabotage arms (red: src/ui.c does not exist)
+  * gui-stage: a known set's MOD GUI staged under the sha256 of each binary,
+    with a keys.json, deterministic (docs/descriptions-store.md 6)
+  * test: omx-panel gui-stage stages a known set's MOD GUI under the binary's
+    sha256 with a keys.json, deterministic (red: the command does not exist)
+  * omx-modgui-sync: the bundles it writes wear the look in
+    /etc/omx/modgui-look (MODGUI_LOOK_FILE); a bundle made under another look
+    is written again
+  * test: omx-modgui-sync takes the look from the look file (red: a changed
+    look leaves the bundle fresh, a bad look is not named)
+  * packaging: the no-deps RPM build defines python3_sitelib itself;
+    python3-omx-panel depends on python3 plainly, as a pure module needs no
+    dh_python3
+  * host reads: the gesture words are imported from
+    omx_panel.shapes.gestures; CI builds the generators at omx-contract's
+    pins and runs shapes-check; docs/shapes.md (#52)
+  * packaging: python3-omx-panel, omx_panel.shapes.<name>, on RPM and DEB
+    from the one install-python target
+  * shapes: the gesture declaration, the gesture run's call, a look role and
+    a refusal code have a schema each, rendered to TypeScript and Python by
+    omx-contract's pinned generators, committed and held by make shapes-check
+  * test: omx-panel's document shapes are held: real documents validate, the
+    words are the declaration's, a stale or hand-edited render is named, the
+    Python module imports (red)
+  * modgui: an off-axis EQ mark is held on the plot, as the renderer holds it
+  * renderer tests: the mark-hold rasters skip without the twin, as parity
+    does (red)
+  * renderer tests: an off-axis EQ mark is held on the plot by both faces
+    (red)
+  * copy-data: the merge's conflict resolved, DATA carries GESTURE_FIXTURES
+    and the frame budget
+  * renderer: the drag-frame bench, committed with its numbers
+  * renderer: merge_boxes has one loop for boxes that meet
+  * renderer: a dirty draw short of memory draws whole instead of crashing
+  * renderer: marks are held to the plot, and the display's bleed covers the
+    letter over a mark
+  * renderer: dirty tests for marks, stems, spectrum, caps, scale and an
+    allocator that fails; red
+  * renderer: omx_panel_view_draw_dirty repaints only the elements that
+    changed
+  * renderer: dirty-rectangle tests, red against a draw that reports the
+    whole panel
+  * renderer: spec the dirty rectangles and declare the drag-frame budget
+  * lint: runs on a pull request only, never on a push
+  * skin-package: panel.skin.override-invalid and panel.skin.view-error carry
+    structured arguments, red first with the guard sabotaged once (#14)
+  * docs: panel.skin.override-invalid and panel.skin.view-error declare their
+    facts, never a sentence (#14)
+  * test: lv2-complement's lilv proofs walk a collection by begin/is_end/next
+  * ci: workflow_dispatch only, the one lint holds the gate
+  * lint: the one lint workflow runs the shared trigger gate
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 27 Nov 2026 06:19:19 +0000
