@@ -1,0 +1,19 @@
+omx-contract (0.24.1) unstable; urgency=medium
+
+  * ci: Debian is trixie only, no bookworm cell behind the full switch
+  * release: omx-contract 0.24.1 (0.24.0 to 0.24.1), a patch
+  * contract-dir: contractRoots() asks pkg-config once per process and keeps
+    its answer
+  * publish.yml: npm publishes with an explicit --tag latest, so the 0.M.m
+    line can replace 3.x
+  * release: the 0.24.0 debian/changelog entry is dated after 0.23.4's
+  * release: the 0.24.0 changelog names #246, the semver x-since check folded
+    in
+  * release: omx-contract 0.24.0 (0.23.3 to 0.24.0), a minor
+  * semver: an item new since the previous tag says the domain release that
+    ships it
+  * The resource-hints factory's get is called on the main thread
+  * RESOURCE_HINTS names its factory: the same hints by plugin id, before any
+    instance
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 28 Nov 2026 15:28:48 +0000
