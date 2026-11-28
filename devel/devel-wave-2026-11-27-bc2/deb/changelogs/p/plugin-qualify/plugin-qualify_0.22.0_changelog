@@ -1,0 +1,27 @@
+plugin-qualify (0.22.0) unstable; urgency=medium
+
+  * isolated step: remove the instance before the host is killed, so the
+    private server stops at once
+  * ci: a package dry run dispatched off main in a wave builds against that
+    wave's devel channel
+  * ci: the container tests install make, which make link-packaged runs
+  * isolated and pool steps: accept the plugin after its first add, as
+    plugin-hostd 0.22 bypasses one with no verdict
+  * hosting codes: read omx-clap's own dimensions from
+    omx-clap-hosting-codes.js, and refuse a module with no table
+  * golden: the qualification words plugin-hostd added, unit provenances,
+    unmeasuredReason and remove
+  * tests: the qualification and probe domains started again at 0.1.0, so
+    x-since and the floors read 0.1.x
+  * ci: a dispatch off main in a wave reads that wave's devel channel too, as
+    it reads staging
+  * ci: a pull request into devel in a wave reads that wave's devel channel
+    above staging
+  * changelog: 0.22.0 names the CLAP switch written as a toggle (#208)
+  * descriptors: a scanned CLAP switch is a toggle, by omx-contract's kind
+    rule
+  * release: plugin-qualify 0.22.0 (0.21.2 to 0.22.0), a minor
+  * resource hints: a plugin's declared hints are compared with what the run
+    measured, per hint, and recorded beside the verdicts
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 28 Nov 2026 01:06:21 +0000
