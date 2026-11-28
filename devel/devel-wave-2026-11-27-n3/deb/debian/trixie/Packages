@@ -336,6 +336,132 @@ Description: C headers to drive plugin-hostd from your own controller
  .
  Its documentation is on openmixer.org.
 
+Package: plugin-qualify-l10n-ca
+Architecture: all
+Version: 0.22.1
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Depends: plugin-qualify (= 0.22.1)
+Filename: ./all/plugin-qualify-l10n-ca_0.22.1_all.deb
+Size: 10760
+MD5sum: dbf464f5dd3ec187398c00a18b6477b8
+SHA1: d81daf6ac4bef356720d37605c7d0fd0b0d61028
+SHA256: 8f56cd5810e8576d0ae62aaf3d22dce0d86d1be3b4dba2673b0b6ec6eb5df2f4
+SHA512: 998be41a52918ebda1c05452522f36d5180132b1c15a32eff62ecf77fce516b334c7d5b71e2d63a7909de67140fce46fc143902a314e5513d0c3794e0d757f2f
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: ca catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language ca, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: plugin-qualify-l10n-de
+Architecture: all
+Version: 0.22.1
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Depends: plugin-qualify (= 0.22.1)
+Filename: ./all/plugin-qualify-l10n-de_0.22.1_all.deb
+Size: 10988
+MD5sum: 07cb90db7dae08e501bcacdf11874bb1
+SHA1: 8b745dd51dd63ce30956cae1704775c0239a97ed
+SHA256: f607ee169362a7e173c98a55af4e3414fa9a2bd69ba5c44a70727562e323fa68
+SHA512: 7f2b74e5e60ed361d716f7bf8aebf5ca9a01e0b8210d537ddb1c63c3c384cb8132e6838d40f4a52c4aafcfff2be455ddd228f31fbe6881b1b2abce60f812bd06
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: de catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language de, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: plugin-qualify-l10n-es
+Architecture: all
+Version: 0.22.1
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Depends: plugin-qualify (= 0.22.1)
+Filename: ./all/plugin-qualify-l10n-es_0.22.1_all.deb
+Size: 10752
+MD5sum: dae0f3161929d52917e279fb6d12b67a
+SHA1: 3fb8f8ed3052ae850b6d43777f6300ecdc110c7a
+SHA256: ae384fa9b40c26b96909aa5c986674d55d638ed4ffc2ccabb6598dc2c30a8e3f
+SHA512: 4cf11facf8b37f393d1c389fcc601f156c674917cecfbcb8369ba35d25acbf06e79b23bb167731417bf8a193a16d216e22f3ac5875840d75a2e8418e574b9136
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: es catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language es, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: plugin-qualify-l10n-fr
+Architecture: all
+Version: 0.22.1
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Depends: plugin-qualify (= 0.22.1)
+Filename: ./all/plugin-qualify-l10n-fr_0.22.1_all.deb
+Size: 10928
+MD5sum: 3745cc7dbc362239e4b74f581b0e5962
+SHA1: f9fa0235be35fdb139633f3adeed9e531d81a34d
+SHA256: 055e21bbfa502569a1cd345f749286fac19e00b2fc6dd81f300051be1bb68b6e
+SHA512: 03940178672c3adea2ad5b362bef14d15995dd12c20a87a16c7c748dd3b0d9a9f3b19aa7a4e25d35f9668516a67410d618fca40f0e3f02f22c0b5ba61ba03bbb
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: fr catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language fr, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: plugin-qualify-l10n-it
+Architecture: all
+Version: 0.22.1
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Depends: plugin-qualify (= 0.22.1)
+Filename: ./all/plugin-qualify-l10n-it_0.22.1_all.deb
+Size: 10752
+MD5sum: 714ac7f42233af2923f191b5f671f2ed
+SHA1: c5c81ada8e86e6b5a2af154c0482d330e8c19b52
+SHA256: fe30148b2178b90a196a1c027ad0fd7965c255d5a2b296ef4265fa93426f97e7
+SHA512: adb7d86e223c91a62b85fb2511cc39ac30119ae4e0af50a1057c43fa9a0198836482d31fea971f947b4962d89a1c0dcaa8b9762a93f41d88093bee558d104a2f
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: it catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language it, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
+Package: plugin-qualify-l10n-pt
+Architecture: all
+Version: 0.22.1
+Priority: optional
+Section: localization
+Source: plugin-qualify
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 40
+Depends: plugin-qualify (= 0.22.1)
+Filename: ./all/plugin-qualify-l10n-pt_0.22.1_all.deb
+Size: 10804
+MD5sum: 974763547e11b867a8fa39822a034c79
+SHA1: 0979956bee9d1e9f32a0f82b6a51ebefecc789b0
+SHA256: 0a552d89192efe82c79a0193ed9cfd1fdd12986d14ee3894b15da7ba7da337c2
+SHA512: 1aea1fa9f22ab7244044e62656e759a9205faaa2ba5c137a33d413847c99bafc09ebae33a05d0c77e23d8a929d34186bec3e3318f12e4e7885c3b11e64e8d97d
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: pt catalog of plugin-qualify's codes
+ The sentences of plugin-qualify's codes in the language pt, read by every
+ surface that shows them on a host in that locale; without it a surface shows
+ the English source sentence.
+
 Package: python3-omx-contract
 Architecture: all
 Version: 0.24.1
@@ -758,6 +884,37 @@ Description: run LV2 and CLAP plugins so that one crash cannot stop the show
  .
  A format whose worker is not installed refuses its adds; the other formats
  are unaffected. mod-host runs LV2 plugins only when you ask for it.
+ .
+ Its documentation is on openmixer.org.
+
+Package: plugin-qualify
+Architecture: arm64
+Version: 0.22.1
+Priority: optional
+Section: sound
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 8242
+Depends: libc6 (>= 2.38), liblilv-0-0 (>= 0.22.0~dfsg0), libssl3t64 (>= 3.0.0), nodejs (>= 18), python3, python3-jsonschema, plugin-hostd, plugin-hostd-protocol-contract (>= 0.21.4), omx-clap-host, libomx-clap1 (>= 0.36.0), python3-lilv, plugin-hostd-contract, plugin-db-contract (>= 0.5.2), plugin-qualification-db, plugin-qualification-db-write
+Suggests: mod-host
+Breaks: plugin-qualify-contract (<< 0.21.0~)
+Replaces: plugin-qualify-contract (<< 0.21.0~)
+Filename: ./arm64/plugin-qualify_0.22.1_arm64.deb
+Size: 947884
+MD5sum: 884235d13cab638771204490d964fd38
+SHA1: db61f75fc91b5b306f3dae1bff4eda9e3ae031e6
+SHA256: 314b538bbb58b4d524ed2bb849cd8bbe12706f8c3ab749271cfdc0b779070e90
+SHA512: 6859c4f73c0a5183e90eb261e05c89dcf8d4c814b7ce8f7448f39f188279bb620d6bbfc6cf0f92003cf4050c65ceede5307852dd1734dac04a73f5e059f72af5
+Homepage: https://github.com/Open-Mixer/plugin-qualify
+Description: find out whether an audio plugin is safe to run live
+ A plugin that glitches on stage is worse than one you never installed.
+ plugin-qualify takes an LV2 or CLAP plugin and tells you whether it can be
+ trusted inside a real-time audio engine: it scans the plugin, measures its
+ latency and CPU cost at the sample rates and buffer sizes you play at, runs
+ it under a real host with memory checking, and gives one plain verdict.
+ Anything it could not measure is never a pass.
+ .
+ Use it to vet a plugin before a gig, to curate a plugin collection, or to
+ judge the same plugin against the rules of different hosts.
  .
  Its documentation is on openmixer.org.
 
