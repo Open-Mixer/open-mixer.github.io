@@ -1,0 +1,34 @@
+plugin-hostd (0.22.2+git1795809819.96dbb6a) unstable; urgency=medium
+
+  * own-host page: a plugin with no verdict runs after pin_accept (R-112), so
+    each block accepts it before its first verb
+  * ci: the own-host page job prints the daemon's and its workers' logs when
+    the page stops
+  * tests: the bundle-ports sabotage arm breaks the read as it is written
+    since the memory-ran-out answer (7d0848c7)
+  * ci: the own-host page, run off main, reads staging and the wave's devel
+    channel beside the page's channel
+  * ci: no Debian bookworm cell (owner 2026-11-27: bookworm is dropped from
+    the matrix)
+  * ci: the JACK2 job installs jack-example-tools only where Debian has it
+  * ci: a dispatch off main in a wave reads that wave's devel channel too, as
+    it reads staging
+  * ci: a pull request into devel in a wave reads that wave's devel channel
+    above staging
+  * release: the same-pass list goes, its one entry plugin-hostd-full is no
+    package now
+  * qualification domain: unmeasuredReason, the reason a figure was not
+    measured
+  * release: plugin-hostd 0.22.2 (0.22.1 to 0.22.2), a patch
+  * ci: the development package's requires carry the floor the build stamped,
+    and the file-list check reads it
+  * lv2: the bundle and port reading say when memory ran out, and the page
+    and param verbs answer it
+  * schema ids: the check walks the tree, since CI's container checkout
+    refuses git (exit 128)
+  * schemas: every $id names https://openmixer.org/schema/plugin-hostd/
+    (omx-contract#106)
+  * describe test: the omx-contract arm runs only when OMX_CONTRACT_CLI and
+    OMX_CONTRACT_DATA both name something
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Fri, 27 Nov 2026 20:03:39 +0000
