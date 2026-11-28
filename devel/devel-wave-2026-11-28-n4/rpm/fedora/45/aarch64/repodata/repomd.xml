@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repomd xmlns="http://linux.duke.edu/metadata/repo" xmlns:rpm="http://linux.duke.edu/metadata/rpm">
+  <revision>1795847118</revision>
+  <data type="primary">
+    <checksum type="sha256">2a23fd442948e843f84765297761fb7668c0190ec36702a971048cce745db888</checksum>
+    <open-checksum type="sha256">1e35fe9c4164e7b2bd225545ca4f29871fa523ecfed6f043d5e89d183b0326b6</open-checksum>
+    <location href="repodata/2a23fd442948e843f84765297761fb7668c0190ec36702a971048cce745db888-primary.xml.zst"/>
+    <timestamp>1795847118</timestamp>
+    <size>2021</size>
+    <open-size>8542</open-size>
+  </data>
+  <data type="filelists">
+    <checksum type="sha256">81fd6b9d7b29594837490308308411e662a88c06d307ebdc3ebcec06e93655de</checksum>
+    <open-checksum type="sha256">4dd4141a1bb14f4670826c8e2c92e53564719c8c093838eca64f754cab7705e6</open-checksum>
+    <location href="repodata/81fd6b9d7b29594837490308308411e662a88c06d307ebdc3ebcec06e93655de-filelists.xml.zst"/>
+    <timestamp>1795847118</timestamp>
+    <size>30830</size>
+    <open-size>573070</open-size>
+  </data>
+  <data type="other">
+    <checksum type="sha256">858c04f6c1ef544bca2839b4c8822886eedd14dc79d5be959b93e310301c221f</checksum>
+    <open-checksum type="sha256">05f480c1b80c3d7107cbd4d9658a530fe86bf4c136efc14fedd97f9f9f37cc26</open-checksum>
+    <location href="repodata/858c04f6c1ef544bca2839b4c8822886eedd14dc79d5be959b93e310301c221f-other.xml.zst"/>
+    <timestamp>1795847118</timestamp>
+    <size>2277</size>
+    <open-size>20370</open-size>
+  </data>
+  <data type="updateinfo">
+    <checksum type="sha256">454e55480746e23c9dd7dd685d7f686d932697d8c8e7a44e57c74d94abf29e65</checksum>
+    <open-checksum type="sha256">009985ba526a545b4dd12ca102af78f8012ff9dbff5c8fae447e760cba1179e1</open-checksum>
+    <location href="repodata/454e55480746e23c9dd7dd685d7f686d932697d8c8e7a44e57c74d94abf29e65-updateinfo.xml.zst"/>
+    <timestamp>1795847118</timestamp>
+    <size>2337</size>
+    <open-size>6813</open-size>
+  </data>
+</repomd>
