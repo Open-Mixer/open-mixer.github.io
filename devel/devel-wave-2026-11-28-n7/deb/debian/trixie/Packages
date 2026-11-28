@@ -1,0 +1,238 @@
+Package: omx-dsp-contract
+Architecture: all
+Version: 0.34.5
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 385
+Depends: omx-contract-data (>= 0.24.1)
+Filename: ./all/omx-dsp-contract_0.34.5_all.deb
+Size: 66352
+MD5sum: bb33d704cad652177cf3801ecb9e1709
+SHA1: 8ed4bbdd680bc33f2b832bfddaf14825779061ae
+SHA256: 7246f968b69920ce4ca10273d452858f9948c426ea35f786f8b797c03865bc91
+SHA512: 1779ff7ec933749e4efd0af75b4d01e9b8d7906f784220b389e69bd0dab377a71cc91dd66fb8ab3ed67e0783e70274ea410baaddce7da80d354111896572fac6
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: omx-dsp's kernel and instance declarations, read at run time
+ omx-dsp's package of omx-contract's contract directory: the declarations of
+ its kernels and instance faces (their controls, units and readouts) under
+ /usr/share/omx-contract/contract.d/omx-dsp. A program that reads them while
+ it runs (a panel, the omx-contract command) needs this package, not the
+ development one.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-dsp-wasm
+Architecture: all
+Version: 0.34.5
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 334
+Filename: ./all/omx-dsp-wasm_0.34.5_all.deb
+Size: 70324
+MD5sum: 6278d4300a665533cb9fc437e136bbe5
+SHA1: 1bf2b6755f6ebf1c59e86b6e1f3013f0e707e441
+SHA256: c72feb80e2bec4cee1ec0f5e8bbd747c14de90a76ff629da37f70eb5330ce99f
+SHA512: 488dce76402dfd60ce3386e1800675c611580cd6540cce38613e82510cbe664837c22483a2c51422a8e89f5ccd37020038363a304db12dc1591f286314c29c5b
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: omx-dsp's curve function as a WebAssembly module, with its JavaScript loader
+ The curve function of omx-dsp (the points of an EQ or transfer curve from a
+ panel description's terms) compiled to one WebAssembly module,
+ /usr/share/omx-dsp/wasm/omx-dsp.wasm, and the loader that loads it, beside it
+ under /usr/share/omx-dsp/: dist/index.js, the files the npm package
+ @openmixer/omx-dsp publishes (package.json, dist/, src/, oracle/, wasm/), the
+ same files. A Node program imports /usr/share/omx-dsp/dist/index.js and calls
+ loadCurve on the module; a browser bundles the same files. The arithmetic is
+ the console's and the plugins', not a second implementation of it.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libomxdsp-dev
+Architecture: amd64
+Version: 0.34.5
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 3990
+Depends: libomx-contract-dev (>= 0.24.1), omx-dsp-contract (= 0.34.5)
+Filename: ./amd64/libomxdsp-dev_0.34.5_amd64.deb
+Size: 598804
+MD5sum: 8d174f70dccff4edd1a41c324cdf31fb
+SHA1: 6a351893fcfedf489151adfaaa02d54c9d3a4bc7
+SHA256: 0edd6c26b7c31984e901cd3170ab2882c3f0dd2995f821d5152445d727daea91
+SHA512: b703a7ad84b98544b3835945678e9296495916c5a7f4f63b2b78b8e9bafaf2a743e237bc1875488b507db73d728b0818f13fe9d492dc2114fb7876839d3d33d6
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: audio toolbox of the OpenMixer console, a real-time-safe C library
+ libomxdsp is the sound of the OpenMixer console, as a library: the filters,
+ envelopes, delays, limiters, gates, compressors and other building blocks of
+ a mixer channel, written in plain C that never allocates, locks or calls the
+ system while audio is running. The console and the omx plugins are built from
+ this same code, so an effect sounds the same on the desk and in your DAW,
+ sample for sample. Link it into your own plugin, effect or audio tool and
+ start from parts that are already tested against exact results at every
+ sample rate.
+ .
+ This package holds the headers and the static library in three flavours,
+ each with its pkg-config file: libomxdsp.a (omxdsp), libomxdsp-contracts.a
+ (omxdsp-contracts, contracts compiled in) and libomxdsp-tsan.a (omxdsp-tsan,
+ contracts and ThreadSanitizer). Programs link the library statically; no
+ shared library exists.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-rt-gate
+Architecture: amd64
+Version: 0.34.5
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 233
+Depends: libomxdsp-dev (= 0.34.5), gcc, libc6 (>= 2.38)
+Filename: ./amd64/omx-rt-gate_0.34.5_amd64.deb
+Size: 57176
+MD5sum: 5500929c1dbc3603ad8bd8c83dee35cb
+SHA1: cdae1e3046beddce8fabea30bc502b4dd321048d
+SHA256: 45ac5e4d51ad77a7bff622f792ef87387d92971026eba7e5d2f7155c9ad179ec
+SHA512: eec4d44526df2075f86fd31a79819f80fb048484d3529089d7f631b9c0ec73eabce9258136bf98ef90d57929aa5fb4c32f5a5448ef3f236e3b46132bb57e2bc2
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: static real-time gate for plugin and engine C built on libomxdsp
+ omx-rt-gate proves that the real-time code of a plugin or an audio engine
+ never allocates, locks, sleeps, does I/O or logs. It compiles each real-time
+ source with the project's own flags, reads the compiler's call graph, finds
+ the functions a host calls from its audio thread in the plugin's LV2, CLAP,
+ PipeWire or JACK tables, and follows every call from there, through
+ libomxdsp's own code too. Each finding names the call, its place and the path
+ from the entry point. The tables it judges against ship with it: one
+ forbidden list, one class table and the thread roles of each ABI, with
+ libomxdsp's thread tags and call graphs.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-rta-read
+Architecture: amd64
+Version: 0.34.5
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 41
+Depends: libc6 (>= 2.38), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125
+Filename: ./amd64/omx-rta-read_0.34.5_amd64.deb
+Size: 13720
+MD5sum: c577cb04310548c13dbda5c95593d22c
+SHA1: 92a8ec22e8ce3abff4eced1674f335267b6413d9
+SHA256: 7d38aa674498797820a241cfd8dc22dff7ccec205f90fa4050a85f4b47a2f447
+SHA512: de9c5f171a5611e21e9771677f89476f03794c9eb47c8afff770de43f0cbbdde3a07dc4e6f6f00ce3cf9b8094c5f3411583df78fd10d4aeda6fe0478bcb8e675
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: spectrum of a JACK signal, read and never fed
+ omx-rta-read reads the spectrum of a processor's signal in a JACK graph,
+ what it is given and what it gives, and writes it as log-spaced bands, one
+ JSON line ten times a second, for a panel to draw. It is a JACK client with
+ input ports only, connected only from the ports it watches, so it never
+ feeds the mix. It runs only while something reads it. The window, the
+ bands and their gates are the OpenMixer console's, from libomxdsp.
+ .
+ Its documentation is on openmixer.org.
+
+Package: libomxdsp-dev
+Architecture: arm64
+Version: 0.34.5
+Multi-Arch: same
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 3956
+Depends: libomx-contract-dev (>= 0.24.1), omx-dsp-contract (= 0.34.5)
+Filename: ./arm64/libomxdsp-dev_0.34.5_arm64.deb
+Size: 595036
+MD5sum: b77307b6fd2ab9543b6228092abc77d8
+SHA1: 2c4973c7823dbd36da587bc0fb6ac01e089f96a7
+SHA256: 36c98607817dd16d0fa853e2fba0b7629ce52b0f9514b9d2fe812c797855a61a
+SHA512: fe303cdd9336eafa5e1202b83aa74ff87ff09284562d3ae59d9f59fd0047cbe4f21463b923e5faf912cd161ad42d402c227e4e28149992c441133eda3933004e
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: audio toolbox of the OpenMixer console, a real-time-safe C library
+ libomxdsp is the sound of the OpenMixer console, as a library: the filters,
+ envelopes, delays, limiters, gates, compressors and other building blocks of
+ a mixer channel, written in plain C that never allocates, locks or calls the
+ system while audio is running. The console and the omx plugins are built from
+ this same code, so an effect sounds the same on the desk and in your DAW,
+ sample for sample. Link it into your own plugin, effect or audio tool and
+ start from parts that are already tested against exact results at every
+ sample rate.
+ .
+ This package holds the headers and the static library in three flavours,
+ each with its pkg-config file: libomxdsp.a (omxdsp), libomxdsp-contracts.a
+ (omxdsp-contracts, contracts compiled in) and libomxdsp-tsan.a (omxdsp-tsan,
+ contracts and ThreadSanitizer). Programs link the library statically; no
+ shared library exists.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-rt-gate
+Architecture: arm64
+Version: 0.34.5
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 293
+Depends: libomxdsp-dev (= 0.34.5), gcc, libc6 (>= 2.38)
+Filename: ./arm64/omx-rt-gate_0.34.5_arm64.deb
+Size: 55292
+MD5sum: 4fb983a2ac58dd46cf1896d08f24723b
+SHA1: 3989c50704d2e9348fd3e01e64fa1b7d8076a1ce
+SHA256: f72ac8f8efdead0e236039fb76cc0c7c24880a7c4bd529de78a189f38f7312ff
+SHA512: b9a6ef3f3fcd9c1d5cbdcf9ae8d43cfd265d927fd3023a6fffe9849765294dc6235ff0d019891f78b0de66807373ce4504623367732b238ab86e2848edffcd6a
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: static real-time gate for plugin and engine C built on libomxdsp
+ omx-rt-gate proves that the real-time code of a plugin or an audio engine
+ never allocates, locks, sleeps, does I/O or logs. It compiles each real-time
+ source with the project's own flags, reads the compiler's call graph, finds
+ the functions a host calls from its audio thread in the plugin's LV2, CLAP,
+ PipeWire or JACK tables, and follows every call from there, through
+ libomxdsp's own code too. Each finding names the call, its place and the path
+ from the entry point. The tables it judges against ship with it: one
+ forbidden list, one class table and the thread roles of each ABI, with
+ libomxdsp's thread tags and call graphs.
+ .
+ Its documentation is on openmixer.org.
+
+Package: omx-rta-read
+Architecture: arm64
+Version: 0.34.5
+Multi-Arch: foreign
+Priority: optional
+Section: libdevel
+Source: omx-dsp
+Maintainer: Pau Aliagas <linuxnow@gmail.com>
+Installed-Size: 81
+Depends: libc6 (>= 2.38), libjack-jackd2-0 (>= 1.9.10+20150825) | libjack-0.125
+Filename: ./arm64/omx-rta-read_0.34.5_arm64.deb
+Size: 13720
+MD5sum: b16f76fb2a232632438b7711b6817ca0
+SHA1: 8c6227b2fc6e9f55ea1a2ae6651e9603ff6736d4
+SHA256: e5aa59cdd4c8563a8df3d89b0512b279ae068b33ab4b562844ae549d7f33024a
+SHA512: d328b4ca407eb00978f57106c169567bc4b9ae740657d651785402dd7ef7c94637df70041ffd87dbfd6817ef72bc5bc04d26d11f9cbc1df8cceba3c98a28cebe
+Homepage: https://github.com/Open-Mixer/omx-dsp
+Description: spectrum of a JACK signal, read and never fed
+ omx-rta-read reads the spectrum of a processor's signal in a JACK graph,
+ what it is given and what it gives, and writes it as log-spaced bands, one
+ JSON line ten times a second, for a panel to draw. It is a JACK client with
+ input ports only, connected only from the ports it watches, so it never
+ feeds the mix. It runs only while something reads it. The window, the
+ bands and their gates are the OpenMixer console's, from libomxdsp.
+ .
+ Its documentation is on openmixer.org.
+
