@@ -1,0 +1,33 @@
+omx-dsp (0.34.4) unstable; urgency=medium
+
+  * fuzz-records: the eq records name the lines of omx_eq_design.h they now
+    sit on
+  * ci: the contract job's fedora:45 is a tool image, marked as the
+    fedora-cells check asks
+  * fuzz-records: the idelay records name the lines of omx_idelay.h they now
+    sit on
+  * fuzz-sabotage: fx-init-rate names the init-rate check at fuzz_fx.c:353,
+    where it is now
+  * release-promote-check: the binary-names plant is anchored on the line the
+    promote job now has
+  * release-arm-gate-selftest: the rpm job builds aarch64 beside x86_64
+    (owner ruling 2026-11-26)
+  * ci: no Debian bookworm cell (owner 2026-11-27: bookworm is dropped from
+    the matrix)
+  * generic-face: Migration item 6 is done, align and idelay through their
+    descriptors (#185)
+  * release 0.34.4: the entry describes the align and idelay descriptors, not
+    instance faces (#185)
+  * The hand-written align and idelay faces are removed (#185)
+  * face-conformance: a required kernel has a face of either kind (#185)
+  * align and idelay: descriptors for the generic face (#185)
+  * generic-face: align and idelay go straight to the descriptor, as item 6
+    says
+  * align face: the engage-edge clear resets the cursors, it does not re-arm
+  * release: omx-dsp 0.34.4 (0.34.3 to 0.34.4), a patch
+  * generic-face: align and idelay have hand-written faces first (#185)
+  * fuzz_fx: the align and idelay faces join the table, with their seeds
+  * The align and idelay instance faces (#185)
+  * face-conformance: the align and idelay instance faces are required
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 28 Nov 2026 09:41:11 +0000
