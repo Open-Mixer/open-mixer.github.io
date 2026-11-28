@@ -1,0 +1,11 @@
+plugin-db (0.5.3) unstable; urgency=medium
+
+  * ci: Debian trixie only, never bookworm
+  * contract: plugin-feature.json in omx-contract's one formatting
+  * ci: the add-openmixer steps read the wave's devel channel and its base
+  * plugin-feature: the role groups cite the owner ruling, not a private issue
+  * release: plugin-db 0.5.3 (0.5.2 to 0.5.3), a patch
+  * plugin-feature: the role group each CLAP feature and LV2 class files
+    under, as domain words
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 28 Nov 2026 12:37:20 +0000
