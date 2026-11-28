@@ -1,0 +1,51 @@
+omx-panel (0.17.3) unstable; urgency=medium
+
+  * ci, release: a job reading the wave's devel channel reads its base wave
+    too
+  * layout: a matrix row empty at every drawn head takes no row (drawnLines),
+    in the face and the renderer alike
+  * group model L6: a row the drawn heads leave empty takes no row, as a head
+    beyond the count takes no column
+  * renderer: a panel of seven sections or more is as tall as its sections
+  * renderer tests: the host side is omx-panel picture's defaultState, not a
+    copy of it
+  * omx-panel picture: a plugin's panel drawn from its declaration alone into
+    a PNG
+  * runtime install: a recommendation takes this build's packages, never
+    downgrading omx-panel
+  * base: a built-from-unknown refusal carries git's own word
+  * ci: build and lint the DEB may read its checkout with git, so the base
+    knows its commit
+  * ci: the package and offline builds run in the job's own container,
+    reading the channel add-openmixer adds
+  * ci: the jobs that run the tree read omx-dsp and omx-contract from the
+    channel, linked as the packages' builds link them
+  * renderer: omx_panel_ui.h is a documented header, and the declarations
+    added since the baseline are documented
+  * meter-surfaces: the bar and the marker are read inside the meter's frame,
+    where they are drawn
+  * store: the plugin-db domain is read from the contract directory
+    libomx-domain names, and none found is refused by name
+  * ci: no Debian bookworm cell (owner 2026-11-27: bookworm is dropped from
+    the matrix)
+  * changelog: 0.17.3 names the prebuilt base, CLAP in omx-panel sync and its
+    triggers (#284)
+  * ci: a wave's run admits its devel channel and staging in the
+    from-the-channel guard
+  * ci: a dispatch off main in a wave reads that wave's devel channel too, as
+    it reads staging
+  * ci: a pull request into devel in a wave reads that wave's devel channel
+    above staging
+  * release: omx-panel 0.17.3 (0.17.2 to 0.17.3), a patch
+  * describe: a served display's kind is the scan's number, read as its panel
+    word
+  * base: the omx-plugins set's inputs, from the channel's omx-plugins 0.21.0
+    (#284)
+  * omx-panel sync lists CLAP plugins, the pass runs on its own triggers, and
+    the base is held to its reference sets (#284)
+  * docs/descriptions-store.md: the base holds omx-plugins in both formats,
+    the pass lists CLAP plugins and has triggers of its own (#284)
+  * tools/vocabulary.mjs: pkg-config is asked each variable once per process
+    (#282)
+
+ -- Pau Aliagas <linuxnow@gmail.com>  Sat, 28 Nov 2026 11:27:29 +0000

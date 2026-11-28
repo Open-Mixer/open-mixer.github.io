@@ -2,6 +2,10 @@
 libomx-contract-dev	0.24.1	full	trixie/all
 libomx-domain-dev	0.24.1	full	trixie/amd64 trixie/arm64
 libomx-domain0	0.24.1	full	trixie/amd64 trixie/arm64
+libomx-panel-render-dev	0.17.3	full	trixie/amd64 trixie/arm64
+libomx-panel-render1	0.17.3	full	trixie/amd64 trixie/arm64
+libomx-panel-store-dev	0.17.3	full	trixie/amd64 trixie/arm64
+libomx-panel-store0	0.17.3	full	trixie/amd64 trixie/arm64
 libomxdsp-dev	0.34.4	full	trixie/amd64 trixie/arm64
 omx-contract	0.24.1	full	trixie/all
 omx-contract-data	0.24.1	full	trixie/all
@@ -13,6 +17,16 @@ omx-contract-l10n-it	0.24.1	full	trixie/all
 omx-contract-l10n-pt	0.24.1	full	trixie/all
 omx-dsp-contract	0.34.4	full	trixie/all
 omx-dsp-wasm	0.34.4	full	trixie/all
+omx-panel	0.17.3	full	trixie/all
+omx-panel-contract	0.17.3	full	trixie/all
+omx-panel-descriptions	0.17.3	full	trixie/all
+omx-panel-l10n-ca	0.17.3	full	trixie/all
+omx-panel-l10n-de	0.17.3	full	trixie/all
+omx-panel-l10n-es	0.17.3	full	trixie/all
+omx-panel-l10n-fr	0.17.3	full	trixie/all
+omx-panel-l10n-it	0.17.3	full	trixie/all
+omx-panel-l10n-pt	0.17.3	full	trixie/all
+omx-panel-store	0.17.3	full	trixie/amd64 trixie/arm64
 omx-rt-gate	0.34.4	full	trixie/amd64 trixie/arm64
 omx-rta-read	0.34.4	full	trixie/amd64 trixie/arm64
 plugin-hostd	0.22.4	full	trixie/amd64 trixie/arm64
@@ -27,3 +41,4 @@ plugin-qualify-l10n-fr	0.22.1	full	trixie/all
 plugin-qualify-l10n-it	0.22.1	full	trixie/all
 plugin-qualify-l10n-pt	0.22.1	full	trixie/all
 python3-omx-contract	0.24.1	full	trixie/all
+python3-omx-panel	0.17.3	full	trixie/all
